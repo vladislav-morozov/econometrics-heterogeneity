@@ -1,0 +1,74 @@
+--- 
+jupyter: python3 
+toc: true
+toc-depth: 2 
+---
+
+
+# Introduction
+
+ 
+## Unobserved Heterogeneity and Its Types
+
+A general feature of data is that economic agents differ in unobserved ways. 
+Among such differences, we can highlight the following (overlapping) types of unobserved heterogeneity:
+
+### Missing Variables
+
+
+
+### "Fundamental" Characteristics 
+
+
+### Differences in Responses
+
+
+### Measurement Error
+
+- Missing explanatory variables. 
+	
+	 - *Example*: demand estimation. Consumer demand depends on the prices of goods, and agents in different areas may face different price vectors. 	However, if the data does not capture prices, they form part of the unobserved differences between consumers.
+	
+ 
+    
+-  ``Fundamental'' characteristics of agents. 
+	
+	- {Example}: demand estimation. Consumer demand also depends on preferences. Preferences  are usually different between people and not observed.
+	%
+	As preferences are encoded using utility functions, a person's utility function forms part of their unobserved heterogeneity. 
+	%	Unobserved heterogeneity arises for many reasons: things not captured by data (you have seen omitted variable bias); some ``deep'' differences such as preferences (expressed often in terms of coefficients); measurement error; 
+	
+	
+	-  Differences in responses to changes in treatments (explanatory variables). 
+	%
+	This encompasses treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
+	
+	- {Example}: impact of job training.  A person's individual treatment effect is the difference between what their earnings would have been after completing the training  and their earnings without completing the training. Some people may benefit more from the program, leading to treatment effect heterogeneity. 
+	%
+	However, the individual effect is not observed, as each person is only seen in the treated or untreated state.
+	
+- Measurement error in variables.
+	
+	- {Example}: an individual's intellectual ability affects their earnings. Sometimes test scores are used a proxy for true ability. However, scores provide a noisy measurement of ability. The difference between the two (measurement error) is an unobserved individual-specific variable.
+  
+
+### Commun?
+ 
+All of the above cases are variations of the same problem: there exist unobserved variables.
+
+In practically any observational setting, these unobserved differences will affect both outcomes and the observed explanatory variables.
+
+
+## Consequences of Ignoring Unobserved Heterogeneity 
+
+Ignoring or misspecifying such unobserved factors may invalidate identification, estimation and inference, particularly with non-experimental (observational) data.  Such issues affect even simple models such as linear regression, and some examples are covered in introductory econometrics texts.  In particular, not including an important explanatory variable leads to [omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias) and inconsistency of OLS. Likewise, not accounting for the presence of measurement error in the explanatory variable leads to [attenuation bias](https://en.wikipedia.org/wiki/Regression_dilution) in the regression coefficients. 
+
+
+## This Course
+
+
+As a response, a large amount of effort has been dedicated to developing credible statistical procedures which account for unobserved heterogeneity in causal settings.
+
+
+
+These lecture notes discuss  some selected advances from this literature. Specifically, the course is divided in three blocks:
