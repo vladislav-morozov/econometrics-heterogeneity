@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "Topics in Econometrics and Statistics:\n Learning with Unobserved Heterogeneity"
@@ -7,8 +8,7 @@ book:
   # date: "2025"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - intro.qmd 
     - references.qmd
 
 bibliography: references.bib
@@ -24,3 +24,4 @@ format:
 execute:
   freeze: auto  # re-render only when source changes
 
+site-url: https://vladislav-morozov.github.io/
