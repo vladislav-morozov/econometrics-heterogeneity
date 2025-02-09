@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "Topics in Econometrics and Statistics:\n Learning with Unobserved Heterogeneity"
+  author: "Vladislav Morozov"
+  # date: "2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: [themes/ws_light.scss, themes/block.scss]
+      dark: [themes/ws_dark.scss, themes/block.scss] 
+ 
+
+
+execute:
+  freeze: auto  # re-render only when source changes
+
