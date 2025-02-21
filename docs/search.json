@@ -1,0 +1,129 @@
+[
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Unobserved Heterogeneity and Its Types\nA general feature of data is that economic agents differ in unobserved ways. Among such differences, we can highlight the following (overlapping) types of unobserved heterogeneity:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#unobserved-heterogeneity-and-its-types",
+    "href": "intro.html#unobserved-heterogeneity-and-its-types",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1.1 Missing Variables\n\n\n1.1.2 “Fundamental” Characteristics\n\n\n1.1.3 Differences in Responses\n\n\n1.1.4 Measurement Error\n\nMissing explanatory variables.\n\nExample: demand estimation. Consumer demand depends on the prices of goods, and agents in different areas may face different price vectors. However, if the data does not capture prices, they form part of the unobserved differences between consumers.\n\n``Fundamental’’ characteristics of agents.\n\n{Example}: demand estimation. Consumer demand also depends on preferences. Preferences are usually different between people and not observed. % As preferences are encoded using utility functions, a person’s utility function forms part of their unobserved heterogeneity. % Unobserved heterogeneity arises for many reasons: things not captured by data (you have seen omitted variable bias); some ``deep’’ differences such as preferences (expressed often in terms of coefficients); measurement error;\nDifferences in responses to changes in treatments (explanatory variables). % This encompasses treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.\n{Example}: impact of job training. A person’s individual treatment effect is the difference between what their earnings would have been after completing the training and their earnings without completing the training. Some people may benefit more from the program, leading to treatment effect heterogeneity. % However, the individual effect is not observed, as each person is only seen in the treated or untreated state.\n\nMeasurement error in variables.\n\n{Example}: an individual’s intellectual ability affects their earnings. Sometimes test scores are used a proxy for true ability. However, scores provide a noisy measurement of ability. The difference between the two (measurement error) is an unobserved individual-specific variable.\n\n\n\n\n1.1.5 Commun?\nAll of the above cases are variations of the same problem: there exist unobserved variables.\nIn practically any observational setting, these unobserved differences will affect both outcomes and the observed explanatory variables.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
+    "href": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
+    "title": "1  Introduction",
+    "section": "1.2 Consequences of Ignoring Unobserved Heterogeneity",
+    "text": "1.2 Consequences of Ignoring Unobserved Heterogeneity\nIgnoring or misspecifying such unobserved factors may invalidate identification, estimation and inference, particularly with non-experimental (observational) data. Such issues affect even simple models such as linear regression, and some examples are covered in introductory econometrics texts. In particular, not including an important explanatory variable leads to omitted variable bias and inconsistency of OLS. Likewise, not accounting for the presence of measurement error in the explanatory variable leads to attenuation bias in the regression coefficients.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#this-course",
+    "href": "intro.html#this-course",
+    "title": "1  Introduction",
+    "section": "1.3 This Course",
+    "text": "1.3 This Course\nAs a response, a large amount of effort has been dedicated to developing credible statistical procedures which account for unobserved heterogeneity in causal settings.\nThese lecture notes discuss some selected advances from this literature. Specifically, the course is divided in three blocks:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "Summary\nIn summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "",
+    "text": "Econometrics Heterogeneity",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#what",
+    "href": "index.html#what",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "What",
+    "text": "What",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#for-whom",
+    "href": "index.html#for-whom",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "For Whom",
+    "text": "For Whom",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#why",
+    "href": "index.html#why",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "Why",
+    "text": "Why",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#course-plan",
+    "href": "index.html#course-plan",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "Course Plan",
+    "text": "Course Plan",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#about-these-notes",
+    "href": "index.html#about-these-notes",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "About These Notes",
+    "text": "About These Notes\nMeanwhile, you may find the lecture slides here:\n\nA\nB\nC",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  },
+  {
+    "objectID": "index.html#current-state",
+    "href": "index.html#current-state",
+    "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
+    "section": "Current State",
+    "text": "Current State",
+    "crumbs": [
+      "Econometrics Heterogeneity"
+    ]
+  }
+]
