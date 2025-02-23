@@ -1,0 +1,10 @@
+# Linear Models - Introduction
+
+
+In this section, we will focus on estimating the average coefficient vector $\E[\bbeta_i]$ in the heterogeneous coefficient model \eqref{linear:equation:lecture_model}:
+\begin{equation}\label{linear:equation:averager_intro_model}
+	y_{it} = \alpha_i + \bbeta_i'\bx_{it} + u_{it}, \quad i=1, \dots, N, \quad t=1, \dots, T.
+\end{equation}
+We will explicitly separate the intercept term $\alpha_i$ in order to have more transparent conditions on covariate matrices. In doing so, we assume that there is no constant term in $\bx_{it}$.
+
+

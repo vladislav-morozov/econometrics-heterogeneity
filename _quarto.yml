@@ -9,6 +9,10 @@ book:
   chapters:
     - index.qmd
     - intro.qmd 
+    - part: "Linear Models"
+      chapters:
+        - linear-introduction.qmd
+        - linear-within-estimator.qmd
     - references.qmd
 
 bibliography: references.bib

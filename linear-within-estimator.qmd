@@ -1,0 +1,10 @@
+# The Fixed Effects (Within) Estimator Under Heterogeneity
+
+
+We begin by studying the within estimator.  Throughout this subsection, we will assume that strict exogeneity holds in the form.
+\begin{equation}
+	\E[\bu_i|\bX_i]=0,
+\end{equation}
+
+
+
