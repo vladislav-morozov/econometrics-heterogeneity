@@ -2,6 +2,8 @@ project:
   type: book
   output-dir: docs
 
+html-math-method: mathjax
+
 book:
   title: "Topics in Econometrics and Statistics:\n Learning with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
@@ -19,6 +21,7 @@ bibliography: references.bib
 
 format:
   html:
+    include-in-header: mathjax.html
     theme:
       light: [themes/ws_light.scss, themes/block.scss]
       dark: [themes/ws_dark.scss, themes/block.scss] 
