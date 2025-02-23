@@ -1,10 +1,42 @@
 # The Fixed Effects (Within) Estimator Under Heterogeneity
 
 
+
+
 We begin by studying the within estimator.  Throughout this subsection, we will assume that strict exogeneity holds in the form.
 \begin{equation}
 	\E[\bu_i|\bX_i]=0,
 \end{equation}
 
+## Background: The Within Estimator
+
+Within/``fixed effects'' estimation of the random intercept model \eqref{linear:equation:averager_intro_rand_intercept_model} has two steps:
+- Apply the within transformation to each unit.
+- Apply OLS to the resulting pooled data. 
+
+### Step 1: The Within Transformation
+
+To do the within transformation, we first  average the equations for unit $i$ across time, creating variables $y_{i\cdot} =  T^{-1}\sum_{t=1}^T y_{it}$.
+The averaged equation \eqref{linear:equation:averager_intro_rand_intercept_model} is
+$$
+	y_{i\cdot} = \alpha_i  + \bbeta' \bx_{i\cdot} + u_{i\cdot}.
+$$
+
+We then subtract this averaged equation from equation for $i$ in each period $t$. 
+Label the variables $\tilde{y}_{it} = y_{it} - y_{i\cdot}$. The above procedure yields the *within-transformed* equation \eqref{linear:equation:averager_intro_rand_intercept_model}
+\begin{equation}\label{linear:equation:within_transformed}
+	\tilde{y}_{it} = \bbeta'\tilde{\bx}_{it} + \tilde{u}_{it}.
+\end{equation}
 
 
+### Step 2: OLS on the Within-Transformed Equation
+
+
+In the second step we pool the data across both $i$ and $t$, and apply OLS to  eq. \eqref{linear:equation:within_transformed}. The resulting estimator can be written as
+\begin{align}\label{linear:equation:within_representation_random_intercept}
+	\hat{\bbeta}&  = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\by}_i \\
+	& = \bbeta + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i. 
+\end{align}
+
+
+## Properties of the Within Estimator Under the Random Intercept Model
