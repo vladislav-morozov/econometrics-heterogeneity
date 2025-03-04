@@ -11,6 +11,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd 
+    - syllabus.qmd
     - part: "Linear Models"
       chapters:
         - linear-introduction.qmd
@@ -25,10 +26,9 @@ format:
     theme:
       light: [themes/ws_light.scss, themes/block.scss]
       dark: [themes/ws_dark.scss, themes/block.scss] 
+
+
+
  
-
-
-execute:
-  freeze: auto  # re-render only when source changes
 
 site-url: https://vladislav-morozov.github.io/

@@ -1,0 +1,92 @@
+# Syllabus
+
+## Course Information
+
+
+ 
+**Instructor:** Vladislav Morozov\
+**Email:** [morozov [at] uni-bonn.de](mailto:morozov@uni-bonn.de)\
+ 
+**Level:** Second-year Master’s and PhD students\
+**Prerequisites:** first-year graduate sequence, including microeconometrics
+
+## Course Content
+
+### Short Description
+
+Unobserved heterogeneity is pervasive in economics, driven by heterogeneous parameters and treatment effects, unobserved characteristics of agents, missing variables, etc. This class introduces methods for estimating parameters of interest in settings with such unobserved heterogeneity.
+
+The course is structured into three main parts:
+
+1. Linear models with heterogeneous coefficients
+2. Nonparametric models with unobserved heterogeneity
+3. Quantile and distributional treatment effects. Quantile and distributional regression methods.
+
+This class focuses on observational cross-sectional and panel data settings.
+
+
+
+### Syllabus
+
+*Subject to modification based on progress and interest*
+
+**Block 0:** Introduction to Unobserved Heterogeneity
+
+- Definition and a brief classification
+- Examples in applied econometrics
+- Overview of key methodological challenges
+
+**Block 1:** Linear Models with Heterogeneous Coefficients
+
+- Linear models and their applicability  
+- Heterogeneity in linear models  
+- **Average effects:**  
+  - Issues with the within estimator under heterogeneity  
+  - Interlude: Dynamic panels with random intercepts  
+  - Issues with dynamic panel IV estimators under heterogeneity  
+  - Robust estimation with the mean group estimator  
+- **Variance of coefficients**  
+- **Distribution of coefficients:**  
+  - A primer on deconvolution  
+  - Identification of the distribution  
+  - Estimation with discrete covariates  
+
+**Block 2:** Nonparametric Models with Unobserved Heterogeneity
+
+- A partial classification of nonparametric models with unobserved heterogeneity  
+- Introduction to nonseparable models  
+- Heterogeneity bias and issues with identification in cross-sectional settings  
+- **Identification and estimation of average marginal effects in fully nonseparable models with panel data:**  
+  - Identification for stayers under strong stationarity  
+  - Extending identification results beyond stayers  
+  - Accommodating changes in the structural function  
+- **Variance of marginal effects in nonseparable models**  
+
+**Block 3:** Quantile and Distribution Treatment Effects:
+
+- **Background:** Quantiles and their properties  
+- **Causal framework:** Quantile and distributional treatment effects and their interpretation  
+- **Identification of QTEs and DTEs under unconfoundedness**  
+- **Methods:**  
+  - *Quantile regression:*  
+    - General formulation  
+    - When is quantile regression correctly specified?  
+    - Quantile crossing and rearrangement techniques  
+  - *Distribution regression:*  
+    - General formulation  
+    - Rearrangement for distribution regression  
+- **Estimation of QTEs and DTEs**  
+- **What can quantile regressions tell us about nonseparable models?**  
+
+
+**Block 4** Student Presentations  
+---
+ 
+
+## Course Materials
+
+**Textbook:** None. The course is  based on lecture notes and background articles.
+
+**Recommended Readings:** Please see the bibliography for a detailed reading list. 
+
+ 
