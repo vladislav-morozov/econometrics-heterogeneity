@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Vladislav Morozov">
 
-<title>Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</title>
+<title>3&nbsp; Linear Models - Introduction – Topics in Econometrics and Statistics:
+ Learning with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./linear-within-estimator.html" rel="next">
+<link href="./syllabus.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -380,6 +381,35 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -392,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Econometrics Heterogeneity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -422,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Econometrics Heterogeneity</span></a>
   </div>
 </li>
@@ -449,7 +479,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction</span></span></a>
   </div>
 </li>
@@ -472,42 +502,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#econometrics-heterogeneity" id="toc-econometrics-heterogeneity" class="nav-link active" data-scroll-target="#econometrics-heterogeneity">Econometrics Heterogeneity</a>
-  <ul class="collapse">
-  <li><a href="#what" id="toc-what" class="nav-link" data-scroll-target="#what">What</a></li>
-  <li><a href="#for-whom" id="toc-for-whom" class="nav-link" data-scroll-target="#for-whom">For Whom</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why</a></li>
-  <li><a href="#course-plan" id="toc-course-plan" class="nav-link" data-scroll-target="#course-plan">Course Plan</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#about-these-notes" id="toc-about-these-notes" class="nav-link" data-scroll-target="#about-these-notes">About These Notes</a></li>
-  <li><a href="#current-state" id="toc-current-state" class="nav-link" data-scroll-target="#current-state">Current State</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Vladislav Morozov </p>
-          </div>
-  </div>
     
   
     
@@ -518,38 +527,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="econometrics-heterogeneity" class="level1 unnumbered">
-<h1 class="unnumbered">Econometrics Heterogeneity</h1>
-<section id="what" class="level2">
-<h2 class="anchored" data-anchor-id="what">What</h2>
-</section>
-<section id="for-whom" class="level2">
-<h2 class="anchored" data-anchor-id="for-whom">For Whom</h2>
-</section>
-<section id="why" class="level2">
-<h2 class="anchored" data-anchor-id="why">Why</h2>
-</section>
-<section id="course-plan" class="level2">
-<h2 class="anchored" data-anchor-id="course-plan">Course Plan</h2>
-</section>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
-</section>
-<section id="about-these-notes" class="level2">
-<h2 class="anchored" data-anchor-id="about-these-notes">About These Notes</h2>
-<p>Meanwhile, you may find the lecture slides here:</p>
-<ol type="1">
-<li>A</li>
-<li>B</li>
-<li>C</li>
-</ol>
-</section>
-<section id="current-state" class="level2">
-<h2 class="anchored" data-anchor-id="current-state">Current State</h2>
+<p>In this section, we will focus on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in the heterogeneous coefficient model <span class="math inline">\(\eqref{linear:equation:lecture_model}\)</span>: <span class="math display">\[\begin{equation}\label{linear:equation:averager_intro_model}
+    y_{it} = \alpha_i + \bbeta_i'\bx_{it} + u_{it}, \quad i=1, \dots, N, \quad t=1, \dots, T.
+\end{equation}\]</span> We will explicitly separate the intercept term <span class="math inline">\(\alpha_i\)</span> in order to have more transparent conditions on covariate matrices. In doing so, we assume that there is no constant term in <span class="math inline">\(\bx_{it}\)</span>.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1115,10 +1097,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./syllabus.html" class="pagination-link" aria-label="Syllabus">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Syllabus</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./linear-within-estimator.html" class="pagination-link" aria-label="The Fixed Effects (Within) Estimator Under Heterogeneity">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Fixed Effects (Within) Estimator Under Heterogeneity</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Vladislav Morozov">
 
-<title>Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</title>
+<title>4&nbsp; The Fixed Effects (Within) Estimator Under Heterogeneity – Topics in Econometrics and Statistics:
+ Learning with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./linear-introduction.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -380,6 +381,35 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -392,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Econometrics Heterogeneity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Fixed Effects (Within) Estimator Under Heterogeneity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -422,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Econometrics Heterogeneity</span></a>
   </div>
 </li>
@@ -455,7 +485,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Fixed Effects (Within) Estimator Under Heterogeneity</span></span></a>
   </div>
 </li>
@@ -477,37 +507,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#econometrics-heterogeneity" id="toc-econometrics-heterogeneity" class="nav-link active" data-scroll-target="#econometrics-heterogeneity">Econometrics Heterogeneity</a>
+  <li><a href="#background-the-within-estimator" id="toc-background-the-within-estimator" class="nav-link active" data-scroll-target="#background-the-within-estimator"><span class="header-section-number">4.1</span> Background: The Within Estimator</a>
   <ul class="collapse">
-  <li><a href="#what" id="toc-what" class="nav-link" data-scroll-target="#what">What</a></li>
-  <li><a href="#for-whom" id="toc-for-whom" class="nav-link" data-scroll-target="#for-whom">For Whom</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why</a></li>
-  <li><a href="#course-plan" id="toc-course-plan" class="nav-link" data-scroll-target="#course-plan">Course Plan</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#about-these-notes" id="toc-about-these-notes" class="nav-link" data-scroll-target="#about-these-notes">About These Notes</a></li>
-  <li><a href="#current-state" id="toc-current-state" class="nav-link" data-scroll-target="#current-state">Current State</a></li>
+  <li><a href="#step-1-the-within-transformation" id="toc-step-1-the-within-transformation" class="nav-link" data-scroll-target="#step-1-the-within-transformation"><span class="header-section-number">4.1.1</span> Step 1: The Within Transformation</a></li>
+  <li><a href="#step-2-ols-on-the-within-transformed-equation" id="toc-step-2-ols-on-the-within-transformed-equation" class="nav-link" data-scroll-target="#step-2-ols-on-the-within-transformed-equation"><span class="header-section-number">4.1.2</span> Step 2: OLS on the Within-Transformed Equation</a></li>
   </ul></li>
+  <li><a href="#properties-of-the-within-estimator-under-the-random-intercept-model" id="toc-properties-of-the-within-estimator-under-the-random-intercept-model" class="nav-link" data-scroll-target="#properties-of-the-within-estimator-under-the-random-intercept-model"><span class="header-section-number">4.2</span> Properties of the Within Estimator Under the Random Intercept Model</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Fixed Effects (Within) Estimator Under Heterogeneity</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Fixed Effects (Within) Estimator Under Heterogeneity</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Vladislav Morozov </p>
-          </div>
-  </div>
     
   
     
@@ -518,37 +538,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="econometrics-heterogeneity" class="level1 unnumbered">
-<h1 class="unnumbered">Econometrics Heterogeneity</h1>
-<section id="what" class="level2">
-<h2 class="anchored" data-anchor-id="what">What</h2>
+<p>We begin by studying the within estimator. Throughout this subsection, we will assume that strict exogeneity holds in the form. <span class="math display">\[\begin{equation}
+    \E[\bu_i|\bX_i]=0,
+\end{equation}\]</span></p>
+<section id="background-the-within-estimator" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="background-the-within-estimator"><span class="header-section-number">4.1</span> Background: The Within Estimator</h2>
+<p>Within/``fixed effects’’ estimation of the random intercept model <span class="math inline">\(\eqref{linear:equation:averager_intro_rand_intercept_model}\)</span> has two steps: - Apply the within transformation to each unit. - Apply OLS to the resulting pooled data.</p>
+<section id="step-1-the-within-transformation" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="step-1-the-within-transformation"><span class="header-section-number">4.1.1</span> Step 1: The Within Transformation</h3>
+<p>To do the within transformation, we first average the equations for unit <span class="math inline">\(i\)</span> across time, creating variables <span class="math inline">\(y_{i\cdot} =  T^{-1}\sum_{t=1}^T y_{it}\)</span>. The averaged equation <span class="math inline">\(\eqref{linear:equation:averager_intro_rand_intercept_model}\)</span> is <span class="math display">\[
+    y_{i\cdot} = \alpha_i  + \bbeta' \bx_{i\cdot} + u_{i\cdot}.
+\]</span></p>
+<p>We then subtract this averaged equation from equation for <span class="math inline">\(i\)</span> in each period <span class="math inline">\(t\)</span>. Label the variables <span class="math inline">\(\tilde{y}_{it} = y_{it} - y_{i\cdot}\)</span>. The above procedure yields the <em>within-transformed</em> equation <span class="math inline">\(\eqref{linear:equation:averager_intro_rand_intercept_model}\)</span> <span class="math display">\[\begin{equation}\label{linear:equation:within_transformed}
+    \tilde{y}_{it} = \bbeta'\tilde{\bx}_{it} + \tilde{u}_{it}.
+\end{equation}\]</span></p>
 </section>
-<section id="for-whom" class="level2">
-<h2 class="anchored" data-anchor-id="for-whom">For Whom</h2>
+<section id="step-2-ols-on-the-within-transformed-equation" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="step-2-ols-on-the-within-transformed-equation"><span class="header-section-number">4.1.2</span> Step 2: OLS on the Within-Transformed Equation</h3>
+<p>In the second step we pool the data across both <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span>, and apply OLS to eq. <span class="math inline">\(\eqref{linear:equation:within_transformed}\)</span>. The resulting estimator can be written as <span class="math display">\[\begin{align}\label{linear:equation:within_representation_random_intercept}
+    \hat{\bbeta}&amp;  = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\by}_i \\
+    &amp; = \bbeta + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i.
+\end{align}\]</span></p>
 </section>
-<section id="why" class="level2">
-<h2 class="anchored" data-anchor-id="why">Why</h2>
 </section>
-<section id="course-plan" class="level2">
-<h2 class="anchored" data-anchor-id="course-plan">Course Plan</h2>
-</section>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
-</section>
-<section id="about-these-notes" class="level2">
-<h2 class="anchored" data-anchor-id="about-these-notes">About These Notes</h2>
-<p>Meanwhile, you may find the lecture slides here:</p>
-<ol type="1">
-<li>A</li>
-<li>B</li>
-<li>C</li>
-</ol>
-</section>
-<section id="current-state" class="level2">
-<h2 class="anchored" data-anchor-id="current-state">Current State</h2>
+<section id="properties-of-the-within-estimator-under-the-random-intercept-model" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="properties-of-the-within-estimator-under-the-random-intercept-model"><span class="header-section-number">4.2</span> Properties of the Within Estimator Under the Random Intercept Model</h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1115,10 +1131,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./linear-introduction.html" class="pagination-link" aria-label="Linear Models - Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
