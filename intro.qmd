@@ -1,5 +1,4 @@
---- 
-jupyter: python3 
+---  
 toc: true
 toc-depth: 2 
 ---
