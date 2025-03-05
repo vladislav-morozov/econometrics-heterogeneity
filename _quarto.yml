@@ -18,7 +18,10 @@ book:
         - linear-within-estimator.qmd
     - references.qmd
 
-bibliography: references.bib
+bibliography: eco.bib
+
+execute:
+  freeze: auto  # re-render only when source changes
 
 format:
   html:
