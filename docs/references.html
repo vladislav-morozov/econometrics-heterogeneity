@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -49,14 +49,14 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="prev">
+<link href="./linear-within-estimator.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -88,6 +88,315 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+ 
+
+<!-- This is what works with Quarto and MathJax 3+ -->
+
+<script>
+
+  MathJax = {
+
+    tex: {
+
+      tags: 'ams',  // should be 'ams', 'none', or 'all'
+
+      macros: {
+
+        vect: ["\\mathbf{#1}", 1],
+
+        mat: ["\\mathbf{#1}", 1], 
+
+
+
+        bA: "\\boldsymbol{A}",
+
+        bB: "\\boldsymbol{B}",
+
+        bC: "\\boldsymbol{C}",
+
+        bD: "\\boldsymbol{D}",
+
+        bE: "\\boldsymbol{E}",
+
+        bF: "\\boldsymbol{F}",
+
+        bG: "\\boldsymbol{G}",
+
+        bH: "\\boldsymbol{H}",
+
+        bI: "\\boldsymbol{I}",
+
+        bJ: "\\boldsymbol{J}",
+
+        bK: "\\boldsymbol{K}",
+
+        bL: "\\boldsymbol{L}",
+
+        bM: "\\boldsymbol{M}",
+
+        bN: "\\boldsymbol{N}",
+
+        bP: "\\boldsymbol{P}",
+
+        bQ: "\\boldsymbol{Q}",
+
+        bR: "\\boldsymbol{R}",
+
+        bS: "\\boldsymbol{S}",
+
+        bT: "\\boldsymbol{T}",
+
+        bU: "\\boldsymbol{U}",
+
+        bV: "\\boldsymbol{V}",
+
+        bW: "\\boldsymbol{W}",
+
+        bX: "\\boldsymbol{X}",
+
+        bY: "\\boldsymbol{Y}",
+
+        bZ: "\\boldsymbol{Z}",
+
+        ba: "\\boldsymbol{a}",
+
+        bb: "\\boldsymbol{b}",
+
+        bc: "\\boldsymbol{c}",
+
+        bd: "\\boldsymbol{d}",
+
+        be: "\\boldsymbol{e}",
+
+        bg: "\\boldsymbol{g}",
+
+        bh: "\\boldsymbol{h}",
+
+        bi: "\\boldsymbol{\\imath}",
+
+        bm: "\\boldsymbol{m}",
+
+        bp: "\\boldsymbol{p}",
+
+        bq: "\\boldsymbol{q}",
+
+        br: "\\boldsymbol{r}",
+
+        bs: "\\boldsymbol{s}",
+
+        bt: "\\boldsymbol{t}",
+
+        bu: "\\boldsymbol{u}",
+
+        bv: "\\boldsymbol{v}",
+
+        bw: "\\boldsymbol{w}",
+
+        bx: "\\boldsymbol{x}",
+
+        by: "\\boldsymbol{y}",
+
+
+
+        Acal: "\\mathcal{A}",
+
+        Bcal: "\\mathcal{B}",
+
+        Ccal: "\\mathcal{C}",
+
+        Dcal: "\\mathcal{D}",
+
+        Ecal: "\\mathcal{E}",
+
+        Fcal: "\\mathcal{F}",
+
+        Gcal: "\\mathcal{G}",
+
+        Hcal: "\\mathcal{H}",
+
+        Ical: "\\mathcal{I}",
+
+        Jcal: "\\mathcal{J}",
+
+        Kcal: "\\mathcal{K}",
+
+        Lcal: "\\mathcal{L}",
+
+        Mcal: "\\mathcal{M}",
+
+        Ncal: "\\mathcal{N}",
+
+        Ocal: "\\mathcal{O}",
+
+        Pcal: "\\mathcal{P}",
+
+        Qcal: "\\mathcal{Q}",
+
+        Rcal: "\\mathcal{R}",
+
+        Scal: "\\mathcal{S}",
+
+        Tcal: "\\mathcal{T}",
+
+        Ucal: "\\mathcal{U}",
+
+        Vcal: "\\mathcal{V}",
+
+        Wcal: "\\mathcal{W}",
+
+        Xcal: "\\mathcal{X}",
+
+        Ycal: "\\mathcal{Y}",
+
+        Zcal: "\\mathcal{Z}",
+
+
+
+        A: "\\mathbb{A}",
+
+        B: "\\mathbb{B}",
+
+        C: "\\mathbb{C}",
+
+        D: "\\mathbb{D}",
+
+        E: "\\mathbb{E}",
+
+        F: "\\mathbb{F}",
+
+        G: "\\mathbb{G}",
+
+        H: "\\mathbb{H}",
+
+        I: "\\mathbb{I}",
+
+        J: "\\mathbb{J}",
+
+        K: "\\mathbb{K}",
+
+        L: "\\mathbb{L}",
+
+        M: "\\mathbb{M}",
+
+        N: "\\mathbb{N}",
+
+        O: "\\mathbb{O}",
+
+        P: "\\mathbb{P}",
+
+        Q: "\\mathbb{Q}",
+
+        R: "\\mathbb{R}",
+
+        S: "\\mathbb{S}",
+
+        T: "\\mathbb{T}",
+
+        U: "\\mathbb{U}",
+
+        V: "\\mathbb{V}",
+
+        W: "\\mathbb{W}",
+
+        X: "\\mathbb{X}",
+
+        Y: "\\mathbb{Y}",
+
+        Z: "\\mathbb{Z}",
+
+
+
+        bAlpha: "\\boldsymbol{\\Alpha}",
+
+        bBeta: "\\boldsymbol{\\beta}",
+
+        bDelta: "\\boldsymbol{\\delta}",
+
+        bEta: "\\boldsymbol{\\eta}",
+
+        bGamma: "\\boldsymbol{\\Gamma}",
+
+        bLambda: "\\boldsymbol{\\Lambda}",
+
+        bOmega: "\\boldsymbol{\\Omega}",
+
+        bPhi: "\\boldsymbol{\\Phi}",
+
+        bPi: "\\boldsymbol{\\Pi}",
+
+        bPsi: "\\boldsymbol{\\Psi}",
+
+        bSigma: "\\boldsymbol{\\Sigma}",
+
+        bTau: "\\boldsymbol{\\tau}",
+
+        bXi: "\\boldsymbol{\\Xi}",
+
+        bbeta: "\\boldsymbol{\\beta}",
+
+        bdelta: "\\boldsymbol{\\delta}",
+
+        blambda: "\\boldsymbol{\\lambda}",
+
+        bmu: "\\boldsymbol{\\mu}",
+
+        bphi: "\\boldsymbol{\\phi}",
+
+        bpi: "\\boldsymbol{\\pi}",
+
+        bpsi: "\\boldsymbol{\\psi}",
+
+        brho: "\\boldsymbol{\\rho}",
+
+        bsigma: "\\boldsymbol{\\sigma}",
+
+        btau: "\\boldsymbol{\\tau}",
+
+        bxi: "\\boldsymbol{\\xi}",
+
+        bEta: "\\boldsymbol{\\eta}",
+
+        bPhi: "\\boldsymbol{\\Phi}",
+
+        bPi: "\\boldsymbol{\\Pi}",
+
+        bPsi: "\\boldsymbol{\\Psi}",
+
+        bXi: "\\boldsymbol{\\Xi}",
+
+        blambda: "\\boldsymbol{\\lambda}",
+
+        bmu: "\\boldsymbol{\\mu}",
+
+        bphi: "\\boldsymbol{\\phi}",
+
+        bpi: "\\boldsymbol{\\pi}",
+
+        bpsi: "\\boldsymbol{\\psi}",
+
+        brho: "\\boldsymbol{\\rho}",
+
+        bsigma: "\\boldsymbol{\\sigma}",
+
+                   
+
+        curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
+
+        floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
+
+        ceil: ["\\left\\lceil#1\\right\\rceil", 1],
+
+        abs: ["\\left\\lvert#1\\right\\rvert", 1],
+
+        norm: ["\\left\\lVert#1\\right\\rVert", 1],
+
+      }
+
+    }
+
+  };
+
+</script>
 
 
 </head>
@@ -143,6 +452,35 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Syllabus</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Linear Models</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
@@ -177,8 +515,83 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" role="list" style="display: none">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Arellano2012" class="csl-entry" role="listitem">
+Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random
+coefficients panel data models</span>.”</span> <em>Review of Economic
+Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
+</div>
+<div id="ref-Bester2016" class="csl-entry" role="listitem">
+Bester, C Alan, and Christian B Hansen. 2016. <span>“<span class="nocase">Grouped Effects Estimators in Fixed Effects
+Models</span>.”</span> <em>Journal of Econometrics</em> 190 (1):
+197–208. <a href="https://doi.org/10.1016/j.jeconom.2012.08.022">https://doi.org/10.1016/j.jeconom.2012.08.022</a>.
+</div>
+<div id="ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" class="csl-entry" role="listitem">
+Bonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022.
+<span>“Discretizing <span>Unobserved Heterogeneity</span>.”</span>
+<em>Econometrica</em> 90 (2): 625–43. <a href="https://doi.org/10.3982/ECTA15238">https://doi.org/10.3982/ECTA15238</a>.
+</div>
+<div id="ref-Bonhomme2015" class="csl-entry" role="listitem">
+Bonhomme, Stéphane, and Elena Manresa. 2015. <span>“<span class="nocase">Grouped Patterns of Heterogeneity in Panel
+Data</span>.”</span> <em>Econometrica</em> 83 (3): 1147–84. <a href="https://doi.org/10.3982/ecta11319">https://doi.org/10.3982/ecta11319</a>.
+</div>
+<div id="ref-Brockwell2016IntroductionTimeSeries" class="csl-entry" role="listitem">
+Brockwell, Peter J., and Richard A. Davis. 2016. <em>Introduction to
+<span>Time Series</span> and <span>Forecasting</span></em>. Springer
+<span>Texts</span> in <span>Statistics</span>. Springer International
+Publishing.
+</div>
+<div id="ref-Campello2019" class="csl-entry" role="listitem">
+Campello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. <span>“<span class="nocase">Testing for Slope Heterogeneity Bias in Panel Data
+Models</span>.”</span> <em>Journal of Business and Economic
+Statistics</em> 37 (4): 749–60. <a href="https://doi.org/10.1080/07350015.2017.1421545">https://doi.org/10.1080/07350015.2017.1421545</a>.
+</div>
+<div id="ref-Card2001" class="csl-entry" role="listitem">
+Card, David. 2001. <span>“<span class="nocase">Estimating the Return to
+Schooling: Progress on Some Persistent Econometric
+Problems</span>.”</span> <em>Econometrica</em> 69 (5): 1127–60. <a href="https://doi.org/10.1111/1468-0262.00237">https://doi.org/10.1111/1468-0262.00237</a>.
+</div>
+<div id="ref-Combes2012b" class="csl-entry" role="listitem">
+Combes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga,
+and Sébastien Roux. 2012. <span>“<span class="nocase">The Productivity
+Advantages of Large Cities: Distinguishing Agglomeration From Firm
+Selection</span>.”</span> <em>Econometrica</em> 80 (6): 2543–94. <a href="https://doi.org/10.3982/ecta8442">https://doi.org/10.3982/ecta8442</a>.
+</div>
+<div id="ref-Hansen2022" class="csl-entry" role="listitem">
+Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
+</div>
+<div id="ref-Heckman1998" class="csl-entry" role="listitem">
+Heckman, James, and Edward Vytlacil. 1998. <span>“<span class="nocase">Instrumental variables methods for the correlated random
+coefficient model</span>.”</span> <em>Journal of Human Resources</em> 33
+(4): 974–87.
+</div>
+<div id="ref-Hoderlein2010" class="csl-entry" role="listitem">
+Hoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. <span>“<span class="nocase">Analyzing the Random Coefficient Model
+Nonparametrically</span>.”</span> <em>Econometric Theory</em> 26 (03):
+804–37. <a href="https://doi.org/10.1017/S0266466609990119">https://doi.org/10.1017/S0266466609990119</a>.
+</div>
+<div id="ref-Mundlak1961EmpiricalProductionFunction" class="csl-entry" role="listitem">
+Mundlak, Yair. 1961. <span>“Empirical <span>Production Function
+Free</span> of <span>Management Bias</span>.”</span> <em>Journal of Farm
+Economics</em> 43 (1): 44. <a href="https://doi.org/10.2307/1235460">https://doi.org/10.2307/1235460</a>.
+</div>
+<div id="ref-Sury2011" class="csl-entry" role="listitem">
+Sury, Tavneet. 2011. <span>“<span class="nocase">Selection and
+Comparative Advantage in Technology Adoption</span>.”</span>
+<em>Econometrica</em> 79 (1): 159–209. <a href="https://doi.org/10.3982/ecta7749">https://doi.org/10.3982/ecta7749</a>.
+</div>
+<div id="ref-Wooldridge2003" class="csl-entry" role="listitem">
+Wooldridge, Jeffrey M. 2003. <span>“<span class="nocase">Fixed Effects
+Estimation of the Population-Averaged Slopes in a Panel Data Random
+Coefficient Model</span>.”</span> <em>Econometric Theory</em> 19:
+411–13. <a href="https://doi.org/10+10170S0266466603002081">https://doi.org/10+10170S0266466603002081</a>.
+</div>
+<div id="ref-Wooldridge2005" class="csl-entry" role="listitem">
+———. 2005. <span>“<span class="nocase">Fixed-effects and related
+estimators for correlated random-coefficient and treatment-effect panel
+data models</span>.”</span> <em>The Review of Economics and
+Statistics</em> 87 (May): 385–90.
+</div>
 </div>
 
 
@@ -418,7 +831,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -747,8 +1160,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./linear-within-estimator.html" class="pagination-link" aria-label="The Within Estimator Under Heterogeneity">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

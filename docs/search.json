@@ -1,52 +1,5 @@
 [
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "1.1 Unobserved Heterogeneity and Its Types\nA general feature of data is that economic agents differ in unobserved ways. Among such differences, we can highlight the following (overlapping) types of unobserved heterogeneity:",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#unobserved-heterogeneity-and-its-types",
-    "href": "intro.html#unobserved-heterogeneity-and-its-types",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "1.1.1 Missing Variables\n\n\n1.1.2 “Fundamental” Characteristics\n\n\n1.1.3 Differences in Responses\n\n\n1.1.4 Measurement Error\n\nMissing explanatory variables.\n\nExample: demand estimation. Consumer demand depends on the prices of goods, and agents in different areas may face different price vectors. However, if the data does not capture prices, they form part of the unobserved differences between consumers.\n\n``Fundamental’’ characteristics of agents.\n\n{Example}: demand estimation. Consumer demand also depends on preferences. Preferences are usually different between people and not observed. % As preferences are encoded using utility functions, a person’s utility function forms part of their unobserved heterogeneity. % Unobserved heterogeneity arises for many reasons: things not captured by data (you have seen omitted variable bias); some ``deep’’ differences such as preferences (expressed often in terms of coefficients); measurement error;\nDifferences in responses to changes in treatments (explanatory variables). % This encompasses treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.\n{Example}: impact of job training. A person’s individual treatment effect is the difference between what their earnings would have been after completing the training and their earnings without completing the training. Some people may benefit more from the program, leading to treatment effect heterogeneity. % However, the individual effect is not observed, as each person is only seen in the treated or untreated state.\n\nMeasurement error in variables.\n\n{Example}: an individual’s intellectual ability affects their earnings. Sometimes test scores are used a proxy for true ability. However, scores provide a noisy measurement of ability. The difference between the two (measurement error) is an unobserved individual-specific variable.\n\n\n\n\n1.1.5 Commun?\nAll of the above cases are variations of the same problem: there exist unobserved variables.\nIn practically any observational setting, these unobserved differences will affect both outcomes and the observed explanatory variables.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
-    "href": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
-    "title": "1  Introduction",
-    "section": "1.2 Consequences of Ignoring Unobserved Heterogeneity",
-    "text": "1.2 Consequences of Ignoring Unobserved Heterogeneity\nIgnoring or misspecifying such unobserved factors may invalidate identification, estimation and inference, particularly with non-experimental (observational) data. Such issues affect even simple models such as linear regression, and some examples are covered in introductory econometrics texts. In particular, not including an important explanatory variable leads to omitted variable bias and inconsistency of OLS. Likewise, not accounting for the presence of measurement error in the explanatory variable leads to attenuation bias in the regression coefficients.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#this-course",
-    "href": "intro.html#this-course",
-    "title": "1  Introduction",
-    "section": "1.3 This Course",
-    "text": "1.3 This Course\nAs a response, a large amount of effort has been dedicated to developing credible statistical procedures which account for unobserved heterogeneity in causal settings.\nThese lecture notes discuss some selected advances from this literature. Specifically, the course is divided in three blocks:",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "Summary",
-    "section": "",
-    "text": "Summary\nIn summary, this book has no content whatsoever."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity",
@@ -127,65 +80,51 @@
     ]
   },
   {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Unobserved Heterogeneity and Its Types\nA general feature of data is that economic agents differ in unobserved ways. Among such differences, we can highlight the following (overlapping) types of unobserved heterogeneity:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#unobserved-heterogeneity-and-its-types",
+    "href": "intro.html#unobserved-heterogeneity-and-its-types",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1.1 Missing Variables\n\n\n1.1.2 “Fundamental” Characteristics\n\n\n1.1.3 Differences in Responses\n\n\n1.1.4 Measurement Error\n\nMissing explanatory variables.\n\nExample: demand estimation. Consumer demand depends on the prices of goods, and agents in different areas may face different price vectors. However, if the data does not capture prices, they form part of the unobserved differences between consumers.\n\n``Fundamental’’ characteristics of agents.\n\n{Example}: demand estimation. Consumer demand also depends on preferences. Preferences are usually different between people and not observed. % As preferences are encoded using utility functions, a person’s utility function forms part of their unobserved heterogeneity. % Unobserved heterogeneity arises for many reasons: things not captured by data (you have seen omitted variable bias); some ``deep’’ differences such as preferences (expressed often in terms of coefficients); measurement error;\nDifferences in responses to changes in treatments (explanatory variables). % This encompasses treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.\n{Example}: impact of job training. A person’s individual treatment effect is the difference between what their earnings would have been after completing the training and their earnings without completing the training. Some people may benefit more from the program, leading to treatment effect heterogeneity. % However, the individual effect is not observed, as each person is only seen in the treated or untreated state.\n\nMeasurement error in variables.\n\n{Example}: an individual’s intellectual ability affects their earnings. Sometimes test scores are used a proxy for true ability. However, scores provide a noisy measurement of ability. The difference between the two (measurement error) is an unobserved individual-specific variable.\n\n\n\n\n1.1.5 Commun?\nAll of the above cases are variations of the same problem: there exist unobserved variables.\nIn practically any observational setting, these unobserved differences will affect both outcomes and the observed explanatory variables.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
+    "href": "intro.html#consequences-of-ignoring-unobserved-heterogeneity",
+    "title": "1  Introduction",
+    "section": "1.2 Consequences of Ignoring Unobserved Heterogeneity",
+    "text": "1.2 Consequences of Ignoring Unobserved Heterogeneity\nIgnoring or misspecifying such unobserved factors may invalidate identification, estimation and inference, particularly with non-experimental (observational) data. Such issues affect even simple models such as linear regression, and some examples are covered in introductory econometrics texts. In particular, not including an important explanatory variable leads to omitted variable bias and inconsistency of OLS. Likewise, not accounting for the presence of measurement error in the explanatory variable leads to attenuation bias in the regression coefficients.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#this-course",
+    "href": "intro.html#this-course",
+    "title": "1  Introduction",
+    "section": "1.3 This Course",
+    "text": "1.3 This Course\nAs a response, a large amount of effort has been dedicated to developing credible statistical procedures which account for unobserved heterogeneity in causal settings.\nThese lecture notes discuss some selected advances from this literature. Specifically, the course is divided in three blocks:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "2  Syllabus",
     "section": "",
     "text": "2.1 Course Information\nInstructor: Vladislav Morozov\nEmail: morozov [at] uni-bonn.de\nLevel: Second-year Master’s and PhD students\nPrerequisites: first-year graduate sequence, including microeconometrics",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
-    ]
-  },
-  {
-    "objectID": "linear-introduction.html",
-    "href": "linear-introduction.html",
-    "title": "3  Linear Models - Introduction",
-    "section": "",
-    "text": "In this section, we will focus on estimating the average coefficient vector \\(\\E[\\bbeta_i]\\) in the heterogeneous coefficient model \\(\\eqref{linear:equation:lecture_model}\\): \\[\\begin{equation}\\label{linear:equation:averager_intro_model}\n    y_{it} = \\alpha_i + \\bbeta_i'\\bx_{it} + u_{it}, \\quad i=1, \\dots, N, \\quad t=1, \\dots, T.\n\\end{equation}\\] We will explicitly separate the intercept term \\(\\alpha_i\\) in order to have more transparent conditions on covariate matrices. In doing so, we assume that there is no constant term in \\(\\bx_{it}\\).",
-    "crumbs": [
-      "Linear Models",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Models - Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "linear-within-estimator.html",
-    "href": "linear-within-estimator.html",
-    "title": "4  The Fixed Effects (Within) Estimator Under Heterogeneity",
-    "section": "",
-    "text": "4.1 Background: The Within Estimator\nWe begin by studying the within estimator. Throughout this subsection, we will assume that strict exogeneity holds in the form. \\[\\begin{equation}\n    \\E[\\bu_i|\\bX_i]=0,\n\\end{equation}\\]\nWithin/``fixed effects’’ estimation of the random intercept model \\(\\eqref{linear:equation:averager_intro_rand_intercept_model}\\) has two steps: - Apply the within transformation to each unit. - Apply OLS to the resulting pooled data.",
-    "crumbs": [
-      "Linear Models",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Fixed Effects (Within) Estimator Under Heterogeneity</span>"
-    ]
-  },
-  {
-    "objectID": "linear-within-estimator.html#background-the-within-estimator",
-    "href": "linear-within-estimator.html#background-the-within-estimator",
-    "title": "4  The Fixed Effects (Within) Estimator Under Heterogeneity",
-    "section": "",
-    "text": "4.1.1 Step 1: The Within Transformation\nTo do the within transformation, we first average the equations for unit \\(i\\) across time, creating variables \\(y_{i\\cdot} =  T^{-1}\\sum_{t=1}^T y_{it}\\). The averaged equation \\(\\eqref{linear:equation:averager_intro_rand_intercept_model}\\) is \\[\n    y_{i\\cdot} = \\alpha_i  + \\bbeta' \\bx_{i\\cdot} + u_{i\\cdot}.\n\\]\nWe then subtract this averaged equation from equation for \\(i\\) in each period \\(t\\). Label the variables \\(\\tilde{y}_{it} = y_{it} - y_{i\\cdot}\\). The above procedure yields the within-transformed equation \\(\\eqref{linear:equation:averager_intro_rand_intercept_model}\\) \\[\\begin{equation}\\label{linear:equation:within_transformed}\n    \\tilde{y}_{it} = \\bbeta'\\tilde{\\bx}_{it} + \\tilde{u}_{it}.\n\\end{equation}\\]\n\n\n4.1.2 Step 2: OLS on the Within-Transformed Equation\nIn the second step we pool the data across both \\(i\\) and \\(t\\), and apply OLS to eq. \\(\\eqref{linear:equation:within_transformed}\\). The resulting estimator can be written as \\[\\begin{align}\\label{linear:equation:within_representation_random_intercept}\n    \\hat{\\bbeta}&  = \\left(\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\by}_i \\\\\n    & = \\bbeta + \\left(\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\bu}_i.\n\\end{align}\\]",
-    "crumbs": [
-      "Linear Models",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Fixed Effects (Within) Estimator Under Heterogeneity</span>"
-    ]
-  },
-  {
-    "objectID": "linear-within-estimator.html#properties-of-the-within-estimator-under-the-random-intercept-model",
-    "href": "linear-within-estimator.html#properties-of-the-within-estimator-under-the-random-intercept-model",
-    "title": "4  The Fixed Effects (Within) Estimator Under Heterogeneity",
-    "section": "4.2 Properties of the Within Estimator Under the Random Intercept Model",
-    "text": "4.2 Properties of the Within Estimator Under the Random Intercept Model",
-    "crumbs": [
-      "Linear Models",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Fixed Effects (Within) Estimator Under Heterogeneity</span>"
-    ]
-  },
-  {
-    "objectID": "syllabus.html#course-information",
-    "href": "syllabus.html#course-information",
-    "title": "2  Syllabus",
-    "section": "",
-    "text": "Linear Models with Heterogeneous Coefficients\nNonparametric Models with Unobserved Heterogeneity\nQuantile and Distribution Regression Methods (time permitting)\n\n\n\n\n2.1.1 Course Materials\nTextbook: None. The course will be based on lecture notes and background articles.\nRecommended Readings:\n\n[List of articles, books, or papers to be provided]\n\n\n\n\n2.1.2 Grading and Evaluation\nThe final grade for this course is determined by two components:\n\nPresentation (40%)\nTerm Paper (60%)\n\nStudents should refer to a separate document outlining grading criteria, content requirements, format guidelines, and deadlines.\n\n\n\n2.1.3 Course Schedule\n(Subject to modification based on progress and interest)\nWeek 1-2: Introduction to Unobserved Heterogeneity\n\nDefinition and motivation\nExamples in applied econometrics\nOverview of key methodological challenges\n\nWeek 3-5: Linear Models with Heterogeneous Coefficients\n\nRandom coefficients models\nFixed vs. random effects\nInstrumental variables in heterogeneous settings\nApplications and empirical examples\n\nWeek 6-8: Nonparametric Models with Unobserved Heterogeneity\n\nIdentification and estimation\nLatent variable models\nControl function approaches\nEmpirical applications\n\nWeek 9-10: Quantile and Distribution Regression Methods (time permitting)\n\nQuantile regression with unobserved heterogeneity\nDistributional methods in econometrics\nApplications to inequality and treatment effects\n\nWeek 11-12: Student Presentations & Research Development\n\nPresentation of selected papers\nDiscussion of research ideas\nTerm paper development\n\n\n\n\n2.1.4 Policies and Additional Information\nAttendance and Participation:\nRegular attendance and active participation are strongly encouraged. Students are expected to engage in discussions and provide constructive feedback on peer presentations.\nAcademic Integrity:\nStudents must adhere to the university’s policies on academic integrity and plagiarism. Any violations will be subject to disciplinary action.\nAccommodations:\nIf you require any accommodations due to a disability or other circumstances, please contact [relevant office] as soon as possible.\n\n\n\n2.1.5 Key Deadlines and Assignments\n\nPresentation Topics Selection: [Date]\nPresentation Dates: [Dates]\nTerm Paper Proposal Due: [Date]\nFinal Term Paper Submission: [Date]\n\n\nThis syllabus is a living document and subject to change. Any modifications will be communicated in advance.\nLet me know if you’d like to make further edits!",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
     ]
@@ -211,13 +150,101 @@
     ]
   },
   {
-    "objectID": "syllabus.html#course-policies",
-    "href": "syllabus.html#course-policies",
-    "title": "2  Syllabus",
-    "section": "2.4 Course Policies",
-    "text": "2.4 Course Policies\n\n2.4.1 Grading and Evaluation\nThe final grade for this course is determined by two components:\n\nIn-class 30 minutes presentation of a research paper (40%.)\nTerm paper based on a research paper (60%).\n\nStudents should refer to a separate document outlining grading criteria, content requirements, format guidelines, and deadlines.\n\n\n2.4.2 Policies and Additional Information\nAttendance and Participation:\nRegular attendance and active participation are strongly encouraged. Students are expected to engage in discussions and provide constructive feedback on peer presentations.\nAcademic Integrity:\nStudents must adhere to the university’s policies on academic integrity and plagiarism. Any violations will be subject to disciplinary action.\nAccommodations:\nIf you require any accommodations due to a disability or other circumstances, please contact the relevant office as soon as possible.",
+    "objectID": "linear-introduction.html",
+    "href": "linear-introduction.html",
+    "title": "3  Linear Models - Introduction and Model",
+    "section": "",
+    "text": "3.1 Linear Models with Heterogeneous Parameters",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syllabus</span>"
+      "Linear Models",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Models - Introduction and Model</span>"
+    ]
+  },
+  {
+    "objectID": "linear-introduction.html#linear-models-with-heterogeneous-parameters",
+    "href": "linear-introduction.html#linear-models-with-heterogeneous-parameters",
+    "title": "3  Linear Models - Introduction and Model",
+    "section": "",
+    "text": "3.1.1 Towards Linear Models with Heterogeneous Parameters\nStandard linear models found in textbooks (e.g., Hansen (2022)) often assume homogeneity in individual responses to covariates. For cross-sectional data, a typical specification is:\n\\[\ny_i = \\bbeta'\\bx_i + u_{i},\n\\tag{3.1}\\] where \\(i=1, \\dots, N\\) indexes cross-sectional units.\nFor panel data, models commonly incorporate individual-specific \\((i)\\) and time-specific \\((t)\\) intercepts while maintaining a common slope vector \\(\\bbeta\\):\n\\[\ny_{it} = \\alpha_i + \\delta_t +  \\bbeta'\\bx_{it} + u_{it}.\n\\tag{3.2}\\] One may also incorporate more complex forms of random intercepts. Here \\(i=1,\\dots, N\\) indexes cross-sectional units, clusters, etc.; \\(t=1, \\dots, T\\) indexes the length of time series \\(i\\), the size of cluster \\(t\\), etc.\nHowever, economic theory rarely justifies a common \\(\\bbeta\\) across all units. More flexible models allow for heterogeneous coefficients:\n\nCross-sectional model with individual-specific slope parameters:\n\\[\ny_i = \\bbeta_{i}'\\bx + u_i.\n\\tag{3.3}\\]\nPanel model with individual- and time-specific slope parameters:\n\\[\ny_{it}  = \\bbeta_{it}'\\bx_{it} + u_{it}.\n\\tag{3.4}\\]\n\n\n\n3.1.2 Examples of Linear Models\nModels Equation 3.3 and Equation 3.4 arise in various economic contexts:\n\nBinary covariates and interaction terms: In models with fully interacted binary covariates, heterogeneous coefficients arise naturally without loss of generality (see, e.g., Wooldridge (2005)).\nEmpirical example: Estimating the effect of smoking during pregnancy on infant birth weight (Arellano and Bonhomme (2012)).\nStructural models with parameter restrictions: Certain parametric restrictions yield linear relationships in coefficients.\nEmpirical example: Firm-level Cobb-Douglas production functions where firm-specific productivity differences induce heterogeneous coefficients (Combes et al. (2012); Sury (2011)).\nLog-linearized models: Nonlinear models may be approximated by linear models around a steady-state.\nEmpirical example: Heckman and Vytlacil (1998) demonstrate how the nonlinear Card (2001) education model simplifies to a heterogeneous linear specification after linearization.\n\n\n\n3.1.3 Objects of Interest in Heterogeneous Linear Models\nKey parameters of interest in heterogeneous linear models include:\n\nIndividual effects: The coefficient vector \\(\\bbeta_i\\) for specific units.\nMoments of the distribution: Mean (\\(\\mathbb{E}[\\bbeta_i]\\)), variance, and higher-order moments.\nDistributional properties: The full distribution of \\(\\bbeta_i\\) or its quantiles, or just the tail behavior of the distribution.\n\nSimilar objects are relevant for the panel model in Equation 3.4.\n\n\n3.1.4 Challenges of Excessive Heterogeneity\nModels Equation 3.3 and Equation 3.4 are often too general for direct identification of parameters. Key challenges include:\n\nLimited observations per coefficient vector: Since each unit \\(i\\) (or pair \\((i,t)\\)) provides only indirect information through \\(\\bbeta_i'\\bx_i\\) (or \\(\\bbeta_{it}'\\bx_{it}\\)), individual parameters are not directly observed.\nUnrestricted dependence between coefficients and covariates: Without assumptions on the relationship between \\(\\bbeta_i\\) and \\(\\bx_i\\), identification is difficult.\n\n\n\n3.1.5 Identification Strategies: Example Assumptions\nTo estimate parameters of interest, common identification strategies include:\n\nRestricting coefficient variation:\n\nIn panel settings, assuming time-invariant coefficients simplifies Equation 3.4 to:\n\\[\ny_{it} = \\bbeta_i'\\bx_{it} + u_{it}.\n\\tag{3.5}\\]\nAlternative approaches assume a finite number of latent groups, each with its own coefficient vector, yielding the grouped structure:\n\\[\ny_{it} = \\bbeta_{g_i, t}'\\bx_{it} + u_{it},\n\\tag{3.6}\\]\nstudied in Bonhomme and Manresa (2015), Bester and Hansen (2016), and Bonhomme, Lamadon, and Manresa (2022).\n\nRestricting dependence between \\(\\bbeta_i\\) and \\(\\bx_i\\):\n\nAssuming independence between \\(\\bbeta_i\\) and \\(\\bx_i\\) enables identification of the full distribution of \\(\\bbeta_i\\) (see Hoderlein, Klemelä, and Mammen (2010) for the cross-sectional case in Equation 3.3).\n\n\nBy leveraging these assumptions, researchers can recover meaningful insights from heterogeneous linear models.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Models - Introduction and Model</span>"
+    ]
+  },
+  {
+    "objectID": "linear-introduction.html#the-model",
+    "href": "linear-introduction.html#the-model",
+    "title": "3  Linear Models - Introduction and Model",
+    "section": "3.2 The Model",
+    "text": "3.2 The Model\n\n3.2.1 Panel Model with Time-Invariant Coefficients\nIn this section, we focus on the linear panel model with time-invariant heterogeneous coefficients:\n\\[\ny_{it} = \\bbeta_i'\\bx_{it} + u_{it}.\n\\tag{3.7}\\]\nWe primarily adopt the fixed effects (FE) approach, which avoids imposing assumptions on the distribution of \\(\\bbeta_i\\) or its dependence with \\(\\bx_{it}\\). A key advantage of this approach is its flexibility—it allows for arbitrary dependence between covariates and individual-specific coefficients. This means economic agents can select their covariates \\(\\bx_{it}\\) based on knowledge of their own \\(\\bbeta_i\\), which is a common feature of observational data.\n\n\n3.2.2 A Special Case: The Random Intercept Model\nA widely used special case of the panel model is the random intercept model, which serves as a foundation for handling unobserved heterogeneity in applied work. The one-dimensional version takes the form:\n\\[\ny_{it} = \\alpha_i + \\bbeta'\\bx_{it} + u_{it}.\n\\tag{3.8}\\]\nHere, \\(\\bbeta\\) is a common coefficient vector applied to the covariates, while \\(\\alpha_i\\) represents individual-specific intercepts. Despite being called a “fixed effect,” \\(\\alpha_i\\) is typically treated as a random variable, often leading to confusion. This model dates back to Mundlak (1961) and can be extended to accommodate multiple random intercepts, such as in settings with firm \\(\\times\\) industry \\(\\times\\) time structures.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Models - Introduction and Model</span>"
+    ]
+  },
+  {
+    "objectID": "linear-introduction.html#plan-for-this-section",
+    "href": "linear-introduction.html#plan-for-this-section",
+    "title": "3  Linear Models - Introduction and Model",
+    "section": "3.3 Plan for This Section",
+    "text": "3.3 Plan for This Section\nThis section explores the following key topics:\n\nAssessing Standard Estimators Under Heterogeneity:\n\nWe analyze whether conventional estimators for the random intercept mode Equation 3.8} can consistently estimate average effects in the presence of heterogeneous coefficients.\n\nWe distinguish between static and dynamic cases:\n\nIn static settings, we examine the within estimator (a.k.a. “fixed effects estimator”) and establish conditions under which it consistently estimates \\(\\mathbb{E}[\\bbeta_i]\\).\nIn dynamic settings, we explore instrumental variable (IV) estimators and demonstrate why they fail to be consistent for the average effect under coefficient heterogeneity.\n\n\nIntroducing a Robust Mean Group Estimator:\n\nWe discuss an estimator for \\(\\mathbb{E}[\\bbeta_i]\\) that remains valid without requiring assumptions on the joint distribution of \\(\\bbeta_i\\) and \\(\\bx_i\\). This method is applicable in both static and dynamic contexts.\n\nVariance Estimation in a Fixed Effects Framework:\n\nWe derive an estimator for the variance of \\(\\bbeta_i\\), extending the analysis beyond just average effects.\n\nIdentifying the Full Distribution of \\(\\bbeta_i\\):\n\nWe explore methods for recovering the entire distribution of \\(\\bbeta_i\\) under a fixed effects framework, introducing deconvolution techniques as a key tool.\n\n\n\n\n\n\nArellano, Manuel, and Stéphane Bonhomme. 2012. “Identifying distributional characteristics in random coefficients panel data models.” Review of Economic Studies 79 (3): 987–1020. https://doi.org/10.1093/restud/rdr045.\n\n\nBester, C Alan, and Christian B Hansen. 2016. “Grouped Effects Estimators in Fixed Effects Models.” Journal of Econometrics 190 (1): 197–208. https://doi.org/10.1016/j.jeconom.2012.08.022.\n\n\nBonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022. “Discretizing Unobserved Heterogeneity.” Econometrica 90 (2): 625–43. https://doi.org/10.3982/ECTA15238.\n\n\nBonhomme, Stéphane, and Elena Manresa. 2015. “Grouped Patterns of Heterogeneity in Panel Data.” Econometrica 83 (3): 1147–84. https://doi.org/10.3982/ecta11319.\n\n\nCard, David. 2001. “Estimating the Return to Schooling: Progress on Some Persistent Econometric Problems.” Econometrica 69 (5): 1127–60. https://doi.org/10.1111/1468-0262.00237.\n\n\nCombes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga, and Sébastien Roux. 2012. “The Productivity Advantages of Large Cities: Distinguishing Agglomeration From Firm Selection.” Econometrica 80 (6): 2543–94. https://doi.org/10.3982/ecta8442.\n\n\nHansen, Bruce. 2022. Econometrics. Princeton University Press.\n\n\nHeckman, James, and Edward Vytlacil. 1998. “Instrumental variables methods for the correlated random coefficient model.” Journal of Human Resources 33 (4): 974–87.\n\n\nHoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. “Analyzing the Random Coefficient Model Nonparametrically.” Econometric Theory 26 (03): 804–37. https://doi.org/10.1017/S0266466609990119.\n\n\nMundlak, Yair. 1961. “Empirical Production Function Free of Management Bias.” Journal of Farm Economics 43 (1): 44. https://doi.org/10.2307/1235460.\n\n\nSury, Tavneet. 2011. “Selection and Comparative Advantage in Technology Adoption.” Econometrica 79 (1): 159–209. https://doi.org/10.3982/ecta7749.\n\n\nWooldridge, Jeffrey M. 2005. “Fixed-effects and related estimators for correlated random-coefficient and treatment-effect panel data models.” The Review of Economics and Statistics 87 (May): 385–90.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Linear Models - Introduction and Model</span>"
+    ]
+  },
+  {
+    "objectID": "linear-within-estimator.html",
+    "href": "linear-within-estimator.html",
+    "title": "4  The Within Estimator Under Heterogeneity",
+    "section": "",
+    "text": "4.1 Introduction\nAs noted in the previous section, in this block we will focus our attention on the linear panel data model with unit-specific heterogeneous coefficients (Equation 3.7): \\[\ny_{it} = \\bbeta_i'\\bx_{it} + u_{it}.\n\\tag{4.1}\\]\nOur first key parameter of interest is the average coefficient vector, \\(\\E[\\bbeta_i]\\), which serves as the linear model analog to the average treatment effect.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Within Estimator Under Heterogeneity</span>"
+    ]
+  },
+  {
+    "objectID": "linear-within-estimator.html#introduction",
+    "href": "linear-within-estimator.html#introduction",
+    "title": "4  The Within Estimator Under Heterogeneity",
+    "section": "",
+    "text": "4.1.1 First Focus: Workhorse Estimators under Heterogeneity\nCan existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic IV estimators — meaningfully estimate \\(\\E[\\bbeta_i]\\)? Of course, those methods were developed in the context of the simpler random intercept model Equation 3.8 \\[\ny_{it} = \\alpha_i + \\bbeta'\\bx_{it} + u_{it}.\n\\tag{4.2}\\] However, if they can also handle the more general Equation 4.1, then all the better for us — we do not need to develop any new methods.\nRegrettably, we will see that the “standard” estimators will generally fail in the presence of coefficient heterogeneity, both for static and the dynamic formulations of Equation 4.1.\n\n\n4.1.2 This Section: Static Model Assumption and Fixed \\(T\\)\nIn this section, we begin by considering the static case and the associated workhorse estimator — the within (fixed effects) estimator. By “static”, we mean that the model satisfies strict exogeneity in the form\n\\[\n\\E[\\bu_i|\\bX_i]=0.\n\\] Recall that this assumption rules out using lagged values of the outcome \\(y_{it}\\) as covariates, hence the “static” terminology.\nThroughout, we will assume that the number \\(N\\) of cross-sectional units is potentially large, while the number \\(T\\) of data points per unit is fixed. This setup is more reflective of typical micropanels.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Within Estimator Under Heterogeneity</span>"
+    ]
+  },
+  {
+    "objectID": "linear-within-estimator.html#recall-within-estimator-in-the-random-intercept-model",
+    "href": "linear-within-estimator.html#recall-within-estimator-in-the-random-intercept-model",
+    "title": "4  The Within Estimator Under Heterogeneity",
+    "section": "4.2 Recall: Within Estimator in the Random Intercept Model",
+    "text": "4.2 Recall: Within Estimator in the Random Intercept Model\nTo begin, we will briefly go through the construction and the properties of the within estimator under the random intercept model Equation 4.2.\n\n4.2.1 Construction\nWithin (“fixed effects”) estimation of the random intercept model has two steps:\n\nApply the within transformation to each unit.\nApply OLS to the resulting pooled data.\n\n\n4.2.1.1 Step 1: Within Transformation\nTo perform the within transformation, we first average the equations for unit \\(i\\) across \\(t\\). Label the average of \\(y_{it}\\) across \\(t\\) for unit \\(i\\) as\n\\[\ny_{i\\cdot} = \\frac{1}{T} \\sum_{t=1}^{T} y_{it}.\n\\]\nThe averaged outcome \\(y_{i\\cdot}\\) satisfies the averaged equation\n\\[\ny_{i\\cdot} = \\alpha_i + \\bbeta' \\bX_{i\\cdot} + u_{i\\cdot},\n\\] where \\(\\bx_{i\\cdot}\\) and \\(u_{i\\cdot}\\) are defined analogously to \\(y_{i\\cdot}\\).\nWe then subtract this averaged equation from the original equation for each \\(t\\), defining within-transformed variables \\[\n\\tilde{y}_{it} = y_{it} - y_{i\\cdot}.\n\\]\nIf Equation 4.2 is true, the within transformed variables follow the within-transformed equation:\n\\[\n\\tilde{y}_{it} = \\bbeta' \\tilde{\\bX}_{it} + \\tilde{u}_{it}.\n\\tag{4.3}\\]\nUnder Equation 4.2, the within transformation eliminates the individual random intercepts \\(\\alpha_i\\). Equation 4.3 now looks like a regular homogeneous regression.\n\n\n4.2.1.2 Step 2: OLS on the Within-Transformed Equation\nThe within (fixed effects) estimator is obtained by simply pooling the data across \\(i\\) and \\(t\\) in Equation 4.3 and applying OLS to it. Specifically, the estimator is given by\n\\[\n\\hat{\\bbeta}^W = \\left(\\sum_{i=1}^{N} \\tilde{\\bX}_i' \\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^{N} \\tilde{\\bX}_i \\tilde{\\mathbf{y}}_i.\n\\tag{4.4}\\]\n\n\n\n4.2.2 Properties\nThe within estimator enjoys several desirable properties under the random intercept model, most of which can be derived from its sampling error representation \\[\n\\hat{\\bbeta}^W = \\bbeta + \\left(\\sum_{i=1}^{N} \\tilde{\\bX}_i' \\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^{N} \\tilde{\\bX}_i \\tilde{\\bu}_i.\n\\tag{4.5}\\]\n\n\\(\\hat{\\bbeta}^W\\) is unbiased for \\(\\bbeta\\). To show this property, it is sufficient to notice that strict exogeneity of \\(\\bu_i\\) with respect to \\(\\bX_i\\) implies strict exogeneity of \\(\\tilde{\\bu}_i\\) with respect to \\(\\tilde{\\bX}_i\\): \\[\n\\E[\\tilde{\\bu}_i|\\tilde{\\bX}_i] =\n\\E[\\E[\\tilde{\\bu}_i|\\bX_i]|\\tilde{\\bX}_i] = 0.\n\\] It follows that the mean of the second term in Equation 4.5 is 0, and so \\[\n\\E[\\hat{\\bbeta}^W] = \\bbeta.\n\\]\n\\(\\hat{\\bbeta}^W\\) is consistent for \\(\\bbeta\\) and asymptotically normal, provided a standard rank condition holds for \\(\\tilde{\\bX}_i\\): \\[\n\\hat{\\bbeta}^W \\xrightarrow{p} \\bbeta, \\quad \\sqrt{N}(\\hat{\\bbeta}^W - \\bbeta) \\Rightarrow N(0, \\Sigma).  \n\\tag{4.6}\\]\n\nSince \\(\\bbeta\\) is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Within Estimator Under Heterogeneity</span>"
+    ]
+  },
+  {
+    "objectID": "linear-within-estimator.html#the-within-estimator-with-heterogeneous-coefficients",
+    "href": "linear-within-estimator.html#the-within-estimator-with-heterogeneous-coefficients",
+    "title": "4  The Within Estimator Under Heterogeneity",
+    "section": "4.3 The Within Estimator with Heterogeneous Coefficients",
+    "text": "4.3 The Within Estimator with Heterogeneous Coefficients\nHowever, there is usually no theoretical reason for the slopes \\(\\bbeta\\) to be homogeneous. This assumption goes against acknowledging heterogeneity and including the random intercept terms \\(\\alpha_i\\) in the first place It is rather more realistic to consider the more general Equation 4.1. Accordindgly, we now turn to studying the properties of \\(\\hat{\\bbeta}^W\\) in this more realistic setting.\n\n\n4.3.1 Sampling Error Representation\nApplying the within transformation to the heterogeneous Equation 4.1 yields another version of the within-transformed equation:\n\\[\n\\tilde{y}_{it} = \\bbeta_i' \\tilde{\\bX}_{it} + \\tilde{u}_{it}.\n\\]\nNote that now the individual heterogeneity is not eliminated! The heterogeneous coefficients \\(\\bbeta_i\\) remain in the equation.\nThe within estimator on the above equation may then be represented as follows: \\[\n\\begin{aligned}\n\\hat{\\bbeta}^W  & = \\left(\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\by}_i \\\\\n& = \\left(\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\bX}_i\\bbeta_i + \\left(\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\bu}_i.\n\\end{aligned}\n\\]\nUnlike in the random intercept model, the first term is now a weighted average of the individual coefficients. The weights themselves depend on the second moments of the within-transformed explanatory variables, which may be viewed as a kind of variance weighting.\nDoes the within estimator target \\(\\E[\\bbeta_i]\\)? To proceed, we decompose \\(\\bbeta_i\\) into a common mean component \\(\\E[\\bbeta_i]\\) and an idiosyncratic deviation \\(\\bEta_i\\): \\[\n\\bbeta_i = \\E[\\bbeta_i] + \\bEta_i\n\\]\nWith this representation, we can further write out the within estimator as \\[\n\\begin{aligned}\n    \\hat{\\bbeta} & = \\E[\\bbeta_i]  + \\left( \\dfrac{1}{N}\\sum_{i=1}^N \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1}  \\dfrac{1}{N}\\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\bX}_i\\bEta_i \\\\\n    &  \\phantom{ = \\E[\\bbeta_i] } + \\left( \\dfrac{1}{N}\\sum_{i=1}^N  \\tilde{\\bX}_i'\\tilde{\\bX}_i \\right)^{-1} \\dfrac{1}{N}\\sum_{i=1}^N \\tilde{\\bX}_i \\tilde{\\bu}_i\\\\\n    & \\xrightarrow{p} \\E[\\bbeta_i]  + \\left(\\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i \\right] \\right)^{-1} \\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i\\bEta_i \\right]  \\\\\n  &    \\phantom{ = \\E[\\bbeta_i] }  + \\left(\\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i \\right] \\right)^{-1} \\E\\left[\\tilde{\\bX}_i'\\tilde{\\bu}_i \\right]\\\\\n    & = \\E[\\bbeta_i] + \\left(\\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i \\right] \\right)^{-1} \\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i\\bEta_i \\right],\n\\end{aligned}\n\\] where we have assumed that a suitable law of large numbers applies as \\(N\\to\\infty\\) and \\(T\\) is fixed, and where \\(\\E\\left[\\tilde{\\bX}_i'\\tilde{\\bu}_i \\right]=0\\) as above.\n\n\n4.3.2 Conditions for Estimating Average Coefficients\nThe above representation shows that the within estimator is not estimating \\(\\E[\\bbeta_i]\\) unless the following orthogonality condition holds: \\[\n    \\E\\left[\\tilde{\\bX}_i'\\tilde{\\bX}_i\\bEta_i \\right] =0.\n\\tag{4.7}\\] Even though \\(\\E[\\bEta_i]=0\\), the above condition does not necessarily hold if \\(\\bbeta_i\\) and \\(\\bX_i\\) are allowed to dependent.\nIf condition 4.7 holds, the within estimator is consistent for \\(\\E[\\bbeta_i]\\) in the heterogeneous coefficient model Equation 4.1. If it fails, the estimator is subject to heterogeneity bias (Campello, Galvao, and Juhl 2019).\nThis orthogonality condition 4.7 is a bit complicated to understand. A simpler sufficient condition is a mean independence on the coefficients given the within transformed covariates: \\[\nE[\\boldsymbol{\\eta}_i|\\tilde{\\bX}_i] = 0.  \n\\tag{4.8}\\] Under this condition \\(\\E[\\tilde{\\bX}_i'\\tilde{\\bX}_i\\bEta_i] =0\\), and thus the within estimator is consistent for \\(\\E[\\bbeta_i]\\). These conditions were proposed by Wooldridge (2003), Wooldridge (2005).\nNote that this conditions restricts the dependence structure between \\(\\bbeta_i\\) and \\(\\bx_{it}\\). Such conditions are called (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent from the observed ones.\n\n\n4.3.3 Intuition for the Mean Independence Condition\nHow can we interpret condition 4.8? Intuitively, it requires that the changes in \\(\\bx_{it}\\) over time are uncorrelated with the individual coefficients.\nTo see this interpretation, it is helpful to think of the following example framework. Suppose that \\(\\bx_{it}\\) is stationary, that is, its distribution does not depend on \\(t\\). Decompose \\(\\bx_{it}\\) as \\[\n\\bx_{it} = \\E[\\bx_{it}|\\bbeta_i]  + \\bxi_{it},\n\\]\nThen the within transformed variables satisfy: \\[\n    \\tilde{\\bx}_{it} = \\tilde{\\bxi}_{it}.\n\\]\nThe ``systemic’’ component \\(\\E[\\bx_{it}|\\bbeta_i]\\) is not present in \\(\\tilde{\\bx}_{it}\\). Only the deviations across time \\(\\tilde{\\bxi}_{it}\\) are left. Condition 4.8 requires that \\(\\tilde{\\bxi}_{it}\\) and \\(\\bEta_i\\) are unrelated on average. Note that it permits an arbitrary relationship between \\(\\bbeta_i\\) and \\(\\E[\\bx_{it}|\\bbeta_i]\\).\nAn intuitive version of the above framework goes as follows. A consumer knows their marginal utilities \\(\\bbeta_i\\) of consuming more of a variety of products. With this knowledge, they choose the optimal desired level of consumption — \\(\\E[\\bx_{it}|\\bbeta_i]\\). When they attempt to realize this consumption, they may encounter some frictions \\(\\bxi_{it}\\) which cause them to deviate from \\(\\E[\\bx_{it}|\\bbeta_i]\\). If these ``frictions’’ are uncorrelated with \\(\\bbeta_i\\), then the required consistency will hold.\n\n\n4.3.4 On The Usefulness of Panel Data\nIt is useful to contrast condition 4.8 with the stronger condition \\[\n\\E[\\bEta_i|\\bX_i]=0.\n\\] Note the difference in the conditioning sets.\nThe latter condition is stronger in the view of the tower property of conditional expectation. Intuitively, we can compute \\(\\tilde{\\bX}_i\\) from \\(\\bX_i\\), but not vice versa. The requirement that \\(\\E[\\bEta_i|\\bX_i]=0\\) may be very strong, since it would in general require that \\(\\E[\\bx_{it}|\\bbeta_i]\\) does not depend on \\(\\bbeta_i\\) — we rule out a systemic dependence even on average.\nThis contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form \\(\\E[\\bEta_i|\\bX_i]=0\\) or \\(\\E[\\bx_i\\bx_i'\\bbeta_i]=0\\) for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between \\(\\bbeta_i\\) and \\(\\bx_{it}\\) is possible. Moreover, as you might have noticed, the above analysis can already be carried out with \\(T=2\\).\n\n\n4.3.5 Graphical Illustration\nWe conclude this section with a small illustration of the results in a tractable model (see this blog post for a simulation with some dramatic examples). Specifically, we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor: \\[\ny_{it} = \\alpha_i + \\beta_i x_{it} + u_{it}, \\quad t=1,2.\n\\]\nwhere \\(\\bX_{it}\\) and \\(\\bbeta_i\\) are jointly normal:\n\\[\n\\begin{aligned}\n    \\begin{pmatrix}\n      x_{i1}\\\\\n      x_{i2}\\\\\n      \\beta_i\n    \\end{pmatrix} \\sim N\\left(  \\begin{pmatrix}\n    1\\\\\n    2\\\\\n    0.5\n    \\end{pmatrix}, \\begin{pmatrix}\n    1 & \\rho_{1, \\beta}\\rho_{2, \\beta} & \\rho_{1, \\beta}\\\\\n    \\rho_{1, \\beta}\\rho_{2, \\beta} & 1 & \\rho_{2, \\beta}\\\\\n    \\rho_{1, \\beta} & \\rho_{2, \\beta} & 1\n    \\end{pmatrix}   \\right),\n\\end{aligned}\n\\tag{4.9}\\] where the various \\(\\rho\\) parameters are correlations. The correlation between \\(x_{i1}\\) and \\(x_{i2}\\) is such that they are only correlated through \\(\\beta_i\\). The distribution of the \\(\\alpha_i\\) does not have to be specified, as it is not involved in the consistency conditions. Likewise, we only need to assume that \\(\\E[u_{it}|x_{i1}, x_{i2}]=0\\) without further specifying the distribution of \\(u_{it}\\).\nThe within transformations yields the following equation: \\[\n                y_{i2} - y_{i1} = \\beta_i(x_{i2}-x_{i1}) + (u_{i2}-u_{i1})\n\\] The mean independence condition 4.8 takes form \\[\n    \\E[ \\beta_i|x_{i2} - x_{i1}]  = 0.5.\n\\]\nIt is not difficult to work out (Brockwell and Davis 2016, A.3.1) that \\[\n\\E[ \\beta_i|x_{i2} - x_{i1}]  = 0.5 + (\\rho_{2, \\beta}- \\rho_{1, \\beta})(x_{i2} - x_{i1} - 1)\n\\] Thus, \\(\\E[ \\beta_i|x_{i2} - x_{i1}]=0.5\\) only holds if \\[\n\\rho_{2, \\beta} = \\rho_{1, \\beta}.\n\\tag{4.10}\\] In this case, \\(x_{it}\\) becomes stationary, and does not have dynamics that depend on \\(\\beta_i\\) in the mean.\nIf condition 4.10 holds, the within estimator is consistent. It is also possible to show that if condition 4.10 fails, so does the more general Equation 4.7, and the within estimator is inconsistent. We represent this fact on Figure 4.1, where we fix \\(\\rho_{1, beta}=0.25\\), and vary \\(\\rho_{2, \\beta}\\) between \\(-1\\) and \\(1\\). Observe that the within estimator is consistent if \\(\\rho_{2, \\beta} = \\rho_{1, \\beta} = 0.25\\). Otherwise, it is biased, potentially severely. For \\(\\rho_{2, \\beta}\\leq -0.6\\), the estimand of the within estimator has a sign different from that of \\(\\E[\\beta_i]\\).\n\n\n\n\n\n\nFigure 4.1: The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process 4.9\n\n\n\n\n\n\n\nBrockwell, Peter J., and Richard A. Davis. 2016. Introduction to Time Series and Forecasting. Springer Texts in Statistics. Springer International Publishing.\n\n\nCampello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. “Testing for Slope Heterogeneity Bias in Panel Data Models.” Journal of Business and Economic Statistics 37 (4): 749–60. https://doi.org/10.1080/07350015.2017.1421545.\n\n\nWooldridge, Jeffrey M. 2003. “Fixed Effects Estimation of the Population-Averaged Slopes in a Panel Data Random Coefficient Model.” Econometric Theory 19: 411–13. https://doi.org/10+10170S0266466603002081.\n\n\n———. 2005. “Fixed-effects and related estimators for correlated random-coefficient and treatment-effect panel data models.” The Review of Economics and Statistics 87 (May): 385–90.",
+    "crumbs": [
+      "Linear Models",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The Within Estimator Under Heterogeneity</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Arellano, Manuel, and Stéphane Bonhomme. 2012. “Identifying distributional characteristics in random\ncoefficients panel data models.” Review of Economic\nStudies 79 (3): 987–1020. https://doi.org/10.1093/restud/rdr045.\n\n\nBester, C Alan, and Christian B Hansen. 2016. “Grouped Effects Estimators in Fixed Effects\nModels.” Journal of Econometrics 190 (1):\n197–208. https://doi.org/10.1016/j.jeconom.2012.08.022.\n\n\nBonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022.\n“Discretizing Unobserved Heterogeneity.”\nEconometrica 90 (2): 625–43. https://doi.org/10.3982/ECTA15238.\n\n\nBonhomme, Stéphane, and Elena Manresa. 2015. “Grouped Patterns of Heterogeneity in Panel\nData.” Econometrica 83 (3): 1147–84. https://doi.org/10.3982/ecta11319.\n\n\nBrockwell, Peter J., and Richard A. Davis. 2016. Introduction to\nTime Series and Forecasting. Springer\nTexts in Statistics. Springer International\nPublishing.\n\n\nCampello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. “Testing for Slope Heterogeneity Bias in Panel Data\nModels.” Journal of Business and Economic\nStatistics 37 (4): 749–60. https://doi.org/10.1080/07350015.2017.1421545.\n\n\nCard, David. 2001. “Estimating the Return to\nSchooling: Progress on Some Persistent Econometric\nProblems.” Econometrica 69 (5): 1127–60. https://doi.org/10.1111/1468-0262.00237.\n\n\nCombes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga,\nand Sébastien Roux. 2012. “The Productivity\nAdvantages of Large Cities: Distinguishing Agglomeration From Firm\nSelection.” Econometrica 80 (6): 2543–94. https://doi.org/10.3982/ecta8442.\n\n\nHansen, Bruce. 2022. Econometrics. Princeton University Press.\n\n\nHeckman, James, and Edward Vytlacil. 1998. “Instrumental variables methods for the correlated random\ncoefficient model.” Journal of Human Resources 33\n(4): 974–87.\n\n\nHoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. “Analyzing the Random Coefficient Model\nNonparametrically.” Econometric Theory 26 (03):\n804–37. https://doi.org/10.1017/S0266466609990119.\n\n\nMundlak, Yair. 1961. “Empirical Production Function\nFree of Management Bias.” Journal of Farm\nEconomics 43 (1): 44. https://doi.org/10.2307/1235460.\n\n\nSury, Tavneet. 2011. “Selection and\nComparative Advantage in Technology Adoption.”\nEconometrica 79 (1): 159–209. https://doi.org/10.3982/ecta7749.\n\n\nWooldridge, Jeffrey M. 2003. “Fixed Effects\nEstimation of the Population-Averaged Slopes in a Panel Data Random\nCoefficient Model.” Econometric Theory 19:\n411–13. https://doi.org/10+10170S0266466603002081.\n\n\n———. 2005. “Fixed-effects and related\nestimators for correlated random-coefficient and treatment-effect panel\ndata models.” The Review of Economics and\nStatistics 87 (May): 385–90.",
+    "crumbs": [
+      "References"
     ]
   }
 ]

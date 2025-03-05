@@ -7,7 +7,7 @@ html-math-method: mathjax
 book:
   title: "Topics in Econometrics and Statistics:\n Learning with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
-  # date: "2025"
+  date: "2025"
   chapters:
     - index.qmd
     - intro.qmd 
@@ -20,8 +20,8 @@ book:
 
 bibliography: eco.bib
 
-execute:
-  freeze: auto  # re-render only when source changes
+# execute:
+#   freeze: auto  # re-render only when source changes
 
 format:
   html:
