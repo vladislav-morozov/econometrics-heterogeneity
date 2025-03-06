@@ -5,9 +5,11 @@ project:
 html-math-method: mathjax
 
 book:
-  title: "Topics in Econometrics and Statistics:\n Learning with Unobserved Heterogeneity"
+  title: "Econometrics with Unobserved Heterogeneity — Lecture Notes"
   author: "Vladislav Morozov"
   date: "2025"
+  favicon: favicon.ico
+  site-url: https://vladislav-morozov.github.io/econometrics-heterogeneity/
   chapters:
     - index.qmd
     - intro.qmd 
@@ -16,6 +18,8 @@ book:
       chapters:
         - linear-introduction.qmd
         - linear-within-estimator.qmd
+    - part: "Nonparametrics and Heterogeneity"
+    - part: "Quantile and Distributional Methods"
     - references.qmd
 
 bibliography: eco.bib
@@ -34,4 +38,3 @@ format:
 
  
 
-site-url: https://vladislav-morozov.github.io/
