@@ -4,9 +4,15 @@
 ::: {.callout-note appearance="simple" icon=false}
 
 ## Summary and Learning Outcomes
- 
-One-sentence summary and learning outcomes
 
+This section discusses why strict exogeneity fails in dynamic models and introduces the "workhorse" dynamic panel instrumental variable estimators.
+  
+By the end of this section, you should
+
+- Understand why strict exogeneity fails in dynamic panel models.  
+- Differentiate between strict and sequential exogeneity.  
+- Explain the endogeneity problem in first-differenced and within estimators.  
+- Describe IV-based solutions such as the @Anderson1982 and the @Arellano1991 estimators.  
 :::
 
 ## Exogeneity and Dynamic Models
