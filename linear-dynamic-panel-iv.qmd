@@ -101,10 +101,10 @@ Before moving on and introducing heterogeneous coefficients in dynamic linear mo
 For the sake of simplicity, we will discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bx_{it}$ and with only one lag of $y_{it}$:
 $$
 y_{it} = \alpha_i + \lambda y_{it-1} + u_{it}, 
-$$
+$$ {#eq-dynamic-interlude-dynamic-simple}
 where $u_{it}$ satisfies sequential exogeneity in the form $\E[u_{it}|y_{is}, s<t] = 0$. This random intercept dynamic model has extensively considered in the literature [e.g. @Anderson1982; @Arellano1991; @Blundell1998].
 
-The key parameter of interest is $\lambda$. By homogeneity of $\lambda$, it also plays the role of the average coefficient for model ([-@eq-dynamic-interlude-dynamic-panel]).
+The key parameter of interest is $\lambda$. By homogeneity of $\lambda$, it also plays the role of the average coefficient for model ([-@eq-dynamic-interlude-dynamic-simple]).
 
 Here, we will primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
 
@@ -206,3 +206,20 @@ The matter is rather more delicate if both $N$ and $T$ are large, and the above 
 
 ## Extra: Endogeneity and the Within Estimator
 
+One may think that we had the endogeneity problem ([-@eq-dynamic-interlude-differenced-endogeneity]) because we took first differences instead of applying the within transformation. 
+
+However, the same issue endogeneity issue affects the within estimator. First, for $T=2$ the above discussion applies directly, as the within transformation is numerically identical to first differencing. 
+Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
+$$
+	\tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.
+$$ 
+
+One can now immediately see that $\tilde{y}_{it-1}$ will also be an endogenous regressor as
+
+$$
+	\E[\tilde{y}_{it-1}\tilde{u}_{it}] = \E\left[\left(y_{it-1}- T^{-1}\sum_{s=0}^{T-1} y_{is} \right)\left(u_{it} - T^{-1}\sum_{r=1}^{T}u_{ir} \right) \right].
+$$
+
+The expectation on the right hand side contains "bad" expectations of the form $\E[u_{it}y_{is}]$ with $t<s$ (recall @eq-dynamic-interlude-no-strict-exogeneity). 
+
+We conclude that for any fixed $T$ the within estimator will also suffer from endogeneity bias; as derived by @Nickell1981.  Furthermore, this bias is likely to be large in pratice [see @Kiviet1995].
