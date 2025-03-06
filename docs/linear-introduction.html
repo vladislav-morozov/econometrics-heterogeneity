@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Linear Models - Introduction and Model – Topics in Econometrics and Statistics:
- Learning with Unobserved Heterogeneity</title>
+<title>3&nbsp; Intro: Linear Models with Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +52,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./linear-within-estimator.html" rel="next">
 <link href="./syllabus.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -442,7 +442,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -457,7 +457,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</a> 
+      <a href="./">Econometrics with Unobserved Heterogeneity — Lecture Notes</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -500,16 +500,24 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Nonparametrics and Heterogeneity</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Quantile and Distributional Methods</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -527,29 +535,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-models-with-heterogeneous-parameters" id="toc-linear-models-with-heterogeneous-parameters" class="nav-link active" data-scroll-target="#linear-models-with-heterogeneous-parameters"><span class="header-section-number">3.1</span> Linear Models with Heterogeneous Parameters</a>
+  <li><a href="#linearity-and-heterogeneity" id="toc-linearity-and-heterogeneity" class="nav-link active" data-scroll-target="#linearity-and-heterogeneity"><span class="header-section-number">3.1</span> Linearity and Heterogeneity</a>
   <ul class="collapse">
-  <li><a href="#towards-linear-models-with-heterogeneous-parameters" id="toc-towards-linear-models-with-heterogeneous-parameters" class="nav-link" data-scroll-target="#towards-linear-models-with-heterogeneous-parameters"><span class="header-section-number">3.1.1</span> Towards Linear Models with Heterogeneous Parameters</a></li>
-  <li><a href="#examples-of-linear-models" id="toc-examples-of-linear-models" class="nav-link" data-scroll-target="#examples-of-linear-models"><span class="header-section-number">3.1.2</span> Examples of Linear Models</a></li>
-  <li><a href="#objects-of-interest-in-heterogeneous-linear-models" id="toc-objects-of-interest-in-heterogeneous-linear-models" class="nav-link" data-scroll-target="#objects-of-interest-in-heterogeneous-linear-models"><span class="header-section-number">3.1.3</span> Objects of Interest in Heterogeneous Linear Models</a></li>
-  <li><a href="#challenges-of-excessive-heterogeneity" id="toc-challenges-of-excessive-heterogeneity" class="nav-link" data-scroll-target="#challenges-of-excessive-heterogeneity"><span class="header-section-number">3.1.4</span> Challenges of Excessive Heterogeneity</a></li>
-  <li><a href="#identification-strategies-example-assumptions" id="toc-identification-strategies-example-assumptions" class="nav-link" data-scroll-target="#identification-strategies-example-assumptions"><span class="header-section-number">3.1.5</span> Identification Strategies: Example Assumptions</a></li>
+  <li><a href="#towards-heterogeneous-coefficients" id="toc-towards-heterogeneous-coefficients" class="nav-link" data-scroll-target="#towards-heterogeneous-coefficients"><span class="header-section-number">3.1.1</span> Towards Heterogeneous Coefficients</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">3.1.2</span> Examples</a></li>
+  <li><a href="#what-do-we-care-about" id="toc-what-do-we-care-about" class="nav-link" data-scroll-target="#what-do-we-care-about"><span class="header-section-number">3.1.3</span> What Do We Care About?</a></li>
+  <li><a href="#key-challenges" id="toc-key-challenges" class="nav-link" data-scroll-target="#key-challenges"><span class="header-section-number">3.1.4</span> Key Challenges</a></li>
+  <li><a href="#identification-strategies" id="toc-identification-strategies" class="nav-link" data-scroll-target="#identification-strategies"><span class="header-section-number">3.1.5</span> Identification Strategies</a></li>
   </ul></li>
-  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model"><span class="header-section-number">3.2</span> The Model</a>
+  <li><a href="#key-model" id="toc-key-model" class="nav-link" data-scroll-target="#key-model"><span class="header-section-number">3.2</span> Key Model</a>
   <ul class="collapse">
   <li><a href="#panel-model-with-time-invariant-coefficients" id="toc-panel-model-with-time-invariant-coefficients" class="nav-link" data-scroll-target="#panel-model-with-time-invariant-coefficients"><span class="header-section-number">3.2.1</span> Panel Model with Time-Invariant Coefficients</a></li>
   <li><a href="#a-special-case-the-random-intercept-model" id="toc-a-special-case-the-random-intercept-model" class="nav-link" data-scroll-target="#a-special-case-the-random-intercept-model"><span class="header-section-number">3.2.2</span> A Special Case: The Random Intercept Model</a></li>
   </ul></li>
-  <li><a href="#plan-for-this-section" id="toc-plan-for-this-section" class="nav-link" data-scroll-target="#plan-for-this-section"><span class="header-section-number">3.3</span> Plan for This Section</a></li>
+  <li><a href="#plan-for-this-block" id="toc-plan-for-this-block" class="nav-link" data-scroll-target="#plan-for-this-block"><span class="header-section-number">3.3</span> Plan for This Block</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></h1>
 </div>
 
 
@@ -566,10 +574,10 @@ window.Quarto = {
 </header>
 
 
-<section id="linear-models-with-heterogeneous-parameters" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="linear-models-with-heterogeneous-parameters"><span class="header-section-number">3.1</span> Linear Models with Heterogeneous Parameters</h2>
-<section id="towards-linear-models-with-heterogeneous-parameters" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="towards-linear-models-with-heterogeneous-parameters"><span class="header-section-number">3.1.1</span> Towards Linear Models with Heterogeneous Parameters</h3>
+<section id="linearity-and-heterogeneity" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="linearity-and-heterogeneity"><span class="header-section-number">3.1</span> Linearity and Heterogeneity</h2>
+<section id="towards-heterogeneous-coefficients" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="towards-heterogeneous-coefficients"><span class="header-section-number">3.1.1</span> Towards Heterogeneous Coefficients</h3>
 <p>Standard linear models found in textbooks (e.g., <span class="citation" data-cites="Hansen2022">Hansen (<a href="references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>) often assume homogeneity in individual responses to covariates. For cross-sectional data, a typical specification is:</p>
 <p><span id="eq-standard_linear"><span class="math display">\[
 y_i = \bbeta'\bx_i + u_{i},
@@ -590,9 +598,9 @@ y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
 \tag{3.4}\]</span></span></p></li>
 </ol>
 </section>
-<section id="examples-of-linear-models" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="examples-of-linear-models"><span class="header-section-number">3.1.2</span> Examples of Linear Models</h3>
-<p>Models <a href="#eq-cross_sectional_hetero" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> and <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>3.4</span></a> arise in various economic contexts:</p>
+<section id="examples" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="examples"><span class="header-section-number">3.1.2</span> Examples</h3>
+<p>Models <a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>3.3</span></a> and <a href="#eq-panel_hetero" class="quarto-xref"><span>3.4</span></a> arise in a variety of contexts:</p>
 <ul>
 <li><p><strong>Binary covariates and interaction terms:</strong> In models with fully interacted binary covariates, heterogeneous coefficients arise naturally without loss of generality (see, e.g., <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>).<br>
 <em>Empirical example:</em> Estimating the effect of smoking during pregnancy on infant birth weight (<span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span>).</p></li>
@@ -602,8 +610,8 @@ y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
 <em>Empirical example:</em> <span class="citation" data-cites="Heckman1998">Heckman and Vytlacil (<a href="references.html#ref-Heckman1998" role="doc-biblioref">1998</a>)</span> demonstrate how the nonlinear <span class="citation" data-cites="Card2001">Card (<a href="references.html#ref-Card2001" role="doc-biblioref">2001</a>)</span> education model simplifies to a heterogeneous linear specification after linearization.</p></li>
 </ul>
 </section>
-<section id="objects-of-interest-in-heterogeneous-linear-models" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="objects-of-interest-in-heterogeneous-linear-models"><span class="header-section-number">3.1.3</span> Objects of Interest in Heterogeneous Linear Models</h3>
+<section id="what-do-we-care-about" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="what-do-we-care-about"><span class="header-section-number">3.1.3</span> What Do We Care About?</h3>
 <p>Key parameters of interest in heterogeneous linear models include:</p>
 <ul>
 <li><strong>Individual effects:</strong> The coefficient vector <span class="math inline">\(\bbeta_i\)</span> for specific units.</li>
@@ -612,16 +620,16 @@ y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
 </ul>
 <p>Similar objects are relevant for the panel model in <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>.</p>
 </section>
-<section id="challenges-of-excessive-heterogeneity" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="challenges-of-excessive-heterogeneity"><span class="header-section-number">3.1.4</span> Challenges of Excessive Heterogeneity</h3>
+<section id="key-challenges" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="key-challenges"><span class="header-section-number">3.1.4</span> Key Challenges</h3>
 <p>Models <a href="#eq-cross_sectional_hetero" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> and <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>3.4</span></a> are often too general for direct identification of parameters. Key challenges include:</p>
 <ol type="1">
 <li><strong>Limited observations per coefficient vector:</strong> Since each unit <span class="math inline">\(i\)</span> (or pair <span class="math inline">\((i,t)\)</span>) provides only indirect information through <span class="math inline">\(\bbeta_i'\bx_i\)</span> (or <span class="math inline">\(\bbeta_{it}'\bx_{it}\)</span>), individual parameters are not directly observed.</li>
 <li><strong>Unrestricted dependence between coefficients and covariates:</strong> Without assumptions on the relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span>, identification is difficult.</li>
 </ol>
 </section>
-<section id="identification-strategies-example-assumptions" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="identification-strategies-example-assumptions"><span class="header-section-number">3.1.5</span> Identification Strategies: Example Assumptions</h3>
+<section id="identification-strategies" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="identification-strategies"><span class="header-section-number">3.1.5</span> Identification Strategies</h3>
 <p>To estimate parameters of interest, common identification strategies include:</p>
 <ul>
 <li><strong>Restricting coefficient variation:</strong>
@@ -644,11 +652,11 @@ y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it},
 <p>By leveraging these assumptions, researchers can recover meaningful insights from heterogeneous linear models.</p>
 </section>
 </section>
-<section id="the-model" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="the-model"><span class="header-section-number">3.2</span> The Model</h2>
+<section id="key-model" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="key-model"><span class="header-section-number">3.2</span> Key Model</h2>
 <section id="panel-model-with-time-invariant-coefficients" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="panel-model-with-time-invariant-coefficients"><span class="header-section-number">3.2.1</span> Panel Model with Time-Invariant Coefficients</h3>
-<p>In this section, we focus on the linear panel model with time-invariant heterogeneous coefficients:</p>
+<p>In this block of lectures, we focus on the linear panel model with time-invariant heterogeneous coefficients:</p>
 <p><span id="eq-lecture_model"><span class="math display">\[
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 \tag{3.7}\]</span></span></p>
@@ -663,9 +671,9 @@ y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 <p>Here, <span class="math inline">\(\bbeta\)</span> is a common coefficient vector applied to the covariates, while <span class="math inline">\(\alpha_i\)</span> represents individual-specific intercepts. Despite being called a “fixed effect,” <span class="math inline">\(\alpha_i\)</span> is typically treated as a random variable, often leading to confusion. This model dates back to <span class="citation" data-cites="Mundlak1961EmpiricalProductionFunction">Mundlak (<a href="references.html#ref-Mundlak1961EmpiricalProductionFunction" role="doc-biblioref">1961</a>)</span> and can be extended to accommodate multiple random intercepts, such as in settings with firm <span class="math inline">\(\times\)</span> industry <span class="math inline">\(\times\)</span> time structures.</p>
 </section>
 </section>
-<section id="plan-for-this-section" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="plan-for-this-section"><span class="header-section-number">3.3</span> Plan for This Section</h2>
-<p>This section explores the following key topics:</p>
+<section id="plan-for-this-block" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="plan-for-this-block"><span class="header-section-number">3.3</span> Plan for This Block</h2>
+<p>This block of lectures explores the following key topics:</p>
 <ol type="1">
 <li><strong>Assessing Standard Estimators Under Heterogeneity:</strong>
 <ul>
@@ -967,7 +975,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/econometrics-heterogeneity\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1301,8 +1309,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linear-within-estimator.html" class="pagination-link" aria-label="The Within Estimator Under Heterogeneity">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./linear-within-estimator.html" class="pagination-link" aria-label="Within (Fixed Effects) Estimator and Heterogeneous Coefficients">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

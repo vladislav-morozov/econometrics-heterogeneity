@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; The Within Estimator Under Heterogeneity – Topics in Econometrics and Statistics:
- Learning with Unobserved Heterogeneity</title>
+<title>4&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,6 +52,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
 <link href="./linear-introduction.html" rel="prev">
+<link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -442,7 +442,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -457,7 +457,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Topics in Econometrics and Statistics: Learning with Unobserved Heterogeneity</a> 
+      <a href="./">Econometrics with Unobserved Heterogeneity — Lecture Notes</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -500,16 +500,24 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Nonparametrics and Heterogeneity</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Quantile and Distributional Methods</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -529,21 +537,21 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a>
   <ul class="collapse">
-  <li><a href="#first-focus-workhorse-estimators-under-heterogeneity" id="toc-first-focus-workhorse-estimators-under-heterogeneity" class="nav-link" data-scroll-target="#first-focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">4.1.1</span> First Focus: Workhorse Estimators under Heterogeneity</a></li>
-  <li><a href="#this-section-static-model-assumption-and-fixed-t" id="toc-this-section-static-model-assumption-and-fixed-t" class="nav-link" data-scroll-target="#this-section-static-model-assumption-and-fixed-t"><span class="header-section-number">4.1.2</span> This Section: Static Model Assumption and Fixed <span class="math inline">\(T\)</span></a></li>
+  <li><a href="#focus-workhorse-estimators-under-heterogeneity" id="toc-focus-workhorse-estimators-under-heterogeneity" class="nav-link" data-scroll-target="#focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">4.1.1</span> Focus: Workhorse Estimators under Heterogeneity</a></li>
+  <li><a href="#this-section-static-model-and-fixed-t" id="toc-this-section-static-model-and-fixed-t" class="nav-link" data-scroll-target="#this-section-static-model-and-fixed-t"><span class="header-section-number">4.1.2</span> This Section: Static Model and Fixed <span class="math inline">\(T\)</span></a></li>
   </ul></li>
   <li><a href="#recall-within-estimator-in-the-random-intercept-model" id="toc-recall-within-estimator-in-the-random-intercept-model" class="nav-link" data-scroll-target="#recall-within-estimator-in-the-random-intercept-model"><span class="header-section-number">4.2</span> Recall: Within Estimator in the Random Intercept Model</a>
   <ul class="collapse">
   <li><a href="#construction" id="toc-construction" class="nav-link" data-scroll-target="#construction"><span class="header-section-number">4.2.1</span> Construction</a></li>
   <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">4.2.2</span> Properties</a></li>
   </ul></li>
-  <li><a href="#the-within-estimator-with-heterogeneous-coefficients" id="toc-the-within-estimator-with-heterogeneous-coefficients" class="nav-link" data-scroll-target="#the-within-estimator-with-heterogeneous-coefficients"><span class="header-section-number">4.3</span> The Within Estimator with Heterogeneous Coefficients</a>
+  <li><a href="#adding-heterogeneous-coefficients" id="toc-adding-heterogeneous-coefficients" class="nav-link" data-scroll-target="#adding-heterogeneous-coefficients"><span class="header-section-number">4.3</span> Adding Heterogeneous Coefficients</a>
   <ul class="collapse">
-  <li><a href="#sampling-error-representation" id="toc-sampling-error-representation" class="nav-link" data-scroll-target="#sampling-error-representation"><span class="header-section-number">4.3.1</span> Sampling Error Representation</a></li>
+  <li><a href="#sampling-error-form" id="toc-sampling-error-form" class="nav-link" data-scroll-target="#sampling-error-form"><span class="header-section-number">4.3.1</span> Sampling Error Form</a></li>
   <li><a href="#conditions-for-estimating-average-coefficients" id="toc-conditions-for-estimating-average-coefficients" class="nav-link" data-scroll-target="#conditions-for-estimating-average-coefficients"><span class="header-section-number">4.3.2</span> Conditions for Estimating Average Coefficients</a></li>
-  <li><a href="#intuition-for-the-mean-independence-condition" id="toc-intuition-for-the-mean-independence-condition" class="nav-link" data-scroll-target="#intuition-for-the-mean-independence-condition"><span class="header-section-number">4.3.3</span> Intuition for the Mean Independence Condition</a></li>
-  <li><a href="#on-the-usefulness-of-panel-data" id="toc-on-the-usefulness-of-panel-data" class="nav-link" data-scroll-target="#on-the-usefulness-of-panel-data"><span class="header-section-number">4.3.4</span> On The Usefulness of Panel Data</a></li>
-  <li><a href="#graphical-illustration" id="toc-graphical-illustration" class="nav-link" data-scroll-target="#graphical-illustration"><span class="header-section-number">4.3.5</span> Graphical Illustration</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">4.3.3</span> Intuition</a></li>
+  <li><a href="#why-panel-data-is-useful" id="toc-why-panel-data-is-useful" class="nav-link" data-scroll-target="#why-panel-data-is-useful"><span class="header-section-number">4.3.4</span> Why Panel Data is Useful</a></li>
+  <li><a href="#graphical-example" id="toc-graphical-example" class="nav-link" data-scroll-target="#graphical-example"><span class="header-section-number">4.3.5</span> Graphical Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -551,9 +559,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Within Estimator Under Heterogeneity</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></h1>
 </div>
 
 
@@ -576,15 +584,15 @@ window.Quarto = {
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 \tag{4.1}\]</span></span></p>
 <p>Our first key parameter of interest is the average coefficient vector, <span class="math inline">\(\E[\bbeta_i]\)</span>, which serves as the linear model analog to the average treatment effect.</p>
-<section id="first-focus-workhorse-estimators-under-heterogeneity" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="first-focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">4.1.1</span> First Focus: Workhorse Estimators under Heterogeneity</h3>
+<section id="focus-workhorse-estimators-under-heterogeneity" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">4.1.1</span> Focus: Workhorse Estimators under Heterogeneity</h3>
 <p>Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic IV estimators — meaningfully estimate <span class="math inline">\(\E[\bbeta_i]\)</span>? Of course, those methods were developed in the context of the simpler random intercept model <a href="linear-introduction.html#eq-random_intercept" class="quarto-xref">Equation&nbsp;<span>3.8</span></a> <span id="eq-within-lecture-random-intercept"><span class="math display">\[
 y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 \tag{4.2}\]</span></span> However, if they can also handle the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>, then all the better for us — we do not need to develop any new methods.</p>
 <p>Regrettably, we will see that the “standard” estimators will generally fail in the presence of coefficient heterogeneity, both for static and the dynamic formulations of <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>.</p>
 </section>
-<section id="this-section-static-model-assumption-and-fixed-t" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="this-section-static-model-assumption-and-fixed-t"><span class="header-section-number">4.1.2</span> This Section: Static Model Assumption and Fixed <span class="math inline">\(T\)</span></h3>
+<section id="this-section-static-model-and-fixed-t" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="this-section-static-model-and-fixed-t"><span class="header-section-number">4.1.2</span> This Section: Static Model and Fixed <span class="math inline">\(T\)</span></h3>
 <p>In this section, we begin by considering the static case and the associated workhorse estimator — the within (fixed effects) estimator. By “static”, we mean that the model satisfies strict exogeneity in the form</p>
 <p><span class="math display">\[
 \E[\bu_i|\bX_i]=0.
@@ -645,20 +653,20 @@ y_{i\cdot} = \alpha_i + \bbeta' \bX_{i\cdot} + u_{i\cdot},
 \hat{\bbeta}^W \xrightarrow{p} \bbeta, \quad \sqrt{N}(\hat{\bbeta}^W - \bbeta) \Rightarrow N(0, \Sigma).  
 \tag{4.6}\]</span></span></p></li>
 </ul>
-<p>Since <span class="math inline">\(\bbeta\)</span> is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model</p>
+<p>Since <span class="math inline">\(\bbeta\)</span> is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model <a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>4.2</span></a>.</p>
 </section>
 </section>
-<section id="the-within-estimator-with-heterogeneous-coefficients" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="the-within-estimator-with-heterogeneous-coefficients"><span class="header-section-number">4.3</span> The Within Estimator with Heterogeneous Coefficients</h2>
-<p>However, there is usually no theoretical reason for the slopes <span class="math inline">\(\bbeta\)</span> to be homogeneous. This assumption goes against acknowledging heterogeneity and including the random intercept terms <span class="math inline">\(\alpha_i\)</span> in the first place It is rather more realistic to consider the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>. Accordindgly, we now turn to studying the properties of <span class="math inline">\(\hat{\bbeta}^W\)</span> in this more realistic setting.</p>
+<section id="adding-heterogeneous-coefficients" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="adding-heterogeneous-coefficients"><span class="header-section-number">4.3</span> Adding Heterogeneous Coefficients</h2>
+<p>However, there is usually no theoretical reason for the slopes <span class="math inline">\(\bbeta\)</span> to be homogeneous. This assumption goes against acknowledging heterogeneity and including the random intercept terms <span class="math inline">\(\alpha_i\)</span> in the first place It is rather more realistic to consider the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>. Accordingly, we now turn to studying the properties of <span class="math inline">\(\hat{\bbeta}^W\)</span> in this more realistic setting.</p>
 <!-- To study the within estimator under heterogeneity, we strengthen strict exogeneity to hold in an augmented form that also conditions on the coefficient vector $\bbeta_i$:
 
 $$
 \E[\bu_i|\bX_i, \bbeta_i] = 0.
 $$
   -->
-<section id="sampling-error-representation" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="sampling-error-representation"><span class="header-section-number">4.3.1</span> Sampling Error Representation</h3>
+<section id="sampling-error-form" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="sampling-error-form"><span class="header-section-number">4.3.1</span> Sampling Error Form</h3>
 <p>Applying the within transformation to the heterogeneous <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> yields another version of the within-transformed equation:</p>
 <p><span class="math display">\[
 \tilde{y}_{it} = \bbeta_i' \tilde{\bX}_{it} + \tilde{u}_{it}.
@@ -669,12 +677,11 @@ $$
 \hat{\bbeta}^W  &amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\by}_i \\
 &amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bbeta_i + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i.
 \end{aligned}
-\]</span></p>
-<p>Unlike in the random intercept model, the first term is now a weighted average of the individual coefficients. The weights themselves depend on the second moments of the within-transformed explanatory variables, which may be viewed as a kind of variance weighting.</p>
+\]</span> Note the difference of the sampling error representation with <a href="#eq-within-sampling-error-homogeneous" class="quarto-xref">Equation&nbsp;<span>4.5</span></a>. The first term is now a weighted average of the individual coefficients. The weights themselves depend on the second moments of the within-transformed explanatory variables, which may be viewed as a kind of variance weighting for units.</p>
 <p>Does the within estimator target <span class="math inline">\(\E[\bbeta_i]\)</span>? To proceed, we decompose <span class="math inline">\(\bbeta_i\)</span> into a common mean component <span class="math inline">\(\E[\bbeta_i]\)</span> and an idiosyncratic deviation <span class="math inline">\(\bEta_i\)</span>: <span class="math display">\[
 \bbeta_i = \E[\bbeta_i] + \bEta_i
 \]</span></p>
-<p>With this representation, we can further write out the within estimator as <span class="math display">\[
+<p>With this representation, we can further analyze the within estimator as <span class="math display">\[
 \begin{aligned}
     \hat{\bbeta} &amp; = \E[\bbeta_i]  + \left( \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1}  \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bEta_i \\
     &amp;  \phantom{ = \E[\bbeta_i] } + \left( \dfrac{1}{N}\sum_{i=1}^N  \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i\\
@@ -695,8 +702,8 @@ E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.
 \tag{4.8}\]</span></span> Under this condition <span class="math inline">\(\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0\)</span>, and thus the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span>. These conditions were proposed by <span class="citation" data-cites="Wooldridge2003">Wooldridge (<a href="references.html#ref-Wooldridge2003" role="doc-biblioref">2003</a>)</span>, <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>.</p>
 <p>Note that this conditions restricts the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>. Such conditions are called (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent from the observed ones.</p>
 </section>
-<section id="intuition-for-the-mean-independence-condition" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="intuition-for-the-mean-independence-condition"><span class="header-section-number">4.3.3</span> Intuition for the Mean Independence Condition</h3>
+<section id="intuition" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">4.3.3</span> Intuition</h3>
 <p>How can we interpret condition <a href="#eq-mean_independence_condition" class="quarto-xref"><span>4.8</span></a>? Intuitively, it requires that the changes in <span class="math inline">\(\bx_{it}\)</span> over time are uncorrelated with the individual coefficients.</p>
 <p>To see this interpretation, it is helpful to think of the following example framework. Suppose that <span class="math inline">\(\bx_{it}\)</span> is stationary, that is, its distribution does not depend on <span class="math inline">\(t\)</span>. Decompose <span class="math inline">\(\bx_{it}\)</span> as <span class="math display">\[
 \bx_{it} = \E[\bx_{it}|\bbeta_i]  + \bxi_{it},
@@ -707,16 +714,16 @@ E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.
 <p>The ``systemic’’ component <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> is not present in <span class="math inline">\(\tilde{\bx}_{it}\)</span>. Only the deviations across time <span class="math inline">\(\tilde{\bxi}_{it}\)</span> are left. Condition <a href="#eq-mean_independence_condition" class="quarto-xref"><span>4.8</span></a> requires that <span class="math inline">\(\tilde{\bxi}_{it}\)</span> and <span class="math inline">\(\bEta_i\)</span> are unrelated on average. Note that it permits an arbitrary relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span>.</p>
 <p>An intuitive version of the above framework goes as follows. A consumer knows their marginal utilities <span class="math inline">\(\bbeta_i\)</span> of consuming more of a variety of products. With this knowledge, they choose the optimal desired level of consumption — <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span>. When they attempt to realize this consumption, they may encounter some frictions <span class="math inline">\(\bxi_{it}\)</span> which cause them to deviate from <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span>. If these ``frictions’’ are uncorrelated with <span class="math inline">\(\bbeta_i\)</span>, then the required consistency will hold.</p>
 </section>
-<section id="on-the-usefulness-of-panel-data" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="on-the-usefulness-of-panel-data"><span class="header-section-number">4.3.4</span> On The Usefulness of Panel Data</h3>
+<section id="why-panel-data-is-useful" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="why-panel-data-is-useful"><span class="header-section-number">4.3.4</span> Why Panel Data is Useful</h3>
 <p>It is useful to contrast condition <a href="#eq-mean_independence_condition" class="quarto-xref"><span>4.8</span></a> with the stronger condition <span class="math display">\[
 \E[\bEta_i|\bX_i]=0.
 \]</span> Note the difference in the conditioning sets.</p>
 <p>The latter condition is stronger in the view of the tower property of conditional expectation. Intuitively, we can compute <span class="math inline">\(\tilde{\bX}_i\)</span> from <span class="math inline">\(\bX_i\)</span>, but not vice versa. The requirement that <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> may be very strong, since it would in general require that <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> does not depend on <span class="math inline">\(\bbeta_i\)</span> — we rule out a systemic dependence even on average.</p>
 <p>This contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> or <span class="math inline">\(\E[\bx_i\bx_i'\bbeta_i]=0\)</span> for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> is possible. Moreover, as you might have noticed, the above analysis can already be carried out with <span class="math inline">\(T=2\)</span>.</p>
 </section>
-<section id="graphical-illustration" class="level3" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="graphical-illustration"><span class="header-section-number">4.3.5</span> Graphical Illustration</h3>
+<section id="graphical-example" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="graphical-example"><span class="header-section-number">4.3.5</span> Graphical Example</h3>
 <p>We conclude this section with a small illustration of the results in a tractable model (see <a href="https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/">this blog post</a> for a simulation with some dramatic examples). Specifically, we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor: <span class="math display">\[
 y_{it} = \alpha_i + \beta_i x_{it} + u_{it}, \quad t=1,2.
 \]</span></p>
@@ -1013,7 +1020,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/econometrics-heterogeneity\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1342,8 +1349,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./linear-introduction.html" class="pagination-link" aria-label="Linear Models - Introduction and Model">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linear Models - Introduction and Model</span></span>
+      <a href="./linear-introduction.html" class="pagination-link" aria-label="Intro: Linear Models with Heterogeneous Coefficients">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
