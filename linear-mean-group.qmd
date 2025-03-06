@@ -1,0 +1,2 @@
+# Mean Group: Robust Estimator for Average Coefficients
+

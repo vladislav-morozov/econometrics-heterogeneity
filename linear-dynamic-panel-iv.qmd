@@ -1,0 +1,109 @@
+# Interlude: Standard Dynamic Panel Estimators
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+ 
+One-sentence summary and learning outcomes
+
+:::
+
+## Exogeneity and Dynamic Models
+
+### Introduction
+
+Throughout the previous section, we assumed that the idiosyncratic term $u_{it}$ satisfied strict exogeneity with respect to the data:
+$$
+	\E[u_{it}|\bX_i] = 0.
+$${#eq-dynamic-interlude-strict-orthogonality}
+
+However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices $t, s$ it holds that 
+$$
+	\E[u_{it}\bx_{is}] =0.
+$$ {#eq-dynamic-interlude-strict-orthogonality}
+
+If we take $t<s$, @eq-dynamic-interlude-strict-orthogonality means that  *past* shocks are uncorrelated with *future* values of $\bx$ or, intuitively, that one cannot predict *past* shocks from *future* $\bx$s. 
+
+This requirement might fail if $\bx$ is dynamic and its evolution is affected by $u_{it}$. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data. 
+
+### No Strict Exogeneity for Dynamic Models
+
+
+A particularly clear example for failure of @eq-dynamic-interlude-strict-orthogonality arises when $\bx_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
+
+
+For simplicity, we momentarily forget about the cross-sectional dimension consider a simple autoregressive model with 1 lag (AR(1)):
+$$
+	y_t = \alpha + \lambda y_{t-1} + u_{t},
+$$
+where  $t=1, \dots, T$ and the innovation $u_t$ satisfies $\E[u_t]=0$. 
+
+ 
+To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that @eq-dynamic-interlude-strict-orthogonality  is not true. Specifically, we will take $s=t+1$ and show that  $\E[y_{it+1}u_t]$ is not necessarily zero.
+
+To evaluate this expectation, we write the model at $t+1$
+$$
+	y_{t+1} = \alpha + \lambda y_t + u_{t+1}.
+$$ {#eq-dynamic-interlude-simple-ar1}
+We then substitute the model into $\E[y_{it+1}u_t]$
+$$
+\begin{aligned}
+	\E[y_{t+1}u_t] & = \lambda\E[y_t u_t] + \E[u_{t+1}u_t] \\
+	&  = \lambda^2\E[y_{t-1}u_t] + \lambda\E[u_t^2] + \E[u_{t+1}u_t] .
+\end{aligned}
+$$
+
+What can we say about the right hand side? In many contexts, we may reasonably assume that
+
+- One cannot predict the shocks of tomorrow from what you have today, so that $$\E[y_{t-1}u_t]=0.$$
+- $u_{t}$ is uncorrelated over time, so that $$\E[u_{t+1}u_t]=0.$$ 
+
+However, $\lambda\E[u_t^2]$ is zero only in two unreasonable cases: 
+
+- If $\lambda=0$, and so the model is not actually dynamic
+- $\E[u_t^2]=0$, and so the process is actually fully deterministic. 
+
+Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. 
+
+### Sequential Exogeneity
+
+So what can you do if you want to allow for dynamic models? Since strict exogeneity ([-@eq-dynamic-interlude-strict-orthogonality]) is effectively impossible to satisfy, we need a weaker form of exogeneity. 
+
+One popular weaker assumption compatible with dynamic models is *sequential exogeneity* (or *predeterminedness*). In context of the simple univariate time series model ([-@eq-dynamic-interlude-simple-ar1]), sequential exogeneity may be stated as 
+$$
+		\E[u_{t}| y_{t-1}, y_{t-2}, \dots] =0.
+$$
+Intuitively, sequential exogeneity states that future shocks cannot be predicted  using past covariates. However, it does not restrict our ability to predict the past from the future — the context which created problems for strict exogeneity. 
+
+More generally, consider a panel data linear model with homogeneous coefficients, a random intercept, and a dynamic process for the outcome:
+$$
+y_{it} = \alpha_i + \sum_{k=1}^K \lambda_k y_{it-k} + \bbeta'\bx_{it} + u_{it}.  
+$$ {#eq-dynamic-interlude-dynamic-panel}
+In this model, a sequential exogeneity assumption takes form
+$$
+	 \E[u_{it}|\curl{y_{is-1}, \bx_{is}}_{s\leq t}] =0. 
+$$
+Model ([-@eq-dynamic-interlude-dynamic-panel]) is a dynamic counterpart of the static model ([-@eq-within-lecture-random-intercept]) we discussed in the last section.  
+
+## Handling Dynamic Panels with a Random Intercept
+ 
+How can you handle  eq-dynamic-interlude-dynamic-panel
+
+As we have seen, 
+
+### Model
+
+For simplicity, we will not include any additional covariates 
+
+
+### Endogeneity
+
+
+### Aside: Endogeneity and the Within Estimator
+
+
+## IV Estimation of Dynamic Panel Models
+
+
+

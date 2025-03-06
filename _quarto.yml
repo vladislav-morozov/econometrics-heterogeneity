@@ -18,6 +18,9 @@ book:
       chapters:
         - linear-introduction.qmd
         - linear-within-estimator.qmd
+        - linear-dynamic-panel-iv.qmd
+        - linear-dynamic-panel-heterogeneity.qmd
+        - linear-mean-group.qmd
     - part: "Nonparametrics and Heterogeneity"
     - part: "Quantile and Distributional Methods"
     - references.qmd
@@ -31,8 +34,8 @@ format:
   html:
     include-in-header: mathjax.html
     theme:
+      dark: [themes/ws_dark.scss, themes/block.scss]  
       light: [themes/ws_light.scss, themes/block.scss]
-      dark: [themes/ws_dark.scss, themes/block.scss] 
 
 
 
