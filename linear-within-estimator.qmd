@@ -1,5 +1,18 @@
 # Within (Fixed Effects) Estimator and Heterogeneous Coefficients
 
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section shows that the within (fixed effects) estimator consistently estimates average coefficients only under narrow assumptions. 
+  
+By the end of this section, you should
+
+ - Refresh your knowledge of within (fixed effects) estimation.
+ - Identify conditions under which the within estimator is consistent for average coefficients in models with heterogeneity.  
+ - Develop intuition on how regressor dynamics affect consistency of the within estimator.
+:::
+
 ## Introduction 
 
 As noted in the previous section, in this block we will focus our attention on the linear panel data model with unit-specific heterogeneous coefficients (@eq-lecture_model):
