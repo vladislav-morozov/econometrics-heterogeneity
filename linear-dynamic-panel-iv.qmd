@@ -64,7 +64,11 @@ However, $\lambda\E[u_t^2]$ is zero only in two unreasonable cases:
 - If $\lambda=0$, and so the model is not actually dynamic
 - $\E[u_t^2]=0$, and so the process is actually fully deterministic. 
 
-Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. 
+Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. We conclude that in dynamic models it is the case
+$$
+\E[y_{it+1}u_t] \neq 0.
+$$ {#eq-dynamic-interlude-no-strict-exogeneity}
+A fortiori, strict exogeneity also cannot hold in dynamic models. 
 
 ### Sequential Exogeneity
 
@@ -88,22 +92,70 @@ Model ([-@eq-dynamic-interlude-dynamic-panel]) is a dynamic counterpart of the s
 
 ## Handling Dynamic Panels with a Random Intercept
  
-How can you handle  eq-dynamic-interlude-dynamic-panel
-
-As we have seen, 
+Before moving on and introducing heterogeneous coefficients in dynamic linear models, we will discuss model ([-@eq-dynamic-interlude-dynamic-panel]) in more detail. In particular, we will develop the standard workhorse instrumental variable estimators. We will  analyze how these estimators fare in the more general model ([-@eq-lecture_model]) in the next section.
+ 
+ 
 
 ### Model
 
-For simplicity, we will not include any additional covariates 
+For the sake of simplicity, we will discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bx_{it}$ and with only one lag of $y_{it}$:
+$$
+y_{it} = \alpha_i + \lambda y_{it-1} + u_{it}, 
+$$
+where $u_{it}$ satisfies sequential exogeneity in the form $\E[u_{it}|y_{is}, s<t] = 0$. This random intercept dynamic model has extensively considered in the literature [e.g. @Anderson1982; @Arellano1991; @Blundell1998].
 
+The key parameter of interest is $\lambda$. By homogeneity of $\lambda$, it also plays the role of the average coefficient for model ([-@eq-dynamic-interlude-dynamic-panel]).
+
+Here, we will primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
 
 ### Endogeneity
 
 
-### Aside: Endogeneity and the Within Estimator
+To work towards an estimator for $\lambda$, let us difference @eq-dynamic-interlude-dynamic-panel across $t$ to eliminate the random intercept $\alpha_i$. The differenced equation takes form
+$$
+\begin{aligned}
+\Delta y_{it} & = \lambda \Delta y_{it-1} + \Delta u_{it}, \\
+\Delta y_{it} & = y_{it} - y_{it-1}.
+\end{aligned}
+$$ {#eq-dynamic-interlude-homogeneous-differenced}
+@eq-dynamic-interlude-homogeneous-differenced seems like a simple regression equation. It is tempting to just apply OLS and regress $\Delta y_{it}$ on $\Delta y_{it-1}$.
+
+It turns out that this approach will fail as there is an endogeneity problem in @eq-dynamic-interlude-homogeneous-differenced! Sequential exogeneity is not enough to guarantee that
+$$
+\E[\Delta y_{it-1}\Delta u_{it}] = 0.
+$$
+
+To see why, we expand $\E[\Delta y_{it-1}\Delta u_{it}]$ as  
+$$
+\begin{aligned} 
+	& \E\left[(u_{it}-u_{it-1})(y_{it-1}-y_{it-2}) \right] \\
+	& = \E[ u_{it}y_{it-1} ] + \E[(u_{it-1}-u_{it})y_{it-2}] - \E[u_{it-1}y_{it-1}]  \\
+	& = -\E[u_{it-1} y_{it-1}].
+\end{aligned}
+$$
+Sequential exogeneity is sufficient to immediately eliminate 3 out of 4 expectations. For the last expectation remaining, we can substitute $y_{it-1}$ to see that 
+$$
+\begin{aligned}
+	\E[u_{it-1}y_{it-1}] & = \lambda\E[u_{it-1}y_{it-2}] + \E[u_{it-1}^2]\\
+	& = \E[u_{it-1}^2]
+\end{aligned}
+$$
+As noted above, in general we expect that $\E[u_{it-1}^2] \neq 0$. Hence  we conclude that 
+$$
+	\E[\Delta y_{it-1}\Delta u_{it}]\neq 0.
+$$ {#eq-dynamic-interlude-differenced-endogeneity}
+In other words,  $\Delta y_{it-1}$ is an endogenous regressor in the differenced @eq-dynamic-interlude-homogeneous-differenced. 
+
+::: {.callout-caution appearance=minimal}
+
+One should not confuse the endogeneity in @eq-dynamic-interlude-differenced-endogeneity with the failure of *strict* exogeneity in dynamic models (e.g. @eq-dynamic-interlude-no-strict-exogeneity).
+:::
 
 
 ## IV Estimation of Dynamic Panel Models
 
 
+
+
+## Extra: Endogeneity and the Within Estimator
 
