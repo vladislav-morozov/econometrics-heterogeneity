@@ -59,11 +59,11 @@ div.csl-indent {
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -509,6 +509,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linear-mean-group.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -549,6 +567,7 @@ window.Quarto = {
   <li><a href="#a-special-case-the-random-intercept-model" id="toc-a-special-case-the-random-intercept-model" class="nav-link" data-scroll-target="#a-special-case-the-random-intercept-model"><span class="header-section-number">3.2.2</span> A Special Case: The Random Intercept Model</a></li>
   </ul></li>
   <li><a href="#plan-for-this-block" id="toc-plan-for-this-block" class="nav-link" data-scroll-target="#plan-for-this-block"><span class="header-section-number">3.3</span> Plan for This Block</a></li>
+  <li><a href="#further-edits" id="toc-further-edits" class="nav-link" data-scroll-target="#further-edits"><span class="header-section-number">3.4</span> Further Edits</a></li>
   </ul>
 </nav>
     </div>
@@ -698,6 +717,10 @@ y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 <li>We explore methods for recovering the entire distribution of <span class="math inline">\(\bbeta_i\)</span> under a fixed effects framework, introducing deconvolution techniques as a key tool.</li>
 </ul></li>
 </ol>
+</section>
+<section id="further-edits" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="further-edits"><span class="header-section-number">3.4</span> Further Edits</h2>
+<p>Curiously, a lot of the challenges have been known for a long time <span class="citation" data-cites="Pesaran1995">(at least since <a href="references.html#ref-Pesaran1995" role="doc-biblioref">Pesaran and Smith 1995</a>)</span>. Though that knowledge has not impacted practice, and the estimators are still used</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -730,6 +753,9 @@ Hoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. <span>“<span class="
 </div>
 <div id="ref-Mundlak1961EmpiricalProductionFunction" class="csl-entry" role="listitem">
 Mundlak, Yair. 1961. <span>“Empirical <span>Production Function Free</span> of <span>Management Bias</span>.”</span> <em>Journal of Farm Economics</em> 43 (1): 44. <a href="https://doi.org/10.2307/1235460">https://doi.org/10.2307/1235460</a>.
+</div>
+<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
 </div>
 <div id="ref-Sury2011" class="csl-entry" role="listitem">
 Sury, Tavneet. 2011. <span>“<span class="nocase">Selection and Comparative Advantage in Technology Adoption</span>.”</span> <em>Econometrica</em> 79 (1): 159–209. <a href="https://doi.org/10.3982/ecta7749">https://doi.org/10.3982/ecta7749</a>.
@@ -877,7 +903,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
+<title>6&nbsp; Dynamic Panels with Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./syllabus.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./linear-mean-group.html" rel="next">
+<link href="./linear-dynamic-panel-iv.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -393,7 +393,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -429,7 +429,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -468,7 +468,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -499,23 +499,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#unobserved-heterogeneity-and-its-types" id="toc-unobserved-heterogeneity-and-its-types" class="nav-link active" data-scroll-target="#unobserved-heterogeneity-and-its-types"><span class="header-section-number">1.1</span> Unobserved Heterogeneity and Its Types</a></li>
-  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.2</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
-  <li><a href="#this-course" id="toc-this-course" class="nav-link" data-scroll-target="#this-course"><span class="header-section-number">1.3</span> This Course</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></h1>
 </div>
 
 
@@ -532,54 +524,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="unobserved-heterogeneity-and-its-types" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unobserved-heterogeneity-and-its-types"><span class="header-section-number">1.1</span> Unobserved Heterogeneity and Its Types</h2>
-<p>A general feature of data is that economic agents differ in unobserved ways. Among such differences, we can highlight the following (overlapping) types of unobserved heterogeneity:</p>
-<section id="missing-variables" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="missing-variables"><span class="header-section-number">1.1.1</span> Missing Variables</h3>
-</section>
-<section id="fundamental-characteristics" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="fundamental-characteristics"><span class="header-section-number">1.1.2</span> “Fundamental” Characteristics</h3>
-</section>
-<section id="differences-in-responses" class="level3" data-number="1.1.3">
-<h3 data-number="1.1.3" class="anchored" data-anchor-id="differences-in-responses"><span class="header-section-number">1.1.3</span> Differences in Responses</h3>
-</section>
-<section id="measurement-error" class="level3" data-number="1.1.4">
-<h3 data-number="1.1.4" class="anchored" data-anchor-id="measurement-error"><span class="header-section-number">1.1.4</span> Measurement Error</h3>
-<ul>
-<li><p>Missing explanatory variables.</p>
-<ul>
-<li><em>Example</em>: demand estimation. Consumer demand depends on the prices of goods, and agents in different areas may face different price vectors. However, if the data does not capture prices, they form part of the unobserved differences between consumers.</li>
-</ul></li>
-<li><p>``Fundamental’’ characteristics of agents.</p>
-<ul>
-<li><p>{Example}: demand estimation. Consumer demand also depends on preferences. Preferences are usually different between people and not observed. % As preferences are encoded using utility functions, a person’s utility function forms part of their unobserved heterogeneity. % Unobserved heterogeneity arises for many reasons: things not captured by data (you have seen omitted variable bias); some ``deep’’ differences such as preferences (expressed often in terms of coefficients); measurement error;</p></li>
-<li><p>Differences in responses to changes in treatments (explanatory variables). % This encompasses treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.</p></li>
-<li><p>{Example}: impact of job training. A person’s individual treatment effect is the difference between what their earnings would have been after completing the training and their earnings without completing the training. Some people may benefit more from the program, leading to treatment effect heterogeneity. % However, the individual effect is not observed, as each person is only seen in the treated or untreated state.</p></li>
-</ul></li>
-<li><p>Measurement error in variables.</p>
-<ul>
-<li>{Example}: an individual’s intellectual ability affects their earnings. Sometimes test scores are used a proxy for true ability. However, scores provide a noisy measurement of ability. The difference between the two (measurement error) is an unobserved individual-specific variable.</li>
-</ul></li>
-</ul>
-</section>
-<section id="commun" class="level3" data-number="1.1.5">
-<h3 data-number="1.1.5" class="anchored" data-anchor-id="commun"><span class="header-section-number">1.1.5</span> Commun?</h3>
-<p>All of the above cases are variations of the same problem: there exist unobserved variables.</p>
-<p>In practically any observational setting, these unobserved differences will affect both outcomes and the observed explanatory variables.</p>
-</section>
-</section>
-<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.2</span> Consequences of Ignoring Unobserved Heterogeneity</h2>
-<p>Ignoring or misspecifying such unobserved factors may invalidate identification, estimation and inference, particularly with non-experimental (observational) data. Such issues affect even simple models such as linear regression, and some examples are covered in introductory econometrics texts. In particular, not including an important explanatory variable leads to <a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">omitted variable bias</a> and inconsistency of OLS. Likewise, not accounting for the presence of measurement error in the explanatory variable leads to <a href="https://en.wikipedia.org/wiki/Regression_dilution">attenuation bias</a> in the regression coefficients.</p>
-</section>
-<section id="this-course" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="this-course"><span class="header-section-number">1.3</span> This Course</h2>
-<p>As a response, a large amount of effort has been dedicated to developing credible statistical procedures which account for unobserved heterogeneity in causal settings.</p>
-<p>These lecture notes discuss some selected advances from this literature. Specifically, the course is divided in three blocks:</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1145,13 +1091,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Econometrics Heterogeneity">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Econometrics Heterogeneity</span>
+      <a href="./linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./syllabus.html" class="pagination-link" aria-label="Syllabus">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Syllabus</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
