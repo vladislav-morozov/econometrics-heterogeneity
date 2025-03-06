@@ -1,4 +1,4 @@
-# The Within Estimator Under Heterogeneity
+# Within (Fixed Effects) Estimator and Heterogeneous Coefficients
 
 ## Introduction 
 
@@ -9,7 +9,7 @@ $$ {#eq-within-lecture-model}
 
 Our first key parameter of interest is the average coefficient vector, $\E[\bbeta_i]$, which serves as the linear model analog to the average treatment effect. 
 
-### First Focus: Workhorse Estimators under Heterogeneity
+### Focus: Workhorse Estimators under Heterogeneity
 
 Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic IV estimators — meaningfully estimate $\E[\bbeta_i]$? Of course, those methods were developed in the context of the simpler random intercept model  @eq-random_intercept
 $$
@@ -19,7 +19,7 @@ However, if they can also handle the more general @eq-within-lecture-model, then
  
 Regrettably, we will see that the "standard" estimators will generally fail in the presence of coefficient heterogeneity, both for static and the dynamic formulations of @eq-within-lecture-model. 
  
-### This Section: Static Model Assumption and Fixed $T$ 
+### This Section: Static Model and Fixed $T$ 
 
 In this section, we begin by considering the static case and the associated workhorse estimator — the within (fixed effects) estimator. 
 By "static", we mean that the model satisfies strict exogeneity in the form
@@ -106,7 +106,7 @@ $${#eq-within_asymptotic}
 
 Since $\bbeta$ is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model [-@eq-within-lecture-random-intercept].
 
-## The Within Estimator with Heterogeneous Coefficients
+## Adding Heterogeneous Coefficients
 
 
 However, there is usually no theoretical reason for the slopes $\bbeta$ to be homogeneous.  This assumption goes against acknowledging heterogeneity and including the random intercept terms $\alpha_i$ in the first place It is rather more realistic to consider the more general @eq-within-lecture-model. Accordingly, we now turn to studying the properties of $\hat{\bbeta}^W$ in this more realistic setting. 
@@ -119,7 +119,7 @@ $$
   -->
 
 
-### Sampling Error Representation
+### Sampling Error Form
 
 Applying the within transformation to the heterogeneous @eq-within-lecture-model yields another version of the within-transformed equation: 
 
@@ -178,7 +178,7 @@ Under this condition 	$\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0$, and thus the 
 Note that this conditions restricts the dependence structure between $\bbeta_i$ and $\bx_{it}$. Such conditions are called \emph{correlated random effects} (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks --- which do not restrict the dependence --- and random effects (RE) --- which assume that unobserved components are independent from the observed ones.
  
 
-### Intuition for the Mean Independence Condition
+### Intuition 
 
 How can we interpret condition [-@eq-mean_independence_condition]? Intuitively, it requires that the changes in $\bx_{it}$ over time are uncorrelated with the individual coefficients.
  
@@ -198,7 +198,7 @@ Only the deviations across time $\tilde{\bxi}_{it}$ are left. Condition  [-@eq-m
 
 An intuitive version of the above framework goes as follows. A consumer knows their marginal utilities $\bbeta_i$ of consuming more of a variety of products.   With this knowledge,  they choose the optimal desired level of consumption --- $\E[\bx_{it}|\bbeta_i]$. When they attempt to realize this consumption, they may encounter some frictions $\bxi_{it}$ which cause them to deviate from $\E[\bx_{it}|\bbeta_i]$. If these ``frictions'' are uncorrelated with $\bbeta_i$, then the required consistency will hold.
 
-### On The Usefulness of Panel Data
+### Why Panel Data is Useful
 
 
 It is useful  to contrast condition [-@eq-mean_independence_condition] with the stronger condition 
@@ -212,7 +212,7 @@ The latter condition is stronger in the view of the tower property of conditiona
 This contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form $\E[\bEta_i|\bX_i]=0$ or $\E[\bx_i\bx_i'\bbeta_i]=0$ for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between $\bbeta_i$ and $\bx_{it}$ is possible. Moreover, as you might have noticed, the above analysis can already be carried out with  $T=2$.
 
 
-### Graphical Illustration
+### Graphical Example
 
 We conclude this section with a small illustration of the results in a tractable model (see [this blog post](https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/) for a simulation with some dramatic examples). Specifically,  we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor:
 $$

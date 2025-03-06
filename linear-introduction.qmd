@@ -1,8 +1,8 @@
-# Linear Models - Introduction and Model
+# Intro: Linear Models with Heterogeneous Coefficients
 
-## Linear Models with Heterogeneous Parameters
+## Linearity and Heterogeneity
 
-### Towards Linear Models with Heterogeneous Parameters
+### Towards Heterogeneous Coefficients
 
 Standard linear models found in textbooks (e.g., @Hansen2022) often assume homogeneity in individual responses to covariates. For cross-sectional data, a typical specification is:
 
@@ -32,11 +32,9 @@ y_i = \bbeta_{i}'\bx + u_i.
 y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
    $$ {#eq-panel_hetero}
 
-### Examples of Linear Models
+### Examples
 
-Models
-@eq-cross_sectional_hetero and
-@eq-panel_hetero arise in various economic contexts:
+Models [-@eq-cross_sectional_hetero] and [-@eq-panel_hetero] arise in a variety of contexts:
 
 - **Binary covariates and interaction terms:** In models with fully interacted binary covariates, heterogeneous coefficients arise naturally without loss of generality (see, e.g., @Wooldridge2005).  
   *Empirical example:* Estimating the effect of smoking during pregnancy on infant birth weight (@Arellano2012).
@@ -47,7 +45,7 @@ Models
 - **Log-linearized models:** Nonlinear models may be approximated by linear models around a steady-state.  
   *Empirical example:* @Heckman1998 demonstrate how the nonlinear @Card2001 education model simplifies to a heterogeneous linear specification after linearization.
 
-### Objects of Interest in Heterogeneous Linear Models
+### What Do We Care About?
 
 Key parameters of interest in heterogeneous linear models include:
 
@@ -58,7 +56,7 @@ Key parameters of interest in heterogeneous linear models include:
 Similar objects are relevant for the panel model in
 @eq-panel_hetero.
 
-### Challenges of Excessive Heterogeneity
+### Key Challenges
 
 Models
 @eq-cross_sectional_hetero and
@@ -67,7 +65,7 @@ Models
 1. **Limited observations per coefficient vector:** Since each unit $i$ (or pair $(i,t)$) provides only indirect information through $\bbeta_i'\bx_i$ (or $\bbeta_{it}'\bx_{it}$), individual parameters are not directly observed.
 2. **Unrestricted dependence between coefficients and covariates:** Without assumptions on the relationship between $\bbeta_i$ and $\bx_i$, identification is difficult.
 
-### Identification Strategies: Example Assumptions
+### Identification Strategies
 
 To estimate parameters of interest, common identification strategies include:
 
@@ -93,11 +91,11 @@ y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it},
 
 By leveraging these assumptions, researchers can recover meaningful insights from heterogeneous linear models.
 
-## The Model
+## Key Model
 
 ### Panel Model with Time-Invariant Coefficients
 
-In this section, we focus on the linear panel model with time-invariant heterogeneous coefficients:
+In this block of lectures, we focus on the linear panel model with time-invariant heterogeneous coefficients:
 
 $$
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
@@ -115,9 +113,9 @@ $$ {#eq-random_intercept}
 
 Here, $\bbeta$ is a common coefficient vector applied to the covariates, while $\alpha_i$ represents individual-specific intercepts. Despite being called a "fixed effect," $\alpha_i$ is typically treated as a random variable, often leading to confusion. This model dates back to @Mundlak1961EmpiricalProductionFunction and can be extended to accommodate multiple random intercepts, such as in settings with firm $\times$ industry $\times$ time structures.
 
-## Plan for This Section
+## Plan for This Block
 
-This section explores the following key topics:
+This block of lectures explores the following key topics:
 
 1. **Assessing Standard Estimators Under Heterogeneity:**  
    - We analyze whether conventional estimators for the random intercept mode @eq-random_intercept} can consistently estimate **average effects** in the presence of heterogeneous coefficients.  
