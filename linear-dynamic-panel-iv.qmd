@@ -133,7 +133,7 @@ $$
 	& = -\E[u_{it-1} y_{it-1}].
 \end{aligned}
 $$
-Sequential exogeneity is sufficient to immediately eliminate 3 out of 4 expectations. For the last expectation remaining, we can substitute $y_{it-1}$ to see that 
+Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute $y_{it-1}$ to see that 
 $$
 \begin{aligned}
 	\E[u_{it-1}y_{it-1}] & = \lambda\E[u_{it-1}y_{it-2}] + \E[u_{it-1}^2]\\
@@ -148,13 +148,60 @@ In other words,  $\Delta y_{it-1}$ is an endogenous regressor in the differenced
 
 ::: {.callout-caution appearance=minimal}
 
-One should not confuse the endogeneity in @eq-dynamic-interlude-differenced-endogeneity with the failure of *strict* exogeneity in dynamic models (e.g. @eq-dynamic-interlude-no-strict-exogeneity).
+One should not confuse endogeneity in @eq-dynamic-interlude-differenced-endogeneity with the failure of *strict* but not necessarily sequential exogeneity in dynamic models (e.g. @eq-dynamic-interlude-no-strict-exogeneity).
 :::
 
 
 ## IV Estimation of Dynamic Panel Models
 
+The traditional solution to endogeneity is to use instrumental variables:  variables $z_{it}$ which satisfy relevance and exogeneity conditions:
+$$
+\begin{aligned}
+	\E[z_{it}\Delta y_{it-1}] \neq 0,\\
+	\E[z_{it}\Delta u_{it}] = 0.
+\end{aligned}
+$$
 
+In most contexts, one has to look for external variables that can serve as instruments.
+
+However, @eq-dynamic-interlude-homogeneous-differenced is a very special case where one can use instruments internal to the model! 
+
+### The Anderson-Hsiao Estimator
+
+In particular, consider using $y_{it-2}$ as an instrument. 
+
+- Relevance seems to be relatively straightforward, as the target endogenous variable $\Delta y_{it-1}= y_{it-1}-y_{it-2}$ actually has the instrument inside.
+- Exogeneity can be justified by appealing to sequential exogeneity: $$	\E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. $$
+- 
+Hence $y_{it-2}$ is a valid instrument! 
+
+The resulting IV estimator is known as the @Anderson1982 estimator and given by
+$$
+\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it} }.
+$$
+
+### Further Dynamic Panel IV Estimators
+
+Are there more instruments that can use for $\Delta y_{it-1}$? Using more instruments will induce overidentification and potentially lead to more precise estimators, solving one of the key drawbacks of the @Anderson1982 estimator [@Arellano1989]. 
+ 
+As a partial answer, suppose we consider $y_{it-k}$ for $k\geq 2$. By applying sequential exogeneity again we can show that $y_{it-k}$ is exogenous:
+$$	
+\E[y_{it-k}\Delta u_{it}]  = \E[y_{it-k}u_{it} - y_{it-k}u_{it-1}]=0. 
+$$
+Provided $y_{it-k}$ is correlated with $\Delta y_{it-1}$ and available in the data, it also becomes a valid instrument.  Following this chain of reasoning and using all available lags $y_{it-k}$ yields the @Arellano1991 estimator. 
+ 
+Even further instruments have been found for @eq-dynamic-interlude-homogeneous-differenced by @Ahn1995 and @Blundell1998, among others.
+
+All of  these estimators are implemented in 
+
+- R: [plm](https://cran.r-project.org/web/packages/plm/index.html}).
+- Python: [pydynpd](https://github.com/dazhwu/pydynpd/).
+
+
+### Properties of Dynamic Panel IV Estimators
+
+Under some standard conditions, the above instrumental variable estimators will all be consistent and asymptotically normal for $\lambda$ as $N\to\infty$ and $T$ is fixed. 
+The matter is rather more delicate if both $N$ and $T$ are large, and the above dynamic panel IV estimators offer an interesting and natural example of the *many moments* bias. See @Alvarez2003. 
 
 
 ## Extra: Endogeneity and the Within Estimator
