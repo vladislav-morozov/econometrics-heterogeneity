@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
+<title>4&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -431,6 +431,10 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="4&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="This section shows that standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models.">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/figures/ols_heterogeneity.svg">
+<meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
 <body class="nav-sidebar floating">
@@ -457,7 +461,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity — Lecture Notes</a> 
+      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -518,7 +522,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -569,7 +573,7 @@ window.Quarto = {
   <li><a href="#conditions-for-estimating-average-coefficients" id="toc-conditions-for-estimating-average-coefficients" class="nav-link" data-scroll-target="#conditions-for-estimating-average-coefficients"><span class="header-section-number">4.3.2</span> Conditions for Estimating Average Coefficients</a></li>
   <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">4.3.3</span> Intuition</a></li>
   <li><a href="#why-panel-data-is-useful" id="toc-why-panel-data-is-useful" class="nav-link" data-scroll-target="#why-panel-data-is-useful"><span class="header-section-number">4.3.4</span> Why Panel Data is Useful</a></li>
-  <li><a href="#graphical-example" id="toc-graphical-example" class="nav-link" data-scroll-target="#graphical-example"><span class="header-section-number">4.3.5</span> Graphical Example</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">4.3.5</span> Example</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -579,7 +583,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-within-estimator.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></h1>
+<h1 class="title"><span id="sec-linear-within" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></h1>
 </div>
 
 
@@ -737,7 +741,7 @@ $$
 <p>If condition <a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>4.7</span></a> holds, the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> in the heterogeneous coefficient model <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>4.1</span></a>. If it fails, the estimator is subject to <em>heterogeneity bias</em> <span class="citation" data-cites="Campello2019">(<a href="references.html#ref-Campello2019" role="doc-biblioref">Campello, Galvao, and Juhl 2019</a>)</span>.</p>
 <p>This orthogonality condition <a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>4.7</span></a> is a bit complicated to understand. A simpler sufficient condition is a mean independence on the coefficients given the within transformed covariates: <span id="eq-mean_independence_condition"><span class="math display">\[
 E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.  
-\tag{4.8}\]</span></span> Under this condition <span class="math inline">\(\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0\)</span>, and thus the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span>. These conditions were proposed by <span class="citation" data-cites="Wooldridge2003">Wooldridge (<a href="references.html#ref-Wooldridge2003" role="doc-biblioref">2003</a>)</span>, <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>.</p>
+\tag{4.8}\]</span></span> Under this condition <span class="math inline">\(\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0\)</span>, and thus the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span>. These conditions were proposed by <span class="citation" data-cites="Wooldridge2003">Wooldridge (<a href="references.html#ref-Wooldridge2003" role="doc-biblioref">2003</a>)</span>, <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span> (see all <span class="citation" data-cites="Murtazashvili2008">Murtazashvili and Wooldridge (<a href="references.html#ref-Murtazashvili2008" role="doc-biblioref">2008</a>)</span> for the IV within estimator case).</p>
 <p>Note that this conditions restricts the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>. Such conditions are called (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent from the observed ones.</p>
 </section>
 <section id="intuition" class="level3" data-number="4.3.3">
@@ -760,8 +764,8 @@ E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.
 <p>The latter condition is stronger in the view of the tower property of conditional expectation. Intuitively, we can compute <span class="math inline">\(\tilde{\bX}_i\)</span> from <span class="math inline">\(\bX_i\)</span>, but not vice versa. The requirement that <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> may be very strong, since it would in general require that <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> does not depend on <span class="math inline">\(\bbeta_i\)</span> — we rule out a systemic dependence even on average.</p>
 <p>This contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> or <span class="math inline">\(\E[\bx_i\bx_i'\bbeta_i]=0\)</span> for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> is possible. Moreover, as you might have noticed, the above analysis can already be carried out with <span class="math inline">\(T=2\)</span>.</p>
 </section>
-<section id="graphical-example" class="level3" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="graphical-example"><span class="header-section-number">4.3.5</span> Graphical Example</h3>
+<section id="example" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="example"><span class="header-section-number">4.3.5</span> Example</h3>
 <p>We conclude this section with a small illustration of the results in a tractable model (see <a href="https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/">this blog post</a> for a simulation with some dramatic examples). Specifically, we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor: <span class="math display">\[
 y_{it} = \alpha_i + \beta_i x_{it} + u_{it}, \quad t=1,2.
 \]</span></p>
@@ -812,6 +816,9 @@ Brockwell, Peter J., and Richard A. Davis. 2016. <em>Introduction to <span>Time 
 </div>
 <div id="ref-Campello2019" class="csl-entry" role="listitem">
 Campello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. <span>“<span class="nocase">Testing for Slope Heterogeneity Bias in Panel Data Models</span>.”</span> <em>Journal of Business and Economic Statistics</em> 37 (4): 749–60. <a href="https://doi.org/10.1080/07350015.2017.1421545">https://doi.org/10.1080/07350015.2017.1421545</a>.
+</div>
+<div id="ref-Murtazashvili2008" class="csl-entry" role="listitem">
+Murtazashvili, Irina, and Jeffrey M. Wooldridge. 2008. <span>“<span class="nocase">Fixed effects instrumental variables estimation in correlated random coefficient panel data models</span>.”</span> <em>Journal of Econometrics</em> 142 (1): 539–52. <a href="https://doi.org/10.1016/j.jeconom.2007.09.001">https://doi.org/10.1016/j.jeconom.2007.09.001</a>.
 </div>
 <div id="ref-Wooldridge2003" class="csl-entry" role="listitem">
 Wooldridge, Jeffrey M. 2003. <span>“<span class="nocase">Fixed Effects Estimation of the Population-Averaged Slopes in a Panel Data Random Coefficient Model</span>.”</span> <em>Econometric Theory</em> 19: 411–13. <a href="https://doi.org/10+10170S0266466603002081">https://doi.org/10+10170S0266466603002081</a>.

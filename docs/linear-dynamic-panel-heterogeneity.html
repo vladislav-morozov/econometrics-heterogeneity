@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Dynamic Panels with Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity — Lecture Notes</title>
+<title>6&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -381,7 +401,39 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="6&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example">
+<meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
 <body class="nav-sidebar floating">
@@ -393,7 +445,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -408,7 +460,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity — Lecture Notes</a> 
+      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -469,7 +521,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -499,15 +551,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-and-model" id="toc-introduction-and-model" class="nav-link active" data-scroll-target="#introduction-and-model"><span class="header-section-number">6.1</span> Introduction and Model</a></li>
+  <li><a href="#endogeneity-due-to-heterogeneity" id="toc-endogeneity-due-to-heterogeneity" class="nav-link" data-scroll-target="#endogeneity-due-to-heterogeneity"><span class="header-section-number">6.2</span> Endogeneity due to Heterogeneity</a>
+  <ul class="collapse">
+  <li><a href="#endogeneity-in-differenced-heterogeneous-equation" id="toc-endogeneity-in-differenced-heterogeneous-equation" class="nav-link" data-scroll-target="#endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">6.2.1</span> Endogeneity in Differenced Heterogeneous Equation</a></li>
+  <li><a href="#conditions-for-instruments" id="toc-conditions-for-instruments" class="nav-link" data-scroll-target="#conditions-for-instruments"><span class="header-section-number">6.2.2</span> Conditions for Instruments</a></li>
+  <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">6.2.3</span> Endogeneity of Lagged Outcomes</a></li>
+  <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">6.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
+  </ul></li>
+  <li><a href="#a-numerical-illustration" id="toc-a-numerical-illustration" class="nav-link" data-scroll-target="#a-numerical-illustration"><span class="header-section-number">6.3</span> A Numerical Illustration</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Dynamic Panels with Heterogeneous Coefficients</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></h1>
 </div>
 
 
@@ -524,8 +590,109 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary and Learning Outcomes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.</p>
+<p>By the end of this section, you should be able to:</p>
+<ul>
+<li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
+<li>Describe the overall challenge of finding valid instruments under</li>
+<li>Explain the additional challenges that arise in dynamic models relative to static models with heterogeneous coefficients.</li>
+</ul>
+</div>
+</div>
+<section id="introduction-and-model" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction-and-model"><span class="header-section-number">6.1</span> Introduction and Model</h2>
+<p>As in the static case, it is not clear why the slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.</p>
+<p>As a consequence, we now consider heterogeneous dynamic models. In this section we will again focus on a simple AR(1) model with no exogenous regressors. Specifically, we will look at the following heterogeneous version of model (<a href="linear-dynamic-panel-iv.html#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>5.6</span></a>): <span id="eq-dynamic-heterogeneity-model"><span class="math display">\[
+\begin{aligned}
+    y_{it}   &amp; = \alpha_i +  \lambda_iy_{it-1} + u_{it}, \\
+0 &amp; = \E[u_{it}| \curl{y_{is}}_{s\leq t}] .
+\end{aligned}
+\tag{6.1}\]</span></span> This model allows for unit-specific dynamics, as the coefficients <span class="math inline">\(\lambda_i\)</span> can vary across <span class="math inline">\(i\)</span>. The above model is also another instance of the general <a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>.</p>
+<p>As before, we are interested in the average coefficient <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
+</section>
+<section id="endogeneity-due-to-heterogeneity" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="endogeneity-due-to-heterogeneity"><span class="header-section-number">6.2</span> Endogeneity due to Heterogeneity</h2>
+<p>Can the IV estimators of the previous section estimate <span class="math inline">\(\E[\lambda_i]\)</span> under model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>6.1</span></a>)? Under what conditions? To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of <span class="math inline">\(y_{it}\)</span> as instruments.</p>
+<section id="endogeneity-in-differenced-heterogeneous-equation" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">6.2.1</span> Endogeneity in Differenced Heterogeneous Equation</h3>
+<p>To replicate the procedure, we take differences in <a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> and write the differenced model as <span id="eq-dynamic-heterogeneity-differenced"><span class="math display">\[
+\begin{aligned}
+    \Delta y_{it} &amp; = \lambda \Delta y_{it-1} +  v_{it}, \\
+    v_{it} &amp; = \eta_i\Delta y_{it-1} + \Delta u_{it} =0,
+\end{aligned}
+\tag{6.2}\]</span></span> where we label <span class="math display">\[
+\begin{aligned}
+\lambda &amp; = \E[\lambda_i], \\
+\eta_i &amp; = \lambda_i - \lambda.
+\end{aligned}
+\]</span></p>
+<p>It is easy to check that <span class="math inline">\(\Delta y_{it-1}\)</span> is still exogenous due to the presence of <span class="math inline">\(u_{it-1}\)</span> in the residual. The same problematic term <span class="math inline">\(\lambda \E[u_{it-1}^2]\)</span> will be present in <span class="math inline">\(\E[v_{it}\Delta y_{it-1}]\)</span>.</p>
+</section>
+<section id="conditions-for-instruments" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">6.2.2</span> Conditions for Instruments</h3>
+<p>Can we find a suitable instrument for <span class="math inline">\(\Delta y_{it-1}\)</span>? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: <span class="math display">\[
+\begin{aligned}
+    \E[z_{it}\Delta y_{it-1}] &amp;  \neq 0 ,\\
+    \E[z_{it} v_{it}] &amp; = \E[ \eta_i z_{it}\Delta y_{it-1} ] + \E[z_{it}u_{it}].
+\end{aligned}
+\]</span> Note that a new <span class="math inline">\(\E[ \eta_i z_{it}\Delta y_{it-1} ]\)</span> term now appears in the exogeneity condition.</p>
+</section>
+<section id="endogeneity-of-lagged-outcomes" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">6.2.3</span> Endogeneity of Lagged Outcomes</h3>
+<p>In contrast to the homogeneous case, <span class="math inline">\(y_{it-2}\)</span> will not a valid instrument anymore. We will show that <span class="math inline">\(y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
+<ul>
+<li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
+<li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
+y_{it} = \dfrac{\alpha_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k u_{it-k}.
+\]</span></li>
+<li><span class="math inline">\(\curl{u_{it}}_t\)</span> is an IID sequence with finite second moments, and <span class="math inline">\(u_{it}\)</span> is independent of <span class="math inline">\((\alpha_i, \lambda_i)\)</span>.</li>
+</ul>
+<p>Under the above assumptions the first expectation in <span class="math inline">\(\E[y_{it-2} v_{it}]\)</span> can be evaluated as follows: <span class="math display">\[
+\begin{aligned}
+&amp; \E[ \eta_i y_{it-2}\Delta y_{it-1} ]
+\\
+% &amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
+&amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} u_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} u^2_{i,t-k-2}\right)  \right)\right] \\
+&amp; = \E[u_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
+\end{aligned}
+\]</span> In general, there is no reason to expect the above expectation to be zero if <span class="math inline">\(\eta_i\)</span> is not zero. The second term involves a sum of even-order moments of <span class="math inline">\(\eta_i\)</span> (equivalently, <span class="math inline">\(\lambda_i)\)</span>; such a sum would in general be non-zero.</p>
+<p>We conclude that <span class="math display">\[
+\E[ \eta_i y_{it-2}\Delta y_{it-1} ]\neq 0,
+\]</span> and so in general that <span class="math display">\[
+\E[y_{it-2} v_{it}]\neq 0.
+\]</span> In other words, <span class="math inline">\(y_{it-2}\)</span> is not a valid instrument under the heterogeneous model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>6.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(y_{it}\)</span>.</p>
+<p>More broadly, the problem of finding a valid instrument <span class="math inline">\(z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(z_{it}\)</span> be correlated with <span class="math inline">\(\Delta y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(z_{it}\)</span> will also be correlated with <span class="math inline">\(\eta_i \Delta y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i z_{it}\Delta y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
+<p>We conclude that the IV estimators of the previous section will not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the probability limit of the estimators can be arbitrarily unrelated to the true underlying average coefficients.</p>
+</section>
+<section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">6.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
+<p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>4</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
+<p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((\alpha_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(y_{it-1}\)</span> through <span class="math display">\[
+y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
+\]</span> It follows that it is mechanically impossible for <span class="math inline">\(y_{it-1}\)</span> and <span class="math inline">\((\alpha_i, \beta_i)\)</span> to be (mean) independent.</p>
+</section>
+</section>
+<section id="a-numerical-illustration" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="a-numerical-illustration"><span class="header-section-number">6.3</span> A Numerical Illustration</h2>
+<p>Here I will add a numerical example.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
