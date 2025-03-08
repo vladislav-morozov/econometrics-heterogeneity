@@ -1,4 +1,10 @@
-# Within (Fixed Effects) Estimator and Heterogeneous Coefficients
+---
+open-graph:
+    description: "Why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients."
+    image: "https://vladislav-morozov.github.io/econometrics-heterogeneity/figures/ols_heterogeneity.svg"
+---
+
+# Within (Fixed Effects) Estimator and Heterogeneous Coefficients {#sec-linear-within}
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -185,7 +191,7 @@ This orthogonality condition  [-@eq-average_orthogonality_condition] is a bit co
 $$
 E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.  
 $${#eq-mean_independence_condition}
-Under this condition 	$\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0$, and thus the within estimator is consistent for $\E[\bbeta_i]$. These conditions were proposed by @Wooldridge2003, @Wooldridge2005.
+Under this condition 	$\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0$, and thus the within estimator is consistent for $\E[\bbeta_i]$. These conditions were proposed by @Wooldridge2003, @Wooldridge2005 (see all @Murtazashvili2008 for the IV within estimator case).
 
 
 Note that this conditions restricts the dependence structure between $\bbeta_i$ and $\bx_{it}$. Such conditions are called \emph{correlated random effects} (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks --- which do not restrict the dependence --- and random effects (RE) --- which assume that unobserved components are independent from the observed ones.
@@ -214,18 +220,18 @@ An intuitive version of the above framework goes as follows. A consumer knows th
 ### Why Panel Data is Useful
 
 
-It is useful  to contrast condition [-@eq-mean_independence_condition] with the stronger condition 
+It is useful to contrast condition [-@eq-mean_independence_condition] with the stronger condition 
 $$
 \E[\bEta_i|\bX_i]=0.
 $$ 
 Note the difference in the conditioning sets.
 
-The latter condition is stronger in the view of the tower property of conditional expectation.  Intuitively,  we can compute $\tilde{\bX}_i$ from $\bX_i$, but not vice versa. The requirement that $\E[\bEta_i|\bX_i]=0$ may be very strong, since it would in general require that $\E[\bx_{it}|\bbeta_i]$ does not depend on $\bbeta_i$ --- we rule out a systemic   dependence even on average. 
+The latter condition is stronger in the view of the tower property of conditional expectation.  Intuitively, we can compute $\tilde{\bX}_i$ from $\bX_i$, but not vice versa. The requirement that $\E[\bEta_i|\bX_i]=0$ may be very strong, since it would in general require that $\E[\bx_{it}|\bbeta_i]$ does not depend on $\bbeta_i$ --- we rule out a systemic dependence even on average. 
 
 This contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form $\E[\bEta_i|\bX_i]=0$ or $\E[\bx_i\bx_i'\bbeta_i]=0$ for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between $\bbeta_i$ and $\bx_{it}$ is possible. Moreover, as you might have noticed, the above analysis can already be carried out with  $T=2$.
 
 
-### Graphical Example
+### Example
 
 We conclude this section with a small illustration of the results in a tractable model (see [this blog post](https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/) for a simulation with some dramatic examples). Specifically,  we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor:
 $$

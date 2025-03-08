@@ -1,3 +1,8 @@
+---
+open-graph:
+    description: "Learn about instrumental variables for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others."
+---
+
 # Interlude: Standard Dynamic Panel Estimators
 
 
