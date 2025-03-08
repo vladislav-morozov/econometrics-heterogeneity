@@ -1,12 +1,21 @@
-# Dynamic Panels with Heterogeneous Coefficients and IV
+---
+open-graph:
+    description: "This section shows that standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models."
+---
+
+# Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators
 
 ::: {.callout-note appearance="simple" icon=false}
 
 ## Summary and Learning Outcomes
 
-This section 
+This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.
 
-By the end of this section, you should
+By the end of this section, you should be able to:
+
+- Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous. 
+- Describe the overall challenge of finding valid instruments under 
+- Explain the additional challenges that arise in dynamic models relative to static models with heterogeneous coefficients. 
  
 :::
 
