@@ -1,1 +1,37 @@
 # Dynamic Panels with Heterogeneous Coefficients
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section 
+
+By the end of this section, you should
+ 
+:::
+
+
+
+
+## Model
+
+
+
+As in the static case, it is not clear why the slope coefficients should be homogenous in dynamic models. If the coefficients are the same between units, the all the units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios, and coefficient homogeneity is likely to fail. 
+
+In this section, we study what happens to the IV estimators of the previous section under coefficient heterogeneity. We will find that in contrast to the static case, there are no reasonable conditions under which these estimators can meaningfully estimate the average coefficient. 
+
+
+We will again focus on a simple AR(1) model with no exogenous regressors. Specifically, we will look at the following heterogeneous version of model ([-@eq-dynamic-interlude-dynamic-simple]):
+$$
+\begin{aligned}
+	y_{it}   & = \alpha_i +  \lambda_iy_{it-1} + u_{it},
+\E[u_{it}|\alpha_i, \lambda_i, \curl{y_{is}}_{s\leq t}] & =0.
+\end{aligned}
+$$  {#eq-dynamic-heterogeneity-model}
+In this each unit can have its own individual dynamics, as the coefficients $\lambda_i$ are now unit-specific. The above model is also an instance of the general @eq-lecture_model. 
+
+
+## Endogeneity due to Heterogeneity
+ 
+## A Numerical Illustration
