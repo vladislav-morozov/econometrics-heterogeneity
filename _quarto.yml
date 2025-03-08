@@ -5,7 +5,7 @@ project:
 html-math-method: mathjax
 
 book:
-  title: "Econometrics with Unobserved Heterogeneity — Lecture Notes"
+  title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
   date: "2025"
   favicon: favicon.ico
