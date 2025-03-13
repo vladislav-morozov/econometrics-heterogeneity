@@ -1,6 +1,7 @@
----
+--- 
+description: "Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes)."
 open-graph:
-    description: "Standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example"
+    description: "Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes)."
 ---
 
 # Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators
