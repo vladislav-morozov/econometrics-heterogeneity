@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
 
 <title>7&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
@@ -401,7 +402,39 @@ div.csl-indent {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="7&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
+<meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
 <body class="nav-sidebar floating">
@@ -519,15 +552,32 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mean-group-estimation" id="toc-mean-group-estimation" class="nav-link active" data-scroll-target="#mean-group-estimation"><span class="header-section-number">7.1</span> Mean Group Estimation</a>
+  <ul class="collapse">
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">7.1.1</span> Model</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">7.1.2</span> Definition</a></li>
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">7.1.3</span> Properties</a></li>
+  </ul></li>
+  <li><a href="#comparing-estimators" id="toc-comparing-estimators" class="nav-link" data-scroll-target="#comparing-estimators"><span class="header-section-number">7.2</span> Comparing Estimators</a>
+  <ul class="collapse">
+  <li><a href="#conditions-for-consistency" id="toc-conditions-for-consistency" class="nav-link" data-scroll-target="#conditions-for-consistency"><span class="header-section-number">7.2.1</span> Conditions for Consistency</a></li>
+  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">7.2.2</span> Efficiency</a></li>
+  </ul></li>
+  <li><a href="#addressing-rank-deficiency" id="toc-addressing-rank-deficiency" class="nav-link" data-scroll-target="#addressing-rank-deficiency"><span class="header-section-number">7.3</span> Addressing Rank Deficiency</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-mean-group.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></h1>
+<h1 class="title"><span id="sec-linear-mean-group" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></h1>
 </div>
 
 
@@ -554,22 +604,189 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section</p>
-<p>By the end of this section, you should</p>
+<p>This section introduces a heterogeneity- and dynamics-robust estimator for average coefficients — the mean group estimator.</p>
+<p>By the end of this section, you should be able to:</p>
+<ul>
+<li>Define the mean group estimator.</li>
+<li>Identify the assumptions and data requirements necessary for the MG estimator to be consistent.</li>
+<li>Compare the MG estimator with alternative estimation methods (e.g., within estimators and IV techniques) in both static and dynamic settings.</li>
+</ul>
 </div>
 </div>
-<p><span class="citation" data-cites="Liu2020">Liu, Moon, and Schorfheide (<a href="references.html#ref-Liu2020" role="doc-biblioref">2020</a>)</span></p>
-<p>May be inefficient <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span></p>
+<section id="mean-group-estimation" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="mean-group-estimation"><span class="header-section-number">7.1</span> Mean Group Estimation</h2>
+<p>The results of the previous section and section <a href="linear-within-estimator.html" class="quarto-xref"><span>4</span></a> leave us with key two questions:</p>
+<ul>
+<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
+<li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
+</ul>
+<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
+<section id="model" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">7.1.1</span> Model</h3>
+<p>To formally define the mean group estimator, we return to the general <a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>: <span class="math display">\[
+    \by_{it} = \bx_{it}'\bbeta_i + u_{it},
+\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>. We can also express this model in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
+\by_i = \bX_i\bbeta_i + \bu_i,
+\]</span> where <span class="math inline">\(\bX_i\)</span> is now a <span class="math inline">\(T\times p\)</span> matrix of covariates, with <span class="math inline">\(T\)</span> representing the number of observations for each unit.</p>
+<p>In what follows, we will assume that the regressors <span class="math inline">\(\bx_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(u_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
+\E[\bx_{it}u_{it}] =0.
+\tag{7.1}\]</span></span> This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.</p>
+</section>
+<section id="definition" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">7.1.2</span> Definition</h3>
+<p>For the mean group estimator to be well-defined, we make two further assumptions:</p>
+<ol type="1">
+<li><em>Sufficient unit-level data</em>: each unit must have at least as many observations as regressors, i.e., <span class="math inline">\(T\geq p\)</span>.</li>
+<li><em>Non-singularity</em>: <span class="math inline">\(\bX_i'\bX_i\)</span> has rank maximal rank (<span class="math inline">\(p\)</span>) for all units <span class="math inline">\(i\)</span>.</li>
+</ol>
+<p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
+    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+\tag{7.2}\]</span></span></p>
+<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators <a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>7.2</span></a>: <span class="math display">\[
+    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+\]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>7.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bx_{it}u_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bx_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="properties" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="properties"><span class="header-section-number">7.1.3</span> Properties</h3>
+<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\by_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
+    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
+\]</span></p>
+<p>As <span class="math inline">\(N\)</span> grows, the first term will converge to the average effect: <span class="math display">\[
+\dfrac{1}{N} \sum_{i=1}^N \bbeta_i   \xrightarrow{p} \E[\bbeta_i].
+\]</span> This convergence holds regardless of assumptions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>.</p>
+<p>The second term’s behavior determines the estimator’s overall properties, depending on whether strict exogeneity holds:</p>
+<ul>
+<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
+<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> will be biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias will typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanish as <span class="math inline">\(T\to\infty\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparing-estimators" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="comparing-estimators"><span class="header-section-number">7.2</span> Comparing Estimators</h2>
+<section id="conditions-for-consistency" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="conditions-for-consistency"><span class="header-section-number">7.2.1</span> Conditions for Consistency</h3>
+<p>We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
+<p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Within</th>
+<th>MG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data requirements</strong></td>
+<td><span class="math inline">\(T \geq 2\)</span></td>
+<td><span class="math inline">\(T \geq p\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
+<td><span class="math inline">\(\mathbb{E}[\tilde{X}_i'\tilde{X}_i\eta_i]=0\)</span></td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td><strong>Asymptotic framework</strong></td>
+<td>Fixed-<span class="math inline">\(T\)</span></td>
+<td>Fixed-<span class="math inline">\(T\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>IV</th>
+<th>MG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data requirements</strong></td>
+<td><span class="math inline">\(T \geq k+2\)</span></td>
+<td><span class="math inline">\(T \geq p+k\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
+<td>No consistency</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td><strong>Asymptotic framework</strong></td>
+<td>No consistency</td>
+<td>Large-<span class="math inline">\((N, T)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="efficiency" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">7.2.2</span> Efficiency</h3>
+<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented <span class="citation" data-cites="Pesaran1996">Hsiao, Pesaran, and Tahmiscioglu (<a href="references.html#ref-Hsiao1999" role="doc-biblioref">1999</a>)</span>.</p>
+<p>However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span>.</p>
+</section>
+</section>
+<section id="addressing-rank-deficiency" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="addressing-rank-deficiency"><span class="header-section-number">7.3</span> Addressing Rank Deficiency</h2>
+<p>Before moving beyond <span class="math inline">\(\E[\bbeta_i]\)</span>, we return to the assumption that <span class="math inline">\(\bX_i'\bX_i\)</span> is non-singular for all units <span class="math inline">\(i\)</span>. This requirement might not hold, in particular if <span class="math inline">\(T\)</span> is only slightly larger than <span class="math inline">\(p\)</span> and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation.</p>
+<p>If such a situation occurs in practice, a common solution is to drop the units with non-invertible <span class="math inline">\(\bX_i'\bX_i\)</span>. The mean group estimator is computed as an average over the remaining units. Formally, the corresponding mean group estimator is defined as <span class="math display">\[
+    \hat{\bbeta}_{MG}^+  = \dfrac{1}{\sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} } \sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} \hat{\bbeta}_i.
+\]</span> Every unit is checked to see if <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span>. If it is, their <span class="math inline">\(\hat{\bbeta}_i\)</span> is computed and added to the average.</p>
+<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bu_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data: <span class="math display">\[
+    \hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)&gt;0}  \right].
+\]</span> This limit may be viewed as an average treatment effect of the treated.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
+Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023. <span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June, S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
+</div>
 <div id="ref-Breitung2021" class="csl-entry" role="listitem">
 Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope Variations</span>.”</span> <em>Journal of Econometrics</em> 220 (2): 399–415. <a href="https://doi.org/10.1016/j.jeconom.2020.04.007">https://doi.org/10.1016/j.jeconom.2020.04.007</a>.
 </div>
-<div id="ref-Liu2020" class="csl-entry" role="listitem">
-Liu, Laura, Hyungsik Roger Moon, and Frank Schorfheide. 2020. <span>“<span class="nocase">Forecasting with Dynamic Pane Data Models</span>.”</span> <em>Econometrica</em> 88 (1): 171–201. <a href="https://doi.org/10.2139/ssrn.2908529">https://doi.org/10.2139/ssrn.2908529</a>.
+<div id="ref-Hsiao1999" class="csl-entry" role="listitem">
+Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
+</div>
+<div id="ref-Pesaran1996" class="csl-entry" role="listitem">
+Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
+</div>
+<div id="ref-Pesaran1999" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous Panels</span>.”</span> <em>Journal of the American Statistical Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
+</div>
+<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
