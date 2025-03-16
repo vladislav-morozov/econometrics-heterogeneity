@@ -1,6 +1,7 @@
 ---
+description: "Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes."
 open-graph:
-    description: "Learn about instrumental variables for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others."
+    description: "Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes."
 ---
 
 # Interlude: Standard Dynamic Panel Estimators
@@ -34,7 +35,7 @@ $$
 	\E[u_{it}\bx_{is}] =0.
 $$ {#eq-dynamic-interlude-strict-orthogonality}
 
-If we take $t<s$, @eq-dynamic-interlude-strict-orthogonality means that  *past* shocks are uncorrelated with *future* values of $\bx$ or, intuitively, that one cannot predict *past* shocks from *future* $\bx$s. 
+For $t<s$, @eq-dynamic-interlude-strict-orthogonality means that *past* shocks are uncorrelated with *future* values of $\bx$.  In other words, one cannot predict *past* shocks from *future* $\bx$s. 
 
 This requirement might fail if $\bx$ is dynamic and its evolution is affected by $u_{it}$. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data. 
 
@@ -44,7 +45,7 @@ This requirement might fail if $\bx$ is dynamic and its evolution is affected by
 A particularly clear example for failure of @eq-dynamic-interlude-strict-orthogonality arises when $\bx_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
 
 
-For simplicity, we momentarily forget about the cross-sectional dimension consider a simple autoregressive model with 1 lag (AR(1)):
+For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)):
 $$
 	y_t = \alpha + \lambda y_{t-1} + u_{t},
 $$
@@ -165,7 +166,7 @@ One should not confuse endogeneity in @eq-dynamic-interlude-differenced-endogene
 
 ## IV Estimation of Dynamic Panel Models
 
-The traditional solution to endogeneity is to use instrumental variables:  variables $z_{it}$ which satisfy relevance and exogeneity conditions:
+Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables $z_{it}$ which satisfy relevance and exogeneity conditions:
 $$
 \begin{aligned}
 	\E[z_{it}\Delta y_{it-1}] \neq 0,\\
@@ -183,7 +184,7 @@ In particular, consider using $y_{it-2}$ as an instrument.
 
 - Relevance seems to be relatively straightforward, as the target endogenous variable $\Delta y_{it-1}= y_{it-1}-y_{it-2}$ actually has the instrument inside.
 - Exogeneity can be justified by appealing to sequential exogeneity: $$	\E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. $$
-- 
+
 Hence $y_{it-2}$ is a valid instrument! 
 
 The resulting IV estimator is known as the @Anderson1982 estimator and given by
@@ -233,4 +234,10 @@ $$
 
 The expectation on the right hand side contains "bad" expectations of the form $\E[u_{it}y_{is}]$ with $t<s$ (recall @eq-dynamic-interlude-no-strict-exogeneity). 
 
-We conclude that for any fixed $T$ the within estimator will also suffer from endogeneity bias; as derived by @Nickell1981.  Furthermore, this bias is likely to be large in pratice [see @Kiviet1995].
+We conclude that for any fixed $T$ the within estimator will also suffer from endogeneity bias. @Nickell1981 shows that it is of the order $O(T^{-1})$.  Furthermore, this bias is likely to be large in practice [see @Kiviet1995].
+
+---
+
+#### Next Section {.unnumbered}
+
+Next, we examine how the above "standard" dynamic panel IV estimators break down when individual coefficients vary across observations.
