@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes.">
 
 <title>5&nbsp; Interlude: Standard Dynamic Panel Estimators – Econometrics with Unobserved Heterogeneity</title>
 <style>
@@ -432,7 +433,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="5&nbsp; Interlude: Standard Dynamic Panel Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn about instrumental variables for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others.">
+<meta property="og:description" content="Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes.">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -633,13 +634,13 @@ Summary and Learning Outcomes
 <p>However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices <span class="math inline">\(t, s\)</span> it holds that <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
     \E[u_{it}\bx_{is}] =0.
 \tag{5.2}\]</span></span></p>
-<p>If we take <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bx\)</span> or, intuitively, that one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bx\)</span>s.</p>
+<p>For <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bx\)</span>. In other words, one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bx\)</span>s.</p>
 <p>This requirement might fail if <span class="math inline">\(\bx\)</span> is dynamic and its evolution is affected by <span class="math inline">\(u_{it}\)</span>. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data.</p>
 </section>
 <section id="no-strict-exogeneity-for-dynamic-models" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="no-strict-exogeneity-for-dynamic-models"><span class="header-section-number">5.1.2</span> No Strict Exogeneity for Dynamic Models</h3>
 <p>A particularly clear example for failure of <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> arises when <span class="math inline">\(\bx_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
-<p>For simplicity, we momentarily forget about the cross-sectional dimension consider a simple autoregressive model with 1 lag (AR(1)): <span class="math display">\[
+<p>For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)): <span class="math display">\[
     y_t = \alpha + \lambda y_{t-1} + u_{t},
 \]</span> where <span class="math inline">\(t=1, \dots, T\)</span> and the innovation <span class="math inline">\(u_t\)</span> satisfies <span class="math inline">\(\E[u_t]=0\)</span>.</p>
 <p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> is not true. Specifically, we will take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[y_{it+1}u_t]\)</span> is not necessarily zero.</p>
@@ -729,7 +730,7 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 </section>
 <section id="iv-estimation-of-dynamic-panel-models" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="iv-estimation-of-dynamic-panel-models"><span class="header-section-number">5.3</span> IV Estimation of Dynamic Panel Models</h2>
-<p>The traditional solution to endogeneity is to use instrumental variables: variables <span class="math inline">\(z_{it}\)</span> which satisfy relevance and exogeneity conditions: <span class="math display">\[
+<p>Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables <span class="math inline">\(z_{it}\)</span> which satisfy relevance and exogeneity conditions: <span class="math display">\[
 \begin{aligned}
     \E[z_{it}\Delta y_{it-1}] \neq 0,\\
     \E[z_{it}\Delta u_{it}] = 0.
@@ -743,8 +744,8 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 <ul>
 <li>Relevance seems to be relatively straightforward, as the target endogenous variable <span class="math inline">\(\Delta y_{it-1}= y_{it-1}-y_{it-2}\)</span> actually has the instrument inside.</li>
 <li>Exogeneity can be justified by appealing to sequential exogeneity: <span class="math display">\[ \E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. \]</span></li>
-<li>Hence <span class="math inline">\(y_{it-2}\)</span> is a valid instrument!</li>
 </ul>
+<p>Hence <span class="math inline">\(y_{it-2}\)</span> is a valid instrument!</p>
 <p>The resulting IV estimator is known as the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator and given by <span class="math display">\[
 \hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it} }.
 \]</span></p>
@@ -778,7 +779,11 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
     \E[\tilde{y}_{it-1}\tilde{u}_{it}] = \E\left[\left(y_{it-1}- T^{-1}\sum_{s=0}^{T-1} y_{is} \right)\left(u_{it} - T^{-1}\sum_{r=1}^{T}u_{ir} \right) \right].
 \]</span></p>
 <p>The expectation on the right hand side contains “bad” expectations of the form <span class="math inline">\(\E[u_{it}y_{is}]\)</span> with <span class="math inline">\(t&lt;s\)</span> (recall <a href="#eq-dynamic-interlude-no-strict-exogeneity" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>).</p>
-<p>We conclude that for any fixed <span class="math inline">\(T\)</span> the within estimator will also suffer from endogeneity bias; as derived by <span class="citation" data-cites="Nickell1981">Nickell (<a href="references.html#ref-Nickell1981" role="doc-biblioref">1981</a>)</span>. Furthermore, this bias is likely to be large in pratice <span class="citation" data-cites="Kiviet1995">(see <a href="references.html#ref-Kiviet1995" role="doc-biblioref">Kiviet 1995</a>)</span>.</p>
+<p>We conclude that for any fixed <span class="math inline">\(T\)</span> the within estimator will also suffer from endogeneity bias. <span class="citation" data-cites="Nickell1981">Nickell (<a href="references.html#ref-Nickell1981" role="doc-biblioref">1981</a>)</span> shows that it is of the order <span class="math inline">\(O(T^{-1})\)</span>. Furthermore, this bias is likely to be large in practice <span class="citation" data-cites="Kiviet1995">(see <a href="references.html#ref-Kiviet1995" role="doc-biblioref">Kiviet 1995</a>)</span>.</p>
+<hr>
+<section id="next-section" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
+<p>Next, we examine how the above “standard” dynamic panel IV estimators break down when individual coefficients vary across observations.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -807,6 +812,7 @@ Kiviet, Jan F. 1995. <span>“<span class="nocase">On Bias, Inconsistency, and E
 Nickell, Stephen. 1981. <span>“<span>Biases In Dynamic Models With Fixed Effects</span>.”</span> <em>Econometrica</em> 49 (6): 1417–26.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
