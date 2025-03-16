@@ -1,6 +1,7 @@
 ---
+description: "Learn why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients. Lecture notes."
 open-graph:
-    description: "Why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients."
+    description: "Learn why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients. Lecture notes."
     image: "https://vladislav-morozov.github.io/econometrics-heterogeneity/figures/ols_heterogeneity.svg"
 ---
 
@@ -15,8 +16,8 @@ This section shows that the within (fixed effects) estimator consistently estima
 By the end of this section, you should
 
  - Refresh your knowledge of within (fixed effects) estimation.
- - Identify conditions under which the within estimator is consistent for average coefficients in models with heterogeneity.  
- - Develop intuition on how regressor dynamics affect consistency of the within estimator.
+ - Learn when the within estimator gives consistent estimates of average coefficients in heterogeneous models.
+ - See the first example of heterogeneity bias in this course.
 :::
 
 ## Introduction 
@@ -26,34 +27,31 @@ $$
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 $$ {#eq-within-lecture-model}
 
-Our first key parameter of interest is the average coefficient vector, $\E[\bbeta_i]$, which serves as the linear model analog to the average treatment effect. 
+Our first key parameter of interest is the average coefficient vector $\E[\bbeta_i]$ — the linear model analog to the average treatment effect. 
 
 ### Focus: Workhorse Estimators under Heterogeneity
 
-Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic IV estimators — meaningfully estimate $\E[\bbeta_i]$? Of course, those methods were developed in the context of the simpler random intercept model  @eq-random_intercept
+Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic panel IV estimators — correctly estimate $\E[\bbeta_i]$? Of course, those methods were developed in the context of the simpler random intercept model  ([-@eq-random_intercept])
 $$
 y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 $$  {#eq-within-lecture-random-intercept}
 However, if they can also handle the more general @eq-within-lecture-model, then all the better for us — we do not need to develop any new methods. 
  
-Regrettably, we will see that the "standard" estimators will generally fail in the presence of coefficient heterogeneity, both for static and the dynamic formulations of @eq-within-lecture-model. 
+Unfortunately, such standard estimators usually fail when coefficients vary across units, as we will demonstrate This failure holds both for static and the dynamic formulations of @eq-within-lecture-model. 
  
 ### This Section: Static Model and Fixed $T$ 
 
-In this section, we begin by considering the static case and the associated workhorse estimator — the within (fixed effects) estimator. 
-By "static", we mean that the model satisfies strict exogeneity in the form
-
+In this section, we consider the static case and the associated workhorse estimator — the within (fixed effects) estimator. By "static", we mean that the model does not include lagged dependent variables as regressors. In addition, we assume strict exogeneity
 $$
 \E[\bu_i|\bX_i]=0.
-$$
-Recall that this assumption rules out using lagged values of the outcome $y_{it}$ as covariates, hence the "static" terminology. 
+$$ 
 
 Throughout, we will assume that the number $N$ of cross-sectional units is potentially large, while the number $T$ of data points per unit is fixed. This setup is more reflective of typical micropanels. 
 
 ## Recall: Within Estimator in the Random Intercept Model
 
 
-To begin, we will briefly go through the construction and the properties of the within estimator under the random intercept model [@eq-within-lecture-random-intercept].  
+To begin, we will briefly go through the construction and the properties of the within estimator under the random intercept model ([-@eq-within-lecture-random-intercept]).  
 
 ### Construction
 
@@ -74,11 +72,11 @@ $$
 The averaged outcome $y_{i\cdot}$ satisfies the averaged equation
 
 $$
-y_{i\cdot} = \alpha_i + \bbeta' \bX_{i\cdot} + u_{i\cdot},
+y_{i\cdot} = \alpha_i + \bbeta' \bx_{i\cdot} + u_{i\cdot},
 $$
 where $\bx_{i\cdot}$ and $u_{i\cdot}$ are defined analogously to $y_{i\cdot}$.
 
-We then subtract this averaged equation from the original equation for each $t$, defining within-transformed variables 
+Define the within-transformed variables by subtracting this averaged equation from the original equation for each $t$:
 $$
 \tilde{y}_{it} = y_{it} - y_{i\cdot}.
 $$
@@ -86,7 +84,7 @@ $$
 If  @eq-within-lecture-random-intercept is true, the within transformed variables follow the within-transformed equation:
 
 $$
-\tilde{y}_{it} = \bbeta' \tilde{\bX}_{it} + \tilde{u}_{it}.
+\tilde{y}_{it} = \bbeta' \tilde{\bx}_{it} + \tilde{u}_{it}.
 $${#eq-within_transformed}
 
 Under @eq-within-lecture-random-intercept, the within transformation eliminates the individual random intercepts $\alpha_i$.  @eq-within_transformed now looks like a regular homogeneous regression. 
@@ -107,7 +105,7 @@ $$
 \hat{\bbeta}^W = \bbeta + \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bu}_i.
 $${#eq-within-sampling-error-homogeneous}
 
-- $\hat{\bbeta}^W$ is unbiased for $\bbeta$. To show this property, it is sufficient to notice that strict exogeneity of $\bu_i$ with respect to $\bX_i$ implies strict exogeneity of $\tilde{\bu}_i$ with respect to $\tilde{\bX}_i$:
+- $\hat{\bbeta}^W$ is unbiased for $\bbeta$. To show this, it is sufficient to notice that strict exogeneity of $\bu_i$ with respect to $\bX_i$ implies strict exogeneity of $\tilde{\bu}_i$ with respect to $\tilde{\bX}_i$:
 $$
 \E[\tilde{\bu}_i|\tilde{\bX}_i] = 
 \E[\E[\tilde{\bu}_i|\bX_i]|\tilde{\bX}_i] = 0.
@@ -123,19 +121,11 @@ $$
 $${#eq-within_asymptotic}
 
 
-Since $\bbeta$ is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model [-@eq-within-lecture-random-intercept].
+Since $\bbeta$ is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model ([-@eq-within-lecture-random-intercept]).
 
 ## Adding Heterogeneous Coefficients
 
-
-However, there is usually no theoretical reason for the slopes $\bbeta$ to be homogeneous.  This assumption goes against acknowledging heterogeneity and including the random intercept terms $\alpha_i$ in the first place It is rather more realistic to consider the more general @eq-within-lecture-model. Accordingly, we now turn to studying the properties of $\hat{\bbeta}^W$ in this more realistic setting. 
-
-<!-- To study the within estimator under heterogeneity, we strengthen strict exogeneity to hold in an augmented form that also conditions on the coefficient vector $\bbeta_i$:
-
-$$
-\E[\bu_i|\bX_i, \bbeta_i] = 0.
-$$
-  -->
+However, there is usually no theoretical reason for the slopes $\bbeta$ to be homogeneous.  An assumption of slope homogeneity goes against acknowledging heterogeneity and including the random intercept terms $\alpha_i$ in the first place. It is rather more realistic to consider the more general @eq-within-lecture-model. Accordingly, we now turn to studying the properties of $\hat{\bbeta}^W$ in this more realistic setting. 
 
 
 ### Sampling Error Form
@@ -143,12 +133,12 @@ $$
 Applying the within transformation to the heterogeneous @eq-within-lecture-model yields another version of the within-transformed equation: 
 
 $$
-\tilde{y}_{it} = \bbeta_i' \tilde{\bX}_{it} + \tilde{u}_{it}.
+\tilde{y}_{it} = \bbeta_i' \tilde{\bx}_{it} + \tilde{u}_{it}.
 $$
 
 Note that now the individual heterogeneity is not eliminated! The heterogeneous coefficients $\bbeta_i$ remain in the equation. 
 
-The within estimator on the above equation may then be represented as follows:
+The within estimator on the above equation may then be represented as
 $$
 \begin{aligned}
 \hat{\bbeta}^W  & = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\by}_i \\
@@ -184,22 +174,27 @@ $$
 $$ {#eq-average_orthogonality_condition}
 Even though $\E[\bEta_i]=0$, the above condition does not necessarily hold if $\bbeta_i$ and $\bX_i$ are allowed to dependent.
 
- If condition [-@eq-average_orthogonality_condition] holds, the within estimator is consistent for $\E[\bbeta_i]$ in the heterogeneous coefficient model @eq-within-lecture-model. If it fails, the estimator is subject to *heterogeneity bias* [@Campello2019].
+ If condition ([-@eq-average_orthogonality_condition]) holds, the within estimator is consistent for $\E[\bbeta_i]$ in the heterogeneous coefficient model ([-@eq-within-lecture-model]). If it fails, the estimator is biased. The difference between the estimand and $\E[\bbeta_i]$ is known as *heterogeneity bias* [see @Campello2019 in the linear case].
  
 
-This orthogonality condition  [-@eq-average_orthogonality_condition] is a bit complicated to understand. A simpler sufficient condition is a mean independence on the coefficients given the within transformed covariates:
+This orthogonality condition  ([-@eq-average_orthogonality_condition]) is a bit complicated to understand. A simpler sufficient condition is a mean independence on the coefficients given the within transformed covariates:
 $$
-E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.  
+\E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.  
 $${#eq-mean_independence_condition}
 Under this condition 	$\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0$, and thus the within estimator is consistent for $\E[\bbeta_i]$. These conditions were proposed by @Wooldridge2003, @Wooldridge2005 (see all @Murtazashvili2008 for the IV within estimator case).
 
 
+
+::: {.callout-note appearance="simple" icon=false}
+
 Note that this conditions restricts the dependence structure between $\bbeta_i$ and $\bx_{it}$. Such conditions are called \emph{correlated random effects} (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks --- which do not restrict the dependence --- and random effects (RE) --- which assume that unobserved components are independent from the observed ones.
+::: 
+
  
 
 ### Intuition 
 
-How can we interpret condition [-@eq-mean_independence_condition]? Intuitively, it requires that the changes in $\bx_{it}$ over time are uncorrelated with the individual coefficients.
+How can we interpret condition ([-@eq-mean_independence_condition])? Intuitively, it requires that the changes in $\bx_{it}$ over time are uncorrelated with the individual coefficients.
  
 To see this interpretation, it is helpful to think of the following example framework. Suppose that $\bx_{it}$ is stationary, that is, its distribution does not depend on $t$. Decompose  $\bx_{it}$ as 
 $$
@@ -211,24 +206,23 @@ $$
 	\tilde{\bx}_{it} = \tilde{\bxi}_{it}.
 $$
 
-The ``systemic'' component $\E[\bx_{it}|\bbeta_i]$ is not present in $\tilde{\bx}_{it}$. 
-Only the deviations across time $\tilde{\bxi}_{it}$ are left. Condition  [-@eq-mean_independence_condition] requires that $\tilde{\bxi}_{it}$ and $\bEta_i$ are unrelated on average. Note that it permits an arbitrary relationship   between $\bbeta_i$ and $\E[\bx_{it}|\bbeta_i]$.
+The "systemic" component $\E[\bx_{it}|\bbeta_i]$ is not present in $\tilde{\bx}_{it}$. 
+Only the deviations across time $\tilde{\bxi}_{it}$ are left. Condition ([-@eq-mean_independence_condition]) requires that $\tilde{\bxi}_{it}$ and $\bEta_i$ are unrelated on average. Note that it permits an arbitrary relationship between $\bbeta_i$ and $\E[\bx_{it}|\bbeta_i]$.
 
-
-An intuitive version of the above framework goes as follows. A consumer knows their marginal utilities $\bbeta_i$ of consuming more of a variety of products.   With this knowledge,  they choose the optimal desired level of consumption --- $\E[\bx_{it}|\bbeta_i]$. When they attempt to realize this consumption, they may encounter some frictions $\bxi_{it}$ which cause them to deviate from $\E[\bx_{it}|\bbeta_i]$. If these ``frictions'' are uncorrelated with $\bbeta_i$, then the required consistency will hold.
+As an example, suppose that we are working with consumption data. A consumer knows their marginal utilities $\bbeta_i$ of consuming more of a variety of products.  With this knowledge, they choose the optimal desired level of consumption --- $\E[\bx_{it}|\bbeta_i]$. When they try to buy this level of products, they may encounter some frictions $\bxi_{it}$ which cause them to deviate from $\E[\bx_{it}|\bbeta_i]$ — in rough words, the supermarket might not have their favorite cereal. If these "frictions" are uncorrelated with $\bbeta_i$, then the required consistency will hold. In the consumption example, this fact means that unpredictable deviation in short-term choices do not necessarily bias the estimation of overall preferences.
 
 ### Why Panel Data is Useful
 
 
-It is useful to contrast condition [-@eq-mean_independence_condition] with the stronger condition 
+It is useful to contrast condition [-@eq-mean_independence_condition] with the stronger condition that
 $$
 \E[\bEta_i|\bX_i]=0.
-$$ 
+$$ {#eq-linear-within-cross-sectional-mean-indep}
 Note the difference in the conditioning sets.
 
-The latter condition is stronger in the view of the tower property of conditional expectation.  Intuitively, we can compute $\tilde{\bX}_i$ from $\bX_i$, but not vice versa. The requirement that $\E[\bEta_i|\bX_i]=0$ may be very strong, since it would in general require that $\E[\bx_{it}|\bbeta_i]$ does not depend on $\bbeta_i$ --- we rule out a systemic dependence even on average. 
+Condition ([-@eq-linear-within-cross-sectional-mean-indep]) is stronger than ([-@eq-mean_independence_condition]) by the tower property of conditional expectation.  Intuitively, we can compute $\tilde{\bX}_i$ from $\bX_i$, but not vice versa. The requirement that $\E[\bEta_i|\bX_i]=0$ may be very strong, since it would in general require that $\E[\bx_{it}|\bbeta_i]$ does not depend on $\bbeta_i$ --- we rule out a systemic dependence even on average. 
 
-This contrast also highlights the advantages of panel data. In a cross-sectional setting, OLS would require a condition of the form $\E[\bEta_i|\bX_i]=0$ or $\E[\bx_i\bx_i'\bbeta_i]=0$ for consistency. With panel data, weaker conditions are sufficient, and systemic dependence between $\bbeta_i$ and $\bx_{it}$ is possible. Moreover, as you might have noticed, the above analysis can already be carried out with  $T=2$.
+This contrast also highlights the advantages of panel data. If you want to consistently estimate $\E[\bbeta_i]$ using OLS and cross-sectional data, you need the very strong condition ([-@eq-linear-within-cross-sectional-mean-indep]) or at least that $\E[\bx_i\bx_i'\bbeta_i]=0$. With panel data, weaker conditions are sufficient, and systemic dependence between $\bbeta_i$ and $\bx_{it}$ is possible.  
 
 
 ### Example
@@ -282,4 +276,11 @@ If condition [-@eq-within-normal-example] holds, the   within estimator is consi
  
  
 
-![The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process [-@eq-within_normal_dgp] ](figures/ols_heterogeneity.svg){#fig-within-normal}
+![The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process ([-@eq-within_normal_dgp]) ](figures/ols_heterogeneity.svg){#fig-within-normal}
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we turn to the dynamic case and briefly introduce the "standard" dynamic panel instrumental variable estimators. 
