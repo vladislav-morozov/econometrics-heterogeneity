@@ -116,6 +116,7 @@ We conclude that the IV estimators of the previous section will not consistently
 
 
 
+
 ### Aside: Regarding Restrictions on Coefficients
 
 There is a further point of contrast with the static case. In section [-@sec-linear-within] we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients $\bbeta_i$ are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator. 
@@ -125,8 +126,3 @@ $$
 y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
 $$
 It follows that it is mechanically impossible for $y_{it-1}$ and $(\alpha_i, \beta_i)$ to be (mean) independent.
-
-
-## A Numerical Illustration
-
-Here I will add a numerical example.
