@@ -605,7 +605,7 @@ Summary and Learning Outcomes
 <ul>
 <li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
 <li>Describe the overall challenge of finding valid instruments under</li>
-<li>Explain the additional challenges that arise in dynamic models relative to static models with heterogeneous coefficients.</li>
+<li>Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models.</li>
 </ul>
 </div>
 </div>
@@ -636,7 +636,7 @@ Summary and Learning Outcomes
 \eta_i &amp; = \lambda_i - \lambda.
 \end{aligned}
 \]</span></p>
-<p>It is easy to check that <span class="math inline">\(\Delta y_{it-1}\)</span> is still exogenous due to the presence of <span class="math inline">\(u_{it-1}\)</span> in the residual. The same problematic term <span class="math inline">\(\lambda \E[u_{it-1}^2]\)</span> will be present in <span class="math inline">\(\E[v_{it}\Delta y_{it-1}]\)</span>.</p>
+<p>It is easy to check that <span class="math inline">\(\Delta y_{it-1}\)</span> is still endogenous because it contains <span class="math inline">\(u_{it-1}\)</span>, which is correlated with the residual term. The same problematic term <span class="math inline">\(\lambda \E[u_{it-1}^2]\)</span> will be present in <span class="math inline">\(\E[v_{it}\Delta y_{it-1}]\)</span>.</p>
 </section>
 <section id="conditions-for-instruments" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">6.2.2</span> Conditions for Instruments</h3>
@@ -649,7 +649,7 @@ Summary and Learning Outcomes
 </section>
 <section id="endogeneity-of-lagged-outcomes" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">6.2.3</span> Endogeneity of Lagged Outcomes</h3>
-<p>In contrast to the homogeneous case, <span class="math inline">\(y_{it-2}\)</span> will not a valid instrument anymore. We will show that <span class="math inline">\(y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
+<p>Unlike in the homogeneous case, <span class="math inline">\(y_{it-2}\)</span> is not a valid instrument anymore. We will show that <span class="math inline">\(y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
 <ul>
 <li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
 <li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
@@ -672,14 +672,18 @@ y_{it} = \dfrac{\alpha_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k u_{it-k
 \E[y_{it-2} v_{it}]\neq 0.
 \]</span> In other words, <span class="math inline">\(y_{it-2}\)</span> is not a valid instrument under the heterogeneous model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>6.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(y_{it}\)</span>.</p>
 <p>More broadly, the problem of finding a valid instrument <span class="math inline">\(z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(z_{it}\)</span> be correlated with <span class="math inline">\(\Delta y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(z_{it}\)</span> will also be correlated with <span class="math inline">\(\eta_i \Delta y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i z_{it}\Delta y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
-<p>We conclude that the IV estimators of the previous section will not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the probability limit of the estimators can be arbitrarily unrelated to the true underlying average coefficients.</p>
+<p>We conclude that the IV estimators of the previous section will not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
 </section>
 <section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="6.2.4">
 <h3 data-number="6.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">6.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
 <p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>4</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
 <p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((\alpha_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(y_{it-1}\)</span> through <span class="math display">\[
 y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
-\]</span> It follows that it is mechanically impossible for <span class="math inline">\(y_{it-1}\)</span> and <span class="math inline">\((\alpha_i, \beta_i)\)</span> to be (mean) independent.</p>
+\]</span> As a result, <span class="math inline">\(y_{it-1}\)</span> and <span class="math inline">\((\alpha_i, \lambda_i)\)</span> cannot be (mean) independent by construction.</p>
+<hr>
+<section id="next-section" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
+<p>In the next section, we will study a simple estimator for <span class="math inline">\(\E[\bbeta_i]\)</span> that is robust both to coefficient heterogeneity and dynamics.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -687,6 +691,7 @@ y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
 Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
 </div>
 </div>
+</section>
 </section>
 </section>
 
