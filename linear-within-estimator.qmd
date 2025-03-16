@@ -187,7 +187,7 @@ Under this condition 	$\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0$, and thus the 
 
 ::: {.callout-note appearance="simple" icon=false}
 
-Note that this conditions restricts the dependence structure between $\bbeta_i$ and $\bx_{it}$. Such conditions are called \emph{correlated random effects} (CRE) restrictions. CRE assumptions lie between fixed effects (FE) frameworks --- which do not restrict the dependence --- and random effects (RE) --- which assume that unobserved components are independent from the observed ones.
+Conditions ([-@eq-average_orthogonality_condition]) and ([-@eq-mean_independence_condition]) restrict the dependence structure between $\bbeta_i$ and $\bx_{it}$. Such conditions are sometimes called correlated random effects (CRE) in the literature. CRE assumptions lie between fixed effects (FE) frameworks --- which do not restrict the dependence --- and random effects (RE) --- which assume that unobserved components are independent of the observed ones.
 ::: 
 
  
