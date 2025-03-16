@@ -16,7 +16,7 @@ By the end of this section, you should be able to:
 
 - Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous. 
 - Describe the overall challenge of finding valid instruments under 
-- Explain the additional challenges that arise in dynamic models relative to static models with heterogeneous coefficients. 
+- Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models. 
  
 :::
 
@@ -62,7 +62,7 @@ $$
 $$ 
 
 
-It is easy to check that $\Delta y_{it-1}$ is still exogenous due to the presence of $u_{it-1}$ in the residual. The same problematic term  $\lambda \E[u_{it-1}^2]$ will be present in $\E[v_{it}\Delta y_{it-1}]$. 
+It is easy to check that $\Delta y_{it-1}$ is still endogenous because it contains $u_{it-1}$, which is correlated with the residual term. The same problematic term  $\lambda \E[u_{it-1}^2]$ will be present in $\E[v_{it}\Delta y_{it-1}]$. 
 
 
 ### Conditions for Instruments
@@ -78,7 +78,7 @@ Note that a new $\E[ \eta_i z_{it}\Delta y_{it-1} ]$ term now appears in the exo
 
 ### Endogeneity of Lagged Outcomes 
 
-In contrast to the homogeneous case, $y_{it-2}$ will not a valid instrument anymore. We will show that $y_{it-2}$ is not exogenous in a simple case with the following assumptions:
+Unlike in the homogeneous case, $y_{it-2}$ is not a valid instrument anymore. We will show that $y_{it-2}$ is not exogenous in a simple case with the following assumptions:
 
 -  $\abs{\lambda_i}<1$.
 -  @eq-dynamic-heterogeneity-model can be extended infinitely far into the past by recursive substitution, so that 
@@ -112,7 +112,7 @@ In other words, $y_{it-2}$ is not a valid instrument under the heterogeneous mod
 More broadly, the problem of finding a valid instrument $z_{it}$ for @eq-dynamic-heterogeneity-differenced appears intractable. The relevance condition requires that $z_{it}$ be correlated with $\Delta y_{it-1}$. As a consequence, it is likely that $z_{it}$ will also be correlated with $\eta_i \Delta y_{it-1}$ (particularly since $\eta_i$ appears inside $\Delta y_{it-1}$). However, it would then be the case that $\E[ \eta_i z_{it}\Delta y_{it-1} ]\neq 0$, and exogeneity would fail. 
 
 
-We conclude that the IV estimators of the previous section will not consistently estimate $\E[\lambda_i]$, no matter how we choose the instruments, regardless the magnitude of $T$. Moreover, the results of @Pesaran1995 imply that the probability limit of the estimators can be arbitrarily unrelated to the true underlying average coefficients. 
+We conclude that the IV estimators of the previous section will not consistently estimate $\E[\lambda_i]$, no matter how we choose the instruments, regardless the magnitude of $T$. Moreover, the results of @Pesaran1995 imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of $\E[\lambda_i]$.
 
 
 
@@ -125,4 +125,11 @@ However, no such independence assumptions are possible in a dynamic model. By co
 $$
 y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
 $$
-It follows that it is mechanically impossible for $y_{it-1}$ and $(\alpha_i, \beta_i)$ to be (mean) independent.
+As a result, $y_{it-1}$ and $(\alpha_i, \lambda_i)$ cannot be (mean) independent by construction.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we will study a simple estimator for $\E[\bbeta_i]$ that is robust both to coefficient heterogeneity and dynamics.
