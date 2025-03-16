@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
 
 <title>6&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
 <style>
@@ -432,7 +433,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="6&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example">
+<meta property="og:description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -564,7 +565,6 @@ window.Quarto = {
   <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">6.2.3</span> Endogeneity of Lagged Outcomes</a></li>
   <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">6.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
   </ul></li>
-  <li><a href="#a-numerical-illustration" id="toc-a-numerical-illustration" class="nav-link" data-scroll-target="#a-numerical-illustration"><span class="header-section-number">6.3</span> A Numerical Illustration</a></li>
   </ul>
 </nav>
     </div>
@@ -680,11 +680,6 @@ y_{it} = \dfrac{\alpha_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k u_{it-k
 <p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((\alpha_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(y_{it-1}\)</span> through <span class="math display">\[
 y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
 \]</span> It follows that it is mechanically impossible for <span class="math inline">\(y_{it-1}\)</span> and <span class="math inline">\((\alpha_i, \beta_i)\)</span> to be (mean) independent.</p>
-</section>
-</section>
-<section id="a-numerical-illustration" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="a-numerical-illustration"><span class="header-section-number">6.3</span> A Numerical Illustration</h2>
-<p>Here I will add a numerical example.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -692,6 +687,7 @@ y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
 Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
