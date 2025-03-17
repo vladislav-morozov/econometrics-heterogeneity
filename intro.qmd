@@ -1,10 +1,24 @@
 ---  
-toc: true
-toc-depth: 2 
+description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it."
+open-graph:
+    description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it." 
 ---
 
 
 # Introduction
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course. 
+  
+By the end of this section, you should
+
+- Recognize cases where heterogeneous coefficients arise.
+- Identify key challenges in estimating heterogeneous coefficients.
+- Discuss two strategies for identification under coefficient heterogeneity.
+:::
 
  
 ## Unobserved Heterogeneity
