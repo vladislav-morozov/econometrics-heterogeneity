@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: docs
+  output-dir: ../docs
 
 html-math-method: mathjax
 
@@ -16,23 +16,20 @@ book:
     - intro.qmd  
     - part: "Linear Models"
       chapters:
-        - linear-introduction.qmd
-        - linear-within-estimator.qmd
-        - linear-dynamic-panel-iv.qmd
-        - linear-dynamic-panel-heterogeneity.qmd
-        - linear-mean-group.qmd
+        - linear/linear-introduction.qmd
+        - linear/linear-within-estimator.qmd
+        - linear/linear-dynamic-panel-iv.qmd
+        - linear/linear-dynamic-panel-heterogeneity.qmd
+        - linear/linear-mean-group.qmd
     - part: "Nonparametrics and Heterogeneity"
     - part: "Quantile and Distributional Methods"
-    - references.qmd
+    - references/references.qmd
 
-bibliography: eco.bib
-
-# execute:
-#   freeze: auto  # re-render only when source changes
-
+bibliography: references/eco.bib
+ 
 format:
   html:
-    include-in-header: mathjax.html
+    include-in-header: themes/mathjax.html
     theme:
       dark: [themes/ws_dark.scss, themes/block.scss]  
       light: [themes/ws_light.scss, themes/block.scss]
