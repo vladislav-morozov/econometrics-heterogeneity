@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Explore linear models with heterogeneous coefficients, identification challenges, and econometric estimation techniques in this advanced lecture series.">
+<meta name="description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
 
-<title>2&nbsp; Intro: Linear Models with Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,27 +44,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./linear-within-estimator.html" rel="next">
-<link href="./intro.html" rel="prev">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references/references.html" rel="next">
+<link href="../linear/linear-dynamic-panel-heterogeneity.html" rel="prev">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -436,8 +436,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="2&nbsp; Intro: Linear Models with Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Explore linear models with heterogeneous coefficients, identification challenges, and econometric estimation techniques in this advanced lecture series.">
+<meta property="og:title" content="6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -450,7 +450,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -465,7 +465,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
+      <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -480,13 +480,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -501,31 +501,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-introduction.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear-mean-group.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
@@ -541,7 +541,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -555,27 +555,27 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linearity-and-heterogeneity" id="toc-linearity-and-heterogeneity" class="nav-link active" data-scroll-target="#linearity-and-heterogeneity"><span class="header-section-number">2.1</span> Linearity and Heterogeneity</a>
+  <li><a href="#mean-group-estimation" id="toc-mean-group-estimation" class="nav-link active" data-scroll-target="#mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</a>
   <ul class="collapse">
-  <li><a href="#models-with-homogeneous-slopes" id="toc-models-with-homogeneous-slopes" class="nav-link" data-scroll-target="#models-with-homogeneous-slopes"><span class="header-section-number">2.1.1</span> Models with Homogeneous Slopes</a></li>
-  <li><a href="#heterogeneity-in-slopes.-examples" id="toc-heterogeneity-in-slopes.-examples" class="nav-link" data-scroll-target="#heterogeneity-in-slopes.-examples"><span class="header-section-number">2.1.2</span> Heterogeneity in Slopes. Examples</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">6.1.1</span> Model</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">6.1.2</span> Definition</a></li>
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">6.1.3</span> Properties</a></li>
   </ul></li>
-  <li><a href="#what-do-we-care-about-identification" id="toc-what-do-we-care-about-identification" class="nav-link" data-scroll-target="#what-do-we-care-about-identification"><span class="header-section-number">2.2</span> What Do We Care About? Identification</a>
+  <li><a href="#comparing-estimators" id="toc-comparing-estimators" class="nav-link" data-scroll-target="#comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</a>
   <ul class="collapse">
-  <li><a href="#parameters-of-interest" id="toc-parameters-of-interest" class="nav-link" data-scroll-target="#parameters-of-interest"><span class="header-section-number">2.2.1</span> Parameters of Interest</a></li>
-  <li><a href="#regarding-identification" id="toc-regarding-identification" class="nav-link" data-scroll-target="#regarding-identification"><span class="header-section-number">2.2.2</span> Regarding Identification</a></li>
+  <li><a href="#conditions-for-consistency" id="toc-conditions-for-consistency" class="nav-link" data-scroll-target="#conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</a></li>
+  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">6.2.2</span> Efficiency</a></li>
   </ul></li>
-  <li><a href="#model-of-this-block" id="toc-model-of-this-block" class="nav-link" data-scroll-target="#model-of-this-block"><span class="header-section-number">2.3</span> Model of This Block</a></li>
-  <li><a href="#plan-for-this-block" id="toc-plan-for-this-block" class="nav-link" data-scroll-target="#plan-for-this-block"><span class="header-section-number">2.4</span> Plan for This Block</a></li>
+  <li><a href="#addressing-rank-deficiency" id="toc-addressing-rank-deficiency" class="nav-link" data-scroll-target="#addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="./linear-introduction.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></h1>
+<h1 class="title"><span id="sec-linear-mean-group" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></h1>
 </div>
 
 
@@ -602,164 +602,190 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section introduces linear models with heterogeneous coefficients, associated identification challenges, and the model used in this block of the course.</p>
-<p>By the end of this section, you should</p>
+<p>This section introduces a heterogeneity- and dynamics-robust estimator for average coefficients — the mean group estimator.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Recognize cases where heterogeneous coefficients arise.</li>
-<li>Identify key challenges in estimating heterogeneous coefficients.</li>
-<li>Discuss two strategies for identification under coefficient heterogeneity.</li>
+<li>Define the mean group estimator.</li>
+<li>Identify the assumptions and data requirements necessary for the MG estimator to be consistent.</li>
+<li>Compare the MG estimator with alternative estimation methods (e.g., within estimators and IV techniques) in both static and dynamic settings.</li>
 </ul>
 </div>
 </div>
-<section id="linearity-and-heterogeneity" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="linearity-and-heterogeneity"><span class="header-section-number">2.1</span> Linearity and Heterogeneity</h2>
-<section id="models-with-homogeneous-slopes" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="models-with-homogeneous-slopes"><span class="header-section-number">2.1.1</span> Models with Homogeneous Slopes</h3>
-<p>We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The “standard” linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., <span class="citation" data-cites="Hansen2022">Hansen (<a href="references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>). A common cross-sectional specification is:</p>
-<p><span id="eq-standard_linear"><span class="math display">\[
-y_i = \bbeta'\bx_i + u_{i},
-\tag{2.1}\]</span></span> where <span class="math inline">\(i=1, \dots, N\)</span> indexes cross-sectional units.</p>
-<p>In panel data, models often include unit-specific <span class="math inline">\((i)\)</span> and time-specific <span class="math inline">\((t)\)</span> intercepts while maintaining a common slope vector <span class="math inline">\(\bbeta\)</span>:</p>
-<p><span id="eq-panel_linear"><span class="math display">\[
-y_{it} = \alpha_i + \delta_t +  \bbeta'\bx_{it} + u_{it}.
-\tag{2.2}\]</span></span></p>
+<section id="mean-group-estimation" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</h2>
+<p>The results of the previous section and section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> leave us with key two questions:</p>
+<ul>
+<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
+<li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
+</ul>
+<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
+<section id="model" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">6.1.1</span> Model</h3>
+<p>To formally define the mean group estimator, we return to the general <a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>: <span class="math display">\[
+    \by_{it} = \bx_{it}'\bbeta_i + u_{it},
+\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>. We can also express this model in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
+\by_i = \bX_i\bbeta_i + \bu_i,
+\]</span> where <span class="math inline">\(\bX_i\)</span> is now a <span class="math inline">\(T\times p\)</span> matrix of covariates, with <span class="math inline">\(T\)</span> representing the number of observations for each unit.</p>
+<p>In what follows, we will assume that the regressors <span class="math inline">\(\bx_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(u_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
+\E[\bx_{it}u_{it}] =0.
+\tag{6.1}\]</span></span> This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.</p>
 </section>
-<section id="heterogeneity-in-slopes.-examples" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="heterogeneity-in-slopes.-examples"><span class="header-section-number">2.1.2</span> Heterogeneity in Slopes. Examples</h3>
-<p>However, modern economic theory rarely supports the assumption of homogeneous slopes <span class="math inline">\(\bbeta\)</span>. Theoretical models recognize that observationally identical individuals, firms, and countries can respond differently to the same stimulus. In a linear model, this requires us to consider more flexible models with heterogeneous coefficients:</p>
+<section id="definition" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.1.2</span> Definition</h3>
+<p>For the mean group estimator to be well-defined, we make two further assumptions:</p>
 <ol type="1">
-<li><p>Cross-sectional model (<a href="#eq-standard_linear" class="quarto-xref"><span>2.1</span></a>) generalizes to</p>
-<p><span id="eq-cross_sectional_hetero"><span class="math display">\[
-y_i = \bbeta_{i}'\bx + u_i.
-\tag{2.3}\]</span></span></p></li>
-<li><p>Panel data model (<a href="#eq-panel_linear" class="quarto-xref"><span>2.2</span></a>) generalizes to</p>
-<p><span id="eq-panel_hetero"><span class="math display">\[
-y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
-\tag{2.4}\]</span></span></p></li>
+<li><em>Sufficient unit-level data</em>: each unit must have at least as many observations as regressors, i.e., <span class="math inline">\(T\geq p\)</span>.</li>
+<li><em>Non-singularity</em>: <span class="math inline">\(\bX_i'\bX_i\)</span> has rank maximal rank (<span class="math inline">\(p\)</span>) for all units <span class="math inline">\(i\)</span>.</li>
 </ol>
-<p>Such models are worth studying, as they naturally arise in a variety of contexts:</p>
-<ul>
-<li><p><strong>Structural models with parametric restrictions:</strong> Certain parametric restrictions yield linear relationships in coefficients. An example is given by firm-level Cobb-Douglas production functions where firm-specific productivity differences induce heterogeneous coefficients (<span class="citation" data-cites="Combes2012b">Combes et al. (<a href="references.html#ref-Combes2012b" role="doc-biblioref">2012</a>)</span>; <span class="citation" data-cites="Sury2011">Sury (<a href="references.html#ref-Sury2011" role="doc-biblioref">2011</a>)</span>).</p></li>
-<li><p><strong>Binary covariates and interaction terms</strong>: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (see, e.g., <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>).</p></li>
-<li><p><strong>Log-linearized models:</strong> Nonlinear models may be approximated by linear models around a steady-state. For example, <span class="citation" data-cites="Heckman1998">Heckman and Vytlacil (<a href="references.html#ref-Heckman1998" role="doc-biblioref">1998</a>)</span> demonstrate how the nonlinear <span class="citation" data-cites="Card2001">Card (<a href="references.html#ref-Card2001" role="doc-biblioref">2001</a>)</span> education model simplifies to a heterogeneous linear specification after linearization.</p></li>
-</ul>
-</section>
-</section>
-<section id="what-do-we-care-about-identification" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="what-do-we-care-about-identification"><span class="header-section-number">2.2</span> What Do We Care About? Identification</h2>
-<section id="parameters-of-interest" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="parameters-of-interest"><span class="header-section-number">2.2.1</span> Parameters of Interest</h3>
-<p>The parameters of interest in models (<a href="#eq-standard_linear" class="quarto-xref"><span>2.1</span></a>) and (<a href="#eq-panel_linear" class="quarto-xref"><span>2.2</span></a>) are straightforward. The common slope <span class="math inline">\(\bbeta\)</span> simultaneously plays the role of both the average treatment effect and all the individual treatment effects. Estimating <span class="math inline">\(\bbeta\)</span> is enough for policy analysis.</p>
-<p>The situation is more complicated for the more general models (<a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>). Consider model (<a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>). Parameters of interest now include:</p>
-<ul>
-<li>Individual effects: the coefficient vector <span class="math inline">\(\bbeta_i\)</span> for specific units.</li>
-<li>Moments of the distribution: the average coefficient vector (<span class="math inline">\(\E[\bbeta_i]\)</span>), variance <span class="math inline">\(\var(\bbeta_i)\)</span>, and higher-order moments.</li>
-<li>Distributional properties: The full distribution of <span class="math inline">\(\bbeta_i\)</span> or its quantiles, or just the tail behavior of the distribution.</li>
-</ul>
-<p>Similar objects are relevant for the panel model in <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>2.4</span></a>.</p>
-</section>
-<section id="regarding-identification" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="regarding-identification"><span class="header-section-number">2.2.2</span> Regarding Identification</h3>
-<p>Unfortunately, greater flexibility in terms of parameters also leads to greater challenges in terms of identification. Models (<a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) are too general to permit identification of any of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:</p>
-<ol type="1">
-<li>Limited observations per coefficient vector. Since each unit <span class="math inline">\(i\)</span> (or pair <span class="math inline">\((i,t)\)</span>) provides only indirect information through <span class="math inline">\(\bbeta_i'\bx_i\)</span> (or <span class="math inline">\(\bbeta_{it}'\bx_{it}\)</span>), there is effectively less than one observation per <span class="math inline">\(\bbeta_i\)</span>.</li>
-<li>Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span>, identification is difficult.</li>
-</ol>
-<p>Identification is typically achieved by mitigating one of these challenges. Common strategies to address these challenges include:</p>
-<ul>
-<li>Increasing the effective number of observations per coefficient vector by restricting coefficient variation.
-<ul>
-<li><p>In panel settings, assuming time-invariant coefficients simplifies <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> to:</p>
-<p><span id="eq-time_invariant"><span class="math display">\[
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
-\tag{2.5}\]</span></span></p></li>
-<li><p>Alternative approaches assume a finite number of latent groups, each with its own coefficient vector, yielding the grouped structure:</p>
-<p><span id="eq-grouped_model"><span class="math display">\[
-y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
-\tag{2.6}\]</span></span></p>
-<p>This model in <span class="citation" data-cites="Bonhomme2015">Bonhomme and Manresa (<a href="references.html#ref-Bonhomme2015" role="doc-biblioref">2015</a>)</span>, <span class="citation" data-cites="Bester2016">Bester and Hansen (<a href="references.html#ref-Bester2016" role="doc-biblioref">2016</a>)</span>, and <span class="citation" data-cites="Bonhomme2022DiscretizingUnobservedHeterogeneity">Bonhomme, Lamadon, and Manresa (<a href="references.html#ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" role="doc-biblioref">2022</a>)</span>.</p></li>
-</ul></li>
-<li>Restricting dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span>. For example, there is a strand of literature that assumes that <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span> are independent <span class="citation" data-cites="Beran1996 Hoderlein2010">(<a href="references.html#ref-Beran1996" role="doc-biblioref">Beran, Feuerverger, and Hall 1996</a>; <a href="references.html#ref-Hoderlein2010" role="doc-biblioref">Hoderlein, Klemelä, and Mammen 2010</a>)</span>.</li>
-</ul>
-</section>
-</section>
-<section id="model-of-this-block" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="model-of-this-block"><span class="header-section-number">2.3</span> Model of This Block</h2>
-<p>This block primarily focuses on the first strategy. Specifically, we will consider a version of model (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) with <em>time-invariant</em> heterogeneous coefficients:</p>
-<p><span id="eq-lecture_model"><span class="math display">\[
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
-\tag{2.7}\]</span></span></p>
-<p>We do not impose restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>. In general, it is important to allow for such dependence outside of experimental data — economic agents can select their covariates <span class="math inline">\(\bx_{it}\)</span> based on knowledge of their own <span class="math inline">\(\bbeta_i\)</span>. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.</p>
-<p>We will also generally focus on the case where the number <span class="math inline">\(N\)</span> of units is large, while the number <span class="math inline">\(T\)</span> of observations per unit is fixed and not necessarily large.</p>
+<p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
+    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+\tag{6.2}\]</span></span></p>
+<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
+    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+\]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>In the panel data literature, approaches that do not restrict the dependence between the unobserved and the observed components are called “fixed effects”.</p>
+<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bx_{it}u_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bx_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
 </div>
 </div>
 </div>
-<p>Note that model (<a href="#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) includes a particular special case — the random intercept model (confusingly also called the “fixed effects model”). The random intercept model imposes homogeneity on all parameters except the intercept term. In the one-way case, the model takes the form:</p>
-<p><span id="eq-random_intercept"><span class="math display">\[
-y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
-\tag{2.8}\]</span></span> Model (<a href="#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) is one of the oldest ways of including unobserved heterogeneity in linear models and goes back at least to <span class="citation" data-cites="Mundlak1961EmpiricalProductionFunction">Mundlak (<a href="references.html#ref-Mundlak1961EmpiricalProductionFunction" role="doc-biblioref">1961</a>)</span>.</p>
 </section>
-<section id="plan-for-this-block" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="plan-for-this-block"><span class="header-section-number">2.4</span> Plan for This Block</h2>
-<p>In this block, we will focus on model (<a href="#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) and consider identification of the above parameters of interest. Specifically,</p>
-<ol type="1">
-<li><p><strong>Average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span></strong>:</p>
+<section id="properties" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="properties"><span class="header-section-number">6.1.3</span> Properties</h3>
+<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\by_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
+    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
+\]</span></p>
+<p>As <span class="math inline">\(N\)</span> grows, the first term will converge to the average effect: <span class="math display">\[
+\dfrac{1}{N} \sum_{i=1}^N \bbeta_i   \xrightarrow{p} \E[\bbeta_i].
+\]</span> This convergence holds regardless of assumptions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>.</p>
+<p>The second term’s behavior determines the estimator’s overall properties, depending on whether strict exogeneity holds:</p>
 <ul>
-<li>First, we demonstrate that standard estimators for the random intercept model (<a href="#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) are generally inconsistent for <span class="math inline">\(\E[\bbeta_i]\)</span> in the more general model (<a href="#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</li>
-<li>Next, we introduce a mean group estimator robust to heterogeneity and dynamics.</li>
-</ul></li>
-<li><p><strong>Variance <span class="math inline">\(\var(\bbeta_i)\)</span></strong>: we show how one can identify and estimate <span class="math inline">\(\var(\bbeta_i)\)</span> by imposing structure on the temporal dependence in the residuals <span class="math inline">\(u_{it}\)</span>.</p></li>
-<li><p><strong>Identifying the Full Distribution of <span class="math inline">\(\bbeta_i\)</span>:</strong> we show how one can obtain the distribution of <span class="math inline">\(\bbeta_i\)</span> with a deconvolution argument.</p></li>
-</ol>
+<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
+<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> will be biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias will typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanish as <span class="math inline">\(T\to\infty\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparing-estimators" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</h2>
+<section id="conditions-for-consistency" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</h3>
+<p>We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
+<p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Within</th>
+<th>MG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data requirements</strong></td>
+<td><span class="math inline">\(T \geq 2\)</span></td>
+<td><span class="math inline">\(T \geq p\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
+<td><span class="math inline">\(\mathbb{E}[\tilde{X}_i'\tilde{X}_i\eta_i]=0\)</span></td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td><strong>Asymptotic framework</strong></td>
+<td>Fixed-<span class="math inline">\(T\)</span></td>
+<td>Fixed-<span class="math inline">\(T\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>IV</th>
+<th>MG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Data requirements</strong></td>
+<td><span class="math inline">\(T \geq k+2\)</span></td>
+<td><span class="math inline">\(T \geq p+k\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
+<td>No consistency</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td><strong>Asymptotic framework</strong></td>
+<td>No consistency</td>
+<td>Large-<span class="math inline">\((N, T)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="efficiency" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">6.2.2</span> Efficiency</h3>
+<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented<span class="citation" data-cites="Pesaran1996 Pesaran1999 Hsiao1999">(<a href="../references/references.html#ref-Pesaran1996" role="doc-biblioref">H. Pesaran, Smith, and Im 1996</a>; <a href="../references/references.html#ref-Pesaran1999" role="doc-biblioref">M. H. Pesaran, Shin, and Smith 1999</a>; <a href="../references/references.html#ref-Hsiao1999" role="doc-biblioref">Hsiao, Pesaran, and Tahmiscioglu 1999</a>)</span>.</p>
+<p>However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="../references/references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span>.</p>
+</section>
+</section>
+<section id="addressing-rank-deficiency" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</h2>
+<p>Before moving beyond <span class="math inline">\(\E[\bbeta_i]\)</span>, we return to the assumption that <span class="math inline">\(\bX_i'\bX_i\)</span> is non-singular for all units <span class="math inline">\(i\)</span>. This requirement might not hold, in particular if <span class="math inline">\(T\)</span> is only slightly larger than <span class="math inline">\(p\)</span> and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation.</p>
+<p>If such a situation occurs in practice, a common solution is to drop the units with non-invertible <span class="math inline">\(\bX_i'\bX_i\)</span>. The mean group estimator is computed as an average over the remaining units. Formally, the corresponding mean group estimator is defined as <span class="math display">\[
+    \hat{\bbeta}_{MG}^+  = \dfrac{1}{\sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} } \sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} \hat{\bbeta}_i.
+\]</span> Every unit is checked to see if <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span>. If it is, their <span class="math inline">\(\hat{\bbeta}_i\)</span> is computed and added to the average.</p>
+<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bu_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data: <span class="math display">\[
+    \hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)&gt;0}  \right].
+\]</span> This limit may be viewed as an average treatment effect of the treated.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>Next, we show that the within (fixed effects) estimator recovers <span class="math inline">\(\E[\bbeta_i]\)</span> only under restrictive assumptions.</p>
+<p>In the next section, we move beyond <span class="math inline">\(\E[\bbeta_i]\)</span> and discuss identification of the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Beran1996" class="csl-entry" role="listitem">
-Beran, Rudolf, Andrey Feuerverger, and Peter Hall. 1996. <span>“<span class="nocase">On Nonparametric Estimation of Intercept and Slope Distributions in Random Coefficient Regression</span>.”</span> <em>The Annals of Statistics</em> 24 (6): 2569–92. <a href="https://doi.org/10.1214/aos/1032181170">https://doi.org/10.1214/aos/1032181170</a>.
+<div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
+Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023. <span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June, S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
 </div>
-<div id="ref-Bester2016" class="csl-entry" role="listitem">
-Bester, C Alan, and Christian B Hansen. 2016. <span>“<span class="nocase">Grouped Effects Estimators in Fixed Effects Models</span>.”</span> <em>Journal of Econometrics</em> 190 (1): 197–208. <a href="https://doi.org/10.1016/j.jeconom.2012.08.022">https://doi.org/10.1016/j.jeconom.2012.08.022</a>.
+<div id="ref-Breitung2021" class="csl-entry" role="listitem">
+Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope Variations</span>.”</span> <em>Journal of Econometrics</em> 220 (2): 399–415. <a href="https://doi.org/10.1016/j.jeconom.2020.04.007">https://doi.org/10.1016/j.jeconom.2020.04.007</a>.
 </div>
-<div id="ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" class="csl-entry" role="listitem">
-Bonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022. <span>“Discretizing <span>Unobserved Heterogeneity</span>.”</span> <em>Econometrica</em> 90 (2): 625–43. <a href="https://doi.org/10.3982/ECTA15238">https://doi.org/10.3982/ECTA15238</a>.
+<div id="ref-Hsiao1999" class="csl-entry" role="listitem">
+Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
 </div>
-<div id="ref-Bonhomme2015" class="csl-entry" role="listitem">
-Bonhomme, Stéphane, and Elena Manresa. 2015. <span>“<span class="nocase">Grouped Patterns of Heterogeneity in Panel Data</span>.”</span> <em>Econometrica</em> 83 (3): 1147–84. <a href="https://doi.org/10.3982/ecta11319">https://doi.org/10.3982/ecta11319</a>.
+<div id="ref-Pesaran1996" class="csl-entry" role="listitem">
+Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
 </div>
-<div id="ref-Card2001" class="csl-entry" role="listitem">
-Card, David. 2001. <span>“<span class="nocase">Estimating the Return to Schooling: Progress on Some Persistent Econometric Problems</span>.”</span> <em>Econometrica</em> 69 (5): 1127–60. <a href="https://doi.org/10.1111/1468-0262.00237">https://doi.org/10.1111/1468-0262.00237</a>.
+<div id="ref-Pesaran1999" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous Panels</span>.”</span> <em>Journal of the American Statistical Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
 </div>
-<div id="ref-Combes2012b" class="csl-entry" role="listitem">
-Combes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga, and Sébastien Roux. 2012. <span>“<span class="nocase">The Productivity Advantages of Large Cities: Distinguishing Agglomeration From Firm Selection</span>.”</span> <em>Econometrica</em> 80 (6): 2543–94. <a href="https://doi.org/10.3982/ecta8442">https://doi.org/10.3982/ecta8442</a>.
-</div>
-<div id="ref-Hansen2022" class="csl-entry" role="listitem">
-Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
-</div>
-<div id="ref-Heckman1998" class="csl-entry" role="listitem">
-Heckman, James, and Edward Vytlacil. 1998. <span>“<span class="nocase">Instrumental variables methods for the correlated random coefficient model</span>.”</span> <em>Journal of Human Resources</em> 33 (4): 974–87.
-</div>
-<div id="ref-Hoderlein2010" class="csl-entry" role="listitem">
-Hoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. <span>“<span class="nocase">Analyzing the Random Coefficient Model Nonparametrically</span>.”</span> <em>Econometric Theory</em> 26 (03): 804–37. <a href="https://doi.org/10.1017/S0266466609990119">https://doi.org/10.1017/S0266466609990119</a>.
-</div>
-<div id="ref-Mundlak1961EmpiricalProductionFunction" class="csl-entry" role="listitem">
-Mundlak, Yair. 1961. <span>“Empirical <span>Production Function Free</span> of <span>Management Bias</span>.”</span> <em>Journal of Farm Economics</em> 43 (1): 44. <a href="https://doi.org/10.2307/1235460">https://doi.org/10.2307/1235460</a>.
-</div>
-<div id="ref-Sury2011" class="csl-entry" role="listitem">
-Sury, Tavneet. 2011. <span>“<span class="nocase">Selection and Comparative Advantage in Technology Adoption</span>.”</span> <em>Econometrica</em> 79 (1): 159–209. <a href="https://doi.org/10.3982/ecta7749">https://doi.org/10.3982/ecta7749</a>.
-</div>
-<div id="ref-Wooldridge2005" class="csl-entry" role="listitem">
-Wooldridge, Jeffrey M. 2005. <span>“<span class="nocase">Fixed-effects and related estimators for correlated random-coefficient and treatment-effect panel data models</span>.”</span> <em>The Review of Economics and Statistics</em> 87 (May): 385–90.
+<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
+Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
 </div>
 </div>
 </section>
@@ -1329,13 +1355,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="pagination-link" aria-label="Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linear-within-estimator.html" class="pagination-link" aria-label="Within (Fixed Effects) Estimator and Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

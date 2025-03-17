@@ -276,7 +276,7 @@ If condition [-@eq-within-normal-example] holds, the   within estimator is consi
  
  
 
-![The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process ([-@eq-within_normal_dgp]) ](figures/ols_heterogeneity.svg){#fig-within-normal}
+![The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process ([-@eq-within_normal_dgp]) ](../figures/ols_heterogeneity.svg){#fig-within-normal}
 
 
 ---
