@@ -12,8 +12,7 @@ book:
   site-url: https://vladislav-morozov.github.io/econometrics-heterogeneity/
   chapters:
     - index.qmd
-    - intro.qmd 
-    - syllabus.qmd
+    - intro.qmd  
     - part: "Linear Models"
       chapters:
         - linear-introduction.qmd
