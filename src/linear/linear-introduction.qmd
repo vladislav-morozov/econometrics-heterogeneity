@@ -1,0 +1,153 @@
+---
+description: "Explore linear models with heterogeneous coefficients, identification challenges, and econometric estimation techniques in this advanced lecture series."
+open-graph:
+    description: "Explore linear models with heterogeneous coefficients, identification challenges, and econometric estimation techniques in this advanced lecture series." 
+---
+
+
+
+# Intro: Linear Models with Heterogeneous Coefficients
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces linear models with heterogeneous coefficients, associated identification challenges, and the model used in this block of the course.
+  
+By the end of this section, you should
+
+- Recognize cases where heterogeneous coefficients arise.
+- Identify key challenges in estimating heterogeneous coefficients.
+- Discuss two strategies for identification under coefficient heterogeneity.
+:::
+
+## Linearity and Heterogeneity
+
+### Models with Homogeneous Slopes
+
+We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The "standard" linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., @Hansen2022). A common cross-sectional specification is:
+
+$$
+y_i = \bbeta'\bx_i + u_{i},
+$$ {#eq-standard_linear}
+where $i=1, \dots, N$ indexes cross-sectional units. 
+
+In panel data, models often include unit-specific $(i)$ and time-specific $(t)$ intercepts while maintaining a common slope vector $\bbeta$:
+
+$$
+y_{it} = \alpha_i + \delta_t +  \bbeta'\bx_{it} + u_{it}.
+$$ {#eq-panel_linear} 
+
+### Heterogeneity in Slopes. Examples
+
+However, modern economic theory rarely supports the assumption of homogeneous slopes $\bbeta$. Theoretical models recognize that observationally identical individuals, firms, and countries can respond differently to the same stimulus. In a linear model, this requires us to consider more flexible models with heterogeneous coefficients: 
+
+
+1. Cross-sectional model ([-@eq-standard_linear]) generalizes to 
+
+   $$
+y_i = \bbeta_{i}'\bx + u_i.
+   $$ {#eq-cross_sectional_hetero}
+
+1. Panel data model ([-@eq-panel_linear]) generalizes to 
+
+   $$
+y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
+   $$ {#eq-panel_hetero}
+ 
+Such models are worth studying, as they naturally arise in a variety of contexts:
+
+
+- **Structural models with parametric restrictions:** Certain parametric restrictions yield linear relationships in coefficients.  An example is given by firm-level Cobb-Douglas production functions where firm-specific productivity differences induce heterogeneous coefficients (@Combes2012b; @Sury2011).
+
+- **Binary covariates and interaction terms**: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (see, e.g., @Wooldridge2005).   
+
+- **Log-linearized models:** Nonlinear models may be approximated by linear models around a steady-state. For example,  @Heckman1998 demonstrate how the nonlinear @Card2001 education model simplifies to a heterogeneous linear specification after linearization.
+
+## What Do We Care About? Identification
+
+### Parameters of Interest
+
+The parameters of interest in models ([-@eq-standard_linear]) and ([-@eq-panel_linear]) are straightforward. The common slope $\bbeta$ simultaneously plays the role of both the average treatment effect and all the individual treatment effects. Estimating $\bbeta$ is enough for policy analysis.
+
+The situation is more complicated for the more general models ([-@eq-cross_sectional_hetero]) and ([-@eq-panel_hetero]). Consider model ([-@eq-cross_sectional_hetero]). Parameters of interest now include:
+
+- Individual effects: the coefficient vector $\bbeta_i$ for specific units.
+- Moments of the distribution: the average coefficient vector ($\E[\bbeta_i]$), variance $\var(\bbeta_i)$, and higher-order moments.
+- Distributional properties: The full distribution of $\bbeta_i$ or its quantiles, or just the tail behavior of the distribution.
+
+Similar objects are relevant for the panel model in
+@eq-panel_hetero.
+
+### Regarding Identification
+
+Unfortunately, greater flexibility in terms of parameters also leads to greater challenges in terms of identification. Models ([-@eq-cross_sectional_hetero]) and
+([-@eq-panel_hetero]) are too general to permit identification of any of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:
+
+1. Limited observations per coefficient vector. Since each unit $i$ (or pair $(i,t)$) provides only indirect information through $\bbeta_i'\bx_i$ (or $\bbeta_{it}'\bx_{it}$), there is effectively less than one observation per $\bbeta_i$.
+2. Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between $\bbeta_i$ and $\bx_i$, identification is difficult.
+ 
+Identification is typically achieved by mitigating one of these challenges. Common strategies to address these challenges include:
+
+- Increasing the effective number of observations per coefficient vector by restricting coefficient variation. 
+  - In panel settings, assuming time-invariant coefficients simplifies
+    @eq-panel_hetero to:
+    
+    $$
+y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+    $$ {#eq-time_invariant}
+    
+  - Alternative approaches assume a finite number of latent groups, each with its own coefficient vector, yielding the grouped structure:
+    
+    $$
+y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
+    $$ {#eq-grouped_model}
+    
+    This model in @Bonhomme2015, @Bester2016, and @Bonhomme2022DiscretizingUnobservedHeterogeneity.
+
+- Restricting dependence between $\bbeta_i$ and $\bx_i$. For example, there is a strand of literature that assumes that $\bbeta_i$ and $\bx_i$ are independent [@Beran1996; @Hoderlein2010].
+ 
+## Model of This Block
+
+This block primarily focuses on the first strategy. Specifically, we will consider a version of model ([-@eq-panel_hetero]) with *time-invariant* heterogeneous coefficients:
+
+$$
+y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+$$ {#eq-lecture_model}
+
+We do not impose restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$. In general, it is important to allow for such dependence outside of experimental data —  economic agents can select their covariates $\bx_{it}$ based on knowledge of their own $\bbeta_i$. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.
+
+We will also generally focus on the case where the number $N$ of units is large, while the number $T$ of observations per unit is fixed and not necessarily large.
+
+::: {.callout-note appearance="simple" icon=false}
+
+In the panel data literature, approaches that do not restrict the dependence between the unobserved and the observed components are called "fixed effects". 
+::: 
+
+ 
+
+Note that model ([-@eq-lecture_model]) includes a particular special case — the random intercept model (confusingly also called the "fixed effects model"). The random intercept model imposes homogeneity on all parameters except the intercept term. In the one-way case, the model takes the form: 
+
+$$
+y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
+$$ {#eq-random_intercept}
+Model ([-@eq-random_intercept]) is one of the oldest ways of including unobserved heterogeneity in linear models and goes back at least to @Mundlak1961EmpiricalProductionFunction.
+ 
+## Plan for This Block
+
+In this block, we will focus on model ([-@eq-lecture_model]) and consider identification of the above parameters of interest. Specifically, 
+
+1. **Average coefficient vector $\E[\bbeta_i]$**:
+   - First, we demonstrate that standard estimators for the random intercept model ([-@eq-random_intercept]) are generally inconsistent for $\E[\bbeta_i]$ in the more general model ([-@eq-lecture_model]). 
+   - Next, we introduce a mean group estimator robust to heterogeneity and dynamics.
+  
+2. **Variance $\var(\bbeta_i)$**: we show how one can identify and estimate $\var(\bbeta_i)$ by imposing structure on the temporal dependence in the residuals $u_{it}$.
+
+3. **Identifying the Full Distribution of $\bbeta_i$:** we show how one can obtain the distribution of $\bbeta_i$ with a deconvolution argument.
+ 
+
+---
+
+#### Next Section {.unnumbered}
+
+Next, we show that the within (fixed effects) estimator recovers $\E[\bbeta_i]$ only under restrictive assumptions.

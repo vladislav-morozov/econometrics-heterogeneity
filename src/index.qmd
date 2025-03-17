@@ -1,18 +1,14 @@
-# Syllabus
+---
+description: "Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression"
+open-graph:
+    description: "Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression" 
+---
 
-## Course Information
-
-
+# Course Information {.unnumbered}
  
-**Instructor:** Vladislav Morozov\
-**Email:** [morozov [at] uni-bonn.de](mailto:morozov@uni-bonn.de)\
- 
-**Level:** Second-year Master’s and PhD students\
-**Prerequisites:** first-year graduate sequence, including microeconometrics
-
-## Course Content
 
 ### Short Description
+
 
 Unobserved heterogeneity is pervasive in economics, driven by heterogeneous parameters and treatment effects, unobserved characteristics of agents, missing variables, etc. This class introduces methods for estimating parameters of interest in settings with such unobserved heterogeneity.
 
@@ -20,15 +16,39 @@ The course is structured into three main parts:
 
 1. Linear models with heterogeneous coefficients
 2. Nonparametric models with unobserved heterogeneity
-3. Quantile and distributional treatment effects. Quantile and distributional regression methods.
+3. Quantile and distributional treatment effects and quantile and distributional regression methods.
 
 This class focuses on observational cross-sectional and panel data settings.
 
+**Instructor:** Vladislav Morozov\ 
+
+**Level:** Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students\ 
 
 
-### Syllabus
+## Course Materials
 
-*Subject to modification based on progress and interest*
+**Textbook:** None. This course is based on lecture notes and background articles, which are listed in the references.
+
+**Recommended Readings:** Please see the bibliography for a detailed reading list. 
+
+ 
+
+## About These Notes
+
+These lectures notes are based on a topics course I delivered at the University of Bonn. 
+They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!
+
+Current version (March 20, 2025): Includes material on average effects in linear models with heterogeneous coefficients.
+
+## Learning Outcomes
+
+By the end of this course, students will be able to:
+
+- Identify and explain different sources of unobserved heterogeneity in economic data.
+- Apply econometric methods, such as heterogeneous coefficient models and quantile regression, to account for unobserved heterogeneity.
+- Evaluate the trade-offs and assumptions underlying different modeling approaches in empirical research.
+
+## Syllabus
 
 **Block 0:** Introduction to Unobserved Heterogeneity
 
@@ -79,14 +99,3 @@ This class focuses on observational cross-sectional and panel data settings.
 - **What can quantile regressions tell us about nonseparable models?**  
 
 
-**Block 4** Student Presentations  
----
- 
-
-## Course Materials
-
-**Textbook:** None. The course is  based on lecture notes and background articles.
-
-**Recommended Readings:** Please see the bibliography for a detailed reading list. 
-
- 

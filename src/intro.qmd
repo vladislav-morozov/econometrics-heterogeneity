@@ -1,0 +1,156 @@
+---  
+description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it."
+open-graph:
+    description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it." 
+---
+
+
+# Introduction
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course. 
+  
+By the end of this section, you should
+
+- Recognize cases where heterogeneous coefficients arise.
+- Identify key challenges in estimating heterogeneous coefficients.
+- Discuss two strategies for identification under coefficient heterogeneity.
+:::
+
+ 
+## Unobserved Heterogeneity
+
+In economics, business, and other social sciences, no two individuals, firms, or countries are truly identical. Even when we observe the same covariates, hidden differences — such as preferences, productivity, or measurement errors — can lead to vastly different outcomes. These unobserved factors complicate empirical analysis and pose a fundamental challenge to statistical inference: how can we estimate policy-relevant parameters when key determinants of behavior remain hidden? This challenge, known as unobserved heterogeneity, is central to empirical research and the focus of this course.
+
+### Types of Unobserved Heterogeneity
+
+By unobserved heterogeneity, we will understand differences across individuals, firms, or other economic units that are not captured in the available data but still influence outcomes. These differences can arise from various sources, including:
+
+- Omitted explanatory variables and "fundamental" characteristics of agents. 
+  - *Example*: Consumer demand depends on both income and prices, but if price data is missing, it becomes an unobserved factor influencing demand. 
+  - *Example*: Differences in consumer preferences shape demand, yet preferences are typically unobservable.
+
+- Differences in responses to treatments: treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
+  - *Example*: A job training program may benefit some individuals more than others, meaning treatment effects vary across people.
+- Measurement error:
+  - *Example*: Standardized test scores are often used to proxy intelligence, but they are imperfect measurements of the true intelligence.
+  
+
+
+### Consequences of Ignoring Unobserved Heterogeneity 
+
+Unobserved heterogeneity is particularly problematic in observational data, where individuals or firms can self-select into treatments or economic decisions. The agents make this decisions based on all the information available to them, but not all important variables get recorded in datasets. As a consequence, there exist hidden factors that confound the relationship between the explanatory variables and the outcomes. In contrast, in randomized experiments, treatments are assigned independently of the characteristics of agents (possibly conditionally). The following graphs schematically illustrate the point:
+
+::: {layout-ncol=2}
+```{dot}
+//| fig-width: 50%
+//| fig-cap: "Experimental data: no confounding."
+digraph CausalGraph {
+   bgcolor="#181818";
+
+    node [
+      fontcolor = "#e6e6e6",
+      style = filled,
+      color = "#e6e6e6",
+      fillcolor = "#333333"
+    ]
+
+    edge [
+      color = "#e6e6e6",
+      fontcolor = "#e6e6e6"
+    ]
+    A [label="Unobserved", style = "dashed"];
+    B [label="Observed"];
+    C [label="Covariates"];
+ 
+    B -> C; // B causes C
+    A -> C; // A directly causes C
+}
+
+```
+
+```{dot}
+//| fig-width: 50%
+//| fig-cap: "Observational data: confounding"
+digraph CausalGraph {
+	
+   bgcolor="#181818";
+
+    node [
+      fontcolor = "#e6e6e6",
+      style = filled,
+      color = "#e6e6e6",
+      fillcolor = "#333333"
+    ]
+
+    edge [
+      color = "#e6e6e6",
+      fontcolor = "#e6e6e6"
+    ]
+
+    A [label="Unobserved", style = "dashed"];
+    B [label="Observed"];
+    C [label="Covariates"];
+
+    A -> B [dir=none]; // A causes B
+    B -> C; // B causes C
+    A -> C; // A directly causes C
+}
+
+
+```
+:::
+ 
+As a consequence, ignoring unobserved heterogeneity can lead to misleading statistical conclusions. Confounding manifests even in simple linear regression, with some examples including:
+
+- [Omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias): if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.
+- [Attenuation bias](https://en.wikipedia.org/wiki/Regression_dilution): When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.
+
+The issue becomes even more challenging in nonlinear models, where often even the direction of the bias cannot be predicted [e.g. @Stefanski1985]. 
+
+## This Course
+
+### Course Description
+
+As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses. This course surveys some of the most important advances, structured into three key topics: 
+
+1.  Linear models with heterogeneous coefficients: extending traditional regression models to allow for individual-specific responses to treatment.
+2.  Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.
+3.  Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution *of* treatment effects.
+
+Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will emphasize identification strategies over asymptotic theory.
+
+### Common Themes
+
+Despite their differences, all models we study in this course share a common structure: they describe how an outcome $y$ depends on observed factors ($x$) and unobserved heterogeneity ($u, \alpha$). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models:
+$$
+	y_i(x) = \phi(x, \alpha_i),  \quad y_{it}(x) = \phi(x, \alpha_i, u_{it}),
+$$ {#eq-intro-potential-outcomes}
+where $x$ is some potential value of the observed covariates, $\alpha_i$ and $u_{it}$ are the time-invariant and time-varying unobserved characteristics of unit $i$, respectively; and $y_i(x)$ and $y_{it}(x$ are  the (scalar) outcome for individual $i$ given $x$ (in time $t$). In practice, we will have access to datasets of the form $\curl{(y_i, x_i)}_{i=1, \dots, N}$ or $\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}$. The observed outcomes are generated as 
+$$
+	y_i = \phi(x_i, \alpha_i),  \quad y_{it} = \phi(x_{it}, \alpha_i, u_{it}),
+$$
+
+
+Throughout, our goal will be  to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.
+
+
+
+A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model ([-@eq-intro-potential-outcomes]) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:
+
+- Imposing functional form restrictions on $g$ (e.g. parametric assumptions such as linearity, or assuming  that $\alpha_i$ is scalar and that it  affects $g$ monotonically);
+- Restricting the extent of unobserved  heterogeneity in the model (e.g. assuming that there is scalar unobserved variables or  a vector of heterogeneous coefficients);
+- Restricting the relationship between the observed and unobserved variables (e.g. assuming that $\alpha_i$  is independent from $x_i$);
+-  Focusing on particular parts of the distribution of the outcome (such as quantiles).
+  
+We will see examples  of each approach throughout the course, and one should see each particular model discussed as a specific variation of model  ([-@eq-intro-potential-outcomes]).
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we begin by examining how unobserved heterogeneity arises naturally in linear models and setting the stage for the first block of the course. 
