@@ -9,8 +9,11 @@ book:
   author: "Vladislav Morozov"
   date: 03/03/2025
   date-format: "YYYY"
-  favicon: favicon.ico
+  favicon: themes/favicon.ico
   site-url: https://vladislav-morozov.github.io/econometrics-heterogeneity/
+  repo-url: https://github.com/vladislav-morozov/econometrics-heterogeneity/
+  repo-actions: [edit, issue]
+  repo-subdir: "src" 
   chapters:
     - index.qmd
     - intro.qmd  
