@@ -4,6 +4,8 @@ open-graph:
     description: "Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression" 
 ---
 
+<img src="https://vladislav-morozov.github.io/assets/img/teaching/ecm_htg.png" alt="Econometrics with Unobserved Heterogeneity" style="width: 100%;  border-radius: 15px; margin-bottom: 6px;">
+
 # Course Information {.unnumbered}
  
 
