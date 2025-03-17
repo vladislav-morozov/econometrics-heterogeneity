@@ -1,6 +1,6 @@
 ---
 name: Lecture or section edit
-about: Anything related to individual sections
+about: Adding new sections or changing existing section content
 title: "[LECTURE] "
 labels: lecture
 assignees: ''

@@ -1,4 +1,4 @@
-# Lecture: [Title of Lecture]
+# Lecture/Block/...: [TITLE]
 
 ## Description
 Briefly describe what this PR introduces or changes (e.g., "Adds lecture content for [title]" or "Fixes typos in [title]").
