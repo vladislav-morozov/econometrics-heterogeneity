@@ -7,13 +7,13 @@ html-math-method: mathjax
 book:
   title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
-  date: "2025"
+  date: 03/03/2025
+  date-format: "YYYY"
   favicon: favicon.ico
   site-url: https://vladislav-morozov.github.io/econometrics-heterogeneity/
   chapters:
     - index.qmd
-    - intro.qmd 
-    - syllabus.qmd
+    - intro.qmd  
     - part: "Linear Models"
       chapters:
         - linear-introduction.qmd
