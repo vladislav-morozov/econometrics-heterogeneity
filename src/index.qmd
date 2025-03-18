@@ -6,7 +6,7 @@ open-graph:
 
 <img src="https://vladislav-morozov.github.io/assets/img/teaching/ecm_htg.png" alt="Econometrics with Unobserved Heterogeneity" style="width: 100%;  border-radius: 15px; margin-bottom: 6px;">
 
-# Course Information {.unnumbered}
+## Course Information {.unnumbered}
  
 
 ### Short Description
@@ -27,7 +27,7 @@ This class focuses on observational cross-sectional and panel data settings.
 **Level:** Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students\ 
 
 
-## Course Materials
+### Course Materials
 
 **Textbook:** None. This course is based on lecture notes and background articles, which are listed in the references.
 
@@ -35,14 +35,14 @@ This class focuses on observational cross-sectional and panel data settings.
 
  
 
-## About These Notes
+### About These Notes
 
 These lectures notes are based on a topics course I delivered at the University of Bonn. 
 They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!
 
 Current version (March 20, 2025): Includes material on average effects in linear models with heterogeneous coefficients.
 
-## Learning Outcomes
+### Learning Outcomes
 
 By the end of this course, students will be able to:
 
@@ -50,7 +50,7 @@ By the end of this course, students will be able to:
 - Apply econometric methods, such as heterogeneous coefficient models and quantile regression, to account for unobserved heterogeneity.
 - Evaluate the trade-offs and assumptions underlying different modeling approaches in empirical research.
 
-## Syllabus
+### Syllabus
 
 **Block 0:** Introduction to Unobserved Heterogeneity
 
@@ -99,5 +99,3 @@ By the end of this course, students will be able to:
     - Rearrangement for distribution regression  
 - **Estimation of QTEs and DTEs**  
 - **What can quantile regressions tell us about nonseparable models?**  
-
-
