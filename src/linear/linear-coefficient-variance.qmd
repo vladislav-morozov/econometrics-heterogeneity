@@ -1,0 +1,21 @@
+--- 
+description: " "
+
+open-graph:
+    description: " "
+---
+
+# Variance of Heterogeneous Coefficients {#sec-linear-variance}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section 
+
+By the end of this section, you should be able to:
+
+- Goal 1
+:::
+
+
