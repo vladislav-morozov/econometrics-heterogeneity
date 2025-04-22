@@ -19,3 +19,37 @@ By the end of this section, you should be able to:
 :::
 
 
+## Beyond Average Coefficients
+
+So far we have extensively discussed the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-random_intercept]):
+$$
+y_{it} = \bx_{it}'\bbeta_i + u_{it}
+$$
+@sec-linear-mean-group has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even if we impose no restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
+
+
+However, average effects only offer a partial summary of the effects of $\bx_{it}$ (@Heckman1997). There are further parameters of interest, such as: 
+
+- The moments of $\bbeta$:
+  - The variance shows how much dispersion is there in the impact of covariates.
+  - The skewness is informative about possible asymmetries in the effects.
+  - Higher-order moments.
+- The full distribution and quantiles of $\bbeta_i$. For example, the distribution may be used to compute  what proportion people benefit vs. how many people are hurt by $x_{it}$  with the knowledge of the distribution.
+	
+
+As it turns out, it is possible to identify such distributional features in a fixed effects framework in the static version of model [@Arellano2012]. In this section we discuss a streamlined version of their results for variance, while   @sec-linear-distribution shows how to identify the maximal object of interest — the full distribution.
+
+## Identification 
+
+### Model and Parameter of Interest
+
+### Variance Decomposition
+
+### Reducing the Number of Unknowns
+
+
+### Variance of Residuals
+
+### Variance of Coefficients
+
+## Estimation
