@@ -21,14 +21,16 @@ By the end of this section, you should be able to:
 
 ## Beyond Average Coefficients
 
-So far we have extensively discussed the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-random_intercept]):
+### Potential Objects of Interest
+
+By now we have extensively discussed the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-random_intercept]):
 $$
 y_{it} = \bx_{it}'\bbeta_i + u_{it}
-$$
-@sec-linear-mean-group has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even if we impose no restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
+$$ {#eq-linear-variance-model}
+In particular, @sec-linear-mean-group has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even if we impose no restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
 
 
-However, average effects only offer a partial summary of the effects of $\bx_{it}$ (@Heckman1997). There are further parameters of interest, such as: 
+However, such average effects only offer a partial summary of the effects of $\bx_{it}$ (@Heckman1997). There are further parameters of interest, such as: 
 
 - The moments of $\bbeta$:
   - The variance shows how much dispersion is there in the impact of covariates.
@@ -36,20 +38,145 @@ However, average effects only offer a partial summary of the effects of $\bx_{it
   - Higher-order moments.
 - The full distribution and quantiles of $\bbeta_i$. For example, the distribution may be used to compute  what proportion people benefit vs. how many people are hurt by $x_{it}$  with the knowledge of the distribution.
 	
+### Model
 
-As it turns out, it is possible to identify such distributional features in a fixed effects framework in the static version of model [@Arellano2012]. In this section we discuss a streamlined version of their results for variance, while   @sec-linear-distribution shows how to identify the maximal object of interest — the full distribution.
+As it turns out, it is possible to identify such distributional features   in the static version of model ([-@eq-linear-variance-model]) without restricting the dependence structure between $\bbeta_i$ and $\bx_{it}$ [@Arellano2012]. In this section we discuss a streamlined version of their results for variance, while   @sec-linear-distribution shows how to identify the maximal object of interest — the full distribution.
+ 
+Specifically, we consider model  ([-@eq-linear-variance-model]) under a strict exogeneity condition of the form:
+$$
+\E[u_{it}||\bbeta_i, \bX_i] =0
+$$ {#eq-vector-variance-strict-ex}
+The number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We will treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
+
+As before, the model can be written in unit matrix form as 
+$$
+\by_i = \bX_i\bbeta_i + \bu_i.
+$$
+We will again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results will be about the subpopulation of people with positive determinant, as in @sec-linear-mean-group.
+
+
 
 ## Identification 
 
-### Model and Parameter of Interest
+
+Our object of interest in this section is the  variance-covariance matrix of the coefficients $\bbeta_i$. Its diagonal terms are the variances of individual coefficients,  which show how dispersed the effects are overall. The off-diagonal terms are the covariances between coefficients. These covariances further show whether the effects of different covariates tend to go in the same or contrary directions in magnitude. 
+
+
+Formally,  the variance-covariance matrix $\var(\bbeta_i)$ of the vector $\bbeta_i$ is given by
+$$
+	\var(\bbeta_i) = \E[\bbeta_i\bbeta_i'] - \E[\bbeta_i]\E[\bbeta_i]'.
+$$
+We have already identified the second term as the estimand of the mean group estimator. Hence, we  only need to learn  $\E[\bbeta_i\bbeta_i']$  to obtain the variance.
+
 
 ### Variance Decomposition
+
+
+We will look for the information on the second moments of $\bbeta_i$ in  the second moments of $\by_i$. Specifically, we will consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$. 
+
+Using model ([-@eq-linear-variance-model]), the conditional second moment of $\by_i$ can be represented as
+$$
+\begin{aligned}
+	&\E[\by_i\by_i'|\bX_i=\bX]\\
+    & = \E\left[ (\bX_i\bbeta_i+ \bu_i)(\bX_i\bbeta_i+\bu_i)'|\bX_i=\bX \right]\\
+	& =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bu_i\bu_i'|\bX_i=\bX \right]. 
+\end{aligned} 
+$$ {#eq-linear-variance-second-moment-y}
+
+The above expression decomposes the conditional second moment of $\by_i$ into two components --- one corresponding to $\bbeta_i$ and the other one to $\bu_i$.
+
+In general, we cannot separate the two components of the second moment of $\by$. To see why, we view @eq-linear-variance-second-moment-y as a system of linear equations. The unknowns are the symmetric matrices 
+
+- $\E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]$ — a total of $p(p+1)/2$ unknowns.
+-  $\E\left[\bu_i\bu_i'|\bX_i=\bX \right]$ — a total of $T(T+1)/2$ unknowns. 
+ 
+The system is underdetermined, as there is a total $T(T+1)/2$ different equations.
+
+The issue stems from the fact that $\E[\bu_i\bu_i'|\bX_i=\bX]$ has too many free elements. Without further restrictions, the model allows any dynamic structure inside each individual time series.
 
 ### Reducing the Number of Unknowns
 
 
+This indeterminacy can be resolved the imposing some assumptions on the time series process for $u_{it}$. The magnitudes of $T$ and $p$ determine how many restrictions are necessary.  After taking out the  $p(p+1)/2$ parameters of $\E[\bbeta_i\bbeta_i'|\bX_i=\bx]$, we have  at most $\left[T(T+1)-p(p+1) \right]/2$     equations left. This number is the number of possible free parameters in  $\E[\bu_i\bu_i'|\bX_i=\bX]$. In the most unfavorable case $T=p+1$, and we can allow only $T+1$ possible parameters in $\E[\bu_i\bu_i'|\bX_i=\bX]$.
+
+
+
+Various assumptions are possible, and @Arellano2012 explore moving average and autoregressive structures for $u_{it}$. Here, we will consider the simplest  case in which $u_{it}$ is conditionally homoskedastic across time (but not across $\bX$) and uncorrelated across $t$: 
+$$
+\begin{aligned} 
+	\E[u_{it}^2|\bX_i=\bX] & = \sigma^2(\bX), \\
+	\E[u_{it}u_{is}|\bX_i=\bX] & = 0, \quad t\neq s.
+\end{aligned}
+$$ {#eq-linear-variance-spherical}
+Under assumption ([-@eq-linear-variance-spherical]) it holds that
+$$
+\E\left[\bu_i\bu_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
+$$
+There is only one unknown parameter in $\E[\bu_i\bu_i'|\bX_i=\bX]$!
+
 ### Variance of Residuals
 
+This unknown $\sigma^2(\bX)$ can now be identified used a standard argument.  Let the annihilator matrix associated with $\bX$ be given by
+$$
+	\bM(\bX) = \I_T-\bX(\bX'\bX)^{-1}\bX'.
+$$
+Recall three key properties that $\bM(\cdot)$ possesses 
+$$
+\begin{aligned}
+	 \bM(\bX)\bX & =0, \\
+      \bM(\bX)\bM(\bX) & =\bM(\bX),  \\
+	   \bM(\bX)' & =\bM(\bX).
+\end{aligned} 
+$$
+Now consider the following second moment of $\bM(\bX)\by_i$ conditional on $\bX_i=\bX$:
+$$
+\begin{aligned}
+	& \E[\by_i'\bM(\bX)'\bM(\bX)\by_i|\bX_i=\bX]\\
+    &  = \E[\bu_i'\bM(\bX)\bu_i|\bX_i=\bX] \\
+    & = \E\left[ \mathrm{tr}(\bu_i'\bM(\bX)\bu_i)|\bX_i=\bX\right] \\
+	& = \sigma^2(\bX)(T-p).
+\end{aligned}
+$$
+The details of the trace argument are standard and can be found in section 4.11 of 
+@Hansen2022.
+
+We conclude that $\sigma^2(\bX)$ is identified as 
+$$
+	\sigma^2(\bX) = \dfrac{1}{T-p} \E[\by_i'\bM(\bX)\by_i|\bX_i=\bX].
+$$
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+Note that is is also possible to solve for variance parameters from @eq-linear-variance-second-moment-y!  This approach should be taken when dealing with more general covariance structures of the residuals.
+
+::: 
+
+
 ### Variance of Coefficients
+
+
+We now turn to obtaining  $\E[\bbeta_i\bbeta_i']$. In principle, we can solve for it by suitably vectorizing the   system in @eq-linear-variance-second-moment-y. However, it will be more convenient to    go back to the individual estimators ([-@eq-linear-mg-individual-estimator].  For brevity, let $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'$, so that  
+$$
+\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
+$$
+As $\E[\bbeta_i\bu_i']=0$ by condition ([-@eq-vector-variance-strict-ex]),  the variance of the individual estimator can be decomposed as 
+$$
+\begin{aligned}
+	& \var(\hat{\bbeta}) = \var\left(\bbeta_i + \bH_i\bu_i \right)\\
+	& = \var(\bbeta_i) + \var(\bH_i)\\
+	%
+	&
+	= \var(\bbeta_i) + \E\left[\bH_i\bu_i\bu_i'\bH_i' \right]\\
+	& =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bu_i\bu_i'\bH_i'|\bX_i \right]\right]\\
+	& =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bu_i\bu_i'|\bX_i \right]\bH_i'\right]\\
+	& = \var(\bbeta_i) + \E\left[\sigma(\bX_i)\bH_i\bH_i'\right].
+\end{aligned} 
+$$
+
+Observe that the variance $\var(\hat{\bbeta})$ of individual estimators (not $\bbeta_i$!) is identified as 
+$$
+	\var(\hat{\bbeta}) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\\by_i  \right).
+$$
 
 ## Estimation
