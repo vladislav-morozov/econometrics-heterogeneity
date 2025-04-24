@@ -52,7 +52,7 @@ $$
         & = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
         &  = \varphi_{\bbeta}(\bX'\bs)
 \end{aligned}
-$$
+$$ {#eq-linear-chf-product}
 
 Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones. 
 
