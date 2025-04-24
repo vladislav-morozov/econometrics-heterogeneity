@@ -1,0 +1,26 @@
+--- 
+description: "Learn (Lecture Notes)"
+
+open-graph:
+    description: "Learn (Lecture Notes)"
+---
+
+# Interlude: Characteristic Functions and Deconvolution {#sec-linear-chf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to:
+
+- Goal 1
+:::
+
+
+This section can be freely skipped if you are familiar with this materials
+
+## Characteristic Functions
+
+## Nonparametric Deconvolution
