@@ -120,7 +120,7 @@ There is only one unknown parameter in $\E[\bu_i\bu_i'|\bX_i=\bX]$!
 We can identify the unknown $\sigma^2(\bX)$ using a standard argument.  Let the annihilator matrix associated with $\bX$ be given by
 $$
 	\bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
-$$
+$$ {#eq-linear-variance-annihilator}
 Recall three key properties that $\bM(\cdot)$ possesses 
 $$
 \begin{aligned}
