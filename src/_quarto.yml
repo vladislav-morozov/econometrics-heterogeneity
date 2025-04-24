@@ -27,6 +27,7 @@ book:
         - linear/linear-coefficient-variance.qmd
         - linear/linear-chf.qmd
         - linear/linear-distribution.qmd
+        - linear/linear-conclusion.qmd
     - part: "Nonparametrics and Heterogeneity"
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
