@@ -396,7 +396,17 @@ div.csl-indent {
 
 
 
+        independent: "\\mathrel{\\perp\\!\\!\\perp}",
+
+
+
         var: "\\mathrm{var}",
+
+        diag: "\\mathrm{diag}",
+
+        rank: "\\mathrm{rank}",
+
+        vecc: "\\mathrm{vec}",
 
       }
 
@@ -542,6 +552,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -630,7 +652,7 @@ Summary and Learning Outcomes
 <h2 data-number="7.1" class="anchored" data-anchor-id="beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</h2>
 <section id="potential-objects-of-interest" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</h3>
-<p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
+<p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
 y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 \tag{7.1}\]</span></span> In particular, <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
 <p>Average effects are informative but limited. They do not capture the full variation in responses across individuals (<span class="citation" data-cites="Heckman1997">Heckman, Smith, and Clements (<a href="../references/references.html#ref-Heckman1997" role="doc-biblioref">1997</a>)</span>). Other parameters of interest include:</p>
@@ -646,7 +668,7 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 </section>
 <section id="model" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="model"><span class="header-section-number">7.1.2</span> Model</h3>
-<p>As it turns out, it is possible to identify such distributional features in the static version of model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) without restricting the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> <span class="citation" data-cites="Arellano2012">(<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">Arellano and Bonhomme 2012</a>)</span>. In this section we discuss a streamlined version of their results for variance, while <span class="quarto-unresolved-ref">?sec-linear-distribution</span> shows how to identify the maximal object of interest — the full distribution.</p>
+<p>As it turns out, it is possible to identify such distributional features in the static version of model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) without restricting the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> <span class="citation" data-cites="Arellano2012">(<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">Arellano and Bonhomme 2012</a>)</span>. In this section we discuss a streamlined version of their results for variance, while <a href="linear-distribution.html" class="quarto-xref"><span>Chapter 9</span></a> shows how to identify the maximal object of interest — the full distribution.</p>
 <p>Specifically, we consider model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) under a strict exogeneity condition of the form: <span id="eq-vector-variance-strict-ex"><span class="math display">\[
 \E[u_{it}|\bbeta_i, \bX_i] =0
 \tag{7.2}\]</span></span> The number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We will treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
@@ -694,9 +716,9 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 </section>
 <section id="variance-of-residuals" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</h3>
-<p>We can identify the unknown <span class="math inline">\(\sigma^2(\bX)\)</span> using a standard argument. Let the annihilator matrix associated with <span class="math inline">\(\bX\)</span> be given by <span class="math display">\[
+<p>We can identify the unknown <span class="math inline">\(\sigma^2(\bX)\)</span> using a standard argument. Let the annihilator matrix associated with <span class="math inline">\(\bX\)</span> be given by <span id="eq-linear-variance-annihilator"><span class="math display">\[
     \bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
-\]</span> Recall three key properties that <span class="math inline">\(\bM(\cdot)\)</span> possesses <span class="math display">\[
+\tag{7.5}\]</span></span> Recall three key properties that <span class="math inline">\(\bM(\cdot)\)</span> possesses <span class="math display">\[
 \begin{aligned}
      \bM(\bX)\bX &amp; =0, \\
       \bM(\bX)\bM(\bX) &amp; =\bM(\bX),  \\
@@ -750,16 +772,16 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
      &amp; =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right)\\
      &amp; \quad  -  \dfrac{1}{T-p}\E\left[ \E[\by_i'\bM(\bX_i)\by_i|\bX_i]\bH_i\bH_i'\right].
 \end{aligned}
-\tag{7.5}\]</span></span> Note that the right-hand side is a function of the distribution of <span class="math inline">\((\by_i, \bX_i)\)</span> — hence identification holds.</p>
+\tag{7.6}\]</span></span> Note that the right-hand side is a function of the distribution of <span class="math inline">\((\by_i, \bX_i)\)</span> — hence identification holds.</p>
 </section>
 </section>
 <section id="estimation" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">7.3</span> Estimation</h2>
-<p>To construct an estimator for <span class="math inline">\(\var(\bbeta_i)\)</span> based on <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.5</span></a>, we replace the population expectations with their sample counterparts. Specifically, <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> is estimated using the sample variance of the individual estimators: <span class="math display">\[
+<p>To construct an estimator for <span class="math inline">\(\var(\bbeta_i)\)</span> based on <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a>, we replace the population expectations with their sample counterparts. Specifically, <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> is estimated using the sample variance of the individual estimators: <span class="math display">\[
 \begin{aligned}
     \widehat{\var(\hat{\bbeta}_i) } = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'.
 \end{aligned}
-\]</span> Likewise, we replace the expectation in the second term of <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.5</span></a> with a sample average.</p>
+\]</span> Likewise, we replace the expectation in the second term of <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a> with a sample average.</p>
 <p>This process yields an estimator for the variance of <span class="math inline">\(\bbeta\)</span>: <span class="math display">\[
 \begin{aligned}
     \widehat{\var(\bbeta_i) } &amp; = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'\\

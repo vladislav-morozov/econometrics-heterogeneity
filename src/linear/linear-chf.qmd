@@ -19,7 +19,7 @@ By the end of this section, you should be able to:
 - Carry out a basic nonparametric deconvolution argument for identifying distributions.  
 :::
 
-To discuss the identification of the full distribution of the coefficients $\bbeta_i$ in model ([-@eq-random_intercept]), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.
+To discuss the identification of the full distribution of the coefficients $\bbeta_i$ in model ([-@eq-lecture_model]), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.
 
 
 
@@ -52,7 +52,7 @@ $$
         & = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
         &  = \varphi_{\bbeta}(\bX'\bs)
 \end{aligned}
-$$
+$$ {#eq-linear-chf-product}
 
 Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones. 
 
@@ -89,4 +89,4 @@ It is possible to relax the assumption that the distribution of $\bU$ is known b
 
 #### Next Section {.unnumbered}
 
-In the next section, we will discuss identification of the distribution of the coefficients $\bbeta_i$ in  model ([-@eq-random_intercept]) using the tools of this section.
+In the next section, we will discuss identification of the distribution of the coefficients $\bbeta_i$ in  model ([-@eq-lecture_model]) using the tools of this section.

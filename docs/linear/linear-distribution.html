@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes.">
+<meta name="description" content="Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)">
 
-<title>4&nbsp; Interlude: Standard Dynamic Panel Estimators – Econometrics with Unobserved Heterogeneity</title>
+<title>9&nbsp; Distribution of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-dynamic-panel-heterogeneity.html" rel="next">
-<link href="../linear/linear-within-estimator.html" rel="prev">
+<link href="../linear/linear-conclusion.html" rel="next">
+<link href="../linear/linear-chf.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -446,8 +446,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="4&nbsp; Interlude: Standard Dynamic Panel Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn about instrumental variable estimators for linear dynamic panels: Anderson-Hsiao, Arellano-Bond, and others. Lecture notes.">
+<meta property="og:title" content="9&nbsp; Distribution of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -460,7 +460,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-iv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-distribution.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -524,7 +524,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
@@ -554,7 +554,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -590,33 +590,34 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exogeneity-and-dynamic-models" id="toc-exogeneity-and-dynamic-models" class="nav-link active" data-scroll-target="#exogeneity-and-dynamic-models"><span class="header-section-number">4.1</span> Exogeneity and Dynamic Models</a>
+  <li><a href="#model-and-conditional-independence-assumption" id="toc-model-and-conditional-independence-assumption" class="nav-link active" data-scroll-target="#model-and-conditional-independence-assumption"><span class="header-section-number">9.1</span> Model and Conditional Independence Assumption</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">4.1.1</span> Introduction</a></li>
-  <li><a href="#no-strict-exogeneity-for-dynamic-models" id="toc-no-strict-exogeneity-for-dynamic-models" class="nav-link" data-scroll-target="#no-strict-exogeneity-for-dynamic-models"><span class="header-section-number">4.1.2</span> No Strict Exogeneity for Dynamic Models</a></li>
-  <li><a href="#sequential-exogeneity" id="toc-sequential-exogeneity" class="nav-link" data-scroll-target="#sequential-exogeneity"><span class="header-section-number">4.1.3</span> Sequential Exogeneity</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">9.1.1</span> Model</a></li>
+  <li><a href="#conditional-independence-of-bbeta_i-and-bu_i" id="toc-conditional-independence-of-bbeta_i-and-bu_i" class="nav-link" data-scroll-target="#conditional-independence-of-bbeta_i-and-bu_i"><span class="header-section-number">9.1.2</span> Conditional Independence of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></a></li>
+  <li><a href="#implication-of-conditional-independence" id="toc-implication-of-conditional-independence" class="nav-link" data-scroll-target="#implication-of-conditional-independence"><span class="header-section-number">9.1.3</span> Implication of Conditional Independence</a></li>
   </ul></li>
-  <li><a href="#handling-dynamic-panels-with-a-random-intercept" id="toc-handling-dynamic-panels-with-a-random-intercept" class="nav-link" data-scroll-target="#handling-dynamic-panels-with-a-random-intercept"><span class="header-section-number">4.2</span> Handling Dynamic Panels with a Random Intercept</a>
+  <li><a href="#identification-of-the-distribution" id="toc-identification-of-the-distribution" class="nav-link" data-scroll-target="#identification-of-the-distribution"><span class="header-section-number">9.2</span> Identification of the Distribution</a>
   <ul class="collapse">
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">4.2.1</span> Model</a></li>
-  <li><a href="#endogeneity" id="toc-endogeneity" class="nav-link" data-scroll-target="#endogeneity"><span class="header-section-number">4.2.2</span> Endogeneity</a></li>
+  <li><a href="#overall-strategy" id="toc-overall-strategy" class="nav-link" data-scroll-target="#overall-strategy"><span class="header-section-number">9.2.1</span> Overall Strategy</a></li>
+  <li><a href="#equation-in-hessians-of-characteristic-functions" id="toc-equation-in-hessians-of-characteristic-functions" class="nav-link" data-scroll-target="#equation-in-hessians-of-characteristic-functions"><span class="header-section-number">9.2.2</span> Equation in Hessians of Characteristic Functions</a></li>
+  <li><a href="#imposing-structure-on-the-error-term" id="toc-imposing-structure-on-the-error-term" class="nav-link" data-scroll-target="#imposing-structure-on-the-error-term"><span class="header-section-number">9.2.3</span> Imposing Structure on the Error Term</a></li>
+  <li><a href="#solving-for-the-distribution-of-residuals" id="toc-solving-for-the-distribution-of-residuals" class="nav-link" data-scroll-target="#solving-for-the-distribution-of-residuals"><span class="header-section-number">9.2.4</span> Solving for the Distribution of Residuals</a></li>
+  <li><a href="#identifying-the-distribution-of-coefficients" id="toc-identifying-the-distribution-of-coefficients" class="nav-link" data-scroll-target="#identifying-the-distribution-of-coefficients"><span class="header-section-number">9.2.5</span> Identifying the Distribution of Coefficients</a></li>
   </ul></li>
-  <li><a href="#iv-estimation-of-dynamic-panel-models" id="toc-iv-estimation-of-dynamic-panel-models" class="nav-link" data-scroll-target="#iv-estimation-of-dynamic-panel-models"><span class="header-section-number">4.3</span> IV Estimation of Dynamic Panel Models</a>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">9.3</span> Estimation</a>
   <ul class="collapse">
-  <li><a href="#the-anderson-hsiao-estimator" id="toc-the-anderson-hsiao-estimator" class="nav-link" data-scroll-target="#the-anderson-hsiao-estimator"><span class="header-section-number">4.3.1</span> The Anderson-Hsiao Estimator</a></li>
-  <li><a href="#further-dynamic-panel-iv-estimators" id="toc-further-dynamic-panel-iv-estimators" class="nav-link" data-scroll-target="#further-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.2</span> Further Dynamic Panel IV Estimators</a></li>
-  <li><a href="#properties-of-dynamic-panel-iv-estimators" id="toc-properties-of-dynamic-panel-iv-estimators" class="nav-link" data-scroll-target="#properties-of-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.3</span> Properties of Dynamic Panel IV Estimators</a></li>
+  <li><a href="#with-discrete-covariates" id="toc-with-discrete-covariates" class="nav-link" data-scroll-target="#with-discrete-covariates"><span class="header-section-number">9.3.1</span> With Discrete Covariates</a></li>
+  <li><a href="#with-continuous-covariates" id="toc-with-continuous-covariates" class="nav-link" data-scroll-target="#with-continuous-covariates"><span class="header-section-number">9.3.2</span> With Continuous Covariates</a></li>
   </ul></li>
-  <li><a href="#extra-endogeneity-and-the-within-estimator" id="toc-extra-endogeneity-and-the-within-estimator" class="nav-link" data-scroll-target="#extra-endogeneity-and-the-within-estimator"><span class="header-section-number">4.4</span> Extra: Endogeneity and the Within Estimator</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-iv.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-distribution.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-iv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-distribution.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></h1>
+<h1 class="title"><span id="sec-linear-distribution" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></h1>
 </div>
 
 
@@ -643,208 +644,178 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses why strict exogeneity fails in dynamic models and introduces the “workhorse” dynamic panel instrumental variable estimators.</p>
-<p>By the end of this section, you should</p>
+<p>This section shows how identify the full distribution of coefficients using a conditional deconvolution argument.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Understand why strict exogeneity fails in dynamic panel models.<br>
-</li>
-<li>Differentiate between strict and sequential exogeneity.<br>
-</li>
-<li>Explain the endogeneity problem in first-differenced and within estimators.<br>
-</li>
-<li>Describe IV-based solutions such as the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> and the <span class="citation" data-cites="Arellano1991">Arellano and Bond (<a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">1991</a>)</span> estimators.<br>
-</li>
+<li>Describe the impact of conditional independence assumptions between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(u_{it}\)</span>.</li>
+<li>Identify the distribution of <span class="math inline">\(\bbeta_i\)</span> using a conditional deconvolution argument and assumptions on <span class="math inline">\(u_{it}\)</span>.</li>
+<li>Propose a distribution estimator for the case of discrete covariates.</li>
 </ul>
 </div>
 </div>
-<section id="exogeneity-and-dynamic-models" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="exogeneity-and-dynamic-models"><span class="header-section-number">4.1</span> Exogeneity and Dynamic Models</h2>
-<section id="introduction" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1.1</span> Introduction</h3>
-<p>Throughout the previous section, we assumed that the idiosyncratic term <span class="math inline">\(u_{it}\)</span> satisfied strict exogeneity with respect to the data: <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
-    \E[u_{it}|\bX_i] = 0.
-\tag{4.1}\]</span></span></p>
-<p>However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices <span class="math inline">\(t, s\)</span> it holds that <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
-    \E[u_{it}\bx_{is}] =0.
-\tag{4.2}\]</span></span></p>
-<p>For <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bx\)</span>. In other words, one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bx\)</span>s.</p>
-<p>This requirement might fail if <span class="math inline">\(\bx\)</span> is dynamic and its evolution is affected by <span class="math inline">\(u_{it}\)</span>. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data.</p>
+<section id="model-and-conditional-independence-assumption" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="model-and-conditional-independence-assumption"><span class="header-section-number">9.1</span> Model and Conditional Independence Assumption</h2>
+<section id="model" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">9.1.1</span> Model</h3>
+<p>We are now in a position to obtain our final and strongest result in this block: identify the full distribution of <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span class="math display">\[
+y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+\]</span> As in <a href="linear-coefficient-variance.html" class="quarto-xref"><span>Chapter 7</span></a>, we impose strict exogeneity <span class="math display">\[
+\E[\bu_i|\bbeta_i, \bX_i] = 0.
+\]</span> We also assume the existence of the first two moments of <span class="math inline">\(\bbeta_i, \bX_i\)</span>, and <span class="math inline">\(\bu_i\)</span>.</p>
+<p>As before, the number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
 </section>
-<section id="no-strict-exogeneity-for-dynamic-models" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="no-strict-exogeneity-for-dynamic-models"><span class="header-section-number">4.1.2</span> No Strict Exogeneity for Dynamic Models</h3>
-<p>A particularly clear example for failure of <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> arises when <span class="math inline">\(\bx_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
-<p>For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)): <span class="math display">\[
-    y_t = \alpha + \lambda y_{t-1} + u_{t},
-\]</span> where <span class="math inline">\(t=1, \dots, T\)</span> and the innovation <span class="math inline">\(u_t\)</span> satisfies <span class="math inline">\(\E[u_t]=0\)</span>.</p>
-<p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> is not true. Specifically, we will take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[y_{it+1}u_t]\)</span> is not necessarily zero.</p>
-<p>To evaluate this expectation, we write the model at <span class="math inline">\(t+1\)</span> <span id="eq-dynamic-interlude-simple-ar1"><span class="math display">\[
-    y_{t+1} = \alpha + \lambda y_t + u_{t+1}.
-\tag{4.3}\]</span></span> We then substitute the model into <span class="math inline">\(\E[y_{it+1}u_t]\)</span> <span class="math display">\[
-\begin{aligned}
-    \E[y_{t+1}u_t] &amp; = \lambda\E[y_t u_t] + \E[u_{t+1}u_t] \\
-    &amp;  = \lambda^2\E[y_{t-1}u_t] + \lambda\E[u_t^2] + \E[u_{t+1}u_t] .
-\end{aligned}
-\]</span></p>
-<p>What can we say about the right hand side? In many contexts, we may reasonably assume that</p>
+<section id="conditional-independence-of-bbeta_i-and-bu_i" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="conditional-independence-of-bbeta_i-and-bu_i"><span class="header-section-number">9.1.2</span> Conditional Independence of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></h3>
+<p>The key to our identification strategy is the following assumption of conditional independence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span>: <span id="eq-linear-distribution-cond-ind"><span class="math display">\[
+\bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
+\tag{9.1}\]</span></span> To understand assumption (<a href="#eq-linear-distribution-cond-ind" class="quarto-xref"><span>9.1</span></a>), consider a production function example. Let <span class="math inline">\(u_{it}\)</span> be the measurement error in the output value <span class="math inline">\(y_{it}\)</span>. The variance of <span class="math inline">\(u_{it}​\)</span> may depend on the scale of the firm (captured by capital), leading to dependence between <span class="math inline">\(\bX_i\)</span> and <span class="math inline">\(\bu_i\)</span>. However, it is plausible that the firm size captures all information about firm technology relevant for measurement error. In this case, the assumption appears reasonable.</p>
+</section>
+<section id="implication-of-conditional-independence" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="implication-of-conditional-independence"><span class="header-section-number">9.1.3</span> Implication of Conditional Independence</h3>
+<p>Given the conditional independence assumption (<a href="#eq-linear-distribution-cond-ind" class="quarto-xref"><span>9.1</span></a>), both <span class="math inline">\(\by_i\)</span> and the individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> are sums of two conditionally independent vectors. Specifically, conditionally on <span class="math inline">\(\curl{\bX_i=\bX}\)</span>:</p>
 <ul>
-<li>One cannot predict the shocks of tomorrow from what you have today, so that <span class="math display">\[\E[y_{t-1}u_t]=0.\]</span></li>
-<li><span class="math inline">\(u_{t}\)</span> is uncorrelated over time, so that <span class="math display">\[\E[u_{t+1}u_t]=0.\]</span></li>
+<li><span class="math inline">\(\by_i\)</span> is the sum of <span class="math inline">\(\bX\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></li>
+<li><span class="math inline">\(\hat{\bbeta}_i\)</span> is the sum of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\((\bX'\bX)^{-1}\bX\bu_i\)</span></li>
 </ul>
-<p>However, <span class="math inline">\(\lambda\E[u_t^2]\)</span> is zero only in two unreasonable cases:</p>
-<ul>
-<li>If <span class="math inline">\(\lambda=0\)</span>, and so the model is not actually dynamic</li>
-<li><span class="math inline">\(\E[u_t^2]=0\)</span>, and so the process is actually fully deterministic.</li>
-</ul>
-<p>Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. We conclude that in dynamic models it is the case <span id="eq-dynamic-interlude-no-strict-exogeneity"><span class="math display">\[
-\E[y_{it+1}u_t] \neq 0.
-\tag{4.4}\]</span></span> A fortiori, strict exogeneity also cannot hold in dynamic models.</p>
-</section>
-<section id="sequential-exogeneity" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="sequential-exogeneity"><span class="header-section-number">4.1.3</span> Sequential Exogeneity</h3>
-<p>So what can you do if you want to allow for dynamic models? Since strict exogeneity (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is effectively impossible to satisfy, we need a weaker form of exogeneity.</p>
-<p>One popular weaker assumption compatible with dynamic models is <em>sequential exogeneity</em> (or <em>predeterminedness</em>). In context of the simple univariate time series model (<a href="#eq-dynamic-interlude-simple-ar1" class="quarto-xref"><span>4.3</span></a>), sequential exogeneity may be stated as <span class="math display">\[
-        \E[u_{t}| y_{t-1}, y_{t-2}, \dots] =0.
-\]</span> Intuitively, sequential exogeneity states that future shocks cannot be predicted using past covariates. However, it does not restrict our ability to predict the past from the future — the context which created problems for strict exogeneity.</p>
-<p>More generally, consider a panel data linear model with homogeneous coefficients, a random intercept, and a dynamic process for the outcome: <span id="eq-dynamic-interlude-dynamic-panel"><span class="math display">\[
-y_{it} = \alpha_i + \sum_{k=1}^K \lambda_k y_{it-k} + \bbeta'\bx_{it} + u_{it}.  
-\tag{4.5}\]</span></span> In this model, a sequential exogeneity assumption takes form <span class="math display">\[
-     \E[u_{it}|\curl{y_{is-1}, \bx_{is}}_{s\leq t}] =0.
-\]</span> Model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) is a dynamic counterpart of the static model (<a href="linear-within-estimator.html#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>) we discussed in the last section.</p>
-</section>
-</section>
-<section id="handling-dynamic-panels-with-a-random-intercept" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="handling-dynamic-panels-with-a-random-intercept"><span class="header-section-number">4.2</span> Handling Dynamic Panels with a Random Intercept</h2>
-<p>Before moving on and introducing heterogeneous coefficients in dynamic linear models, we will discuss model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) in more detail. In particular, we will develop the standard workhorse instrumental variable estimators. We will analyze how these estimators fare in the more general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) in the next section.</p>
-<section id="model" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="model"><span class="header-section-number">4.2.1</span> Model</h3>
-<p>For the sake of simplicity, we will discuss a simple version of model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) without extra covariates <span class="math inline">\(\bx_{it}\)</span> and with only one lag of <span class="math inline">\(y_{it}\)</span>: <span id="eq-dynamic-interlude-dynamic-simple"><span class="math display">\[
-y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
-\tag{4.6}\]</span></span> where <span class="math inline">\(u_{it}\)</span> satisfies sequential exogeneity in the form <span class="math inline">\(\E[u_{it}|y_{is}, s&lt;t] = 0\)</span>. This random intercept dynamic model has extensively considered in the literature <span class="citation" data-cites="Anderson1982 Arellano1991 Blundell1998">(e.g. <a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">Anderson and Hsiao 1982</a>; <a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">Arellano and Bond 1991</a>; <a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">Blundell and Bond 1998</a>)</span>.</p>
-<p>The key parameter of interest is <span class="math inline">\(\lambda\)</span>. By homogeneity of <span class="math inline">\(\lambda\)</span>, it also plays the role of the average coefficient for model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>).</p>
-<p>Here, we will primarily focus on the large-<span class="math inline">\(N\)</span>, fixed-<span class="math inline">\(T\)</span> case, though model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) has also been extensively studied in the large-(<span class="math inline">\(N, T\)</span>) case <span class="citation" data-cites="Alvarez2003">(e.g. <a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">Alvarez and Arellano 2003</a>)</span>.</p>
-</section>
-<section id="endogeneity" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="endogeneity"><span class="header-section-number">4.2.2</span> Endogeneity</h3>
-<p>To work towards an estimator for <span class="math inline">\(\lambda\)</span>, let us difference <a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref">Equation&nbsp;<span>4.5</span></a> across <span class="math inline">\(t\)</span> to eliminate the random intercept <span class="math inline">\(\alpha_i\)</span>. The differenced equation takes form <span id="eq-dynamic-interlude-homogeneous-differenced"><span class="math display">\[
+<p>We can write the conditional characteristic function of <span class="math inline">\(\by_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span> using properties (<a href="linear-chf.html#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) and (<a href="linear-chf.html#eq-linear-chf-product" class="quarto-xref"><span>8.2</span></a>) as: <span id="eq-linear-distribution-chf-data"><span class="math display">\[
 \begin{aligned}
-\Delta y_{it} &amp; = \lambda \Delta y_{it-1} + \Delta u_{it}, \\
-\Delta y_{it} &amp; = y_{it} - y_{it-1}.
+    \varphi_{\by_i|\bX_i}(\bs|\bX) &amp; = \varphi_{\bX'\bbeta_i|\bX_i}(\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX) \\
+    &amp; = \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX).
 \end{aligned}
-\tag{4.7}\]</span></span> <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> seems like a simple regression equation. It is tempting to just apply OLS and regress <span class="math inline">\(\Delta y_{it}\)</span> on <span class="math inline">\(\Delta y_{it-1}\)</span>.</p>
-<p>It turns out that this approach will fail as there is an endogeneity problem in <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>! Sequential exogeneity is not enough to guarantee that <span class="math display">\[
-\E[\Delta y_{it-1}\Delta u_{it}] = 0.
+\tag{9.2}\]</span></span> Similarly, the conditional characteristic function of <span class="math inline">\(\hat{\bbeta}_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span> satisfies <span id="eq-linear-distribution-chf-estimators"><span class="math display">\[
+\begin{aligned}
+    \varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) &amp; = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bH_i\bu_i|\bX_i}(\bs|\bX) \\
+    &amp;  = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX),
+\end{aligned}
+\tag{9.3}\]</span></span> where we again define <span class="math inline">\(\bH_i = (\bX_i'\bX_i)^{-1}\bX_i\)</span>.</p>
+</section>
+</section>
+<section id="identification-of-the-distribution" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="identification-of-the-distribution"><span class="header-section-number">9.2</span> Identification of the Distribution</h2>
+<section id="overall-strategy" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="overall-strategy"><span class="header-section-number">9.2.1</span> Overall Strategy</h3>
+<p>To identify the distribution, it is sufficient to identify the conditional characteristic function <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}(\bs|\bX)\)</span> for all <span class="math inline">\(\bX\)</span> in the support of <span class="math inline">\(\bX_i\)</span>. We will proceed similarly to how we identified the variance. The steps are:</p>
+<ol type="1">
+<li>Identify <span class="math inline">\(\varphi_{\bu_i|\bX_i}(\cdot|\bX)\)</span> from <a href="#eq-linear-distribution-chf-data" class="quarto-xref">Equation&nbsp;<span>9.2</span></a>.</li>
+<li>Apply deconvolution to <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a> to recover <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}(\bs|\bX)\)</span>.</li>
+<li>Invert the characteristic function of <span class="math inline">\(\bbeta_i\)</span> to obtain the distribution.</li>
+</ol>
+</section>
+<section id="equation-in-hessians-of-characteristic-functions" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="equation-in-hessians-of-characteristic-functions"><span class="header-section-number">9.2.2</span> Equation in Hessians of Characteristic Functions</h3>
+<p>We start by rewriting <a href="#eq-linear-distribution-chf-data" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> in a more useful form. The characteristic functions in (<a href="#eq-linear-distribution-chf-data" class="quarto-xref"><span>9.2</span></a>) are twice differentiable under our moment assumptions. Taking logarithms (<a href="https://math.stackexchange.com/questions/3795356/log-of-a-product-of-characteristic-functions-lindebergs-theorem-and-accompanyi">see here</a>) and differentiating twice yields <span id="eq-linear-chf-hessian"><span class="math display">\[
+\begin{aligned}
+    &amp; \dfrac{\partial^2 \log(   \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'} \\
+    &amp; = \bX \dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'} \bX' +  \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'} .
+\end{aligned}
+\tag{9.4}\]</span></span></p>
+<p>This equation is similar to the expression (<a href="linear-coefficient-variance.html#eq-linear-variance-second-moment-y" class="quarto-xref"><span>7.3</span></a>) we obtained for variance. It decomposes the characteristic function of the data into contributions from the coefficients <span class="math inline">\(\bbeta_i\)</span> and the residuals <span class="math inline">\(\bu_i\)</span>. Unlike the variance expression, system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>) is a functional equation parametrized by <span class="math inline">\(\bs\)</span>.</p>
+</section>
+<section id="imposing-structure-on-the-error-term" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="imposing-structure-on-the-error-term"><span class="header-section-number">9.2.3</span> Imposing Structure on the Error Term</h3>
+<p>Our goal is to solve for the second term in the linear system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>). However, like system (<a href="linear-coefficient-variance.html#eq-linear-variance-second-moment-y" class="quarto-xref"><span>7.3</span></a>), system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the <span class="math inline">\(\bu_i\)</span> component from the <span class="math inline">\(\bbeta_i\)</span> one.</p>
+<p>In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption (<a href="linear-coefficient-variance.html#eq-linear-variance-spherical" class="quarto-xref"><span>7.4</span></a>). Specifically, we will assume that <span class="math inline">\(u_{it}\)</span> is IID across <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span> conditional on <span class="math inline">\(\bX_i=\bX\)</span>. This assumption implies that all <span class="math inline">\(u_{it}\)</span> have the same characteristic function for all <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span>: <span id="eq-linear-distribution-iid-error"><span class="math display">\[
+    \varphi_{u_{i1}|\bX_i}(s|\bX) = \cdots = \varphi_{u_{iT}|\bX_i}(s|\bX).
+\tag{9.5}\]</span></span> We label the common function <span class="math inline">\(\varphi_{u|\bX_i}(s|\bX)\)</span>.</p>
+<p>The characteristic function of the <span class="math inline">\(T\)</span>-vector <span class="math inline">\(\bu_i\)</span> can be written as <span class="math display">\[
+\begin{aligned}
+    \varphi_{\bu_i|\bX_i}(\bs|\bX) &amp; = \prod_{j=1}^T \varphi_{u|\bX_i}(s_j|\bX), \\
+    \bs &amp; = (s_1, s_2, \dots, s_T).
+\end{aligned}
+\]</span> Taking logarithms turns the product into a sum: <span class="math display">\[
+    \log\left(\varphi_{\bu_i|\bX_i}(\bs|\bX)\right) = \sum_{j=1}^T \log(\varphi_{u|\bX_i}(s_j|\bX)).
+\]</span> The Hessian of this function with respect to <span class="math inline">\(\bs\)</span> is diagonal: <span class="math display">\[
+\begin{aligned}
+    \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}  &amp; = \diag\curl{\bphi(\bs)},\\
+\end{aligned}
+\]</span> where <span class="math display">\[
+    \bphi(\bs)  =  \left(\dfrac{d^2\log(\varphi_{u|\bX_i}(s_1|\bX))}{ds_1^2}, \dots,   \dfrac{d^2\log(\varphi_{u|\bX_i}(s_T|\bX))}{ds_T^2}\right).
+\]</span> To summarize, assumption (<a href="#eq-linear-distribution-iid-error" class="quarto-xref"><span>9.5</span></a>) reduces the unknown <span class="math inline">\(T\times T\)</span> matrix <span class="math inline">\(\frac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}\)</span> to an unknown <span class="math inline">\(T\)</span>-vector <span class="math inline">\(\bphi(\bs)\)</span>. There are now sufficiently many equations to cover all the remaining unknown components, provided standard rank conditions hold.</p>
+</section>
+<section id="solving-for-the-distribution-of-residuals" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="solving-for-the-distribution-of-residuals"><span class="header-section-number">9.2.4</span> Solving for the Distribution of Residuals</h3>
+<p>To solve for <span class="math inline">\(\bphi(\bs)\)</span>, we return to (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>). We first put it into more familiar tall form (one line, one equation) using the vectorization operator. Applying the vectorization operator yields <span id="eq-linear-chf-hessian-vectorized"><span class="math display">\[
+\begin{aligned}
+    &amp; \vecc\left(\dfrac{\partial^2 \log(    \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) \\
+    &amp;  = (\bX \otimes \bX) \vecc\left(\dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'}\right) +   \bA\bphi(\bs),
+\end{aligned}
+\tag{9.6}\]</span></span> where an explicit formula for <span class="math inline">\(\bA\)</span> can be found <a href="https://math.stackexchange.com/questions/3365228/vectorization-of-a-diagonal-matrix">here</a>.</p>
+<p>Now we premultiply system (<a href="#eq-linear-chf-hessian-vectorized" class="quarto-xref"><span>9.6</span></a>) by <span class="math inline">\(\bM(\bX\otimes \bX)\)</span> where <span class="math inline">\(\bM(\cdot)\)</span> is defined in (<a href="linear-coefficient-variance.html#eq-linear-variance-annihilator" class="quarto-xref"><span>7.5</span></a>): <span id="eq-linear-distribution-chf-u"><span class="math display">\[
+\begin{aligned}
+    &amp; \bM(\bX\otimes \bX)   \vecc\left(\dfrac{\partial^2 \log(  \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right)
+    \\ &amp; = \bM(\bX\otimes \bX)\bA\bphi(\bs)
+\end{aligned}
+\tag{9.7}\]</span></span> We can solve this system for <span class="math inline">\(\bphi(\bs)\)</span> provided <span class="math inline">\(\rank(\bM(\bX\otimes \bX)\bA)=T\)</span>. Indeed, this rank condition holds in this case, as shown by <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span>. As both <span class="math inline">\(\bM(\bX\otimes\bX)\)</span> and <span class="math inline">\(\varphi_{\by_i|\bX_i}(\cdot|\cdot)\)</span> are identified, we conclude that <span class="math inline">\(\bphi(\bs)\)</span> is also identified.</p>
+<p>The characteristic function of <span class="math inline">\(\bu_i\)</span> is now straighforward to recover from <span class="math inline">\(\bphi(\bs)\)</span> by integrating twice with respect to <span class="math inline">\(\bs\)</span>. As <span class="math inline">\(\bphi(\bs)\)</span> encodes second derivatives, we need two initial values. These initial values are provided by the properties of the characteristic function and the assumption of strict exogeneity: <span class="math display">\[
+\begin{aligned}
+    \dfrac{\partial \log(\varphi_{\bu_i|\bX_i}(0|\bX))}{\partial\bs'} &amp;  = \E[\bu_i|\bX_i=\bX] = 0,\\
+    \log(\varphi_{\bu_i|\bX_i}(0|\bX))  &amp; = 0.
+\end{aligned}
+\]</span> This completes the first identification step.</p>
+</section>
+<section id="identifying-the-distribution-of-coefficients" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="identifying-the-distribution-of-coefficients"><span class="header-section-number">9.2.5</span> Identifying the Distribution of Coefficients</h3>
+<p>For the second step — identification of <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}\)</span> — we return to <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a>. We make an additional assumption: <span class="math display">\[
+\varphi_{\bu_i|\bX_i}(\bs|\bX)\neq 0 \text{ for all }\bs.
+\]</span> This assumption allows us to divide by the characteristic function of <span class="math inline">\(\bu_i\)</span> in <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a> and obtain <span id="eq-linear-distribution-distr-chf"><span class="math display">\[
+\varphi_{\bbeta_i|\bX_i}(\bs|\bX) = \dfrac{\varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX)  }{\varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX)}.
+\tag{9.8}\]</span></span></p>
+<p>Finally, the density or cumulative distribution functions of the coefficients may be recovered using inversion formulae. For continuously distributed coefficients, the conditional density is: <span class="math display">\[
+f_{\bbeta_i|\bX_i}(\bb|\bX) = \dfrac{1}{(2\pi)^n} \int_{\R^p} \exp(-i\bs'\bb)\varphi_{\bbeta_i|\bX_i}(\bs|\bX)d\bs.
+\]</span> Last, we can recover the unconditional distribution of the coefficients since we know the marginal distribution of <span class="math inline">\(\bX_i\)</span>. For example, if <span class="math inline">\(f_{\bX_i}\)</span> is the marginal density, the unconditional density of <span class="math inline">\(\bbeta_i\)</span> is obtained by simply integrating <span class="math inline">\(\bX_i\)</span> out as <span class="math display">\[
+f_{\bbeta_i}(\bb) = \int f_{\bbeta_i|\bX_i}(\bb|\bX)f_{\bX_i}(\bX)d\bX.
 \]</span></p>
-<p>To see why, we expand <span class="math inline">\(\E[\Delta y_{it-1}\Delta u_{it}]\)</span> as<br>
-<span class="math display">\[
-\begin{aligned}
-    &amp; \E\left[(u_{it}-u_{it-1})(y_{it-1}-y_{it-2}) \right] \\
-    &amp; = \E[ u_{it}y_{it-1} ] + \E[(u_{it-1}-u_{it})y_{it-2}] - \E[u_{it-1}y_{it-1}]  \\
-    &amp; = -\E[u_{it-1} y_{it-1}].
-\end{aligned}
-\]</span> Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute <span class="math inline">\(y_{it-1}\)</span> to see that <span class="math display">\[
-\begin{aligned}
-    \E[u_{it-1}y_{it-1}] &amp; = \lambda\E[u_{it-1}y_{it-2}] + \E[u_{it-1}^2]\\
-    &amp; = \E[u_{it-1}^2]
-\end{aligned}
-\]</span> As noted above, in general we expect that <span class="math inline">\(\E[u_{it-1}^2] \neq 0\)</span>. Hence we conclude that <span id="eq-dynamic-interlude-differenced-endogeneity"><span class="math display">\[
-    \E[\Delta y_{it-1}\Delta u_{it}]\neq 0.
-\tag{4.8}\]</span></span> In other words, <span class="math inline">\(\Delta y_{it-1}\)</span> is an endogenous regressor in the differenced <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>.</p>
-<div class="callout callout-style-simple callout-caution no-icon">
+</section>
+</section>
+<section id="estimation" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">9.3</span> Estimation</h2>
+<section id="with-discrete-covariates" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="with-discrete-covariates"><span class="header-section-number">9.3.1</span> With Discrete Covariates</h3>
+<p>For estimation, we discuss the conceptually simpler case where <span class="math inline">\(\bX_i\)</span> has finite support. In such a setting, there is a non-zero probability that <span class="math inline">\(\bX_i\)</span> takes each possible value.</p>
+<p>Estimation proceeds in three steps:</p>
+<ol type="1">
+<li>Estimation of <span class="math inline">\(\varphi_{\hat{\bbeta}_i|\bX_i}(\cdot|\bX)\)</span>.</li>
+<li>Estimation of <span class="math inline">\(\varphi_{\bu_i|\bX_i}(\cdot|\bX)\)</span>.</li>
+<li>Combining the estimators of the first two steps using <a href="#eq-linear-distribution-distr-chf" class="quarto-xref">Equation&nbsp;<span>9.8</span></a> and inverting the resulting estimated characteristic function.</li>
+</ol>
+<p>The characteristic function of the individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> can then be estimated with the empirical characteristic function on the sample of units with <span class="math inline">\(\bX_i=\bX\)</span>: <span class="math display">\[
+\hat{\varphi}_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\hat{\bbeta}_i \right).
+\]</span></p>
+<p>As for the characteristic function of <span class="math inline">\(\bu_i\)</span>, it can be estimated from a sample version of <a href="#eq-linear-distribution-chf-u" class="quarto-xref">Equation&nbsp;<span>9.7</span></a>. We replace the characteristic function of the data with its empirical counterpart: <span class="math display">\[
+\hat{\varphi}_{\by_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\by_i \right).
+\]</span></p>
+</section>
+<section id="with-continuous-covariates" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="with-continuous-covariates"><span class="header-section-number">9.3.2</span> With Continuous Covariates</h3>
+<p>If <span class="math inline">\(\bX_i\)</span> is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. <span class="citation" data-cites="Evdokimov2010">Evdokimov (<a href="../references/references.html#ref-Evdokimov2010" role="doc-biblioref">2010</a>)</span> studies such conditional deconvolution estimators and their asymptotic properties. Inference may be conducted using the results of <span class="citation" data-cites="Kato2021RobustInferenceDeconvolutiona">Kato, Sasaki, and Ura (<a href="../references/references.html#ref-Kato2021RobustInferenceDeconvolutiona" role="doc-biblioref">2021</a>)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>One should not confuse endogeneity in <a href="#eq-dynamic-interlude-differenced-endogeneity" class="quarto-xref">Equation&nbsp;<span>4.8</span></a> with the failure of <em>strict</em> but not necessarily sequential exogeneity in dynamic models (e.g. <a href="#eq-dynamic-interlude-no-strict-exogeneity" class="quarto-xref">Equation&nbsp;<span>4.4</span></a>).</p>
+<p>Such nonparametric estimators may perform poorly due to the curse of dimensionality if <span class="math inline">\(T\)</span> and <span class="math inline">\(p\)</span> are not small. In the next block we will discuss some assumptions that can reduce the dimensionality of the problem and be applied in this context.</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="iv-estimation-of-dynamic-panel-models" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="iv-estimation-of-dynamic-panel-models"><span class="header-section-number">4.3</span> IV Estimation of Dynamic Panel Models</h2>
-<p>Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables <span class="math inline">\(z_{it}\)</span> which satisfy relevance and exogeneity conditions: <span class="math display">\[
-\begin{aligned}
-    \E[z_{it}\Delta y_{it-1}] \neq 0,\\
-    \E[z_{it}\Delta u_{it}] = 0.
-\end{aligned}
-\]</span></p>
-<p>In most contexts, one has to look for external variables that can serve as instruments.</p>
-<p>However, <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> is a very special case where one can use instruments internal to the model!</p>
-<section id="the-anderson-hsiao-estimator" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="the-anderson-hsiao-estimator"><span class="header-section-number">4.3.1</span> The Anderson-Hsiao Estimator</h3>
-<p>In particular, consider using <span class="math inline">\(y_{it-2}\)</span> as an instrument.</p>
-<ul>
-<li>Relevance seems to be relatively straightforward, as the target endogenous variable <span class="math inline">\(\Delta y_{it-1}= y_{it-1}-y_{it-2}\)</span> actually has the instrument inside.</li>
-<li>Exogeneity can be justified by appealing to sequential exogeneity: <span class="math display">\[ \E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. \]</span></li>
-</ul>
-<p>Hence <span class="math inline">\(y_{it-2}\)</span> is a valid instrument!</p>
-<p>The resulting IV estimator is known as the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator and given by <span class="math display">\[
-\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it} }.
-\]</span></p>
-</section>
-<section id="further-dynamic-panel-iv-estimators" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="further-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.2</span> Further Dynamic Panel IV Estimators</h3>
-<p>Are there more instruments that can use for <span class="math inline">\(\Delta y_{it-1}\)</span>? Using more instruments will induce overidentification and potentially lead to more precise estimators, solving one of the key drawbacks of the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator <span class="citation" data-cites="Arellano1989">(<a href="../references/references.html#ref-Arellano1989" role="doc-biblioref">Arellano 1989</a>)</span>.</p>
-<p>As a partial answer, suppose we consider <span class="math inline">\(y_{it-k}\)</span> for <span class="math inline">\(k\geq 2\)</span>. By applying sequential exogeneity again we can show that <span class="math inline">\(y_{it-k}\)</span> is exogenous: <span class="math display">\[  
-\E[y_{it-k}\Delta u_{it}]  = \E[y_{it-k}u_{it} - y_{it-k}u_{it-1}]=0.
-\]</span> Provided <span class="math inline">\(y_{it-k}\)</span> is correlated with <span class="math inline">\(\Delta y_{it-1}\)</span> and available in the data, it also becomes a valid instrument. Following this chain of reasoning and using all available lags <span class="math inline">\(y_{it-k}\)</span> yields the <span class="citation" data-cites="Arellano1991">Arellano and Bond (<a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">1991</a>)</span> estimator.</p>
-<p>Even further instruments have been found for <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> by <span class="citation" data-cites="Ahn1995">Ahn and Schmidt (<a href="../references/references.html#ref-Ahn1995" role="doc-biblioref">1995</a>)</span> and <span class="citation" data-cites="Blundell1998">Blundell and Bond (<a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">1998</a>)</span>, among others.</p>
-<p>All of these estimators are implemented in</p>
-<ul>
-<li>R: <a href="https://cran.r-project.org/web/packages/plm/index.html%7D">plm</a>.</li>
-<li>Python: <a href="https://github.com/dazhwu/pydynpd/">pydynpd</a>.</li>
-</ul>
-</section>
-<section id="properties-of-dynamic-panel-iv-estimators" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="properties-of-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.3</span> Properties of Dynamic Panel IV Estimators</h3>
-<p>Under some standard conditions, the above instrumental variable estimators will all be consistent and asymptotically normal for <span class="math inline">\(\lambda\)</span> as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed. The matter is rather more delicate if both <span class="math inline">\(N\)</span> and <span class="math inline">\(T\)</span> are large, and the above dynamic panel IV estimators offer an interesting and natural example of the <em>many moments</em> bias. See <span class="citation" data-cites="Alvarez2003">Alvarez and Arellano (<a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">2003</a>)</span>.</p>
-</section>
-</section>
-<section id="extra-endogeneity-and-the-within-estimator" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="extra-endogeneity-and-the-within-estimator"><span class="header-section-number">4.4</span> Extra: Endogeneity and the Within Estimator</h2>
-<p>One may think that we had the endogeneity problem (<a href="#eq-dynamic-interlude-differenced-endogeneity" class="quarto-xref"><span>4.8</span></a>) because we took first differences instead of applying the within transformation.</p>
-<p>However, the same issue endogeneity issue affects the within estimator. First, for <span class="math inline">\(T=2\)</span> the above discussion applies directly, as the within transformation is numerically identical to first differencing. Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>) can be written as (see <a href="linear-within-estimator.html#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>): <span class="math display">\[
-    \tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.
-\]</span></p>
-<p>One can now immediately see that <span class="math inline">\(\tilde{y}_{it-1}\)</span> will also be an endogenous regressor as</p>
-<p><span class="math display">\[
-    \E[\tilde{y}_{it-1}\tilde{u}_{it}] = \E\left[\left(y_{it-1}- T^{-1}\sum_{s=0}^{T-1} y_{is} \right)\left(u_{it} - T^{-1}\sum_{r=1}^{T}u_{ir} \right) \right].
-\]</span></p>
-<p>The expectation on the right hand side contains “bad” expectations of the form <span class="math inline">\(\E[u_{it}y_{is}]\)</span> with <span class="math inline">\(t&lt;s\)</span> (recall <a href="#eq-dynamic-interlude-no-strict-exogeneity" class="quarto-xref">Equation&nbsp;<span>4.4</span></a>).</p>
-<p>We conclude that for any fixed <span class="math inline">\(T\)</span> the within estimator will also suffer from endogeneity bias. <span class="citation" data-cites="Nickell1981">Nickell (<a href="../references/references.html#ref-Nickell1981" role="doc-biblioref">1981</a>)</span> shows that it is of the order <span class="math inline">\(O(T^{-1})\)</span>. Furthermore, this bias is likely to be large in practice <span class="citation" data-cites="Kiviet1995">(see <a href="../references/references.html#ref-Kiviet1995" role="doc-biblioref">Kiviet 1995</a>)</span>.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>Next, we examine how the above “standard” dynamic panel IV estimators break down when individual coefficients vary across observations.</p>
+<p>In the next section, we briefly conclude the block and discuss some further results on heterogeneous linear models.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Ahn1995" class="csl-entry" role="listitem">
-Ahn, Seung Chan, and Peter Schmidt. 1995. <span>“<span class="nocase">Efficient Estimation of Models for Dynamic Panel Data</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 5–27. <a href="https://doi.org/10.1016/0304-4076(94)01641-C">https://doi.org/10.1016/0304-4076(94)01641-C</a>.
+<div id="ref-Arellano2012" class="csl-entry" role="listitem">
+Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random coefficients panel data models</span>.”</span> <em>Review of Economic Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
 </div>
-<div id="ref-Alvarez2003" class="csl-entry" role="listitem">
-Alvarez, Javier, and Manuel Arellano. 2003. <span>“<span class="nocase">The Time Series and Cross-Section Asymptotics of Dynamic Panel Data Estimators</span>.”</span> <em>Econometrica</em> 71 (4): 1121–59.
+<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
+Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and Estimation of a Nonparametric Panel Data Model with Unobserved Heterogeneity</span>.”</span>
 </div>
-<div id="ref-Anderson1982" class="csl-entry" role="listitem">
-Anderson, T. W., and Cheng Hsiao. 1982. <span>“<span class="nocase">Formulation and estimation of dynamic models using panel data</span>.”</span> <em>Journal of Econometrics</em> 18 (1): 47–82. <a href="https://doi.org/10.1016/0304-4076(82)90095-1">https://doi.org/10.1016/0304-4076(82)90095-1</a>.
-</div>
-<div id="ref-Arellano1989" class="csl-entry" role="listitem">
-Arellano, Manuel. 1989. <span>“<span class="nocase">A note on the Anderson-Hsiao estimator for panel data</span>.”</span> <em>Economics Letters</em> 31 (4): 337–41. <a href="https://doi.org/10.1016/0165-1765(89)90025-6">https://doi.org/10.1016/0165-1765(89)90025-6</a>.
-</div>
-<div id="ref-Arellano1991" class="csl-entry" role="listitem">
-Arellano, Manuel, and Stephen Bond. 1991. <span>“<span class="nocase">Some Tests of Specification for Panel Carlo Application to Data: Monte Carlo Evidence and an Application to Employment Equations</span>.”</span> <em>Review of Economic Studies</em> 58: 277–97.
-</div>
-<div id="ref-Blundell1998" class="csl-entry" role="listitem">
-Blundell, Richard, and Stephen Bond. 1998. <span>“<span class="nocase">Initial Conditions and Moment Restrictions in Dynamic Panel Data Models</span>.”</span> <em>Journal of Econometrics</em> 87: 115–43.
-</div>
-<div id="ref-Kiviet1995" class="csl-entry" role="listitem">
-Kiviet, Jan F. 1995. <span>“<span class="nocase">On Bias, Inconsistency, and Efficiency of Various Estimators in Dynamic Panel Data Models</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 53–78. <a href="https://doi.org/10.1016/0304-4076(94)01643-E">https://doi.org/10.1016/0304-4076(94)01643-E</a>.
-</div>
-<div id="ref-Nickell1981" class="csl-entry" role="listitem">
-Nickell, Stephen. 1981. <span>“<span>Biases In Dynamic Models With Fixed Effects</span>.”</span> <em>Econometrica</em> 49 (6): 1417–26.
+<div id="ref-Kato2021RobustInferenceDeconvolutiona" class="csl-entry" role="listitem">
+Kato, Kengo, Yuya Sasaki, and Takuya Ura. 2021. <span>“Robust <span>Inference</span> in <span>Deconvolution</span>.”</span> <em>Quantitative Economics</em> 12 (1): 109–42. <a href="https://doi.org/10.3982/QE1643">https://doi.org/10.3982/QE1643</a>.
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1412,13 +1383,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-within-estimator.html" class="pagination-link" aria-label="Within (Fixed Effects) Estimator and Heterogeneous Coefficients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span>
+      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="pagination-link" aria-label="Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../linear/linear-conclusion.html" class="pagination-link" aria-label="Conclusion: Linear Models">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1427,4 +1398,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-iv.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-distribution.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
