@@ -18,8 +18,8 @@ By the end of this section, you should be able to:
 - Goal 1
 :::
 
-We briefly review the 
-This section can be freely skipped if you are familiar with this materials
+In
+We briefly review two key concepts: characteristic functions and deconvolution argument. This section can be freely skipped if you are familiar with both.
 
 
 
@@ -29,7 +29,7 @@ If $\bV$ is a random $T$-vector, then the characteristic function $\varphi_{\bV}
 $$
  \varphi_{\bV}(\bs) = \E[\exp(i\bs'\bV)].
 $$
-See @Durrett2019 (or other probability textbooks) regarding general properties of characteristic functions.
+See @Durrett2019 (or your favorite probability textbook) regarding general properties of characteristic functions.
 
 
 For our purposes, we will need the following three key properties:
@@ -59,18 +59,21 @@ Conditional characteristic functions may be defined analogously using conditiona
 
 ## Nonparametric Deconvolution
 
-Property ([-@eq-linear-chf-independence]) is a particularly useful feature of characteristic functions for statistical applications. It forms the basis of an estimation and identification approach known as *deconvolution* — the approach we will take to identify the distribution of the coefficients $\bbeta_i$ in the next section. 
+Property ([-@eq-linear-chf-independence]) is a particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as *deconvolution* — the approach we will take to identify the distribution of the coefficients $\bbeta_i$ in the next section. 
 
 At heart, deconvolution is simple. Suppose that we observe a random vector $\bY$. $\bY$ is generated as a sum of two independent vector $\bV$ and $\bU$. The distribution of $\bU$ is known, while the distribution of $\bV$ is the object of interest. 
 
-By property ([-@eq-linear-chf-independence]) i
+By property ([-@eq-linear-chf-independence]) the characteristic function of $\bY$ satisfies
+$$
+	\varphi_{\bY}(\bs)   =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+$$
+If $\varphi_{\bU}(\bs)\neq 0$, we can divide and rearrange to obtain
+$$
+\varphi_{\bV}(\bs) = \dfrac{\varphi_{\bY}(\bs) }{\varphi_{\bU}(\bs)}
+$$
+By assumption, the distributions of $\bY$ and $\bU$ are known, and thus $\varphi_{\bY}(\bs)$ and $\varphi_{\bU}(\bs)$ are identified. It follows that the full $\varphi_{\bV}(\cdot)$ is also identified provided $\varphi_{\bU}(\bs)\neq 0$ for all $\bs$ (or at least $\varphi_{\bU}(\bs)= 0$ for "not too many" $\bs$, see @Evdokimov2012). The distribution of $\bV$ is identified since characteristic functions uniquely identify distributions. 
 
-If $\varphi_{\bU}(\bs)\neq 0$, we can divide
-
-(or at least does not have "too many" zeros)
-
-
-The name of the procedure stems from the fact that the distribution of $\bY$ is the convolution of distributions of $\bV$ and $\bU$. We now 
+This identification strategy for the distribution of $\bV$ is called deconvolution. The name of the procedure stems from the fact that the distribution of $\bY$ is the convolution of distributions of $\bV$ and $\bU$. Extracting the distribution of $\bV$ from the laws of $\bY, \bU$ may be viewed as an inverse operation. 
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -84,4 +87,4 @@ It is possible to relax the assumption that the distribution of $\bU$ using muli
 
 #### Next Section {.unnumbered}
 
-In the next section, we  
+In the next section, we will discuss identification of the distribution of the coefficients $\bbeta_i$ in  model ([-@eq-random_intercept]) using the tools of this section.
