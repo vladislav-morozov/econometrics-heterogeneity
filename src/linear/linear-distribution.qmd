@@ -63,14 +63,15 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 
 ## Identification of the Distribution
 
-
-## Estimation with Discrete Covariates
-
 ### Overall Strategy
 
 To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  
  
 To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to how we did with variance. Observe that we can recover the function of interest from @eq-linear-distribution-chf-estimators provided that we know $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$. Accordingly, we will first  focus on identifying this latter function from @eq-linear-distribution-chf-data. We will then return  to @eq-linear-distribution-chf-estimators to finish the argument.
+
+
+## Estimation with Discrete Covariates
+
 
 
 
