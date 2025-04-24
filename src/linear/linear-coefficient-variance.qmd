@@ -221,7 +221,7 @@ It turns out that a similar strategy can be used to identify the third and highe
 - Multiplicative separability of the moments of $\bbeta_i$ and $\bu_i$ up to order $k$.
 
 
-Naturally, moments of $\bbeta_i$ may be easily obtained the full distribution of $\bbeta_i$. This distribution is our maximal object of interest, and we now turn towards its identification.
+However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantile of $\bbeta_i$ and further policy-relevant parameter. As such,  this distribution is our maximal object of interest, and we now turn towards its identification.
 
 
 
