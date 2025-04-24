@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../linear/linear-chf.html" rel="next">
 <link href="../linear/linear-mean-group.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -536,6 +536,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -575,6 +581,7 @@ window.Quarto = {
   <li><a href="#variance-of-coefficients" id="toc-variance-of-coefficients" class="nav-link" data-scroll-target="#variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</a></li>
   </ul></li>
   <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">7.3</span> Estimation</a></li>
+  <li><a href="#higher-order-moments-and-moving-beyond" id="toc-higher-order-moments-and-moving-beyond" class="nav-link" data-scroll-target="#higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -759,6 +766,20 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
     &amp; \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \by_i'\bM(\bX_i)\by_i\bH_i\bH_i'.
 \end{aligned}
 \]</span> Under standard regularity conditions, <span class="math inline">\(\widehat{\var(\bbeta_i) }\)</span> is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
+</section>
+<section id="higher-order-moments-and-moving-beyond" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</h2>
+<p>It turns out that a similar strategy can be used to identify the third and higher-order moments of <span class="math inline">\(\bbeta_i\)</span>. see <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> for the details. The key ingredients of the identification argument for the <span class="math inline">\(k\)</span>th moments of <span class="math inline">\(\bbeta_i\)</span> are:</p>
+<ul>
+<li><span class="math inline">\(k\)</span>th moments (or cumulants) of <span class="math inline">\(\by_i\)</span> and <span class="math inline">\(\hat{\bbeta}_i\)</span></li>
+<li>Restrictions on the time series dynamics of <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span></li>
+<li>Multiplicative separability of the moments of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span> up to order <span class="math inline">\(k\)</span>.</li>
+</ul>
+<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantile of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
+<hr>
+<section id="next-section" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
+<p>In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of <span class="math inline">\(\bbeta_i\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -772,6 +793,7 @@ Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
 Heckman, James J., Jeffrey Smith, and Nancy Clements. 1997. <span>“<span class="nocase">Making the Most out of Programme Evaluations and Social Experiments : Accounting for Heterogeneity in Programme Impacts</span>.”</span> <em>Review of Economic Studies</em> 64 (4): 487–535. <a href="https://doi.org/10.2307/2971729">https://doi.org/10.2307/2971729</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1343,8 +1365,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
