@@ -155,13 +155,37 @@ $$
 	\log(\varphi_{\bu_i|\bX_i}(0|\bX))  & = 0.
 \end{aligned}
 $$
-We conclude that the characteristic function of $\bu_i$ is identified.
+We conclude that the characteristic function of $\bu_i$ is identified. This completes the first step of our identification strategy. 
+
+### Identifying the Distribution of Coefficients
+
+For the second step — identification of $\varphi_{\bbeta_i|\bX_i}$ — we return to @eq-linear-distribution-chf-estimators. Here we have to make an additional assumption:
+$$
+\varphi_{\bu_i|\bX_i}(\bs|\bX)\neq 0 \text{ for all }\bs.
+$$
+This assumption allows us to divide by the characteristic function of $\bu_i$ in @eq-linear-distribution-chf-estimators and obtain
+$$
+\varphi_{\bbeta_i|\bX_i}(\bs|\bX) = \dfrac{\varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX)  }{\varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX)}.
+$$
+
+
+Finally, the density or cumulative distribution functions of the coefficients may be recovered from by above expression using inversion formulae. For example, if the coefficients are continuously distribution, their conditional density satisfies
+$$
+f_{\bbeta_i|\bX_i}(\bb|\bX) = \dfrac{1}{(2\pi)^n} \int_{\R^p} \exp(-i\bs'\bb)\varphi_{\bbeta_i|\bX_i}(\bs|\bX)d\bs.
+$$
+Last, we can recover the unconditional distribution of the coefficients since we know the marginal distribution of $\bX_i$. For example, if $f_{\bX_i}$ is the marginal density, the unconditional density of $\bbeta_i$ is obtained by simply integrating $\bX_i$ out as 
+$$
+f_{\bbeta_i}(\bb) = \int f_{\bbeta_i|\bX_i}(\bb|\bX)f_{\bX_i}(\bX)d\bX.
+$$
 
 ## Estimation with Discrete Covariates
 
 
+## Summary and Further References 
 
-## Beyond Model ([-@eq-random_intercept])
+### Block Summary 
+
+### Beyond Model ([-@eq-random_intercept])
 
 
 Not all
