@@ -28,11 +28,11 @@ We are now in a position to obtain our final and strongest result in this block:
 $$
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 $$
-
+As in @sec-linear-variance, 
 
 ### Conditional Independence of $\bbeta_i$ and $\bu_i$
 
-A key piece of our identification strategy is the following assumption of conditional independence between $\bbeta_i$ and $\bu_i$:
+The key piece of our identification strategy is the following assumption of conditional independence between $\bbeta_i$ and $\bu_i$:
 $$
 \bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
 $$ {#eq-linear-distribution-cond-ind}
@@ -40,7 +40,7 @@ To interpret assumption ([-@eq-linear-distribution-cond-ind]), consider the foll
 
 ### Implication of Conditional Independence
 
-An implication of assumption ([-@eq-linear-distribution-cond-ind] is that both $\by_i$ and the individual estimators $\hat{\bbeta}_i$ are sums of two conditionally independent vector. Specifically, conditionally on $\curl{\bX_i=\bX}$
+An implication of assumption ([-@eq-linear-distribution-cond-ind] is that both $\by_i$ and the individual estimators $\hat{\bbeta}_i$ are sums — convolutions — of two conditionally independent vectors. Specifically, conditionally on $\curl{\bX_i=\bX}$
 
 - $\by_i$ is the sum of $\bX\bbeta_i$ and $\bu_i$
 - $\hat{\bbeta}_i$ is the sum of $\bbeta_i$ and $(\bX'\bX)^{-1}\bX\bu_i$
@@ -67,15 +67,70 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 
 To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  
  
-To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to how we did with variance. Observe that we can recover the function of interest from @eq-linear-distribution-chf-estimators provided that we know $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$. Accordingly, we will first  focus on identifying this latter function from @eq-linear-distribution-chf-data. We will then return  to @eq-linear-distribution-chf-estimators to finish the argument.
+To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to how we did with variance. The function of interest can be recovered @eq-linear-distribution-chf-estimators provided that we know $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$. Accordingly, we will first  focus on identifying this latter function from @eq-linear-distribution-chf-data. We will then apply deconvolution  to @eq-linear-distribution-chf-estimators.
+
+
+### Equation in Hessians of Characteristic Functions
+ 
+We begin by casting @eq-linear-distribution-chf-data in a more useful form. The characteristic functions in ([-@eq-linear-distribution-chf-data]) are twice differentiable under our moment assumptions. Taking logarithms ([see here](https://math.stackexchange.com/questions/3795356/log-of-a-product-of-characteristic-functions-lindebergs-theorem-and-accompanyi)) and differentiating twice yields 
+$$
+\begin{aligned} 
+	& \dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'} \\
+    & = \bX \dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'} \bX' +  \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'} .
+\end{aligned}
+$$ {#eq-linear-chf-hessian}
+Observe that this equation is similar to the expression ([-@eq-linear-variance-second-moment-y]) we obtained for variance. It decomposes the characteristic function of the data into a sum of contributions of the coefficients $\bbeta_i$ and the residuals $\bu_i$. In contrast to ([-@eq-linear-variance-second-moment-y]), system ([-@eq-linear-chf-hessian]) is a functional equation, parametrized by $\bs$.
+
+### Imposing Structure on the Error Term
+
+
+Our goal is to solve for the second term in the linear system ([-@eq-linear-chf-hessian]). However, like system ([-@eq-linear-variance-second-moment-y]),  system ([-@eq-linear-chf-hessian]) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the $\bu_i$ component from the $\bbeta_i$ one. 
+
+In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption ([-@eq-linear-variance-spherical]). Specifically, we will assume that $u_{it}$ is IID across $i$ and $t$ conditional on $\bX_i=\bX$. This assumption implies that all $u_{it}$ have the same characteristic function for all $i$ and $t$:
+$$ 
+	\varphi_{u_{i1}|\bX_i}(s|\bX) = \cdots = \varphi_{u_{iT}|\bX_i}(s|\bX).
+$$ {#eq-linear-distribution-iid-error}
+We label the common function 	$\varphi_{u|\bX_i}(s|\bX)$.  
+
+The characteristic function of the $T$-vector $\bu_i$  can be written as
+$$
+\begin{aligned}
+	\varphi_{\bu_i|\bX_i}(\bs|\bX) & = \prod_{j=1}^T \varphi_{u|\bX_i}(s_j|\bX), \\
+    \bs & = (s_1, s_2, \dots, s_T).
+\end{aligned}
+$$
+Taking logarithms turns the product into a sum:
+$$
+	\log\left(\varphi_{\bu_i|\bX_i}(\bs|\bX)\right) = \sum_{j=1}^T \log(\varphi_{u|\bX_i}(s_j|\bX)).
+$$
+It is easy to see that the Hessian of this function with respect to $\bs$ is diagonal and takes the following form:
+$$
+\begin{aligned}
+	\dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}  & = \diag\curl{\bphi(\bs)},\\
+\end{aligned}
+$$
+where
+$$
+	\bphi(\bs)  =  \left(\dfrac{d^2\log(\varphi_{u|\bX_i}(s_1|\bX))}{ds_1^2}, \dots,   \dfrac{d^2\log(\varphi_{u|\bX_i}(s_T|\bX))}{ds_T^2}\right).
+$$
+To summarize, assumption ([-@eq-linear-distribution-iid-error]) reduces the unknown $T\times T$  matrix  $\frac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}$ to an unknown $T$-vector  $\bphi(\bs)$. There are now sufficiently many equations in system ([-@eq-linear-chf-hessian]) to cover all the remaining unknown components, provided standard rank conditions hold. 
+
+
+### Solving for the Distribution of Residuals
+
+To solve for $\bphi(\bs)$, we  return to ([-@eq-linear-chf-hessian]).  We first put it into  more familiar tall form (one line, one equation) using the vectorization operator. Applying the  vectorization operator yields
+$$
+\begin{aligned}
+	& \vecc\left(\dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) \\
+    &  = (\bX \otimes \bX) \vecc\left(\dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'}\right) +   \bA\bphi(\bs),
+\end{aligned}
+$$ {#eq-linear-chf-hessian-vectorized}
+where  an explicit formula for $\bA$ can be found [here](https://math.stackexchange.com/questions/3365228/vectorization-of-a-diagonal-matrix).
+ 
 
 
 ## Estimation with Discrete Covariates
 
-
-
-
-### Equation in Hessians of Characteristic Functions
 
 
 ## Beyond Model ([-@eq-random_intercept])
