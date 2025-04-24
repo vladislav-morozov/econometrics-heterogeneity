@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../linear/linear-distribution.html" rel="next">
 <link href="../linear/linear-coefficient-variance.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -396,7 +396,17 @@ div.csl-indent {
 
 
 
+        independent: "\\mathrel{\\perp\\!\\!\\perp}",
+
+
+
         var: "\\mathrm{var}",
+
+        diag: "\\mathrm{diag}",
+
+        rank: "\\mathrm{rank}",
+
+        vecc: "\\mathrm{vec}",
 
       }
 
@@ -542,6 +552,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -614,7 +630,7 @@ Summary and Learning Outcomes
 </ul>
 </div>
 </div>
-<p>To discuss the identification of the full distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.</p>
+<p>To discuss the identification of the full distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.</p>
 <section id="characteristic-functions" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</h2>
 <p>If <span class="math inline">\(\bV\)</span> is a random <span class="math inline">\(T\)</span>-vector, then the characteristic function <span class="math inline">\(\varphi_{\bV}(s): \R^T\to \C\)</span> of <span class="math inline">\(\bV\)</span> is defined as follows: <span class="math display">\[
@@ -630,13 +646,13 @@ Summary and Learning Outcomes
      &amp;  =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
 \end{aligned}
 \tag{8.1}\]</span></span></p></li>
-<li><p>Let <span class="math inline">\(\bbeta\)</span> be a random <span class="math inline">\(p\)</span>-vector and <span class="math inline">\(\bX\)</span> a matrix. Then <span class="math display">\[
+<li><p>Let <span class="math inline">\(\bbeta\)</span> be a random <span class="math inline">\(p\)</span>-vector and <span class="math inline">\(\bX\)</span> a matrix. Then <span id="eq-linear-chf-product"><span class="math display">\[
 \begin{aligned}
      \varphi_{\bX\bbeta}(\bs) &amp; = \E\left[\exp(i\bs'(\bX\bbeta)) \right] \\
      &amp; = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
      &amp;  = \varphi_{\bbeta}(\bX'\bs)
 \end{aligned}
-\]</span></p></li>
+\tag{8.2}\]</span></span></p></li>
 </ol>
 <p>Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones.</p>
 </section>
@@ -664,7 +680,7 @@ Summary and Learning Outcomes
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we will discuss identification of the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) using the tools of this section.</p>
+<p>In the next section, we will discuss identification of the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) using the tools of this section.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1262,8 +1278,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../linear/linear-distribution.html" class="pagination-link" aria-label="Distribution of Heterogeneous Coefficients">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

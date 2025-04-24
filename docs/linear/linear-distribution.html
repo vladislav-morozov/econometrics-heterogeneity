@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
+<meta name="description" content="Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)">
 
-<title>7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>9&nbsp; Distribution of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-chf.html" rel="next">
-<link href="../linear/linear-mean-group.html" rel="prev">
+<link href="../references/references.html" rel="next">
+<link href="../linear/linear-chf.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -446,8 +446,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
+<meta property="og:title" content="9&nbsp; Distribution of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -460,7 +460,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-distribution.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -542,7 +542,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -554,7 +554,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -584,29 +584,34 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#beyond-average-coefficients" id="toc-beyond-average-coefficients" class="nav-link active" data-scroll-target="#beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</a>
+  <li><a href="#model-and-conditional-independence-assumption" id="toc-model-and-conditional-independence-assumption" class="nav-link active" data-scroll-target="#model-and-conditional-independence-assumption"><span class="header-section-number">9.1</span> Model and Conditional Independence Assumption</a>
   <ul class="collapse">
-  <li><a href="#potential-objects-of-interest" id="toc-potential-objects-of-interest" class="nav-link" data-scroll-target="#potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</a></li>
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">7.1.2</span> Model</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">9.1.1</span> Model</a></li>
+  <li><a href="#conditional-independence-of-bbeta_i-and-bu_i" id="toc-conditional-independence-of-bbeta_i-and-bu_i" class="nav-link" data-scroll-target="#conditional-independence-of-bbeta_i-and-bu_i"><span class="header-section-number">9.1.2</span> Conditional Independence of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></a></li>
+  <li><a href="#implication-of-conditional-independence" id="toc-implication-of-conditional-independence" class="nav-link" data-scroll-target="#implication-of-conditional-independence"><span class="header-section-number">9.1.3</span> Implication of Conditional Independence</a></li>
   </ul></li>
-  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">7.2</span> Identification</a>
+  <li><a href="#identification-of-the-distribution" id="toc-identification-of-the-distribution" class="nav-link" data-scroll-target="#identification-of-the-distribution"><span class="header-section-number">9.2</span> Identification of the Distribution</a>
   <ul class="collapse">
-  <li><a href="#variance-decomposition" id="toc-variance-decomposition" class="nav-link" data-scroll-target="#variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</a></li>
-  <li><a href="#imposing-structure-on-the-error-term" id="toc-imposing-structure-on-the-error-term" class="nav-link" data-scroll-target="#imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</a></li>
-  <li><a href="#variance-of-residuals" id="toc-variance-of-residuals" class="nav-link" data-scroll-target="#variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</a></li>
-  <li><a href="#variance-of-coefficients" id="toc-variance-of-coefficients" class="nav-link" data-scroll-target="#variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</a></li>
+  <li><a href="#overall-strategy" id="toc-overall-strategy" class="nav-link" data-scroll-target="#overall-strategy"><span class="header-section-number">9.2.1</span> Overall Strategy</a></li>
+  <li><a href="#equation-in-hessians-of-characteristic-functions" id="toc-equation-in-hessians-of-characteristic-functions" class="nav-link" data-scroll-target="#equation-in-hessians-of-characteristic-functions"><span class="header-section-number">9.2.2</span> Equation in Hessians of Characteristic Functions</a></li>
+  <li><a href="#imposing-structure-on-the-error-term" id="toc-imposing-structure-on-the-error-term" class="nav-link" data-scroll-target="#imposing-structure-on-the-error-term"><span class="header-section-number">9.2.3</span> Imposing Structure on the Error Term</a></li>
+  <li><a href="#solving-for-the-distribution-of-residuals" id="toc-solving-for-the-distribution-of-residuals" class="nav-link" data-scroll-target="#solving-for-the-distribution-of-residuals"><span class="header-section-number">9.2.4</span> Solving for the Distribution of Residuals</a></li>
+  <li><a href="#identifying-the-distribution-of-coefficients" id="toc-identifying-the-distribution-of-coefficients" class="nav-link" data-scroll-target="#identifying-the-distribution-of-coefficients"><span class="header-section-number">9.2.5</span> Identifying the Distribution of Coefficients</a></li>
   </ul></li>
-  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">7.3</span> Estimation</a></li>
-  <li><a href="#higher-order-moments-and-moving-beyond" id="toc-higher-order-moments-and-moving-beyond" class="nav-link" data-scroll-target="#higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">9.3</span> Estimation</a>
+  <ul class="collapse">
+  <li><a href="#with-discrete-covariates" id="toc-with-discrete-covariates" class="nav-link" data-scroll-target="#with-discrete-covariates"><span class="header-section-number">9.3.1</span> With Discrete Covariates</a></li>
+  <li><a href="#with-continuous-covariates" id="toc-with-continuous-covariates" class="nav-link" data-scroll-target="#with-continuous-covariates"><span class="header-section-number">9.3.2</span> With Continuous Covariates</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-distribution.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-distribution.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-variance" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></h1>
+<h1 class="title"><span id="sec-linear-distribution" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></h1>
 </div>
 
 
@@ -633,182 +638,178 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses how to identify the variance of heterogeneous coefficients without restricting the dependence between coefficients and covariates.</p>
+<p>This section shows how identify the full distribution of coefficients using a conditional deconvolution argument.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Explain why average coefficients provide an incomplete picture.</li>
-<li>Identify the variance of heterogeneous coefficients using a temporal homoskedasticity assumption on the residuals.</li>
-<li>Construct a consistent estimator for the variance of coefficients.</li>
+<li>Describe the impact of conditional independence assumptions between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(u_{it}\)</span>.</li>
+<li>Identify the distribution of <span class="math inline">\(\bbeta_i\)</span> using a conditional deconvolution argument and assumptions on <span class="math inline">\(u_{it}\)</span>.</li>
+<li>Propose a distribution estimator for the case of discrete covariates.</li>
 </ul>
 </div>
 </div>
-<section id="beyond-average-coefficients" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</h2>
-<section id="potential-objects-of-interest" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</h3>
-<p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
-y_{it} = \bx_{it}'\bbeta_i + u_{it}.
-\tag{7.1}\]</span></span> In particular, <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
-<p>Average effects are informative but limited. They do not capture the full variation in responses across individuals (<span class="citation" data-cites="Heckman1997">Heckman, Smith, and Clements (<a href="../references/references.html#ref-Heckman1997" role="doc-biblioref">1997</a>)</span>). Other parameters of interest include:</p>
+<section id="model-and-conditional-independence-assumption" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="model-and-conditional-independence-assumption"><span class="header-section-number">9.1</span> Model and Conditional Independence Assumption</h2>
+<section id="model" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">9.1.1</span> Model</h3>
+<p>We are now in a position to obtain our final and strongest result in this block: identify the full distribution of <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span class="math display">\[
+y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+\]</span> As in <a href="linear-coefficient-variance.html" class="quarto-xref"><span>Chapter 7</span></a>, we impose strict exogeneity <span class="math display">\[
+\E[\bu_i|\bbeta_i, \bX_i] = 0.
+\]</span> We also assume the existence of the first two moments of <span class="math inline">\(\bbeta_i, \bX_i\)</span>, and <span class="math inline">\(\bu_i\)</span>.</p>
+<p>As before, the number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
+</section>
+<section id="conditional-independence-of-bbeta_i-and-bu_i" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="conditional-independence-of-bbeta_i-and-bu_i"><span class="header-section-number">9.1.2</span> Conditional Independence of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></h3>
+<p>The key to our identification strategy is the following assumption of conditional independence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span>: <span id="eq-linear-distribution-cond-ind"><span class="math display">\[
+\bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
+\tag{9.1}\]</span></span> To understand assumption (<a href="#eq-linear-distribution-cond-ind" class="quarto-xref"><span>9.1</span></a>), consider a production function example. Let <span class="math inline">\(u_{it}\)</span> be the measurement error in the output value <span class="math inline">\(y_{it}\)</span>. The variance of <span class="math inline">\(u_{it}​\)</span> may depend on the scale of the firm (captured by capital), leading to dependence between <span class="math inline">\(\bX_i\)</span> and <span class="math inline">\(\bu_i\)</span>. However, it is plausible that the firm size captures all information about firm technology relevant for measurement error. In this case, the assumption appears reasonable.</p>
+</section>
+<section id="implication-of-conditional-independence" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="implication-of-conditional-independence"><span class="header-section-number">9.1.3</span> Implication of Conditional Independence</h3>
+<p>Given the conditional independence assumption (<a href="#eq-linear-distribution-cond-ind" class="quarto-xref"><span>9.1</span></a>), both <span class="math inline">\(\by_i\)</span> and the individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> are sums of two conditionally independent vectors. Specifically, conditionally on <span class="math inline">\(\curl{\bX_i=\bX}\)</span>:</p>
 <ul>
-<li>The moments of <span class="math inline">\(\bbeta\)</span>:
-<ul>
-<li>Variance: overall dispersion in effects.</li>
-<li>Skewness: asymmetry in responses.</li>
-<li>Higher moments: shape of the distribution.</li>
-</ul></li>
-<li>The full distribution and quantiles of <span class="math inline">\(\bbeta_i\)</span>. For example, the distribution may be used to compute what proportion of people benefit vs.&nbsp;how many people are hurt by changes in <span class="math inline">\(x_{it}\)</span>.</li>
+<li><span class="math inline">\(\by_i\)</span> is the sum of <span class="math inline">\(\bX\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span></li>
+<li><span class="math inline">\(\hat{\bbeta}_i\)</span> is the sum of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\((\bX'\bX)^{-1}\bX\bu_i\)</span></li>
 </ul>
+<p>We can write the conditional characteristic function of <span class="math inline">\(\by_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span> using properties (<a href="linear-chf.html#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) and (<a href="linear-chf.html#eq-linear-chf-product" class="quarto-xref"><span>8.2</span></a>) as: <span id="eq-linear-distribution-chf-data"><span class="math display">\[
+\begin{aligned}
+    \varphi_{\by_i|\bX_i}(\bs|\bX) &amp; = \varphi_{\bX'\bbeta_i|\bX_i}(\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX) \\
+    &amp; = \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX).
+\end{aligned}
+\tag{9.2}\]</span></span> Similarly, the conditional characteristic function of <span class="math inline">\(\hat{\bbeta}_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span> satisfies <span id="eq-linear-distribution-chf-estimators"><span class="math display">\[
+\begin{aligned}
+    \varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) &amp; = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bH_i\bu_i|\bX_i}(\bs|\bX) \\
+    &amp;  = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX),
+\end{aligned}
+\tag{9.3}\]</span></span> where we again define <span class="math inline">\(\bH_i = (\bX_i'\bX_i)^{-1}\bX_i\)</span>.</p>
 </section>
-<section id="model" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="model"><span class="header-section-number">7.1.2</span> Model</h3>
-<p>As it turns out, it is possible to identify such distributional features in the static version of model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) without restricting the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> <span class="citation" data-cites="Arellano2012">(<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">Arellano and Bonhomme 2012</a>)</span>. In this section we discuss a streamlined version of their results for variance, while <a href="linear-distribution.html" class="quarto-xref"><span>Chapter 9</span></a> shows how to identify the maximal object of interest — the full distribution.</p>
-<p>Specifically, we consider model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) under a strict exogeneity condition of the form: <span id="eq-vector-variance-strict-ex"><span class="math display">\[
-\E[u_{it}|\bbeta_i, \bX_i] =0
-\tag{7.2}\]</span></span> The number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We will treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
-<p>As before, the model can be written in unit matrix form as <span class="math display">\[
-\by_i = \bX_i\bbeta_i + \bu_i.
-\]</span> We will again assume that <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span> for all <span class="math inline">\(i\)</span>. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
 </section>
+<section id="identification-of-the-distribution" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="identification-of-the-distribution"><span class="header-section-number">9.2</span> Identification of the Distribution</h2>
+<section id="overall-strategy" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="overall-strategy"><span class="header-section-number">9.2.1</span> Overall Strategy</h3>
+<p>To identify the distribution, it is sufficient to identify the conditional characteristic function <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}(\bs|\bX)\)</span> for all <span class="math inline">\(\bX\)</span> in the support of <span class="math inline">\(\bX_i\)</span>. We will proceed similarly to how we identified the variance. The steps are:</p>
+<ol type="1">
+<li>Identify <span class="math inline">\(\varphi_{\bu_i|\bX_i}(\cdot|\bX)\)</span> from <a href="#eq-linear-distribution-chf-data" class="quarto-xref">Equation&nbsp;<span>9.2</span></a>.</li>
+<li>Apply deconvolution to <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a> to recover <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}(\bs|\bX)\)</span>.</li>
+<li>Invert the characteristic function of <span class="math inline">\(\bbeta_i\)</span> to obtain the distribution.</li>
+</ol>
 </section>
-<section id="identification" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="identification"><span class="header-section-number">7.2</span> Identification</h2>
-<p>Our object of interest in this section is the variance-covariance matrix of the coefficients <span class="math inline">\(\bbeta_i\)</span>. Its diagonal terms are the variances of individual coefficients, which show how dispersed the effects are overall. The off-diagonal covariance terms capture whether the effects of different covariates tend to go in the same or contrary directions.</p>
-<p>Formally, the variance-covariance matrix <span class="math inline">\(\var(\bbeta_i)\)</span> of the vector <span class="math inline">\(\bbeta_i\)</span> is given by <span class="math display">\[
-    \var(\bbeta_i) = \E[\bbeta_i\bbeta_i'] - \E[\bbeta_i]\E[\bbeta_i]'.
+<section id="equation-in-hessians-of-characteristic-functions" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="equation-in-hessians-of-characteristic-functions"><span class="header-section-number">9.2.2</span> Equation in Hessians of Characteristic Functions</h3>
+<p>We start by rewriting <a href="#eq-linear-distribution-chf-data" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> in a more useful form. The characteristic functions in (<a href="#eq-linear-distribution-chf-data" class="quarto-xref"><span>9.2</span></a>) are twice differentiable under our moment assumptions. Taking logarithms (<a href="https://math.stackexchange.com/questions/3795356/log-of-a-product-of-characteristic-functions-lindebergs-theorem-and-accompanyi">see here</a>) and differentiating twice yields <span id="eq-linear-chf-hessian"><span class="math display">\[
+\begin{aligned}
+    &amp; \dfrac{\partial^2 \log(   \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'} \\
+    &amp; = \bX \dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'} \bX' +  \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'} .
+\end{aligned}
+\tag{9.4}\]</span></span></p>
+<p>This equation is similar to the expression (<a href="linear-coefficient-variance.html#eq-linear-variance-second-moment-y" class="quarto-xref"><span>7.3</span></a>) we obtained for variance. It decomposes the characteristic function of the data into contributions from the coefficients <span class="math inline">\(\bbeta_i\)</span> and the residuals <span class="math inline">\(\bu_i\)</span>. Unlike the variance expression, system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>) is a functional equation parametrized by <span class="math inline">\(\bs\)</span>.</p>
+</section>
+<section id="imposing-structure-on-the-error-term" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="imposing-structure-on-the-error-term"><span class="header-section-number">9.2.3</span> Imposing Structure on the Error Term</h3>
+<p>Our goal is to solve for the second term in the linear system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>). However, like system (<a href="linear-coefficient-variance.html#eq-linear-variance-second-moment-y" class="quarto-xref"><span>7.3</span></a>), system (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the <span class="math inline">\(\bu_i\)</span> component from the <span class="math inline">\(\bbeta_i\)</span> one.</p>
+<p>In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption (<a href="linear-coefficient-variance.html#eq-linear-variance-spherical" class="quarto-xref"><span>7.4</span></a>). Specifically, we will assume that <span class="math inline">\(u_{it}\)</span> is IID across <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span> conditional on <span class="math inline">\(\bX_i=\bX\)</span>. This assumption implies that all <span class="math inline">\(u_{it}\)</span> have the same characteristic function for all <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span>: <span id="eq-linear-distribution-iid-error"><span class="math display">\[
+    \varphi_{u_{i1}|\bX_i}(s|\bX) = \cdots = \varphi_{u_{iT}|\bX_i}(s|\bX).
+\tag{9.5}\]</span></span> We label the common function <span class="math inline">\(\varphi_{u|\bX_i}(s|\bX)\)</span>.</p>
+<p>The characteristic function of the <span class="math inline">\(T\)</span>-vector <span class="math inline">\(\bu_i\)</span> can be written as <span class="math display">\[
+\begin{aligned}
+    \varphi_{\bu_i|\bX_i}(\bs|\bX) &amp; = \prod_{j=1}^T \varphi_{u|\bX_i}(s_j|\bX), \\
+    \bs &amp; = (s_1, s_2, \dots, s_T).
+\end{aligned}
+\]</span> Taking logarithms turns the product into a sum: <span class="math display">\[
+    \log\left(\varphi_{\bu_i|\bX_i}(\bs|\bX)\right) = \sum_{j=1}^T \log(\varphi_{u|\bX_i}(s_j|\bX)).
+\]</span> The Hessian of this function with respect to <span class="math inline">\(\bs\)</span> is diagonal: <span class="math display">\[
+\begin{aligned}
+    \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}  &amp; = \diag\curl{\bphi(\bs)},\\
+\end{aligned}
+\]</span> where <span class="math display">\[
+    \bphi(\bs)  =  \left(\dfrac{d^2\log(\varphi_{u|\bX_i}(s_1|\bX))}{ds_1^2}, \dots,   \dfrac{d^2\log(\varphi_{u|\bX_i}(s_T|\bX))}{ds_T^2}\right).
+\]</span> To summarize, assumption (<a href="#eq-linear-distribution-iid-error" class="quarto-xref"><span>9.5</span></a>) reduces the unknown <span class="math inline">\(T\times T\)</span> matrix <span class="math inline">\(\frac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}\)</span> to an unknown <span class="math inline">\(T\)</span>-vector <span class="math inline">\(\bphi(\bs)\)</span>. There are now sufficiently many equations to cover all the remaining unknown components, provided standard rank conditions hold.</p>
+</section>
+<section id="solving-for-the-distribution-of-residuals" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="solving-for-the-distribution-of-residuals"><span class="header-section-number">9.2.4</span> Solving for the Distribution of Residuals</h3>
+<p>To solve for <span class="math inline">\(\bphi(\bs)\)</span>, we return to (<a href="#eq-linear-chf-hessian" class="quarto-xref"><span>9.4</span></a>). We first put it into more familiar tall form (one line, one equation) using the vectorization operator. Applying the vectorization operator yields <span id="eq-linear-chf-hessian-vectorized"><span class="math display">\[
+\begin{aligned}
+    &amp; \vecc\left(\dfrac{\partial^2 \log(    \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) \\
+    &amp;  = (\bX \otimes \bX) \vecc\left(\dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'}\right) +   \bA\bphi(\bs),
+\end{aligned}
+\tag{9.6}\]</span></span> where an explicit formula for <span class="math inline">\(\bA\)</span> can be found <a href="https://math.stackexchange.com/questions/3365228/vectorization-of-a-diagonal-matrix">here</a>.</p>
+<p>Now we premultiply system (<a href="#eq-linear-chf-hessian-vectorized" class="quarto-xref"><span>9.6</span></a>) by <span class="math inline">\(\bM(\bX\otimes \bX)\)</span> where <span class="math inline">\(\bM(\cdot)\)</span> is defined in (<a href="linear-coefficient-variance.html#eq-linear-variance-annihilator" class="quarto-xref"><span>7.5</span></a>): <span id="eq-linear-distribution-chf-u"><span class="math display">\[
+\begin{aligned}
+    &amp; \bM(\bX\otimes \bX)   \vecc\left(\dfrac{\partial^2 \log(  \varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right)
+    \\ &amp; = \bM(\bX\otimes \bX)\bA\bphi(\bs)
+\end{aligned}
+\tag{9.7}\]</span></span> We can solve this system for <span class="math inline">\(\bphi(\bs)\)</span> provided <span class="math inline">\(\rank(\bM(\bX\otimes \bX)\bA)=T\)</span>. Indeed, this rank condition holds in this case, as shown by <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span>. As both <span class="math inline">\(\bM(\bX\otimes\bX)\)</span> and <span class="math inline">\(\varphi_{\by_i|\bX_i}(\cdot|\cdot)\)</span> are identified, we conclude that <span class="math inline">\(\bphi(\bs)\)</span> is also identified.</p>
+<p>The characteristic function of <span class="math inline">\(\bu_i\)</span> is now straighforward to recover from <span class="math inline">\(\bphi(\bs)\)</span> by integrating twice with respect to <span class="math inline">\(\bs\)</span>. As <span class="math inline">\(\bphi(\bs)\)</span> encodes second derivatives, we need two initial values. These initial values are provided by the properties of the characteristic function and the assumption of strict exogeneity: <span class="math display">\[
+\begin{aligned}
+    \dfrac{\partial \log(\varphi_{\bu_i|\bX_i}(0|\bX))}{\partial\bs'} &amp;  = \E[\bu_i|\bX_i=\bX] = 0,\\
+    \log(\varphi_{\bu_i|\bX_i}(0|\bX))  &amp; = 0.
+\end{aligned}
+\]</span> This completes the first identification step.</p>
+</section>
+<section id="identifying-the-distribution-of-coefficients" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="identifying-the-distribution-of-coefficients"><span class="header-section-number">9.2.5</span> Identifying the Distribution of Coefficients</h3>
+<p>For the second step — identification of <span class="math inline">\(\varphi_{\bbeta_i|\bX_i}\)</span> — we return to <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a>. We make an additional assumption: <span class="math display">\[
+\varphi_{\bu_i|\bX_i}(\bs|\bX)\neq 0 \text{ for all }\bs.
+\]</span> This assumption allows us to divide by the characteristic function of <span class="math inline">\(\bu_i\)</span> in <a href="#eq-linear-distribution-chf-estimators" class="quarto-xref">Equation&nbsp;<span>9.3</span></a> and obtain <span id="eq-linear-distribution-distr-chf"><span class="math display">\[
+\varphi_{\bbeta_i|\bX_i}(\bs|\bX) = \dfrac{\varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX)  }{\varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX)}.
+\tag{9.8}\]</span></span></p>
+<p>Finally, the density or cumulative distribution functions of the coefficients may be recovered using inversion formulae. For continuously distributed coefficients, the conditional density is: <span class="math display">\[
+f_{\bbeta_i|\bX_i}(\bb|\bX) = \dfrac{1}{(2\pi)^n} \int_{\R^p} \exp(-i\bs'\bb)\varphi_{\bbeta_i|\bX_i}(\bs|\bX)d\bs.
+\]</span> Last, we can recover the unconditional distribution of the coefficients since we know the marginal distribution of <span class="math inline">\(\bX_i\)</span>. For example, if <span class="math inline">\(f_{\bX_i}\)</span> is the marginal density, the unconditional density of <span class="math inline">\(\bbeta_i\)</span> is obtained by simply integrating <span class="math inline">\(\bX_i\)</span> out as <span class="math display">\[
+f_{\bbeta_i}(\bb) = \int f_{\bbeta_i|\bX_i}(\bb|\bX)f_{\bX_i}(\bX)d\bX.
 \]</span></p>
-<section id="variance-decomposition" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</h3>
-<p>To identify <span class="math inline">\(\var(\bbeta_i)\)</span>, we will first look at the second moments of <span class="math inline">\(\by_i\)</span>. Specifically, we will consider the conditional second moment of <span class="math inline">\(\by_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span>, where <span class="math inline">\(\bX\)</span> is some potential value of <span class="math inline">\(\bX_i\)</span> such that <span class="math inline">\(\det(\bX'\bX)&gt;0\)</span> and <span class="math inline">\(\bX\)</span> lies in the support of <span class="math inline">\(\bX_i\)</span>.</p>
-<p>Using model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) and condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the conditional second moment of <span class="math inline">\(\by_i\)</span> can be represented as <span id="eq-linear-variance-second-moment-y"><span class="math display">\[
-\begin{aligned}
-    &amp;\E[\by_i\by_i'|\bX_i=\bX]\\
-    &amp; = \E\left[ (\bX_i\bbeta_i+ \bu_i)(\bX_i\bbeta_i+\bu_i)'|\bX_i=\bX \right]\\
-    &amp; =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bu_i\bu_i'|\bX_i=\bX \right].
-\end{aligned}
-\tag{7.3}\]</span></span></p>
-<p>The above expression decomposes the conditional second moment of <span class="math inline">\(\by_i\)</span> into two components — one corresponding to <span class="math inline">\(\bbeta_i\)</span> and the other one to <span class="math inline">\(\bu_i\)</span>.</p>
-<p>In general, we cannot separate the two components of the second moment of <span class="math inline">\(\by\)</span>. To see why, consider <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a> as a system of linear equations. The unknowns are the components of the symmetric matrices</p>
-<ul>
-<li><span class="math inline">\(\E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(p(p+1)/2\)</span> unknowns.</li>
-<li><span class="math inline">\(\E\left[\bu_i\bu_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(T(T+1)/2\)</span> unknowns.</li>
-</ul>
-<p>The system is underdetermined, as there is a total of only <span class="math inline">\(T(T+1)/2\)</span> distinct equations.</p>
-<p>At heart, the underdeterminacy stems from the fact that the model allows any dynamic structure for <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span>. As a consequence, <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span> has too many free elements relative to the number of equations.</p>
 </section>
-<section id="imposing-structure-on-the-error-term" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</h3>
-<p>This issue can be resolved by imposing assumptions on the time series dependence of <span class="math inline">\(u_{it}\)</span>. The magnitudes of <span class="math inline">\(T\)</span> and <span class="math inline">\(p\)</span> determine how many restrictions are necessary. After taking out the <span class="math inline">\(p(p+1)/2\)</span> parameters of <span class="math inline">\(\E[\bbeta_i\bbeta_i'|\bX_i=\bx]\)</span>, we have at most <span class="math inline">\(\left[T(T+1)-p(p+1) \right]/2\)</span> equations left. This number is the number of possible free parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>. In the most unfavorable case <span class="math inline">\(T=p+1\)</span>, and we can allow only <span class="math inline">\(T+1\)</span> possible parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>.</p>
-<p>Various assumptions are possible, and <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> explore moving average and autoregressive structures for <span class="math inline">\(u_{it}\)</span>. Here, we will consider the simplest case in which <span class="math inline">\(u_{it}\)</span> is conditionally homoskedastic across time (but not necessarily across <span class="math inline">\(\bX\)</span>) and uncorrelated across <span class="math inline">\(t\)</span>: <span id="eq-linear-variance-spherical"><span class="math display">\[
-\begin{aligned}
-    \E[u_{it}^2|\bX_i=\bX] &amp; = \sigma^2(\bX), \\
-    \E[u_{it}u_{is}|\bX_i=\bX] &amp; = 0, \quad t\neq s.
-\end{aligned}
-\tag{7.4}\]</span></span> Under assumption (<a href="#eq-linear-variance-spherical" class="quarto-xref"><span>7.4</span></a>) it holds that <span class="math display">\[
-\E\left[\bu_i\bu_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
-\]</span> There is only one unknown parameter in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>!</p>
 </section>
-<section id="variance-of-residuals" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</h3>
-<p>We can identify the unknown <span class="math inline">\(\sigma^2(\bX)\)</span> using a standard argument. Let the annihilator matrix associated with <span class="math inline">\(\bX\)</span> be given by <span id="eq-linear-variance-annihilator"><span class="math display">\[
-    \bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
-\tag{7.5}\]</span></span> Recall three key properties that <span class="math inline">\(\bM(\cdot)\)</span> possesses <span class="math display">\[
-\begin{aligned}
-     \bM(\bX)\bX &amp; =0, \\
-      \bM(\bX)\bM(\bX) &amp; =\bM(\bX),  \\
-       \bM(\bX)' &amp; =\bM(\bX).
-\end{aligned}
-\]</span> Now consider the following second moment of <span class="math inline">\(\bM(\bX)\by_i\)</span> conditional on <span class="math inline">\(\bX_i=\bX\)</span>: <span class="math display">\[
-\begin{aligned}
-    &amp; \E[\by_i'\bM(\bX)'\bM(\bX)\by_i|\bX_i=\bX]\\
-    &amp;  = \E[\bu_i'\bM(\bX)\bu_i|\bX_i=\bX] \\
-    &amp; = \E\left[ \mathrm{tr}(\bu_i'\bM(\bX)\bu_i)|\bX_i=\bX\right] \\
-    &amp; = \sigma^2(\bX)(T-p).
-\end{aligned}
-\]</span> The details of the trace argument are standard and can be found in section 4.11 of <span class="citation" data-cites="Hansen2022">Hansen (<a href="../references/references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>.</p>
-<p>We conclude that <span class="math inline">\(\sigma^2(\bX)\)</span> is identified as <span class="math display">\[
-    \sigma^2(\bX) = \dfrac{1}{T-p} \E[\by_i'\bM(\bX)\by_i|\bX_i=\bX].
+<section id="estimation" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">9.3</span> Estimation</h2>
+<section id="with-discrete-covariates" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="with-discrete-covariates"><span class="header-section-number">9.3.1</span> With Discrete Covariates</h3>
+<p>For estimation, we discuss the conceptually simpler case where <span class="math inline">\(\bX_i\)</span> has finite support. In such a setting, there is a non-zero probability that <span class="math inline">\(\bX_i\)</span> takes each possible value.</p>
+<p>Estimation proceeds in three steps:</p>
+<ol type="1">
+<li>Estimation of <span class="math inline">\(\varphi_{\hat{\bbeta}_i|\bX_i}(\cdot|\bX)\)</span>.</li>
+<li>Estimation of <span class="math inline">\(\varphi_{\bu_i|\bX_i}(\cdot|\bX)\)</span>.</li>
+<li>Combining the estimators of the first two steps using <a href="#eq-linear-distribution-distr-chf" class="quarto-xref">Equation&nbsp;<span>9.8</span></a> and inverting the resulting estimated characteristic function.</li>
+</ol>
+<p>The characteristic function of the individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> can then be estimated with the empirical characteristic function on the sample of units with <span class="math inline">\(\bX_i=\bX\)</span>: <span class="math display">\[
+\hat{\varphi}_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\hat{\bbeta}_i \right).
 \]</span></p>
+<p>As for the characteristic function of <span class="math inline">\(\bu_i\)</span>, it can be estimated from a sample version of <a href="#eq-linear-distribution-chf-u" class="quarto-xref">Equation&nbsp;<span>9.7</span></a>. We replace the characteristic function of the data with its empirical counterpart: <span class="math display">\[
+\hat{\varphi}_{\by_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\by_i \right).
+\]</span></p>
+</section>
+<section id="with-continuous-covariates" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="with-continuous-covariates"><span class="header-section-number">9.3.2</span> With Continuous Covariates</h3>
+<p>If <span class="math inline">\(\bX_i\)</span> is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. <span class="citation" data-cites="Evdokimov2010">Evdokimov (<a href="../references/references.html#ref-Evdokimov2010" role="doc-biblioref">2010</a>)</span> studies such conditional deconvolution estimators and their asymptotic properties. Inference may be conducted using the results of <span class="citation" data-cites="Kato2021RobustInferenceDeconvolutiona">Kato, Sasaki, and Ura (<a href="../references/references.html#ref-Kato2021RobustInferenceDeconvolutiona" role="doc-biblioref">2021</a>)</span>.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Note that it is also possible to solve for variance parameters from <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>! This approach can be useful when residuals exhibit more general dependence.</p>
+<p>Such nonparametric estimators may perform poorly due to the curse of dimensionality if <span class="math inline">\(T\)</span> and <span class="math inline">\(p\)</span> are not small. In the next block we will discuss some assumptions that can reduce the dimensionality of the problem and be applied in this context.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="variance-of-coefficients" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</h3>
-<p>We are now in a position to identify <span class="math inline">\(\var(\bbeta_i)\)</span>. In principle, we can solve for <span class="math inline">\(\E[\bbeta_i\bbeta_i']\)</span> by suitably vectorizing the system in <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>. However, it will be more convenient to go back to the individual estimators (<a href="linear-mean-group.html#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>). For brevity, let <span class="math inline">\(\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'\)</span>, so that<br>
-<span class="math display">\[
-\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
-\]</span> As <span class="math inline">\(\E[\bbeta_i\bu_i']=0\)</span> by condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the variance of the individual estimator can be decomposed as <span class="math display">\[
-\begin{aligned}
-    &amp; \var(\hat{\bbeta}_i) = \var\left(\bbeta_i + \bH_i\bu_i \right)\\
-    &amp; = \var(\bbeta_i) + \var(\bH_i)\\
-    %
-    &amp;
-    = \var(\bbeta_i) + \E\left[\bH_i\bu_i\bu_i'\bH_i' \right]\\
-    &amp; =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bu_i\bu_i'\bH_i'|\bX_i \right]\right]\\
-    &amp; =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bu_i\bu_i'|\bX_i \right]\bH_i'\right]\\
-    &amp; = \var(\bbeta_i) + \E\left[\sigma(\bX_i)\bH_i\bH_i'\right].
-\end{aligned}
-\]</span></p>
-<p>Observe that the variance <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> of individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> (not <span class="math inline">\(\bbeta_i\)</span>!) is identified as <span class="math display">\[
-    \var(\hat{\bbeta}_i) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right).
-\]</span></p>
-<p>Substituting <a href="#eq-linear-variance-spherical" class="quarto-xref">Equation&nbsp;<span>7.4</span></a> and rearranging, we obtain the following explicit expression for <span class="math inline">\(\var(\bbeta_i)\)</span>: <span id="eq-linear-variance-variance-explicit"><span class="math display">\[
-\begin{aligned}  
-     \var(\bbeta_i)  &amp;  =   \var(\hat{\bbeta}_i) -   \E\left[\sigma(\bX_i)\bH_i\bH_i'\right]\\
-     &amp; =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right)\\
-     &amp; \quad  -  \dfrac{1}{T-p}\E\left[ \E[\by_i'\bM(\bX_i)\by_i|\bX_i]\bH_i\bH_i'\right].
-\end{aligned}
-\tag{7.6}\]</span></span> Note that the right-hand side is a function of the distribution of <span class="math inline">\((\by_i, \bX_i)\)</span> — hence identification holds.</p>
-</section>
-</section>
-<section id="estimation" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">7.3</span> Estimation</h2>
-<p>To construct an estimator for <span class="math inline">\(\var(\bbeta_i)\)</span> based on <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a>, we replace the population expectations with their sample counterparts. Specifically, <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> is estimated using the sample variance of the individual estimators: <span class="math display">\[
-\begin{aligned}
-    \widehat{\var(\hat{\bbeta}_i) } = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'.
-\end{aligned}
-\]</span> Likewise, we replace the expectation in the second term of <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a> with a sample average.</p>
-<p>This process yields an estimator for the variance of <span class="math inline">\(\bbeta\)</span>: <span class="math display">\[
-\begin{aligned}
-    \widehat{\var(\bbeta_i) } &amp; = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'\\
-    &amp; \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \by_i'\bM(\bX_i)\by_i\bH_i\bH_i'.
-\end{aligned}
-\]</span> Under standard regularity conditions, <span class="math inline">\(\widehat{\var(\bbeta_i) }\)</span> is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
-</section>
-<section id="higher-order-moments-and-moving-beyond" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</h2>
-<p>It turns out that a similar strategy can be used to identify the third and higher-order moments of <span class="math inline">\(\bbeta_i\)</span>. see <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> for the details. The key ingredients of the identification argument for the <span class="math inline">\(k\)</span>th moments of <span class="math inline">\(\bbeta_i\)</span> are:</p>
-<ul>
-<li><span class="math inline">\(k\)</span>th moments (or cumulants) of <span class="math inline">\(\by_i\)</span> and <span class="math inline">\(\hat{\bbeta}_i\)</span></li>
-<li>Restrictions on the time series dynamics of <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span></li>
-<li>Multiplicative separability of the moments of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span> up to order <span class="math inline">\(k\)</span>.</li>
-</ul>
-<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantile of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of <span class="math inline">\(\bbeta_i\)</span>.</p>
+<p>In the next section, we briefly conclude the block and discuss some further results on heterogeneous linear models.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Arellano2012" class="csl-entry" role="listitem">
 Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random coefficients panel data models</span>.”</span> <em>Review of Economic Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
 </div>
-<div id="ref-Hansen2022" class="csl-entry" role="listitem">
-Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
+<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
+Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and Estimation of a Nonparametric Panel Data Model with Unobserved Heterogeneity</span>.”</span>
 </div>
-<div id="ref-Heckman1997" class="csl-entry" role="listitem">
-Heckman, James J., Jeffrey Smith, and Nancy Clements. 1997. <span>“<span class="nocase">Making the Most out of Programme Evaluations and Social Experiments : Accounting for Heterogeneity in Programme Impacts</span>.”</span> <em>Review of Economic Studies</em> 64 (4): 487–535. <a href="https://doi.org/10.2307/2971729">https://doi.org/10.2307/2971729</a>.
+<div id="ref-Kato2021RobustInferenceDeconvolutiona" class="csl-entry" role="listitem">
+Kato, Kengo, Yuya Sasaki, and Takuya Ura. 2021. <span>“Robust <span>Inference</span> in <span>Deconvolution</span>.”</span> <em>Quantitative Economics</em> 12 (1): 109–42. <a href="https://doi.org/10.3982/QE1643">https://doi.org/10.3982/QE1643</a>.
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1376,13 +1377,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span>
+      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1391,4 +1392,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-distribution.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

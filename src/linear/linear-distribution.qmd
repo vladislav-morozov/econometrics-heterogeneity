@@ -143,7 +143,8 @@ where  an explicit formula for $\bA$ can be found [here](https://math.stackexcha
 Now we premultiply system ([-@eq-linear-chf-hessian-vectorized]) by $\bM(\bX\otimes \bX)$ where $\bM(\cdot)$ is defined in ([-@eq-linear-variance-annihilator]):
 $$
 \begin{aligned}
-	\bM(\bX\otimes \bX)	\vecc\left(\dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) & = \bM(\bX\otimes \bX)\bA\bphi(\bs)
+	& \bM(\bX\otimes \bX)	\vecc\left(\dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right)
+    \\ & = \bM(\bX\otimes \bX)\bA\bphi(\bs)
 \end{aligned}
 $$ {#eq-linear-distribution-chf-u}
 We can solve this system for $\bphi(\bs)$ provided $\rank(\bM(\bX\otimes \bX)\bA)=T$. Indeed, this rank condition holds in this case, as shown by @Arellano2012. As both $\bM(\bX\otimes\bX)$ and $\varphi_{\by_i|\bX_i}(\cdot|\cdot)$ are identified, we conclude that $\bphi(\bs)$ is also identified. 
