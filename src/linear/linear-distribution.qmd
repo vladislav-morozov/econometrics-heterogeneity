@@ -19,8 +19,62 @@ By the end of this section, you should be able to:
 - Goal 1
 :::
 
-## Model
+## Model and Conditional Independence Assumption
 
+
+### Model
+
+We are now in a position to obtain our final and strongest result in this block: identify the full distribution of $\bbeta_i$ in model ([-@eq-lecture_model]):
+$$
+y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+$$
+
+
+### Conditional Independence of $\bbeta_i$ and $\bu_i$
+
+A key piece of our identification strategy is the following assumption of conditional independence between $\bbeta_i$ and $\bu_i$:
+$$
+\bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
+$$ {#eq-linear-distribution-cond-ind}
+To interpret assumption ([-@eq-linear-distribution-cond-ind]), consider the following production function example. Let $u_{it}$ be the measurement error in the output value $y_{it}$. The variance of $u_{it}$ is likely to grow with the scale of the firm (captured by capital). Thus, there may be may be dependence between $\bX_i$ and $\bu_i$. At the same time, it is plausible that the firm size captures all the information about firm technology relevant for measurement error. In this case assumption ([-@eq-linear-distribution-cond-ind]) appears reasonable. 
+
+### Implication of Conditional Independence
+
+An implication of assumption ([-@eq-linear-distribution-cond-ind] is that both $\by_i$ and the individual estimators $\hat{\bbeta}_i$ are sums of two conditionally independent vector. Specifically, conditionally on $\curl{\bX_i=\bX}$
+
+- $\by_i$ is the sum of $\bX\bbeta_i$ and $\bu_i$
+- $\hat{\bbeta}_i$ is the sum of $\bbeta_i$ and $(\bX'\bX)^{-1}\bX\bu_i$
+
+We can write the conditional characteristic function of $\by_i$ given $\bX_i=\bX$  using properties ([-@eq-linear-chf-independence]) and ([-@eq-linear-chf-product]) as:
+$$
+\begin{aligned}
+	\varphi_{\by_i|\bX_i}(\bs|\bX) & = \varphi_{\bX'\bbeta_i|\bX_i}(\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX) \\
+    & = \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)\varphi_{\bu_i|\bX_i}(\bs|\bX).
+\end{aligned}
+$$ {#eq-linear-distribution-chf-data}
+Similarly, the conditional characteristic function of $\hat{\bbeta}_i$ given $\bX_i=\bX$ satisfies
+$$
+\begin{aligned}
+	\varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) & = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bH_i\bu_i|\bX_i}(\bs|\bX) \\
+    &  = \varphi_{\bbeta_i|\bX_i}(\bs|\bX) \varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX),
+\end{aligned}
+$$ {#eq-linear-distribution-chf-estimators}
+where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
+
+## Identification of the Distribution
+
+
+## Estimation with Discrete Covariates
+
+### Overall Strategy
+
+To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  
+ 
+To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to how we did with variance. Observe that we can recover the function of interest from @eq-linear-distribution-chf-estimators provided that we know $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$. Accordingly, we will first  focus on identifying this latter function from @eq-linear-distribution-chf-data. We will then return  to @eq-linear-distribution-chf-estimators to finish the argument.
+
+
+
+### Equation in Hessians of Characteristic Functions
 
 
 ## Beyond Model ([-@eq-random_intercept])
