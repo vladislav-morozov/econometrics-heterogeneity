@@ -1,8 +1,8 @@
 --- 
-description: "  (Lecture Notes)"
+description: "Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)"
 
 open-graph:
-    description: "   (Lecture Notes)"
+    description: "Learn to identify the full distribution of heterogeneous coefficients in panel data linear models using deconvolution. (Lecture Notes)"
 ---
 
 
@@ -12,11 +12,13 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  
+This section shows how identify the full distribution of coefficients using a conditional deconvolution argument.
 
 By the end of this section, you should be able to:
 
-- Goal 1
+- Describe the impact of conditional independence assumptions between $\bbeta_i$ and $u_{it}$.
+- Identify the distribution of $\bbeta_i$ using a conditional deconvolution argument and assumptions on $u_{it}$.
+- Propose a distribution estimator for the case of discrete covariates.
 :::
 
 ## Model and Conditional Independence Assumption
@@ -42,7 +44,7 @@ The key to our identification strategy is the following assumption of conditiona
 $$
 \bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
 $$ {#eq-linear-distribution-cond-ind}
-To understand assumption ([-@eq-linear-distribution-cond-ind]), consider a production function example. Let $u_{it}$ be the measurement error in the output value $y_{it}$. The variance of $u_{it​$ may depend on the scale of the firm (captured by capital), leading to dependence between $\bX_i$ and $\bu_i$.  However, it is plausible that the firm size captures all relevant information about firm technology for measurement error. In this case, the assumption appears reasonable.
+To understand assumption ([-@eq-linear-distribution-cond-ind]), consider a production function example. Let $u_{it}$ be the measurement error in the output value $y_{it}$. The variance of $u_{it}​$ may depend on the scale of the firm (captured by capital), leading to dependence between $\bX_i$ and $\bu_i$.  However, it is plausible that the firm size captures all information about firm technology relevant for measurement error. In this case, the assumption appears reasonable.
 
 ### Implication of Conditional Independence
 
@@ -74,7 +76,7 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  We will proceed similarly to how we identified the variance. The steps are:
 
 1. Identify $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$ from @eq-linear-distribution-chf-data. 
-2. Apply deconvolution  to @eq-linear-distribution-chf-estimators to recover $\varphi_{\bbeta_i|\bX_i}(\bs|\bX).
+2. Apply deconvolution  to @eq-linear-distribution-chf-estimators to recover $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$.
 3. Invert the characteristic function of $\bbeta_i$ to obtain the distribution. 
 
 
@@ -206,7 +208,7 @@ $$
 
 ### With Continuous Covariates
 
-If $\bX_i$ is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. @Evdokimov2010 studies such the construction of such conditional deconvolution estimators and investigates their asymptotic properties. Inference may be conducted using the results of @Kato2021RobustInferenceDeconvolutiona. 
+If $\bX_i$ is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. @Evdokimov2010 studies such conditional deconvolution estimators and their asymptotic properties. Inference may be conducted using the results of @Kato2021RobustInferenceDeconvolutiona. 
 
 ::: {.callout-note appearance="simple" icon=false}
 
