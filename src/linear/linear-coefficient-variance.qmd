@@ -25,7 +25,7 @@ By the end of this section, you should be able to:
 
 ### Potential Objects of Interest
 
-Previously, we focused on estimating the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-random_intercept]):
+Previously, we focused on estimating the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-lecture_model]):
 $$
 y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 $$ {#eq-linear-variance-model}
