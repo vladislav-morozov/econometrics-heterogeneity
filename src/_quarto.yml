@@ -24,6 +24,7 @@ book:
         - linear/linear-dynamic-panel-iv.qmd
         - linear/linear-dynamic-panel-heterogeneity.qmd
         - linear/linear-mean-group.qmd
+        - linear/linear-coefficient-variance.qmd
     - part: "Nonparametrics and Heterogeneity"
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
