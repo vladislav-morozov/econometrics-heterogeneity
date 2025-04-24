@@ -1,0 +1,35 @@
+--- 
+description: "  (Lecture Notes)"
+
+open-graph:
+    description: "   (Lecture Notes)"
+---
+
+
+# Distribution of Heterogeneous Coefficients {#sec-linear-distribution}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to:
+
+- Goal 1
+:::
+
+## Model
+
+
+
+## Beyond Model ([-@eq-random_intercept])
+
+
+Not all
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we will move
