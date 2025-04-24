@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it.">
+<meta name="description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
 
-<title>1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity</title>
+<title>8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,27 +44,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./linear/linear-introduction.html" rel="next">
-<link href="./index.html" rel="prev">
-<link href="./themes/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references/references.html" rel="next">
+<link href="../linear/linear-coefficient-variance.html" rel="prev">
+<link href="../themes/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -436,8 +436,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it.">
+<meta property="og:title" content="8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -450,7 +450,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -465,7 +465,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
+      <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/tree/main/src/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -481,13 +481,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -502,43 +502,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
@@ -554,7 +554,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -568,25 +568,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unobserved-heterogeneity" id="toc-unobserved-heterogeneity" class="nav-link active" data-scroll-target="#unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</a>
-  <ul class="collapse">
-  <li><a href="#types-of-unobserved-heterogeneity" id="toc-types-of-unobserved-heterogeneity" class="nav-link" data-scroll-target="#types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</a></li>
-  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
-  </ul></li>
-  <li><a href="#this-course" id="toc-this-course" class="nav-link" data-scroll-target="#this-course"><span class="header-section-number">1.2</span> This Course</a>
-  <ul class="collapse">
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="header-section-number">1.2.1</span> Course Description</a></li>
-  <li><a href="#common-themes" id="toc-common-themes" class="nav-link" data-scroll-target="#common-themes"><span class="header-section-number">1.2.2</span> Common Themes</a></li>
-  </ul></li>
+  <li><a href="#characteristic-functions" id="toc-characteristic-functions" class="nav-link active" data-scroll-target="#characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</a></li>
+  <li><a href="#deconvolution" id="toc-deconvolution" class="nav-link" data-scroll-target="#deconvolution"><span class="header-section-number">8.2</span> Deconvolution</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span id="sec-linear-chf" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></h1>
 </div>
 
 
@@ -613,192 +605,91 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course.</p>
-<p>By the end of this section, you should</p>
+<p>This section reviews characteristic functions and deconvolution.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Recognize cases where heterogeneous coefficients arise.</li>
-<li>Identify key challenges in estimating heterogeneous coefficients.</li>
-<li>Discuss two strategies for identification under coefficient heterogeneity.</li>
+<li>State some key properties of characteristic functions.</li>
+<li>Carry out a basic nonparametric deconvolution argument for identifying distributions.<br>
+</li>
 </ul>
 </div>
 </div>
-<section id="unobserved-heterogeneity" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</h2>
-<p>In economics, business, and other social sciences, no two individuals, firms, or countries are truly identical. Even when we observe the same covariates, hidden differences — such as preferences, productivity, or measurement errors — can lead to vastly different outcomes. These unobserved factors complicate empirical analysis and pose a fundamental challenge to statistical inference: how can we estimate policy-relevant parameters when key determinants of behavior remain hidden? This challenge, known as unobserved heterogeneity, is central to empirical research and the focus of this course.</p>
-<section id="types-of-unobserved-heterogeneity" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</h3>
-<p>By unobserved heterogeneity, we will understand differences across individuals, firms, or other economic units that are not captured in the available data but still influence outcomes. These differences can arise from various sources, including:</p>
-<ul>
-<li>Omitted explanatory variables and “fundamental” characteristics of agents.
-<ul>
-<li><em>Example</em>: Consumer demand depends on both income and prices, but if price data is missing, it becomes an unobserved factor influencing demand.</li>
-<li><em>Example</em>: Differences in consumer preferences shape demand, yet preferences are typically unobservable.</li>
-</ul></li>
-<li>Differences in responses to treatments: treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
-<ul>
-<li><em>Example</em>: A job training program may benefit some individuals more than others, meaning treatment effects vary across people.</li>
-</ul></li>
-<li>Measurement error:
-<ul>
-<li><em>Example</em>: Standardized test scores are often used to proxy intelligence, but they are imperfect measurements of the true intelligence.</li>
-</ul></li>
-</ul>
-</section>
-<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</h3>
-<p>Unobserved heterogeneity is particularly problematic in observational data, where individuals or firms can self-select into treatments or economic decisions. The agents make this decisions based on all the information available to them, but not all important variables get recorded in datasets. As a consequence, there exist hidden factors that confound the relationship between the explanatory variables and the outcomes. In contrast, in randomized experiments, treatments are assigned independently of the characteristics of agents (possibly conditionally). The following graphs schematically illustrate the point:</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 237.74 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-112 233.74,-112 233.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="57.7" cy="-90" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="57.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="119.7" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="119.7" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M72.39,-72.41C80.11,-63.69 89.72,-52.85 98.26,-43.21"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="101.1,-45.28 105.11,-35.47 95.86,-40.64 101.1,-45.28"></polygon>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="181.7" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="181.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge1" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M167.32,-72.76C159.53,-63.97 149.75,-52.93 141.08,-43.14"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="143.68,-40.8 134.43,-35.63 138.44,-45.44 143.68,-40.8"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Experimental data: no confounding.</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 151.74 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-184 147.74,-184 147.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="86.04" cy="-162" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-157.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="48.04" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="48.04" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- A&#45;&gt;B -->
-<g id="edge1" class="edge">
-<title>A-&gt;B</title>
-<path fill="none" stroke="#e6e6e6" d="M76.84,-144.05C70.87,-133.05 63.11,-118.76 57.16,-107.79"></path>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="86.04" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge3" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M93.94,-143.75C98.15,-133.58 102.9,-120.33 105.04,-108 107.78,-92.24 107.78,-87.76 105.04,-72 103.52,-63.24 100.68,-54.01 97.65,-45.75"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="100.84,-44.29 93.94,-36.25 94.32,-46.84 100.84,-44.29"></polygon>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M57.24,-72.05C61.68,-63.89 67.09,-53.91 72.02,-44.82"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="75.23,-46.25 76.93,-35.79 69.08,-42.91 75.23,-46.25"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Observational data: confounding</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>As a consequence, ignoring unobserved heterogeneity can lead to misleading statistical conclusions. Confounding manifests even in simple linear regression, with some examples including:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">Omitted variable bias</a>: if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.</li>
-<li><a href="https://en.wikipedia.org/wiki/Regression_dilution">Attenuation bias</a>: When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.</li>
-</ul>
-<p>The issue becomes even more challenging in nonlinear models, where often even the direction of the bias cannot be predicted <span class="citation" data-cites="Stefanski1985">(e.g. <a href="references/references.html#ref-Stefanski1985" role="doc-biblioref">Stefanski and Carroll 1985</a>)</span>.</p>
-</section>
-</section>
-<section id="this-course" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="this-course"><span class="header-section-number">1.2</span> This Course</h2>
-<section id="course-description" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="course-description"><span class="header-section-number">1.2.1</span> Course Description</h3>
-<p>As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses. This course surveys some of the most important advances, structured into three key topics:</p>
+<p>To discuss the identification of the full distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.</p>
+<section id="characteristic-functions" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</h2>
+<p>If <span class="math inline">\(\bV\)</span> is a random <span class="math inline">\(T\)</span>-vector, then the characteristic function <span class="math inline">\(\varphi_{\bV}(s): \R^T\to \C\)</span> of <span class="math inline">\(\bV\)</span> is defined as follows: <span class="math display">\[
+\varphi_{\bV}(\bs) = \E[\exp(i\bs'\bV)].
+\]</span> See <span class="citation" data-cites="Durrett2019">Durrett (<a href="../references/references.html#ref-Durrett2019" role="doc-biblioref">2019</a>)</span> (or your favorite probability textbook) regarding general properties of characteristic functions.</p>
+<p>For our purposes, we will need the following three key properties:</p>
 <ol type="1">
-<li>Linear models with heterogeneous coefficients: extending traditional regression models to allow for individual-specific responses to treatment.</li>
-<li>Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.</li>
-<li>Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution <em>of</em> treatment effects.</li>
+<li><p>The characteristic function uniquely determines the distribution.</p></li>
+<li><p>Let <span class="math inline">\(\bV, \bU\)</span> be two independent random vectors. Then the characteristic function of their sum <span class="math inline">\(\bV+\bU\)</span> is equal to the product of characteristic function of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>: <span id="eq-linear-chf-independence"><span class="math display">\[
+\begin{aligned}
+     \varphi_{\bV+\bU}(\bs) &amp; =  \E\left[e^{i\bs'(\bV+\bU)}\right] = \E\left[e^{i\bs'\bV}e^{i\bs'\bU} \right]\\
+     &amp; = \E\left[e^{i\bs'\bV}\right]\E\left[e^{i\bs'\bU}\right]\\
+     &amp;  =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+\end{aligned}
+\tag{8.1}\]</span></span></p></li>
+<li><p>Let <span class="math inline">\(\bbeta\)</span> be a random <span class="math inline">\(p\)</span>-vector and <span class="math inline">\(\bX\)</span> a matrix. Then <span class="math display">\[
+\begin{aligned}
+     \varphi_{\bX\bbeta}(\bs) &amp; = \E\left[\exp(i\bs'(\bX\bbeta)) \right] \\
+     &amp; = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
+     &amp;  = \varphi_{\bbeta}(\bX'\bs)
+\end{aligned}
+\]</span></p></li>
 </ol>
-<p>Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will emphasize identification strategies over asymptotic theory.</p>
+<p>Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones.</p>
 </section>
-<section id="common-themes" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="common-themes"><span class="header-section-number">1.2.2</span> Common Themes</h3>
-<p>Despite their differences, all models we study in this course share a common structure: they describe how an outcome <span class="math inline">\(y\)</span> depends on observed factors (<span class="math inline">\(x\)</span>) and unobserved heterogeneity (<span class="math inline">\(u, \alpha\)</span>). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models: <span id="eq-intro-potential-outcomes"><span class="math display">\[
-    y_i(x) = \phi(x, \alpha_i),  \quad y_{it}(x) = \phi(x, \alpha_i, u_{it}),
-\tag{1.1}\]</span></span> where <span class="math inline">\(x\)</span> is some potential value of the observed covariates, <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(u_{it}\)</span> are the time-invariant and time-varying unobserved characteristics of unit <span class="math inline">\(i\)</span>, respectively; and <span class="math inline">\(y_i(x)\)</span> and <span class="math inline">\(y_{it}(x\)</span> are the (scalar) outcome for individual <span class="math inline">\(i\)</span> given <span class="math inline">\(x\)</span> (in time <span class="math inline">\(t\)</span>). In practice, we will have access to datasets of the form <span class="math inline">\(\curl{(y_i, x_i)}_{i=1, \dots, N}\)</span> or <span class="math inline">\(\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}\)</span>. The observed outcomes are generated as <span class="math display">\[
-    y_i = \phi(x_i, \alpha_i),  \quad y_{it} = \phi(x_{it}, \alpha_i, u_{it}),
-\]</span></p>
-<p>Throughout, our goal will be to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.</p>
-<p>A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:</p>
-<ul>
-<li>Imposing functional form restrictions on <span class="math inline">\(g\)</span> (e.g.&nbsp;parametric assumptions such as linearity, or assuming that <span class="math inline">\(\alpha_i\)</span> is scalar and that it affects <span class="math inline">\(g\)</span> monotonically);</li>
-<li>Restricting the extent of unobserved heterogeneity in the model (e.g.&nbsp;assuming that there is scalar unobserved variables or a vector of heterogeneous coefficients);</li>
-<li>Restricting the relationship between the observed and unobserved variables (e.g.&nbsp;assuming that <span class="math inline">\(\alpha_i\)</span> is independent from <span class="math inline">\(x_i\)</span>);</li>
-<li>Focusing on particular parts of the distribution of the outcome (such as quantiles).</li>
-</ul>
-<p>We will see examples of each approach throughout the course, and one should see each particular model discussed as a specific variation of model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>).</p>
+<section id="deconvolution" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="deconvolution"><span class="header-section-number">8.2</span> Deconvolution</h2>
+<p>Property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as deconvolution. This approach will help us identify the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in the next section.</p>
+<p>At heart, deconvolution is simple. Suppose that we observe a random vector <span class="math inline">\(\bY\)</span>. <span class="math inline">\(\bY\)</span> is generated as a sum of two independent vector <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. The distribution of <span class="math inline">\(\bU\)</span> is known, while the distribution of <span class="math inline">\(\bV\)</span> is the object of interest.</p>
+<p>By property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) the characteristic function of <span class="math inline">\(\bY\)</span> satisfies <span class="math display">\[
+    \varphi_{\bY}(\bs)   =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+\]</span> If <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span>, we can divide and rearrange to obtain <span class="math display">\[
+\varphi_{\bV}(\bs) = \dfrac{\varphi_{\bY}(\bs) }{\varphi_{\bU}(\bs)}
+\]</span> By assumption, the distributions of <span class="math inline">\(\bY\)</span> and <span class="math inline">\(\bU\)</span> are known, and thus <span class="math inline">\(\varphi_{\bY}(\bs)\)</span> and <span class="math inline">\(\varphi_{\bU}(\bs)\)</span> are identified. It follows that the full <span class="math inline">\(\varphi_{\bV}(\cdot)\)</span> is also identified provided <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span> for all <span class="math inline">\(\bs\)</span> (or at least <span class="math inline">\(\varphi_{\bU}(\bs)= 0\)</span> for “not too many” <span class="math inline">\(\bs\)</span>, see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>). The distribution of <span class="math inline">\(\bV\)</span> is identified since characteristic functions uniquely identify distributions.</p>
+<p>This identification strategy is called deconvolution. The name of the procedure stems from the fact that the distribution of <span class="math inline">\(\bY\)</span> is the convolution of distributions of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. Extracting the distribution of <span class="math inline">\(\bV\)</span> from the laws of <span class="math inline">\(\bY, \bU\)</span> may be viewed as an inverse operation.</p>
+<p>Observe that the argument is nonparametric, as it imposes no parametric form assumptions on the distributions involved.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>It is possible to relax the assumption that the distribution of <span class="math inline">\(\bU\)</span> is known by using mulitple observations. We will see one approach in the following section. Another approach uses a second observation of <span class="math inline">\(\bY\)</span> using a result called Kotlarski’s lemma <span class="citation" data-cites="Kotlarski1967CharacterizingGammaNormal">(<a href="../references/references.html#ref-Kotlarski1967CharacterizingGammaNormal" role="doc-biblioref">Kotlarski 1967</a>)</span> (see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>, <span class="citation" data-cites="Lewbel2022">Lewbel (<a href="../references/references.html#ref-Lewbel2022" role="doc-biblioref">2022</a>)</span> for extensions). Used with measurement error <span class="citation" data-cites="Schennach2016RecentAdvancesMeasurement">(see a review in <a href="../references/references.html#ref-Schennach2016RecentAdvancesMeasurement" role="doc-biblioref">Schennach 2016</a>)</span>, nonparametric panel data models <span class="citation" data-cites="Evdokimov2010">(<a href="../references/references.html#ref-Evdokimov2010" role="doc-biblioref">Evdokimov 2010</a>)</span>, and identification of systems of simultaneous equations <span class="citation" data-cites="Lewbel2024IdentificationTriangularTwo">(<a href="../references/references.html#ref-Lewbel2024IdentificationTriangularTwo" role="doc-biblioref">Lewbel, Schennach, and Zhang 2024</a>)</span>.</p>
+</div>
+</div>
+</div>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we begin by examining how unobserved heterogeneity arises naturally in linear models and setting the stage for the first block of the course.</p>
+<p>In the next section, we will discuss identification of the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) using the tools of this section.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Stefanski1985" class="csl-entry" role="listitem">
-Stefanski, Leonard A., and Raymond J. Carroll. 1985. <span>“<span class="nocase">Covariate Measurement Error in Logistic Regression</span>.”</span> <em>The Annals of Statistics</em> 13 (4): 1335–51. <a href="https://doi.org/10.1214/aos/1176349741">https://doi.org/10.1214/aos/1176349741</a>.
+<div id="ref-Durrett2019" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em><span class="nocase">Probability: Theory and Examples</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108591034">https://doi.org/10.1017/9781108591034</a>.
+</div>
+<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
+Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and Estimation of a Nonparametric Panel Data Model with Unobserved Heterogeneity</span>.”</span>
+</div>
+<div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
+Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span> <em>Econometric Theory</em> 28 (4): 925–32. <a href="https://doi.org/10.1017/S0266466611000831">https://doi.org/10.1017/S0266466611000831</a>.
+</div>
+<div id="ref-Kotlarski1967CharacterizingGammaNormal" class="csl-entry" role="listitem">
+Kotlarski, Ignacy. 1967. <span>“On <span>Characterizing</span> the <span>Gamma</span> and the <span>Normal Distribution</span>.”</span> <em>Pacific Journal of Mathematics</em> 20 (1): 69–76. <a href="https://doi.org/10.2140/pjm.1967.20.69">https://doi.org/10.2140/pjm.1967.20.69</a>.
+</div>
+<div id="ref-Lewbel2022" class="csl-entry" role="listitem">
+Lewbel, Arthur. 2022. <span>“<span class="nocase">Kotlarski with a Factor Loading</span>.”</span> <em>Journal of Econometrics</em> 229 (1): 176–79. <a href="https://doi.org/10.1016/j.jeconom.2020.12.012">https://doi.org/10.1016/j.jeconom.2020.12.012</a>.
+</div>
+<div id="ref-Lewbel2024IdentificationTriangularTwo" class="csl-entry" role="listitem">
+Lewbel, Arthur, Susanne M. Schennach, and Linqi Zhang. 2024. <span>“Identification of a <span>Triangular Two Equation System Without Instruments</span>.”</span> <em>Journal of Business &amp; Economic Statistics</em> 42 (1): 14–25. <a href="https://doi.org/10.1080/07350015.2023.2166052">https://doi.org/10.1080/07350015.2023.2166052</a>.
+</div>
+<div id="ref-Schennach2016RecentAdvancesMeasurement" class="csl-entry" role="listitem">
+Schennach, Susanne M. 2016. <span>“Recent <span>Advances</span> in the <span>Measurement Error Literature</span>.”</span> <em>Annual Review of Economics</em> 8 (1): 341–77. <a href="https://doi.org/10.1146/annurev-economics-080315-015058">https://doi.org/10.1146/annurev-economics-080315-015058</a>.
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1366,13 +1257,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Course Information">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course Information</span>
+      <a href="../linear/linear-coefficient-variance.html" class="pagination-link" aria-label="Variance of Heterogeneous Coefficients">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linear/linear-introduction.html" class="pagination-link" aria-label="Intro: Linear Models with Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1381,4 +1272,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

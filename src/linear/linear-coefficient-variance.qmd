@@ -211,3 +211,22 @@ $$
 \end{aligned}
 $$
 Under standard regularity conditions, $\widehat{\var(\bbeta_i) }$ is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of $\bbeta_i$.
+
+## Higher-Order Moments and Moving Beyond
+
+It turns out that a similar strategy can be used to identify the third and higher-order moments of $\bbeta_i$. see @Arellano2012 for the details. The key ingredients of the identification argument for the $k$th moments of $\bbeta_i$ are:
+
+- $k$th moments (or cumulants) of $\by_i$ and $\hat{\bbeta}_i$
+- Restrictions on the time series dynamics of $\curl{u_{it}}_{t=1}^T$
+- Multiplicative separability of the moments of $\bbeta_i$ and $\bu_i$ up to order $k$.
+
+
+However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantile of $\bbeta_i$ and further policy-relevant parameter. As such,  this distribution is our maximal object of interest, and we now turn towards its identification.
+
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of $\bbeta_i$.
