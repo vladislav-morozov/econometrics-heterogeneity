@@ -127,7 +127,23 @@ $$
 $$ {#eq-linear-chf-hessian-vectorized}
 where  an explicit formula for $\bA$ can be found [here](https://math.stackexchange.com/questions/3365228/vectorization-of-a-diagonal-matrix).
  
+Now we premultiply system ([-@eq-linear-chf-hessian-vectorized]) by $\bM(\bX\otimes \bX)$ where $\bM(\cdot)$ is defined in ([-@eq-linear-variance-annihilator]):
+$$
+\begin{aligned}
+	\bM(\bX\otimes \bX)	\vecc\left(\dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) & = \bM(\bX\otimes \bX)\bA\bphi(\bs)
+\end{aligned}
+$$
+We can solve this system for $\bphi(\bs)$ provided $\rank(\bM(\bX\otimes \bX)\bA)=T$. Indeed, this rank condition holds in this case, as shown by @Arellano2012. As both $\bM(\bX\otimes\bX)$ and $\varphi_{\by_i|\bX_i}(\cdot|\cdot)$ are identified, we conclude that $\bphi(\bs)$ is also identified. 
 
+
+The characteristic function of $\bu_i$ is now straighforward to recover from $\bphi(\bs)$ by integrating twice with respect to $\bs$. As $\bphi(\bs)$ encodes second derivatives, we need two initial values. These initial values are provided by the properties of the characteristic function and the assumption of strict exogeneity:
+$$ 
+\begin{aligned}
+	\dfrac{\partial \log(\varphi_{\bu_i|\bX_i}(0|\bX))}{\partial\bs'} &  = \E[\bu_i|\bX_i=\bX] = 0,\\
+	\log(\varphi_{\bu_i|\bX_i}(0|\bX))  & = 0.
+\end{aligned}
+$$
+We conclude that the characteristic function of $\bu_i$ is identified.
 
 ## Estimation with Discrete Covariates
 
