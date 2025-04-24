@@ -73,7 +73,7 @@ $$
 
 ### Variance Decomposition
 
-To identify $\var(\bbeta_i$$, we will first look at the second moments of $\by_i$. Specifically, we will consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
+To identify $\var(\bbeta_i)$, we will first look at the second moments of $\by_i$. Specifically, we will consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
 
 Using model ([-@eq-linear-variance-model]) and condition ([-@eq-vector-variance-strict-ex]), the conditional second moment of $\by_i$ can be represented as
 $$
@@ -119,7 +119,7 @@ There is only one unknown parameter in $\E[\bu_i\bu_i'|\bX_i=\bX]$!
 
 We can identify the unknown $\sigma^2(\bX)$ using a standard argument.  Let the annihilator matrix associated with $\bX$ be given by
 $$
-	\bM(\bX) = \I_T-\bX(\bX'\bX)^{-1}\bX'.
+	\bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
 $$
 Recall three key properties that $\bM(\cdot)$ possesses 
 $$
