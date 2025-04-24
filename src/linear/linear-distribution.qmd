@@ -28,27 +28,25 @@ We are now in a position to obtain our final and strongest result in this block:
 $$
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 $$
-As in @sec-linear-variance, we impose
-
-- Strict exogeneity
+As in @sec-linear-variance, we impose strict exogeneity
 $$
 \E[\bu_i|\bbeta_i, \bX_i] = 0.
 $$
-- Existence of the first two moments of $\bbeta_i, \bX_i$, and $\bu_i$.
-  
+We also assume the existence of the first two moments of $\bbeta_i, \bX_i$, and $\bu_i$.
+
 As before, the number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
 
 ### Conditional Independence of $\bbeta_i$ and $\bu_i$
 
-The key piece of our identification strategy is the following assumption of conditional independence between $\bbeta_i$ and $\bu_i$:
+The key to our identification strategy is the following assumption of conditional independence between $\bbeta_i$ and $\bu_i$:
 $$
 \bbeta_i \independent \curl{u_{it}}_{t=1}^T |\bX
 $$ {#eq-linear-distribution-cond-ind}
-To interpret assumption ([-@eq-linear-distribution-cond-ind]), consider the following production function example. Let $u_{it}$ be the measurement error in the output value $y_{it}$. The variance of $u_{it}$ is likely to grow with the scale of the firm (captured by capital). Thus, there may be may be dependence between $\bX_i$ and $\bu_i$. At the same time, it is plausible that the firm size captures all the information about firm technology relevant for measurement error. In this case assumption ([-@eq-linear-distribution-cond-ind]) appears reasonable. 
+To understand assumption ([-@eq-linear-distribution-cond-ind]), consider a production function example. Let $u_{it}$ be the measurement error in the output value $y_{it}$. The variance of $u_{it​$ may depend on the scale of the firm (captured by capital), leading to dependence between $\bX_i$ and $\bu_i$.  However, it is plausible that the firm size captures all relevant information about firm technology for measurement error. In this case, the assumption appears reasonable.
 
 ### Implication of Conditional Independence
 
-An implication of assumption ([-@eq-linear-distribution-cond-ind] is that both $\by_i$ and the individual estimators $\hat{\bbeta}_i$ are sums — convolutions — of two conditionally independent vectors. Specifically, conditionally on $\curl{\bX_i=\bX}$
+Given the conditional independence assumption ([-@eq-linear-distribution-cond-ind]), both $\by_i$ and the individual estimators $\hat{\bbeta}_i$ are sums of two conditionally independent vectors. Specifically, conditionally on $\curl{\bX_i=\bX}$:
 
 - $\by_i$ is the sum of $\bX\bbeta_i$ and $\bu_i$
 - $\hat{\bbeta}_i$ is the sum of $\bbeta_i$ and $(\bX'\bX)^{-1}\bX\bu_i$
@@ -73,9 +71,7 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 
 ### Overall Strategy
 
-To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  
- 
-To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to how we did with variance. The function of interest can be recovered @eq-linear-distribution-chf-estimators provided that we know $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$. Accordingly, we will proceed in two steps:
+To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  We will proceed similarly to how we identified the variance. The steps are:
 
 1. Identify $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$ from @eq-linear-distribution-chf-data. 
 2. Apply deconvolution  to @eq-linear-distribution-chf-estimators to recover $\varphi_{\bbeta_i|\bX_i}(\bs|\bX).
@@ -84,19 +80,22 @@ To identify  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$, we will proceed similarly to h
 
 ### Equation in Hessians of Characteristic Functions
  
-We begin by casting @eq-linear-distribution-chf-data in a more useful form. The characteristic functions in ([-@eq-linear-distribution-chf-data]) are twice differentiable under our moment assumptions. Taking logarithms ([see here](https://math.stackexchange.com/questions/3795356/log-of-a-product-of-characteristic-functions-lindebergs-theorem-and-accompanyi)) and differentiating twice yields 
+We start by rewriting @eq-linear-distribution-chf-data in a more useful form. The characteristic functions in ([-@eq-linear-distribution-chf-data]) are twice differentiable under our moment assumptions. Taking logarithms ([see here](https://math.stackexchange.com/questions/3795356/log-of-a-product-of-characteristic-functions-lindebergs-theorem-and-accompanyi)) and differentiating twice yields 
 $$
 \begin{aligned} 
 	& \dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'} \\
     & = \bX \dfrac{\partial^2 \log( \varphi_{\bbeta_i|\bX_i}(\bX'\bs|\bX)) }{\partial \bs\partial\bs'} \bX' +  \dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'} .
 \end{aligned}
 $$ {#eq-linear-chf-hessian}
-Observe that this equation is similar to the expression ([-@eq-linear-variance-second-moment-y]) we obtained for variance. It decomposes the characteristic function of the data into a sum of contributions of the coefficients $\bbeta_i$ and the residuals $\bu_i$. In contrast to ([-@eq-linear-variance-second-moment-y]), system ([-@eq-linear-chf-hessian]) is a functional equation, parametrized by $\bs$.
+
+This equation is similar to the expression ([-@eq-linear-variance-second-moment-y]) we obtained for variance. It decomposes the characteristic function of the data into contributions from the coefficients $\bbeta_i$ and the residuals $\bu_i$. Unlike the variance expression,  system ([-@eq-linear-chf-hessian]) is a functional equation parametrized by $\bs$.
+
+  
 
 ### Imposing Structure on the Error Term
 
 
-Our goal is to solve for the second term in the linear system ([-@eq-linear-chf-hessian]). However, like system ([-@eq-linear-variance-second-moment-y]),  system ([-@eq-linear-chf-hessian]) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the $\bu_i$ component from the $\bbeta_i$ one. 
+Our goal is to solve for the second term in the linear system ([-@eq-linear-chf-hessian]). However, like system ([-@eq-linear-variance-second-moment-y]), system ([-@eq-linear-chf-hessian]) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the $\bu_i$ component from the $\bbeta_i$ one. 
 
 In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption ([-@eq-linear-variance-spherical]). Specifically, we will assume that $u_{it}$ is IID across $i$ and $t$ conditional on $\bX_i=\bX$. This assumption implies that all $u_{it}$ have the same characteristic function for all $i$ and $t$:
 $$ 
@@ -115,7 +114,7 @@ Taking logarithms turns the product into a sum:
 $$
 	\log\left(\varphi_{\bu_i|\bX_i}(\bs|\bX)\right) = \sum_{j=1}^T \log(\varphi_{u|\bX_i}(s_j|\bX)).
 $$
-It is easy to see that the Hessian of this function with respect to $\bs$ is diagonal and takes the following form:
+The Hessian of this function with respect to $\bs$ is diagonal:
 $$
 \begin{aligned}
 	\dfrac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}  & = \diag\curl{\bphi(\bs)},\\
@@ -125,7 +124,7 @@ where
 $$
 	\bphi(\bs)  =  \left(\dfrac{d^2\log(\varphi_{u|\bX_i}(s_1|\bX))}{ds_1^2}, \dots,   \dfrac{d^2\log(\varphi_{u|\bX_i}(s_T|\bX))}{ds_T^2}\right).
 $$
-To summarize, assumption ([-@eq-linear-distribution-iid-error]) reduces the unknown $T\times T$  matrix  $\frac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}$ to an unknown $T$-vector  $\bphi(\bs)$. There are now sufficiently many equations in system ([-@eq-linear-chf-hessian]) to cover all the remaining unknown components, provided standard rank conditions hold. 
+To summarize, assumption ([-@eq-linear-distribution-iid-error]) reduces the unknown $T\times T$  matrix  $\frac{\partial^2 \log(\varphi_{\bu_i|\bX_i}(\bs|\bX))}{\partial \bs\partial\bs'}$ to an unknown $T$-vector  $\bphi(\bs)$. There are now sufficiently many equations to cover all the remaining unknown components, provided standard rank conditions hold.
 
 
 ### Solving for the Distribution of Residuals
@@ -144,7 +143,7 @@ $$
 \begin{aligned}
 	\bM(\bX\otimes \bX)	\vecc\left(\dfrac{\partial^2 \log(	\varphi_{\by_i|\bX_i}(\bs|\bX))}{\partial\bs\partial\bs'}\right) & = \bM(\bX\otimes \bX)\bA\bphi(\bs)
 \end{aligned}
-$$
+$$ {#eq-linear-distribution-chf-u}
 We can solve this system for $\bphi(\bs)$ provided $\rank(\bM(\bX\otimes \bX)\bA)=T$. Indeed, this rank condition holds in this case, as shown by @Arellano2012. As both $\bM(\bX\otimes\bX)$ and $\varphi_{\by_i|\bX_i}(\cdot|\cdot)$ are identified, we conclude that $\bphi(\bs)$ is also identified. 
 
 
@@ -154,22 +153,22 @@ $$
 	\dfrac{\partial \log(\varphi_{\bu_i|\bX_i}(0|\bX))}{\partial\bs'} &  = \E[\bu_i|\bX_i=\bX] = 0,\\
 	\log(\varphi_{\bu_i|\bX_i}(0|\bX))  & = 0.
 \end{aligned}
-$$
-We conclude that the characteristic function of $\bu_i$ is identified. This completes the first step of our identification strategy. 
+$$ 
+This completes the first identification step.
 
 ### Identifying the Distribution of Coefficients
 
-For the second step — identification of $\varphi_{\bbeta_i|\bX_i}$ — we return to @eq-linear-distribution-chf-estimators. Here we have to make an additional assumption:
+For the second step — identification of $\varphi_{\bbeta_i|\bX_i}$ — we return to @eq-linear-distribution-chf-estimators. We make an additional assumption:
 $$
 \varphi_{\bu_i|\bX_i}(\bs|\bX)\neq 0 \text{ for all }\bs.
 $$
 This assumption allows us to divide by the characteristic function of $\bu_i$ in @eq-linear-distribution-chf-estimators and obtain
 $$
 \varphi_{\bbeta_i|\bX_i}(\bs|\bX) = \dfrac{\varphi_{\hat{\bbeta}_i|\bX_i}(\bs|\bX)  }{\varphi_{\bu_i|\bX_i}(\bX(\bX'\bX)^{-1}\bs|\bX)}.
-$$
+$$ {#eq-linear-distribution-distr-chf}
 
 
-Finally, the density or cumulative distribution functions of the coefficients may be recovered from by above expression using inversion formulae. For example, if the coefficients are continuously distribution, their conditional density satisfies
+Finally, the density or cumulative distribution functions of the coefficients may be recovered using inversion formulae. For continuously distributed coefficients, the conditional density is:
 $$
 f_{\bbeta_i|\bX_i}(\bb|\bX) = \dfrac{1}{(2\pi)^n} \int_{\R^p} \exp(-i\bs'\bb)\varphi_{\bbeta_i|\bX_i}(\bs|\bX)d\bs.
 $$
@@ -178,20 +177,47 @@ $$
 f_{\bbeta_i}(\bb) = \int f_{\bbeta_i|\bX_i}(\bb|\bX)f_{\bX_i}(\bX)d\bX.
 $$
 
-## Estimation with Discrete Covariates
+## Estimation 
+
+### With Discrete Covariates
 
 
-## Summary and Further References 
+For estimation, we discuss the conceptually simpler case where $\bX_i$ has finite support. In such a setting, there is a non-zero probability that $\bX_i$ takes each possible value. 
 
-### Block Summary 
+Estimation proceeds in three steps:
 
-### Beyond Model ([-@eq-random_intercept])
+1. Estimation of $\varphi_{\hat{\bbeta}_i|\bX_i}(\cdot|\bX)$.
+2. Estimation of $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$.
+3. Combining the estimators of the first two steps using @eq-linear-distribution-distr-chf and inverting the resulting estimated characteristic function. 
+
+The characteristic function of the individual estimators $\hat{\bbeta}_i$ can then be estimated with the empirical characteristic function on the sample of units with $\bX_i=\bX$:
+$$
+\hat{\varphi}_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\hat{\bbeta}_i \right).
+$$
+
+As for the characteristic function of $\bu_i$, it can be estimated from a sample version of @eq-linear-distribution-chf-u. We replace the characteristic function of the data with its empirical counterpart:
+$$
+\hat{\varphi}_{\by_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\by_i \right).
+$$
 
 
-Not all
+
+
+
+### With Continuous Covariates
+
+If $\bX_i$ is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. @Evdokimov2010 studies such the construction of such conditional deconvolution estimators and investigates their asymptotic properties. Inference may be conducted using the results of @Kato2021RobustInferenceDeconvolutiona. 
+
+::: {.callout-note appearance="simple" icon=false}
+
+Such nonparametric estimators may perform poorly due to the curse of dimensionality if $T$ and $p$ are not small. In the next block we will discuss some assumptions that can reduce the dimensionality of the problem and be applied in this context.
+
+:::
+
+
 
 ---
 
 #### Next Section {.unnumbered}
 
-In the next section, we will move
+In the next section, we briefly conclude the block and discuss some further results on heterogeneous linear models. 
