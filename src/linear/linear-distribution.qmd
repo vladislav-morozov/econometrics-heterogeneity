@@ -73,7 +73,7 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 
 ### Overall Strategy
 
-To identify the distribution, it is sufficient to identify the conditional characteristic function  $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$ for all $\bX$ in the support of $\bX_i$.  We will proceed similarly to how we identified the variance. The steps are:
+To identify the distribution, we will proceed similarly to how we identified the variance. The steps are:
 
 1. Identify $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$ from @eq-linear-distribution-chf-data. 
 2. Apply deconvolution  to @eq-linear-distribution-chf-estimators to recover $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$.
