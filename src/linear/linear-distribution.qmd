@@ -185,7 +185,7 @@ $$
 ### With Discrete Covariates
 
 
-For estimation, we discuss the conceptually simpler case where $\bX_i$ has finite support. In such a setting, there is a non-zero probability that $\bX_i$ takes each possible value. 
+For estimation, we discuss the conceptually simpler case where $\bX_i$ has finite support. In such a setting, there is a non-zero probability that $\bX_i$ takes each value in its support. 
 
 Estimation proceeds in three steps:
 
@@ -193,7 +193,7 @@ Estimation proceeds in three steps:
 2. Estimation of $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$.
 3. Combining the estimators of the first two steps using @eq-linear-distribution-distr-chf and inverting the resulting estimated characteristic function. 
 
-The characteristic function of the individual estimators $\hat{\bbeta}_i$ can then be estimated with the empirical characteristic function on the sample of units with $\bX_i=\bX$:
+The characteristic function of the individual estimators $\hat{\bbeta}_i$ can be estimated with the empirical characteristic function on the sample of units with $\bX_i=\bX$:
 $$
 \hat{\varphi}_{\hat{\bbeta}_i|\bX_i}(\bs|\bX) = \dfrac{1 }{\sum_{i=1}^N \I\curl{\bX_i=\bX} }\sum_{i=1}^N \I\curl{\bX_i=\bX} \exp\left( i\bs'\hat{\bbeta}_i \right).
 $$
@@ -209,7 +209,7 @@ $$
 
 ### With Continuous Covariates
 
-If $\bX_i$ is continuously distributed, it instead necessary estimate the characteristic functions using techniques such as kernel regression. @Evdokimov2010 studies such conditional deconvolution estimators and their asymptotic properties. Inference may be conducted using the results of @Kato2021RobustInferenceDeconvolutiona. 
+If $\bX_i$ is continuously distributed, it is instead necessary to estimate the characteristic functions using techniques such as kernel regression. @Evdokimov2010 studies such conditional deconvolution estimators and their asymptotic properties. Inference may be conducted using the results of @Kato2021RobustInferenceDeconvolutiona. 
 
 ::: {.callout-note appearance="simple" icon=false}
 
