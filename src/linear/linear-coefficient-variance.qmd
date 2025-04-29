@@ -61,13 +61,13 @@ We will again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition d
 ## Identification 
 
 
-Our object of interest in this section is the variance-covariance matrix of the coefficients $\bbeta_i$. Its diagonal terms are the variances of individual coefficients, which show how dispersed the effects are overall. The off-diagonal covariance terms capture whether the effects of different covariates tend to go in the same or contrary directions.
-
-
-Formally, the variance-covariance matrix $\var(\bbeta_i)$ of the vector $\bbeta_i$ is given by
+Our object of interest in this section is the variance-covariance matrix $\var(\bbeta_i)$  of the coefficients $\bbeta_i$: 
 $$
 	\var(\bbeta_i) = \E[\bbeta_i\bbeta_i'] - \E[\bbeta_i]\E[\bbeta_i]'.
 $$
+Its diagonal terms are the variances of individual coefficients, which show how dispersed the effects are overall. The off-diagonal covariance terms capture whether the effects of different covariates tend to go in the same or contrary directions.
+
+ 
  
 
 
