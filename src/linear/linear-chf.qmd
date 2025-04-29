@@ -1,0 +1,92 @@
+--- 
+description: "Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)"
+
+open-graph:
+    description: "Review characteristic functions and deconvolution for identifying distributions in econometrics.  (Lecture Notes)"
+---
+
+# Interlude: Characteristic Functions and Deconvolution {#sec-linear-chf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section reviews characteristic functions and deconvolution.
+
+By the end of this section, you should be able to:
+
+- State some key properties of characteristic functions.
+- Carry out a basic nonparametric deconvolution argument for identifying distributions.  
+:::
+
+To discuss the identification of the full distribution of the coefficients $\bbeta_i$ in model ([-@eq-lecture_model]), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.
+
+
+
+## Characteristic Functions
+
+If $\bV$ is a random $T$-vector, then the characteristic function $\varphi_{\bV}(s): \R^T\to \C$ of $\bV$ is defined as follows:
+$$
+ \varphi_{\bV}(\bs) = \E[\exp(i\bs'\bV)].
+$$
+See @Durrett2019 (or your favorite probability textbook) regarding general properties of characteristic functions.
+
+
+For our purposes, we will need the following three key properties:
+
+1. The characteristic function uniquely determines the distribution.
+	
+2. Let $\bV, \bU$ be two independent random vectors. Then the characteristic function of their sum $\bV+\bU$ is equal to the product of characteristic function of $\bV$ and $\bU$:
+$$
+\begin{aligned}
+		\varphi_{\bV+\bU}(\bs) & =	\E\left[e^{i\bs'(\bV+\bU)}\right] = \E\left[e^{i\bs'\bV}e^{i\bs'\bU} \right]\\
+        & = \E\left[e^{i\bs'\bV}\right]\E\left[e^{i\bs'\bU}\right]\\
+        &  =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+\end{aligned}
+$$ {#eq-linear-chf-independence}
+	
+3. Let $\bbeta$ be a random $p$-vector and $\bX$ a matrix. Then
+$$
+\begin{aligned}
+		\varphi_{\bX\bbeta}(\bs) & = \E\left[\exp(i\bs'(\bX\bbeta)) \right] \\
+        & = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
+        &  = \varphi_{\bbeta}(\bX'\bs)
+\end{aligned}
+$$ {#eq-linear-chf-product}
+
+Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones. 
+
+
+## Deconvolution
+
+Property ([-@eq-linear-chf-independence]) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as deconvolution. This approach will help us identify the distribution of the coefficients $\bbeta_i$ in the next section.
+
+At heart, deconvolution is simple. Suppose that we observe a random vector $\bY$. $\bY$ is generated as a sum of two independent vector $\bV$ and $\bU$. The distribution of $\bU$ is known, while the distribution of $\bV$ is the object of interest. 
+
+By property ([-@eq-linear-chf-independence]) the characteristic function of $\bY$ satisfies
+$$
+	\varphi_{\bY}(\bs)   =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+$$
+If $\varphi_{\bU}(\bs)\neq 0$, we can divide and rearrange to obtain
+$$
+\varphi_{\bV}(\bs) = \dfrac{\varphi_{\bY}(\bs) }{\varphi_{\bU}(\bs)}
+$$
+By assumption, the distributions of $\bY$ and $\bU$ are known, and thus $\varphi_{\bY}(\bs)$ and $\varphi_{\bU}(\bs)$ are identified. It follows that the full $\varphi_{\bV}(\cdot)$ is also identified provided $\varphi_{\bU}(\bs)\neq 0$ for all $\bs$ (or at least $\varphi_{\bU}(\bs)= 0$ for "not too many" $\bs$, see @Evdokimov2012). The distribution of $\bV$ is identified since characteristic functions uniquely identify distributions. 
+
+This identification strategy is called deconvolution. The name of the procedure stems from the fact that the distribution of $\bY$ is the convolution of distributions of $\bV$ and $\bU$. Extracting the distribution of $\bV$ from the laws of $\bY, \bU$ may be viewed as an inverse operation. 
+
+Observe that the argument is nonparametric, as it imposes no parametric form assumptions on the distributions involved. 
+
+::: {.callout-note appearance="simple" icon=false}
+
+
+It is possible to relax the assumption that the distribution of $\bU$ is known by using mulitple observations. We will see one approach in the following section. Another approach uses a second observation of $\bY$ using a result called Kotlarski's lemma [@Kotlarski1967CharacterizingGammaNormal] (see @Evdokimov2012, @Lewbel2022 for extensions). Used with measurement error [see a review in @Schennach2016RecentAdvancesMeasurement], nonparametric panel data models [@Evdokimov2010], and identification of systems of simultaneous equations [@Lewbel2024IdentificationTriangularTwo].
+
+:::
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we will discuss identification of the distribution of the coefficients $\bbeta_i$ in  model ([-@eq-lecture_model]) using the tools of this section.

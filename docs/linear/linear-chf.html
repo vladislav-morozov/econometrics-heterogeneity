@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
+<meta name="description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
 
-<title>6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-coefficient-variance.html" rel="next">
-<link href="../linear/linear-dynamic-panel-heterogeneity.html" rel="prev">
+<link href="../linear/linear-distribution.html" rel="next">
+<link href="../linear/linear-coefficient-variance.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -285,8 +285,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
+<meta property="og:title" content="8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -299,7 +299,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -375,7 +375,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
@@ -387,7 +387,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
@@ -429,27 +429,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mean-group-estimation" id="toc-mean-group-estimation" class="nav-link active" data-scroll-target="#mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</a>
-  <ul class="collapse">
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">6.1.1</span> Model</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">6.1.2</span> Definition</a></li>
-  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">6.1.3</span> Properties</a></li>
-  </ul></li>
-  <li><a href="#comparing-estimators" id="toc-comparing-estimators" class="nav-link" data-scroll-target="#comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</a>
-  <ul class="collapse">
-  <li><a href="#conditions-for-consistency" id="toc-conditions-for-consistency" class="nav-link" data-scroll-target="#conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</a></li>
-  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">6.2.2</span> Efficiency</a></li>
-  </ul></li>
-  <li><a href="#addressing-rank-deficiency" id="toc-addressing-rank-deficiency" class="nav-link" data-scroll-target="#addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</a></li>
+  <li><a href="#characteristic-functions" id="toc-characteristic-functions" class="nav-link active" data-scroll-target="#characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</a></li>
+  <li><a href="#deconvolution" id="toc-deconvolution" class="nav-link" data-scroll-target="#deconvolution"><span class="header-section-number">8.2</span> Deconvolution</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-mean-group.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-mean-group" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></h1>
+<h1 class="title"><span id="sec-linear-chf" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></h1>
 </div>
 
 
@@ -476,190 +466,89 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section introduces a heterogeneity- and dynamics-robust estimator for average coefficients — the mean group estimator.</p>
+<p>This section reviews characteristic functions and deconvolution.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Define the mean group estimator.</li>
-<li>Identify the assumptions and data requirements necessary for the MG estimator to be consistent.</li>
-<li>Compare the MG estimator with alternative estimation methods (e.g., within estimators and IV techniques) in both static and dynamic settings.</li>
+<li>State some key properties of characteristic functions.</li>
+<li>Carry out a basic nonparametric deconvolution argument for identifying distributions.<br>
+</li>
 </ul>
 </div>
 </div>
-<section id="mean-group-estimation" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</h2>
-<p>The results of the previous section and section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> leave us with key two questions:</p>
-<ul>
-<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
-<li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
-</ul>
-<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
-<section id="model" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">6.1.1</span> Model</h3>
-<p>To formally define the mean group estimator, we return to the general <a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>: <span class="math display">\[
-    \by_{it} = \bx_{it}'\bbeta_i + u_{it},
-\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>. We can also express this model in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
-\by_i = \bX_i\bbeta_i + \bu_i,
-\]</span> where <span class="math inline">\(\bX_i\)</span> is now a <span class="math inline">\(T\times p\)</span> matrix of covariates, with <span class="math inline">\(T\)</span> representing the number of observations for each unit.</p>
-<p>In what follows, we will assume that the regressors <span class="math inline">\(\bx_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(u_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
-\E[\bx_{it}u_{it}] =0.
-\tag{6.1}\]</span></span> This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.</p>
-</section>
-<section id="definition" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.1.2</span> Definition</h3>
-<p>For the mean group estimator to be well-defined, we make two further assumptions:</p>
+<p>To discuss the identification of the full distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.</p>
+<section id="characteristic-functions" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</h2>
+<p>If <span class="math inline">\(\bV\)</span> is a random <span class="math inline">\(T\)</span>-vector, then the characteristic function <span class="math inline">\(\varphi_{\bV}(s): \R^T\to \C\)</span> of <span class="math inline">\(\bV\)</span> is defined as follows: <span class="math display">\[
+\varphi_{\bV}(\bs) = \E[\exp(i\bs'\bV)].
+\]</span> See <span class="citation" data-cites="Durrett2019">Durrett (<a href="../references/references.html#ref-Durrett2019" role="doc-biblioref">2019</a>)</span> (or your favorite probability textbook) regarding general properties of characteristic functions.</p>
+<p>For our purposes, we will need the following three key properties:</p>
 <ol type="1">
-<li><em>Sufficient unit-level data</em>: each unit must have at least as many observations as regressors, i.e., <span class="math inline">\(T\geq p\)</span>.</li>
-<li><em>Non-singularity</em>: <span class="math inline">\(\bX_i'\bX_i\)</span> has rank maximal rank (<span class="math inline">\(p\)</span>) for all units <span class="math inline">\(i\)</span>.</li>
+<li><p>The characteristic function uniquely determines the distribution.</p></li>
+<li><p>Let <span class="math inline">\(\bV, \bU\)</span> be two independent random vectors. Then the characteristic function of their sum <span class="math inline">\(\bV+\bU\)</span> is equal to the product of characteristic function of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>: <span id="eq-linear-chf-independence"><span class="math display">\[
+\begin{aligned}
+     \varphi_{\bV+\bU}(\bs) &amp; =  \E\left[e^{i\bs'(\bV+\bU)}\right] = \E\left[e^{i\bs'\bV}e^{i\bs'\bU} \right]\\
+     &amp; = \E\left[e^{i\bs'\bV}\right]\E\left[e^{i\bs'\bU}\right]\\
+     &amp;  =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+\end{aligned}
+\tag{8.1}\]</span></span></p></li>
+<li><p>Let <span class="math inline">\(\bbeta\)</span> be a random <span class="math inline">\(p\)</span>-vector and <span class="math inline">\(\bX\)</span> a matrix. Then <span id="eq-linear-chf-product"><span class="math display">\[
+\begin{aligned}
+     \varphi_{\bX\bbeta}(\bs) &amp; = \E\left[\exp(i\bs'(\bX\bbeta)) \right] \\
+     &amp; = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
+     &amp;  = \varphi_{\bbeta}(\bX'\bs)
+\end{aligned}
+\tag{8.2}\]</span></span></p></li>
 </ol>
-<p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
-    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
-\tag{6.2}\]</span></span></p>
-<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
-    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
-\]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
+<p>Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones.</p>
+</section>
+<section id="deconvolution" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="deconvolution"><span class="header-section-number">8.2</span> Deconvolution</h2>
+<p>Property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as deconvolution. This approach will help us identify the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in the next section.</p>
+<p>At heart, deconvolution is simple. Suppose that we observe a random vector <span class="math inline">\(\bY\)</span>. <span class="math inline">\(\bY\)</span> is generated as a sum of two independent vector <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. The distribution of <span class="math inline">\(\bU\)</span> is known, while the distribution of <span class="math inline">\(\bV\)</span> is the object of interest.</p>
+<p>By property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) the characteristic function of <span class="math inline">\(\bY\)</span> satisfies <span class="math display">\[
+    \varphi_{\bY}(\bs)   =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+\]</span> If <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span>, we can divide and rearrange to obtain <span class="math display">\[
+\varphi_{\bV}(\bs) = \dfrac{\varphi_{\bY}(\bs) }{\varphi_{\bU}(\bs)}
+\]</span> By assumption, the distributions of <span class="math inline">\(\bY\)</span> and <span class="math inline">\(\bU\)</span> are known, and thus <span class="math inline">\(\varphi_{\bY}(\bs)\)</span> and <span class="math inline">\(\varphi_{\bU}(\bs)\)</span> are identified. It follows that the full <span class="math inline">\(\varphi_{\bV}(\cdot)\)</span> is also identified provided <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span> for all <span class="math inline">\(\bs\)</span> (or at least <span class="math inline">\(\varphi_{\bU}(\bs)= 0\)</span> for “not too many” <span class="math inline">\(\bs\)</span>, see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>). The distribution of <span class="math inline">\(\bV\)</span> is identified since characteristic functions uniquely identify distributions.</p>
+<p>This identification strategy is called deconvolution. The name of the procedure stems from the fact that the distribution of <span class="math inline">\(\bY\)</span> is the convolution of distributions of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. Extracting the distribution of <span class="math inline">\(\bV\)</span> from the laws of <span class="math inline">\(\bY, \bU\)</span> may be viewed as an inverse operation.</p>
+<p>Observe that the argument is nonparametric, as it imposes no parametric form assumptions on the distributions involved.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bx_{it}u_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bx_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
+<p>It is possible to relax the assumption that the distribution of <span class="math inline">\(\bU\)</span> is known by using mulitple observations. We will see one approach in the following section. Another approach uses a second observation of <span class="math inline">\(\bY\)</span> using a result called Kotlarski’s lemma <span class="citation" data-cites="Kotlarski1967CharacterizingGammaNormal">(<a href="../references/references.html#ref-Kotlarski1967CharacterizingGammaNormal" role="doc-biblioref">Kotlarski 1967</a>)</span> (see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>, <span class="citation" data-cites="Lewbel2022">Lewbel (<a href="../references/references.html#ref-Lewbel2022" role="doc-biblioref">2022</a>)</span> for extensions). Used with measurement error <span class="citation" data-cites="Schennach2016RecentAdvancesMeasurement">(see a review in <a href="../references/references.html#ref-Schennach2016RecentAdvancesMeasurement" role="doc-biblioref">Schennach 2016</a>)</span>, nonparametric panel data models <span class="citation" data-cites="Evdokimov2010">(<a href="../references/references.html#ref-Evdokimov2010" role="doc-biblioref">Evdokimov 2010</a>)</span>, and identification of systems of simultaneous equations <span class="citation" data-cites="Lewbel2024IdentificationTriangularTwo">(<a href="../references/references.html#ref-Lewbel2024IdentificationTriangularTwo" role="doc-biblioref">Lewbel, Schennach, and Zhang 2024</a>)</span>.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="properties" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="properties"><span class="header-section-number">6.1.3</span> Properties</h3>
-<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\by_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
-    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
-\]</span></p>
-<p>As <span class="math inline">\(N\)</span> grows, the first term will converge to the average effect: <span class="math display">\[
-\dfrac{1}{N} \sum_{i=1}^N \bbeta_i   \xrightarrow{p} \E[\bbeta_i].
-\]</span> This convergence holds regardless of assumptions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>.</p>
-<p>The second term’s behavior determines the estimator’s overall properties, depending on whether strict exogeneity holds:</p>
-<ul>
-<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
-<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> will be biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias will typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanish as <span class="math inline">\(T\to\infty\)</span>.</p></li>
-</ul>
-</section>
-</section>
-<section id="comparing-estimators" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</h2>
-<section id="conditions-for-consistency" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</h3>
-<p>We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
-<p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Within</th>
-<th>MG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Data requirements</strong></td>
-<td><span class="math inline">\(T \geq 2\)</span></td>
-<td><span class="math inline">\(T \geq p\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
-<td><span class="math inline">\(\mathbb{E}[\tilde{X}_i'\tilde{X}_i\eta_i]=0\)</span></td>
-<td>None</td>
-</tr>
-<tr class="odd">
-<td><strong>Asymptotic framework</strong></td>
-<td>Fixed-<span class="math inline">\(T\)</span></td>
-<td>Fixed-<span class="math inline">\(T\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>IV</th>
-<th>MG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Data requirements</strong></td>
-<td><span class="math inline">\(T \geq k+2\)</span></td>
-<td><span class="math inline">\(T \geq p+k\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
-<td>No consistency</td>
-<td>None</td>
-</tr>
-<tr class="odd">
-<td><strong>Asymptotic framework</strong></td>
-<td>No consistency</td>
-<td>Large-<span class="math inline">\((N, T)\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="efficiency" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">6.2.2</span> Efficiency</h3>
-<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented<span class="citation" data-cites="Pesaran1996 Pesaran1999 Hsiao1999">(<a href="../references/references.html#ref-Pesaran1996" role="doc-biblioref">H. Pesaran, Smith, and Im 1996</a>; <a href="../references/references.html#ref-Pesaran1999" role="doc-biblioref">M. H. Pesaran, Shin, and Smith 1999</a>; <a href="../references/references.html#ref-Hsiao1999" role="doc-biblioref">Hsiao, Pesaran, and Tahmiscioglu 1999</a>)</span>.</p>
-<p>However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="../references/references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span>.</p>
-</section>
-</section>
-<section id="addressing-rank-deficiency" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</h2>
-<p>Before moving beyond <span class="math inline">\(\E[\bbeta_i]\)</span>, we return to the assumption that <span class="math inline">\(\bX_i'\bX_i\)</span> is non-singular for all units <span class="math inline">\(i\)</span>. This requirement might not hold, in particular if <span class="math inline">\(T\)</span> is only slightly larger than <span class="math inline">\(p\)</span> and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation.</p>
-<p>If such a situation occurs in practice, a common solution is to drop the units with non-invertible <span class="math inline">\(\bX_i'\bX_i\)</span>. The mean group estimator is computed as an average over the remaining units. Formally, the corresponding mean group estimator is defined as <span class="math display">\[
-    \hat{\bbeta}_{MG}^+  = \dfrac{1}{\sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} } \sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} \hat{\bbeta}_i.
-\]</span> Every unit is checked to see if <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span>. If it is, their <span class="math inline">\(\hat{\bbeta}_i\)</span> is computed and added to the average.</p>
-<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bu_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data: <span class="math display">\[
-    \hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)&gt;0}  \right].
-\]</span> This limit may be viewed as an average treatment effect of the treated.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we move beyond <span class="math inline">\(\E[\bbeta_i]\)</span> and discuss identification of the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
+<p>In the next section, we will discuss identification of the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) using the tools of this section.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
-Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023. <span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June, S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
+<div id="ref-Durrett2019" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em><span class="nocase">Probability: Theory and Examples</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108591034">https://doi.org/10.1017/9781108591034</a>.
 </div>
-<div id="ref-Breitung2021" class="csl-entry" role="listitem">
-Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope Variations</span>.”</span> <em>Journal of Econometrics</em> 220 (2): 399–415. <a href="https://doi.org/10.1016/j.jeconom.2020.04.007">https://doi.org/10.1016/j.jeconom.2020.04.007</a>.
+<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
+Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and Estimation of a Nonparametric Panel Data Model with Unobserved Heterogeneity</span>.”</span>
 </div>
-<div id="ref-Hsiao1999" class="csl-entry" role="listitem">
-Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
+<div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
+Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span> <em>Econometric Theory</em> 28 (4): 925–32. <a href="https://doi.org/10.1017/S0266466611000831">https://doi.org/10.1017/S0266466611000831</a>.
 </div>
-<div id="ref-Pesaran1996" class="csl-entry" role="listitem">
-Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
+<div id="ref-Kotlarski1967CharacterizingGammaNormal" class="csl-entry" role="listitem">
+Kotlarski, Ignacy. 1967. <span>“On <span>Characterizing</span> the <span>Gamma</span> and the <span>Normal Distribution</span>.”</span> <em>Pacific Journal of Mathematics</em> 20 (1): 69–76. <a href="https://doi.org/10.2140/pjm.1967.20.69">https://doi.org/10.2140/pjm.1967.20.69</a>.
 </div>
-<div id="ref-Pesaran1999" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous Panels</span>.”</span> <em>Journal of the American Statistical Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
+<div id="ref-Lewbel2022" class="csl-entry" role="listitem">
+Lewbel, Arthur. 2022. <span>“<span class="nocase">Kotlarski with a Factor Loading</span>.”</span> <em>Journal of Econometrics</em> 229 (1): 176–79. <a href="https://doi.org/10.1016/j.jeconom.2020.12.012">https://doi.org/10.1016/j.jeconom.2020.12.012</a>.
 </div>
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Lewbel2024IdentificationTriangularTwo" class="csl-entry" role="listitem">
+Lewbel, Arthur, Susanne M. Schennach, and Linqi Zhang. 2024. <span>“Identification of a <span>Triangular Two Equation System Without Instruments</span>.”</span> <em>Journal of Business &amp; Economic Statistics</em> 42 (1): 14–25. <a href="https://doi.org/10.1080/07350015.2023.2166052">https://doi.org/10.1080/07350015.2023.2166052</a>.
+</div>
+<div id="ref-Schennach2016RecentAdvancesMeasurement" class="csl-entry" role="listitem">
+Schennach, Susanne M. 2016. <span>“Recent <span>Advances</span> in the <span>Measurement Error Literature</span>.”</span> <em>Annual Review of Economics</em> 8 (1): 341–77. <a href="https://doi.org/10.1146/annurev-economics-080315-015058">https://doi.org/10.1146/annurev-economics-080315-015058</a>.
 </div>
 </div>
 </section>
@@ -1229,13 +1118,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="pagination-link" aria-label="Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span>
+      <a href="../linear/linear-coefficient-variance.html" class="pagination-link" aria-label="Variance of Heterogeneous Coefficients">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-coefficient-variance.html" class="pagination-link" aria-label="Variance of Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../linear/linear-distribution.html" class="pagination-link" aria-label="Distribution of Heterogeneous Coefficients">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1244,4 +1133,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-mean-group.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

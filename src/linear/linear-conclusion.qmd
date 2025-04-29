@@ -1,0 +1,33 @@
+--- 
+description: "Concluding remarks and further results on linear models with heterogeneous coefficients (Lecture Notes)"
+
+open-graph:
+    description: "Concluding remarks and further results on linear models with heterogeneous coefficients (Lecture Notes)"
+---
+
+# Conclusion: Linear Models
+
+## Summary
+
+In this block, we have examined the linear panel data model  ([-@eq-lecture_model]) with time-invariant heterogeneous coefficients. Our primary focus was on identifying the moments (mean, variance, etc.) and the full distribution of these coefficients:
+
+- For the mean:
+  -  We discovered that traditional within and IV estimators are generally inconsistent under coefficient heterogeneity. 
+  -  To address this, we introduced the mean group estimator, which is robust to any dependence structure between the coefficients and the covariates @Pesaran1995. 
+- For the variance and distribution, we employed a constructive approach from @Arellano2012, which relies on assumptions about the idiosyncratic error components. As with the mean, the variance and distribution are identified without restricting the dependence between the coefficients and the covariates. 
+
+## Some Further Results on Heterogeneous Linear Models
+
+We have barely scratched the surface of the literature on linear models with unobserved heterogeneity is extensive. If you are interested, here is a selection of some further results:
+
+- **Further results in model ([-@eq-lecture_model])**: For example, it is possible to identify the average effect even when the number of periods equals the number of covariates (@Graham2012). Additionally, endogeneity can be permitted in the equation (@Laage2019).
+- **Time-varying coefficients**: Models ([-@eq-panel_hetero]) with time-varying heterogeneous coefficients have also received some recent attention, particularly in the "grouped fixed effect" literature. Notable papers include @Bonhomme2015 and @Lumsdaine2023EstimationPanelGroup (also see @Bonhomme2022DiscretizingUnobservedHeterogeneity).
+- **Unobserved Factors**: Models with unobserved factors allow for common shocks to impact individuals differently and provide a parsimonious way to include cross-sectional dependence. Key references include @Pesaran2006 and @Bai2009.
+- **Cross-Sectional Data**: Some identification is possible with cross-sectional data, typically assuming that coefficients are independent from the covariates (a randomized experiment framework). See @Hoderlein2010 and @Masten2018 for identifying the full distribution of coefficients in single-equation and system of equations frameworks, respectively.
+- **Deconvolution Applications**: Deconvolution is a versatile technique with broad applications. For examples, see @Bonhomme2009AssessingEqualizingForce and @Bonhomme2010GeneralizedNonParametricDeconvolution.
+ 
+---
+
+#### Next Section {.unnumbered}
+
+In the next section we will move beyond linearity and start our discussion of nonparametric models with unobserved heterogeneity.

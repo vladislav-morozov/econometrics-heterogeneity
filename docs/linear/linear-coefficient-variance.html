@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
+<meta name="description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
 
-<title>6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-coefficient-variance.html" rel="next">
-<link href="../linear/linear-dynamic-panel-heterogeneity.html" rel="prev">
+<link href="../linear/linear-chf.html" rel="next">
+<link href="../linear/linear-mean-group.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -285,8 +285,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn how to robustly estimate average coefficients in heterogeneous panel data with the mean group estimator. No fixed effects necessary. (Lecture Notes)">
+<meta property="og:title" content="7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -299,7 +299,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -375,13 +375,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -429,27 +429,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mean-group-estimation" id="toc-mean-group-estimation" class="nav-link active" data-scroll-target="#mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</a>
+  <li><a href="#beyond-average-coefficients" id="toc-beyond-average-coefficients" class="nav-link active" data-scroll-target="#beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</a>
   <ul class="collapse">
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">6.1.1</span> Model</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">6.1.2</span> Definition</a></li>
-  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">6.1.3</span> Properties</a></li>
+  <li><a href="#potential-objects-of-interest" id="toc-potential-objects-of-interest" class="nav-link" data-scroll-target="#potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">7.1.2</span> Model</a></li>
   </ul></li>
-  <li><a href="#comparing-estimators" id="toc-comparing-estimators" class="nav-link" data-scroll-target="#comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</a>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">7.2</span> Identification</a>
   <ul class="collapse">
-  <li><a href="#conditions-for-consistency" id="toc-conditions-for-consistency" class="nav-link" data-scroll-target="#conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</a></li>
-  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency"><span class="header-section-number">6.2.2</span> Efficiency</a></li>
+  <li><a href="#variance-decomposition" id="toc-variance-decomposition" class="nav-link" data-scroll-target="#variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</a></li>
+  <li><a href="#imposing-structure-on-the-error-term" id="toc-imposing-structure-on-the-error-term" class="nav-link" data-scroll-target="#imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</a></li>
+  <li><a href="#variance-of-residuals" id="toc-variance-of-residuals" class="nav-link" data-scroll-target="#variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</a></li>
+  <li><a href="#variance-of-coefficients" id="toc-variance-of-coefficients" class="nav-link" data-scroll-target="#variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</a></li>
   </ul></li>
-  <li><a href="#addressing-rank-deficiency" id="toc-addressing-rank-deficiency" class="nav-link" data-scroll-target="#addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">7.3</span> Estimation</a></li>
+  <li><a href="#higher-order-moments-and-moving-beyond" id="toc-higher-order-moments-and-moving-beyond" class="nav-link" data-scroll-target="#higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-mean-group.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-mean-group.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-mean-group" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></h1>
+<h1 class="title"><span id="sec-linear-variance" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></h1>
 </div>
 
 
@@ -476,190 +478,179 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section introduces a heterogeneity- and dynamics-robust estimator for average coefficients — the mean group estimator.</p>
+<p>This section discusses how to identify the variance of heterogeneous coefficients without restricting the dependence between coefficients and covariates.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Define the mean group estimator.</li>
-<li>Identify the assumptions and data requirements necessary for the MG estimator to be consistent.</li>
-<li>Compare the MG estimator with alternative estimation methods (e.g., within estimators and IV techniques) in both static and dynamic settings.</li>
+<li>Explain why average coefficients provide an incomplete picture.</li>
+<li>Identify the variance of heterogeneous coefficients using a temporal homoskedasticity assumption on the residuals.</li>
+<li>Construct a consistent estimator for the variance of coefficients.</li>
 </ul>
 </div>
 </div>
-<section id="mean-group-estimation" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</h2>
-<p>The results of the previous section and section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> leave us with key two questions:</p>
+<section id="beyond-average-coefficients" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</h2>
+<section id="potential-objects-of-interest" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</h3>
+<p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
+y_{it} = \bx_{it}'\bbeta_i + u_{it}.
+\tag{7.1}\]</span></span> In particular, <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
+<p>Average effects are informative but limited. They do not capture the full variation in responses across individuals (<span class="citation" data-cites="Heckman1997">Heckman, Smith, and Clements (<a href="../references/references.html#ref-Heckman1997" role="doc-biblioref">1997</a>)</span>). Other parameters of interest include:</p>
 <ul>
-<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
-<li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
+<li>The moments of <span class="math inline">\(\bbeta\)</span>:
+<ul>
+<li>Variance: overall dispersion in effects.</li>
+<li>Skewness: asymmetry in responses.</li>
+<li>Higher moments: shape of the distribution.</li>
+</ul></li>
+<li>The full distribution and quantiles of <span class="math inline">\(\bbeta_i\)</span>. For example, the distribution may be used to compute what proportion of people benefit vs.&nbsp;how many people are hurt by changes in <span class="math inline">\(x_{it}\)</span>.</li>
 </ul>
-<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
-<section id="model" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">6.1.1</span> Model</h3>
-<p>To formally define the mean group estimator, we return to the general <a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>: <span class="math display">\[
-    \by_{it} = \bx_{it}'\bbeta_i + u_{it},
-\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>. We can also express this model in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
-\by_i = \bX_i\bbeta_i + \bu_i,
-\]</span> where <span class="math inline">\(\bX_i\)</span> is now a <span class="math inline">\(T\times p\)</span> matrix of covariates, with <span class="math inline">\(T\)</span> representing the number of observations for each unit.</p>
-<p>In what follows, we will assume that the regressors <span class="math inline">\(\bx_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(u_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
-\E[\bx_{it}u_{it}] =0.
-\tag{6.1}\]</span></span> This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.</p>
 </section>
-<section id="definition" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.1.2</span> Definition</h3>
-<p>For the mean group estimator to be well-defined, we make two further assumptions:</p>
-<ol type="1">
-<li><em>Sufficient unit-level data</em>: each unit must have at least as many observations as regressors, i.e., <span class="math inline">\(T\geq p\)</span>.</li>
-<li><em>Non-singularity</em>: <span class="math inline">\(\bX_i'\bX_i\)</span> has rank maximal rank (<span class="math inline">\(p\)</span>) for all units <span class="math inline">\(i\)</span>.</li>
-</ol>
-<p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
-    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
-\tag{6.2}\]</span></span></p>
-<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
-    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
-\]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
+<section id="model" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="model"><span class="header-section-number">7.1.2</span> Model</h3>
+<p>As it turns out, it is possible to identify such distributional features in the static version of model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) without restricting the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> <span class="citation" data-cites="Arellano2012">(<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">Arellano and Bonhomme 2012</a>)</span>. In this section we discuss a streamlined version of their results for variance, while <a href="linear-distribution.html" class="quarto-xref"><span>Chapter 9</span></a> shows how to identify the maximal object of interest — the full distribution.</p>
+<p>Specifically, we consider model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) under a strict exogeneity condition of the form: <span id="eq-vector-variance-strict-ex"><span class="math display">\[
+\E[u_{it}|\bbeta_i, \bX_i] =0
+\tag{7.2}\]</span></span> The number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We will treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
+<p>As before, the model can be written in unit matrix form as <span class="math display">\[
+\by_i = \bX_i\bbeta_i + \bu_i.
+\]</span> We will again assume that <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span> for all <span class="math inline">\(i\)</span>. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
+</section>
+</section>
+<section id="identification" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="identification"><span class="header-section-number">7.2</span> Identification</h2>
+<p>Our object of interest in this section is the variance-covariance matrix <span class="math inline">\(\var(\bbeta_i)\)</span> of the coefficients <span class="math inline">\(\bbeta_i\)</span>: <span class="math display">\[
+    \var(\bbeta_i) = \E[\bbeta_i\bbeta_i'] - \E[\bbeta_i]\E[\bbeta_i]'.
+\]</span> Its diagonal terms are the variances of individual coefficients, which show how dispersed the effects are overall. The off-diagonal covariance terms capture whether the effects of different covariates tend to go in the same or contrary directions.</p>
+<section id="variance-decomposition" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</h3>
+<p>To identify <span class="math inline">\(\var(\bbeta_i)\)</span>, we will first look at the second moments of <span class="math inline">\(\by_i\)</span>. Specifically, we will consider the conditional second moment of <span class="math inline">\(\by_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span>, where <span class="math inline">\(\bX\)</span> is some potential value of <span class="math inline">\(\bX_i\)</span> such that <span class="math inline">\(\det(\bX'\bX)&gt;0\)</span> and <span class="math inline">\(\bX\)</span> lies in the support of <span class="math inline">\(\bX_i\)</span>.</p>
+<p>Using model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) and condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the conditional second moment of <span class="math inline">\(\by_i\)</span> can be represented as <span id="eq-linear-variance-second-moment-y"><span class="math display">\[
+\begin{aligned}
+    &amp;\E[\by_i\by_i'|\bX_i=\bX]\\
+    &amp; = \E\left[ (\bX_i\bbeta_i+ \bu_i)(\bX_i\bbeta_i+\bu_i)'|\bX_i=\bX \right]\\
+    &amp; =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bu_i\bu_i'|\bX_i=\bX \right].
+\end{aligned}
+\tag{7.3}\]</span></span></p>
+<p>The above expression decomposes the conditional second moment of <span class="math inline">\(\by_i\)</span> into two components — one corresponding to <span class="math inline">\(\bbeta_i\)</span> and the other one to <span class="math inline">\(\bu_i\)</span>.</p>
+<p>In general, we cannot separate the two components of the second moment of <span class="math inline">\(\by\)</span>. To see why, consider <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a> as a system of linear equations. The unknowns are the components of the symmetric matrices</p>
+<ul>
+<li><span class="math inline">\(\E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(p(p+1)/2\)</span> unknowns.</li>
+<li><span class="math inline">\(\E\left[\bu_i\bu_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(T(T+1)/2\)</span> unknowns.</li>
+</ul>
+<p>The system is underdetermined, as there is a total of only <span class="math inline">\(T(T+1)/2\)</span> distinct equations.</p>
+<p>At heart, the underdeterminacy stems from the fact that the model allows any dynamic structure for <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span>. As a consequence, <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span> has too many free elements relative to the number of equations.</p>
+</section>
+<section id="imposing-structure-on-the-error-term" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</h3>
+<p>This issue can be resolved by imposing assumptions on the time series dependence of <span class="math inline">\(u_{it}\)</span>. The magnitudes of <span class="math inline">\(T\)</span> and <span class="math inline">\(p\)</span> determine how many restrictions are necessary. After taking out the <span class="math inline">\(p(p+1)/2\)</span> parameters of <span class="math inline">\(\E[\bbeta_i\bbeta_i'|\bX_i=\bx]\)</span>, we have at most <span class="math inline">\(\left[T(T+1)-p(p+1) \right]/2\)</span> equations left. This number is the number of possible free parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>. In the most unfavorable case <span class="math inline">\(T=p+1\)</span>, and we can allow only <span class="math inline">\(T+1\)</span> possible parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>.</p>
+<p>Various assumptions are possible, and <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> explore moving average and autoregressive structures for <span class="math inline">\(u_{it}\)</span>. Here, we will consider the simplest case in which <span class="math inline">\(u_{it}\)</span> is conditionally homoskedastic across time (but not necessarily across <span class="math inline">\(\bX\)</span>) and uncorrelated across <span class="math inline">\(t\)</span>: <span id="eq-linear-variance-spherical"><span class="math display">\[
+\begin{aligned}
+    \E[u_{it}^2|\bX_i=\bX] &amp; = \sigma^2(\bX), \\
+    \E[u_{it}u_{is}|\bX_i=\bX] &amp; = 0, \quad t\neq s.
+\end{aligned}
+\tag{7.4}\]</span></span> Under assumption (<a href="#eq-linear-variance-spherical" class="quarto-xref"><span>7.4</span></a>) it holds that <span class="math display">\[
+\E\left[\bu_i\bu_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
+\]</span> There is only one unknown parameter in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>!</p>
+</section>
+<section id="variance-of-residuals" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</h3>
+<p>We can identify the unknown <span class="math inline">\(\sigma^2(\bX)\)</span> using a standard argument. Let the annihilator matrix associated with <span class="math inline">\(\bX\)</span> be given by <span id="eq-linear-variance-annihilator"><span class="math display">\[
+    \bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
+\tag{7.5}\]</span></span> Recall three key properties that <span class="math inline">\(\bM(\cdot)\)</span> possesses <span class="math display">\[
+\begin{aligned}
+     \bM(\bX)\bX &amp; =0, \\
+      \bM(\bX)\bM(\bX) &amp; =\bM(\bX),  \\
+       \bM(\bX)' &amp; =\bM(\bX).
+\end{aligned}
+\]</span> Now consider the following second moment of <span class="math inline">\(\bM(\bX)\by_i\)</span> conditional on <span class="math inline">\(\bX_i=\bX\)</span>: <span class="math display">\[
+\begin{aligned}
+    &amp; \E[\by_i'\bM(\bX)'\bM(\bX)\by_i|\bX_i=\bX]\\
+    &amp;  = \E[\bu_i'\bM(\bX)\bu_i|\bX_i=\bX] \\
+    &amp; = \E\left[ \mathrm{tr}(\bu_i'\bM(\bX)\bu_i)|\bX_i=\bX\right] \\
+    &amp; = \sigma^2(\bX)(T-p).
+\end{aligned}
+\]</span> The details of the trace argument are standard and can be found in section 4.11 of <span class="citation" data-cites="Hansen2022">Hansen (<a href="../references/references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>We conclude that <span class="math inline">\(\sigma^2(\bX)\)</span> is identified as <span class="math display">\[
+    \sigma^2(\bX) = \dfrac{1}{T-p} \E[\by_i'\bM(\bX)\by_i|\bX_i=\bX].
+\]</span></p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bx_{it}u_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bx_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
+<p>Note that it is also possible to solve for variance parameters from <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>! This approach can be useful when residuals exhibit more general dependence.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="properties" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="properties"><span class="header-section-number">6.1.3</span> Properties</h3>
-<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\by_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
-    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
+<section id="variance-of-coefficients" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</h3>
+<p>We are now in a position to identify <span class="math inline">\(\var(\bbeta_i)\)</span>. In principle, we can solve for <span class="math inline">\(\E[\bbeta_i\bbeta_i']\)</span> by suitably vectorizing the system in <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>. However, it will be more convenient to go back to the individual estimators (<a href="linear-mean-group.html#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>). For brevity, let <span class="math inline">\(\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'\)</span>, so that<br>
+<span class="math display">\[
+\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
+\]</span> As <span class="math inline">\(\E[\bbeta_i\bu_i']=0\)</span> by condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the variance of the individual estimator can be decomposed as <span class="math display">\[
+\begin{aligned}
+    &amp; \var(\hat{\bbeta}_i) = \var\left(\bbeta_i + \bH_i\bu_i \right)\\
+    &amp; = \var(\bbeta_i) + \var(\bH_i)\\
+    %
+    &amp;
+    = \var(\bbeta_i) + \E\left[\bH_i\bu_i\bu_i'\bH_i' \right]\\
+    &amp; =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bu_i\bu_i'\bH_i'|\bX_i \right]\right]\\
+    &amp; =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bu_i\bu_i'|\bX_i \right]\bH_i'\right]\\
+    &amp; = \var(\bbeta_i) + \E\left[\sigma(\bX_i)\bH_i\bH_i'\right].
+\end{aligned}
 \]</span></p>
-<p>As <span class="math inline">\(N\)</span> grows, the first term will converge to the average effect: <span class="math display">\[
-\dfrac{1}{N} \sum_{i=1}^N \bbeta_i   \xrightarrow{p} \E[\bbeta_i].
-\]</span> This convergence holds regardless of assumptions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>.</p>
-<p>The second term’s behavior determines the estimator’s overall properties, depending on whether strict exogeneity holds:</p>
+<p>Observe that the variance <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> of individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> (not <span class="math inline">\(\bbeta_i\)</span>!) is identified as <span class="math display">\[
+    \var(\hat{\bbeta}_i) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right).
+\]</span></p>
+<p>Substituting <a href="#eq-linear-variance-spherical" class="quarto-xref">Equation&nbsp;<span>7.4</span></a> and rearranging, we obtain the following explicit expression for <span class="math inline">\(\var(\bbeta_i)\)</span>: <span id="eq-linear-variance-variance-explicit"><span class="math display">\[
+\begin{aligned}  
+     \var(\bbeta_i)  &amp;  =   \var(\hat{\bbeta}_i) -   \E\left[\sigma(\bX_i)\bH_i\bH_i'\right]\\
+     &amp; =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right)\\
+     &amp; \quad  -  \dfrac{1}{T-p}\E\left[ \E[\by_i'\bM(\bX_i)\by_i|\bX_i]\bH_i\bH_i'\right].
+\end{aligned}
+\tag{7.6}\]</span></span> Note that the right-hand side is a function of the distribution of <span class="math inline">\((\by_i, \bX_i)\)</span> — hence identification holds.</p>
+</section>
+</section>
+<section id="estimation" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">7.3</span> Estimation</h2>
+<p>To construct an estimator for <span class="math inline">\(\var(\bbeta_i)\)</span> based on <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a>, we replace the population expectations with their sample counterparts. Specifically, <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> is estimated using the sample variance of the individual estimators: <span class="math display">\[
+\begin{aligned}
+    \widehat{\var(\hat{\bbeta}_i) } = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'.
+\end{aligned}
+\]</span> Likewise, we replace the expectation in the second term of <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a> with a sample average.</p>
+<p>This process yields an estimator for the variance of <span class="math inline">\(\bbeta\)</span>: <span class="math display">\[
+\begin{aligned}
+    \widehat{\var(\bbeta_i) } &amp; = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'\\
+    &amp; \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \by_i'\bM(\bX_i)\by_i\bH_i\bH_i'.
+\end{aligned}
+\]</span> Under standard regularity conditions, <span class="math inline">\(\widehat{\var(\bbeta_i) }\)</span> is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
+</section>
+<section id="higher-order-moments-and-moving-beyond" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</h2>
+<p>It turns out that a similar strategy can be used to identify the third and higher-order moments of <span class="math inline">\(\bbeta_i\)</span>. see <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> for the details. The key ingredients of the identification argument for the <span class="math inline">\(k\)</span>th moments of <span class="math inline">\(\bbeta_i\)</span> are:</p>
 <ul>
-<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
-<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> will be biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias will typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanish as <span class="math inline">\(T\to\infty\)</span>.</p></li>
+<li><span class="math inline">\(k\)</span>th moments (or cumulants) of <span class="math inline">\(\by_i\)</span> and <span class="math inline">\(\hat{\bbeta}_i\)</span></li>
+<li>Restrictions on the time series dynamics of <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span></li>
+<li>Multiplicative separability of the moments of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span> up to order <span class="math inline">\(k\)</span>.</li>
 </ul>
-</section>
-</section>
-<section id="comparing-estimators" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</h2>
-<section id="conditions-for-consistency" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</h3>
-<p>We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
-<p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Within</th>
-<th>MG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Data requirements</strong></td>
-<td><span class="math inline">\(T \geq 2\)</span></td>
-<td><span class="math inline">\(T \geq p\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
-<td><span class="math inline">\(\mathbb{E}[\tilde{X}_i'\tilde{X}_i\eta_i]=0\)</span></td>
-<td>None</td>
-</tr>
-<tr class="odd">
-<td><strong>Asymptotic framework</strong></td>
-<td>Fixed-<span class="math inline">\(T\)</span></td>
-<td>Fixed-<span class="math inline">\(T\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>IV</th>
-<th>MG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Data requirements</strong></td>
-<td><span class="math inline">\(T \geq k+2\)</span></td>
-<td><span class="math inline">\(T \geq p+k\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Assumptions on <span class="math inline">\((\beta_i, X_i)\)</span></strong></td>
-<td>No consistency</td>
-<td>None</td>
-</tr>
-<tr class="odd">
-<td><strong>Asymptotic framework</strong></td>
-<td>No consistency</td>
-<td>Large-<span class="math inline">\((N, T)\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="efficiency" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">6.2.2</span> Efficiency</h3>
-<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented<span class="citation" data-cites="Pesaran1996 Pesaran1999 Hsiao1999">(<a href="../references/references.html#ref-Pesaran1996" role="doc-biblioref">H. Pesaran, Smith, and Im 1996</a>; <a href="../references/references.html#ref-Pesaran1999" role="doc-biblioref">M. H. Pesaran, Shin, and Smith 1999</a>; <a href="../references/references.html#ref-Hsiao1999" role="doc-biblioref">Hsiao, Pesaran, and Tahmiscioglu 1999</a>)</span>.</p>
-<p>However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="../references/references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span>.</p>
-</section>
-</section>
-<section id="addressing-rank-deficiency" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="addressing-rank-deficiency"><span class="header-section-number">6.3</span> Addressing Rank Deficiency</h2>
-<p>Before moving beyond <span class="math inline">\(\E[\bbeta_i]\)</span>, we return to the assumption that <span class="math inline">\(\bX_i'\bX_i\)</span> is non-singular for all units <span class="math inline">\(i\)</span>. This requirement might not hold, in particular if <span class="math inline">\(T\)</span> is only slightly larger than <span class="math inline">\(p\)</span> and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation.</p>
-<p>If such a situation occurs in practice, a common solution is to drop the units with non-invertible <span class="math inline">\(\bX_i'\bX_i\)</span>. The mean group estimator is computed as an average over the remaining units. Formally, the corresponding mean group estimator is defined as <span class="math display">\[
-    \hat{\bbeta}_{MG}^+  = \dfrac{1}{\sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} } \sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} \hat{\bbeta}_i.
-\]</span> Every unit is checked to see if <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span>. If it is, their <span class="math inline">\(\hat{\bbeta}_i\)</span> is computed and added to the average.</p>
-<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bu_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data: <span class="math display">\[
-    \hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)&gt;0}  \right].
-\]</span> This limit may be viewed as an average treatment effect of the treated.</p>
+<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantile of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we move beyond <span class="math inline">\(\E[\bbeta_i]\)</span> and discuss identification of the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
+<p>In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of <span class="math inline">\(\bbeta_i\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
-Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023. <span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June, S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
+<div id="ref-Arellano2012" class="csl-entry" role="listitem">
+Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random coefficients panel data models</span>.”</span> <em>Review of Economic Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
 </div>
-<div id="ref-Breitung2021" class="csl-entry" role="listitem">
-Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope Variations</span>.”</span> <em>Journal of Econometrics</em> 220 (2): 399–415. <a href="https://doi.org/10.1016/j.jeconom.2020.04.007">https://doi.org/10.1016/j.jeconom.2020.04.007</a>.
+<div id="ref-Hansen2022" class="csl-entry" role="listitem">
+Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
 </div>
-<div id="ref-Hsiao1999" class="csl-entry" role="listitem">
-Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
-</div>
-<div id="ref-Pesaran1996" class="csl-entry" role="listitem">
-Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
-</div>
-<div id="ref-Pesaran1999" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous Panels</span>.”</span> <em>Journal of the American Statistical Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
-</div>
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Heckman1997" class="csl-entry" role="listitem">
+Heckman, James J., Jeffrey Smith, and Nancy Clements. 1997. <span>“<span class="nocase">Making the Most out of Programme Evaluations and Social Experiments : Accounting for Heterogeneity in Programme Impacts</span>.”</span> <em>Review of Economic Studies</em> 64 (4): 487–535. <a href="https://doi.org/10.2307/2971729">https://doi.org/10.2307/2971729</a>.
 </div>
 </div>
 </section>
@@ -1229,13 +1220,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="pagination-link" aria-label="Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span>
+      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-coefficient-variance.html" class="pagination-link" aria-label="Variance of Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1244,4 +1235,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-mean-group.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
