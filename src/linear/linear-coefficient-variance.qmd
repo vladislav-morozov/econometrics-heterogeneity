@@ -29,7 +29,7 @@ Previously, we focused on estimating the average coefficient vector $\E[\bbeta_i
 $$
 y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 $$ {#eq-linear-variance-model}
-In particular, @sec-linear-mean-group has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even without imposing restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
+In particular, section [-@sec-linear-mean-group] has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even without imposing restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
 
 
 Average effects are informative but limited. They do not capture the full variation in responses across individuals (@Heckman1997). Other parameters of interest include:
@@ -54,7 +54,7 @@ As before, the model can be written in unit matrix form as
 $$
 \by_i = \bX_i\bbeta_i + \bu_i.
 $$
-We will again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in @sec-linear-mean-group.
+We will again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in section [-@sec-linear-mean-group].
 
 
 
@@ -221,7 +221,7 @@ It turns out that a similar strategy can be used to identify the third and highe
 - Multiplicative separability of the moments of $\bbeta_i$ and $\bu_i$ up to order $k$.
 
 
-However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantile of $\bbeta_i$ and further policy-relevant parameter. As such,  this distribution is our maximal object of interest, and we now turn towards its identification.
+However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantiles of $\bbeta_i$ and further policy-relevant parameter. As such,  this distribution is our maximal object of interest, and we now turn towards its identification.
 
 
 
