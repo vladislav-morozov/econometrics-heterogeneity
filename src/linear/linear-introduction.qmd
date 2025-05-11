@@ -146,6 +146,8 @@ In this block, we will focus on model ([-@eq-lecture_model]) and consider identi
 3. **Identifying the Full Distribution of $\bbeta_i$:** we show how one can obtain the distribution of $\bbeta_i$ with a deconvolution argument.
  
 
+Knowing these features of the distribution of $\bbeta_i$ allows one to compute the corresponding features of the treatment effects of changing from some treatment value $\bx_1$ to $\bx_2$ — these treatment effects are given by $\bbeta_1(\bx_2-\bx_1)$.
+
 ---
 
 #### Next Section {.unnumbered}
