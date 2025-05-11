@@ -32,7 +32,7 @@ As it turns out, there is indeed an estimator that is robust both to heterogenei
 
 ### Model
 
-To formally define the mean group estimator, we return to the general @eq-lecture_model: 
+To formally define the mean group estimator, we return to the general model ([-@eq-lecture_model]): 
 $$
 	\by_{it} = \bx_{it}'\bbeta_i + u_{it},
 $$ 
@@ -127,7 +127,7 @@ The following tables summarize and contrast the requirements for each estimation
 
 ### Efficiency 
 
-While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented[@Pesaran1996; @Pesaran1999; @Hsiao1999]. 
+While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented  [@Pesaran1996; @Pesaran1999; @Hsiao1999]. 
 
 However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see @Breitung2021.
 
