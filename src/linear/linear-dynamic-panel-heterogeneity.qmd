@@ -27,7 +27,7 @@ By the end of this section, you should be able to:
 
 
 
-As in the static case, it is not clear why the slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.
+As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.
 
 As a consequence, we now consider heterogeneous dynamic models. In this section we will again focus on a simple AR(1) model with no exogenous regressors. Specifically, we will look at the following heterogeneous version of model ([-@eq-dynamic-interlude-dynamic-simple]):
 $$
@@ -36,7 +36,7 @@ $$
 0 & = \E[u_{it}| \curl{y_{is}}_{s\leq t}] .
 \end{aligned}
 $$  {#eq-dynamic-heterogeneity-model}
-This model allows for unit-specific dynamics, as the coefficients $\lambda_i$ can vary across $i$. The above model is also another instance of the general @eq-lecture_model. 
+This model allows for unit-specific dynamics, as the coefficients $\lambda_i$ can vary across $i$. The above model is also another instance of the general model ([-@eq-lecture_model]). 
 
 As before, we are interested in the average coefficient $\E[\lambda_i]$. 
 

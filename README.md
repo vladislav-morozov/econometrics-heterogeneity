@@ -5,6 +5,7 @@
 This repository contains lecture notes for the course *Econometrics with Unobserved Heterogeneity*, based on a graduate-level topics course I taught at the University of Bonn.
 
 These notes are published as a website using Quarto and are available online:
+
 📖 **Read the lecture notes on my website:** <https://vladislav-morozov.github.io/econometrics-heterogeneity/>
 
 ## Course Overview

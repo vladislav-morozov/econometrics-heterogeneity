@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b0eece7c1009274fcfe024db93588bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-45ff2c7ce894d5b9bdc26965e6cddd25.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,166 +93,327 @@ div.csl-indent {
   }
 }</script>
  
+
 <!-- This is what works with Quarto and MathJax 3+ -->
+
 <script>
+
   MathJax = {
+
     tex: {
+
       tags: 'ams',  // should be 'ams', 'none', or 'all'
+
       macros: {
+
         vect: ["\\mathbf{#1}", 1],
+
         mat: ["\\mathbf{#1}", 1], 
 
+
+
         bA: "\\boldsymbol{A}",
+
         bB: "\\boldsymbol{B}",
+
         bC: "\\boldsymbol{C}",
+
         bD: "\\boldsymbol{D}",
+
         bE: "\\boldsymbol{E}",
+
         bF: "\\boldsymbol{F}",
+
         bG: "\\boldsymbol{G}",
+
         bH: "\\boldsymbol{H}",
+
         bI: "\\boldsymbol{I}",
+
         bJ: "\\boldsymbol{J}",
+
         bK: "\\boldsymbol{K}",
+
         bL: "\\boldsymbol{L}",
+
         bM: "\\boldsymbol{M}",
+
         bN: "\\boldsymbol{N}",
+
         bP: "\\boldsymbol{P}",
+
         bQ: "\\boldsymbol{Q}",
+
         bR: "\\boldsymbol{R}",
+
         bS: "\\boldsymbol{S}",
+
         bT: "\\boldsymbol{T}",
+
         bU: "\\boldsymbol{U}",
+
         bV: "\\boldsymbol{V}",
+
         bW: "\\boldsymbol{W}",
+
         bX: "\\boldsymbol{X}",
+
         bY: "\\boldsymbol{Y}",
+
         bZ: "\\boldsymbol{Z}",
+
         ba: "\\boldsymbol{a}",
+
         bb: "\\boldsymbol{b}",
+
         bc: "\\boldsymbol{c}",
+
         bd: "\\boldsymbol{d}",
+
         be: "\\boldsymbol{e}",
+
         bg: "\\boldsymbol{g}",
+
         bh: "\\boldsymbol{h}",
+
         bi: "\\boldsymbol{\\imath}",
+
         bm: "\\boldsymbol{m}",
+
         bp: "\\boldsymbol{p}",
+
         bq: "\\boldsymbol{q}",
+
         br: "\\boldsymbol{r}",
+
         bs: "\\boldsymbol{s}",
+
         bt: "\\boldsymbol{t}",
+
         bu: "\\boldsymbol{u}",
+
         bv: "\\boldsymbol{v}",
+
         bw: "\\boldsymbol{w}",
+
         bx: "\\boldsymbol{x}",
+
         by: "\\boldsymbol{y}",
 
+
+
         Acal: "\\mathcal{A}",
+
         Bcal: "\\mathcal{B}",
+
         Ccal: "\\mathcal{C}",
+
         Dcal: "\\mathcal{D}",
+
         Ecal: "\\mathcal{E}",
+
         Fcal: "\\mathcal{F}",
+
         Gcal: "\\mathcal{G}",
+
         Hcal: "\\mathcal{H}",
+
         Ical: "\\mathcal{I}",
+
         Jcal: "\\mathcal{J}",
+
         Kcal: "\\mathcal{K}",
+
         Lcal: "\\mathcal{L}",
+
         Mcal: "\\mathcal{M}",
+
         Ncal: "\\mathcal{N}",
+
         Ocal: "\\mathcal{O}",
+
         Pcal: "\\mathcal{P}",
+
         Qcal: "\\mathcal{Q}",
+
         Rcal: "\\mathcal{R}",
+
         Scal: "\\mathcal{S}",
+
         Tcal: "\\mathcal{T}",
+
         Ucal: "\\mathcal{U}",
+
         Vcal: "\\mathcal{V}",
+
         Wcal: "\\mathcal{W}",
+
         Xcal: "\\mathcal{X}",
+
         Ycal: "\\mathcal{Y}",
+
         Zcal: "\\mathcal{Z}",
 
+
+
         A: "\\mathbb{A}",
+
         B: "\\mathbb{B}",
+
         C: "\\mathbb{C}",
+
         D: "\\mathbb{D}",
+
         E: "\\mathbb{E}",
+
         F: "\\mathbb{F}",
+
         G: "\\mathbb{G}",
+
         H: "\\mathbb{H}",
+
         I: "\\mathbb{I}",
+
         J: "\\mathbb{J}",
+
         K: "\\mathbb{K}",
+
         L: "\\mathbb{L}",
+
         M: "\\mathbb{M}",
+
         N: "\\mathbb{N}",
+
         O: "\\mathbb{O}",
+
         P: "\\mathbb{P}",
+
         Q: "\\mathbb{Q}",
+
         R: "\\mathbb{R}",
+
         S: "\\mathbb{S}",
+
         T: "\\mathbb{T}",
+
         U: "\\mathbb{U}",
+
         V: "\\mathbb{V}",
+
         W: "\\mathbb{W}",
+
         X: "\\mathbb{X}",
+
         Y: "\\mathbb{Y}",
+
         Z: "\\mathbb{Z}",
 
+
+
         bAlpha: "\\boldsymbol{\\Alpha}",
+
         bBeta: "\\boldsymbol{\\beta}",
+
         bDelta: "\\boldsymbol{\\delta}",
+
         bEta: "\\boldsymbol{\\eta}",
+
         bGamma: "\\boldsymbol{\\Gamma}",
+
         bLambda: "\\boldsymbol{\\Lambda}",
+
         bOmega: "\\boldsymbol{\\Omega}",
+
         bPhi: "\\boldsymbol{\\Phi}",
+
         bPi: "\\boldsymbol{\\Pi}",
+
         bPsi: "\\boldsymbol{\\Psi}",
+
         bSigma: "\\boldsymbol{\\Sigma}",
+
         bTau: "\\boldsymbol{\\tau}",
+
         bXi: "\\boldsymbol{\\Xi}",
+
         bbeta: "\\boldsymbol{\\beta}",
+
         bdelta: "\\boldsymbol{\\delta}",
+
         blambda: "\\boldsymbol{\\lambda}",
+
         bmu: "\\boldsymbol{\\mu}",
+
         bphi: "\\boldsymbol{\\phi}",
+
         bpi: "\\boldsymbol{\\pi}",
+
         bpsi: "\\boldsymbol{\\psi}",
+
         brho: "\\boldsymbol{\\rho}",
+
         bsigma: "\\boldsymbol{\\sigma}",
+
         btau: "\\boldsymbol{\\tau}",
+
         bxi: "\\boldsymbol{\\xi}",
+
         bEta: "\\boldsymbol{\\eta}",
+
         bPhi: "\\boldsymbol{\\Phi}",
+
         bPi: "\\boldsymbol{\\Pi}",
+
         bPsi: "\\boldsymbol{\\Psi}",
+
         bXi: "\\boldsymbol{\\Xi}",
+
         blambda: "\\boldsymbol{\\lambda}",
+
         bmu: "\\boldsymbol{\\mu}",
+
         bphi: "\\boldsymbol{\\phi}",
+
         bpi: "\\boldsymbol{\\pi}",
+
         bpsi: "\\boldsymbol{\\psi}",
+
         brho: "\\boldsymbol{\\rho}",
+
         bsigma: "\\boldsymbol{\\sigma}",
+
                    
+
         curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
+
         floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
+
         ceil: ["\\left\\lceil#1\\right\\rceil", 1],
+
         abs: ["\\left\\lvert#1\\right\\rvert", 1],
+
         norm: ["\\left\\lVert#1\\right\\rVert", 1],
+
+
 
         independent: "\\mathrel{\\perp\\!\\!\\perp}",
 
+
+
         var: "\\mathrm{var}",
+
         diag: "\\mathrm{diag}",
+
         rank: "\\mathrm{rank}",
+
         vecc: "\\mathrm{vec}",
+
       }
+
     }
+
   };
+
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -493,7 +654,7 @@ Summary and Learning Outcomes
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</h3>
 <p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
 y_{it} = \bx_{it}'\bbeta_i + u_{it}.
-\tag{7.1}\]</span></span> In particular, <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
+\tag{7.1}\]</span></span> In particular, section <a href="linear-mean-group.html" class="quarto-xref"><span>6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
 <p>Average effects are informative but limited. They do not capture the full variation in responses across individuals (<span class="citation" data-cites="Heckman1997">Heckman, Smith, and Clements (<a href="../references/references.html#ref-Heckman1997" role="doc-biblioref">1997</a>)</span>). Other parameters of interest include:</p>
 <ul>
 <li>The moments of <span class="math inline">\(\bbeta\)</span>:
@@ -513,7 +674,7 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 \tag{7.2}\]</span></span> The number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We will treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
 <p>As before, the model can be written in unit matrix form as <span class="math display">\[
 \by_i = \bX_i\bbeta_i + \bu_i.
-\]</span> We will again assume that <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span> for all <span class="math inline">\(i\)</span>. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in <a href="linear-mean-group.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
+\]</span> We will again assume that <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span> for all <span class="math inline">\(i\)</span>. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in section <a href="linear-mean-group.html" class="quarto-xref"><span>6</span></a>.</p>
 </section>
 </section>
 <section id="identification" class="level2" data-number="7.2">
@@ -635,7 +796,7 @@ y_{it} = \bx_{it}'\bbeta_i + u_{it}.
 <li>Restrictions on the time series dynamics of <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span></li>
 <li>Multiplicative separability of the moments of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span> up to order <span class="math inline">\(k\)</span>.</li>
 </ul>
-<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantile of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
+<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantiles of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>

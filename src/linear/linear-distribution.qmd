@@ -30,7 +30,7 @@ We are now in a position to obtain our final and strongest result in this block:
 $$
 y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 $$
-As in @sec-linear-variance, we impose strict exogeneity
+As in section [-@sec-linear-variance], we impose strict exogeneity
 $$
 \E[\bu_i|\bbeta_i, \bX_i] = 0.
 $$

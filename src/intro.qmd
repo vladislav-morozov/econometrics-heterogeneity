@@ -1,7 +1,7 @@
 ---  
-description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it."
+description: "Learn about different kinds of unobserved heterogeneity in  economic and business  data and some strategies for dealing with it."
 open-graph:
-    description: "Learn about different kinds of unobserved heterogeneity in data and some strategies for dealing with it." 
+    description: "Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it." 
 ---
 
 
@@ -127,12 +127,12 @@ Throughout, we will focus on non-experimental (observational) data, where unobse
 
 Despite their differences, all models we study in this course share a common structure: they describe how an outcome $y$ depends on observed factors ($x$) and unobserved heterogeneity ($u, \alpha$). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models:
 $$
-	y_i(x) = \phi(x, \alpha_i),  \quad y_{it}(x) = \phi(x, \alpha_i, u_{it}),
+	y_i^x = \phi(x, \alpha_i),  \quad y_{it}^x = \phi(x, \alpha_i, u_{it}),
 $$ {#eq-intro-potential-outcomes}
-where $x$ is some potential value of the observed covariates, $\alpha_i$ and $u_{it}$ are the time-invariant and time-varying unobserved characteristics of unit $i$, respectively; and $y_i(x)$ and $y_{it}(x$ are  the (scalar) outcome for individual $i$ given $x$ (in time $t$). In practice, we will have access to datasets of the form $\curl{(y_i, x_i)}_{i=1, \dots, N}$ or $\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}$. The observed outcomes are generated as 
+where $x$ is some potential value of the observed covariates, $\alpha_i$ and $u_{it}$ are the time-invariant and time-varying unobserved characteristics of unit $i$, respectively; and $y_i^x$ and $y_{it}^x$ are  the (scalar) outcome for individual $i$ given $x$ (in time $t$). In practice, we will have access to datasets of the form $\curl{(y_i, x_i)}_{i=1, \dots, N}$ or $\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}$. The observed outcomes are generated as 
 $$
-	y_i = \phi(x_i, \alpha_i),  \quad y_{it} = \phi(x_{it}, \alpha_i, u_{it}),
-$$
+	y_i = y_i^{x_i}=  \phi(x_i, \alpha_i),  \quad y_{it} = y_{it}^{x_{it}} = \phi(x_{it}, \alpha_i, u_{it}),
+$$ 
 
 
 Throughout, our goal will be  to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.
@@ -141,7 +141,7 @@ Throughout, our goal will be  to learn different features of the potential outco
 
 A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model ([-@eq-intro-potential-outcomes]) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:
 
-- Imposing functional form restrictions on $g$ (e.g. parametric assumptions such as linearity, or assuming  that $\alpha_i$ is scalar and that it  affects $g$ monotonically);
+- Imposing functional form restrictions on $\phi$ (e.g. parametric assumptions such as linearity, or assuming  that $\alpha_i$ is scalar and that it  enters $\phi$ monotonically);
 - Restricting the extent of unobserved  heterogeneity in the model (e.g. assuming that there is scalar unobserved variables or  a vector of heterogeneous coefficients);
 - Restricting the relationship between the observed and unobserved variables (e.g. assuming that $\alpha_i$  is independent from $x_i$);
 -  Focusing on particular parts of the distribution of the outcome (such as quantiles).

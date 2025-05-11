@@ -30,7 +30,7 @@ $$
 	\E[u_{it}|\bX_i] = 0.
 $${#eq-dynamic-interlude-strict-orthogonality}
 
-However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices $t, s$ it holds that 
+However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices $s, t$ it holds that 
 $$
 	\E[u_{it}\bx_{is}] =0.
 $$ {#eq-dynamic-interlude-strict-orthogonality}
@@ -42,7 +42,7 @@ This requirement might fail if $\bx$ is dynamic and its evolution is affected by
 ### No Strict Exogeneity for Dynamic Models
 
 
-A particularly clear example for failure of @eq-dynamic-interlude-strict-orthogonality arises when $\bx_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
+A particularly clear example of failure of ([-@eq-dynamic-interlude-strict-orthogonality]) is the case when $\bx_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
 
 
 For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)):
@@ -52,7 +52,7 @@ $$
 where  $t=1, \dots, T$ and the innovation $u_t$ satisfies $\E[u_t]=0$. 
 
  
-To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that @eq-dynamic-interlude-strict-orthogonality  is not true. Specifically, we will take $s=t+1$ and show that  $\E[y_{it+1}u_t]$ is not necessarily zero.
+To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that ([-@eq-dynamic-interlude-strict-orthogonality])  is not true. Specifically, we will take $s=t+1$ and show that $\E[y_{it+1}u_t]$ is not necessarily zero.
 
 To evaluate this expectation, we write the model at $t+1$
 $$
@@ -80,7 +80,7 @@ Both of these options are unpleasant. The first one goes against the idea of all
 $$
 \E[y_{it+1}u_t] \neq 0.
 $$ {#eq-dynamic-interlude-no-strict-exogeneity}
-A fortiori, strict exogeneity also cannot hold in dynamic models. 
+A fortiori, strict exogeneity generally fails in dynamic models. 
 
 ### Sequential Exogeneity
 
@@ -176,7 +176,7 @@ $$
 
 In most contexts, one has to look for external variables that can serve as instruments.
 
-However, @eq-dynamic-interlude-homogeneous-differenced is a very special case where one can use instruments internal to the model! 
+However, model  ([-@eq-dynamic-interlude-homogeneous-differenced]) is a very special case where one can use instruments internal to the model! 
 
 ### The Anderson-Hsiao Estimator
 
@@ -202,7 +202,7 @@ $$
 $$
 Provided $y_{it-k}$ is correlated with $\Delta y_{it-1}$ and available in the data, it also becomes a valid instrument.  Following this chain of reasoning and using all available lags $y_{it-k}$ yields the @Arellano1991 estimator. 
  
-Even further instruments have been found for @eq-dynamic-interlude-homogeneous-differenced by @Ahn1995 and @Blundell1998, among others.
+Even further instruments have been found for ([-@eq-dynamic-interlude-homogeneous-differenced]) by @Ahn1995 and @Blundell1998, among others.
 
 All of  these estimators are implemented in 
 
@@ -220,7 +220,7 @@ The matter is rather more delicate if both $N$ and $T$ are large, and the above 
 
 One may think that we had the endogeneity problem ([-@eq-dynamic-interlude-differenced-endogeneity]) because we took first differences instead of applying the within transformation. 
 
-However, the same issue endogeneity issue affects the within estimator. First, for $T=2$ the above discussion applies directly, as the within transformation is numerically identical to first differencing. 
+However, the same endogeneity issue affects the within estimator. First, for $T=2$ the above discussion applies directly, as the within transformation is numerically identical to first differencing. 
 Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
 $$
 	\tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.

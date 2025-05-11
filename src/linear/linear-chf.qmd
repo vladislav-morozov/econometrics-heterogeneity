@@ -19,7 +19,7 @@ By the end of this section, you should be able to:
 - Carry out a basic nonparametric deconvolution argument for identifying distributions.  
 :::
 
-To discuss the identification of the full distribution of the coefficients $\bbeta_i$ in model ([-@eq-lecture_model]), we need to review two key concepts: characteristic functions and the deconvolution approach. This brief section can be freely skipped if you are familiar with both.
+To discuss the identification of the full distribution of the coefficients $\bbeta_i$ in model ([-@eq-lecture_model]), we need to review two key concepts: characteristic functions and deconvolution. This brief section can be freely skipped if you are familiar with both.
 
 
 

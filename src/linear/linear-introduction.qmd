@@ -103,7 +103,7 @@ y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
     $$ {#eq-grouped_model}
     
-    This model in @Bonhomme2015, @Bester2016, and @Bonhomme2022DiscretizingUnobservedHeterogeneity.
+    This model in discussed in @Bonhomme2015, @Bester2016 (see also @Bonhomme2022DiscretizingUnobservedHeterogeneity).
 
 - Restricting dependence between $\bbeta_i$ and $\bx_i$. For example, there is a strand of literature that assumes that $\bbeta_i$ and $\bx_i$ are independent [@Beran1996; @Hoderlein2010].
  
@@ -145,6 +145,8 @@ In this block, we will focus on model ([-@eq-lecture_model]) and consider identi
 
 3. **Identifying the Full Distribution of $\bbeta_i$:** we show how one can obtain the distribution of $\bbeta_i$ with a deconvolution argument.
  
+
+Knowing these features of the distribution of $\bbeta_i$ allows one to compute the corresponding features of the treatment effects of changing from some treatment value $\bx_1$ to $\bx_2$ — these treatment effects are given by $\bbeta_1(\bx_2-\bx_1)$.
 
 ---
 
