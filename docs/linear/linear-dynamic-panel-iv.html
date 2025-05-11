@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b0eece7c1009274fcfe024db93588bdb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-45ff2c7ce894d5b9bdc26965e6cddd25.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,166 +93,327 @@ div.csl-indent {
   }
 }</script>
  
+
 <!-- This is what works with Quarto and MathJax 3+ -->
+
 <script>
+
   MathJax = {
+
     tex: {
+
       tags: 'ams',  // should be 'ams', 'none', or 'all'
+
       macros: {
+
         vect: ["\\mathbf{#1}", 1],
+
         mat: ["\\mathbf{#1}", 1], 
 
+
+
         bA: "\\boldsymbol{A}",
+
         bB: "\\boldsymbol{B}",
+
         bC: "\\boldsymbol{C}",
+
         bD: "\\boldsymbol{D}",
+
         bE: "\\boldsymbol{E}",
+
         bF: "\\boldsymbol{F}",
+
         bG: "\\boldsymbol{G}",
+
         bH: "\\boldsymbol{H}",
+
         bI: "\\boldsymbol{I}",
+
         bJ: "\\boldsymbol{J}",
+
         bK: "\\boldsymbol{K}",
+
         bL: "\\boldsymbol{L}",
+
         bM: "\\boldsymbol{M}",
+
         bN: "\\boldsymbol{N}",
+
         bP: "\\boldsymbol{P}",
+
         bQ: "\\boldsymbol{Q}",
+
         bR: "\\boldsymbol{R}",
+
         bS: "\\boldsymbol{S}",
+
         bT: "\\boldsymbol{T}",
+
         bU: "\\boldsymbol{U}",
+
         bV: "\\boldsymbol{V}",
+
         bW: "\\boldsymbol{W}",
+
         bX: "\\boldsymbol{X}",
+
         bY: "\\boldsymbol{Y}",
+
         bZ: "\\boldsymbol{Z}",
+
         ba: "\\boldsymbol{a}",
+
         bb: "\\boldsymbol{b}",
+
         bc: "\\boldsymbol{c}",
+
         bd: "\\boldsymbol{d}",
+
         be: "\\boldsymbol{e}",
+
         bg: "\\boldsymbol{g}",
+
         bh: "\\boldsymbol{h}",
+
         bi: "\\boldsymbol{\\imath}",
+
         bm: "\\boldsymbol{m}",
+
         bp: "\\boldsymbol{p}",
+
         bq: "\\boldsymbol{q}",
+
         br: "\\boldsymbol{r}",
+
         bs: "\\boldsymbol{s}",
+
         bt: "\\boldsymbol{t}",
+
         bu: "\\boldsymbol{u}",
+
         bv: "\\boldsymbol{v}",
+
         bw: "\\boldsymbol{w}",
+
         bx: "\\boldsymbol{x}",
+
         by: "\\boldsymbol{y}",
 
+
+
         Acal: "\\mathcal{A}",
+
         Bcal: "\\mathcal{B}",
+
         Ccal: "\\mathcal{C}",
+
         Dcal: "\\mathcal{D}",
+
         Ecal: "\\mathcal{E}",
+
         Fcal: "\\mathcal{F}",
+
         Gcal: "\\mathcal{G}",
+
         Hcal: "\\mathcal{H}",
+
         Ical: "\\mathcal{I}",
+
         Jcal: "\\mathcal{J}",
+
         Kcal: "\\mathcal{K}",
+
         Lcal: "\\mathcal{L}",
+
         Mcal: "\\mathcal{M}",
+
         Ncal: "\\mathcal{N}",
+
         Ocal: "\\mathcal{O}",
+
         Pcal: "\\mathcal{P}",
+
         Qcal: "\\mathcal{Q}",
+
         Rcal: "\\mathcal{R}",
+
         Scal: "\\mathcal{S}",
+
         Tcal: "\\mathcal{T}",
+
         Ucal: "\\mathcal{U}",
+
         Vcal: "\\mathcal{V}",
+
         Wcal: "\\mathcal{W}",
+
         Xcal: "\\mathcal{X}",
+
         Ycal: "\\mathcal{Y}",
+
         Zcal: "\\mathcal{Z}",
 
+
+
         A: "\\mathbb{A}",
+
         B: "\\mathbb{B}",
+
         C: "\\mathbb{C}",
+
         D: "\\mathbb{D}",
+
         E: "\\mathbb{E}",
+
         F: "\\mathbb{F}",
+
         G: "\\mathbb{G}",
+
         H: "\\mathbb{H}",
+
         I: "\\mathbb{I}",
+
         J: "\\mathbb{J}",
+
         K: "\\mathbb{K}",
+
         L: "\\mathbb{L}",
+
         M: "\\mathbb{M}",
+
         N: "\\mathbb{N}",
+
         O: "\\mathbb{O}",
+
         P: "\\mathbb{P}",
+
         Q: "\\mathbb{Q}",
+
         R: "\\mathbb{R}",
+
         S: "\\mathbb{S}",
+
         T: "\\mathbb{T}",
+
         U: "\\mathbb{U}",
+
         V: "\\mathbb{V}",
+
         W: "\\mathbb{W}",
+
         X: "\\mathbb{X}",
+
         Y: "\\mathbb{Y}",
+
         Z: "\\mathbb{Z}",
 
+
+
         bAlpha: "\\boldsymbol{\\Alpha}",
+
         bBeta: "\\boldsymbol{\\beta}",
+
         bDelta: "\\boldsymbol{\\delta}",
+
         bEta: "\\boldsymbol{\\eta}",
+
         bGamma: "\\boldsymbol{\\Gamma}",
+
         bLambda: "\\boldsymbol{\\Lambda}",
+
         bOmega: "\\boldsymbol{\\Omega}",
+
         bPhi: "\\boldsymbol{\\Phi}",
+
         bPi: "\\boldsymbol{\\Pi}",
+
         bPsi: "\\boldsymbol{\\Psi}",
+
         bSigma: "\\boldsymbol{\\Sigma}",
+
         bTau: "\\boldsymbol{\\tau}",
+
         bXi: "\\boldsymbol{\\Xi}",
+
         bbeta: "\\boldsymbol{\\beta}",
+
         bdelta: "\\boldsymbol{\\delta}",
+
         blambda: "\\boldsymbol{\\lambda}",
+
         bmu: "\\boldsymbol{\\mu}",
+
         bphi: "\\boldsymbol{\\phi}",
+
         bpi: "\\boldsymbol{\\pi}",
+
         bpsi: "\\boldsymbol{\\psi}",
+
         brho: "\\boldsymbol{\\rho}",
+
         bsigma: "\\boldsymbol{\\sigma}",
+
         btau: "\\boldsymbol{\\tau}",
+
         bxi: "\\boldsymbol{\\xi}",
+
         bEta: "\\boldsymbol{\\eta}",
+
         bPhi: "\\boldsymbol{\\Phi}",
+
         bPi: "\\boldsymbol{\\Pi}",
+
         bPsi: "\\boldsymbol{\\Psi}",
+
         bXi: "\\boldsymbol{\\Xi}",
+
         blambda: "\\boldsymbol{\\lambda}",
+
         bmu: "\\boldsymbol{\\mu}",
+
         bphi: "\\boldsymbol{\\phi}",
+
         bpi: "\\boldsymbol{\\pi}",
+
         bpsi: "\\boldsymbol{\\psi}",
+
         brho: "\\boldsymbol{\\rho}",
+
         bsigma: "\\boldsymbol{\\sigma}",
+
                    
+
         curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
+
         floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
+
         ceil: ["\\left\\lceil#1\\right\\rceil", 1],
+
         abs: ["\\left\\lvert#1\\right\\rvert", 1],
+
         norm: ["\\left\\lVert#1\\right\\rVert", 1],
+
+
 
         independent: "\\mathrel{\\perp\\!\\!\\perp}",
 
+
+
         var: "\\mathrm{var}",
+
         diag: "\\mathrm{diag}",
+
         rank: "\\mathrm{rank}",
+
         vecc: "\\mathrm{vec}",
+
       }
+
     }
+
   };
+
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -503,7 +664,7 @@ Summary and Learning Outcomes
 <p>Throughout the previous section, we assumed that the idiosyncratic term <span class="math inline">\(u_{it}\)</span> satisfied strict exogeneity with respect to the data: <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
     \E[u_{it}|\bX_i] = 0.
 \tag{4.1}\]</span></span></p>
-<p>However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices <span class="math inline">\(t, s\)</span> it holds that <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
+<p>However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices <span class="math inline">\(s, t\)</span> it holds that <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
     \E[u_{it}\bx_{is}] =0.
 \tag{4.2}\]</span></span></p>
 <p>For <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bx\)</span>. In other words, one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bx\)</span>s.</p>
@@ -511,11 +672,11 @@ Summary and Learning Outcomes
 </section>
 <section id="no-strict-exogeneity-for-dynamic-models" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="no-strict-exogeneity-for-dynamic-models"><span class="header-section-number">4.1.2</span> No Strict Exogeneity for Dynamic Models</h3>
-<p>A particularly clear example for failure of <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> arises when <span class="math inline">\(\bx_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
+<p>A particularly clear example of failure of (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is the case when <span class="math inline">\(\bx_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
 <p>For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)): <span class="math display">\[
     y_t = \alpha + \lambda y_{t-1} + u_{t},
 \]</span> where <span class="math inline">\(t=1, \dots, T\)</span> and the innovation <span class="math inline">\(u_t\)</span> satisfies <span class="math inline">\(\E[u_t]=0\)</span>.</p>
-<p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> is not true. Specifically, we will take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[y_{it+1}u_t]\)</span> is not necessarily zero.</p>
+<p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is not true. Specifically, we will take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[y_{it+1}u_t]\)</span> is not necessarily zero.</p>
 <p>To evaluate this expectation, we write the model at <span class="math inline">\(t+1\)</span> <span id="eq-dynamic-interlude-simple-ar1"><span class="math display">\[
     y_{t+1} = \alpha + \lambda y_t + u_{t+1}.
 \tag{4.3}\]</span></span> We then substitute the model into <span class="math inline">\(\E[y_{it+1}u_t]\)</span> <span class="math display">\[
@@ -536,7 +697,7 @@ Summary and Learning Outcomes
 </ul>
 <p>Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. We conclude that in dynamic models it is the case <span id="eq-dynamic-interlude-no-strict-exogeneity"><span class="math display">\[
 \E[y_{it+1}u_t] \neq 0.
-\tag{4.4}\]</span></span> A fortiori, strict exogeneity also cannot hold in dynamic models.</p>
+\tag{4.4}\]</span></span> A fortiori, strict exogeneity generally fails in dynamic models.</p>
 </section>
 <section id="sequential-exogeneity" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="sequential-exogeneity"><span class="header-section-number">4.1.3</span> Sequential Exogeneity</h3>
@@ -609,7 +770,7 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 \end{aligned}
 \]</span></p>
 <p>In most contexts, one has to look for external variables that can serve as instruments.</p>
-<p>However, <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> is a very special case where one can use instruments internal to the model!</p>
+<p>However, model (<a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref"><span>4.7</span></a>) is a very special case where one can use instruments internal to the model!</p>
 <section id="the-anderson-hsiao-estimator" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="the-anderson-hsiao-estimator"><span class="header-section-number">4.3.1</span> The Anderson-Hsiao Estimator</h3>
 <p>In particular, consider using <span class="math inline">\(y_{it-2}\)</span> as an instrument.</p>
@@ -628,7 +789,7 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 <p>As a partial answer, suppose we consider <span class="math inline">\(y_{it-k}\)</span> for <span class="math inline">\(k\geq 2\)</span>. By applying sequential exogeneity again we can show that <span class="math inline">\(y_{it-k}\)</span> is exogenous: <span class="math display">\[  
 \E[y_{it-k}\Delta u_{it}]  = \E[y_{it-k}u_{it} - y_{it-k}u_{it-1}]=0.
 \]</span> Provided <span class="math inline">\(y_{it-k}\)</span> is correlated with <span class="math inline">\(\Delta y_{it-1}\)</span> and available in the data, it also becomes a valid instrument. Following this chain of reasoning and using all available lags <span class="math inline">\(y_{it-k}\)</span> yields the <span class="citation" data-cites="Arellano1991">Arellano and Bond (<a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">1991</a>)</span> estimator.</p>
-<p>Even further instruments have been found for <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> by <span class="citation" data-cites="Ahn1995">Ahn and Schmidt (<a href="../references/references.html#ref-Ahn1995" role="doc-biblioref">1995</a>)</span> and <span class="citation" data-cites="Blundell1998">Blundell and Bond (<a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">1998</a>)</span>, among others.</p>
+<p>Even further instruments have been found for (<a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref"><span>4.7</span></a>) by <span class="citation" data-cites="Ahn1995">Ahn and Schmidt (<a href="../references/references.html#ref-Ahn1995" role="doc-biblioref">1995</a>)</span> and <span class="citation" data-cites="Blundell1998">Blundell and Bond (<a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">1998</a>)</span>, among others.</p>
 <p>All of these estimators are implemented in</p>
 <ul>
 <li>R: <a href="https://cran.r-project.org/web/packages/plm/index.html%7D">plm</a>.</li>
@@ -643,7 +804,7 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 <section id="extra-endogeneity-and-the-within-estimator" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="extra-endogeneity-and-the-within-estimator"><span class="header-section-number">4.4</span> Extra: Endogeneity and the Within Estimator</h2>
 <p>One may think that we had the endogeneity problem (<a href="#eq-dynamic-interlude-differenced-endogeneity" class="quarto-xref"><span>4.8</span></a>) because we took first differences instead of applying the within transformation.</p>
-<p>However, the same issue endogeneity issue affects the within estimator. First, for <span class="math inline">\(T=2\)</span> the above discussion applies directly, as the within transformation is numerically identical to first differencing. Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>) can be written as (see <a href="linear-within-estimator.html#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>): <span class="math display">\[
+<p>However, the same endogeneity issue affects the within estimator. First, for <span class="math inline">\(T=2\)</span> the above discussion applies directly, as the within transformation is numerically identical to first differencing. Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>) can be written as (see <a href="linear-within-estimator.html#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>): <span class="math display">\[
     \tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.
 \]</span></p>
 <p>One can now immediately see that <span class="math inline">\(\tilde{y}_{it-1}\)</span> will also be an endogenous regressor as</p>
