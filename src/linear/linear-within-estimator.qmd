@@ -37,7 +37,7 @@ y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 $$  {#eq-within-lecture-random-intercept}
 However, if they can also handle the more general @eq-within-lecture-model, then all the better for us — we do not need to develop any new methods. 
  
-Unfortunately, such standard estimators usually fail when coefficients vary across units, as we will demonstrate This failure holds both for static and the dynamic formulations of @eq-within-lecture-model. 
+Unfortunately, such standard estimators usually fail when coefficients vary across units, as we will demonstrate. This failure holds both for static and the dynamic formulations of @eq-within-lecture-model. 
  
 ### This Section: Static Model and Fixed $T$ 
 
@@ -100,7 +100,7 @@ $${#eq-within_representation_random_intercept}
 
 ### Properties
 
-The within estimator enjoys several desirable properties under the random intercept model, most of which can be derived from its sampling error representation
+The within estimator enjoys several desirable properties if the random intercept model reflects the underlying causal model. Most of these properties can be derived from its sampling error representation
 $$
 \hat{\bbeta}^W = \bbeta + \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bu}_i.
 $${#eq-within-sampling-error-homogeneous}
@@ -214,7 +214,7 @@ As an example, suppose that we are working with consumption data. A consumer kno
 ### Why Panel Data is Useful
 
 
-It is useful to contrast condition [-@eq-mean_independence_condition] with the stronger condition that
+It is useful to contrast condition ([-@eq-mean_independence_condition]) with the stronger condition that
 $$
 \E[\bEta_i|\bX_i]=0.
 $$ {#eq-linear-within-cross-sectional-mean-indep}
@@ -272,7 +272,7 @@ $$
 $$ {#eq-within-normal-example}
  In this case, $x_{it}$ becomes stationary, and does not have dynamics that depend on $\beta_i$ in the mean.
 
-If condition [-@eq-within-normal-example] holds, the   within estimator is consistent. It is also possible to show that if condition [-@eq-within-normal-example] fails, so does the more general @eq-average_orthogonality_condition, and the within estimator is inconsistent. We represent this fact on @fig-within-normal, where we fix $\rho_{1, beta}=0.25$, and vary $\rho_{2, \beta}$ between $-1$ and $1$.  Observe that the within estimator is consistent if $\rho_{2, \beta} = \rho_{1, \beta} = 0.25$.  Otherwise, it is biased, potentially severely. For $\rho_{2, \beta}\leq -0.6$, the estimand of the within estimator has a sign different from that of $\E[\beta_i]$.
+If condition ([-@eq-within-normal-example]) holds, the   within estimator is consistent for $\E[\beta_i]$. It is also possible to show that if condition ([-@eq-within-normal-example]) fails, so does the more general @eq-average_orthogonality_condition, and the within estimator is inconsistent for $\E[\beta_i]$. We represent this fact on @fig-within-normal, where we fix $\rho_{1, beta}=0.25$, and vary $\rho_{2, \beta}$ between $-1$ and $1$.  Observe that the within estimator is consistent if $\rho_{2, \beta} = \rho_{1, \beta} = 0.25$.  Otherwise, it is biased, potentially severely. For $\rho_{2, \beta}\leq -0.6$, the estimand of the within estimator has a sign different from that of $\E[\beta_i]$.
  
  
 
