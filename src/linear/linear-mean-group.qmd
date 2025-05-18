@@ -93,7 +93,9 @@ The second term's behavior determines the estimator's overall properties, depend
 - If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both $N, T\to\infty$. In this case it may be that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,$$ and $\hat{\bbeta}_{MG}$ will be biased for any given finite $T$. However, under standard assumptions that limit dependence across $t$, this bias will typically be of the order $O(T^{-1})$ and vanish as $T\to\infty$.
 
  
-
+::: {.callout-note appearance="simple" icon=false} 
+We implicitly assume the existence of any required moment involving $\left(\bX_i'\bX_i\right)^{-1}$. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We will not discuss this point further, but see @Graham2012. 
+:::
 
 ## Comparing Estimators
 
@@ -135,7 +137,7 @@ However, one might argue that this loss of efficiency is irrelevant, as the cond
 ## Addressing Rank Deficiency
 
 
-Before moving beyond $\E[\bbeta_i]$, we return to the assumption that $\bX_i'\bX_i$ is non-singular for all units $i$. This requirement  might not hold, in particular if $T$ is only slightly larger than $p$  and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation. 
+Before moving beyond $\E[\bbeta_i]$, we return to the assumption that $\bX_i'\bX_i$ is non-singular for all units $i$. This requirement might not hold, in particular if $T$ is only slightly larger than $p$ and the model includes discrete regressors. In these cases, it is more likely that there exist units with insufficient individual variation. 
 
  
 If such a situation occurs in practice, a common solution is to drop the units with non-invertible $\bX_i'\bX_i$. The mean group estimator is computed as an average over the remaining units.  Formally, the corresponding mean group estimator is defined as 
@@ -144,7 +146,7 @@ $$
 $$
 Every unit is checked to see if $\det(\bX_i'\bX_i)>0$. If it is, their $\hat{\bbeta}_i$  is computed and added to the average.
 
-What does this modified estimator estimate? For simplicity, suppose that $\E[\bu_i|\bX_i]=0$. Then, as $N\to\infty$,  $\hat{\bbeta}_{MG}^+$ converges to the average for the units that have enough variation in their data:
+What does this modified estimator estimate? For simplicity, suppose that $\E[\bu_i|\bX_i]=0$. Then, as $N\to\infty$,  $\hat{\bbeta}_{MG}^+$ converges to the average for the units that have enough variation in their data (subject to the above warning regarding existence of moments):
 $$
 	\hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)>0}  \right].
 $$
