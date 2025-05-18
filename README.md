@@ -1,12 +1,18 @@
 # Econometrics with Unobserved Heterogeneity – Lecture Notes  
 
+
 ## Short Description
+
+[![DOI](https://zenodo.org/badge/850738361.svg)](https://doi.org/10.5281/zenodo.15459848)
+
+
 
 This repository contains lecture notes for the course *Econometrics with Unobserved Heterogeneity*, based on a graduate-level topics course I taught at the University of Bonn.
 
 These notes are published as a website using Quarto and are available online:
 
 📖 **Read the lecture notes on my website:** <https://vladislav-morozov.github.io/econometrics-heterogeneity/>
+
 
 ## Course Overview
 
@@ -20,10 +26,13 @@ The course is structured into three main parts:
 
 **Instructor:** Vladislav Morozov
 
+**DOI**: 10.5281/zenodo.15459849
+
 **Level:** Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students
 
  ![Selected image: visual representation of distributional treatment effects (DTEs) and quantile treatment effects (QTEs)](src/figures/dte_qte.png)
  *Selected image: visual representation of distributional treatment effects (DTEs) and quantile treatment effects (QTEs)*
+
 
 
 ## Learning Outcomes
