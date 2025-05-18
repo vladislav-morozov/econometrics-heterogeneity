@@ -93,7 +93,9 @@ The second term's behavior determines the estimator's overall properties, depend
 - If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both $N, T\to\infty$. In this case it may be that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,$$ and $\hat{\bbeta}_{MG}$ will be biased for any given finite $T$. However, under standard assumptions that limit dependence across $t$, this bias will typically be of the order $O(T^{-1})$ and vanish as $T\to\infty$.
 
  
-
+::: {.callout-note appearance="simple" icon=false} 
+We implicitly assume the existence of any required moment involving $\left(\bX_i'\bX_i\right)^{-1}$. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We will not discuss this point further, but see @Graham2012. 
+:::
 
 ## Comparing Estimators
 
