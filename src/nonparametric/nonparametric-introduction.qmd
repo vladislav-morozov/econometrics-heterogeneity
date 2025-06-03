@@ -7,3 +7,113 @@ open-graph:
 
 
 # Introduction to Nonparametric Models with Unobserved Heterogeneity {#sec-nonparametric-intro}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces  e.
+  
+By the end of this section, you should
+
+- Recognize  
+- 
+:::
+
+
+## Towards Nonparametric Models
+
+### Motivation
+
+We have begun these notes by analyzing the linear model ([-@eq-lecture_model]) with heterogeneous coefficients in depth. Such linear models are common in practice and naturally arise in a variety of contexts, as section [-@sec-linear-intro] points out. 
+ 
+
+However, linearity is a restrictive parametric assumption when not working with binary-only covariates [@Wooldridge2005]. It may be incompatible with underlying economic theory or with the data. Some possible theoretical sources of failure include satiation of preferences (in consumption and work supply), non-constant returns to scale in production, bounded dependent variables, etc.
+
+
+### Nonparametric Models
+
+A full solution to the issue of choosing a functional form is to make no assumptions on it. In such nonparametric settings,  we assume that the outcome $y$ is determined by some observed and unobserved variables through some unknown function $\phi$. General models of this type can be written as follows:
+
+
+- In cross-sectional settings:
+$$
+	y_i = \phi(\bx_i, \alpha_i), \quad {}_{i=1,\dots, N},
+$$ {#eq-nonparametric-generic-cross-section}
+where $\bx_i$ includes the observed variables and $\alpha_i$ includes the unobserved components.
+
+- In panel data settings
+$$
+	y_{it} = \phi(\bx_{it}, \alpha_i, u_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
+$$ {#eq-nonparametric-generic-panel}
+where both $\alpha_i$ and $u_{it}$ are not observed. 
+
+Models ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) parallel and generalize models ([-@eq-cross_sectional_hetero]) and ([-@eq-panel_hetero]).
+
+In both cases the nature  of $(\alpha_i, u_{it})$ is not restricted a priori. These unobserved components may include both finite-dimensional vectors (such as unobserved variables or coefficients) and infinite-dimensional objects (such as utility functions). In such a fully unrestricted setting, we can equivalently represent ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel])  as
+$$
+	y_i = \phi_i(x_i), \quad \quad  y_{it} = \phi_{it}(x_{it}),
+$$
+respectivly. 
+
+
+### Object of Interest
+
+
+As in the linear case, possible objects of interest include:
+
+-  The full structural function $\phi(\cdot, \cdot)$ or $\phi(\cdot, \cdot, \cdot)$. 	This function fully describes the relationship between $y$ and $\bx$ for all individuals. 	In this sense, one may view this goal as the problem of identifying  individual treatment effects.
+- Some distributional features of ``treatment effects''. In the context of model ([-@eq-nonparametric-generic-panel]), these effects are given by
+$$
+	\begin{aligned}
+		&	\phi(\bx_2, \alpha_i, u_{it}) - \phi(\bx_1, \alpha_i, u_{it}),\\
+		&	\partial_{\bx} \phi(\bx_0, \alpha_i, u_{it}),
+	\end{aligned}
+$$    
+where $\bx_0, \bx_1, \bx_2$ are some possible values for $\bx_{it}$, and the marginal effect is considered if $\phi$ is suitably differentiable in $\bx$.  	The distributional feature of interest may include average effects,   variances, higher-order moments, or the full distribution.
+
+### Common Issue
+
+Unfortunately, models ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are not useful without some assumptions on the nature of $(\alpha_i, u_{it})$ and their relation to the observables, as we have already discussed in section [-@sec-introduction]. Without such assumptions, we cannot hope to identify counterfactual objects of interest, not even average effects. 
+ 
+::: {.callout-note appearance="simple" icon=false}
+
+In a strict sense, one may point out that   ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are not even models: they are just statements that $\bx$ and $y$ are related through some function that may differ with $i$ and $t$. Such a statement is vacuously true. For example, without further assumptions one may take $\phi(x, a) = a$ and $\alpha_i =y_i$ in  ([-@eq-nonparametric-generic-cross-section]). 
+
+:::
+
+Typically, such assumptions fall into two categories:
+
+1. Assumptions on the joint distribution of the observed and the unobserved components. 
+2. Assumptions on how unobserved components enter the equation.
+
+## Key Model and Plan for This Block
+
+### Models of the Block
+
+In these notes, we will focus on two instances of model ([-@eq-nonparametric-generic-panel]) that both general and straightforward to analyze. 
+
+
+
+mostly focus on a model that is both  general and straightforward to analyze. Specifically, we will consider the following panel data model
+$$
+	y_{it} = \phi(x_{it}, \alpha_i, u_{it}), \quad i=1, \dots, N, \quad t=1, 2, \dots, T.
+$$ {#eq-nonparametric-model}
+where for simplicity we assume that $x_{it}$ is scalar. 
+The variable $x_{it}$ is assumed to be continuously distributed, and $\phi$  is continuous in $x_{it}$ for all values of $(\alpha_i, u_{it})$.
+
+
+We  consider a version  of ([-@eq-nonparametric-model]) that is very general in terms of unobserved variables $(\alpha_{i}, u_{it})$. 
+First, there are  be no restrictions on the dimension and the form   of $\alpha_i$ and $u_{it}$. The variables $(\alpha_{it}, u_{it})$ may stand both for simpler kinds of objects such as heterogeneous coefficients and more complicated ones such as functions.  
+Second, the outcome may depend arbitrarily on $(\alpha_{it}, u_{it})$, as both enter nonseparably under the unknown function $\phi$. 
+
+The key assumption 
+
+### Results for This Block
+
+ 
+In the next block, we will also come back to models in the spirit of ([-@eq-nonparametric-model]) through the lense of quantile regression.
+
+## A Brief Classification of Nonparametric Models
+
+While we will mostly focus , much work has gone into different more special cases . Here an a brief taxonomy with some references: 
