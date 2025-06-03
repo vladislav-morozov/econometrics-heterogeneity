@@ -29,6 +29,8 @@ book:
         - linear/linear-distribution.qmd
         - linear/linear-conclusion.qmd
     - part: "Nonparametrics and Heterogeneity"
+      chapters: 
+        - nonparametric/nonparametric-introduction.qmd
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
 
