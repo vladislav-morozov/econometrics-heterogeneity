@@ -153,4 +153,4 @@ In these notes we primarily focus on the general and powerful models ([-@eq-nonp
 
 #### Next Section {.unnumbered}
 
-TBA.
+In the next section, we begin our analysis of average effects in model ([-@eq-nonparametric-model-full-nonsep]) and discuss why identification is more complex that analyzing average outcomes.
