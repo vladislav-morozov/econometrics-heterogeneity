@@ -20,5 +20,34 @@ By the end of this section, you should
 
 :::
 
+## A First Difference Perspective on Heterogeneity Bias
 
 
+## Identifying Average Marginal Effects for Stayers
+
+### Stationarity: Time as an Instrument
+
+### Two Key Analysis Steps
+
+### Identifying Moments of Finite Difference
+
+### Continuity of Average Finite Difference
+
+
+### Combined Results
+
+
+### Interpretation
+
+
+
+
+
+## Are Stayers Interesting? 
+
+
+## Lack of Identification for Other Populations 
+
+basically as far as thins go without more assumptions 
+
+Outside of stayers no identification for counterfactuals in this models, see counterexamples constructed by @Cooprider2022.
