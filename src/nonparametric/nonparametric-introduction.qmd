@@ -1,8 +1,8 @@
 --- 
-description: "Explore nonparametric models with unobserved heterogeneity. Identification of  minimal functional form assumptions. (Lecture Notes)"
+description: "Explore nonparametric models with unobserved heterogeneity. Identification under  minimal functional form assumptions. (Lecture Notes)"
 
 open-graph:
-    description: "Explore nonparametric models with unobserved heterogeneity. Identification of  minimal functional form assumptions. (Lecture Notes)"
+    description: "Explore nonparametric models with unobserved heterogeneity. Identification under minimal functional form assumptions. (Lecture Notes)"
 ---
 
 
@@ -16,9 +16,9 @@ This section introduces nonparametric models with unobserved heterogeneity and l
 
 By the end of this section, you should
 
-- Explain the limitations of linear models.   
-- Write down generic nonparametric models with unobserved heterogeneity in cross-sectional and panel settings.
-- Understand key identification challenges and the assumptions commonly used to address them.
+- Explain limitations of linear models.   
+- Write down generic nonparametric models with unobserved heterogeneity.
+- Understand identification challenges and the assumptions commonly used to address them.
 
 :::
 
@@ -152,3 +152,5 @@ In these notes we primarily focus on the general and powerful models ([-@eq-nonp
 ---
 
 #### Next Section {.unnumbered}
+
+TBA.
