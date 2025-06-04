@@ -1,0 +1,24 @@
+--- 
+description: " (Lecture Notes)"
+
+open-graph:
+    description: "  (Lecture Notes)"
+---
+
+
+# Identifying Average Effects for Stayers {#sec-nonparametric-avg-id}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should
+
+- Explain  
+
+:::
+
+
+
