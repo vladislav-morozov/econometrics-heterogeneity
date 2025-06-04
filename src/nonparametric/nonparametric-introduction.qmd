@@ -42,21 +42,21 @@ Nonparametric models address functional form concerns directly. Rather than impo
 
 - In cross-sectional settings:
 $$
-	y_i = \phi(\bx_i, \alpha_i), \quad {}_{i=1,\dots, N},
+	Y_i = \phi(\bX_i, A_i), \quad {}_{i=1,\dots, N},
 $$ {#eq-nonparametric-generic-cross-section}
-where $\bx_i$ includes the observed variables and $\alpha_i$ includes the unobserved components.
+where $\bX_{i}$ includes the observed variables and $A_i$ includes the unobserved components.
 
 - In panel data settings
 $$
-	y_{it} = \phi(\bx_{it}, \alpha_i, u_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
+ Y_{it} = \phi(\bX_{it}, A_i, U_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
 $$ {#eq-nonparametric-generic-panel}
-where both $\alpha_i$ and $u_{it}$ are not observed. 
+where both $A_i$ and $U_{it}$ are not observed. 
 
 Models ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) parallel and generalize models ([-@eq-cross_sectional_hetero]) and ([-@eq-panel_hetero]).
 
-In both cases the nature of $(\alpha_i, u_{it})$ is not restricted a priori. These unobserved components may include both finite-dimensional vectors (such as unobserved variables or coefficients) and infinite-dimensional objects (such as utility functions). In such a fully unrestricted setting, we can equivalently represent ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) as
+In both cases the nature of $(A_i, U_{it})$ is not restricted a priori. These unobserved components may include both finite-dimensional vectors (such as unobserved variables or coefficients) and infinite-dimensional objects (such as utility functions). In such a fully unrestricted setting, we can equivalently represent ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) as
 $$
-	y_i = \phi_i(x_i), \quad \quad  y_{it} = \phi_{it}(x_{it}),
+	Y_i = \phi_i(X_i), \quad \quad  Y_{it} = \phi_{it}(X_{it}),
 $$
 respectively. 
 
@@ -66,15 +66,15 @@ respectively.
 
 As in the linear case, possible objects of interest include:
 
--  The full structural function $\phi(\cdot, \cdot)$ or $\phi(\cdot, \cdot, \cdot)$. 	This function fully describes the relationship between $y$ and $\bx$ for all individuals. 	This corresponds to the problem of identifying individual treatment effects.
-- Some distributional features of "treatment effects" — changes in outcomes due to variation in $x_{it}$, conditional on unobserved heterogeneity. In the context of model ([-@eq-nonparametric-generic-panel]), these effects are given by
+-  The full structural function $\phi(\cdot, \cdot)$ or $\phi(\cdot, \cdot, \cdot)$. 	This function fully describes the relationship between $Y$ and $\bX$ for all individuals. 	This corresponds to the problem of identifying individual treatment effects.
+- Some distributional features of "treatment effects" — changes in outcomes due to variation in $\bX_{it}$, conditional on unobserved heterogeneity. In the context of model ([-@eq-nonparametric-generic-panel]), these effects are given by
 $$
 	\begin{aligned}
-		&	\phi(\bx_2, \alpha_i, u_{it}) - \phi(\bx_1, \alpha_i, u_{it}),\\
-		&	\partial_{\bx} \phi(\bx_0, \alpha_i, u_{it}),
+		&	\phi(\bx_2, A_i, U_{it}) - \phi(\bx_1, A_i, U_{it}),\\
+		&	\partial_{\bx} \phi(\bx_0, A_i, U_{it}),
 	\end{aligned}
 $$    {#eq-nonparametric-effects}
-where $\bx_0, \bx_1, \bx_2$ are some possible values for $\bx_{it}$, and the marginal effect is considered if $\phi$ is suitably differentiable in $\bx$.  	The distributional feature of interest may include average effects,   variances, higher-order moments, or the full distribution.
+where $\bx_0, \bx_1, \bx_2$ are some possible values for $\bX_{it}$, and the marginal effect is considered if $\phi$ is suitably differentiable in $\bx$.  	The distributional feature of interest may include average effects,   variances, higher-order moments, or the full distribution.
 
 ### Common Issue
 
@@ -82,44 +82,44 @@ Unfortunately, models ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-no
  
 ::: {.callout-note appearance="simple" icon=false}
 
-In a strict sense, one may point out that   ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are not even models in the sense of offering testable predictions or supporting counterfactual analysis. ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are just statements that $\bx$ and $y$ are related through some function that may differ with $i$ and $t$. Such a statement is vacuously true. For example, without further assumptions one may take $\phi(x, a) = a$ and $\alpha_i =y_i$ in  ([-@eq-nonparametric-generic-cross-section]). 
+In a strict sense, one may point out that   ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are not even models in the sense of offering testable predictions or supporting counterfactual analysis. ([-@eq-nonparametric-generic-cross-section]) and ([-@eq-nonparametric-generic-panel]) are just statements that $\bX$ and $Y$ are related through some function that may differ with $i$ and $t$. Such a statement is vacuously true. For example, without further assumptions one may take $\phi(x, a) = a$ and $A_i = Y_i$ in  ([-@eq-nonparametric-generic-cross-section]). 
 
 :::
 
 Typically, such assumptions fall into two categories:
 
-1. Assumptions on the joint distribution of the observed and the unobserved components, including on the nature of $(\alpha_i, u_{it})$. 
+1. Assumptions on the joint distribution of the observed and the unobserved components, including on the nature of $(A_i, U_{it})$. 
 2. Assumptions on how unobserved components enter the equation.
 
 ## Models of This Block
 
-To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we will assume that the outcome $y$ is continuous and that $T=2$.
+To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we will assume that the outcome $Y_{it}$ is continuous and that $T=2$.
 
  
 ### First Model {.unnumbered}
 
 We will begin with the following model:
 $$
-	y_{it} = \phi(x_{it}, \alpha_i, u_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
+	Y_{it} = \phi(X_{it}, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
 $$ {#eq-nonparametric-model-full-nonsep}
-where for simplicity we assume that $x_{it}$ is scalar. The variable $x_{it}$ is assumed to be continuously distributed, and $\phi$  is continuous in $x_{it}$ for all values of $(\alpha_i, u_{it})$.
+where for simplicity we assume that $X_{it}$ is scalar. The variable $X_{it}$ is assumed to be continuously distributed, and $\phi$  is continuous in $X_{it}$ for all values of $(A_i, U_{it})$.
 
-We  consider a version  of ([-@eq-nonparametric-model-full-nonsep]) that is very general in terms of unobserved variables $(\alpha_{i}, u_{it})$. In particular, we do not restrict
+We  consider a version  of ([-@eq-nonparametric-model-full-nonsep]) that is very general in terms of unobserved variables $(A_{i}, U_{it})$. In particular, we do not restrict
 
-- The dimension and the form   of $\alpha_i$ and $u_{it}$;
-- How the outcome depends on $(\alpha_{it}, u_{it})$;
-- The dependence structure between $(\alpha_i, u_{it})$ and $x_{it}$.
+- The dimension and the form   of $A_i$ and $U_{it}$;
+- How the outcome depends on $(A_{i}, U_{it})$;
+- The dependence structure between $(A_i, U_{it})$ and $X_{it}$.
 
-At the same time, we impose an assumption of stationarity on $u_{it}$.  Its distribution is stable over time conditional on observed and unobserved covariates, allowing us to isolate changes in $y_{it}$ attributable to variation in $x_{it}$.
+At the same time, we impose an assumption of stationarity on $U_{it}$.  Its distribution is stable over time conditional on observed and unobserved covariates, allowing us to isolate changes in $Y_{it}$ attributable to variation in $X_{it}$.
 
 
 ### Second Model {.unnumbered}
 
-After reaching the (probable) limits of identification with ([-@eq-nonparametric-model-full-nonsep]),  we will consider a different flavor of model ([-@eq-nonparametric-generic-panel]), where the time-varying unobserved component $u_{it}$ is scalar and affects the outcome $y_{it}$ additively:
+After reaching the (probable) limits of identification with ([-@eq-nonparametric-model-full-nonsep]),  we will consider a different flavor of model ([-@eq-nonparametric-generic-panel]), where the time-varying unobserved component $U_{it}$ is scalar and affects the outcome $Y_{it}$ additively:
 $$
-y_{it} = \phi(x_{it}, \alpha_i) + u_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
+Y_{it} = \phi(X_{it}, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
 $$ {#eq-nonparametric-model-u-sep}
-In contrast to model ([-@eq-nonparametric-model-full-nonsep]), we do not assume that $u_{it}$ is stationary. Models  ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-model-u-sep]) are hence non-nested. We continue to allow $\alpha_i$ to have unrestricted dimensionality and structure. It may also have a complex dependence structure with $x_{it}$.
+In contrast to model ([-@eq-nonparametric-model-full-nonsep]), we do not assume that $U_{it}$ is stationary. Models  ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-model-u-sep]) are hence non-nested. We continue to allow $A_i$ to have unrestricted dimensionality and structure. It may also have a complex dependence structure with $X_{it}$.
 
 
 ## Plan for This Block
@@ -129,9 +129,9 @@ In this block, we will focus on models ([-@eq-nonparametric-model-full-nonsep])-
 1. **Average** treatment and marginal **effects** for model ([-@eq-nonparametric-model-full-nonsep]):
    - Show that identifying average effects is more complicated than  considering averages of the outcome directly.
    - Discuss heterogeneity bias, another form of confounding.
-   - Show how stationarity assumptions on $u_{it}$ allow us to identify the average effects for a population of stayers — units with $x_{i1}=x_{i2}$ — without any further assumptions.
+   - Show how stationarity assumptions on $U_{it}$ allow us to identify the average effects for a population of stayers — units with $X_{i1}=X_{i2}$ — without any further assumptions.
    - Consider two generalizations of the identification result: beyond the population of stayers and allowing some non-stationarity in the structural function.
-2. **Variance** of treatment and marginal effects in model ([-@eq-nonparametric-model-u-sep]): identify the variance of effects  ([-@eq-nonparametric-effects]) by requiring that $u_{it}$ cannot depend on future values of $\bx_{it}$
+2. **Variance** of treatment and marginal effects in model ([-@eq-nonparametric-model-u-sep]): identify the variance of effects  ([-@eq-nonparametric-effects]) by requiring that $U_{it}$ cannot depend on future values of $\bX_{it}$
 
  
 In the next block, we will also revisit model ([-@eq-nonparametric-model-full-nonsep]) through the lens of quantile regression.
@@ -153,4 +153,4 @@ In these notes we primarily focus on the general and powerful models ([-@eq-nonp
 
 #### Next Section {.unnumbered}
 
-TBA.
+In the next section, we begin our analysis of average effects in model ([-@eq-nonparametric-model-full-nonsep]) and discuss why identification is more complex that analyzing average outcomes.
