@@ -142,4 +142,4 @@ Note that it is also possible to  consider the case where $(A_i, U_{it})$ and $X
 
 #### Next Section {.unnumbered}
 
-TBA.
+In the next section we show how one can actually identify average marginal effects for certain subpopulations by assuming that $U_{it}$ is stationary. 
