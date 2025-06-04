@@ -12,13 +12,13 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  explains how heterogeneity bias distorts identification of causal marginal effects in nonparametric panel data models when treatments are endogenous.
+This section shows why average effects cannot, in general, be identified from differentiating average outcomes outside of experimental settings.
 
 By the end of this section, you should
 
-- Understand why marginal effects cannot generally be identified from average outcomes in the presence of treatment endogeneity.
-- Derive the decomposition of conditional expectations into structural and bias components.
-- Recognize conditions under which heterogeneity bias disappears and causal effects become identifiable.
+- State the nonseparable model and define average marginal effects.
+- Derive the decomposition of changes in average outcomes into average marginal effects and heterogeneity bias.
+- Explain the source of heterogeneity bias in observational data.
 :::
 
 ## Model and Object of Interest
