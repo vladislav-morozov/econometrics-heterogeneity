@@ -93,7 +93,7 @@ Typically, such assumptions fall into two categories:
 
 ## Models of This Block
 
-To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we will consider models with continuous outcomes and assume that $T=2$. 
+To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we will assume that the outcome $y$ is continuous and that $T=2$.
 
  
 ### First Model {.unnumbered}
