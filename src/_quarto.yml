@@ -31,6 +31,7 @@ book:
     - part: "Nonparametrics and Heterogeneity"
       chapters: 
         - nonparametric/nonparametric-introduction.qmd
+        - nonparametric/nonparametric-heterogeneity-bias.qmd
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
 

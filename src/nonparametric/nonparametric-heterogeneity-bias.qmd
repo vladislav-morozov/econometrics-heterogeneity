@@ -1,0 +1,20 @@
+--- 
+description: "Explore   (Lecture Notes)"
+
+open-graph:
+    description: "Explore   (Lecture Notes)"
+---
+
+
+# Introduction to Nonparametric Models with Unobserved Heterogeneity {#sec-nonparametric-intro}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+By the end of this section, you should
+
+- Explain 
+- 
+:::
