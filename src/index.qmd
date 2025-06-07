@@ -9,6 +9,14 @@ open-graph:
 ## Course Information {.unnumbered}
  
 
+
+**Instructor:** Vladislav Morozov\
+**Email:** [morozov [at] uni-bonn.de](mailto:morozov@uni-bonn.de)\
+**Level:** Second-year Master’s and PhD students\
+**Course Website:** eCampus and this website\
+**DOI**: [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15459848-gold)](https://doi.org/10.5281/zenodo.15459848)
+
+
 ### Short Description
 
 
@@ -22,15 +30,10 @@ The course is structured into three main parts:
 
 This class focuses on observational cross-sectional and panel data settings.
 
-**Instructor:** Vladislav Morozov\ 
-
-**Level:** Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students\ 
-
 
 ### Course Materials
 
-**Textbook:** None. This course is based on lecture notes and background articles, which are listed in the references.
-
+**Textbook:** None. This course is based on lecture notes and background articles, which are listed in the references.\
 **Recommended Readings:** Please see the bibliography for a detailed reading list. 
 
  
