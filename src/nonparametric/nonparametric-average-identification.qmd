@@ -84,15 +84,116 @@ Expectation ([-@eq-nonparametric-avg-key-exp]) reflects the idea sketched out ab
 The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve a genuine finite difference in contrast to @eq-nonparametric-avg-exp-fd-phi. As a consequence, there are two key pieces in our analysis:
 
 - *Continuity*: showing that expectation ([-@eq-nonparametric-avg-key-exp]) does converge to the average marginal effect as $h\to 0$, despite not involving the "correct" finite difference. 
-- *Identification*: showing that the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$. 
+- *Identification*: showing that the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$, at least for some subpopulation of interest. 
 
 	 
 
 ### Identifying Moments of Finite Difference
 
-We begin with the second piece, as it is straightforward to identify expectation ([-@eq-nonparametric-avg-key-exp])
+We begin with the second piece. To identify the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$, it is sufficient to identify of  ([-@eq-nonparametric-avg-key-exp]) for all $h>0$ in some neighborhood of 0. To do so, consider the population of units with $\curl{ X_{i1} = x, X_{i2}  = x+h}$. By model ([-@eq-nonparametric-model-full-nonsep-het-bias]), the outcomes of these units satisfy
+$$
+\begin{aligned}
+	Y_{i2} & = \phi(x+h, A_i, U_{i2}),\\
+	Y_{i1} & = \phi(x, A_i, U_{i1}).
+\end{aligned}
+$$
+Accordingly,
+$$
+\begin{aligned}
+	&	\E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1} = x, X_{i2} = x+h \right] \\
+	& = \E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right].
+\end{aligned}
+$$
+We conclude that ([-@eq-nonparametric-avg-key-exp]) is identified for all $h>0$ small enough,  provided that the joint density of $(X_{i1}, X_{i2})$ is positive in some neighborhood of $(x, x)$, 
+
+This arguments also determines the population for which identification holds. The units with $\curl{X_{i1}=x, X_{i2}=x+h}$ for small $h>0$   are often call near-stayers or slow movers in the literature [e.g. @Sasaki2021]. We return to this topic below. 
+
+
+
+
 
 ### Continuity of Average Finite Difference
+
+We now turn to the continuity piece. Establishing continuity requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
+
+- $f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2)$ be the conditional density of $(A_i, U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$;
+- $f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$;
+- $f_{A_i|X_{i1}, X_{i2}}(a|x_1, x_2)$ be the conditional density of $A_i$ given $\curl{X_{i1}=x_1, X_{i2}=x_2}$ 
+- $f_{U_{it}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $U_{it}$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$.
+- $f_{A_i, U_{it}|X_{i1}, X_{i2}}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(A_i, U_{it})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$.
+
+Observe that the latter two densities do not depend on $t$ by assumption of stationarity!
+
+Throughout, we assume that the above densities are taken with respect to some overall dominating measure $\mu$ that does not depend on $(x_1, x_2)$.
+
+::: {.callout-note appearance="simple" icon=false collapse=true}
+
+## Regarding $\mu$
+
+Intuitively, the assumption that $\mu$ does not depend on $(x_1, x_2)$ means that the type of distribution of $(A_i, U_{it})$ does not depend with $(x_1, x_2)$. In the simplest case, imagine that $A_i$ and $U_{it}$ are just random scalars. The assumption states that the following two statements cannot be true at the same time: 
+
+- For some $(x_1, x_2)$ there is only a finite number of possible values of $(A_i, U_{it})$ (with $\mu$ being the counting measure).
+- For some $(x_1, x_2)$  there is a continuum of possible values of $(A_i, U_{it})$ with no atoms (with $\mu$ being the Lebesgue measure).
+
+:::
+
+With this notation, we can represent ([-@eq-nonparametric-avg-key-exp]) as 
+$$
+\begin{aligned}
+	&	\E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right]\\
+    %
+	& = \int \left[\phi(x+h, a, u_2) - \phi(x, a, u_1) \right] \\
+	& \hspace{2cm}\times f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x,x+h) \mu(da, du_1, du_2)\\
+    %
+	& = \int \left[\phi(x+h, a, u_2) - \phi(x, a, u_1) \right]
+	\\
+	& \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a)
+    	\\
+	& \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2)\\
+    %
+    	& = \int \left[\phi(x+h, a, u_2) - \phi(x, a, u_1) \right]
+	\\
+	& \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a)
+    	\\
+	& \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2)
+\end{aligned}
+$$
+Now we make three key observations:
+
+1. We can split the integral into two integrals: one involving $\phi(x+h, a, u_2)$ and one involving $\phi(x, a, u_1)$. 
+2. $\phi(x+h, a, u_2)$ does not depend on $u_1$, and so $u_{1}$ is just integrated out:
+$$
+\begin{aligned}
+ & \int \phi(x+h, a, u_2)  f_{A_i|X_{i1}, X_{i2}}(a|x, x+h)
+	\\
+	& \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a) \mu(da, du_1, du_2)
+    	\\
+& = \int  \phi(x+h, a, u_2) f_{A_i|X_{i1}, X_{i2}}(a|x, x+h)
+	\\
+	& \hspace{2cm}\times   f_{U_{i2}|X_{i1}, X_{i2}, A_i}(u_2|x, x+h, a) \mu(da, du_2).
+\end{aligned}
+$$
+3. The conditional density of $U_{i2}$ is equal to the time-invariant density $f_{U_{it}|X_{i1}, X_{i2}, A_i}$: 
+$$
+\begin{aligned}
+& = \int  \phi(x+h, a, u_2) f_{A_i|X_{i1}, X_{i2}}(a|x, x+h)
+	\\
+	& \hspace{2cm}\times   f_{U_{i2}|X_{i1}, X_{i2}, A_i}(u_2|x, x+h, a) \mu(da, du_2)\\
+& = \int  \phi(x+h, a, u) f_{A_i|X_{i1}, X_{i2}}(a|x, x+h)
+	\\
+	& \hspace{2cm}\times   f_{U_{it}|X_{i1}, X_{i2}, A_i}(u|x, x+h, a) \mu(da, du).
+\end{aligned}
+$$
+4. A symmetric argument applies to the integral with $\phi(x, a, u_1)$.
+
+We cinclude that we can represent ([-@eq-nonparametric-avg-key-exp]) as 
+$$
+\begin{aligned}
+&	\E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right]\\
+& = \int \left[ \phi(x+h, a, u)  - \phi(x, a, u) \right]f_{A_i, U_{it}|X_{i1}, X_{i2}, A_i}(a|x, u, x+h) \mu(da, du) 
+\end{aligned}
+$$
+In the second to last equality, we use the stationarity of $u_{it}$.
 
 
 ### Combined Results
@@ -102,12 +203,12 @@ We begin with the second piece, as it is straightforward to identify expectation
 
 
 
+## Regarding the Identified Population
+
+### Are Stayers Interesting? 
 
 
-## Are Stayers Interesting? 
-
-
-## Lack of Identification for Other Populations 
+### Lack of Identification for Other Populations 
 
 basically as far as thins go without more assumptions 
 
