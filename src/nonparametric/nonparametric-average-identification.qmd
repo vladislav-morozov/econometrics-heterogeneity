@@ -12,7 +12,7 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  
+This section shows how panel data and stationarity assumptions can overcome heterogeneity bias to identify average marginal effects in model ([-@eq-nonparametric-model-full-nonsep]).
 
 By the end of this section, you should be able to: 
 
@@ -60,7 +60,7 @@ Panel data offers a natural way to address this failure of ceteris paribus reaso
 
 At the same time, contrasting outcomes within the same unit necessarily means contrasting outcomes from different periods — and hence dealing with variation in $U_{it}$.
 
-As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$. Under this assumption, the distribution of $\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].  The variation in $U_{it}$ over time becomes non-systemic. 
+As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$. Under this assumption, the distribution of $\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].  The variation in $U_{it}$ over time becomes non-systemic and we can use the time dimension to isolate causal effects. 
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -114,7 +114,7 @@ This shows that we can observe the difference in outcomes directly in panel data
 
 ### Average Differences and Almost Marginal Effects
 
-With identification in hand, we now analyze the behavior of this expression as $h\to 0$ to ensure that it converges to a marginal effect. Establishing convergence requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
+With identification in hand, we now analyze the behavior of this expression as $h\to 0$ to ensure that it converges to a marginal effect. Establishing convergence requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, define the following conditional densities: 
 
 - $f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2)$ be the conditional density of $(A_i, U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$;
 - $f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$;
@@ -122,7 +122,7 @@ With identification in hand, we now analyze the behavior of this expression as $
 - $f_{U_{it}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $U_{it}$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$.
 - $f_{A_i, U_{it}|X_{i1}, X_{i2}}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(A_i, U_{it})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$.
 
-Observe that the latter two densities do not depend on $t$ by assumption of stationarity!
+Observe that the latter two densities do not depend on $t$ by assumption of stationarity! This property will be crucial to reducing ([-@eq-nonparametric-avg-key-exp]) to an integral of a finite difference in $\phi$.
 
 Throughout, we assume that the above densities are taken with respect to some overall dominating measure $\mu$ that does not depend on $(x_1, x_2)$.
 
@@ -186,7 +186,7 @@ $$
 $$
 4. A symmetric argument applies to the integral with $\phi(x, a, u_1)$.
 
-We cinclude that we can represent ([-@eq-nonparametric-avg-key-exp]) as 
+We conclude that we can represent ([-@eq-nonparametric-avg-key-exp]) as 
 $$
 \begin{aligned}
 &	\E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right]\\
@@ -210,7 +210,7 @@ $$ {#eq-nonparametric-avg-almost-me}
 
 ### Distributional Continuity in Unobservables
 
-To convert this representation into a true marginal effect, we analyze the integrand in @eq-nonparametric-avg-almost-me.. In expectation form, we can represent it as 
+To convert this representation into a true marginal effect, we analyze the integrand in @eq-nonparametric-avg-almost-me. In expectation form, we can write it as 
 $$
 \E[\partial_x \phi(\tilde{x}, A_i, U_{it})|X_{i1}=x, X_{i2}=x+h].
 $$
@@ -218,7 +218,7 @@ This object is not quite an average marginal effect — the function $\phi$ is e
 
 To resolve this issue, we need to enforce $\tilde{x} = x$. Since $\tilde{x} \in [x-h, x+h]$, this result can be achieved by taking $h\to 0$ in @eq-nonparametric-avg-almost-me, while preserving the expectation interpretation of the result. 
 
-Accordingly, we impose our second key **assumption** to allow taking $h\to\infty$. We assume that the density $f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)$ is continuous in $(x_1, x_2)$. In words, we assume that the distribution of unobserved components varies smoothly as we vary covarites. 
+To ensure this limiting behavior is well-defined, we impose our second key **assumption** to allow taking $h\to\infty$. We assume that the density $f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)$ is continuous in $(x_1, x_2)$. In words, we assume that the distribution of unobserved components varies smoothly as we vary covarites. 
 
 With this assumption, the integrand in @eq-nonparametric-avg-almost-me converges as $h\to 0$
 $$
@@ -247,7 +247,7 @@ Combining equations ([-@eq-nonparametric-avg-me-id]), ([-@eq-nonparametric-avg-a
 $$
 \begin{aligned}
  & \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
- & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i2}}{h}|X_{i1}=x, X_{i2} = x+h \right].
+ & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
 $$  {#eq-nonparametric-avg-me-identification-result}
 
@@ -257,25 +257,24 @@ To recap, we have made the following key assumptions to obtain this result:
 - Continuity of the conditional distribution of $(A_i, U_{it})$ in the conditioning variables. 
 
 In the next section, we will refine @eq-nonparametric-avg-me-identification-result to provide an even more explicit identification result and discuss estimation. 
+ 
+
+
 
 ## Interpretation and Stayers
 
-However, before that, we will briefly discuss the interpretation of the marginal effect in @eq-nonparametric-avg-me-identification-result and the associated population. 
+Before proceeding, we briefly discuss the population for which @eq-nonparametric-avg-me-identification-result identifies marginal effects.
 
-What is this marginal effect in @eq-nonparametric-avg-me-identification-result? It is the average effect of an infinitesimal change of $x$ for a population called *stayers at $x$* — units with the same values of $X_{i1}$ and $X_{i2}$ (the terminology of stayers is originally due to @Chamberlain1982).  
+Specifically, @eq-nonparametric-avg-me-identification-result identifies the average effect of an infinitesimal change in $x$ for a population known as *stayers at $x$* — units with identical values of $X_{i1}$ and $X_{i2}$. Stayers represent an important subpopulation in nonparametric panel data analysis, dating back to the seminal work of @Chamberlain1982.
 
+Stayers matter for two main reasons, one positive, one negative:
 
-importance for two reasons
+1. **Empirical relevance**: In many microdata settings, stayers and near-stayers comprise a substantial share or an outright majority of the population. See, for example, the evidence and discussion in @Sasaki2022.
 
-- empirical
-- theoretical 
-  
+2. **Theoretical necessity**: Stayers are typically the **only** population for which identification is possible without meaningful restrictions on the dependence between $X_{it}$ and $(A_i, U_{it})$. As shown by the constructive counterexamples in @Cooprider2022, identification generally fails for all distributional features of marginal effects for  non-stayers in models ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-model-u-sep]).
 
-### Are Stayers Interesting? 
+---
 
+#### Next Section {.unnumbered}
 
-### Lack of Identification for Other Populations 
-
-basically as far as thins go without more assumptions 
-
-Outside of stayers no identification for counterfactuals in this models, see counterexamples constructed by @Cooprider2022.
+In the next section, we refine @eq-nonparametric-avg-me-identification-result into a limit-free expression and discuss practical estimation of the average marginal effect.
