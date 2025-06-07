@@ -19,3 +19,18 @@ By the end of this section, you should be able to:
 - Say
 
 :::
+
+## A More Explicit Identification Result
+
+
+## A Primer on Multivariate Local Polynomial Estimation
+
+## Application to Estimating Average Marginal Effects
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we relax the stationarity assumption on the model to allow the structural function to change somewhat over time. 
+
