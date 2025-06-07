@@ -14,6 +14,12 @@ book:
   repo-url: https://github.com/vladislav-morozov/econometrics-heterogeneity/
   repo-actions: [edit, issue]
   repo-subdir: "src" 
+  sidebar:
+    tools:
+    - icon: person-arms-up
+      href: https://vladislav-morozov.github.io/ 
+    - icon: linkedin
+      href: https://www.linkedin.com/in/vladislavvmorozov/
   chapters:
     - index.qmd
     - intro.qmd  
