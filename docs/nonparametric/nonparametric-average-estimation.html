@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
+<meta name="description" content="Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)">
 
-<title>7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>14&nbsp; Estimating Average Effects for Stayers – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-chf.html" rel="next">
-<link href="../linear/linear-mean-group.html" rel="prev">
+<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-average-identification.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -448,8 +448,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="7&nbsp; Variance of Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn how to identify and estimate the variance of heterogeneous coefficients in linear panel models under minimal assumptions (Lecture Notes)">
+<meta property="og:title" content="14&nbsp; Estimating Average Effects for Stayers – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -462,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-average-estimation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimating Average Effects for Stayers</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -544,7 +544,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -597,7 +597,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimating Average Effects for Stayers</span></span></a>
   </div>
 </li>
@@ -623,29 +623,27 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#beyond-average-coefficients" id="toc-beyond-average-coefficients" class="nav-link active" data-scroll-target="#beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</a>
+  <li><a href="#an-estimable-form-of-the-average-marginal-effect" id="toc-an-estimable-form-of-the-average-marginal-effect" class="nav-link active" data-scroll-target="#an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</a></li>
+  <li><a href="#a-primer-on-multivariate-local-polynomial-estimation" id="toc-a-primer-on-multivariate-local-polynomial-estimation" class="nav-link" data-scroll-target="#a-primer-on-multivariate-local-polynomial-estimation"><span class="header-section-number">14.2</span> A Primer on Multivariate Local Polynomial Estimation</a>
   <ul class="collapse">
-  <li><a href="#potential-objects-of-interest" id="toc-potential-objects-of-interest" class="nav-link" data-scroll-target="#potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</a></li>
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">7.1.2</span> Model</a></li>
+  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea"><span class="header-section-number">14.2.1</span> Idea</a></li>
+  <li><a href="#estimator" id="toc-estimator" class="nav-link" data-scroll-target="#estimator"><span class="header-section-number">14.2.2</span> Estimator</a></li>
   </ul></li>
-  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">7.2</span> Identification</a>
+  <li><a href="#estimating-average-marginal-effects" id="toc-estimating-average-marginal-effects" class="nav-link" data-scroll-target="#estimating-average-marginal-effects"><span class="header-section-number">14.3</span> Estimating Average Marginal Effects</a>
   <ul class="collapse">
-  <li><a href="#variance-decomposition" id="toc-variance-decomposition" class="nav-link" data-scroll-target="#variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</a></li>
-  <li><a href="#imposing-structure-on-the-error-term" id="toc-imposing-structure-on-the-error-term" class="nav-link" data-scroll-target="#imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</a></li>
-  <li><a href="#variance-of-residuals" id="toc-variance-of-residuals" class="nav-link" data-scroll-target="#variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</a></li>
-  <li><a href="#variance-of-coefficients" id="toc-variance-of-coefficients" class="nav-link" data-scroll-target="#variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</a></li>
+  <li><a href="#estimator-1" id="toc-estimator-1" class="nav-link" data-scroll-target="#estimator-1"><span class="header-section-number">14.3.1</span> Estimator</a></li>
+  <li><a href="#asymptotic-properties" id="toc-asymptotic-properties" class="nav-link" data-scroll-target="#asymptotic-properties"><span class="header-section-number">14.3.2</span> Asymptotic Properties</a></li>
   </ul></li>
-  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">7.3</span> Estimation</a></li>
-  <li><a href="#higher-order-moments-and-moving-beyond" id="toc-higher-order-moments-and-moving-beyond" class="nav-link" data-scroll-target="#higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</a></li>
+  <li><a href="#another-estimator" id="toc-another-estimator" class="nav-link" data-scroll-target="#another-estimator"><span class="header-section-number">14.4</span> Another Estimator</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-average-estimation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-coefficient-variance.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-average-estimation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimating Average Effects for Stayers</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-variance" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-avg-id" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimating Average Effects for Stayers</span></span></h1>
 </div>
 
 
@@ -672,179 +670,161 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses how to identify the variance of heterogeneous coefficients without restricting the dependence between coefficients and covariates.</p>
+<p>This section provides an explicit expression for the average marginal effect and discusses its estimation using local polynomial regression.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Explain why average coefficients provide an incomplete picture.</li>
-<li>Identify the variance of heterogeneous coefficients using a temporal homoskedasticity assumption on the residuals.</li>
-<li>Construct a consistent estimator for the variance of coefficients.</li>
+<li>Derive a limit-free expression for the average marginal effect of stayers.</li>
+<li>Describe local polynomial estimators for derivatives of regression functions.</li>
+<li>Propose an estimator for the average marginal effect.</li>
 </ul>
 </div>
 </div>
-<section id="beyond-average-coefficients" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="beyond-average-coefficients"><span class="header-section-number">7.1</span> Beyond Average Coefficients</h2>
-<section id="potential-objects-of-interest" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="potential-objects-of-interest"><span class="header-section-number">7.1.1</span> Potential Objects of Interest</h3>
-<p>Previously, we focused on estimating the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> in our model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span id="eq-linear-variance-model"><span class="math display">\[
-y_{it} = \bx_{it}'\bbeta_i + u_{it}.
-\tag{7.1}\]</span></span> In particular, section <a href="linear-mean-group.html" class="quarto-xref"><span>6</span></a> has shown that the mean group estimator can consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> even without imposing restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>.</p>
-<p>Average effects are informative but limited. They do not capture the full variation in responses across individuals (<span class="citation" data-cites="Heckman1997">Heckman, Smith, and Clements (<a href="../references/references.html#ref-Heckman1997" role="doc-biblioref">1997</a>)</span>). Other parameters of interest include:</p>
-<ul>
-<li>The moments of <span class="math inline">\(\bbeta\)</span>:
-<ul>
-<li>Variance: overall dispersion in effects.</li>
-<li>Skewness: asymmetry in responses.</li>
-<li>Higher moments: shape of the distribution.</li>
-</ul></li>
-<li>The full distribution and quantiles of <span class="math inline">\(\bbeta_i\)</span>. For example, the distribution may be used to compute what proportion of people benefit vs.&nbsp;how many people are hurt by changes in <span class="math inline">\(x_{it}\)</span>.</li>
-</ul>
-</section>
-<section id="model" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="model"><span class="header-section-number">7.1.2</span> Model</h3>
-<p>As it turns out, it is possible to identify such distributional features in the static version of model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) without restricting the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> <span class="citation" data-cites="Arellano2012">(<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">Arellano and Bonhomme 2012</a>)</span>. In this section we discuss a streamlined version of their results for variance, while <a href="linear-distribution.html" class="quarto-xref"><span>Chapter 9</span></a> shows how to identify the maximal object of interest — the full distribution.</p>
-<p>Specifically, we consider model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) under a strict exogeneity condition of the form: <span id="eq-vector-variance-strict-ex"><span class="math display">\[
-\E[u_{it}|\bbeta_i, \bX_i] =0
-\tag{7.2}\]</span></span> The number <span class="math inline">\(T\)</span> of unit-level observations is assumed to exceed the number <span class="math inline">\(p\)</span> of covariates. We will treat <span class="math inline">\(T\)</span> as fixed, and consider large-<span class="math inline">\(N\)</span> identification and estimation arguments.</p>
-<p>As before, the model can be written in unit matrix form as <span class="math display">\[
-\by_i = \bX_i\bbeta_i + \bu_i.
-\]</span> We will again assume that <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span> for all <span class="math inline">\(i\)</span>. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in section <a href="linear-mean-group.html" class="quarto-xref"><span>6</span></a>.</p>
-</section>
-</section>
-<section id="identification" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="identification"><span class="header-section-number">7.2</span> Identification</h2>
-<p>Our object of interest in this section is the variance-covariance matrix <span class="math inline">\(\var(\bbeta_i)\)</span> of the coefficients <span class="math inline">\(\bbeta_i\)</span>: <span class="math display">\[
-    \var(\bbeta_i) = \E[\bbeta_i\bbeta_i'] - \E[\bbeta_i]\E[\bbeta_i]'.
-\]</span> Its diagonal terms are the variances of individual coefficients, which show how dispersed the effects are overall. The off-diagonal covariance terms capture whether the effects of different covariates tend to go in the same or contrary directions.</p>
-<section id="variance-decomposition" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="variance-decomposition"><span class="header-section-number">7.2.1</span> Variance Decomposition</h3>
-<p>To identify <span class="math inline">\(\var(\bbeta_i)\)</span>, we will first look at the second moments of <span class="math inline">\(\by_i\)</span>. Specifically, we will consider the conditional second moment of <span class="math inline">\(\by_i\)</span> given <span class="math inline">\(\bX_i=\bX\)</span>, where <span class="math inline">\(\bX\)</span> is some potential value of <span class="math inline">\(\bX_i\)</span> such that <span class="math inline">\(\det(\bX'\bX)&gt;0\)</span> and <span class="math inline">\(\bX\)</span> lies in the support of <span class="math inline">\(\bX_i\)</span>.</p>
-<p>Using model (<a href="#eq-linear-variance-model" class="quarto-xref"><span>7.1</span></a>) and condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the conditional second moment of <span class="math inline">\(\by_i\)</span> can be represented as <span id="eq-linear-variance-second-moment-y"><span class="math display">\[
+<section id="an-estimable-form-of-the-average-marginal-effect" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</h2>
+<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>): <span class="math display">\[
 \begin{aligned}
-    &amp;\E[\by_i\by_i'|\bX_i=\bX]\\
-    &amp; = \E\left[ (\bX_i\bbeta_i+ \bu_i)(\bX_i\bbeta_i+\bu_i)'|\bX_i=\bX \right]\\
-    &amp; =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bu_i\bu_i'|\bX_i=\bX \right].
+&amp; \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+&amp; = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
-\tag{7.3}\]</span></span></p>
-<p>The above expression decomposes the conditional second moment of <span class="math inline">\(\by_i\)</span> into two components — one corresponding to <span class="math inline">\(\bbeta_i\)</span> and the other one to <span class="math inline">\(\bu_i\)</span>.</p>
-<p>In general, we cannot separate the two components of the second moment of <span class="math inline">\(\by\)</span>. To see why, consider <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a> as a system of linear equations. The unknowns are the components of the symmetric matrices</p>
-<ul>
-<li><span class="math inline">\(\E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(p(p+1)/2\)</span> unknowns.</li>
-<li><span class="math inline">\(\E\left[\bu_i\bu_i'|\bX_i=\bX \right]\)</span> — a total of <span class="math inline">\(T(T+1)/2\)</span> unknowns.</li>
-</ul>
-<p>The system is underdetermined, as there is a total of only <span class="math inline">\(T(T+1)/2\)</span> distinct equations.</p>
-<p>At heart, the underdeterminacy stems from the fact that the model allows any dynamic structure for <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span>. As a consequence, <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span> has too many free elements relative to the number of equations.</p>
+\]</span> This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.</p>
+<p>However, the limit-based representation poses challenges for estimation, which typically benefits from an explicit representation. To address this, we define the following function: <span class="math display">\[
+    g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
+\]</span> This function captures how the average outcome difference changes with changes in the covariates. It plays a central role in constructing our estimator.</p>
+<p>Observe that <span class="math inline">\(g(x, x) = 0\)</span>, since <span class="math display">\[
+\begin{aligned}
+g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
+&amp; = \E\left[\phi(x, A_i, U_{i2}) - \phi(x, A_i, U_{i1})|X_{i1}=X_{i2} = x \right]\\
+&amp; = \E\left[\phi(x, A_i, U_{it}) - \phi(x, A_i, U_{it})|X_{i1}=X_{i2} = x \right]\\
+&amp; = 0,
+\end{aligned}
+\]</span> where we use the stationarity of <span class="math inline">\(U_{it}\)</span> (and hence of <span class="math inline">\(\phi(x, A_i, U_{it})\)</span>) in the last two lines.</p>
+<p>Thus, by the definition of partial derivatives it holds that <span id="eq-nonparametric-avg-est-g"><span class="math display">\[
+\begin{aligned}
+&amp; \E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2}= x+h \right] \\
+&amp; = \dfrac{g(x, x+h)}{h} = \dfrac{g(x, x+h) - g(x, x)}{h} \\
+&amp; \to \partial_{x_2} g(x, x),
+\end{aligned}
+\tag{14.1}\]</span></span> where <span class="math inline">\(\partial_{x_2}\)</span> means the partial derivative with respect to the second argument.</p>
+<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+\tag{14.2}\]</span></span></p>
+<p>The practical importance of <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> is that it reduces the problem of estimating average marginal effects to the problem of estimating a derivative of a conditional function — a standard nonparametric regression problem.</p>
 </section>
-<section id="imposing-structure-on-the-error-term" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="imposing-structure-on-the-error-term"><span class="header-section-number">7.2.2</span> Imposing Structure on the Error Term</h3>
-<p>This issue can be resolved by imposing assumptions on the time series dependence of <span class="math inline">\(u_{it}\)</span>. The magnitudes of <span class="math inline">\(T\)</span> and <span class="math inline">\(p\)</span> determine how many restrictions are necessary. After taking out the <span class="math inline">\(p(p+1)/2\)</span> parameters of <span class="math inline">\(\E[\bbeta_i\bbeta_i'|\bX_i=\bx]\)</span>, we have at most <span class="math inline">\(\left[T(T+1)-p(p+1) \right]/2\)</span> equations left. This number is the number of possible free parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>. In the most unfavorable case <span class="math inline">\(T=p+1\)</span>, and we can allow only <span class="math inline">\(T+1\)</span> possible parameters in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>.</p>
-<p>Various assumptions are possible, and <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> explore moving average and autoregressive structures for <span class="math inline">\(u_{it}\)</span>. Here, we will consider the simplest case in which <span class="math inline">\(u_{it}\)</span> is conditionally homoskedastic across time (but not necessarily across <span class="math inline">\(\bX\)</span>) and uncorrelated across <span class="math inline">\(t\)</span>: <span id="eq-linear-variance-spherical"><span class="math display">\[
+<section id="a-primer-on-multivariate-local-polynomial-estimation" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="a-primer-on-multivariate-local-polynomial-estimation"><span class="header-section-number">14.2</span> A Primer on Multivariate Local Polynomial Estimation</h2>
+<section id="idea" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="idea"><span class="header-section-number">14.2.1</span> Idea</h3>
+<p>In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial (LP) regression provides a particularly convenient approach. LP estimators are available in closed form, can estimate derivatives directly, and have favorable asymptotic properties.</p>
+<p>We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in <span class="citation" data-cites="Li2007">Li and Racine (<a href="../references/references.html#ref-Li2007" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="Fan1996">Fan and Gijbels (<a href="../references/references.html#ref-Fan1996" role="doc-biblioref">1996</a>)</span> for some standard references.</p>
+<p>To motivate the approach, let <span class="math inline">\(g(\cdot, \cdot)\)</span> be a smooth function of two variables, and suppose that we see observations <span class="math inline">\((Y_i, X_{i1}, X_{i2})\)</span> such that <span class="math display">\[
+    \E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
+\]</span> Let <span class="math inline">\((x_1, x_2)\)</span> be some fixed point.</p>
+<p>The bivariate Taylor’s theorem tell us that, if <span class="math inline">\((X_{i1}, X_{i2})\)</span> is “close” to <span class="math inline">\((x_1, x_2)\)</span>, then (expanding up to the second order) <span class="math display">\[
 \begin{aligned}
-    \E[u_{it}^2|\bX_i=\bX] &amp; = \sigma^2(\bX), \\
-    \E[u_{it}u_{is}|\bX_i=\bX] &amp; = 0, \quad t\neq s.
+    &amp;   g(X_{i1}, X_{i2}) \\
+    &amp;  \approx g(x_1, x_2) \\
+    &amp; \quad + \partial_{x_1} g(x_1, x_2) (X_{i1}-x_1) + \partial_{x_2} g(x_1, x_2)(X_{i2} - x_2) \\
+    &amp; \quad + \dfrac{1}{2} \partial_{x_1}^2 g(x_1, x_2)(X_{i1}-x_1)^2 +  \dfrac{1}{2} \partial_{x_2}^2 g(x_1, x_2)(X_{i2}-x_2)^2 \\
+    &amp; \quad  + \partial_{x_1}\partial_{x_2} g(x_1, x_2) (X_{i1}-x_1)(X_{i2}-x_2) \\
+    &amp; = \bZ_i(x_1, x_2)'\bbeta(x_1, x_2)
 \end{aligned}
-\tag{7.4}\]</span></span> Under assumption (<a href="#eq-linear-variance-spherical" class="quarto-xref"><span>7.4</span></a>) it holds that <span class="math display">\[
-\E\left[\bu_i\bu_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
-\]</span> There is only one unknown parameter in <span class="math inline">\(\E[\bu_i\bu_i'|\bX_i=\bX]\)</span>!</p>
+\]</span> where <span class="math display">\[
+\begin{aligned}
+    \bZ_i(x_1, x_2) &amp; = \begin{pmatrix}
+        1\\
+        X_{i1}- x_1\\
+        X_{i2} - x_2\\
+        (X_{i1}-x_1)^2/2\\
+        (X_{i1}- x_1)(X_{i2}-x_2) \\
+        (X_{i2} - x_2)^2/2
+    \end{pmatrix}, \\
+     \bbeta(x_1, x_2) &amp; = \begin{pmatrix}
+        g(x_1, x_2)\\
+        \partial_{x_1} g(x_1, x_2)\\
+        \partial_{x_2} g(x_1, x_2)\\
+        \partial^2_{x_1} g(x_1, x_2)\\
+        \partial_{x_1}\partial_{x_2} g(x_1, x_2)\\
+        \partial^2_{x_2} g(x_1, x_2)
+    \end{pmatrix}
+\end{aligned}
+\]</span> This expansion suggests that we can estimate the leading derivatives <span class="math inline">\(\bbeta(x_1, x_2)\)</span> by regressing <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(\bZ_i(x_1, x_2)\)</span> using weighted least squares. Observations which are closer to the target point <span class="math inline">\((x_1, x_2)\)</span> should receive a higher weight.</p>
 </section>
-<section id="variance-of-residuals" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="variance-of-residuals"><span class="header-section-number">7.2.3</span> Variance of Residuals</h3>
-<p>We can identify the unknown <span class="math inline">\(\sigma^2(\bX)\)</span> using a standard argument. Let the annihilator matrix associated with <span class="math inline">\(\bX\)</span> be given by <span id="eq-linear-variance-annihilator"><span class="math display">\[
-    \bM(\bX) = \bI_T-\bX(\bX'\bX)^{-1}\bX'.
-\tag{7.5}\]</span></span> Recall three key properties that <span class="math inline">\(\bM(\cdot)\)</span> possesses <span class="math display">\[
+<section id="estimator" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="estimator"><span class="header-section-number">14.2.2</span> Estimator</h3>
+<p>We formalize the idea of closeness using a bivariate <em>kernel</em> function <span class="math inline">\(K(\cdot, \cdot)\)</span> that will measure the distance between data points and the target point <span class="math inline">\((x_1, x_2)\)</span>. In principle, we can take any function <span class="math inline">\(K\)</span> that satisfies the following properties: <span class="math display">\[
 \begin{aligned}
-     \bM(\bX)\bX &amp; =0, \\
-      \bM(\bX)\bM(\bX) &amp; =\bM(\bX),  \\
-       \bM(\bX)' &amp; =\bM(\bX).
+K(u_1, u_2) &amp; \geq 0,  \\
+\iint K(u_1, u_2)du_1du_2 &amp; =1, \\
+  \int u_j K(u_1, u_2)du_j &amp; =0.
 \end{aligned}
-\]</span> Now consider the following second moment of <span class="math inline">\(\bM(\bX)\by_i\)</span> conditional on <span class="math inline">\(\bX_i=\bX\)</span>: <span class="math display">\[
+\]</span> A common approach is to take <span class="math inline">\(K\)</span> to be a product of some univariate density functions <span class="math inline">\(K_1\)</span>: <span class="math display">\[
+K(x_1, x_2) = K_1(x_1) K(x_2),
+\]</span> where <span class="math inline">\(K_1\)</span> may be the probability density function of the standard Gaussian distribution, for example.</p>
+<p>To estimate the derivative coefficients in <span class="math inline">\(\bbeta(x_1, x_2)\)</span>, we perform a weighted least squares regression of <span class="math inline">\(Y_i\)</span> on the “covariates”/basis functions <span class="math inline">\(\bZ_i(x_1, x_2)\)</span>, using kernel weights that reflect proximity to the target point. The resulting estimator is: <span id="eq-nonparametric-avg-lp"><span class="math display">\[
 \begin{aligned}
-    &amp; \E[\by_i'\bM(\bX)'\bM(\bX)\by_i|\bX_i=\bX]\\
-    &amp;  = \E[\bu_i'\bM(\bX)\bu_i|\bX_i=\bX] \\
-    &amp; = \E\left[ \mathrm{tr}(\bu_i'\bM(\bX)\bu_i)|\bX_i=\bX\right] \\
-    &amp; = \sigma^2(\bX)(T-p).
+    \hat{\bbeta}(x_1, x_2) &amp;  = \left( \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right) \bZ_i(x_1, x_2)\bZ_i(x_1, x_2)'\right)^{-1}\\
+    &amp; \hspace{0.9cm} \times \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right)  \bZ_i(x_1, x_2) Y_i,
 \end{aligned}
-\]</span> The details of the trace argument are standard and can be found in section 4.11 of <span class="citation" data-cites="Hansen2022">Hansen (<a href="../references/references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>.</p>
-<p>We conclude that <span class="math inline">\(\sigma^2(\bX)\)</span> is identified as <span class="math display">\[
-    \sigma^2(\bX) = \dfrac{1}{T-p} \E[\by_i'\bM(\bX)\by_i|\bX_i=\bX].
-\]</span></p>
+\tag{14.3}\]</span></span> where <span class="math inline">\(s&gt;0\)</span> is the smoothing parameter (bandwidth). As usual with kernel estimators, larger values of <span class="math inline">\(s\)</span> correspond to stronger smoothing — the estimator considers points in a larger neighborhood of <span class="math inline">\((x_1, x_2)\)</span>.</p>
+<p>One may generalize the approach to consider local polynomials of general order <span class="math inline">\(p\)</span>. Taking higher <span class="math inline">\(p\)</span> permits estimation of higher-order derivatives.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Note that it is also possible to solve for variance parameters from <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>! This approach can be useful when residuals exhibit more general dependence.</p>
+<p>Which order of local polynomials should one use? The standard advice is to take the degree <span class="math inline">\(p\)</span> of the polynomial to be one higher than the highest derivatives of interest. For example, if we are interested in the regression function itself (zeroth derivative), it is most common to use local linear regression (first degree polynomial). In our case, we are interested in the first derivative. According to this rule, we should run local quadratic regression, as described above.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="variance-of-coefficients" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="variance-of-coefficients"><span class="header-section-number">7.2.4</span> Variance of Coefficients</h3>
-<p>We are now in a position to identify <span class="math inline">\(\var(\bbeta_i)\)</span>. In principle, we can solve for <span class="math inline">\(\E[\bbeta_i\bbeta_i']\)</span> by suitably vectorizing the system in <a href="#eq-linear-variance-second-moment-y" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>. However, it will be more convenient to go back to the individual estimators (<a href="linear-mean-group.html#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>). For brevity, let <span class="math inline">\(\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'\)</span>, so that<br>
-<span class="math display">\[
-\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
-\]</span> As <span class="math inline">\(\E[\bbeta_i\bu_i']=0\)</span> by condition (<a href="#eq-vector-variance-strict-ex" class="quarto-xref"><span>7.2</span></a>), the variance of the individual estimator can be decomposed as <span class="math display">\[
-\begin{aligned}
-    &amp; \var(\hat{\bbeta}_i) = \var\left(\bbeta_i + \bH_i\bu_i \right)\\
-    &amp; = \var(\bbeta_i) + \var(\bH_i)\\
-    %
-    &amp;
-    = \var(\bbeta_i) + \E\left[\bH_i\bu_i\bu_i'\bH_i' \right]\\
-    &amp; =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bu_i\bu_i'\bH_i'|\bX_i \right]\right]\\
-    &amp; =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bu_i\bu_i'|\bX_i \right]\bH_i'\right]\\
-    &amp; = \var(\bbeta_i) + \E\left[\sigma(\bX_i)\bH_i\bH_i'\right].
-\end{aligned}
+</section>
+<section id="estimating-average-marginal-effects" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="estimating-average-marginal-effects"><span class="header-section-number">14.3</span> Estimating Average Marginal Effects</h2>
+<section id="estimator-1" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="estimator-1"><span class="header-section-number">14.3.1</span> Estimator</h3>
+<p>Equipped with the local polynomial estimator, we can now estimate the average marginal effect of stayers. To do so, we use <span class="math inline">\(Y_{i2}-Y_{i1}\)</span> as the dependent variable in <a href="#eq-nonparametric-avg-lp" class="quarto-xref">Equation&nbsp;<span>14.3</span></a> and select the target point as <span class="math inline">\((x_1, x_2)=(x, x)\)</span>. The third coordinate of <span class="math inline">\(\hat{\bbeta}(x, x)\)</span> is an estimator for the partial derivative of <span class="math inline">\(\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]\)</span> with respect to <span class="math inline">\(x_2\)</span>, evaluated at <span class="math inline">\((x, x)\)</span> — precisely the average marginal effect of interest by <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a>: <span class="math display">\[
+\widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
 \]</span></p>
-<p>Observe that the variance <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> of individual estimators <span class="math inline">\(\hat{\bbeta}_i\)</span> (not <span class="math inline">\(\bbeta_i\)</span>!) is identified as <span class="math display">\[
-    \var(\hat{\bbeta}_i) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right).
-\]</span></p>
-<p>Substituting <a href="#eq-linear-variance-spherical" class="quarto-xref">Equation&nbsp;<span>7.4</span></a> and rearranging, we obtain the following explicit expression for <span class="math inline">\(\var(\bbeta_i)\)</span>: <span id="eq-linear-variance-variance-explicit"><span class="math display">\[
-\begin{aligned}  
-     \var(\bbeta_i)  &amp;  =   \var(\hat{\bbeta}_i) -   \E\left[\sigma(\bX_i)\bH_i\bH_i'\right]\\
-     &amp; =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right)\\
-     &amp; \quad  -  \dfrac{1}{T-p}\E\left[ \E[\by_i'\bM(\bX_i)\by_i|\bX_i]\bH_i\bH_i'\right].
-\end{aligned}
-\tag{7.6}\]</span></span> Note that the right-hand side is a function of the distribution of <span class="math inline">\((\by_i, \bX_i)\)</span> — hence identification holds.</p>
+</section>
+<section id="asymptotic-properties" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="asymptotic-properties"><span class="header-section-number">14.3.2</span> Asymptotic Properties</h3>
+<p>Our estimator inherits all the desirable properties of local polynomial estimators, including consistency and asymptotic normality <span class="citation" data-cites="Li2007 Masry1996 Masry1996b">(see theorem 2.10 in <a href="../references/references.html#ref-Li2007" role="doc-biblioref">Li and Racine 2007</a>; <a href="../references/references.html#ref-Masry1996" role="doc-biblioref">Masry 1996a</a>, <a href="../references/references.html#ref-Masry1996b" role="doc-biblioref">1996b</a>)</span>. In particular, by suitably undersmoothing the local polynomial estimator (taking <span class="math inline">\(s\)</span> smaller than the MSE-optimal value), one can conduct inference on the target average effect of interest.</p>
 </section>
 </section>
-<section id="estimation" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">7.3</span> Estimation</h2>
-<p>To construct an estimator for <span class="math inline">\(\var(\bbeta_i)\)</span> based on <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a>, we replace the population expectations with their sample counterparts. Specifically, <span class="math inline">\(\var(\hat{\bbeta}_i)\)</span> is estimated using the sample variance of the individual estimators: <span class="math display">\[
+<section id="another-estimator" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="another-estimator"><span class="header-section-number">14.4</span> Another Estimator</h2>
+<p>Before we move on to generalizations of the identification result, it is worth discussing <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference <span class="math inline">\((\phi(x+h, a, u)-\phi(x, a, u))\)</span>. While the one-sided finite difference yields a valid estimator, symmetric (central) differences <a href="https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives">often provide more accurate approximations to derivatives.</a>. We now present a refinement of our identification result based on this idea.</p>
+<p>By suitably adjusting the above argument, one can show that <span class="math display">\[
 \begin{aligned}
-    \widehat{\var(\hat{\bbeta}_i) } = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'.
+    &amp; \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+    \\
+    &amp; = \dfrac{1}{2}  \dfrac{d}{dh}\Big(  \E\left[Y_{i2}- Y_{i1}|X_{i1}=x-h,  X_{i2} = x+h \right]\Big)\Big|_{h=0}\\
+    &amp; = \dfrac{1}{2}\Bigg(  \partial_{x_2}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2] \\
+    &amp; \hspace{2cm} -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Bigg|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
-\]</span> Likewise, we replace the expectation in the second term of <a href="#eq-linear-variance-variance-explicit" class="quarto-xref">Equation&nbsp;<span>7.6</span></a> with a sample average.</p>
-<p>This process yields an estimator for the variance of <span class="math inline">\(\bbeta\)</span>: <span class="math display">\[
-\begin{aligned}
-    \widehat{\var(\bbeta_i) } &amp; = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'\\
-    &amp; \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \by_i'\bM(\bX_i)\by_i\bH_i\bH_i'.
-\end{aligned}
-\]</span> Under standard regularity conditions, <span class="math inline">\(\widehat{\var(\bbeta_i) }\)</span> is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
-</section>
-<section id="higher-order-moments-and-moving-beyond" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="higher-order-moments-and-moving-beyond"><span class="header-section-number">7.4</span> Higher-Order Moments and Moving Beyond</h2>
-<p>It turns out that a similar strategy can be used to identify the third and higher-order moments of <span class="math inline">\(\bbeta_i\)</span>. see <span class="citation" data-cites="Arellano2012">Arellano and Bonhomme (<a href="../references/references.html#ref-Arellano2012" role="doc-biblioref">2012</a>)</span> for the details. The key ingredients of the identification argument for the <span class="math inline">\(k\)</span>th moments of <span class="math inline">\(\bbeta_i\)</span> are:</p>
-<ul>
-<li><span class="math inline">\(k\)</span>th moments (or cumulants) of <span class="math inline">\(\by_i\)</span> and <span class="math inline">\(\hat{\bbeta}_i\)</span></li>
-<li>Restrictions on the time series dynamics of <span class="math inline">\(\curl{u_{it}}_{t=1}^T\)</span></li>
-<li>Multiplicative separability of the moments of <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bu_i\)</span> up to order <span class="math inline">\(k\)</span>.</li>
-</ul>
-<p>However, moments of <span class="math inline">\(\bbeta_i\)</span> may be also be obtained from the full distribution of <span class="math inline">\(\bbeta_i\)</span>. Moreover, the distribution may also be used to compute quantiles of <span class="math inline">\(\bbeta_i\)</span> and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.</p>
+\]</span> A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_1\)</span>, i.e., the third and second elements of <span class="math inline">\(\hat{\bbeta}(x)\)</span>.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of <span class="math inline">\(\bbeta_i\)</span>.</p>
+<p>In the next section, we somewhat relax the stationarity assumption on the model by allowing certain changes in the structural function.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Arellano2012" class="csl-entry" role="listitem">
-Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random coefficients panel data models</span>.”</span> <em>Review of Economic Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
+<div id="ref-Fan1996" class="csl-entry" role="listitem">
+Fan, Jianqing, and Irene Gijbels. 1996. <em><span class="nocase">Local Polynomial Modelling and Its Applications</span></em>. Springer New York.
 </div>
-<div id="ref-Hansen2022" class="csl-entry" role="listitem">
-Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
+<div id="ref-Li2007" class="csl-entry" role="listitem">
+Li, Qi, and Jeffrey Scott Racine. 2007. <em><span class="nocase">Nonparametric Econometrics: Theory and Practice</span></em>. Princeton University Press.
 </div>
-<div id="ref-Heckman1997" class="csl-entry" role="listitem">
-Heckman, James J., Jeffrey Smith, and Nancy Clements. 1997. <span>“<span class="nocase">Making the Most out of Programme Evaluations and Social Experiments : Accounting for Heterogeneity in Programme Impacts</span>.”</span> <em>Review of Economic Studies</em> 64 (4): 487–535. <a href="https://doi.org/10.2307/2971729">https://doi.org/10.2307/2971729</a>.
+<div id="ref-Masry1996" class="csl-entry" role="listitem">
+Masry, Elias. 1996a. <span>“<span class="nocase">Multivariate Local Polynomial Regression for Time Series: Uniform Strong Consistency and Rates</span>.”</span> <em>Journal of Time Series Analysis</em> 17 (6): 571–99. <a href="https://doi.org/10.1111/j.1467-9892.1996.tb00294.x">https://doi.org/10.1111/j.1467-9892.1996.tb00294.x</a>.
+</div>
+<div id="ref-Masry1996b" class="csl-entry" role="listitem">
+———. 1996b. <span>“<span class="nocase">Multivariate Regression Estimation: Local Polynomial Fitting for Time Series</span>.”</span> <em>Stochastic Processes and Their Applications</em> 65 (1): 3575–81. <a href="https://doi.org/10.1016/S0304-4149(96)00095-6">https://doi.org/10.1016/S0304-4149(96)00095-6</a>.
 </div>
 </div>
 </section>
@@ -1414,13 +1394,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span>
+      <a href="../nonparametric/nonparametric-average-identification.html" class="pagination-link" aria-label="Identifying Average Effects for Stayers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Identifying Average Effects for Stayers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-chf.html" class="pagination-link" aria-label="Interlude: Characteristic Functions and Deconvolution">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1429,4 +1409,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-coefficient-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-average-estimation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
