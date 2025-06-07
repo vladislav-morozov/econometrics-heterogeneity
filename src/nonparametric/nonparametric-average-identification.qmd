@@ -1,8 +1,8 @@
 --- 
-description: " (Lecture Notes)"
+description: "Learn how stationarity panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
 
 open-graph:
-    description: "  (Lecture Notes)"
+    description: "Learn how stationarity panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
 ---
 
 
@@ -16,7 +16,9 @@ This section shows how panel data and stationarity assumptions can overcome hete
 
 By the end of this section, you should be able to: 
 
-- Explain  
+- Explain how finite differences can be used to motivate the identification of average marginal effects.
+- Identify the average marginal effects for the population of stayers using stationarity and continuity assumptions. 
+- Discuss the importance of stayers.
 
 :::
 
