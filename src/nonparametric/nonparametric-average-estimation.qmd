@@ -1,0 +1,21 @@
+--- 
+description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+
+open-graph:
+    description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+---
+
+
+# Estimating Average Effects for Stayers {#sec-nonparametric-avg-id}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section 
+
+By the end of this section, you should be able to: 
+ 
+- Say
+
+:::

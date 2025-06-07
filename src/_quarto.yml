@@ -33,6 +33,7 @@ book:
         - nonparametric/nonparametric-introduction.qmd
         - nonparametric/nonparametric-heterogeneity-bias.qmd
         - nonparametric/nonparametric-average-identification.qmd
+        - nonparametric/nonparametric-average-estimation.qmd
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
 
