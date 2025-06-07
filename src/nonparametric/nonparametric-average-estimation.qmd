@@ -132,6 +132,14 @@ $$
 $$
 where $s>0$ is the smoothing parameter (bandwidth). As usual with kernel estimators, larger values of $s$ correspond to stronger smoothing — the estimator considers points in a larger neighborhood of $(x_1, x_2)$.
 
+One may generalize the approach to consider local polynomials of general order $p$. Taking higher $p$ permits estimation of higher-order derivatives.
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+Which order of local polynomials should one use? The standard advice is to take the degree $p$ of the  polynomial to be one higher than the highest derivatives of interest. For example, if we are interested in the regression function itself (zeroth derivative), it is most common to use local linear regression (first degree polynomial). In our case, we are interested in the first derivative. According to this rule, we should  run local quadratic regression, as described above.
+
+::: 
 
 ## Application to Estimating Average Marginal Effects
 
