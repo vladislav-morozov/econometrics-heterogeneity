@@ -1,8 +1,8 @@
 --- 
-description: "Learn how stationarity panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
 
 open-graph:
-    description: "Learn how stationarity panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+    description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
 ---
 
 
@@ -12,11 +12,10 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section shows how panel data and stationarity assumptions can overcome heterogeneity bias to identify average marginal effects in model ([-@eq-nonparametric-model-full-nonsep]).
+This section shows how stationary panel data can overcome heterogeneity bias and identify average marginal effects even with infinite-dimensional unobserved heterogeneity in model ([-@eq-nonparametric-model-full-nonsep]).
 
 By the end of this section, you should be able to: 
-
-- Explain how finite differences can be used to motivate the identification of average marginal effects.
+ 
 - Identify the average marginal effects for the population of stayers using stationarity and continuity assumptions. 
 - Discuss the importance of stayers.
 
@@ -24,7 +23,7 @@ By the end of this section, you should be able to:
 
 ## A Finite Difference Perspective on Heterogeneity Bias
 
-The previous section highlighted how heterogeneity bias prevents identification of causal marginal effects using cross-sectional averages. We now show how panel data structure, together with smoothness and stationarity assumptions, can overcome this issue.
+The previous section highlighted how heterogeneity bias prevents identification of causal marginal effects using cross-sectional averages. We now show how panel data, together with smoothness and stationarity assumptions, can overcome this issue.
 
 To motivate our identification strategy for average marginal effects, it is helpful to recall the definition of a derivative. Recall that the derivative of a function $g$ is just the limit of a sequence of finite differences:
 $$
@@ -92,7 +91,7 @@ The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve 
 
 ### Identifying Moments of Finite Difference
 
-We begin with the identification step, showing how the expression in ([-@eq-nonparametric-avg-key-exp]) maps onto observable quantities. To identify the limit of expectation ([-@eq-nonparametric-avg-key-exp]) as $h\to 0$, it is sufficient to identify of  ([-@eq-nonparametric-avg-key-exp]) for all $h>0$ in some neighborhood of 0. To do so, consider the population of units with $\curl{ X_{i1} = x, X_{i2}  = x+h}$. By model ([-@eq-nonparametric-model-full-nonsep-het-bias]), the outcomes of these units satisfy
+We begin with the identification step, showing how the expression in ([-@eq-nonparametric-avg-key-exp]) maps onto observable quantities. To identify the limit of expectation ([-@eq-nonparametric-avg-key-exp]) as $h\to 0$, it is sufficient to identify  ([-@eq-nonparametric-avg-key-exp]) for all $h>0$ in some neighborhood of 0. To do so, consider the population of units with $\curl{ X_{i1} = x, X_{i2}  = x+h}$. By model ([-@eq-nonparametric-model-full-nonsep-het-bias]), the outcomes of these units satisfy
 $$
 \begin{aligned}
 	Y_{i2} & = \phi(x+h, A_i, U_{i2}),\\
@@ -108,7 +107,7 @@ $$
 $$ {#eq-nonparametric-avg-me-id}
 We conclude that ([-@eq-nonparametric-avg-key-exp]) is identified for all $h>0$ small enough,  provided that the joint density of $(X_{i1}, X_{i2})$ is positive in some neighborhood of $(x, x)$, 
 
-This shows that we can observe the difference in outcomes directly in panel data for near-stayers — units whose covariates change only slightly over time [$\curl{X_{i1}=x, X_{i2}=x+h}$ for small $h>0$;  see e.g. @Sasaki2021]. It also determines the population for which we are able to identify the parameter of interest. We return to this topic below. 
+This shows that we can observe the difference in outcomes directly in panel data for near-stayers — units whose covariates change only slightly over time ($X_{i1}=x, X_{i2}=x+h$ for small $h>0$;  see e.g. @Sasaki2021). It also determines the population for which we are able to identify the parameter of interest. We return to this topic below. 
 
 
 
@@ -157,10 +156,10 @@ $$
 	\\
 	& \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a)
     	\\
-	& \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2)
+	& \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2).
 \end{aligned}
 $$
-Now we make three key observations:
+Now we make four key observations:
 
 1. We can split the integral into two integrals: one involving $\phi(x+h, a, u_2)$ and one involving $\phi(x, a, u_1)$. 
 2. $\phi(x+h, a, u_2)$ does not depend on $u_1$, and so $u_{1}$ is just integrated out:
@@ -249,15 +248,28 @@ Combining equations ([-@eq-nonparametric-avg-me-id]), ([-@eq-nonparametric-avg-a
 $$
 \begin{aligned}
  & \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
- & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}|X_{i1}=x, X_{i2} = x+h \right].
+ & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
 $$  {#eq-nonparametric-avg-me-identification-result}
+This result, derived by @Hoderlein2012 and @Chernozhukov2015, establishes nonparametric identification of average marginal effects for *stayers at x* — units with identical values of $X_{i1}$ and $X_{i2}$.
 
-To recap, we have made the following key assumptions to obtain this result:
+
+
+To obtain this result, we relied on two key assumptions:
 
 - Conditional stationarity of $U_{it}$: used to convert expected change in outcomes into an expected finite difference in $\phi$ 
 - Continuity of the conditional distribution of $(A_i, U_{it})$ in the conditioning variables. 
 
+ 
+What makes @eq-nonparametric-avg-me-identification-result especially powerful is that it is compatible with potentially *infinite*-dimensional unobserved heterogeneity. We can nonparametrically identify meaningful causal parameters without even needing to know the dimension and the form of the unobserved components $(A_i, U_{it})$.
+
+This is a remarkably flexible framework. For example, 
+
+- In a consumption context, individuals may have arbitrarily different preferences.  
+- In a production setting, firms may differ in their entire technology sets.  
+
+As long as there is smoothness in the distribution of unobservables and comparability over time (i.e., conditional stationarity), the average marginal effect for stayers is identified.
+ 
 In the next section, we will refine @eq-nonparametric-avg-me-identification-result to provide an even more explicit identification result and discuss estimation. 
  
 
@@ -265,9 +277,7 @@ In the next section, we will refine @eq-nonparametric-avg-me-identification-resu
 
 ## Interpretation and Stayers
 
-Before proceeding, we briefly discuss the population for which @eq-nonparametric-avg-me-identification-result identifies marginal effects.
-
-Specifically, @eq-nonparametric-avg-me-identification-result identifies the average effect of an infinitesimal change in $x$ for a population known as *stayers at $x$* — units with identical values of $X_{i1}$ and $X_{i2}$. Stayers represent an important subpopulation in nonparametric panel data analysis, dating back to the seminal work of @Chamberlain1982.
+Before proceeding, we briefly discuss the population for which @eq-nonparametric-avg-me-identification-result identifies marginal effects. Stayers represent an important subpopulation in nonparametric panel data analysis, dating back to the seminal work of @Chamberlain1982. 
 
 Stayers matter for two main reasons, one positive, one negative:
 
