@@ -146,24 +146,40 @@ Which order of local polynomials should one use? The standard advice is to take 
 ### Estimator
 
 
-With the machinery of local polynomial estimators, it is now easy to construct an estimator for the average marginal effect of stayers. We simply take use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-g.
+With the machinery of local polynomial estimators, it is now easy to construct an estimator for the average marginal effect of stayers. We simply take use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-me:
+$$
+\widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
+$$
 
 
-This estimator estimator is asymptotically normal (see theorem 2.10 in \cite{Li2007} for the expressions of asymptotic bias and variance.
-%
-As is the case, the asymptotic bias is not present if the regression is undersmoothed.
-%
-In this scenario, we can also construct confidence intervals for the average marginal effects.
 
 
 ### Asymptotic Properties 
-[@Masry1996; @Masry1996b]
+
+Our estimator inherits all the desirable properties of local polynomial estimators, including consistency and asymptotic normality [see theorem 2.10 in @Li2007; @Masry1996; @Masry1996b]. In particular, by suitably undersmoothing the local polynomial estimator (taking $s$ smaller than the MSE-optimal value), one can conduct inference on the target average effect of interest. 
+ 
 
 ## Another Estimator
+
+
+Before move on to generalizations of the identification result, it is worth discussing @eq-nonparametric-avg-est-me somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference $(\phi(x+h, a, u)-\phi(x, a, u))$. However, it is possible to also work with central finite differences of the form [\phi(x+h, a, u)-\phi(x-h, a, u)]$. An advantage of a central difference is that it usually [provides a better approximation](https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives) for the derivatives. 
+
+
+By suitably adjusting the above argument, one can show that 
+$$
+\begin{aligned}
+	& \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+	\\
+	& = \dfrac{1}{2}  \dfrac{d}{dh}\Big(  \E\left[Y_{i2}- Y_{i1}|X_{i1}=x-h,  X_{i2} = x+h \right]\Big)\Big|_{h=0}\\
+	& = \dfrac{1}{2}\Bigg(  \partial_{x_2}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2] \\
+    & \quad -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+$$
+A symmetric estimator would then be based on the difference of third and the second coordinates of the local polynomial estimator $\hat{\bbeta}(x, x)$ — coordinates that correspond to the first two partial derivatives.
 
 ---
 
 #### Next Section {.unnumbered}
 
-In the next section, we relax the stationarity assumption on the model to allow the structural function to change somewhat over time. 
+In the next section, we somewhat relax the stationarity assumption on the model by allowing certain changes in the structural function. 
 
