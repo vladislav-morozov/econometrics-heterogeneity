@@ -14,22 +14,83 @@ open-graph:
 
 This section  
 
-By the end of this section, you should
+By the end of this section, you should be able to: 
 
 - Explain  
 
 :::
 
-## A First Difference Perspective on Heterogeneity Bias
+## A Finite Difference Perspective on Heterogeneity Bias
+
+The previous section highlighted how heterogeneity bias prevents identification of causal marginal effects using cross-sectional averages. We now show how panel data structure, together with smoothness and stationarity assumptions, can overcome this issue.
+
+To motivate our identification strategy for average marginal effects, it is helpful to recall the definition of a derivative. Recall that the derivative of a function $g$ is just the limit of a sequence of finite differences:
+$$
+	g'(x) = \lim\limits_{h\to 0}\dfrac{g(x+h)-g(x)}{h}.
+$$
+
+If we take $g(x)=\E[Y_{it}|X_{it}=x]$, the above finite difference is given by 
+$$
+\begin{aligned}
+	& \dfrac{\E[Y_{it}|X_{it} = x+h] - \E[Y_{it} |X_{it}=x] }{h} \\
+    & =  \dfrac{\E[\phi(x+h, A_i, U_{it})|X_{it}=x+h] - \E[\phi(x,  A_i, U_{it})|X_{it}=x] }{h}.
+\end{aligned}
+$$ {#eq-nonparametric-avg-FD-exp}
+Notice that the conditioning sets on the two expectations are different. Consequently, the conditional distributions of $(A_i, U_{it})$ given $X_{it}$ are different between the two expectations. In other words, we cannot hold the distribution of  $(A_i, U_{it})$ fixed as we vary $x$ in $\E[Y_{it}|X_{it}]$. This violates the *ceteris paribus* logic required for interpreting $\partial_x \E[Y_{it} | X_{it} = x]$ as a causal effect, as mentioned in the previous section. 
+
+The average marginal effect can itself be restated using a finite difference as
+$$
+\begin{aligned}
+& \E[\partial_x\phi(x+h, A_i, U_{it}|\cdots] \\
+&  = \E\left[\lim_{h\to 0}  \dfrac{ \phi(x+h, A_i, U_{it}) - \phi(x, A_i, U_{it})    }{h} \Bigg| \cdots \right].
+\end{aligned}
+$$  {#eq-nonparametric-avg-exp-fd-phi}
+In this view, the failure of the naive approach of the previous section stems from the fact that we cannot interchange finite differences and expectations when using cross-sectional data in @eq-nonparametric-avg-FD-exp.
+
+
 
 
 ## Identifying Average Marginal Effects for Stayers
 
+
+
 ### Stationarity: Time as an Instrument
+
+Panel data offers a natural way to address this failure of ceteris paribus reasoning. By comparing outcomes within the same unit, we can hold $A_i$ constant, isolating variation over time. 
+
+At the same time, contrasting outcomes within the same unit necessarily means contrasting outcomes from different periods — and hence dealing with variation in $U_{it}$.
+
+As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$. Under this assumption, the distribution of $\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].
+
+::: {.callout-note appearance="simple" icon=false}
+
+The stationarity assumption actually imposes a time-invariance assumption on the structural function $\phi$. To see why, note that under this assumption $U_{it}$ cannot contain changing deterministic variables, including time $t$. In general, if $t$ is part of $U_{it}$, then the function could change arbitrarily between periods. There is effectively no value in panel data if such arbitrary changes are possible. The stationarity assumption rules out such situations. 
+
+:::
+
+
 
 ### Two Key Analysis Steps
 
+We base our panel data identification argument on the following expectations involving $\phi$
+$$
+	\E\left[ \dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|\cdots \right].
+$$ {#eq-nonparametric-avg-key-exp}
+Expectation ([-@eq-nonparametric-avg-key-exp]) reflects the idea sketched out above:
+
+- The same $A_i$ appears in both $\phi$ terms.
+- The $U_{it}$ terms change over time.
+
+The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve a genuine finite difference in contrast to @eq-nonparametric-avg-exp-fd-phi. As a consequence, there are two key pieces in our analysis:
+
+- *Continuity*: showing that expectation ([-@eq-nonparametric-avg-key-exp]) does converge to the average marginal effect as $h\to 0$, despite not involving the "correct" finite difference. 
+- *Identification*: showing that the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$. 
+
+	 
+
 ### Identifying Moments of Finite Difference
+
+We begin with the second piece, as it is straightforward to identify expectation ([-@eq-nonparametric-avg-key-exp])
 
 ### Continuity of Average Finite Difference
 
