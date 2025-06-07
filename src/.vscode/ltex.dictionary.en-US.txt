@@ -2,3 +2,4 @@ exogeneity
 endogeneity
 Nonparametric
 deconvolution
+stationarity
