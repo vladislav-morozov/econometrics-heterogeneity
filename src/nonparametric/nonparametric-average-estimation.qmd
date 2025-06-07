@@ -60,9 +60,82 @@ The practical importance of @eq-nonparametric-avg-est-me is that it reduces the 
 
 ## A Primer on Multivariate Local Polynomial Estimation
 
-See @Fan1996 for a classic monograph on the topic. 
+### Idea
+
+In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial regression provides a particularly convenient one in this case. We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in @Li2007 and @Fan1996 for some classic references. 
+
+
+To motivate the approach, let $g(\cdot, \cdot)$ be a smooth function of two variables, and suppose that we see observations $(Y_i, X_{i1}, X_{i2})$ such that 
+$$
+	\E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
+$$
+Let $(x_1, x_2)$ be some fixed point.
+
+
+The bivariate Taylor's theorem tell us that, if $(X_{i1}, X_{i2})$ is "close" to $(x_1, x_2)$, then (expanding up to the second order)
+$$
+\begin{aligned}
+	& 	g(X_{i1}, X_{i2}) \\
+	&  \approx g(x_1, x_2) \\
+    & \quad + \partial_{x_1} g(x_1, x_2) (X_{i1}-x_1) + \partial_{x_2} g(x_1, x_2)(X_{i2} - x_2) \\
+    & \quad + \dfrac{1}{2} \partial_{x_1}^2 g(x_1, x_2)(X_{i1}-x_1)^2 +  \dfrac{1}{2} \partial_{x_2}^2 g(x_1, x_2)(X_{i2}-x_2)^2 \\
+	& \quad  + \partial_{x_1}\partial_{x_2} g(x_1, x_2) (X_{i1}-x_1)(X_{i2}-x_2) \\
+	& = \bZ_i(x_1, x_2)'\bbeta(x_1, x_2)
+\end{aligned}
+$$
+where 
+$$
+\begin{aligned}
+	\bZ_i(x_1, x_2) & = \begin{pmatrix}
+		1\\
+		X_{i1}- x_1\\
+		X_{i2} - x_2\\
+		(X_{i1}-x_1)^2/2\\
+		(X_{i1}- x_1)(X_{i2}-x_2) \\
+		(X_{i1} - x_2)^2/2
+	\end{pmatrix}, \\
+     \bbeta(x_1, x_2) & = \begin{pmatrix}
+		g(x_1, x_2)\\
+		\partial_{x_1} g(x_1, x_2)\\
+		\partial_{x_2} g(x_1, x_2)\\
+		\partial^2_{x_1} g(x_1, x_2)\\
+		\partial_{x_1}\partial_{x_2} g(x_1, x_2)\\
+		\partial^2_{x_2} g(x_1, x_2)
+	\end{pmatrix}
+\end{aligned}
+$$
+This expansion suggests that we can estimate the leading derivatives $\bbeta(x_1, x_2)$ by regressing $Y_i$ on $\bZ_i(x_1, x_2)$ using weighted least squares. Observations which are closer to the target point $(x_1, x_2)$ should receive a higher weight.
+
+### Estimator
+
+
+We formalize the idea of closeness using a bivariate *kernel* function $K(\cdot, \cdot)$ that will measure the distance between data points and the target point $(x_1, x_2)$. In principle, we can take any function $K$ that satisfies the following properties: 
+$$
+\begin{aligned}
+K(u_1, u_2) & \geq 0,  \\
+ \iint K(u_1, u_2)du_1du_2 & =0, \\
+  \int u_j K(u_1, u_2)du_j & =0.
+\end{aligned}
+$$
+ A common approach is to take $K$ to be a product of some univariate density functions $K_1$:
+$$
+K(x_1, x_2) = K_1(x_1) K(x_2),
+$$
+where $K_1$ may be the probability density function of the standard Gaussian distribution, for example. 
+
+We define the locally quadratic estimator of the derivatives in $\bbeta(x_1, x_2)$ as the following weighted least squares estimator
+$$
+\begin{aligned} 
+	\hat{\bbeta}(x_1, x_2) &  = \left( \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right) \bZ_i(x_1, x_2)\bZ_i(x_1, x_2)'\right)^{-1}\\
+	& \hspace{0.9cm} \times \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right)  \bZ_i(x_1, x_2) Y_i,
+\end{aligned}
+$$
+where $s>0$ is the smoothing parameter (bandwidth). As usual with kernel estimators, larger values of $s$ correspond to stronger smoothing — the estimator considers points in a larger neighborhood of $(x_1, x_2)$.
+
 
 ## Application to Estimating Average Marginal Effects
+
+### Estimator
 
 ### Asymptotic Properties 
 [@Masry1996; @Masry1996b]
