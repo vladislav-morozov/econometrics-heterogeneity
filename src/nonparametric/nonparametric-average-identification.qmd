@@ -60,7 +60,7 @@ Panel data offers a natural way to address this failure of ceteris paribus reaso
 
 At the same time, contrasting outcomes within the same unit necessarily means contrasting outcomes from different periods — and hence dealing with variation in $U_{it}$.
 
-As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$. Under this assumption, the distribution of $\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].
+As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$. Under this assumption, the distribution of $\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].  The variation in $U_{it}$ over time becomes non-systemic. 
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -81,7 +81,7 @@ Expectation ([-@eq-nonparametric-avg-key-exp]) reflects the idea sketched out ab
 - The same $A_i$ appears in both $\phi$ terms.
 - The $U_{it}$ terms change over time.
 
-The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve a genuine finite difference in contrast to @eq-nonparametric-avg-exp-fd-phi. As a consequence, there are two key pieces in our analysis:
+The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve a genuine finite difference in contrast to @eq-nonparametric-avg-exp-fd-phi. As a consequence, there are two key conceptual pieces in our analysis:
 
 - *Convergence*: showing that expectation ([-@eq-nonparametric-avg-key-exp]) does converge to the average marginal effect as $h\to 0$, despite not involving the "correct" finite difference. 
 - *Identification*: showing that the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$, at least for some subpopulation of interest. 
@@ -90,7 +90,7 @@ The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve 
 
 ### Identifying Moments of Finite Difference
 
-We begin with the second piece. To identify the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$, it is sufficient to identify of  ([-@eq-nonparametric-avg-key-exp]) for all $h>0$ in some neighborhood of 0. To do so, consider the population of units with $\curl{ X_{i1} = x, X_{i2}  = x+h}$. By model ([-@eq-nonparametric-model-full-nonsep-het-bias]), the outcomes of these units satisfy
+We begin with the identification step, showing how the expression in ([-@eq-nonparametric-avg-key-exp]) maps onto observable quantities. To identify the limit of expectation ([-@eq-nonparametric-avg-key-exp]) as $h\to 0$, it is sufficient to identify of  ([-@eq-nonparametric-avg-key-exp]) for all $h>0$ in some neighborhood of 0. To do so, consider the population of units with $\curl{ X_{i1} = x, X_{i2}  = x+h}$. By model ([-@eq-nonparametric-model-full-nonsep-het-bias]), the outcomes of these units satisfy
 $$
 \begin{aligned}
 	Y_{i2} & = \phi(x+h, A_i, U_{i2}),\\
@@ -106,7 +106,7 @@ $$
 $$ {#eq-nonparametric-avg-me-id}
 We conclude that ([-@eq-nonparametric-avg-key-exp]) is identified for all $h>0$ small enough,  provided that the joint density of $(X_{i1}, X_{i2})$ is positive in some neighborhood of $(x, x)$, 
 
-This arguments also determines the population for which identification holds. The units with $\curl{X_{i1}=x, X_{i2}=x+h}$ for small $h>0$   are often call near-stayers or slow movers in the literature [e.g. @Sasaki2021]. We return to this topic below. 
+This shows that we can observe the difference in outcomes directly in panel data for near-stayers — units whose covariates change only slightly over time [$\curl{X_{i1}=x, X_{i2}=x+h}$ for small $h>0$;  see e.g. @Sasaki2021]. It also determines the population for which we are able to identify the parameter of interest. We return to this topic below. 
 
 
 
@@ -114,7 +114,7 @@ This arguments also determines the population for which identification holds. Th
 
 ### Average Differences and Almost Marginal Effects
 
-We now turn to the convergence step. Establishing convergence requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
+With identification in hand, we now analyze the behavior of this expression as $h\to 0$ to ensure that it converges to a marginal effect. Establishing convergence requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
 
 - $f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2)$ be the conditional density of $(A_i, U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$;
 - $f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$;
@@ -210,7 +210,7 @@ $$ {#eq-nonparametric-avg-almost-me}
 
 ### Distributional Continuity in Unobservables
 
-Consider the integrand in @eq-nonparametric-avg-almost-me. In expectation form, we can represent it as 
+To convert this representation into a true marginal effect, we analyze the integrand in @eq-nonparametric-avg-almost-me.. In expectation form, we can represent it as 
 $$
 \E[\partial_x \phi(\tilde{x}, A_i, U_{it})|X_{i1}=x, X_{i2}=x+h].
 $$
