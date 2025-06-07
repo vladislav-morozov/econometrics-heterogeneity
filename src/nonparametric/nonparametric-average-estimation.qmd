@@ -1,8 +1,8 @@
 --- 
-description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+description: "Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)"
 
 open-graph:
-    description: "Learn how stationary panel data can identify average marginal effects in nonparametric models with infinite unobserved heterogeneity (Lecture Notes)."
+    description: "Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)"
 ---
 
 
@@ -12,15 +12,17 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section 
+This section provides an explicit expression for the average marginal effect and discusses its estimation using local polynomial regression.
 
 By the end of this section, you should be able to: 
  
-- Say
+- Derive a limit-free expression for the average marginal effect of stayers.
+- Describe local polynomial estimators for derivatives of regression functions.
+- Propose an estimator for the average marginal effect. 
 
 :::
 
-## A More Explicit Identification Result
+## An Estimable Form of the Average Marginal Effect
 
 In the previous section, we have identified the average marginal effect for stayers in model ([-@eq-nonparametric-model-full-nonsep]) in terms of a limit of average change in outcomes across periods (@eq-nonparametric-avg-me-identification-result):
 $$
@@ -31,13 +33,24 @@ $$
 $$
 This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.
 
-At the same time, @eq-nonparametric-avg-me-identification-result is not quite convenient for estimation purposes. A direct application would require one to deal with limits. 
-
-In order to circumvent this issue, we now focus on providing a more estimation-friendly version of @eq-nonparametric-avg-me-identification-result. To do so, define the function
+However, the limit-based representation poses challenges for estimation, which typically benefits from an explicit representation. To address this, we define the following function:
 $$
 	g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
 $$
-Observe that $g(x, x) = 0$, and so by the definition of partial derivatives it holds that
+This function captures how the average outcome difference changes with changes in the covariates. It plays a central role in constructing our estimator.
+
+Observe that $g(x, x) = 0$, since 
+$$
+\begin{aligned}
+g(x, x)  & = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
+& = \E\left[\phi(x, A_i, U_{i2}) - \phi(x, A_i, U_{i1})|X_{i1}=X_{i2} = x \right]\\
+& = \E\left[\phi(x, A_i, U_{it}) - \phi(x, A_i, U_{it})|X_{i1}=X_{i2} = x \right]\\
+& = 0,
+\end{aligned}
+$$
+where we use the stationarity of $U_{it}$ (and hence of $\phi(x, A_i, U_{it})$) in the last two lines.
+
+Thus, by the definition of partial derivatives it holds that
 $$
 \begin{aligned}
 & \E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2}= x+h \right] \\
@@ -62,7 +75,9 @@ The practical importance of @eq-nonparametric-avg-est-me is that it reduces the 
 
 ### Idea
 
-In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial regression provides a particularly convenient one in this case. We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in @Li2007 and @Fan1996 for some classic references. 
+In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial (LP) regression provides a particularly convenient approach. LP estimators are available in closed form, can estimate derivatives directly, and have favorable asymptotic properties. 
+
+ We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in @Li2007 and @Fan1996 for some standard references. 
 
 
 To motivate the approach, let $g(\cdot, \cdot)$ be a smooth function of two variables, and suppose that we see observations $(Y_i, X_{i1}, X_{i2})$ such that 
@@ -70,8 +85,7 @@ $$
 	\E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
 $$
 Let $(x_1, x_2)$ be some fixed point.
-
-
+ 
 The bivariate Taylor's theorem tell us that, if $(X_{i1}, X_{i2})$ is "close" to $(x_1, x_2)$, then (expanding up to the second order)
 $$
 \begin{aligned}
@@ -92,7 +106,7 @@ $$
 		X_{i2} - x_2\\
 		(X_{i1}-x_1)^2/2\\
 		(X_{i1}- x_1)(X_{i2}-x_2) \\
-		(X_{i1} - x_2)^2/2
+		(X_{i2} - x_2)^2/2
 	\end{pmatrix}, \\
      \bbeta(x_1, x_2) & = \begin{pmatrix}
 		g(x_1, x_2)\\
@@ -113,7 +127,7 @@ We formalize the idea of closeness using a bivariate *kernel* function $K(\cdot,
 $$
 \begin{aligned}
 K(u_1, u_2) & \geq 0,  \\
- \iint K(u_1, u_2)du_1du_2 & =0, \\
+ \iint K(u_1, u_2)du_1du_2 & =1, \\
   \int u_j K(u_1, u_2)du_j & =0.
 \end{aligned}
 $$
@@ -123,7 +137,7 @@ K(x_1, x_2) = K_1(x_1) K(x_2),
 $$
 where $K_1$ may be the probability density function of the standard Gaussian distribution, for example. 
 
-We define the locally quadratic estimator of the derivatives in $\bbeta(x_1, x_2)$ as the following weighted least squares estimator
+To estimate the derivative coefficients in $\bbeta(x_1, x_2)$, we perform a weighted least squares regression of $Y_i$ on the "covariates"/basis functions $\bZ_i(x_1, x_2)$, using kernel weights that reflect proximity to the target point. The resulting estimator is:
 $$
 \begin{aligned} 
 	\hat{\bbeta}(x_1, x_2) &  = \left( \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right) \bZ_i(x_1, x_2)\bZ_i(x_1, x_2)'\right)^{-1}\\
@@ -141,12 +155,12 @@ Which order of local polynomials should one use? The standard advice is to take 
 
 ::: 
 
-## Application to Estimating Average Marginal Effects
+## Estimating Average Marginal Effects
 
 ### Estimator
 
 
-With the machinery of local polynomial estimators, it is now easy to construct an estimator for the average marginal effect of stayers. We simply take use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-me:
+Equipped with the local polynomial estimator, we can now estimate the average marginal effect of stayers. To do so, we use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-me:
 $$
 \widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
 $$
@@ -162,7 +176,7 @@ Our estimator inherits all the desirable properties of local polynomial estimato
 ## Another Estimator
 
 
-Before move on to generalizations of the identification result, it is worth discussing @eq-nonparametric-avg-est-me somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference $(\phi(x+h, a, u)-\phi(x, a, u))$. However, it is possible to also work with central finite differences of the form [\phi(x+h, a, u)-\phi(x-h, a, u)]$. An advantage of a central difference is that it usually [provides a better approximation](https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives) for the derivatives. 
+Before we move on to generalizations of the identification result, it is worth discussing @eq-nonparametric-avg-est-me somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference $(\phi(x+h, a, u)-\phi(x, a, u))$. While the one-sided finite difference yields a valid estimator, symmetric (central) differences [often provide more accurate approximations to derivatives.](https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives). We now present a refinement of our identification result based on this idea. 
 
 
 By suitably adjusting the above argument, one can show that 
@@ -172,10 +186,10 @@ $$
 	\\
 	& = \dfrac{1}{2}  \dfrac{d}{dh}\Big(  \E\left[Y_{i2}- Y_{i1}|X_{i1}=x-h,  X_{i2} = x+h \right]\Big)\Big|_{h=0}\\
 	& = \dfrac{1}{2}\Bigg(  \partial_{x_2}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2] \\
-    & \quad -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Big|_{(x_1, x_2)=(x, x)}.
+    & \hspace{2cm} -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Bigg|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
 $$
-A symmetric estimator would then be based on the difference of third and the second coordinates of the local polynomial estimator $\hat{\bbeta}(x, x)$ — coordinates that correspond to the first two partial derivatives.
+A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to $x_2$ and $x_1$, i.e., the third and second elements of $\hat{\bbeta}(x)$.
 
 ---
 
