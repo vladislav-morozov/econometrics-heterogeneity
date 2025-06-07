@@ -129,7 +129,7 @@ $$
 	\hat{\bbeta}(x_1, x_2) &  = \left( \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right) \bZ_i(x_1, x_2)\bZ_i(x_1, x_2)'\right)^{-1}\\
 	& \hspace{0.9cm} \times \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right)  \bZ_i(x_1, x_2) Y_i,
 \end{aligned}
-$$
+$$ {#eq-nonparametric-avg-lp}
 where $s>0$ is the smoothing parameter (bandwidth). As usual with kernel estimators, larger values of $s$ correspond to stronger smoothing — the estimator considers points in a larger neighborhood of $(x_1, x_2)$.
 
 One may generalize the approach to consider local polynomials of general order $p$. Taking higher $p$ permits estimation of higher-order derivatives.
@@ -145,8 +145,21 @@ Which order of local polynomials should one use? The standard advice is to take 
 
 ### Estimator
 
+
+With the machinery of local polynomial estimators, it is now easy to construct an estimator for the average marginal effect of stayers. We simply take use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-g.
+
+
+This estimator estimator is asymptotically normal (see theorem 2.10 in \cite{Li2007} for the expressions of asymptotic bias and variance.
+%
+As is the case, the asymptotic bias is not present if the regression is undersmoothed.
+%
+In this scenario, we can also construct confidence intervals for the average marginal effects.
+
+
 ### Asymptotic Properties 
 [@Masry1996; @Masry1996b]
+
+## Another Estimator
 
 ---
 
