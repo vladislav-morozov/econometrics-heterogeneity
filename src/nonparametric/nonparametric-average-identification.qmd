@@ -83,7 +83,7 @@ Expectation ([-@eq-nonparametric-avg-key-exp]) reflects the idea sketched out ab
 
 The latter point means that ([-@eq-nonparametric-avg-key-exp]) does not involve a genuine finite difference in contrast to @eq-nonparametric-avg-exp-fd-phi. As a consequence, there are two key pieces in our analysis:
 
-- *Continuity*: showing that expectation ([-@eq-nonparametric-avg-key-exp]) does converge to the average marginal effect as $h\to 0$, despite not involving the "correct" finite difference. 
+- *Convergence*: showing that expectation ([-@eq-nonparametric-avg-key-exp]) does converge to the average marginal effect as $h\to 0$, despite not involving the "correct" finite difference. 
 - *Identification*: showing that the limit of expectation ([-@eq-nonparametric-avg-key-exp]) is identified as $h\to 0$, at least for some subpopulation of interest. 
 
 	 
@@ -103,7 +103,7 @@ $$
 	&	\E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1} = x, X_{i2} = x+h \right] \\
 	& = \E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right].
 \end{aligned}
-$$
+$$ {#eq-nonparametric-avg-me-id}
 We conclude that ([-@eq-nonparametric-avg-key-exp]) is identified for all $h>0$ small enough,  provided that the joint density of $(X_{i1}, X_{i2})$ is positive in some neighborhood of $(x, x)$, 
 
 This arguments also determines the population for which identification holds. The units with $\curl{X_{i1}=x, X_{i2}=x+h}$ for small $h>0$   are often call near-stayers or slow movers in the literature [e.g. @Sasaki2021]. We return to this topic below. 
@@ -112,9 +112,9 @@ This arguments also determines the population for which identification holds. Th
 
 
 
-### Continuity of Average Finite Difference
+### Average Differences and Almost Marginal Effects
 
-We now turn to the continuity piece. Establishing continuity requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
+We now turn to the convergence step. Establishing convergence requires some continuity assumptions on the relationship between $X_{it}$, $A_i$ and $U_{it}$. To motivate their form, we write out ([-@eq-nonparametric-avg-key-exp]) as an integral, similarly to how we proceeded in the previous section. To that end, let 
 
 - $f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2)$ be the conditional density of $(A_i, U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2}$;
 - $f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)$ be the conditional density of $(U_{i1}, U_{i2})$ given $\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}$;
@@ -128,7 +128,7 @@ Throughout, we assume that the above densities are taken with respect to some ov
 
 ::: {.callout-note appearance="simple" icon=false collapse=true}
 
-## Regarding $\mu$
+## Regarding the existence of $\mu$
 
 Intuitively, the assumption that $\mu$ does not depend on $(x_1, x_2)$ means that the type of distribution of $(A_i, U_{it})$ does not depend with $(x_1, x_2)$. In the simplest case, imagine that $A_i$ and $U_{it}$ are just random scalars. The assumption states that the following two statements cannot be true at the same time: 
 
@@ -190,20 +190,86 @@ We cinclude that we can represent ([-@eq-nonparametric-avg-key-exp]) as
 $$
 \begin{aligned}
 &	\E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right]\\
-& = \int \left[ \phi(x+h, a, u)  - \phi(x, a, u) \right]f_{A_i, U_{it}|X_{i1}, X_{i2}, A_i}(a|x, u, x+h) \mu(da, du) 
+& = \int \left[ \phi(x+h, a, u)  - \phi(x, a, u) \right]f_{A_i, U_{it}|X_{i1}, X_{i2}, A_i}(a, u|x, x+h) \mu(da, du) 
+\end{aligned}
+$$ 
+
+The achievement of the above representation is that we managed to obtain a genuine finite difference involving $\phi$ — notice that only $x$ changes under $\phi$, while the same $a$ and $u$ appear in both terms. We can apply the mean value theorem to this finite difference as 
+$$
+\phi(x+h, a, u) = \phi(x, a, u) + h\partial_x\phi(\tilde{x}, a, u),
+$$ {#eq-nonparametric-avg-mvt}
+where $\tilde{x}$ is a point between $x$ and $x+h$; $\tilde{x}$  possibly depends on $a$ and $u$.
+
+Substituting @eq-nonparametric-avg-mvt into the above representation for ([-@eq-nonparametric-avg-key-exp]) we conclude that 
+$$
+\begin{aligned}
+& \E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right]\\
+& = \int \partial_x\phi(\tilde{x}, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x+h) \mu(da, du).
+\end{aligned}
+$$ {#eq-nonparametric-avg-almost-me}
+
+### Distributional Continuity in Unobservables
+
+Consider the integrand in @eq-nonparametric-avg-almost-me. In expectation form, we can represent it as 
+$$
+\E[\partial_x \phi(\tilde{x}, A_i, U_{it})|X_{i1}=x, X_{i2}=x+h].
+$$
+This object is not quite an average marginal effect — the function $\phi$ is evaluated at a potentially random point $\tilde{x}=\tilde{x}(A_i, U_{it})$.
+
+To resolve this issue, we need to enforce $\tilde{x} = x$. Since $\tilde{x} \in [x-h, x+h]$, this result can be achieved by taking $h\to 0$ in @eq-nonparametric-avg-almost-me, while preserving the expectation interpretation of the result. 
+
+Accordingly, we impose our second key **assumption** to allow taking $h\to\infty$. We assume that the density $f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)$ is continuous in $(x_1, x_2)$. In words, we assume that the distribution of unobserved components varies smoothly as we vary covarites. 
+
+With this assumption, the integrand in @eq-nonparametric-avg-almost-me converges as $h\to 0$
+$$
+\begin{aligned}
+& \partial_x\phi(\tilde{x}, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x+h) \\
+& \to \partial_x\phi(x, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x).
 \end{aligned}
 $$
-In the second to last equality, we use the stationarity of $u_{it}$.
+Under mild dominance conditions, this convergence also applies to the integrals: 
+$$
+\begin{aligned}
+& \int \partial_x\phi(\tilde{x}, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x+h) \mu(da, du) \\
+& \to \int \partial_x\phi(x, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x) \\
+& = \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right],
+\end{aligned}
+$$ {#eq-nonparametric-avg-me-stayers}
+finally yielding an average marginal effect.
 
 
-### Combined Results
-
-
-### Interpretation
 
 
 
-## Regarding the Identified Population
+### Result Statement
+
+Combining equations ([-@eq-nonparametric-avg-me-id]), ([-@eq-nonparametric-avg-almost-me]), and ([-@eq-nonparametric-avg-me-stayers]), we obtain our identification result:
+$$
+\begin{aligned}
+ & \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+ & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i2}}{h}|X_{i1}=x, X_{i2} = x+h \right].
+\end{aligned}
+$$  {#eq-nonparametric-avg-me-identification-result}
+
+To recap, we have made the following key assumptions to obtain this result:
+
+- Conditional stationarity of $U_{it}$: used to convert expected change in outcomes into an expected finite difference in $\phi$ 
+- Continuity of the conditional distribution of $(A_i, U_{it})$ in the conditioning variables. 
+
+In the next section, we will refine @eq-nonparametric-avg-me-identification-result to provide an even more explicit identification result and discuss estimation. 
+
+## Interpretation and Stayers
+
+However, before that, we will briefly discuss the interpretation of the marginal effect in @eq-nonparametric-avg-me-identification-result and the associated population. 
+
+What is this marginal effect in @eq-nonparametric-avg-me-identification-result? It is the average effect of an infinitesimal change of $x$ for a population called *stayers at $x$* — units with the same values of $X_{i1}$ and $X_{i2}$ (the terminology of stayers is originally due to @Chamberlain1982).  
+
+
+importance for two reasons
+
+- empirical
+- theoretical 
+  
 
 ### Are Stayers Interesting? 
 
