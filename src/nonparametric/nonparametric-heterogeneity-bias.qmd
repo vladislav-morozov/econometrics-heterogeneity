@@ -14,7 +14,7 @@ open-graph:
 
 This section shows why average effects cannot in general be identified by simply differentiating average outcomes. 
 
-By the end of this section, you should
+By the end of this section, you should be able to: 
 
 - State the nonseparable model and define average marginal effects.
 - Derive the decomposition of changes in average outcomes into average marginal effects and heterogeneity bias.
@@ -125,7 +125,7 @@ $$
 \partial_x f_{V_{it}|X_{it}}(v|x) = 0
 $$
 
-This condition implies that $X_{it}$ is independent of $(A_i, U_{it})$—a random assignment assumption reflective of a randomized controlled trial. In that case, $\partial_x \E[Y_{it} | X_{it} = x]$ equals the average partial derivative $\E[\partial_x \phi(x, A_i, U_{it}) | X_{it} = x]$ and hence recovers the target marginal effect.
+This condition implies that $X_{it}$ is independent of $(A_i, U_{it})$ — a random assignment assumption reflective of a randomized controlled trial. In that case, $\partial_x \E[Y_{it} | X_{it} = x]$ equals the average partial derivative $\E[\partial_x \phi(x, A_i, U_{it}) | X_{it} = x]$ and hence recovers the target marginal effect.
 
 In observational data, this assumption typically fails, and the heterogeneity bias must be explicitly addressed.
 
