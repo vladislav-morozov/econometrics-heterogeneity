@@ -22,11 +22,50 @@ By the end of this section, you should be able to:
 
 ## A More Explicit Identification Result
 
+In the previous section, we have identified the average marginal effect for stayers in model ([-@eq-nonparametric-model-full-nonsep]) in terms of a limit of average change in outcomes across periods (@eq-nonparametric-avg-me-identification-result):
+$$
+\begin{aligned}
+ & \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+ & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
+\end{aligned}
+$$
+This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.
+
+At the same time, @eq-nonparametric-avg-me-identification-result is not quite convenient for estimation purposes. A direct application would require one to deal with limits. 
+
+In order to circumvent this issue, we now focus on providing a more estimation-friendly version of @eq-nonparametric-avg-me-identification-result. To do so, define the function
+$$
+	g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
+$$
+Observe that $g(x, x) = 0$, and so by the definition of partial derivatives it holds that
+$$
+\begin{aligned}
+& \E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2}= x+h \right] \\
+& = \dfrac{g(x, x+h)}{h} = \dfrac{g(x, x+h) - g(x, x)}{h} \\
+& \to \partial_{x_2} g(x, x),
+\end{aligned}
+$$ {#eq-nonparametric-avg-est-g}
+where $\partial_{x_2}$ means the partial derivative with respect to the second argument. 
+
+By combining @eq-nonparametric-avg-est-g with @eq-nonparametric-avg-me-identification-result, we obtain the following representation for the average marginal effects of stayers: 
+$$
+\begin{aligned}
+	& \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    & = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+$$ {#eq-nonparametric-avg-est-me}
+
+The practical importance of @eq-nonparametric-avg-est-me is that it reduces the problem of estimating average marginal effects to the problem of estimating a derivative of a conditional function — a standard nonparametric regression problem.  
+
 
 ## A Primer on Multivariate Local Polynomial Estimation
 
+See @Fan1996 for a classic monograph on the topic. 
+
 ## Application to Estimating Average Marginal Effects
 
+### Asymptotic Properties 
+[@Masry1996; @Masry1996b]
 
 ---
 
