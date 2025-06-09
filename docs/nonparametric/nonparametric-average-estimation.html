@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
+<meta name="description" content="Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)">
 
-<title>1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity</title>
+<title>14&nbsp; Nonparametric Estimation of Average Effects – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,27 +44,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./linear/linear-introduction.html" rel="next">
-<link href="./index.html" rel="prev">
-<link href="./themes/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-average-identification.html" rel="prev">
+<link href="../themes/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -448,8 +448,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
+<meta property="og:title" content="14&nbsp; Nonparametric Estimation of Average Effects – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to estimate average effects in nonparametric models with infinite-dimensional heterogeneity using local polynomial regression (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -462,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-average-estimation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -477,7 +477,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
+      <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
@@ -495,13 +495,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -516,55 +516,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span></a>
   </div>
 </li>
@@ -581,25 +581,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Average Effects and Heterogeneity Bias</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Average Effects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
@@ -611,7 +611,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -625,25 +625,27 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unobserved-heterogeneity" id="toc-unobserved-heterogeneity" class="nav-link active" data-scroll-target="#unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</a>
+  <li><a href="#an-estimable-form-of-the-average-marginal-effect" id="toc-an-estimable-form-of-the-average-marginal-effect" class="nav-link active" data-scroll-target="#an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</a></li>
+  <li><a href="#a-primer-on-multivariate-local-polynomial-estimation" id="toc-a-primer-on-multivariate-local-polynomial-estimation" class="nav-link" data-scroll-target="#a-primer-on-multivariate-local-polynomial-estimation"><span class="header-section-number">14.2</span> A Primer on Multivariate Local Polynomial Estimation</a>
   <ul class="collapse">
-  <li><a href="#types-of-unobserved-heterogeneity" id="toc-types-of-unobserved-heterogeneity" class="nav-link" data-scroll-target="#types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</a></li>
-  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
+  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea"><span class="header-section-number">14.2.1</span> Idea</a></li>
+  <li><a href="#estimator" id="toc-estimator" class="nav-link" data-scroll-target="#estimator"><span class="header-section-number">14.2.2</span> Estimator</a></li>
   </ul></li>
-  <li><a href="#this-course" id="toc-this-course" class="nav-link" data-scroll-target="#this-course"><span class="header-section-number">1.2</span> This Course</a>
+  <li><a href="#estimating-average-marginal-effects" id="toc-estimating-average-marginal-effects" class="nav-link" data-scroll-target="#estimating-average-marginal-effects"><span class="header-section-number">14.3</span> Estimating Average Marginal Effects</a>
   <ul class="collapse">
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="header-section-number">1.2.1</span> Course Description</a></li>
-  <li><a href="#common-themes" id="toc-common-themes" class="nav-link" data-scroll-target="#common-themes"><span class="header-section-number">1.2.2</span> Common Themes</a></li>
+  <li><a href="#estimator-1" id="toc-estimator-1" class="nav-link" data-scroll-target="#estimator-1"><span class="header-section-number">14.3.1</span> Estimator</a></li>
+  <li><a href="#asymptotic-properties" id="toc-asymptotic-properties" class="nav-link" data-scroll-target="#asymptotic-properties"><span class="header-section-number">14.3.2</span> Asymptotic Properties</a></li>
   </ul></li>
+  <li><a href="#another-estimator" id="toc-another-estimator" class="nav-link" data-scroll-target="#another-estimator"><span class="header-section-number">14.4</span> Another Estimator</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-average-estimation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-average-estimation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-avg-id" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></h1>
 </div>
 
 
@@ -670,192 +672,163 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course.</p>
-<p>By the end of this section, you should</p>
+<p>This section provides an explicit expression for the average marginal effect and discusses its estimation using local polynomial regression.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Recognize cases where heterogeneous coefficients arise.</li>
-<li>Identify key challenges in estimating heterogeneous coefficients.</li>
-<li>Discuss two strategies for identification under coefficient heterogeneity.</li>
+<li>Derive a limit-free expression for the average marginal effect of stayers.</li>
+<li>Describe local polynomial estimators for derivatives of regression functions.</li>
+<li>Propose an estimator for the average marginal effect.</li>
 </ul>
 </div>
 </div>
-<section id="unobserved-heterogeneity" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</h2>
-<p>In economics, business, and other social sciences, no two individuals, firms, or countries are truly identical. Even when we observe the same covariates, hidden differences — such as preferences, productivity, or measurement errors — can lead to vastly different outcomes. These unobserved factors complicate empirical analysis and pose a fundamental challenge to statistical inference: how can we estimate policy-relevant parameters when key determinants of behavior remain hidden? This challenge, known as unobserved heterogeneity, is central to empirical research and the focus of this course.</p>
-<section id="types-of-unobserved-heterogeneity" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</h3>
-<p>By unobserved heterogeneity, we will understand differences across individuals, firms, or other economic units that are not captured in the available data but still influence outcomes. These differences can arise from various sources, including:</p>
-<ul>
-<li>Omitted explanatory variables and “fundamental” characteristics of agents.
-<ul>
-<li><em>Example</em>: Consumer demand depends on both income and prices, but if price data is missing, it becomes an unobserved factor influencing demand.</li>
-<li><em>Example</em>: Differences in consumer preferences shape demand, yet preferences are typically unobservable.</li>
-</ul></li>
-<li>Differences in responses to treatments: treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
-<ul>
-<li><em>Example</em>: A job training program may benefit some individuals more than others, meaning treatment effects vary across people.</li>
-</ul></li>
-<li>Measurement error:
-<ul>
-<li><em>Example</em>: Standardized test scores are often used to proxy intelligence, but they are imperfect measurements of the true intelligence.</li>
-</ul></li>
-</ul>
+<section id="an-estimable-form-of-the-average-marginal-effect" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</h2>
+<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>): <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+&amp; = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
+\end{aligned}
+\]</span> This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.</p>
+<p>However, the limit-based representation poses challenges for estimation, which typically benefits from an explicit representation. To address this, we define the following function: <span class="math display">\[
+    g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
+\]</span> This function captures how the average outcome difference changes with changes in the covariates. It plays a central role in constructing our estimator.</p>
+<p>Observe that <span class="math inline">\(g(x, x) = 0\)</span>, since <span class="math display">\[
+\begin{aligned}
+g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
+&amp; = \E\left[\phi(x, A_i, U_{i2}) - \phi(x, A_i, U_{i1})|X_{i1}=X_{i2} = x \right]\\
+&amp; = \E\left[\phi(x, A_i, U_{it}) - \phi(x, A_i, U_{it})|X_{i1}=X_{i2} = x \right]\\
+&amp; = 0,
+\end{aligned}
+\]</span> where we use the stationarity of <span class="math inline">\(U_{it}\)</span> (and hence of <span class="math inline">\(\phi(x, A_i, U_{it})\)</span>) in the last two lines.</p>
+<p>Thus, by the definition of partial derivatives it holds that <span id="eq-nonparametric-avg-est-g"><span class="math display">\[
+\begin{aligned}
+&amp; \E\left[\dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2}= x+h \right] \\
+&amp; = \dfrac{g(x, x+h)}{h} = \dfrac{g(x, x+h) - g(x, x)}{h} \\
+&amp; \to \partial_{x_2} g(x, x),
+\end{aligned}
+\tag{14.1}\]</span></span> where <span class="math inline">\(\partial_{x_2}\)</span> means the partial derivative with respect to the second argument.</p>
+<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+\tag{14.2}\]</span></span></p>
+<p>The practical importance of <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> is that it reduces the problem of estimating average marginal effects to the problem of estimating a derivative of a conditional function — a standard nonparametric regression problem.</p>
 </section>
-<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</h3>
-<p>Unobserved heterogeneity is particularly problematic in observational data, where individuals or firms can self-select into treatments or economic decisions. The agents make this decisions based on all the information available to them, but not all important variables get recorded in datasets. As a consequence, there exist hidden factors that confound the relationship between the explanatory variables and the outcomes. In contrast, in randomized experiments, treatments are assigned independently of the characteristics of agents (possibly conditionally). The following graphs schematically illustrate the point:</p>
-<div>
-
+<section id="a-primer-on-multivariate-local-polynomial-estimation" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="a-primer-on-multivariate-local-polynomial-estimation"><span class="header-section-number">14.2</span> A Primer on Multivariate Local Polynomial Estimation</h2>
+<section id="idea" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="idea"><span class="header-section-number">14.2.1</span> Idea</h3>
+<p>In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial (LP) regression provides a particularly convenient approach. LP estimators are available in closed form, can estimate derivatives directly, and have favorable asymptotic properties.</p>
+<p>We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in <span class="citation" data-cites="Li2007">Li and Racine (<a href="../references/references.html#ref-Li2007" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="Fan1996">Fan and Gijbels (<a href="../references/references.html#ref-Fan1996" role="doc-biblioref">1996</a>)</span> for some standard references.</p>
+<p>To motivate the approach, let <span class="math inline">\(g(\cdot, \cdot)\)</span> be a smooth function of two variables, and suppose that we see observations <span class="math inline">\((Y_i, X_{i1}, X_{i2})\)</span> such that <span class="math display">\[
+    \E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
+\]</span> Let <span class="math inline">\((x_1, x_2)\)</span> be some fixed point.</p>
+<p>The bivariate Taylor’s theorem tell us that, if <span class="math inline">\((X_{i1}, X_{i2})\)</span> is “close” to <span class="math inline">\((x_1, x_2)\)</span>, then (expanding up to the second order) <span class="math display">\[
+\begin{aligned}
+    &amp;   g(X_{i1}, X_{i2}) \\
+    &amp;  \approx g(x_1, x_2) \\
+    &amp; \quad + \partial_{x_1} g(x_1, x_2) (X_{i1}-x_1) + \partial_{x_2} g(x_1, x_2)(X_{i2} - x_2) \\
+    &amp; \quad + \dfrac{1}{2} \partial_{x_1}^2 g(x_1, x_2)(X_{i1}-x_1)^2 +  \dfrac{1}{2} \partial_{x_2}^2 g(x_1, x_2)(X_{i2}-x_2)^2 \\
+    &amp; \quad  + \partial_{x_1}\partial_{x_2} g(x_1, x_2) (X_{i1}-x_1)(X_{i2}-x_2) \\
+    &amp; = \bZ_i(x_1, x_2)'\bbeta(x_1, x_2)
+\end{aligned}
+\]</span> where <span class="math display">\[
+\begin{aligned}
+    \bZ_i(x_1, x_2) &amp; = \begin{pmatrix}
+        1\\
+        X_{i1}- x_1\\
+        X_{i2} - x_2\\
+        (X_{i1}-x_1)^2/2\\
+        (X_{i1}- x_1)(X_{i2}-x_2) \\
+        (X_{i2} - x_2)^2/2
+    \end{pmatrix}, \\
+     \bbeta(x_1, x_2) &amp; = \begin{pmatrix}
+        g(x_1, x_2)\\
+        \partial_{x_1} g(x_1, x_2)\\
+        \partial_{x_2} g(x_1, x_2)\\
+        \partial^2_{x_1} g(x_1, x_2)\\
+        \partial_{x_1}\partial_{x_2} g(x_1, x_2)\\
+        \partial^2_{x_2} g(x_1, x_2)
+    \end{pmatrix}
+\end{aligned}
+\]</span> This expansion suggests that we can estimate the leading derivatives <span class="math inline">\(\bbeta(x_1, x_2)\)</span> by regressing <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(\bZ_i(x_1, x_2)\)</span> using weighted least squares. Observations which are closer to the target point <span class="math inline">\((x_1, x_2)\)</span> should receive a higher weight.</p>
+</section>
+<section id="estimator" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="estimator"><span class="header-section-number">14.2.2</span> Estimator</h3>
+<p>We formalize the idea of closeness using a bivariate <em>kernel</em> function <span class="math inline">\(K(\cdot, \cdot)\)</span> that will measure the distance between data points and the target point <span class="math inline">\((x_1, x_2)\)</span>. In principle, we can take any function <span class="math inline">\(K\)</span> that satisfies the following properties: <span class="math display">\[
+\begin{aligned}
+K(u_1, u_2) &amp; \geq 0,  \\
+\iint K(u_1, u_2)du_1du_2 &amp; =1, \\
+  \int u_j K(u_1, u_2)du_j &amp; =0.
+\end{aligned}
+\]</span> A common approach is to take <span class="math inline">\(K\)</span> to be a product of some univariate density functions <span class="math inline">\(K_1\)</span>: <span class="math display">\[
+K(x_1, x_2) = K_1(x_1) K(x_2),
+\]</span> where <span class="math inline">\(K_1\)</span> may be the probability density function of the standard Gaussian distribution, for example.</p>
+<p>To estimate the derivative coefficients in <span class="math inline">\(\bbeta(x_1, x_2)\)</span>, we perform a weighted least squares regression of <span class="math inline">\(Y_i\)</span> on the “covariates”/basis functions <span class="math inline">\(\bZ_i(x_1, x_2)\)</span>, using kernel weights that reflect proximity to the target point. The resulting estimator is: <span id="eq-nonparametric-avg-lp"><span class="math display">\[
+\begin{aligned}
+    \hat{\bbeta}(x_1, x_2) &amp;  = \left( \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right) \bZ_i(x_1, x_2)\bZ_i(x_1, x_2)'\right)^{-1}\\
+    &amp; \hspace{0.9cm} \times \sum_{i=1}^N K\left(\dfrac{X_{i1}-x_1}{s}, \dfrac{X_{i2}-x_2}{s} \right)  \bZ_i(x_1, x_2) Y_i,
+\end{aligned}
+\tag{14.3}\]</span></span> where <span class="math inline">\(s&gt;0\)</span> is the smoothing parameter (bandwidth). As usual with kernel estimators, larger values of <span class="math inline">\(s\)</span> correspond to stronger smoothing — the estimator considers points in a larger neighborhood of <span class="math inline">\((x_1, x_2)\)</span>.</p>
+<p>One may generalize the approach to consider local polynomials of general order <span class="math inline">\(p\)</span>. Taking higher <span class="math inline">\(p\)</span> permits estimation of higher-order derivatives.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 237.74 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-112 233.74,-112 233.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="57.7" cy="-90" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="57.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="119.7" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="119.7" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M72.39,-72.41C80.11,-63.69 89.72,-52.85 98.26,-43.21"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="101.1,-45.28 105.11,-35.47 95.86,-40.64 101.1,-45.28"></polygon>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="181.7" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="181.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge1" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M167.32,-72.76C159.53,-63.97 149.75,-52.93 141.08,-43.14"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="143.68,-40.8 134.43,-35.63 138.44,-45.44 143.68,-40.8"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Experimental data: no confounding.</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 151.74 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-184 147.74,-184 147.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="86.04" cy="-162" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-157.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="48.04" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="48.04" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- A&#45;&gt;B -->
-<g id="edge1" class="edge">
-<title>A-&gt;B</title>
-<path fill="none" stroke="#e6e6e6" d="M76.84,-144.05C70.87,-133.05 63.11,-118.76 57.16,-107.79"></path>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="86.04" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge3" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M93.94,-143.75C98.15,-133.58 102.9,-120.33 105.04,-108 107.78,-92.24 107.78,-87.76 105.04,-72 103.52,-63.24 100.68,-54.01 97.65,-45.75"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="100.84,-44.29 93.94,-36.25 94.32,-46.84 100.84,-44.29"></polygon>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M57.24,-72.05C61.68,-63.89 67.09,-53.91 72.02,-44.82"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="75.23,-46.25 76.93,-35.79 69.08,-42.91 75.23,-46.25"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Observational data: confounding</figcaption> </figure><p></p>
+<div class="callout-body-container">
+<p>Which order of local polynomials should one use? The standard advice is to take the degree <span class="math inline">\(p\)</span> of the polynomial to be one higher than the highest derivatives of interest. For example, if we are interested in the regression function itself (zeroth derivative), it is most common to use local linear regression (first degree polynomial). In our case, we are interested in the first derivative. According to this rule, we should run local quadratic regression, as described above.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<p>As a consequence, ignoring unobserved heterogeneity can lead to misleading statistical conclusions. Confounding manifests even in simple linear regression, with some examples including:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">Omitted variable bias</a>: if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.</li>
-<li><a href="https://en.wikipedia.org/wiki/Regression_dilution">Attenuation bias</a>: When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.</li>
-</ul>
-<p>The issue becomes even more challenging in nonlinear models, where often even the direction of the bias cannot be predicted <span class="citation" data-cites="Stefanski1985">(e.g. <a href="references/references.html#ref-Stefanski1985" role="doc-biblioref">Stefanski and Carroll 1985</a>)</span>.</p>
 </section>
 </section>
-<section id="this-course" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="this-course"><span class="header-section-number">1.2</span> This Course</h2>
-<section id="course-description" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="course-description"><span class="header-section-number">1.2.1</span> Course Description</h3>
-<p>As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses. This course surveys some of the most important advances, structured into three key topics:</p>
-<ol type="1">
-<li>Linear models with heterogeneous coefficients: extending traditional regression models to allow for individual-specific responses to treatment.</li>
-<li>Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.</li>
-<li>Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution <em>of</em> treatment effects.</li>
-</ol>
-<p>Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will emphasize identification strategies over asymptotic theory.</p>
-</section>
-<section id="common-themes" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="common-themes"><span class="header-section-number">1.2.2</span> Common Themes</h3>
-<p>Despite their differences, all models we study in this course share a common structure: they describe how an outcome <span class="math inline">\(y\)</span> depends on observed factors (<span class="math inline">\(x\)</span>) and unobserved heterogeneity (<span class="math inline">\(u, \alpha\)</span>). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models: <span id="eq-intro-potential-outcomes"><span class="math display">\[
-    y_i^x = \phi(x, \alpha_i),  \quad y_{it}^x = \phi(x, \alpha_i, u_{it}),
-\tag{1.1}\]</span></span> where <span class="math inline">\(x\)</span> is some potential value of the observed covariates, <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(u_{it}\)</span> are the time-invariant and time-varying unobserved characteristics of unit <span class="math inline">\(i\)</span>, respectively; and <span class="math inline">\(y_i^x\)</span> and <span class="math inline">\(y_{it}^x\)</span> are the (scalar) outcome for individual <span class="math inline">\(i\)</span> given <span class="math inline">\(x\)</span> (in time <span class="math inline">\(t\)</span>). In practice, we will have access to datasets of the form <span class="math inline">\(\curl{(y_i, x_i)}_{i=1, \dots, N}\)</span> or <span class="math inline">\(\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}\)</span>. The observed outcomes are generated as <span class="math display">\[
-    y_i = y_i^{x_i}=  \phi(x_i, \alpha_i),  \quad y_{it} = y_{it}^{x_{it}} = \phi(x_{it}, \alpha_i, u_{it}),
+<section id="estimating-average-marginal-effects" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="estimating-average-marginal-effects"><span class="header-section-number">14.3</span> Estimating Average Marginal Effects</h2>
+<section id="estimator-1" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="estimator-1"><span class="header-section-number">14.3.1</span> Estimator</h3>
+<p>Equipped with the local polynomial estimator, we can now estimate the average marginal effect of stayers. To do so, we use <span class="math inline">\(Y_{i2}-Y_{i1}\)</span> as the dependent variable in <a href="#eq-nonparametric-avg-lp" class="quarto-xref">Equation&nbsp;<span>14.3</span></a> and select the target point as <span class="math inline">\((x_1, x_2)=(x, x)\)</span>. The third coordinate of <span class="math inline">\(\hat{\bbeta}(x, x)\)</span> is an estimator for the partial derivative of <span class="math inline">\(\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]\)</span> with respect to <span class="math inline">\(x_2\)</span>, evaluated at <span class="math inline">\((x, x)\)</span> — precisely the average marginal effect of interest by <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a>: <span class="math display">\[
+\widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
 \]</span></p>
-<p>Throughout, our goal will be to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.</p>
-<p>A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:</p>
-<ul>
-<li>Imposing functional form restrictions on <span class="math inline">\(\phi\)</span> (e.g.&nbsp;parametric assumptions such as linearity, or assuming that <span class="math inline">\(\alpha_i\)</span> is scalar and that it enters <span class="math inline">\(\phi\)</span> monotonically);</li>
-<li>Restricting the extent of unobserved heterogeneity in the model (e.g.&nbsp;assuming that there is scalar unobserved variables or a vector of heterogeneous coefficients);</li>
-<li>Restricting the relationship between the observed and unobserved variables (e.g.&nbsp;assuming that <span class="math inline">\(\alpha_i\)</span> is independent from <span class="math inline">\(x_i\)</span>);</li>
-<li>Focusing on particular parts of the distribution of the outcome (such as quantiles).</li>
-</ul>
-<p>We will see examples of each approach throughout the course, and one should see each particular model discussed as a specific variation of model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>).</p>
+</section>
+<section id="asymptotic-properties" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="asymptotic-properties"><span class="header-section-number">14.3.2</span> Asymptotic Properties</h3>
+<p>Our estimator inherits all the desirable properties of local polynomial estimators, including consistency and asymptotic normality <span class="citation" data-cites="Li2007 Masry1996 Masry1996b">(see theorem 2.10 in <a href="../references/references.html#ref-Li2007" role="doc-biblioref">Li and Racine 2007</a>; <a href="../references/references.html#ref-Masry1996" role="doc-biblioref">Masry 1996a</a>, <a href="../references/references.html#ref-Masry1996b" role="doc-biblioref">1996b</a>)</span>. In particular, by suitably undersmoothing the local polynomial estimator (taking <span class="math inline">\(s\)</span> smaller than the MSE-optimal value), one can conduct inference on the target average effect of interest.</p>
+</section>
+</section>
+<section id="another-estimator" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="another-estimator"><span class="header-section-number">14.4</span> Another Estimator</h2>
+<p>Before we move on to generalizations of the identification result, it is worth discussing <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference <span class="math inline">\((\phi(x+h, a, u)-\phi(x, a, u))\)</span>. While the one-sided finite difference yields a valid estimator, symmetric (central) differences <a href="https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives">often provide more accurate approximations to derivatives.</a>. We now present a refinement of our identification result based on this idea.</p>
+<p>By suitably adjusting the above argument, one can show that <span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+    \\
+    &amp; = \dfrac{1}{2}  \dfrac{d}{dh}\Big(  \E\left[Y_{i2}- Y_{i1}|X_{i1}=x-h,  X_{i2} = x+h \right]\Big)\Big|_{h=0}\\
+    &amp; = \dfrac{1}{2}\Bigg(  \partial_{x_2}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2] \\
+    &amp; \hspace{2cm} -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Bigg|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+\]</span> A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_1\)</span>, i.e., the third and second elements of <span class="math inline">\(\hat{\bbeta}(x)\)</span>.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we begin by examining how unobserved heterogeneity arises naturally in linear models and setting the stage for the first block of the course.</p>
+<p>In the next section, we somewhat relax the stationarity assumption on the model by allowing certain changes in the structural function.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Stefanski1985" class="csl-entry" role="listitem">
-Stefanski, Leonard A., and Raymond J. Carroll. 1985. <span>“<span class="nocase">Covariate Measurement Error in Logistic Regression</span>.”</span> <em>The Annals of Statistics</em> 13 (4): 1335–51. <a href="https://doi.org/10.1214/aos/1176349741">https://doi.org/10.1214/aos/1176349741</a>.
+<div id="ref-Fan1996" class="csl-entry" role="listitem">
+Fan, Jianqing, and Irene Gijbels. 1996. <em><span class="nocase">Local Polynomial Modelling and Its Applications</span></em>. Springer New York.
+</div>
+<div id="ref-Li2007" class="csl-entry" role="listitem">
+Li, Qi, and Jeffrey Scott Racine. 2007. <em><span class="nocase">Nonparametric Econometrics: Theory and Practice</span></em>. Princeton University Press.
+</div>
+<div id="ref-Masry1996" class="csl-entry" role="listitem">
+Masry, Elias. 1996a. <span>“<span class="nocase">Multivariate Local Polynomial Regression for Time Series: Uniform Strong Consistency and Rates</span>.”</span> <em>Journal of Time Series Analysis</em> 17 (6): 571–99. <a href="https://doi.org/10.1111/j.1467-9892.1996.tb00294.x">https://doi.org/10.1111/j.1467-9892.1996.tb00294.x</a>.
+</div>
+<div id="ref-Masry1996b" class="csl-entry" role="listitem">
+———. 1996b. <span>“<span class="nocase">Multivariate Regression Estimation: Local Polynomial Fitting for Time Series</span>.”</span> <em>Stochastic Processes and Their Applications</em> 65 (1): 3575–81. <a href="https://doi.org/10.1016/S0304-4149(96)00095-6">https://doi.org/10.1016/S0304-4149(96)00095-6</a>.
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1423,13 +1396,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Course Information">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course Information</span>
+      <a href="../nonparametric/nonparametric-average-identification.html" class="pagination-link" aria-label="Nonparametric Identification of Average Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Average Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linear/linear-introduction.html" class="pagination-link" aria-label="Intro: Linear Models with Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1438,4 +1411,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-average-estimation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

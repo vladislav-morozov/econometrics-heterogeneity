@@ -1,0 +1,145 @@
+--- 
+description: "Learn how heterogeneity bias arises in nonseparable models, and why average outcomes may not identify causal effects in observational data. (Lecture Notes)"
+
+open-graph:
+    description: "Learn how heterogeneity bias arises in nonseparable models, and why average outcomes may not identify causal effects in observational data. (Lecture Notes)"
+---
+
+
+# Average Effects and Heterogeneity Bias {#sec-nonparametric-heterogeneity-bias}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section shows why average effects cannot in general be identified by simply differentiating average outcomes. 
+
+By the end of this section, you should be able to: 
+
+- State the nonseparable model and define average marginal effects.
+- Derive the decomposition of changes in average outcomes into average marginal effects and heterogeneity bias.
+- Explain the source of heterogeneity bias in observational data.
+:::
+
+## Model and Object of Interest
+
+### Model
+
+As noted in the previous section, we first focus our attention on the fully nonseparable panel data model ([-@eq-nonparametric-model-full-nonsep]):
+$$
+Y_{it} = \phi(X_{it}, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2},
+$$ {#eq-nonparametric-model-full-nonsep-het-bias}
+where $\phi(x, a, u)$ is differentiable in $x$ for each possible value $(a, u)$.
+
+Model ([-@eq-nonparametric-model-full-nonsep-het-bias]) is an extremely general nonparametric model. We make essentially no assumptions on the form of $(A_i, U_{it})$ or $\phi$ (beyond differentiability). In particular,  $(A_i, U_{it})$ may be finite- or infinite-dimensional. 
+
+To illustrate the identification arguments clearly, we make two simplifying assumptions throughout:
+
+1. $X_{it}$ is scalar. 
+2. There are only two observations per each unit.
+
+Both of these assumptions are easy to relax at the price of more complex notation. 
+
+
+
+### Object of Interest
+
+In studying economic models with continuous treatments or inputs, marginal effects provide interpretable measures of how units respond to small changes in covariates. Accordingly, our key object of interest is the *average marginal effect*:
+$$
+	\E[\partial_x \phi(x, A_i, U_{it})|X_{it}=x, \dots],
+$$ {#eq-nonparametric-me-1}
+where $x$ is some fixed point, and  the conditioning set defines some population of interest in terms of $X_{it}$ and other variables. Such marginal effects are standard objects of interest in models with continuous covariates and outcomes [@Hoderlein2007; @Hoderlein2012; @Chernozhukov2015].
+
+The parameter ([-@eq-nonparametric-me-1]) has a standard causal interpretation. We  consider the population of units with $x_{it}=x$, along with other characteristics captured by the conditioning set. For these units, we exogenously change their $x_{it}$ infinitesimally.  Effect ([-@eq-nonparametric-me-1]) reports the average change in outcomes for this fixed population of units.
+
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+ One may also consider average treatment effects $\E[\partial_x \phi(x_2, A_i, U_{it}) - \partial_x \phi(x_1, A_i, U_{it})|\dots]$. We do not discuss such effects explicitly, but all the results we derive for marginal effects have direct counterparts for average effects of non-marginal changes in $x$. 
+
+:::
+
+
+## Heterogeneity Bias and Issue with Average Outcomes
+
+
+### Intuitive Approach
+
+
+One may think that it is easy to identify effect ([-@eq-nonparametric-me-1]) even from cross-sectional data. It is tempting to consider the derivative of the conditional expectation of $Y$ given $X_{it}$. However, as we will now see, this approach fails in the presence of non-random treatment assignment, typical in observational settings.
+
+
+Consider the conditional average of $Y_{it}$ for the units with $X_{it}=x$:
+$$
+\begin{aligned}
+	\E[Y_{it}|X_{it}=x]  & = \E[\phi(X_{it}, V_{it})|X_{it}=x]  \\
+	& = \E[\phi(x, V_{it})|X_{it}=x].
+\end{aligned}  
+$$
+where we label $V_{it}=(A_i, U_{it})$ for brevity. The expectation is with respect to the conditional law of $V_{it}$ given $X_{it}=x$. 
+
+
+One might hope that differentiating the conditional expectation with respect to $x$ recovers the average marginal effect ([-@eq-nonparametric-me-1]):
+$$
+\partial_x \E[Y_{it}|X_{it}=x] \overset{??}{=} \E[\partial_x \phi(x, V_{it})|X_{it}=x]
+$$ 
+
+### Heterogeneity Bias
+
+However, this reasoning fails when covariates may be correlated with unobserved factors affecting the outcome.
+
+ To make this intuition precise, let $f_{V_{it}|X_{it}}(v|x)$ be the conditional density of $V_{it}$ given $X_{it}=x$ with respect to some dominating measure $\mu$ that does not depend on $x$ (its existence is an assumption, but not a particularly important one right now). With this notation, the above expectation can be written as 
+$$
+\E[Y_{it}|X_{it}=x]  = \int \phi(x, v)f_{V_{it}|X_{it}}(v|x)\mu(dv).
+$$
+We assume that $f_{V_{it}|X_{it}}(v|x)$ is differentiable in the conditioning argument $x$. In other words, there is smooth dependence between $X_{it}$ and $V_{it}$ in a distributional sense.
+
+
+Assuming we can swap the integral and the derivative, we obtain the following expression for the derivative
+$$
+\begin{aligned}
+	& \partial_x \E[Y_{it}|X_{it}=x] \\
+    &  = \int  \partial_x \left[\phi(x, v)f_{V_{it}|X_{it}}(v|x) \right]\mu(dv)\\
+	& = \int \partial_x \phi(x, v)f_{V_{it}|X_{it}}(v|x)\mu(dv) + \int  \phi(x, v)\partial_x f_{V_{it}X_{it}}(v|x)\mu(dv)\\
+	& = \E[\partial_x \phi(x, V_{it})|X_{it}=x] + \int  \phi(x, v)\partial_x f_{V_{it}|X_{it}}(v|x)\mu(dv).  
+\end{aligned}
+$$ {#eq-nonparametric-cond-exp-decomposition}
+
+@eq-nonparametric-cond-exp-decomposition shows that, as we change $x$, the conditional expectation $\E[Y_{it}|X_{it}=x]$ changes due to two factors:
+
+1. Change in the function $\phi$. This term is an average marginal effect  — the parameter of interest. 
+2. Changes in the conditional distribution of $(A_i, U_{it})$ given $X_{it}$ — the source of the second term, typically called the *heterogeneity* bias [@Chamberlain1982; see also @Graham2012 for a more explicit representation].
+
+### Source of Bias and Conditions for no Bias 
+ 
+
+So why does the heterogeneity bias appear? Fundamentally, it arises when the treatment $X_{it}$ is not assigned exogenously but is instead chosen by economic agents based on information about their potential outcomes $\phi(x, A_i, U_{it})$. For example, consumers choose products based on knowledge of their preferences $A_i$ and transitory taste shocks and current prices $U_{it}$. Similarly, firms decide on input levels based on firm-specific productivity and technology components encapsulated in $(A_i, U_{it})$.
+
+As a result, units with different values of $X_{it}$ may systematically differ in their unobserved characteristics. When we compute the derivative $\partial_x \E[Y_{it} | X_{it} = x]$, we are not isolating the effect of changing $x$ for a fixed unit. Instead, we are comparing different populations—those for whom $X_{it} = x$ versus those for whom $X_{it} = x + \varepsilon$. Each such population potentially has a different distribution of $(A_i, U_{it})$.
+
+This violates the *ceteris paribus* logic required for causal interpretation of marginal effects. In particular, the expression $\partial_x \E[Y_{it} | X_{it} = x]$ combines the genuine marginal effect of $x$ with a compositional shift due to variation in the distribution of unobservables across $x$.  
+
+The bias term does vanish if the conditional distribution of $(A_i, U_{it})$ given $X_{it}$ does not vary with $x$. That is, a sufficient condition for identification of average marginal effects from average outcomes is
+$$
+\partial_x f_{V_{it}|X_{it}}(v|x) = 0
+$$
+
+This condition implies that $X_{it}$ is independent of $(A_i, U_{it})$ — a random assignment assumption reflective of a randomized controlled trial. In that case, $\partial_x \E[Y_{it} | X_{it} = x]$ equals the average partial derivative $\E[\partial_x \phi(x, A_i, U_{it}) | X_{it} = x]$ and hence recovers the target marginal effect.
+
+In observational data, this assumption typically fails, and the heterogeneity bias must be explicitly addressed.
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+
+Note that it is also possible to  consider the case where $(A_i, U_{it})$ and $X_{it}$ are independent only conditionally on some additional observed variable  $Z_{it}$ (ignorability/unconfoundedness assumption). The results will then be conditional on $Z_{it}$. See @Altonji2005 for this flavor of results in continuous settings.
+
+
+::: 
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section we show how one can actually identify average marginal effects for certain subpopulations by assuming that $U_{it}$ is stationary. 

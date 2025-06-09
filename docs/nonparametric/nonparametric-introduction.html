@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
+<meta name="description" content="Explore nonparametric models with unobserved heterogeneity. Identification under minimal functional form assumptions. (Lecture Notes)">
 
-<title>1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity</title>
+<title>11&nbsp; Introduction to Nonparametric Models with Unobserved Heterogeneity – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,27 +44,27 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./linear/linear-introduction.html" rel="next">
-<link href="./index.html" rel="prev">
-<link href="./themes/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../nonparametric/nonparametric-heterogeneity-bias.html" rel="next">
+<link href="../linear/linear-conclusion.html" rel="prev">
+<link href="../themes/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -448,8 +448,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
+<meta property="og:title" content="11&nbsp; Introduction to Nonparametric Models with Unobserved Heterogeneity – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Explore nonparametric models with unobserved heterogeneity. Identification under minimal functional form assumptions. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -462,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -477,7 +477,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
+      <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
@@ -495,13 +495,13 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -516,55 +516,55 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span></a>
   </div>
 </li>
@@ -581,25 +581,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Average Effects and Heterogeneity Bias</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Average Effects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
@@ -611,7 +611,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -625,25 +625,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unobserved-heterogeneity" id="toc-unobserved-heterogeneity" class="nav-link active" data-scroll-target="#unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</a>
+  <li><a href="#towards-nonparametric-models" id="toc-towards-nonparametric-models" class="nav-link active" data-scroll-target="#towards-nonparametric-models"><span class="header-section-number">11.1</span> Towards Nonparametric Models</a>
   <ul class="collapse">
-  <li><a href="#types-of-unobserved-heterogeneity" id="toc-types-of-unobserved-heterogeneity" class="nav-link" data-scroll-target="#types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</a></li>
-  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><span class="header-section-number">11.1.1</span> Motivation</a></li>
+  <li><a href="#nonparametric-models" id="toc-nonparametric-models" class="nav-link" data-scroll-target="#nonparametric-models"><span class="header-section-number">11.1.2</span> Nonparametric Models</a></li>
+  <li><a href="#object-of-interest" id="toc-object-of-interest" class="nav-link" data-scroll-target="#object-of-interest"><span class="header-section-number">11.1.3</span> Object of Interest</a></li>
+  <li><a href="#common-issue" id="toc-common-issue" class="nav-link" data-scroll-target="#common-issue"><span class="header-section-number">11.1.4</span> Common Issue</a></li>
   </ul></li>
-  <li><a href="#this-course" id="toc-this-course" class="nav-link" data-scroll-target="#this-course"><span class="header-section-number">1.2</span> This Course</a>
+  <li><a href="#models-of-this-block" id="toc-models-of-this-block" class="nav-link" data-scroll-target="#models-of-this-block"><span class="header-section-number">11.2</span> Models of This Block</a>
   <ul class="collapse">
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="header-section-number">1.2.1</span> Course Description</a></li>
-  <li><a href="#common-themes" id="toc-common-themes" class="nav-link" data-scroll-target="#common-themes"><span class="header-section-number">1.2.2</span> Common Themes</a></li>
+  <li><a href="#first-model" id="toc-first-model" class="nav-link" data-scroll-target="#first-model">First Model</a></li>
+  <li><a href="#second-model" id="toc-second-model" class="nav-link" data-scroll-target="#second-model">Second Model</a></li>
   </ul></li>
+  <li><a href="#plan-for-this-block" id="toc-plan-for-this-block" class="nav-link" data-scroll-target="#plan-for-this-block"><span class="header-section-number">11.3</span> Plan for This Block</a></li>
+  <li><a href="#a-brief-classification-of-nonparametric-models" id="toc-a-brief-classification-of-nonparametric-models" class="nav-link" data-scroll-target="#a-brief-classification-of-nonparametric-models"><span class="header-section-number">11.4</span> A Brief Classification of Nonparametric Models</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-intro" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></span></h1>
 </div>
 
 
@@ -670,192 +674,187 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course.</p>
-<p>By the end of this section, you should</p>
+<p>This section introduces nonparametric models with unobserved heterogeneity and lays out the structure and goals for this block.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Recognize cases where heterogeneous coefficients arise.</li>
-<li>Identify key challenges in estimating heterogeneous coefficients.</li>
-<li>Discuss two strategies for identification under coefficient heterogeneity.</li>
+<li>Explain limitations of linear models.<br>
+</li>
+<li>Write down generic nonparametric models with unobserved heterogeneity.</li>
+<li>Understand identification challenges and the assumptions commonly used to address them.</li>
 </ul>
 </div>
 </div>
-<section id="unobserved-heterogeneity" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</h2>
-<p>In economics, business, and other social sciences, no two individuals, firms, or countries are truly identical. Even when we observe the same covariates, hidden differences — such as preferences, productivity, or measurement errors — can lead to vastly different outcomes. These unobserved factors complicate empirical analysis and pose a fundamental challenge to statistical inference: how can we estimate policy-relevant parameters when key determinants of behavior remain hidden? This challenge, known as unobserved heterogeneity, is central to empirical research and the focus of this course.</p>
-<section id="types-of-unobserved-heterogeneity" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</h3>
-<p>By unobserved heterogeneity, we will understand differences across individuals, firms, or other economic units that are not captured in the available data but still influence outcomes. These differences can arise from various sources, including:</p>
+<section id="towards-nonparametric-models" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="towards-nonparametric-models"><span class="header-section-number">11.1</span> Towards Nonparametric Models</h2>
+<section id="motivation" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">11.1.1</span> Motivation</h3>
+<p>We began these notes by studying linear models with heterogeneous coefficients (<a href="../linear/linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>), a familiar and flexible starting point. As discussed in section <a href="../linear/linear-introduction.html" class="quarto-xref"><span>2</span></a>, such models are widely used and arise naturally in empirical work.</p>
+<p>But linearity is not innocent. Except for binary-only covariates, the assumption often lacks theoretical support and may be at odds with the data. Many economic settings suggest richer structures: preferences with satiation, production with non-constant returns to scale, or outcomes bounded by construction. Furthermore, differences between individuals may not be compressible into a finite-dimensional vector of heterogeneous coefficients. In such cases, linear models may be severely misspecified and lead to incorrect conclusions.</p>
+<p>This motivates a shift. In this block, we move beyond linearity and consider nonparametric models with unobserved heterogeneity — a class that allows for far greater flexibility in how outcomes respond to both observed and unobserved variation. These models present new challenges but also offer a more powerful framework for accounting for unobserved differences.</p>
+</section>
+<section id="nonparametric-models" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="nonparametric-models"><span class="header-section-number">11.1.2</span> Nonparametric Models</h3>
+<p>Nonparametric models address functional form concerns directly. Rather than imposing a specific shape on the relationship between <span class="math inline">\(y\)</span> and the covariates <span class="math inline">\(\bx\)</span>, we assume only that this relationship is governed by an unknown function <span class="math inline">\(\phi\)</span> of observed and unobserved variables. This leads to the following general setup:</p>
 <ul>
-<li>Omitted explanatory variables and “fundamental” characteristics of agents.
+<li><p>In cross-sectional settings: <span id="eq-nonparametric-generic-cross-section"><span class="math display">\[
+  Y_i = \phi(\bX_i, A_i), \quad {}_{i=1,\dots, N},
+\tag{11.1}\]</span></span> where <span class="math inline">\(\bX_{i}\)</span> includes the observed variables and <span class="math inline">\(A_i\)</span> includes the unobserved components.</p></li>
+<li><p>In panel data settings <span id="eq-nonparametric-generic-panel"><span class="math display">\[
+Y_{it} = \phi(\bX_{it}, A_i, U_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
+\tag{11.2}\]</span></span> where both <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span> are not observed.</p></li>
+</ul>
+<p>Models (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) parallel and generalize models (<a href="../linear/linear-introduction.html#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="../linear/linear-introduction.html#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>).</p>
+<p>In both cases the nature of <span class="math inline">\((A_i, U_{it})\)</span> is not restricted a priori. These unobserved components may include both finite-dimensional vectors (such as unobserved variables or coefficients) and infinite-dimensional objects (such as utility functions). In such a fully unrestricted setting, we can equivalently represent (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) as <span class="math display">\[
+    Y_i = \phi_i(X_i), \quad \quad  Y_{it} = \phi_{it}(X_{it}),
+\]</span> respectively.</p>
+</section>
+<section id="object-of-interest" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="object-of-interest"><span class="header-section-number">11.1.3</span> Object of Interest</h3>
+<p>As in the linear case, possible objects of interest include:</p>
 <ul>
-<li><em>Example</em>: Consumer demand depends on both income and prices, but if price data is missing, it becomes an unobserved factor influencing demand.</li>
-<li><em>Example</em>: Differences in consumer preferences shape demand, yet preferences are typically unobservable.</li>
-</ul></li>
-<li>Differences in responses to treatments: treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
-<ul>
-<li><em>Example</em>: A job training program may benefit some individuals more than others, meaning treatment effects vary across people.</li>
-</ul></li>
-<li>Measurement error:
-<ul>
-<li><em>Example</em>: Standardized test scores are often used to proxy intelligence, but they are imperfect measurements of the true intelligence.</li>
-</ul></li>
+<li>The full structural function <span class="math inline">\(\phi(\cdot, \cdot)\)</span> or <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span>. This function fully describes the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(\bX\)</span> for all individuals. This corresponds to the problem of identifying individual treatment effects.</li>
+<li>Some distributional features of “treatment effects” — changes in outcomes due to variation in <span class="math inline">\(\bX_{it}\)</span>, conditional on unobserved heterogeneity. In the context of model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>), these effects are given by <span id="eq-nonparametric-effects"><span class="math display">\[
+  \begin{aligned}
+      &amp;   \phi(\bx_2, A_i, U_{it}) - \phi(\bx_1, A_i, U_{it}),\\
+      &amp;   \partial_{\bx} \phi(\bx_0, A_i, U_{it}),
+  \end{aligned}
+\tag{11.3}\]</span></span> where <span class="math inline">\(\bx_0, \bx_1, \bx_2\)</span> are some possible values for <span class="math inline">\(\bX_{it}\)</span>, and the marginal effect is considered if <span class="math inline">\(\phi\)</span> is suitably differentiable in <span class="math inline">\(\bx\)</span>. The distributional feature of interest may include average effects, variances, higher-order moments, or the full distribution.</li>
 </ul>
 </section>
-<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</h3>
-<p>Unobserved heterogeneity is particularly problematic in observational data, where individuals or firms can self-select into treatments or economic decisions. The agents make this decisions based on all the information available to them, but not all important variables get recorded in datasets. As a consequence, there exist hidden factors that confound the relationship between the explanatory variables and the outcomes. In contrast, in randomized experiments, treatments are assigned independently of the characteristics of agents (possibly conditionally). The following graphs schematically illustrate the point:</p>
-<div>
-
+<section id="common-issue" class="level3" data-number="11.1.4">
+<h3 data-number="11.1.4" class="anchored" data-anchor-id="common-issue"><span class="header-section-number">11.1.4</span> Common Issue</h3>
+<p>Unfortunately, models (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) require further assumptions to be useful, as discussed in section <a href="../intro.html" class="quarto-xref"><span>1</span></a>. Without assumptions, we cannot hope to identify counterfactual objects of interest, not even average effects.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 237.74 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-112 233.74,-112 233.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="57.7" cy="-90" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="57.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="119.7" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="119.7" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M72.39,-72.41C80.11,-63.69 89.72,-52.85 98.26,-43.21"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="101.1,-45.28 105.11,-35.47 95.86,-40.64 101.1,-45.28"></polygon>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="181.7" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="181.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge1" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M167.32,-72.76C159.53,-63.97 149.75,-52.93 141.08,-43.14"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="143.68,-40.8 134.43,-35.63 138.44,-45.44 143.68,-40.8"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Experimental data: no confounding.</figcaption> </figure><p></p>
+<div class="callout-body-container">
+<p>In a strict sense, one may point out that (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) are not even models in the sense of offering testable predictions or supporting counterfactual analysis. (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) are just statements that <span class="math inline">\(\bX\)</span> and <span class="math inline">\(Y\)</span> are related through some function that may differ with <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span>. Such a statement is vacuously true. For example, without further assumptions one may take <span class="math inline">\(\phi(x, a) = a\)</span> and <span class="math inline">\(A_i = Y_i\)</span> in (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>).</p>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 151.74 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-184 147.74,-184 147.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="86.04" cy="-162" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-157.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="48.04" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="48.04" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- A&#45;&gt;B -->
-<g id="edge1" class="edge">
-<title>A-&gt;B</title>
-<path fill="none" stroke="#e6e6e6" d="M76.84,-144.05C70.87,-133.05 63.11,-118.76 57.16,-107.79"></path>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="86.04" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge3" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M93.94,-143.75C98.15,-133.58 102.9,-120.33 105.04,-108 107.78,-92.24 107.78,-87.76 105.04,-72 103.52,-63.24 100.68,-54.01 97.65,-45.75"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="100.84,-44.29 93.94,-36.25 94.32,-46.84 100.84,-44.29"></polygon>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M57.24,-72.05C61.68,-63.89 67.09,-53.91 72.02,-44.82"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="75.23,-46.25 76.93,-35.79 69.08,-42.91 75.23,-46.25"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Observational data: confounding</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>As a consequence, ignoring unobserved heterogeneity can lead to misleading statistical conclusions. Confounding manifests even in simple linear regression, with some examples including:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">Omitted variable bias</a>: if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.</li>
-<li><a href="https://en.wikipedia.org/wiki/Regression_dilution">Attenuation bias</a>: When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.</li>
-</ul>
-<p>The issue becomes even more challenging in nonlinear models, where often even the direction of the bias cannot be predicted <span class="citation" data-cites="Stefanski1985">(e.g. <a href="references/references.html#ref-Stefanski1985" role="doc-biblioref">Stefanski and Carroll 1985</a>)</span>.</p>
-</section>
-</section>
-<section id="this-course" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="this-course"><span class="header-section-number">1.2</span> This Course</h2>
-<section id="course-description" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="course-description"><span class="header-section-number">1.2.1</span> Course Description</h3>
-<p>As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses. This course surveys some of the most important advances, structured into three key topics:</p>
+<p>Typically, such assumptions fall into two categories:</p>
 <ol type="1">
-<li>Linear models with heterogeneous coefficients: extending traditional regression models to allow for individual-specific responses to treatment.</li>
-<li>Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.</li>
-<li>Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution <em>of</em> treatment effects.</li>
+<li>Assumptions on the joint distribution of the observed and the unobserved components, including on the nature of <span class="math inline">\((A_i, U_{it})\)</span>.</li>
+<li>Assumptions on how unobserved components enter the equation.</li>
 </ol>
-<p>Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will emphasize identification strategies over asymptotic theory.</p>
 </section>
-<section id="common-themes" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="common-themes"><span class="header-section-number">1.2.2</span> Common Themes</h3>
-<p>Despite their differences, all models we study in this course share a common structure: they describe how an outcome <span class="math inline">\(y\)</span> depends on observed factors (<span class="math inline">\(x\)</span>) and unobserved heterogeneity (<span class="math inline">\(u, \alpha\)</span>). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models: <span id="eq-intro-potential-outcomes"><span class="math display">\[
-    y_i^x = \phi(x, \alpha_i),  \quad y_{it}^x = \phi(x, \alpha_i, u_{it}),
-\tag{1.1}\]</span></span> where <span class="math inline">\(x\)</span> is some potential value of the observed covariates, <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(u_{it}\)</span> are the time-invariant and time-varying unobserved characteristics of unit <span class="math inline">\(i\)</span>, respectively; and <span class="math inline">\(y_i^x\)</span> and <span class="math inline">\(y_{it}^x\)</span> are the (scalar) outcome for individual <span class="math inline">\(i\)</span> given <span class="math inline">\(x\)</span> (in time <span class="math inline">\(t\)</span>). In practice, we will have access to datasets of the form <span class="math inline">\(\curl{(y_i, x_i)}_{i=1, \dots, N}\)</span> or <span class="math inline">\(\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}\)</span>. The observed outcomes are generated as <span class="math display">\[
-    y_i = y_i^{x_i}=  \phi(x_i, \alpha_i),  \quad y_{it} = y_{it}^{x_{it}} = \phi(x_{it}, \alpha_i, u_{it}),
-\]</span></p>
-<p>Throughout, our goal will be to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.</p>
-<p>A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:</p>
+</section>
+<section id="models-of-this-block" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="models-of-this-block"><span class="header-section-number">11.2</span> Models of This Block</h2>
+<p>To make progress, we focus on two general but tractable versions of the general nonparametric panel model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) in these notes. In both cases, we will assume that the outcome <span class="math inline">\(Y_{it}\)</span> is continuous and that <span class="math inline">\(T=2\)</span>.</p>
+<section id="first-model" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="first-model">First Model</h3>
+<p>We will begin with the following model: <span id="eq-nonparametric-model-full-nonsep"><span class="math display">\[
+    Y_{it} = \phi(X_{it}, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
+\tag{11.4}\]</span></span> where for simplicity we assume that <span class="math inline">\(X_{it}\)</span> is scalar. The variable <span class="math inline">\(X_{it}\)</span> is assumed to be continuously distributed, and <span class="math inline">\(\phi\)</span> is continuous in <span class="math inline">\(X_{it}\)</span> for all values of <span class="math inline">\((A_i, U_{it})\)</span>.</p>
+<p>We consider a version of (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) that is very general in terms of unobserved variables <span class="math inline">\((A_{i}, U_{it})\)</span>. In particular, we do not restrict</p>
 <ul>
-<li>Imposing functional form restrictions on <span class="math inline">\(\phi\)</span> (e.g.&nbsp;parametric assumptions such as linearity, or assuming that <span class="math inline">\(\alpha_i\)</span> is scalar and that it enters <span class="math inline">\(\phi\)</span> monotonically);</li>
-<li>Restricting the extent of unobserved heterogeneity in the model (e.g.&nbsp;assuming that there is scalar unobserved variables or a vector of heterogeneous coefficients);</li>
-<li>Restricting the relationship between the observed and unobserved variables (e.g.&nbsp;assuming that <span class="math inline">\(\alpha_i\)</span> is independent from <span class="math inline">\(x_i\)</span>);</li>
-<li>Focusing on particular parts of the distribution of the outcome (such as quantiles).</li>
+<li>The dimension and the form of <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span>;</li>
+<li>How the outcome depends on <span class="math inline">\((A_{i}, U_{it})\)</span>;</li>
+<li>The dependence structure between <span class="math inline">\((A_i, U_{it})\)</span> and <span class="math inline">\(X_{it}\)</span>.</li>
 </ul>
-<p>We will see examples of each approach throughout the course, and one should see each particular model discussed as a specific variation of model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>).</p>
+<p>At the same time, we impose an assumption of stationarity on <span class="math inline">\(U_{it}\)</span>. Its distribution is stable over time conditional on observed and unobserved covariates, allowing us to isolate changes in <span class="math inline">\(Y_{it}\)</span> attributable to variation in <span class="math inline">\(X_{it}\)</span>.</p>
+</section>
+<section id="second-model" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="second-model">Second Model</h3>
+<p>After reaching the (probable) limits of identification with (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), we will consider a different flavor of model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>), where the time-varying unobserved component <span class="math inline">\(U_{it}\)</span> is scalar and affects the outcome <span class="math inline">\(Y_{it}\)</span> additively: <span id="eq-nonparametric-model-u-sep"><span class="math display">\[
+Y_{it} = \phi(X_{it}, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
+\tag{11.5}\]</span></span> In contrast to model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), we do not assume that <span class="math inline">\(U_{it}\)</span> is stationary. Models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>) are hence non-nested. We continue to allow <span class="math inline">\(A_i\)</span> to have unrestricted dimensionality and structure. It may also have a complex dependence structure with <span class="math inline">\(X_{it}\)</span>.</p>
+</section>
+</section>
+<section id="plan-for-this-block" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="plan-for-this-block"><span class="header-section-number">11.3</span> Plan for This Block</h2>
+<p>In this block, we will focus on models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>)-(<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>) and consider identification of some distributional features of treatment effects (<a href="#eq-nonparametric-effects" class="quarto-xref"><span>11.3</span></a>). Specifically,</p>
+<ol type="1">
+<li><strong>Average</strong> treatment and marginal <strong>effects</strong> for model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>):
+<ul>
+<li>Show that identifying average effects is more complicated than considering averages of the outcome directly.</li>
+<li>Discuss heterogeneity bias, another form of confounding.</li>
+<li>Show how stationarity assumptions on <span class="math inline">\(U_{it}\)</span> allow us to identify the average effects for a population of stayers — units with <span class="math inline">\(X_{i1}=X_{i2}\)</span> — without any further assumptions.</li>
+<li>Consider two generalizations of the identification result: beyond the population of stayers and allowing some non-stationarity in the structural function.</li>
+</ul></li>
+<li><strong>Variance</strong> of treatment and marginal effects in model (<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>): identify the variance of effects (<a href="#eq-nonparametric-effects" class="quarto-xref"><span>11.3</span></a>) by requiring that <span class="math inline">\(U_{it}\)</span> cannot depend on future values of <span class="math inline">\(\bX_{it}\)</span></li>
+</ol>
+<p>In the next block, we will also revisit model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) through the lens of quantile regression.</p>
+</section>
+<section id="a-brief-classification-of-nonparametric-models" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="a-brief-classification-of-nonparametric-models"><span class="header-section-number">11.4</span> A Brief Classification of Nonparametric Models</h2>
+<p>In these notes we primarily focus on the general and powerful models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>)-(<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>). However, much work has gone into analyzing other special instances of (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>). Before moving on to identification of average effects, we offer a brief taxonomy of nonparametric models with unobserved heterogeneity with some essential references. We organize the literature by the types of assumptions made:</p>
+<ul>
+<li><em>How unobserved heterogeneity enters in the system</em>:
+<ul>
+<li>Full non-separable models <span class="citation" data-cites="Altonji2005 Hoderlein2007 Hoderlein2007 Chernozhukov2015">(<a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">Altonji and Matzkin 2005</a>; <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">Hoderlein and Mammen 2007</a>, <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>; <a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span>.</li>
+<li>Partially additive separable panel models: <span class="citation" data-cites="Chen2003 Evdokimov2012 Blundell2012b Morozov2023jmp">(<a href="../references/references.html#ref-Chen2003" role="doc-biblioref">Chen and Ai 2003</a>; <a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">Evdokimov and White 2012</a>; <a href="../references/references.html#ref-Blundell2012b" role="doc-biblioref">Blundell, Horowitz, and Parey 2012</a>; <a href="../references/references.html#ref-Morozov2023jmp" role="doc-biblioref">Morozov 2023</a>)</span>.</li>
+<li>Fully separable, additively <span class="citation" data-cites="Henderson2008NonparametricEstimationTesting Boneva2015SemiparametricModelHeterogeneous Lee2015PanelNonparametricRegression Henderson2024NonparametricModelsFixed">(<a href="../references/references.html#ref-Henderson2008NonparametricEstimationTesting" role="doc-biblioref">Henderson, Carroll, and Li 2008</a>; <a href="../references/references.html#ref-Boneva2015SemiparametricModelHeterogeneous" role="doc-biblioref">Boneva, Linton, and Vogt 2015</a>; <a href="../references/references.html#ref-Lee2015PanelNonparametricRegression" role="doc-biblioref">Lee and Robinson 2015</a>; <a href="../references/references.html#ref-Henderson2024NonparametricModelsFixed" role="doc-biblioref">Henderson and Soberon 2024</a>)</span> or multiplicatively <span class="citation" data-cites="Beckert2008HeterogeneityNonParametricAnalysis">(<a href="../references/references.html#ref-Beckert2008HeterogeneityNonParametricAnalysis" role="doc-biblioref">Beckert and Blundell 2008</a>)</span>.</li>
+</ul></li>
+<li><em>What assumptions are imposed on the form of unobserved components</em>: restrictions on dimension such as scalarity <span class="citation" data-cites="Matzkin2003 Altonji2005 Imbens2009">(<a href="../references/references.html#ref-Matzkin2003" role="doc-biblioref">Matzkin 2003</a>; <a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">Altonji and Matzkin 2005</a>; <a href="../references/references.html#ref-Imbens2009" role="doc-biblioref">Imbens and Newey 2009</a>)</span> or no restrictions <span class="citation" data-cites="Hoderlein2007 Hoderlein2007 Chernozhukov2015">(<a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">Hoderlein and Mammen 2007</a>, <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>; <a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span>]</li>
+<li><em>What assumptions are imposed on dependence structure between observed and unobserved components</em>: full or partial independence restrictions <span class="citation" data-cites="Hoderlein2007 Imbens2009">(<a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">Hoderlein and Mammen 2007</a>; <a href="../references/references.html#ref-Imbens2009" role="doc-biblioref">Imbens and Newey 2009</a>)</span> vs.&nbsp;no independence restrictions <span class="citation" data-cites="Hoderlein2012 Chernozhukov2015">(<a href="../references/references.html#ref-Hoderlein2012" role="doc-biblioref">Hoderlein and White 2012</a>; <a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span>.</li>
+<li><em>The nature of the outcome variable</em>: continuous-outcome models <span class="citation" data-cites="Chernozhukov2015">(<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span> or discrete-outcome models <span class="citation" data-cites="Manski1987 Chesher2017 Chesher2020">(<a href="../references/references.html#ref-Manski1987" role="doc-biblioref">Manski 1987</a>; <a href="../references/references.html#ref-Chesher2017" role="doc-biblioref">Chesher and Rosen 2017</a>, <a href="../references/references.html#ref-Chesher2020" role="doc-biblioref">2020</a>)</span>.</li>
+</ul>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we begin by examining how unobserved heterogeneity arises naturally in linear models and setting the stage for the first block of the course.</p>
+<p>In the next section, we begin our analysis of average effects in model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and discuss why identification is more complex that analyzing average outcomes.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Stefanski1985" class="csl-entry" role="listitem">
-Stefanski, Leonard A., and Raymond J. Carroll. 1985. <span>“<span class="nocase">Covariate Measurement Error in Logistic Regression</span>.”</span> <em>The Annals of Statistics</em> 13 (4): 1335–51. <a href="https://doi.org/10.1214/aos/1176349741">https://doi.org/10.1214/aos/1176349741</a>.
+<div id="ref-Altonji2005" class="csl-entry" role="listitem">
+Altonji, Joseph G., and Rosa L. Matzkin. 2005. <span>“<span class="nocase">Cross Section and Panel Data Estimators for Nonseparable Models with Endogenous Regerssors</span>.”</span> <em>Econometrica</em> 73 (4): 1053–1102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
+</div>
+<div id="ref-Beckert2008HeterogeneityNonParametricAnalysis" class="csl-entry" role="listitem">
+Beckert, Walter, and Richard Blundell. 2008. <span>“Heterogeneity and the <span>Non</span>-<span>Parametric</span> <span>Analysis</span> of <span>Consumer</span> <span>Choice</span>: <span>Conditions</span> for <span>Invertibility</span>.”</span> <em>The Review of Economic Studies</em> 75 (4): 1069–80. <a href="https://doi.org/10.1111/j.1467-937X.2008.00500.x">https://doi.org/10.1111/j.1467-937X.2008.00500.x</a>.
+</div>
+<div id="ref-Blundell2012b" class="csl-entry" role="listitem">
+Blundell, Richard, Joel L. Horowitz, and Matthias Parey. 2012. <span>“<span class="nocase">Measuring The Price Responsiveness of Gasoline Demand: Economic Shape Restrictions and Nonparametric Demand Estimation</span>.”</span> <em>Quantitative Economics</em> 3 (1): 29–51. <a href="https://doi.org/10.3982/qe91">https://doi.org/10.3982/qe91</a>.
+</div>
+<div id="ref-Boneva2015SemiparametricModelHeterogeneous" class="csl-entry" role="listitem">
+Boneva, Lena, Oliver Linton, and Michael Vogt. 2015. <span>“A Semiparametric Model for Heterogeneous Panel Data with Fixed Effects.”</span> <em>Journal of Econometrics</em>, Heterogeneity in <span>Panel</span> <span>Data</span> and in <span>Nonparametric</span> <span>Analysis</span> in honor of <span>Professor</span> <span>Cheng</span> <span>Hsiao</span>, 188 (2): 327–45. <a href="https://doi.org/10.1016/j.jeconom.2015.03.003">https://doi.org/10.1016/j.jeconom.2015.03.003</a>.
+</div>
+<div id="ref-Chen2003" class="csl-entry" role="listitem">
+Chen, Xiaohong, and Chunrong Ai. 2003. <span>“<span class="nocase">Efficient Estimation of Models with Conditional Moment Restrictions Containing Unknown Functions</span>.”</span> <em>Econometrica</em> 71 (6): 1795–1843.
+</div>
+<div id="ref-Chernozhukov2015" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, Stefan Hoderlein, Hajo Holzmann, and Whitney Newey. 2015. <span>“<span class="nocase">Nonparametric Identification in Panels Using Quantiles</span>.”</span> <em>Journal of Econometrics</em> 188 (2): 378–92. <a href="https://doi.org/10.1016/j.jeconom.2015.03.006">https://doi.org/10.1016/j.jeconom.2015.03.006</a>.
+</div>
+<div id="ref-Chesher2017" class="csl-entry" role="listitem">
+Chesher, Andrew, and Adam M. Rosen. 2017. <span>“<span>Generalized Instrumental Variable Models</span>.”</span> <em>Econometrica</em> 85 (3): 959–89. <a href="https://doi.org/10.3982/ecta12223">https://doi.org/10.3982/ecta12223</a>.
+</div>
+<div id="ref-Chesher2020" class="csl-entry" role="listitem">
+———. 2020. <em><span class="nocase">Generalized Instrumental Variable Models, Methods, and Applications</span></em>. Vol. 7. Elsevier B.V. <a href="https://doi.org/10.1016/bs.hoe.2019.11.001">https://doi.org/10.1016/bs.hoe.2019.11.001</a>.
+</div>
+<div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
+Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span> <em>Econometric Theory</em> 28 (4): 925–32. <a href="https://doi.org/10.1017/S0266466611000831">https://doi.org/10.1017/S0266466611000831</a>.
+</div>
+<div id="ref-Henderson2008NonparametricEstimationTesting" class="csl-entry" role="listitem">
+Henderson, Daniel J., Raymond J. Carroll, and Qi Li. 2008. <span>“Nonparametric Estimation and Testing of Fixed Effects Panel Data Models.”</span> <em>Journal of Econometrics</em> 144 (1): 257–75. <a href="https://doi.org/10.1016/j.jeconom.2008.01.005">https://doi.org/10.1016/j.jeconom.2008.01.005</a>.
+</div>
+<div id="ref-Henderson2024NonparametricModelsFixed" class="csl-entry" role="listitem">
+Henderson, Daniel J., and Alexandra Soberon. 2024. <span>“Nonparametric <span>Models</span> with <span>Fixed</span> <span>Effects</span>.”</span> In <em>The <span>Econometrics</span> of <span>Multi</span>-Dimensional <span>Panels</span>: <span>Theory</span> and <span>Applications</span></em>, edited by Laszlo Matyas, 285–323. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-49849-7_9">https://doi.org/10.1007/978-3-031-49849-7_9</a>.
+</div>
+<div id="ref-Hoderlein2007" class="csl-entry" role="listitem">
+Hoderlein, Stefan, and Enno Mammen. 2007. <span>“<span class="nocase">Identification of Marginal Effects in Nonseparable Models without Monotonicity</span>.”</span> <em>Econometrica</em> 75 (5): 1513–18. <a href="https://doi.org/10.1111/j.1468-0262.2007.00801.x">https://doi.org/10.1111/j.1468-0262.2007.00801.x</a>.
+</div>
+<div id="ref-Hoderlein2012" class="csl-entry" role="listitem">
+Hoderlein, Stefan, and Halbert White. 2012. <span>“<span class="nocase">Nonparametric Identification in Nonseparable Panel Data Models with Generalized Fixed Effects</span>.”</span> <em>Journal of Econometrics</em> 168 (2): 300–314. <a href="https://doi.org/10.1016/j.jeconom.2012.01.033">https://doi.org/10.1016/j.jeconom.2012.01.033</a>.
+</div>
+<div id="ref-Imbens2009" class="csl-entry" role="listitem">
+Imbens, Guido W., and Whitney K. Newey. 2009. <span>“<span class="nocase">Identification and Estimation of Triangular Simultaneous Equations Models Without Additivity</span>.”</span> <em>Econometrica</em> 77 (5): 1481–1512. <a href="https://doi.org/10.3982/ecta7108">https://doi.org/10.3982/ecta7108</a>.
+</div>
+<div id="ref-Lee2015PanelNonparametricRegression" class="csl-entry" role="listitem">
+Lee, Jungyoon, and Peter M. Robinson. 2015. <span>“Panel Nonparametric Regression with Fixed Effects.”</span> <em>Journal of Econometrics</em>, Heterogeneity in <span>Panel</span> <span>Data</span> and in <span>Nonparametric</span> <span>Analysis</span> in honor of <span>Professor</span> <span>Cheng</span> <span>Hsiao</span>, 188 (2): 346–62. <a href="https://doi.org/10.1016/j.jeconom.2015.03.004">https://doi.org/10.1016/j.jeconom.2015.03.004</a>.
+</div>
+<div id="ref-Manski1987" class="csl-entry" role="listitem">
+Manski, Charles F. 1987. <span>“<span class="nocase">Semiparametric Analysis of Random Effects Linear Models from Binary Panel Data</span>.”</span> <em>Econometrica</em> 55 (2): 357. <a href="https://doi.org/10.2307/1913240">https://doi.org/10.2307/1913240</a>.
+</div>
+<div id="ref-Matzkin2003" class="csl-entry" role="listitem">
+Matzkin, Rosa L. 2003. <span>“<span class="nocase">Nonparametric Estimation of Nonadditive Random Functions</span>.”</span> <em>Econometrica</em> 71 (5): 1339–75. <a href="https://doi.org/10.1111/1468-0262.00452">https://doi.org/10.1111/1468-0262.00452</a>.
+</div>
+<div id="ref-Morozov2023jmp" class="csl-entry" role="listitem">
+Morozov, Vladislav. 2023. <span>“<span class="nocase">Estimating the Moments and the Distribution of Heterogeneous Marginal Effects Using Panel Data</span>.”</span>
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1423,13 +1422,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Course Information">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course Information</span>
+      <a href="../linear/linear-conclusion.html" class="pagination-link" aria-label="Conclusion: Linear Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linear/linear-introduction.html" class="pagination-link" aria-label="Intro: Linear Models with Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../nonparametric/nonparametric-heterogeneity-bias.html" class="pagination-link" aria-label="Average Effects and Heterogeneity Bias">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Average Effects and Heterogeneity Bias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1438,4 +1437,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-introduction.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

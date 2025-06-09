@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/index.html</loc>
-    <lastmod>2025-05-02T08:44:52.401Z</lastmod>
+    <lastmod>2025-06-07T18:39:45.051Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/intro.html</loc>
-    <lastmod>2025-05-18T18:19:08.645Z</lastmod>
+    <lastmod>2025-06-04T11:21:48.448Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/linear/linear-introduction.html</loc>
-    <lastmod>2025-05-18T18:19:08.646Z</lastmod>
+    <lastmod>2025-06-04T11:21:48.448Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/linear/linear-within-estimator.html</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/linear/linear-mean-group.html</loc>
-    <lastmod>2025-05-18T18:21:02.303Z</lastmod>
+    <lastmod>2025-05-18T18:56:46.387Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/linear/linear-coefficient-variance.html</loc>
@@ -43,6 +43,22 @@
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/linear/linear-conclusion.html</loc>
     <lastmod>2025-05-02T08:44:52.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-introduction.html</loc>
+    <lastmod>2025-06-07T16:11:16.151Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-heterogeneity-bias.html</loc>
+    <lastmod>2025-06-07T16:11:16.151Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-average-identification.html</loc>
+    <lastmod>2025-06-09T13:04:26.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-average-estimation.html</loc>
+    <lastmod>2025-06-09T13:04:57.799Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/references/references.html</loc>

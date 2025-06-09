@@ -181,6 +181,8 @@ ul.task-list li input[type="checkbox"] {
 
         by: "\\boldsymbol{y}",
 
+        bz: "\\boldsymbol{z}",
+
 
 
         Acal: "\\mathcal{A}",
@@ -428,7 +430,9 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Econometrics with Unobserved Heterogeneity</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
+    <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/tree/main/src/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -519,8 +523,39 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Nonparametrics and Heterogeneity</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Nonparametrics and Heterogeneity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Average Effects and Heterogeneity Bias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Average Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -595,6 +630,11 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="https://vladislav-morozov.github.io/assets/img/teaching/ecm_htg.png" alt="Econometrics with Unobserved Heterogeneity" style="width: 100%;  border-radius: 15px; margin-bottom: 6px;"></p>
 <section id="course-information" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="course-information">Course Information</h2>
+<p><strong>Instructor:</strong> Vladislav Morozov<br>
+<strong>Email:</strong> <a href="mailto:morozov@uni-bonn.de">morozov [at] uni-bonn.de</a><br>
+<strong>Level:</strong> Second-year Master’s and PhD students<br>
+<strong>Course Website:</strong> eCampus and this website<br>
+<strong>DOI</strong>: <a href="https://doi.org/10.5281/zenodo.15459848"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15459848-gold" class="img-fluid" alt="DOI"></a></p>
 <section id="short-description" class="level3">
 <h3 class="anchored" data-anchor-id="short-description">Short Description</h3>
 <p>Unobserved heterogeneity is pervasive in economics, driven by heterogeneous parameters and treatment effects, unobserved characteristics of agents, missing variables, etc. This class introduces methods for estimating parameters of interest in settings with such unobserved heterogeneity.</p>
@@ -605,18 +645,16 @@ ul.task-list li input[type="checkbox"] {
 <li>Quantile and distributional treatment effects and quantile and distributional regression methods.</li>
 </ol>
 <p>This class focuses on observational cross-sectional and panel data settings.</p>
-<p><strong>Instructor:</strong> Vladislav Morozov&nbsp;</p>
-<p><strong>Level:</strong> Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students&nbsp;</p>
 </section>
 <section id="course-materials" class="level3">
 <h3 class="anchored" data-anchor-id="course-materials">Course Materials</h3>
-<p><strong>Textbook:</strong> None. This course is based on lecture notes and background articles, which are listed in the references.</p>
-<p><strong>Recommended Readings:</strong> Please see the bibliography for a detailed reading list.</p>
+<p><strong>Textbook:</strong> None. This course is based on lecture notes and background articles, which are listed in the references.<br>
+<strong>Recommended Readings:</strong> Please see the bibliography for a detailed reading list.</p>
 </section>
 <section id="about-these-notes" class="level3">
 <h3 class="anchored" data-anchor-id="about-these-notes">About These Notes</h3>
 <p>These lectures notes are based on a topics course I delivered at the University of Bonn. They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!</p>
-<p>Current version (April 26, 2025): Full materials on linear models with heterogeneous coefficients. Latest addition: variance and the distribution of coefficients.</p>
+<p>Current version (June 8, 2025): material up to identifying average effects in nonparametric models with potentially infinite unobserved heterogeneity.</p>
 </section>
 <section id="learning-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h3>

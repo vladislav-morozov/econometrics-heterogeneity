@@ -6,7 +6,7 @@ open-graph:
 
 
 
-# Intro: Linear Models with Heterogeneous Coefficients
+# Intro: Linear Models with Heterogeneous Coefficients {#sec-linear-intro}
 
 ::: {.callout-note appearance="simple" icon=false}
 
