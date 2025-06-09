@@ -6,7 +6,7 @@ open-graph:
 ---
 
 
-# Identifying Average Effects for Stayers {#sec-nonparametric-avg-id}
+# Nonparametric Identification of Average Effects {#sec-nonparametric-avg-id}
 
 ::: {.callout-note appearance="simple" icon=false}
 
