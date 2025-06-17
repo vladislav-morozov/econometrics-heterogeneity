@@ -815,7 +815,7 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 </ul>
 <p>Hence <span class="math inline">\(y_{it-2}\)</span> is a valid instrument!</p>
 <p>The resulting IV estimator is known as the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator and given by <span class="math display">\[
-\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it} }.
+\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it-1} }.
 \]</span></p>
 </section>
 <section id="further-dynamic-panel-iv-estimators" class="level3" data-number="4.3.2">
