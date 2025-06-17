@@ -189,7 +189,7 @@ Hence $y_{it-2}$ is a valid instrument!
 
 The resulting IV estimator is known as the @Anderson1982 estimator and given by
 $$
-\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it} }.
+\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it-1} }.
 $$
 
 ### Further Dynamic Panel IV Estimators
