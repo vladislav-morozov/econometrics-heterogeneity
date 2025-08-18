@@ -13,7 +13,7 @@ open-graph:
 
 This section discusses the problem of unobserved heterogeneity and sets out some common themes for the course. 
   
-By the end of this section, you should
+By the end of this section, you should be able to
 
 - Discuss the role and nature of unobserved heterogeneity.
 - Describe why unobserved heterogeneity matters when working with observational data.
