@@ -13,7 +13,7 @@ open-graph:
 
 This section discusses why strict exogeneity fails in dynamic models and introduces the "workhorse" dynamic panel instrumental variable estimators.
   
-By the end of this section, you should
+By the end of this section, you should be able to:
 
 - Understand why strict exogeneity fails in dynamic panel models.  
 - Differentiate between strict and sequential exogeneity.  
