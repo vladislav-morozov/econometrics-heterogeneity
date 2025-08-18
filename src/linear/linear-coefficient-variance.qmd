@@ -48,13 +48,13 @@ Specifically, we consider model  ([-@eq-linear-variance-model]) under a strict e
 $$
 \E[u_{it}|\bbeta_i, \bX_i] =0
 $$ {#eq-vector-variance-strict-ex}
-The number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We will treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
+The number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We  treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
 
 As before, the model can be written in unit matrix form as 
 $$
 \by_i = \bX_i\bbeta_i + \bu_i.
 $$
-We will again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results will be about the subpopulation of units with positive determinant, as in section [-@sec-linear-mean-group].
+We again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results are about the subpopulation of units with positive determinant, as in section [-@sec-linear-mean-group].
 
 
 
@@ -73,7 +73,7 @@ Its diagonal terms are the variances of individual coefficients, which show how 
 
 ### Variance Decomposition
 
-To identify $\var(\bbeta_i)$, we will first look at the second moments of $\by_i$. Specifically, we will consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
+To identify $\var(\bbeta_i)$, we first look at the second moments of $\by_i$. Specifically, we consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
 
 Using model ([-@eq-linear-variance-model]) and condition ([-@eq-vector-variance-strict-ex]), the conditional second moment of $\by_i$ can be represented as
 $$
@@ -102,7 +102,7 @@ This issue can be resolved by imposing assumptions on the time series dependence
 
 
 
-Various assumptions are possible, and @Arellano2012 explore moving average and autoregressive structures for $u_{it}$. Here, we will consider the simplest  case in which $u_{it}$ is conditionally homoskedastic across time (but not necessarily across $\bX$) and uncorrelated across $t$: 
+Various assumptions are possible, and @Arellano2012 explore moving average and autoregressive structures for $u_{it}$. Here, we consider the simplest  case in which $u_{it}$ is conditionally homoskedastic across time (but not necessarily across $\bX$) and uncorrelated across $t$: 
 $$
 \begin{aligned} 
 	\E[u_{it}^2|\bX_i=\bX] & = \sigma^2(\bX), \\
@@ -157,7 +157,7 @@ Note that it is also possible to solve for variance parameters from @eq-linear-v
 ### Variance of Coefficients
 
 
-We are now in a position to identify $\var(\bbeta_i)$. In principle, we can solve for $\E[\bbeta_i\bbeta_i']$ by suitably vectorizing the system in @eq-linear-variance-second-moment-y. However, it will be more convenient to go back to the individual estimators ([-@eq-linear-mg-individual-estimator]).  For brevity, let $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'$, so that  
+We are now in a position to identify $\var(\bbeta_i)$. In principle, we can solve for $\E[\bbeta_i\bbeta_i']$ by suitably vectorizing the system in @eq-linear-variance-second-moment-y. However, it is more convenient to go back to the individual estimators ([-@eq-linear-mg-individual-estimator]).  For brevity, let $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'$, so that  
 $$
 \hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
 $$
@@ -229,4 +229,4 @@ However, moments of $\bbeta_i$ may be also be obtained from the full distributio
 
 #### Next Section {.unnumbered}
 
-In the next section, we will review characteristic functions and deconvolution — key ingredients used in identification in the distribution of $\bbeta_i$.
+In the next section, we review characteristic functions and deconvolution — key ingredients used in identification in the distribution of $\bbeta_i$.
