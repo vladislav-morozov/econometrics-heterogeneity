@@ -29,7 +29,7 @@ By the end of this section, you should be able to:
 
 As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.
 
-As a consequence, we now consider heterogeneous dynamic models. In this section we will again focus on a simple AR(1) model with no exogenous regressors. Specifically, we will look at the following heterogeneous version of model ([-@eq-dynamic-interlude-dynamic-simple]):
+As a consequence, we now consider heterogeneous dynamic models. In this section we again focus on a simple AR(1) model with no exogenous regressors. Specifically, we look at the following heterogeneous version of model ([-@eq-dynamic-interlude-dynamic-simple]):
 $$
 \begin{aligned}
 	Y_{it}   & = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
@@ -62,7 +62,7 @@ $$
 $$ 
 
 
-It is easy to check that $\Delta Y_{it-1}$ is still endogenous because it contains $U_{it-1}$, which is correlated with the residual term. The same problematic term  $\lambda \E[U_{it-1}^2]$ will be present in $\E[V_{it}\Delta Y_{it-1}]$. 
+It is easy to check that $\Delta Y_{it-1}$ is still endogenous because it contains $U_{it-1}$, which is correlated with the residual term. The same problematic term  $\lambda \E[U_{it-1}^2]$ is present in $\E[V_{it}\Delta Y_{it-1}]$. 
 
 
 ### Conditions for Instruments
@@ -109,10 +109,10 @@ $$
 $$
 In other words, $Y_{it-2}$ *is not a valid instrument under the heterogeneous mode*l ([-@eq-dynamic-heterogeneity-model]). The same logic applies under more general assumptions and to higher-order lags of $Y_{it}$.
 
-More broadly, the problem of finding a valid instrument $Z_{it}$ for @eq-dynamic-heterogeneity-differenced appears intractable. The relevance condition requires that $Z_{it}$ be correlated with $\Delta Y_{it-1}$. As a consequence, it is likely that $Z_{it}$ will also be correlated with $\eta_i \Delta Y_{it-1}$ (particularly since $\eta_i$ appears inside $\Delta Y_{it-1}$). However, it would then be the case that $\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0$, and exogeneity would fail. 
+More broadly, the problem of finding a valid instrument $Z_{it}$ for @eq-dynamic-heterogeneity-differenced appears intractable. The relevance condition requires that $Z_{it}$ be correlated with $\Delta Y_{it-1}$. As a consequence, it is likely that $Z_{it}$ is also correlated with $\eta_i \Delta Y_{it-1}$ (particularly since $\eta_i$ appears inside $\Delta Y_{it-1}$). However, it would then be the case that $\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0$, and exogeneity would fail. 
 
 
-We conclude that the IV estimators of the previous section will not consistently estimate $\E[\lambda_i]$, no matter how we choose the instruments, regardless the magnitude of $T$. Moreover, the results of @Pesaran1995 imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of $\E[\lambda_i]$.
+We conclude that the IV estimators of the previous section do not consistently estimate $\E[\lambda_i]$, no matter how we choose the instruments, regardless the magnitude of $T$. Moreover, the results of @Pesaran1995 imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of $\E[\lambda_i]$.
 
 
 
@@ -132,4 +132,4 @@ As a result, $Y_{it-1}$ and $(A_i, \lambda_i)$ cannot be (mean) independent by c
 
 #### Next Section {.unnumbered}
 
-In the next section, we will study a simple estimator for $\E[\bbeta_i]$ that is robust both to coefficient heterogeneity and dynamics.
+In the next section, we study a simple estimator for $\E[\bbeta_i]$ that is robust both to coefficient heterogeneity and dynamics.

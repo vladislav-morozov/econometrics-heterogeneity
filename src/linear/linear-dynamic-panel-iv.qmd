@@ -37,7 +37,7 @@ $$ {#eq-dynamic-interlude-strict-orthogonality}
 
 For $t<s$, @eq-dynamic-interlude-strict-orthogonality means that *past* shocks are uncorrelated with *future* values of $\bX$.  In other words, one cannot predict *past* shocks from *future* $\bX$s. 
 
-This requirement might fail if $\bX$ is dynamic and its evolution is affected by $U_{it}$. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data. 
+This requirement might fail if $\bX$ is dynamic and its evolution is affected by $U_{it}$. In this section, we discuss this challenge and some traditional approaches to dealing with it with short panel data. 
 
 ### No Strict Exogeneity for Dynamic Models
 
@@ -52,7 +52,7 @@ $$
 where  $t=1, \dots, T$ and the innovation $U_t$ satisfies $\E[U_t]=0$. 
 
  
-To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that ([-@eq-dynamic-interlude-strict-orthogonality])  is not true. Specifically, we will take $s=t+1$ and show that $\E[Y_{it+1}U_t]$ is not necessarily zero.
+To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that ([-@eq-dynamic-interlude-strict-orthogonality])  is not true. Specifically, we take $s=t+1$ and show that $\E[Y_{it+1}U_t]$ is not necessarily zero.
 
 To evaluate this expectation, we write the model at $t+1$
 $$
@@ -110,13 +110,13 @@ One may write down the potential outcomes corresponding to @eq-dynamic-interlude
 
 ## Handling Dynamic Panels with a Random Intercept
  
-Before moving on and introducing heterogeneous coefficients in dynamic linear models, we will discuss model ([-@eq-dynamic-interlude-dynamic-panel]) in more detail. In particular, we will develop the standard workhorse instrumental variable estimators. We will  analyze how these estimators fare in the more general model ([-@eq-lecture_model]) in the next section.
+Before moving on and introducing heterogeneous coefficients in dynamic linear models, we  discuss model ([-@eq-dynamic-interlude-dynamic-panel]) in more detail. In particular, we develop the standard workhorse instrumental variable estimators. We  analyze how these estimators fare in the more general model ([-@eq-lecture_model]) in the next section.
  
  
 
 ### Model
 
-For the sake of simplicity, we will discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bX_{it}$ and with only one lag of $Y_{it}$:
+For the sake of simplicity, we discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bX_{it}$ and with only one lag of $Y_{it}$:
 $$
 Y_{it} = A_i + \lambda Y_{it-1} + U_{it}, 
 $$ {#eq-dynamic-interlude-dynamic-simple}
@@ -124,7 +124,7 @@ where $U_{it}$ satisfies sequential exogeneity in the form $\E[U_{it}|Y_{is}, s<
 
 The key parameter of interest is $\lambda$. By homogeneity of $\lambda$, it also plays the role of the average coefficient for model ([-@eq-dynamic-interlude-dynamic-simple]).
 
-Here, we will primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
+Here, we primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
 
 ### Endogeneity
 
@@ -138,7 +138,7 @@ $$
 $$ {#eq-dynamic-interlude-homogeneous-differenced}
 @eq-dynamic-interlude-homogeneous-differenced seems like a simple regression equation. It is tempting to just apply OLS and regress $\Delta Y_{it}$ on $\Delta Y_{it-1}$.
 
-It turns out that this approach will fail as there is an endogeneity problem in @eq-dynamic-interlude-homogeneous-differenced! Sequential exogeneity is not enough to guarantee that
+It turns out that this approach fails as there is an endogeneity problem in @eq-dynamic-interlude-homogeneous-differenced! Sequential exogeneity is not enough to guarantee that
 $$
 \E[\Delta Y_{it-1}\Delta U_{it}] = 0.
 $$
@@ -200,7 +200,7 @@ $$
 
 ### Further Dynamic Panel IV Estimators
 
-Are there more instruments that can use for $\Delta Y_{it-1}$? Using more instruments will induce overidentification and potentially lead to more precise estimators, solving one of the key drawbacks of the @Anderson1982 estimator [@Arellano1989]. 
+Are there more instruments that can use for $\Delta Y_{it-1}$? Using more instruments induces overidentification and potentially leads to more precise estimators, solving one of the key drawbacks of the @Anderson1982 estimator [@Arellano1989]. 
  
 As a partial answer, suppose we consider $Y_{it-k}$ for $k\geq 2$. By applying sequential exogeneity again we can show that $Y_{it-k}$ is exogenous:
 $$	
@@ -212,7 +212,7 @@ Even further instruments have been found for ([-@eq-dynamic-interlude-homogeneou
  
 ### Properties of Dynamic Panel IV Estimators
 
-Under some standard conditions, the above instrumental variable estimators will all be consistent and asymptotically normal for $\lambda$ as $N\to\infty$ and $T$ is fixed. 
+Under some standard conditions, the above instrumental variable estimators are all consistent and asymptotically normal for $\lambda$ as $N\to\infty$ and $T$ is fixed. 
 The matter is rather more delicate if both $N$ and $T$ are large, and the above dynamic panel IV estimators offer an interesting and natural example of the *many moments* bias. See @Alvarez2003. 
 
 
@@ -221,12 +221,12 @@ The matter is rather more delicate if both $N$ and $T$ are large, and the above 
 One may think that we had the endogeneity problem ([-@eq-dynamic-interlude-differenced-endogeneity]) because we took first differences instead of applying the within transformation. 
 
 However, the same endogeneity issue affects the within estimator. First, for $T=2$ the above discussion applies directly, as the within transformation is numerically identical to first differencing. 
-Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
+Second, more generally, the within estimator suffers from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
 $$
 	\tilde{Y}_{it} = \lambda \tilde{Y}_{it-1} + \tilde{U}_{it}.
 $$ 
 
-One can now immediately see that $\tilde{Y}_{it-1}$ will also be an endogenous regressor as
+One can now immediately see that $\tilde{Y}_{it-1}$ is also an endogenous regressor as
 
 $$
 	\E[\tilde{Y}_{it-1}\tilde{U}_{it}] = \E\left[\left(Y_{it-1}- T^{-1}\sum_{s=0}^{T-1} Y_{is} \right)\left(U_{it} - T^{-1}\sum_{r=1}^{T}U_{ir} \right) \right].
@@ -234,7 +234,7 @@ $$
 
 The expectation on the right-hand side contains "bad" expectations of the form $\E[U_{it}Y_{is}]$ with $t<s$ (recall @eq-dynamic-interlude-no-strict-exogeneity). 
 
-We conclude that for any fixed $T$ the within estimator will also suffer from endogeneity bias. @Nickell1981 shows that it is of the order $O(T^{-1})$.  Furthermore, this bias is likely to be large in practice [see @Kiviet1995].
+We conclude that for any fixed $T$ the within estimator also suffers from endogeneity bias. @Nickell1981 shows that it is of the order $O(T^{-1})$.  Furthermore, this bias is likely to be large in practice [see @Kiviet1995].
 
 ---
 
