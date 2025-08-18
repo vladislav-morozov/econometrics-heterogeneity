@@ -73,7 +73,7 @@ where we again define $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i$.
 
 ### Overall Strategy
 
-To identify the distribution, we will proceed similarly to how we identified the variance. The steps are:
+To identify the distribution, we proceed similarly to how we identified the variance. The steps are:
 
 1. Identify $\varphi_{\bu_i|\bX_i}(\cdot|\bX)$ from @eq-linear-distribution-chf-data. 
 2. Apply deconvolution  to @eq-linear-distribution-chf-estimators to recover $\varphi_{\bbeta_i|\bX_i}(\bs|\bX)$.
@@ -99,7 +99,7 @@ This equation is similar to the expression ([-@eq-linear-variance-second-moment-
 
 Our goal is to solve for the second term in the linear system ([-@eq-linear-chf-hessian]). However, like system ([-@eq-linear-variance-second-moment-y]), system ([-@eq-linear-chf-hessian]) is underdetermined. Accordingly, we need to impose additional assumptions to disentangle the $\bu_i$ component from the $\bbeta_i$ one. 
 
-In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption ([-@eq-linear-variance-spherical]). Specifically, we will assume that $u_{it}$ is IID across $i$ and $t$ conditional on $\bX_i=\bX$. This assumption implies that all $u_{it}$ have the same characteristic function for all $i$ and $t$:
+In these notes, we consider a simple assumption that strengthens our temporal homoskedasticity assumption ([-@eq-linear-variance-spherical]). Specifically, we assume that $u_{it}$ is IID across $i$ and $t$ conditional on $\bX_i=\bX$. This assumption implies that all $u_{it}$ have the same characteristic function for all $i$ and $t$:
 $$ 
 	\varphi_{u_{i1}|\bX_i}(s|\bX) = \cdots = \varphi_{u_{iT}|\bX_i}(s|\bX).
 $$ {#eq-linear-distribution-iid-error}
@@ -213,7 +213,7 @@ If $\bX_i$ is continuously distributed, it is instead necessary to estimate the 
 
 ::: {.callout-note appearance="simple" icon=false}
 
-Such nonparametric estimators may perform poorly due to the curse of dimensionality if $T$ and $p$ are not small. In the next block we will discuss some assumptions that can reduce the dimensionality of the problem and be applied in this context.
+Such nonparametric estimators may perform poorly due to the curse of dimensionality if $T$ and $p$ are not small. In the next block we discuss some assumptions that can reduce the dimensionality of the problem and be applied in this context.
 
 :::
 
