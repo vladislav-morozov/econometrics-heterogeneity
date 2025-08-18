@@ -27,32 +27,32 @@ By the end of this section, you should be able to:
 
 Previously, we focused on estimating the average coefficient vector $\E[\bbeta_i]$ in our model ([-@eq-lecture_model]):
 $$
-y_{it} = \bx_{it}'\bbeta_i + u_{it}.
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
 $$ {#eq-linear-variance-model}
-In particular, section [-@sec-linear-mean-group] has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even without imposing restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$.
+In particular, section [-@sec-linear-mean-group] has shown that the mean group estimator can consistently estimate $\E[\bbeta_i]$ even without imposing restrictions on the dependence between $\bbeta_i$ and $\bX_{it}$.
 
 
 Average effects are informative but limited. They do not capture the full variation in responses across individuals (@Heckman1997). Other parameters of interest include:
 
-- The moments of $\bbeta$:
+- The moments of $\bbeta_i$:
   - Variance: overall dispersion in effects.
   - Skewness: asymmetry in responses.
   - Higher moments: shape of the distribution.
-- The full distribution and quantiles of $\bbeta_i$. For example, the distribution may be used to compute  what proportion of people benefit vs. how many people are hurt by changes in $x_{it}$.
+- The full distribution and quantiles of $\bbeta_i$. For example, the distribution may be used to compute  what proportion of people benefit vs. how many people are hurt by changes in $\bX_{it}$.
  
 ### Model
 
-As it turns out, it is possible to identify such distributional features   in the static version of model ([-@eq-linear-variance-model]) without restricting the dependence structure between $\bbeta_i$ and $\bx_{it}$ [@Arellano2012]. In this section we discuss a streamlined version of their results for variance, while   @sec-linear-distribution shows how to identify the maximal object of interest — the full distribution.
+As it turns out, it is possible to identify such distributional features in the static version of model ([-@eq-linear-variance-model]) without restricting the dependence structure between $\bbeta_i$ and $\bX_{it}$ [@Arellano2012]. In this section we discuss a streamlined version of their results for variance, while   @sec-linear-distribution shows how to identify the maximal object of interest — the full distribution.
  
 Specifically, we consider model  ([-@eq-linear-variance-model]) under a strict exogeneity condition of the form:
 $$
-\E[u_{it}|\bbeta_i, \bX_i] =0
+\E[U_{it}|\bbeta_i, \bX_i] =0
 $$ {#eq-vector-variance-strict-ex}
-The number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We  treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
+The number $T$ of unit-level observations is assumed to exceed the number $p$ of covariates. We treat $T$ as fixed, and consider large-$N$ identification and estimation arguments. 
 
 As before, the model can be written in unit matrix form as 
 $$
-\by_i = \bX_i\bbeta_i + \bu_i.
+\bU_i = \bX_i\bbeta_i + \bU_i.
 $$
 We again assume that $\det(\bX_i'\bX_i)>0$ for all $i$. If this condition does not hold, our results are about the subpopulation of units with positive determinant, as in section [-@sec-linear-mean-group].
 
@@ -73,47 +73,47 @@ Its diagonal terms are the variances of individual coefficients, which show how 
 
 ### Variance Decomposition
 
-To identify $\var(\bbeta_i)$, we first look at the second moments of $\by_i$. Specifically, we consider the conditional second moment of $\by_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
+To identify $\var(\bbeta_i)$, we first look at the second moments of $\bY_i$. Specifically, we consider the conditional second moment of $\bY_i$ given $\bX_i=\bX$, where $\bX$ is some potential value of $\bX_i$ such that $\det(\bX'\bX)>0$ and $\bX$ lies in the support of $\bX_i$.
 
-Using model ([-@eq-linear-variance-model]) and condition ([-@eq-vector-variance-strict-ex]), the conditional second moment of $\by_i$ can be represented as
+Using model ([-@eq-linear-variance-model]) and condition ([-@eq-vector-variance-strict-ex]), the conditional second moment of $\bY_i$ can be represented as
 $$
 \begin{aligned}
-	&\E[\by_i\by_i'|\bX_i=\bX]\\
-    & = \E\left[ (\bX_i\bbeta_i+ \bu_i)(\bX_i\bbeta_i+\bu_i)'|\bX_i=\bX \right]\\
-	& =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bu_i\bu_i'|\bX_i=\bX \right]. 
+	&\E[\bY_i\bY_i'|\bX_i=\bX]\\
+    & = \E\left[ (\bX_i\bbeta_i+ \bU_i)(\bX_i\bbeta_i+\bU_i)'|\bX_i=\bX \right]\\
+	& =\bX \E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]\bX' + \E\left[\bU_i\bU_i'|\bX_i=\bX \right]. 
 \end{aligned} 
 $$ {#eq-linear-variance-second-moment-y}
 
-The above expression decomposes the conditional second moment of $\by_i$ into two components --- one corresponding to $\bbeta_i$ and the other one to $\bu_i$.
+The above expression decomposes the conditional second moment of $\bY_i$ into two components --- one corresponding to $\bbeta_i$ and the other one to $\bU_i$.
 
-In general, we cannot separate the two components of the second moment of $\by$. To see why, consider @eq-linear-variance-second-moment-y as a system of linear equations. The unknowns are the components of the symmetric matrices
+In general, we cannot separate the two components of the second moment of $\bY_i$. To see why, consider @eq-linear-variance-second-moment-y as a system of linear equations. The unknowns are the components of the symmetric matrices
 
 - $\E\left[\bbeta_i\bbeta_i'|\bX_i=\bX \right]$ — a total of $p(p+1)/2$ unknowns.
--  $\E\left[\bu_i\bu_i'|\bX_i=\bX \right]$ — a total of $T(T+1)/2$ unknowns. 
+-  $\E\left[\bU_i\bU_i'|\bX_i=\bX \right]$ — a total of $T(T+1)/2$ unknowns. 
  
 The system is underdetermined, as there is a total of only $T(T+1)/2$ distinct equations.
 
-At heart, the underdeterminacy stems from the fact that the model allows any dynamic structure for $\curl{u_{it}}_{t=1}^T$. As a consequence, $\E[\bu_i\bu_i'|\bX_i=\bX]$ has too many free elements relative to the number of equations.
+At heart, the underdeterminacy stems from the fact that the model allows any dynamic structure for $\curl{U_{it}}_{t=1}^T$. As a consequence, $\E[\bU_i\bU_i'|\bX_i=\bX]$ has too many free elements relative to the number of equations.
 
 ### Imposing Structure on the Error Term
 
 
-This issue can be resolved by imposing assumptions on the time series dependence of $u_{it}$. The magnitudes of $T$ and $p$ determine how many restrictions are necessary.  After taking out the  $p(p+1)/2$ parameters of $\E[\bbeta_i\bbeta_i'|\bX_i=\bx]$, we have  at most $\left[T(T+1)-p(p+1) \right]/2$     equations left. This number is the number of possible free parameters in  $\E[\bu_i\bu_i'|\bX_i=\bX]$. In the most unfavorable case $T=p+1$, and we can allow only $T+1$ possible parameters in $\E[\bu_i\bu_i'|\bX_i=\bX]$.
+This issue can be resolved by imposing assumptions on the time series dependence of $U_{it}$. The magnitudes of $T$ and $p$ determine how many restrictions are necessary.  After taking out the  $p(p+1)/2$ parameters of $\E[\bbeta_i\bbeta_i'|\bX_i=\bx]$, we have  at most $\left[T(T+1)-p(p+1) \right]/2$     equations left. This number is the number of possible free parameters in  $\E[\bU_i\bU_i'|\bX_i=\bX]$. In the most unfavorable case $T=p+1$, and we can allow only $T+1$ possible parameters in $\E[\bU_i\bU_i'|\bX_i=\bX]$.
 
 
 
-Various assumptions are possible, and @Arellano2012 explore moving average and autoregressive structures for $u_{it}$. Here, we consider the simplest  case in which $u_{it}$ is conditionally homoskedastic across time (but not necessarily across $\bX$) and uncorrelated across $t$: 
+Various assumptions are possible, and @Arellano2012 explore moving average and autoregressive structures for $U_{it}$. Here, we consider the simplest  case in which $U_{it}$ is conditionally homoskedastic across time (but not necessarily across $\bX$) and uncorrelated across $t$: 
 $$
 \begin{aligned} 
-	\E[u_{it}^2|\bX_i=\bX] & = \sigma^2(\bX), \\
-	\E[u_{it}u_{is}|\bX_i=\bX] & = 0, \quad t\neq s.
+	\E[U_{it}^2|\bX_i=\bX] & = \sigma^2(\bX), \\
+	\E[U_{it}U_{is}|\bX_i=\bX] & = 0, \quad t\neq s.
 \end{aligned}
 $$ {#eq-linear-variance-spherical}
 Under assumption ([-@eq-linear-variance-spherical]) it holds that
 $$
-\E\left[\bu_i\bu_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
+\E\left[\bU_i\bU_i'|\bX_i=\bX \right] = \sigma^2(\bX)\bI_T.
 $$
-There is only one unknown parameter in $\E[\bu_i\bu_i'|\bX_i=\bX]$!
+There is only one unknown parameter in $\E[\bU_i\bU_i'|\bX_i=\bX]$!
 
 ### Variance of Residuals
 
@@ -129,12 +129,12 @@ $$
 	   \bM(\bX)' & =\bM(\bX).
 \end{aligned} 
 $$
-Now consider the following second moment of $\bM(\bX)\by_i$ conditional on $\bX_i=\bX$:
+Now consider the following second moment of $\bM(\bX)\bY_i$ conditional on $\bX_i=\bX$:
 $$
 \begin{aligned}
-	& \E[\by_i'\bM(\bX)'\bM(\bX)\by_i|\bX_i=\bX]\\
-    &  = \E[\bu_i'\bM(\bX)\bu_i|\bX_i=\bX] \\
-    & = \E\left[ \mathrm{tr}(\bu_i'\bM(\bX)\bu_i)|\bX_i=\bX\right] \\
+	& \E[\bY_i'\bM(\bX)'\bM(\bX)\bY_i|\bX_i=\bX]\\
+    &  = \E[\bU_i'\bM(\bX)\bU_i|\bX_i=\bX] \\
+    & = \E\left[ \mathrm{tr}(\bU_i'\bM(\bX)\bU_i)|\bX_i=\bX\right] \\
 	& = \sigma^2(\bX)(T-p).
 \end{aligned}
 $$
@@ -143,7 +143,7 @@ The details of the trace argument are standard and can be found in section 4.11 
 
 We conclude that $\sigma^2(\bX)$ is identified as 
 $$
-	\sigma^2(\bX) = \dfrac{1}{T-p} \E[\by_i'\bM(\bX)\by_i|\bX_i=\bX].
+	\sigma^2(\bX) = \dfrac{1}{T-p} \E[\bY_i'\bM(\bX)\bY_i|\bX_i=\bX].
 $$
 
 
@@ -159,25 +159,25 @@ Note that it is also possible to solve for variance parameters from @eq-linear-v
 
 We are now in a position to identify $\var(\bbeta_i)$. In principle, we can solve for $\E[\bbeta_i\bbeta_i']$ by suitably vectorizing the system in @eq-linear-variance-second-moment-y. However, it is more convenient to go back to the individual estimators ([-@eq-linear-mg-individual-estimator]).  For brevity, let $\bH_i = (\bX_i'\bX_i)^{-1}\bX_i'$, so that  
 $$
-\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\by_i =  \bbeta_i + \bH_i\bu_i.
+\hat{\bbeta}_i = (\bX_i'\bX_i)^{-1}\bX_i'\bY_i =  \bbeta_i + \bH_i\bU_i.
 $$
-As $\E[\bbeta_i\bu_i']=0$ by condition ([-@eq-vector-variance-strict-ex]),  the variance of the individual estimator can be decomposed as 
+As $\E[\bbeta_i\bU_i']=0$ by condition ([-@eq-vector-variance-strict-ex]),  the variance of the individual estimator can be decomposed as 
 $$
 \begin{aligned}
-	& \var(\hat{\bbeta}_i) = \var\left(\bbeta_i + \bH_i\bu_i \right)\\
-	& = \var(\bbeta_i) + \var(\bH_i)\\
+	& \var(\hat{\bbeta}_i) = \var\left(\bbeta_i + \bH_i\bU_i \right)\\
+	& = \var(\bbeta_i) + \var(\bH_i\bU_i)\\
 	%
 	&
-	= \var(\bbeta_i) + \E\left[\bH_i\bu_i\bu_i'\bH_i' \right]\\
-	& =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bu_i\bu_i'\bH_i'|\bX_i \right]\right]\\
-	& =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bu_i\bu_i'|\bX_i \right]\bH_i'\right]\\
+	= \var(\bbeta_i) + \E\left[\bH_i\bU_i\bU_i'\bH_i' \right]\\
+	& =   \var(\bbeta_i) + \E\left[\E\left[\bH_i\bU_i\bU_i'\bH_i'|\bX_i \right]\right]\\
+	& =   \var(\bbeta_i) + \E\left[\bH_i\E\left[\bU_i\bU_i'|\bX_i \right]\bH_i'\right]\\
 	& = \var(\bbeta_i) + \E\left[\sigma(\bX_i)\bH_i\bH_i'\right].
 \end{aligned} 
 $$
 
 Observe that the variance $\var(\hat{\bbeta}_i)$ of individual estimators $\hat{\bbeta}_i$ (not $\bbeta_i$!) is identified as 
 $$
-	\var(\hat{\bbeta}_i) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right).
+	\var(\hat{\bbeta}_i) = \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\bY_i  \right).
 $$
 
 
@@ -185,11 +185,11 @@ Substituting @eq-linear-variance-spherical and rearranging, we obtain the follow
 $$
 \begin{aligned}  
 	 \var(\bbeta_i)  &  = 	\var(\hat{\bbeta}_i) -   \E\left[\sigma(\bX_i)\bH_i\bH_i'\right]\\
-	 & =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\by_i  \right)\\
-     & \quad  -  \dfrac{1}{T-p}\E\left[ \E[\by_i'\bM(\bX_i)\by_i|\bX_i]\bH_i\bH_i'\right].
+	 & =  \var\left(   (\bX_i'\bX_i)^{-1}\bX_i\bY_i  \right)\\
+     & \quad  -  \dfrac{1}{T-p}\E\left[ \E[\bY_i'\bM(\bX_i)\bY_i|\bX_i]\bH_i\bH_i'\right].
 \end{aligned}
 $$ {#eq-linear-variance-variance-explicit}
-Note that the right-hand side is a function of the distribution of $(\by_i, \bX_i)$ — hence identification holds. 
+Note that the right-hand side is a function of the distribution of $(\bY_i, \bX_i)$ — hence identification holds. 
 
 ## Estimation
 
@@ -207,21 +207,21 @@ This process yields an estimator for the variance of $\bbeta$:
 $$
 \begin{aligned}
 	\widehat{\var(\bbeta_i) } & = \dfrac{1}{N}\sum_{i=1}^N \left( \hat{\bbeta}_i - \hat{\bbeta}_{MG} \right)\left(\hat{\bbeta}_i-\hat{\bbeta}_{MG} \right)'\\
-	& \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \by_i'\bM(\bX_i)\by_i\bH_i\bH_i'.
+	& \quad - \dfrac{1}{(T-p)N}\sum_{i=1}^N \bY_i'\bM(\bX_i)\bY_i\bH_i\bH_i'.
 \end{aligned}
 $$
 Under standard regularity conditions, $\widehat{\var(\bbeta_i) }$ is consistent and (with some extra work) asymptotically normal, enabling inference on the variance of $\bbeta_i$.
 
 ## Higher-Order Moments and Moving Beyond
 
-It turns out that a similar strategy can be used to identify the third and higher-order moments of $\bbeta_i$. see @Arellano2012 for the details. The key ingredients of the identification argument for the $k$th moments of $\bbeta_i$ are:
+It turns out that a similar strategy can be used to identify the third and higher-order moments of $\bbeta_i$. See @Arellano2012 for the details. The key ingredients of the identification argument for the $k$th moments of $\bbeta_i$ are:
 
-- $k$th moments (or cumulants) of $\by_i$ and $\hat{\bbeta}_i$
-- Restrictions on the time series dynamics of $\curl{u_{it}}_{t=1}^T$
-- Multiplicative separability of the moments of $\bbeta_i$ and $\bu_i$ up to order $k$.
+- $k$th moments (or cumulants) of $\bY_i$ and $\hat{\bbeta}_i$
+- Restrictions on the time series dynamics of $\curl{U_{it}}_{t=1}^T$
+- Multiplicative separability of the moments of $\bbeta_i$ and $\bU_i$ up to order $k$.
 
 
-However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantiles of $\bbeta_i$ and further policy-relevant parameter. As such,  this distribution is our maximal object of interest, and we now turn towards its identification.
+However, moments of $\bbeta_i$ may be also be obtained from the full distribution of $\bbeta_i$. Moreover, the distribution may also be used to compute quantiles of $\bbeta_i$ and further policy-relevant parameter. As such, this distribution is our maximal object of interest, and we now turn towards its identification.
 
 
 
