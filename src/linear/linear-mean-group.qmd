@@ -24,7 +24,7 @@ By the end of this section, you should be able to:
 
 The results of the previous section and section [-@sec-linear-within] leave us with key two questions: 
 
--  In static models, can we estimate the average effect without imposing restrictions on the relationship between $\bx_{it}$ and $\bbeta_i$?
+-  In static models, can we estimate the average effect without imposing restrictions on the relationship between $\bX_{it}$ and $\bbeta_i$?
 -  In dynamic models, can we estimate $\E[\lambda_i]$ at all?
   
 As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The *mean group* (MG) estimator, due to @Pesaran1995, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.
@@ -34,17 +34,19 @@ As it turns out, there is indeed an estimator that is robust both to heterogenei
 
 To formally define the mean group estimator, we return to the general model ([-@eq-lecture_model]): 
 $$
-	\by_{it} = \bx_{it}'\bbeta_i + u_{it},
+	\bY_{it}^{\bx} = \bbeta_i'\bx + U_{it},
 $$ 
-where we label the dimension of the vectors $\bx_{it}$ and $\bbeta_i$ as $p$. We can also express this model in unit-level matrix form by stacking observations across $t$ for each unit $i$:
+where we label the dimension of the vectors $\bx$ and $\bbeta_i$ as $p$. 
+
+We can also express the corresponding realized outcome equations in unit-level matrix form by stacking observations across $t$ for each unit $i$:
 $$
-\by_i = \bX_i\bbeta_i + \bu_i,
+\bY_i = \bX_i\bbeta_i + \bU_i,
 $$
 where $\bX_i$ is now a $T\times p$ matrix of covariates, with $T$ representing the number of observations for each unit.
 
-In what follows, we will assume that the regressors $\bx_{it}$ are orthogonal to the unobserved component $u_{it}$:
+In what follows, we will assume that the regressors $\bX_{it}$ are orthogonal to the unobserved component $U_{it}$:
 $$
-\E[\bx_{it}u_{it}] =0.
+\E[\bX_{it}U_{it}] =0.
 $$ {#eq-linear-mg-orthogonality}
 This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.
 
@@ -57,27 +59,27 @@ For the mean group estimator to be well-defined, we make two further assumptions
 
 Under these assumptions, we can compute the OLS estimator of $\bbeta_i$ for each unit $i$
 $$
-	\hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+	\hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 $$ {#eq-linear-mg-individual-estimator} 
  
 The mean group estimator [@Pesaran1995] is defined as the average of unit-level estimators ([-@eq-linear-mg-individual-estimator]):
 $$
-	\hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+	\hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 $$
 In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.
 
 
 ::: {.callout-note appearance="simple" icon=false}
-We introduce the MG estimator under the orthogonality condition ([-@eq-linear-mg-orthogonality]). However, it is also possible to introduce an analogous estimator if $\E[\bx_{it}u_{it}]\neq 0$, but instruments for $\bx_{it}$ are available. In this case, suitable unit-level IV/2SLS estimators replace $\hat{\bbeta}_i$ [e.g. @Bai2023MeanGroupInstrumental].
+We introduce the MG estimator under the orthogonality condition ([-@eq-linear-mg-orthogonality]). However, it is also possible to introduce an analogous estimator if $\E[\bX_{it}U_{it}]\neq 0$, but instruments for $\bX_{it}$ are available. In this case, suitable unit-level IV/2SLS estimators replace $\hat{\bbeta}_i$ [e.g. @Bai2023MeanGroupInstrumental].
 :::
  
 
 
 ### Properties 
 
-To analyze the properties of the $\hat{\bbeta}_{MG}$, we can substitute the model for $\by_i$ into each individual estimator. This substitution yields the sampling error form of the estimator:
+To analyze the properties of the $\hat{\bbeta}_{MG}$, we can substitute the model for $\bY_i$ into each individual estimator. This substitution yields the sampling error form of the estimator:
 $$
-	\hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i	   + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
+	\hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i	   + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i.
 $$
 
 As $N$ grows, the first term will converge to the average effect:
@@ -88,20 +90,20 @@ This convergence holds regardless of assumptions on the dependence between $\bbe
 
 The second term's behavior determines the estimator's overall properties, depending on whether strict exogeneity holds:  
 
-- If strict exogeneity holds,  the mean group estimator is unbiased and consistent for $\E[\bbeta_i]$ even for $T$ fixed. In this case it directly holds that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 $$ for any fixed value of $T$.  
+- If strict exogeneity holds,  the mean group estimator is unbiased and consistent for $\E[\bbeta_i]$ even for $T$ fixed. In this case it directly holds that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i\right] =0 $$ for any fixed value of $T$.  
   
-- If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both $N, T\to\infty$. In this case it may be that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,$$ and $\hat{\bbeta}_{MG}$ will be biased for any given finite $T$. However, under standard assumptions that limit dependence across $t$, this bias will typically be of the order $O(T^{-1})$ and vanish as $T\to\infty$.
+- If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both $N, T\to\infty$. In this case it may be that $$ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i\right] \neq 0 ,$$ and $\hat{\bbeta}_{MG}$ will be biased for any given finite $T$. However, under standard assumptions that limit dependence across $t$, this bias will typically be of the order $O(T^{-1})$ and vanish as $T\to\infty$.
 
  
 ::: {.callout-note appearance="simple" icon=false} 
-We implicitly assume the existence of any required moment involving $\left(\bX_i'\bX_i\right)^{-1}$. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We will not discuss this point further, but see @Graham2012. 
+We implicitly assume the existence of any required moment involving $\left(\bX_i'\bX_i\right)^{-1}$. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We do not discuss this point further, but see @Graham2012. 
 :::
 
 ## Comparing Estimators
 
 ### Conditions for Consistency
 
-We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators. 
+We now have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators. 
 
 The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate $\E[\bbeta_i]$:
 
@@ -146,7 +148,7 @@ $$
 $$
 Every unit is checked to see if $\det(\bX_i'\bX_i)>0$. If it is, their $\hat{\bbeta}_i$  is computed and added to the average.
 
-What does this modified estimator estimate? For simplicity, suppose that $\E[\bu_i|\bX_i]=0$. Then, as $N\to\infty$,  $\hat{\bbeta}_{MG}^+$ converges to the average for the units that have enough variation in their data (subject to the above warning regarding existence of moments):
+What does this modified estimator estimate? For simplicity, suppose that $\E[\bU_i|\bX_i]=0$. Then, as $N\to\infty$,  $\hat{\bbeta}_{MG}^+$ converges to the average for the units that have enough variation in their data (subject to the above warning regarding existence of moments):
 $$
 	\hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)>0}  \right].
 $$
