@@ -11,7 +11,7 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section discusses the problem of unobserved heterogeneity, its kinds, and sets out some common themes for the course. 
+This section discusses the problem of unobserved heterogeneity and sets out some common themes for the course. 
   
 By the end of this section, you should
 
@@ -27,21 +27,21 @@ By the end of this section, you should
 
 In economics, business, and the social sciences, heterogeneity is the rule. No two individuals, firms, or countries are identical, even when they appear statistically similar in observed data. A worker with the same years of education as another may earn a different wage due to unobserved ability. Two firms in the same industry may respond differently to a policy shock because of latent managerial practices. A country’s growth trajectory may diverge from its peers’ due to unmeasured institutions or cultural norms. These unobserved differences — preferences, productivity, measurement errors, or idiosyncratic shocks — determine how agents respond to treatments, policies, or market conditions. 
 
-Our objective is to estimate causal parameters: treatment effects (or their moments and distributions), policy impacts, or other structural quantities that describe how outcomes would change under interventions. Unlike predictive modeling, we focus on counterfactuals, rather than associational patterns.
+Our objective is to estimate causal parameters: treatment effects (or their moments and distributions), policy impacts, or other structural quantities that describe how outcomes would change under interventions. We focus on counterfactuals, rather than associational patterns.
 
 In observational data, however, this task is complicated by unobserved heterogeneity. Treatments (broadly defined) are endogenously selected based on unobserved factors, creating confounding. Naive comparisons fail to isolate causal effects because the treatment-outcome relationship is confounded by unobserved determinants. The challenge of causal inference with unobserved heterogeneity is central to empirical research and the focus of this course.
  
 
 ### Broad Setting
 
-Formally, suppose we observe a dataset $\lbrace(Y_i, X_i)\rbrace_{i=1}^N$ (cross-section) or $\{(Y_{it}, X_{it})\}_{i=1}^N$ (panel), where: $Y_i$ is the realized outcome for unit $i$ and $X_i$ includes observed covariates (e.g., treatments, controls).
+Formally, suppose we observe a dataset $\lbrace(Y_i, X_i)\rbrace_{i=1}^N$ (cross-section) or $\{(Y_{it}, X_{it})\}_{i=1}^N$ (panel), where $Y_i$ is the realized outcome for unit $i$ and $X_i$ includes observed covariates (e.g., treatments, controls).
 
 At all points in the course, we adopt the following potential outcomes framework. The outcome of unit $i$ (in period $t$) under "treatment" $x$ is determined as
 
 $$
 \begin{aligned}
-	Y_i^x & = \phi(x, A_i),  && \text{Cross-section}\\
-  Y_{it}^x & = \phi(x, A_i, U_{it}), && \text{Panel}
+	Y_i^x & = \phi(x, A_i),  && \text{(cross-section)}\\
+  Y_{it}^x & = \phi(x, A_i, U_{it}), && \text{(panel)}
 \end{aligned}
 $$ {#eq-intro-potential-outcomes}
 
@@ -54,7 +54,7 @@ where:
 
 Our goal is causal: to infer some feature of $\phi(\cdot)$, such as average treatment or marginal effects, the variance or distribution of such effects, or distributional features of potential outcomes. 
 
-A key challenge to our is the presence of $(A_i, U_{it})$ which are never observed but systematically influence both treatments and outcomes.
+A key challenge to our work is the presence of $(A_i, U_{it})$ which are never observed but systematically influence both treatments and outcomes.
  
 ### Types of Unobserved Heterogeneity
 
@@ -145,7 +145,7 @@ digraph CombinedGraph {
 
 Ignoring this confounding leads to misleading conclusions. The issues manifests even in simple linear regression, with some basic examples including:
 
-- [Omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias): if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.
+- [Omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias): if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates are be biased and inconsistent.
 - [Attenuation bias](https://en.wikipedia.org/wiki/Regression_dilution): When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.
 
 In nonlinear models, the resulting biases become completely unpredictable even in parametric models [e.g. @Stefanski1985]. 
@@ -165,7 +165,7 @@ This course surveys some of the advances in this field, structured into three ke
 2.  Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.
 3.  Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution *of* treatment effects.
 
-Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will also allow non-binary and continuous treatments. We will emphasize identification strategies over asymptotic theory.
+Throughout, we focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We also allow for non-binary and continuous treatments throughout. Finally, we emphasize identification strategies over asymptotic theory.
 
 ### A Common Theme
 
@@ -184,7 +184,7 @@ We will see examples  of each approach throughout the course, and one should see
 
 | **Model Class**               | **What We Pay**                          | **What We Get**               | **Upside**                     |
 |--------------------------------|---------------------------------------------|------------------------------------|-----------------------------------------|
-| **Linear Heterogeneous Models** | Linearity of $\phi$: $\phi(X_{it}, A_i, U_{it})$ $=$ $X_{it}'\beta(A_i)$ $+ U_{it}$ | Distribution and moments of individual treatment effects     |  Full distribution of treatment effects    |
+| **Linear Heterogeneous Models** | Linearity of $\phi$: $\phi(X_{it}, A_i, U_{it})$ $=$ $X_{it}'\beta(A_i)$ $+ U_{it}$ and sufficient number of observations per unit | Distribution and moments of individual treatment effects     |  Full distribution of treatment effects    |
 | **Nonparametric Models**       |  Identification only for subpopulation of *stayers* or assumptions on the relationship between $(X_{it})$ and $(A_i, U_{it})$        | Average marginal effects (more with additive separability of $U_{it})$   | No restrictions on the form of $\phi(\cdot)$ or $A_i$          |
 | **Quantile and Distributional Regression Models** | Focus on distribution of potential outcomes, not treatment effects.    | Quantile and distributional treatment effects (QTEs and DTEs)   | No need for panel data |
  
