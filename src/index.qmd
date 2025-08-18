@@ -20,16 +20,15 @@ open-graph:
 ### Short Description
 
 
-Unobserved heterogeneity is pervasive in economics, driven by heterogeneous parameters and treatment effects, unobserved characteristics of agents, missing variables, etc. This class introduces methods for estimating parameters of interest in settings with such unobserved heterogeneity.
+Causal inference with unobserved heterogeneity is the core challenge of empirical economics. Whether due to heterogeneous treatment effects, omitted confounders, or measurement error, unobserved factors create confounding in the data and require developing appropriate methods. This course surveys some modern identification strategies and estimation methods designed to recover causal relationships from observational data, where treatments are endogenously selected and key determinants of outcomes are hidden.
 
 The course is structured into three main parts:
 
-1. Linear models with heterogeneous coefficients
-2. Nonparametric models with unobserved heterogeneity
+1. Linear models with heterogeneous coefficients.
+2. Nonparametric models with unobserved heterogeneity.
 3. Quantile and distributional treatment effects and quantile and distributional regression methods.
 
-This class focuses on observational cross-sectional and panel data settings.
-
+We focus exclusively on observational cross-sectional and panel data, where unobserved heterogeneity cannot be ignored. The emphasis is on identification, rather than asymptotic theory or prediction.
 
 ### Course Materials
 
