@@ -59,7 +59,7 @@ Conditional characteristic functions may be defined analogously using conditiona
 
 ## Deconvolution
 
-Property ([-@eq-linear-chf-independence]) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as deconvolution. This approach will help us identify the distribution of the coefficients $\bbeta_i$ in the next section.
+Property ([-@eq-linear-chf-independence]) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as *deconvolution*. This approach will help us identify the distribution of the coefficients $\bbeta_i$ in the next section.
 
 At heart, deconvolution is simple. Suppose that we observe a random vector $\bY$. $\bY$ is generated as a sum of two independent vector $\bV$ and $\bU$. The distribution of $\bU$ is known, while the distribution of $\bV$ is the object of interest. 
 
