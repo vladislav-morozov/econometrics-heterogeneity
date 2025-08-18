@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
 
-<title>1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity</title>
+<title>1&nbsp; Introduction: Causal Inference with Unobserved Heterogeneity – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -448,7 +448,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="1&nbsp; Introduction – Econometrics with Unobserved Heterogeneity">
+<meta property="og:title" content="1&nbsp; Introduction: Causal Inference with Unobserved Heterogeneity – Econometrics with Unobserved Heterogeneity">
 <meta property="og:description" content="Learn about different kinds of unobserved heterogeneity in economic and business data and some strategies for dealing with it.">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
@@ -462,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -502,7 +502,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -625,15 +625,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#unobserved-heterogeneity" id="toc-unobserved-heterogeneity" class="nav-link active" data-scroll-target="#unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</a>
+  <li><a href="#the-problem-of-unobserved-heterogeneity" id="toc-the-problem-of-unobserved-heterogeneity" class="nav-link active" data-scroll-target="#the-problem-of-unobserved-heterogeneity"><span class="header-section-number">1.1</span> The Problem of Unobserved Heterogeneity</a>
   <ul class="collapse">
-  <li><a href="#types-of-unobserved-heterogeneity" id="toc-types-of-unobserved-heterogeneity" class="nav-link" data-scroll-target="#types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</a></li>
-  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1.1</span> Introduction</a></li>
+  <li><a href="#broad-setting" id="toc-broad-setting" class="nav-link" data-scroll-target="#broad-setting"><span class="header-section-number">1.1.2</span> Broad Setting</a></li>
+  <li><a href="#types-of-unobserved-heterogeneity" id="toc-types-of-unobserved-heterogeneity" class="nav-link" data-scroll-target="#types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.3</span> Types of Unobserved Heterogeneity</a></li>
+  <li><a href="#consequences-of-ignoring-unobserved-heterogeneity" id="toc-consequences-of-ignoring-unobserved-heterogeneity" class="nav-link" data-scroll-target="#consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.4</span> Consequences of Ignoring Unobserved Heterogeneity</a></li>
   </ul></li>
   <li><a href="#this-course" id="toc-this-course" class="nav-link" data-scroll-target="#this-course"><span class="header-section-number">1.2</span> This Course</a>
   <ul class="collapse">
   <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="header-section-number">1.2.1</span> Course Description</a></li>
-  <li><a href="#common-themes" id="toc-common-themes" class="nav-link" data-scroll-target="#common-themes"><span class="header-section-number">1.2.2</span> Common Themes</a></li>
+  <li><a href="#a-common-theme" id="toc-a-common-theme" class="nav-link" data-scroll-target="#a-common-theme"><span class="header-section-number">1.2.2</span> A Common Theme</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">1.2.3</span> Overview</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -643,7 +646,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></h1>
 </div>
 
 
@@ -670,172 +673,185 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section discusses the problem unobserved heterogeneity, its kinds, and sets out some common themes for the course.</p>
+<p>This section discusses the problem of unobserved heterogeneity and sets out some common themes for the course.</p>
 <p>By the end of this section, you should</p>
 <ul>
-<li>Recognize cases where heterogeneous coefficients arise.</li>
-<li>Identify key challenges in estimating heterogeneous coefficients.</li>
-<li>Discuss two strategies for identification under coefficient heterogeneity.</li>
+<li>Discuss the role and nature of unobserved heterogeneity.</li>
+<li>Describe why unobserved heterogeneity matters when working with observational data.</li>
+<li>Describe two broad strategies for causal inference under unobserved heterogeneity.</li>
 </ul>
 </div>
 </div>
-<section id="unobserved-heterogeneity" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="unobserved-heterogeneity"><span class="header-section-number">1.1</span> Unobserved Heterogeneity</h2>
-<p>In economics, business, and other social sciences, no two individuals, firms, or countries are truly identical. Even when we observe the same covariates, hidden differences — such as preferences, productivity, or measurement errors — can lead to vastly different outcomes. These unobserved factors complicate empirical analysis and pose a fundamental challenge to statistical inference: how can we estimate policy-relevant parameters when key determinants of behavior remain hidden? This challenge, known as unobserved heterogeneity, is central to empirical research and the focus of this course.</p>
-<section id="types-of-unobserved-heterogeneity" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.1</span> Types of Unobserved Heterogeneity</h3>
-<p>By unobserved heterogeneity, we will understand differences across individuals, firms, or other economic units that are not captured in the available data but still influence outcomes. These differences can arise from various sources, including:</p>
-<ul>
-<li>Omitted explanatory variables and “fundamental” characteristics of agents.
-<ul>
-<li><em>Example</em>: Consumer demand depends on both income and prices, but if price data is missing, it becomes an unobserved factor influencing demand.</li>
-<li><em>Example</em>: Differences in consumer preferences shape demand, yet preferences are typically unobservable.</li>
-</ul></li>
-<li>Differences in responses to treatments: treatment effect heterogeneity, heterogeneous coefficients, and differences in functional forms across individuals and groups.
-<ul>
-<li><em>Example</em>: A job training program may benefit some individuals more than others, meaning treatment effects vary across people.</li>
-</ul></li>
-<li>Measurement error:
-<ul>
-<li><em>Example</em>: Standardized test scores are often used to proxy intelligence, but they are imperfect measurements of the true intelligence.</li>
-</ul></li>
-</ul>
+<section id="the-problem-of-unobserved-heterogeneity" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="the-problem-of-unobserved-heterogeneity"><span class="header-section-number">1.1</span> The Problem of Unobserved Heterogeneity</h2>
+<section id="introduction" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1.1</span> Introduction</h3>
+<p>In economics, business, and the social sciences, heterogeneity is the rule. No two individuals, firms, or countries are identical, even when they appear statistically similar in observed data. A worker with the same years of education as another may earn a different wage due to unobserved ability. Two firms in the same industry may respond differently to a policy shock because of latent managerial practices. A country’s growth trajectory may diverge from its peers’ due to unmeasured institutions or cultural norms. These unobserved differences — preferences, productivity, measurement errors, or idiosyncratic shocks — determine how agents respond to treatments, policies, or market conditions.</p>
+<p>Our objective is to estimate causal parameters: treatment effects (or their moments and distributions), policy impacts, or other structural quantities that describe how outcomes would change under interventions. We focus on counterfactuals, rather than associational patterns.</p>
+<p>In observational data, however, this task is complicated by unobserved heterogeneity. Treatments (broadly defined) are endogenously selected based on unobserved factors, creating confounding. Naive comparisons fail to isolate causal effects because the treatment-outcome relationship is confounded by unobserved determinants. The challenge of causal inference with unobserved heterogeneity is central to empirical research and the focus of this course.</p>
 </section>
-<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.2</span> Consequences of Ignoring Unobserved Heterogeneity</h3>
-<p>Unobserved heterogeneity is particularly problematic in observational data, where individuals or firms can self-select into treatments or economic decisions. The agents make this decisions based on all the information available to them, but not all important variables get recorded in datasets. As a consequence, there exist hidden factors that confound the relationship between the explanatory variables and the outcomes. In contrast, in randomized experiments, treatments are assigned independently of the characteristics of agents (possibly conditionally). The following graphs schematically illustrate the point:</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 237.74 116.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-112 233.74,-112 233.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="57.7" cy="-90" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="57.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="119.7" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="119.7" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M72.39,-72.41C80.11,-63.69 89.72,-52.85 98.26,-43.21"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="101.1,-45.28 105.11,-35.47 95.86,-40.64 101.1,-45.28"></polygon>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="181.7" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="181.7" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge1" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M167.32,-72.76C159.53,-63.97 149.75,-52.93 141.08,-43.14"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="143.68,-40.8 134.43,-35.63 138.44,-45.44 143.68,-40.8"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Experimental data: no confounding.</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-<div class="cell quarto-layout-cell" data-fig-width="50%" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="NaN" height="480" viewbox="0.00 0.00 151.74 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
-<title>CausalGraph</title>
-<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-184 147.74,-184 147.74,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="86.04" cy="-162" rx="57.9" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-157.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="48.04" cy="-90" rx="48.08" ry="18"></ellipse>
-<text text-anchor="middle" x="48.04" y="-85.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
-</g>
-<!-- A&#45;&gt;B -->
-<g id="edge1" class="edge">
-<title>A-&gt;B</title>
-<path fill="none" stroke="#e6e6e6" d="M76.84,-144.05C70.87,-133.05 63.11,-118.76 57.16,-107.79"></path>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<ellipse fill="#333333" stroke="#e6e6e6" cx="86.04" cy="-18" rx="52.17" ry="18"></ellipse>
-<text text-anchor="middle" x="86.04" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
-</g>
-<!-- A&#45;&gt;C -->
-<g id="edge3" class="edge">
-<title>A-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M93.94,-143.75C98.15,-133.58 102.9,-120.33 105.04,-108 107.78,-92.24 107.78,-87.76 105.04,-72 103.52,-63.24 100.68,-54.01 97.65,-45.75"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="100.84,-44.29 93.94,-36.25 94.32,-46.84 100.84,-44.29"></polygon>
-</g>
-<!-- B&#45;&gt;C -->
-<g id="edge2" class="edge">
-<title>B-&gt;C</title>
-<path fill="none" stroke="#e6e6e6" d="M57.24,-72.05C61.68,-63.89 67.09,-53.91 72.02,-44.82"></path>
-<polygon fill="#e6e6e6" stroke="#e6e6e6" points="75.23,-46.25 76.93,-35.79 69.08,-42.91 75.23,-46.25"></polygon>
-</g>
-</g>
-</svg>
-</div>
-<p></p><figcaption> Observational data: confounding</figcaption> </figure><p></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>As a consequence, ignoring unobserved heterogeneity can lead to misleading statistical conclusions. Confounding manifests even in simple linear regression, with some examples including:</p>
+<section id="broad-setting" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="broad-setting"><span class="header-section-number">1.1.2</span> Broad Setting</h3>
+<p>Formally, suppose we observe a dataset <span class="math inline">\(\lbrace(Y_i, X_i)\rbrace_{i=1}^N\)</span> (cross-section) or <span class="math inline">\(\{(Y_{it}, X_{it})\}_{i=1}^N\)</span> (panel), where <span class="math inline">\(Y_i\)</span> is the realized outcome for unit <span class="math inline">\(i\)</span> and <span class="math inline">\(X_i\)</span> includes observed covariates (e.g., treatments, controls).</p>
+<p>At all points in the course, we adopt the following potential outcomes framework. The outcome of unit <span class="math inline">\(i\)</span> (in period <span class="math inline">\(t\)</span>) under “treatment” <span class="math inline">\(x\)</span> is determined as</p>
+<p><span id="eq-intro-potential-outcomes"><span class="math display">\[
+\begin{aligned}
+    Y_i^x &amp; = \phi(x, A_i),  &amp;&amp; \text{(cross-section)}\\
+  Y_{it}^x &amp; = \phi(x, A_i, U_{it}), &amp;&amp; \text{(panel)}
+\end{aligned}
+\tag{1.1}\]</span></span></p>
+<p>where:</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">Omitted variable bias</a>: if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates will be biased and inconsistent.</li>
+<li><span class="math inline">\(\phi(\cdot)\)</span> is an unknown structural function.</li>
+<li><span class="math inline">\(A_i\)</span> is time-invariant unobserved heterogeneity.</li>
+<li><span class="math inline">\(U_{it}\)</span> is time-varying unobserved heterogeneity.</li>
+</ul>
+<p>Our goal is causal: to infer some feature of <span class="math inline">\(\phi(\cdot)\)</span>, such as average treatment or marginal effects, the variance or distribution of such effects, or distributional features of potential outcomes.</p>
+<p>A key challenge to our work is the presence of <span class="math inline">\((A_i, U_{it})\)</span> which are never observed but systematically influence both treatments and outcomes.</p>
+</section>
+<section id="types-of-unobserved-heterogeneity" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="types-of-unobserved-heterogeneity"><span class="header-section-number">1.1.3</span> Types of Unobserved Heterogeneity</h3>
+<p>What are the <span class="math inline">\((A_i, U_{it})\)</span>? Unobserved heterogeneity arises from three (overlapping) primary sources:</p>
+<ol type="1">
+<li><strong>Omitted Confounders</strong>:
+<ul>
+<li>Latent variables correlated with both <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> .</li>
+<li><strong>Example</strong>: Estimating the returns to education <span class="math inline">\(X_i\)</span> when unobserved ability <span class="math inline">\(A_i\)</span> affects both education and wages <span class="math inline">\(Y_i\)</span>.</li>
+</ul></li>
+<li><strong>Heterogeneous Treatment Effects</strong>:
+<ul>
+<li>The impact of <span class="math inline">\(X_i\)</span> varies across units due to <span class="math inline">\((A_i, U_{it})\)</span>, meaning effects are individual-specific.</li>
+<li><strong>Example</strong>: The benefits <span class="math inline">\(A_i\)</span> of job training program <span class="math inline">\(X_i\)</span> may be larger for some units than for others.</li>
+</ul></li>
+<li><strong>Measurement Error</strong>:
+<ul>
+<li>Observed covariates <span class="math inline">\(X_i\)</span> are noisy proxies for true values.</li>
+<li><strong>Example</strong>: Using self-reported income to proxy true earnings.</li>
+</ul></li>
+</ol>
+</section>
+<section id="consequences-of-ignoring-unobserved-heterogeneity" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="consequences-of-ignoring-unobserved-heterogeneity"><span class="header-section-number">1.1.4</span> Consequences of Ignoring Unobserved Heterogeneity</h3>
+<p>In randomized experiments, unobserved heterogeneity is less problematic for causal inference because: <span class="math display">\[
+\curl{(X_{it}}_{t=1}^T \perp\!\!\!\perp A_i, U_{it} \quad \text{(by design)},
+\]</span> where independence may hold conditionally on some further variables. In other words, treatment assignment is independent of the individual determinants of the potential outcomes. As a consequence, various transformations and comparisons of treatment groups directly estimate causal parameters of interest.</p>
+<p>However, in observational data, this independence <strong>fails</strong>: <span class="math display">\[
+\curl{X_{it}}_{t=1}^T \not\!\perp\!\!\!\perp (A_i, U_{it}).
+\]</span> Real-world data is generated by agents making choices based on <em>all</em> information, including the information that is not recorded in the final datasets. A student selects a college <span class="math inline">\(X_i\)</span> based on unobserved ambition <span class="math inline">\(A_i\)</span>; a firm adopts a technology <span class="math inline">\(X_{it}\)</span> based on unobserved costs <span class="math inline">\((A_i, U_{it})\)</span>; a patient complies with a medical treatment based on unobserved health beliefs. The resulting data is the result of these endogenous decisions, meaning that naive statistical associations between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are almost always confounded by <span class="math inline">\((A_i, U_{it})\)</span>. This is the <strong>core problem of causal inference with unobserved heterogeneity</strong>. The following graphs schematically illustrate the point:</p>
+<div class="cell" data-fig-width="100%" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg width="NaN" height="480" viewbox="0.00 0.00 477.00 244.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 240.8)">
+<title>CombinedGraph</title>
+<polygon fill="#181818" stroke="transparent" points="-4,4 -4,-240.8 473,-240.8 473,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_exp</title>
+<polygon fill="#222222" stroke="#666666" points="8,-80 8,-228.8 254,-228.8 254,-80 8,-80"></polygon>
+<text text-anchor="middle" x="131" y="-212.2" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Experimental data: no confounding</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_obs</title>
+<polygon fill="#222222" stroke="#666666" points="262,-8 262,-228.8 461,-228.8 461,-8 262,-8"></polygon>
+<text text-anchor="middle" x="361.5" y="-212.2" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observational data: confounding</text>
+</g>
+<!-- A1 -->
+<g id="node1" class="node">
+<title>A1</title>
+<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="188" cy="-178" rx="57.9" ry="18"></ellipse>
+<text text-anchor="middle" x="188" y="-173.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
+</g>
+<!-- C1 -->
+<g id="node3" class="node">
+<title>C1</title>
+<ellipse fill="#333333" stroke="#e6e6e6" cx="128" cy="-106" rx="52.17" ry="18"></ellipse>
+<text text-anchor="middle" x="128" y="-101.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
+</g>
+<!-- A1&#45;&gt;C1 -->
+<g id="edge2" class="edge">
+<title>A1-&gt;C1</title>
+<path fill="none" stroke="#e6e6e6" d="M173.78,-160.41C166.31,-151.69 157.01,-140.85 148.75,-131.21"></path>
+<polygon fill="#e6e6e6" stroke="#e6e6e6" points="151.28,-128.78 142.12,-123.47 145.97,-133.34 151.28,-128.78"></polygon>
+</g>
+<!-- B1 -->
+<g id="node2" class="node">
+<title>B1</title>
+<ellipse fill="#333333" stroke="#e6e6e6" cx="64" cy="-178" rx="48.08" ry="18"></ellipse>
+<text text-anchor="middle" x="64" y="-173.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
+</g>
+<!-- B1&#45;&gt;C1 -->
+<g id="edge1" class="edge">
+<title>B1-&gt;C1</title>
+<path fill="none" stroke="#e6e6e6" d="M78.84,-160.76C86.89,-151.97 96.98,-140.93 105.93,-131.14"></path>
+<polygon fill="#e6e6e6" stroke="#e6e6e6" points="108.63,-133.38 112.79,-123.63 103.46,-128.65 108.63,-133.38"></polygon>
+</g>
+<!-- A2 -->
+<g id="node4" class="node">
+<title>A2</title>
+<ellipse fill="none" stroke="#e6e6e6" stroke-dasharray="5,2" cx="356" cy="-178" rx="57.9" ry="18"></ellipse>
+<text text-anchor="middle" x="356" y="-173.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Unobserved</text>
+</g>
+<!-- B2 -->
+<g id="node5" class="node">
+<title>B2</title>
+<ellipse fill="#333333" stroke="#e6e6e6" cx="320" cy="-106" rx="48.08" ry="18"></ellipse>
+<text text-anchor="middle" x="320" y="-101.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Observed</text>
+</g>
+<!-- A2&#45;&gt;B2 -->
+<g id="edge3" class="edge">
+<title>A2-&gt;B2</title>
+<path fill="none" stroke="#e6e6e6" d="M347.29,-160.05C341.63,-149.05 334.28,-134.76 328.63,-123.79"></path>
+</g>
+<!-- C2 -->
+<g id="node6" class="node">
+<title>C2</title>
+<ellipse fill="#333333" stroke="#e6e6e6" cx="354" cy="-34" rx="52.17" ry="18"></ellipse>
+<text text-anchor="middle" x="354" y="-29.8" font-family="Times,serif" font-size="14.00" fill="#e6e6e6">Covariates</text>
+</g>
+<!-- A2&#45;&gt;C2 -->
+<g id="edge5" class="edge">
+<title>A2-&gt;C2</title>
+<path fill="none" stroke="#e6e6e6" d="M364.72,-159.83C369.37,-149.69 374.62,-136.44 377,-124 380.67,-104.79 381.58,-99.01 377,-80 375.44,-73.51 372.77,-66.9 369.79,-60.81"></path>
+<polygon fill="#e6e6e6" stroke="#e6e6e6" points="372.77,-58.95 364.98,-51.78 366.59,-62.25 372.77,-58.95"></polygon>
+</g>
+<!-- B2&#45;&gt;C2 -->
+<g id="edge4" class="edge">
+<title>B2-&gt;C2</title>
+<path fill="none" stroke="#e6e6e6" d="M328.23,-88.05C332.2,-79.89 337.04,-69.91 341.46,-60.82"></path>
+<polygon fill="#e6e6e6" stroke="#e6e6e6" points="344.62,-62.31 345.85,-51.79 338.33,-59.25 344.62,-62.31"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p><figcaption> Comparison of causal structures: experimental vs observational</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<p>Ignoring this confounding leads to misleading conclusions. The issues manifests even in simple linear regression, with some basic examples including:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Omitted-variable_bias">Omitted variable bias</a>: if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates are be biased and inconsistent.</li>
 <li><a href="https://en.wikipedia.org/wiki/Regression_dilution">Attenuation bias</a>: When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.</li>
 </ul>
-<p>The issue becomes even more challenging in nonlinear models, where often even the direction of the bias cannot be predicted <span class="citation" data-cites="Stefanski1985">(e.g. <a href="references/references.html#ref-Stefanski1985" role="doc-biblioref">Stefanski and Carroll 1985</a>)</span>.</p>
+<p>In nonlinear models, the resulting biases become completely unpredictable even in parametric models <span class="citation" data-cites="Stefanski1985">(e.g. <a href="references/references.html#ref-Stefanski1985" role="doc-biblioref">Stefanski and Carroll 1985</a>)</span>.</p>
 </section>
 </section>
 <section id="this-course" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="this-course"><span class="header-section-number">1.2</span> This Course</h2>
 <section id="course-description" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="course-description"><span class="header-section-number">1.2.1</span> Course Description</h3>
-<p>As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses. This course surveys some of the most important advances, structured into three key topics:</p>
+<p>As a response to this issue, econometricians have developed a range of statistical techniques that are suitable for observational data and robust to unobserved heterogeneity in varying senses.</p>
+<p>This course surveys some of the advances in this field, structured into three key topics:</p>
 <ol type="1">
 <li>Linear models with heterogeneous coefficients: extending traditional regression models to allow for individual-specific responses to treatment.</li>
 <li>Nonparametric models with unobserved heterogeneity: models that do not restrict the form of heterogeneity or how it affects the outcome.</li>
 <li>Quantile and distribution regression: approaches that focus on quantile and distributional treatment effects, rather than the distribution <em>of</em> treatment effects.</li>
 </ol>
-<p>Throughout, we will focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We will emphasize identification strategies over asymptotic theory.</p>
+<p>Throughout, we focus on non-experimental (observational) data, where unobserved heterogeneity cannot be ignored. We also allow for non-binary and continuous treatments throughout. Finally, we emphasize identification strategies over asymptotic theory.</p>
 </section>
-<section id="common-themes" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="common-themes"><span class="header-section-number">1.2.2</span> Common Themes</h3>
-<p>Despite their differences, all models we study in this course share a common structure: they describe how an outcome <span class="math inline">\(y\)</span> depends on observed factors (<span class="math inline">\(x\)</span>) and unobserved heterogeneity (<span class="math inline">\(u, \alpha\)</span>). At a general level, this can be expressed as the cross-sectional and panel potential outcomes models: <span id="eq-intro-potential-outcomes"><span class="math display">\[
-    y_i^x = \phi(x, \alpha_i),  \quad y_{it}^x = \phi(x, \alpha_i, u_{it}),
-\tag{1.1}\]</span></span> where <span class="math inline">\(x\)</span> is some potential value of the observed covariates, <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(u_{it}\)</span> are the time-invariant and time-varying unobserved characteristics of unit <span class="math inline">\(i\)</span>, respectively; and <span class="math inline">\(y_i^x\)</span> and <span class="math inline">\(y_{it}^x\)</span> are the (scalar) outcome for individual <span class="math inline">\(i\)</span> given <span class="math inline">\(x\)</span> (in time <span class="math inline">\(t\)</span>). In practice, we will have access to datasets of the form <span class="math inline">\(\curl{(y_i, x_i)}_{i=1, \dots, N}\)</span> or <span class="math inline">\(\curl{(y_{it}, x_{it})}_{i=1,\dots, N}^{t=1, \dots, T}\)</span>. The observed outcomes are generated as <span class="math display">\[
-    y_i = y_i^{x_i}=  \phi(x_i, \alpha_i),  \quad y_{it} = y_{it}^{x_{it}} = \phi(x_{it}, \alpha_i, u_{it}),
-\]</span></p>
-<p>Throughout, our goal will be to learn different features of the potential outcomes, such as average effects or the full individual-level structural functions.</p>
+<section id="a-common-theme" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="a-common-theme"><span class="header-section-number">1.2.2</span> A Common Theme</h3>
 <p>A common theme is that there always will be a price to pay for learning any feature of the counterfactual distribution. This price is paid in the form of assumptions and restrictions on the model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>) — another manifestation of the fundamental problem of causal inference. Some potential courses of action will include:</p>
 <ul>
 <li>Imposing functional form restrictions on <span class="math inline">\(\phi\)</span> (e.g.&nbsp;parametric assumptions such as linearity, or assuming that <span class="math inline">\(\alpha_i\)</span> is scalar and that it enters <span class="math inline">\(\phi\)</span> monotonically);</li>
@@ -843,7 +859,46 @@ Summary and Learning Outcomes
 <li>Restricting the relationship between the observed and unobserved variables (e.g.&nbsp;assuming that <span class="math inline">\(\alpha_i\)</span> is independent from <span class="math inline">\(x_i\)</span>);</li>
 <li>Focusing on particular parts of the distribution of the outcome (such as quantiles).</li>
 </ul>
-<p>We will see examples of each approach throughout the course, and one should see each particular model discussed as a specific variation of model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>).</p>
+</section>
+<section id="overview" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="overview"><span class="header-section-number">1.2.3</span> Overview</h3>
+<p>We will see examples of each approach throughout the course, and one should see each particular model discussed as a specific variation of model (<a href="#eq-intro-potential-outcomes" class="quarto-xref"><span>1.1</span></a>). The table below provides a taste of what is to come and a quick summary of this course:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Model Class</strong></th>
+<th><strong>What We Pay</strong></th>
+<th><strong>What We Get</strong></th>
+<th><strong>Upside</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Linear Heterogeneous Models</strong></td>
+<td>Linearity of <span class="math inline">\(\phi\)</span>: <span class="math inline">\(\phi(X_{it}, A_i, U_{it})\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(X_{it}'\beta(A_i)\)</span> <span class="math inline">\(+ U_{it}\)</span> and sufficient number of observations per unit</td>
+<td>Distribution and moments of individual treatment effects</td>
+<td>Full distribution of treatment effects</td>
+</tr>
+<tr class="even">
+<td><strong>Nonparametric Models</strong></td>
+<td>Identification only for subpopulation of <em>stayers</em> or assumptions on the relationship between <span class="math inline">\((X_{it})\)</span> and <span class="math inline">\((A_i, U_{it})\)</span></td>
+<td>Average marginal effects (more with additive separability of <span class="math inline">\(U_{it})\)</span></td>
+<td>No restrictions on the form of <span class="math inline">\(\phi(\cdot)\)</span> or <span class="math inline">\(A_i\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Quantile and Distributional Regression Models</strong></td>
+<td>Focus on distribution of potential outcomes, not treatment effects.</td>
+<td>Quantile and distributional treatment effects (QTEs and DTEs)</td>
+<td>No need for panel data</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
