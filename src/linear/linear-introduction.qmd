@@ -14,7 +14,7 @@ open-graph:
 
 This section introduces linear models with heterogeneous coefficients, associated identification challenges, and the model used in this block of the course.
   
-By the end of this section, you should
+By the end of this section, you should be able to:
 
 - Recognize cases where heterogeneous coefficients arise.
 - Identify key challenges in estimating heterogeneous coefficients.
@@ -25,18 +25,19 @@ By the end of this section, you should
 
 ### Models with Homogeneous Slopes
 
-We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The "standard" linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., @Hansen2022). A common cross-sectional specification is:
+We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The "standard" linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., @Hansen2022). A common cross-sectional specification of a linear potential outcomes model takes the form
 
 $$
-y_i = \bbeta'\bx_i + u_{i},
+Y^{\bx}_i = \bbeta'\bx + U_{i},
 $$ {#eq-standard_linear}
-where $i=1, \dots, N$ indexes cross-sectional units. 
+where $i=1, \dots, N$ indexes cross-sectional units, $\bx$ is some potential treatment value (possibly vector-valued), and $Y^{\bx}_i$ is the potential outcome of unit $i$ under $\bx$. 
 
 In panel data, models often include unit-specific $(i)$ and time-specific $(t)$ intercepts while maintaining a common slope vector $\bbeta$:
 
 $$
-y_{it} = \alpha_i + \delta_t +  \bbeta'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = A_i + \Gamma_t +  \bbeta'\bx + U_{it},
 $$ {#eq-panel_linear} 
+where $A_i$ and $\Gamma_t$ are not observed.
 
 ### Heterogeneity in Slopes. Examples
 
@@ -46,23 +47,35 @@ However, modern economic theory rarely supports the assumption of homogeneous sl
 1. Cross-sectional model ([-@eq-standard_linear]) generalizes to 
 
    $$
-y_i = \bbeta_{i}'\bx + u_i.
+Y_i^{\bx} = \bbeta_{i}'\bx + U_i.
    $$ {#eq-cross_sectional_hetero}
 
 1. Panel data model ([-@eq-panel_linear]) generalizes to 
 
    $$
-y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
+Y_{it}^{\bx}  = \bbeta_{it}'\bx + U_{it}.
    $$ {#eq-panel_hetero}
  
+
 Such models are worth studying, as they naturally arise in a variety of contexts:
 
 
 - **Structural models with parametric restrictions:** Certain parametric restrictions yield linear relationships in coefficients.  An example is given by firm-level Cobb-Douglas production functions where firm-specific productivity differences induce heterogeneous coefficients (@Combes2012b; @Sury2011).
 
-- **Binary covariates and interaction terms**: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (see, e.g., @Wooldridge2005).   
+- **Binary covariates and interaction terms**: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (e.g., @Wooldridge2005).   
 
 - **Log-linearized models:** Nonlinear models may be approximated by linear models around a steady-state. For example,  @Heckman1998 demonstrate how the nonlinear @Card2001 education model simplifies to a heterogeneous linear specification after linearization.
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+In this block, we use notation  $\bbeta_i$ and $\bbeta_{it}$ for  the heterogeneous coefficients. This convention is in line with the well-established literature and models ([-@eq-standard_linear]-[-@eq-panel_linear]). However, note that this notation can be connected to the general model in @eq-intro-potential-outcomes as
+$$
+Y_i^{\bx} = \phi(\bx, A_i) = \beta(A_i)'\bx + U_i,
+$$ 
+where $U_i$ is a component of the general vector $A_i$ of unobserved components and $\beta(\cdot)$ is some vector-valued function.
+
+:::
 
 ## What Do We Care About? Identification
 
@@ -82,10 +95,10 @@ Similar objects are relevant for the panel model in
 ### Regarding Identification
 
 Unfortunately, greater flexibility in terms of parameters also leads to greater challenges in terms of identification. Models ([-@eq-cross_sectional_hetero]) and
-([-@eq-panel_hetero]) are too general to permit identification of any of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:
+([-@eq-panel_hetero]) are too general to permit identification of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:
 
-1. Limited observations per coefficient vector. Since each unit $i$ (or pair $(i,t)$) provides only indirect information through $\bbeta_i'\bx_i$ (or $\bbeta_{it}'\bx_{it}$), there is effectively less than one observation per $\bbeta_i$.
-2. Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between $\bbeta_i$ and $\bx_i$, identification is difficult.
+1. Limited observations per coefficient vector. Since each unit $i$ (or pair $(i,t)$) provides only indirect information through the realized $\bbeta_i'\bX_i$ (or $\bbeta_{it}'\bX_{it}$), there is effectively less than one observation per $\bbeta_i$.
+2. Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between $\bbeta_i$ and $\bX_i$, one can generally not separate the influence of the two components on linear indices of the form $\bbeta_i'\bX_i$.
  
 Identification is typically achieved by mitigating one of these challenges. Common strategies to address these challenges include:
 
@@ -94,28 +107,35 @@ Identification is typically achieved by mitigating one of these challenges. Comm
     @eq-panel_hetero to:
     
     $$
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
     $$ {#eq-time_invariant}
     
   - Alternative approaches assume a finite number of latent groups, each with its own coefficient vector, yielding the grouped structure:
     
     $$
-y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_{g_i, t}'\bx + U_{it}.
     $$ {#eq-grouped_model}
     
     This model in discussed in @Bonhomme2015, @Bester2016 (see also @Bonhomme2022DiscretizingUnobservedHeterogeneity).
 
-- Restricting dependence between $\bbeta_i$ and $\bx_i$. For example, there is a strand of literature that assumes that $\bbeta_i$ and $\bx_i$ are independent [@Beran1996; @Hoderlein2010].
+- Restricting dependence between $\bbeta_i$ and the realized treatment $\bX_i$. For example, there is a strand of literature that assumes that $\bbeta_i$ and $\bX_i$ are independent [@Beran1996; @Hoderlein2010].
  
 ## Model of This Block
 
 This block primarily focuses on the first strategy. Specifically, we will consider a version of model ([-@eq-panel_hetero]) with *time-invariant* heterogeneous coefficients:
 
 $$
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
 $$ {#eq-lecture_model}
 
-We do not impose restrictions on the dependence between $\bbeta_i$ and $\bx_{it}$. In general, it is important to allow for such dependence outside of experimental data —  economic agents can select their covariates $\bx_{it}$ based on knowledge of their own $\bbeta_i$. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.
+The time-invariant coefficients $\bbeta_i$ play the role of $A_i$ in @eq-intro-potential-outcomes.
+
+The observed realized values $(Y_i, \bX_{it})$ satisfy
+$$
+Y_{it}= Y_{ii}^{\bX_{it}} = \bbeta_i'\bX_{it} + U_{it}.
+$$
+
+We impose *no* restrictions on the dependence between $\bbeta_i$ and $\bX_{it}$. As noted in the introduction, it is important to allow for such dependence outside of experimental data —  economic agents can select their covariates $\bX_{it}$ based on knowledge of their own $\bbeta_i$. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.
 
 We will also generally focus on the case where the number $N$ of units is large, while the number $T$ of observations per unit is fixed and not necessarily large.
 
@@ -129,7 +149,7 @@ In the panel data literature, approaches that do not restrict the dependence bet
 Note that model ([-@eq-lecture_model]) includes a particular special case — the random intercept model (confusingly also called the "fixed effects model"). The random intercept model imposes homogeneity on all parameters except the intercept term. In the one-way case, the model takes the form: 
 
 $$
-y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = A_i + \bbeta'\bx + U_{it}.
 $$ {#eq-random_intercept}
 Model ([-@eq-random_intercept]) is one of the oldest ways of including unobserved heterogeneity in linear models and goes back at least to @Mundlak1961EmpiricalProductionFunction.
  
@@ -141,7 +161,7 @@ In this block, we will focus on model ([-@eq-lecture_model]) and consider identi
    - First, we demonstrate that standard estimators for the random intercept model ([-@eq-random_intercept]) are generally inconsistent for $\E[\bbeta_i]$ in the more general model ([-@eq-lecture_model]). 
    - Next, we introduce a mean group estimator robust to heterogeneity and dynamics.
   
-2. **Variance $\var(\bbeta_i)$**: we show how one can identify and estimate $\var(\bbeta_i)$ by imposing structure on the temporal dependence in the residuals $u_{it}$.
+2. **Variance $\var(\bbeta_i)$**: we show how one can identify and estimate $\var(\bbeta_i)$ by imposing structure on the temporal dependence in the residuals $U_{it}$.
 
 3. **Identifying the Full Distribution of $\bbeta_i$:** we show how one can obtain the distribution of $\bbeta_i$ with a deconvolution argument.
  
