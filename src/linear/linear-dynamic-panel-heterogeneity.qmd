@@ -32,8 +32,8 @@ As in the static case, it is not clear why slopes should be homogenous in dynami
 As a consequence, we now consider heterogeneous dynamic models. In this section we will again focus on a simple AR(1) model with no exogenous regressors. Specifically, we will look at the following heterogeneous version of model ([-@eq-dynamic-interlude-dynamic-simple]):
 $$
 \begin{aligned}
-	y_{it}   & = \alpha_i +  \lambda_iy_{it-1} + u_{it}, \\
-0 & = \E[u_{it}| \curl{y_{is}}_{s\leq t}] .
+	Y_{it}   & = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
+0 & = \E[Y_{it}| \curl{Y_{is}}_{s\leq t}] .
 \end{aligned}
 $$  {#eq-dynamic-heterogeneity-model}
 This model allows for unit-specific dynamics, as the coefficients $\lambda_i$ can vary across $i$. The above model is also another instance of the general model ([-@eq-lecture_model]). 
@@ -43,14 +43,14 @@ As before, we are interested in the average coefficient $\E[\lambda_i]$.
 
 ## Endogeneity due to Heterogeneity
  
-Can the IV estimators  of the previous section estimate $\E[\lambda_i]$ under model ([-@eq-dynamic-heterogeneity-model])? Under what conditions?  To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of $y_{it}$ as instruments. 
+Can the IV estimators  of the previous section estimate $\E[\lambda_i]$ under model ([-@eq-dynamic-heterogeneity-model])? Under what conditions?  To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of $Y_{it}$ as instruments. 
 
 ### Endogeneity in Differenced Heterogeneous Equation 
 To replicate the procedure, we take differences in @eq-dynamic-heterogeneity-model and write the differenced model as
 $$
 \begin{aligned}
-	\Delta y_{it} & = \lambda \Delta y_{it-1} +  v_{it}, \\
-	v_{it} & = \eta_i\Delta y_{it-1} + \Delta u_{it} =0, 
+	\Delta Y_{it} & = \lambda \Delta Y_{it-1} +  V_{it}, \\
+	V_{it} & = \eta_i\Delta Y_{it-1} + \Delta U_{it} =0, 
 \end{aligned} 
 $$ {#eq-dynamic-heterogeneity-differenced}
 where we label
@@ -62,54 +62,54 @@ $$
 $$ 
 
 
-It is easy to check that $\Delta y_{it-1}$ is still endogenous because it contains $u_{it-1}$, which is correlated with the residual term. The same problematic term  $\lambda \E[u_{it-1}^2]$ will be present in $\E[v_{it}\Delta y_{it-1}]$. 
+It is easy to check that $\Delta Y_{it-1}$ is still endogenous because it contains $U_{it-1}$, which is correlated with the residual term. The same problematic term  $\lambda \E[U_{it-1}^2]$ will be present in $\E[V_{it}\Delta Y_{it-1}]$. 
 
 
 ### Conditions for Instruments
 
-Can we find a suitable instrument for $\Delta y_{it-1}$? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: 
+Can we find a suitable instrument for $\Delta Y_{it-1}$? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: 
 $$
 \begin{aligned} 
-	\E[z_{it}\Delta y_{it-1}] &  \neq 0 ,\\
-	\E[z_{it} v_{it}] & = \E[ \eta_i z_{it}\Delta y_{it-1} ] + \E[z_{it}u_{it}].
+	\E[Z_{it}\Delta Y_{it-1}] &  \neq 0 ,\\
+	\E[Z_{it} V_{it}] & = \E[ \eta_i Z_{it}\Delta Y_{it-1} ] + \E[Z_{it}U_{it}].
 \end{aligned} 
 $$
-Note that a new $\E[ \eta_i z_{it}\Delta y_{it-1} ]$ term now appears in the exogeneity condition. 
+Note that a new $\E[ \eta_i Z_{it}\Delta Y_{it-1} ]$ term now appears in the exogeneity condition. 
 
 ### Endogeneity of Lagged Outcomes 
 
-Unlike in the homogeneous case, $y_{it-2}$ is not a valid instrument anymore. We will show that $y_{it-2}$ is not exogenous in a simple case with the following assumptions:
+Unlike in the homogeneous case, $Y_{it-2}$ is not a valid instrument anymore. We show that $Y_{it-2}$ is not exogenous in a simple case with the following assumptions:
 
 -  $\abs{\lambda_i}<1$.
 -  @eq-dynamic-heterogeneity-model can be extended infinitely far into the past by recursive substitution, so that 
 $$
-y_{it} = \dfrac{\alpha_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k u_{it-k}.
+Y_{it} = \dfrac{A_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k U_{it-k}.
 $$
-- $\curl{u_{it}}_t$ is an IID sequence with finite second moments, and $u_{it}$ is independent of $(\alpha_i, \lambda_i)$.
+- $\curl{U_{it}}_t$ is an IID sequence with finite second moments, and $U_{it}$ is independent of $(A_i, \lambda_i)$.
 
-Under the above assumptions the first expectation in $\E[y_{it-2} v_{it}]$ can be evaluated as follows:
+Under the above assumptions the first expectation in $\E[Y_{it-2} V_{it}]$ can be evaluated as follows:
 $$
 \begin{aligned}
-& \E[ \eta_i y_{it-2}\Delta y_{it-1} ]
+& \E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]
 \\ 
 % & = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
-& = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} u_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} u^2_{i,t-k-2}\right)  \right)\right] \\
-& = \E[u_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
+& = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} U_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} U^2_{i,t-k-2}\right)  \right)\right] \\
+& = \E[U_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
 \end{aligned}
 $$
 In general, there is no reason to expect the above expectation to be zero if $\eta_i$ is not zero. The second term involves a sum of even-order moments of $\eta_i$ (equivalently, $\lambda_i)$; such a sum would in general be non-zero.
 
 We conclude that 
 $$
-\E[ \eta_i y_{it-2}\Delta y_{it-1} ]\neq 0,
+\E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]\neq 0,
 $$
 and so in general that 
 $$
-\E[y_{it-2} v_{it}]\neq 0.
+\E[Y_{it-2} V_{it}]\neq 0.
 $$
-In other words, $y_{it-2}$ is not a valid instrument under the heterogeneous model ([-@eq-dynamic-heterogeneity-model]). The same logic applies under more general assumptions and to higher-order lags of $y_{it}$.
+In other words, $Y_{it-2}$ *is not a valid instrument under the heterogeneous mode*l ([-@eq-dynamic-heterogeneity-model]). The same logic applies under more general assumptions and to higher-order lags of $Y_{it}$.
 
-More broadly, the problem of finding a valid instrument $z_{it}$ for @eq-dynamic-heterogeneity-differenced appears intractable. The relevance condition requires that $z_{it}$ be correlated with $\Delta y_{it-1}$. As a consequence, it is likely that $z_{it}$ will also be correlated with $\eta_i \Delta y_{it-1}$ (particularly since $\eta_i$ appears inside $\Delta y_{it-1}$). However, it would then be the case that $\E[ \eta_i z_{it}\Delta y_{it-1} ]\neq 0$, and exogeneity would fail. 
+More broadly, the problem of finding a valid instrument $Z_{it}$ for @eq-dynamic-heterogeneity-differenced appears intractable. The relevance condition requires that $Z_{it}$ be correlated with $\Delta Y_{it-1}$. As a consequence, it is likely that $Z_{it}$ will also be correlated with $\eta_i \Delta Y_{it-1}$ (particularly since $\eta_i$ appears inside $\Delta Y_{it-1}$). However, it would then be the case that $\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0$, and exogeneity would fail. 
 
 
 We conclude that the IV estimators of the previous section will not consistently estimate $\E[\lambda_i]$, no matter how we choose the instruments, regardless the magnitude of $T$. Moreover, the results of @Pesaran1995 imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of $\E[\lambda_i]$.
@@ -121,11 +121,11 @@ We conclude that the IV estimators of the previous section will not consistently
 
 There is a further point of contrast with the static case. In section [-@sec-linear-within] we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients $\bbeta_i$ are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator. 
 
-However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients $(\alpha_i, \lambda_i)$ are directly embedded in the process for the regressor $y_{it-1}$ through
+However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients $(A_i, \lambda_i)$ are directly embedded in the process for the regressor $Y_{it-1}$ through
 $$
-y_{it-1} = \alpha_i + \lambda_i y_{it-2} + u_{it-2}.
+Y_{it-1} = A_i + \lambda_i Y_{it-2} + U_{it-2}.
 $$
-As a result, $y_{it-1}$ and $(\alpha_i, \lambda_i)$ cannot be (mean) independent by construction.
+As a result, $Y_{it-1}$ and $(A_i, \lambda_i)$ cannot be (mean) independent by construction.
 
 
 ---
