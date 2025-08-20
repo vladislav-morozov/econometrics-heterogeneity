@@ -503,7 +503,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -690,28 +690,28 @@ Summary and Learning Outcomes
 </div>
 <section id="introduction" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>As noted in the previous section, in this block we will focus our attention on the linear panel data model with unit-specific heterogeneous coefficients (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>): <span id="eq-within-lecture-model"><span class="math display">\[
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+<p>As noted in the previous section, in this block we focus our attention on the linear panel data model with unit-specific heterogeneous coefficients (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>): <span id="eq-within-lecture-model"><span class="math display">\[
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
 \tag{3.1}\]</span></span></p>
-<p>Our first key parameter of interest is the average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span> — the linear model analog to the average treatment effect.</p>
+<p>Our first key parameter of interest is the <em>average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span></em>— the linear model analog to the average treatment effect.</p>
 <section id="focus-workhorse-estimators-under-heterogeneity" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">3.1.1</span> Focus: Workhorse Estimators under Heterogeneity</h3>
 <p>Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic panel IV estimators — correctly estimate <span class="math inline">\(\E[\bbeta_i]\)</span>? Of course, those methods were developed in the context of the simpler random intercept model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) <span id="eq-within-lecture-random-intercept"><span class="math display">\[
-y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = A_i + \bbeta'\bx + U_{it}.
 \tag{3.2}\]</span></span> However, if they can also handle the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>, then all the better for us — we do not need to develop any new methods.</p>
-<p>Unfortunately, such standard estimators usually fail when coefficients vary across units, as we will demonstrate. This failure holds both for static and the dynamic formulations of <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>.</p>
+<p>Unfortunately, such standard estimators usually fail when coefficients vary across units, as we demonstrate in this and the next few sections. This failure holds both for static and the dynamic formulations of <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>.</p>
 </section>
 <section id="this-section-static-model-and-fixed-t" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="this-section-static-model-and-fixed-t"><span class="header-section-number">3.1.2</span> This Section: Static Model and Fixed <span class="math inline">\(T\)</span></h3>
 <p>In this section, we consider the static case and the associated workhorse estimator — the within (fixed effects) estimator. By “static”, we mean that the model does not include lagged dependent variables as regressors. In addition, we assume strict exogeneity <span class="math display">\[
-\E[\bu_i|\bX_i]=0.
-\]</span></p>
-<p>Throughout, we will assume that the number <span class="math inline">\(N\)</span> of cross-sectional units is potentially large, while the number <span class="math inline">\(T\)</span> of data points per unit is fixed. This setup is more reflective of typical micropanels.</p>
+\E[\bU_i|\bX_i]=0,
+\]</span> where <span class="math inline">\(\bU_i = (U_{i1}, \dots, U_{it})\)</span> and <span class="math inline">\(\bX_i = (\bX_{i1}', \dots, \bX_{iT}')'\)</span>.</p>
+<p>Throughout, we assume that the number <span class="math inline">\(N\)</span> of cross-sectional units is potentially large, while the number <span class="math inline">\(T\)</span> of data points per unit is fixed. This setup is more reflective of typical micropanels.</p>
 </section>
 </section>
 <section id="recall-within-estimator-in-the-random-intercept-model" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="recall-within-estimator-in-the-random-intercept-model"><span class="header-section-number">3.2</span> Recall: Within Estimator in the Random Intercept Model</h2>
-<p>To begin, we will briefly go through the construction and the properties of the within estimator under the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>).</p>
+<p>To begin, we briefly go through the construction and the properties of the within estimator under the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>).</p>
 <section id="construction" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="construction"><span class="header-section-number">3.2.1</span> Construction</h3>
 <p>Within (“fixed effects”) estimation of the random intercept model has two steps:</p>
@@ -721,40 +721,40 @@ y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 </ol>
 <section id="step-1-within-transformation" class="level4" data-number="3.2.1.1">
 <h4 data-number="3.2.1.1" class="anchored" data-anchor-id="step-1-within-transformation"><span class="header-section-number">3.2.1.1</span> Step 1: Within Transformation</h4>
-<p>To perform the within transformation, we first average the equations for unit <span class="math inline">\(i\)</span> across <span class="math inline">\(t\)</span>. Label the average of <span class="math inline">\(y_{it}\)</span> across <span class="math inline">\(t\)</span> for unit <span class="math inline">\(i\)</span> as</p>
+<p>To perform the within transformation, we first average the equations for unit <span class="math inline">\(i\)</span> across <span class="math inline">\(t\)</span>. Label the average of <span class="math inline">\(Y_{it}\)</span> across <span class="math inline">\(t\)</span> for unit <span class="math inline">\(i\)</span> as</p>
 <p><span class="math display">\[
-y_{i\cdot} = \frac{1}{T} \sum_{t=1}^{T} y_{it}.
+Y_{i\cdot} = \frac{1}{T} \sum_{t=1}^{T} Y_{it}.
 \]</span></p>
-<p>The averaged outcome <span class="math inline">\(y_{i\cdot}\)</span> satisfies the averaged equation</p>
+<p>The averaged realized outcome <span class="math inline">\(Y_{i\cdot}\)</span> satisfies the averaged equation</p>
 <p><span class="math display">\[
-y_{i\cdot} = \alpha_i + \bbeta' \bx_{i\cdot} + u_{i\cdot},
-\]</span> where <span class="math inline">\(\bx_{i\cdot}\)</span> and <span class="math inline">\(u_{i\cdot}\)</span> are defined analogously to <span class="math inline">\(y_{i\cdot}\)</span>.</p>
+Y_{i\cdot} = A_i + \bbeta' \bX_{i\cdot} + U_{i\cdot},
+\]</span> where the averaged variables <span class="math inline">\(\bX_{i\cdot}\)</span> and <span class="math inline">\(U_{i\cdot}\)</span> are defined analogously to <span class="math inline">\(Y_{i\cdot}\)</span>.</p>
 <p>Define the within-transformed variables by subtracting this averaged equation from the original equation for each <span class="math inline">\(t\)</span>: <span class="math display">\[
-\tilde{y}_{it} = y_{it} - y_{i\cdot}.
+\tilde{Y}_{it} = Y_{it} - Y_{i\cdot}.
 \]</span></p>
-<p>If <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> is true, the within transformed variables follow the within-transformed equation:</p>
+<p>If <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> is true, the realized within transformed variables follow the within-transformed equation:</p>
 <p><span id="eq-within_transformed"><span class="math display">\[
-\tilde{y}_{it} = \bbeta' \tilde{\bx}_{it} + \tilde{u}_{it}.
+\tilde{Y}_{it} = \bbeta' \tilde{\bX}_{it} + \tilde{Y}_{it}.
 \tag{3.3}\]</span></span></p>
-<p>Under <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>, the within transformation eliminates the individual random intercepts <span class="math inline">\(\alpha_i\)</span>. <a href="#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> now looks like a regular homogeneous regression.</p>
+<p>Under <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>, the within transformation eliminates the individual random intercepts <span class="math inline">\(A_i\)</span>. <a href="#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> now looks like a regular homogeneous regression.</p>
 </section>
 <section id="step-2-ols-on-the-within-transformed-equation" class="level4" data-number="3.2.1.2">
 <h4 data-number="3.2.1.2" class="anchored" data-anchor-id="step-2-ols-on-the-within-transformed-equation"><span class="header-section-number">3.2.1.2</span> Step 2: OLS on the Within-Transformed Equation</h4>
 <p>The within (fixed effects) estimator is obtained by simply pooling the data across <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span> in <a href="#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> and applying OLS to it. Specifically, the estimator is given by</p>
 <p><span id="eq-within_representation_random_intercept"><span class="math display">\[
-\hat{\bbeta}^W = \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\mathbf{y}}_i.
-\tag{3.4}\]</span></span></p>
+\hat{\bbeta}^W = \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bY}_i,
+\tag{3.4}\]</span></span> where <span class="math inline">\(\bY_i = (Y_{i1}, \dots, Y_{iT})\)</span>.</p>
 </section>
 </section>
 <section id="properties" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="properties"><span class="header-section-number">3.2.2</span> Properties</h3>
-<p>The within estimator enjoys several desirable properties if the random intercept model reflects the underlying causal model. Most of these properties can be derived from its sampling error representation <span id="eq-within-sampling-error-homogeneous"><span class="math display">\[
-\hat{\bbeta}^W = \bbeta + \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bu}_i.
+<p>The within estimator enjoys several desirable properties if the underlying causal model is actually given by the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>). Most of these properties can be derived from its sampling error representation <span id="eq-within-sampling-error-homogeneous"><span class="math display">\[
+\hat{\bbeta}^W = \bbeta + \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bU}_i.
 \tag{3.5}\]</span></span></p>
 <ul>
-<li><p><span class="math inline">\(\hat{\bbeta}^W\)</span> is unbiased for <span class="math inline">\(\bbeta\)</span>. To show this, it is sufficient to notice that strict exogeneity of <span class="math inline">\(\bu_i\)</span> with respect to <span class="math inline">\(\bX_i\)</span> implies strict exogeneity of <span class="math inline">\(\tilde{\bu}_i\)</span> with respect to <span class="math inline">\(\tilde{\bX}_i\)</span>: <span class="math display">\[
-\E[\tilde{\bu}_i|\tilde{\bX}_i] =
-\E[\E[\tilde{\bu}_i|\bX_i]|\tilde{\bX}_i] = 0.
+<li><p><span class="math inline">\(\hat{\bbeta}^W\)</span> is unbiased for <span class="math inline">\(\bbeta\)</span>. To show this, it is sufficient to notice that strict exogeneity of <span class="math inline">\(\bU_i\)</span> with respect to <span class="math inline">\(\bX_i\)</span> implies strict exogeneity of <span class="math inline">\(\tilde{\bU}_i\)</span> with respect to <span class="math inline">\(\tilde{\bX}_i\)</span>: <span class="math display">\[
+\E[\tilde{\bU}_i|\tilde{\bX}_i] =
+\E[\E[\tilde{\bU}_i|\bX_i]|\tilde{\bX}_i] = 0.
 \]</span> It follows that the mean of the second term in <a href="#eq-within-sampling-error-homogeneous" class="quarto-xref">Equation&nbsp;<span>3.5</span></a> is 0, and so <span class="math display">\[
 \E[\hat{\bbeta}^W] = \bbeta.
 \]</span></p></li>
@@ -767,18 +767,18 @@ y_{i\cdot} = \alpha_i + \bbeta' \bx_{i\cdot} + u_{i\cdot},
 </section>
 <section id="adding-heterogeneous-coefficients" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="adding-heterogeneous-coefficients"><span class="header-section-number">3.3</span> Adding Heterogeneous Coefficients</h2>
-<p>However, there is usually no theoretical reason for the slopes <span class="math inline">\(\bbeta\)</span> to be homogeneous. An assumption of slope homogeneity goes against acknowledging heterogeneity and including the random intercept terms <span class="math inline">\(\alpha_i\)</span> in the first place. It is rather more realistic to consider the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>. Accordingly, we now turn to studying the properties of <span class="math inline">\(\hat{\bbeta}^W\)</span> in this more realistic setting.</p>
+<p>However, there is usually no theoretical reason for the slopes <span class="math inline">\(\bbeta\)</span> to be homogeneous. An assumption of slope homogeneity goes against acknowledging heterogeneity and including the random intercept terms <span class="math inline">\(A_i\)</span> in the first place. It is rather more realistic to consider the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>. Accordingly, we now turn to studying the properties of <span class="math inline">\(\hat{\bbeta}^W\)</span> in this more realistic setting.</p>
 <section id="sampling-error-form" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="sampling-error-form"><span class="header-section-number">3.3.1</span> Sampling Error Form</h3>
 <p>Applying the within transformation to the heterogeneous <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> yields another version of the within-transformed equation:</p>
 <p><span class="math display">\[
-\tilde{y}_{it} = \bbeta_i' \tilde{\bx}_{it} + \tilde{u}_{it}.
+\tilde{Y}_{it} = \bbeta_i' \tilde{\bX}_{it} + \tilde{U}_{it}.
 \]</span></p>
 <p>Note that now the individual heterogeneity is not eliminated! The heterogeneous coefficients <span class="math inline">\(\bbeta_i\)</span> remain in the equation.</p>
 <p>The within estimator on the above equation may then be represented as <span class="math display">\[
 \begin{aligned}
-\hat{\bbeta}^W  &amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\by}_i \\
-&amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bbeta_i + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i.
+\hat{\bbeta}^W  &amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bY}_i \\
+&amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bbeta_i + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bU}_i.
 \end{aligned}
 \]</span> Note the difference of the sampling error representation with <a href="#eq-within-sampling-error-homogeneous" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>. The first term is now a weighted average of the individual coefficients. The weights themselves depend on the second moments of the within-transformed explanatory variables, which may be viewed as a kind of variance weighting for units.</p>
 <p>Does the within estimator target <span class="math inline">\(\E[\bbeta_i]\)</span>? To proceed, we decompose <span class="math inline">\(\bbeta_i\)</span> into a common mean component <span class="math inline">\(\E[\bbeta_i]\)</span> and an idiosyncratic deviation <span class="math inline">\(\bEta_i\)</span>: <span class="math display">\[
@@ -787,12 +787,12 @@ y_{i\cdot} = \alpha_i + \bbeta' \bx_{i\cdot} + u_{i\cdot},
 <p>With this representation, we can further analyze the within estimator as <span class="math display">\[
 \begin{aligned}
     \hat{\bbeta} &amp; = \E[\bbeta_i]  + \left( \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1}  \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bEta_i \\
-    &amp;  \phantom{ = \E[\bbeta_i] } + \left( \dfrac{1}{N}\sum_{i=1}^N  \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bu}_i\\
+    &amp;  \phantom{ = \E[\bbeta_i] } \hspace{1.3mm} + \left( \dfrac{1}{N}\sum_{i=1}^N  \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bU}_i\\
     &amp; \xrightarrow{p} \E[\bbeta_i]  + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i \right]  \\
-  &amp;    \phantom{ = \E[\bbeta_i] }  + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bu}_i \right]\\
+  &amp;    \phantom{ \xrightarrow{p} \E[\bbeta_i] } \hspace{1.3mm} + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bU}_i \right]\\
     &amp; = \E[\bbeta_i] + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i \right],
 \end{aligned}
-\]</span> where we have assumed that a suitable law of large numbers applies as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed, and where <span class="math inline">\(\E\left[\tilde{\bX}_i'\tilde{\bu}_i \right]=0\)</span> as above.</p>
+\]</span> where we have assumed that a suitable law of large numbers applies as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed, and where <span class="math inline">\(\E\left[\tilde{\bX}_i'\tilde{\bU}_i \right]=0\)</span> as above.</p>
 </section>
 <section id="conditions-for-estimating-average-coefficients" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="conditions-for-estimating-average-coefficients"><span class="header-section-number">3.3.2</span> Conditions for Estimating Average Coefficients</h3>
@@ -809,42 +809,42 @@ y_{i\cdot} = \alpha_i + \bbeta' \bx_{i\cdot} + u_{i\cdot},
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Conditions (<a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>3.7</span></a>) and (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) restrict the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>. Such conditions are sometimes called correlated random effects (CRE) in the literature. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent of the observed ones.</p>
+<p>Conditions (<a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>3.7</span></a>) and (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) restrict the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_{it}\)</span>. Such conditions are sometimes called correlated random effects (CRE) in the literature. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent of the observed ones.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="intuition" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">3.3.3</span> Intuition</h3>
-<p>How can we interpret condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>)? Intuitively, it requires that the changes in <span class="math inline">\(\bx_{it}\)</span> over time are uncorrelated with the individual coefficients.</p>
-<p>To see this interpretation, it is helpful to think of the following example framework. Suppose that <span class="math inline">\(\bx_{it}\)</span> is stationary, that is, its distribution does not depend on <span class="math inline">\(t\)</span>. Decompose <span class="math inline">\(\bx_{it}\)</span> as <span class="math display">\[
-\bx_{it} = \E[\bx_{it}|\bbeta_i]  + \bxi_{it},
+<p>How can we interpret condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>)? Intuitively, it requires that the changes in <span class="math inline">\(\bX_{it}\)</span> over time are uncorrelated with the individual coefficients.</p>
+<p>To see this interpretation, it is helpful to think of the following example framework. Suppose that <span class="math inline">\(\bX_{it}\)</span> is stationary, that is, its distribution does not depend on <span class="math inline">\(t\)</span>. Decompose <span class="math inline">\(\bX_{it}\)</span> as <span class="math display">\[
+\bX_{it} = \E[\bX_{it}|\bbeta_i]  + \bxi_{it},
 \]</span></p>
 <p>Then the within transformed variables satisfy: <span class="math display">\[
-    \tilde{\bx}_{it} = \tilde{\bxi}_{it}.
+    \tilde{\bX}_{it} = \tilde{\bxi}_{it}.
 \]</span></p>
-<p>The “systemic” component <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> is not present in <span class="math inline">\(\tilde{\bx}_{it}\)</span>. Only the deviations across time <span class="math inline">\(\tilde{\bxi}_{it}\)</span> are left. Condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) requires that <span class="math inline">\(\tilde{\bxi}_{it}\)</span> and <span class="math inline">\(\bEta_i\)</span> are unrelated on average. Note that it permits an arbitrary relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span>.</p>
-<p>As an example, suppose that we are working with consumption data. A consumer knows their marginal utilities <span class="math inline">\(\bbeta_i\)</span> of consuming more of a variety of products. With this knowledge, they choose the optimal desired level of consumption — <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span>. When they try to buy this level of products, they may encounter some frictions <span class="math inline">\(\bxi_{it}\)</span> which cause them to deviate from <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> — in rough words, the supermarket might not have their favorite cereal. If these “frictions” are uncorrelated with <span class="math inline">\(\bbeta_i\)</span>, then the required consistency will hold. In the consumption example, this fact means that unpredictable deviation in short-term choices do not necessarily bias the estimation of overall preferences.</p>
+<p>The “systemic” component <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> is not present in <span class="math inline">\(\tilde{\bX}_{it}\)</span>. Only the deviations across time <span class="math inline">\(\tilde{\bxi}_{it}\)</span> are left. Condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) requires that <span class="math inline">\(\tilde{\bxi}_{it}\)</span> and <span class="math inline">\(\bEta_i\)</span> are unrelated on average. At the same time, it permits an arbitrary relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span>.</p>
+<p>As an example, suppose that we are working with consumption data. A consumer knows their marginal utilities <span class="math inline">\(\bbeta_i\)</span> of consuming more of a variety of products. With this knowledge, they choose the optimal desired level of consumption — <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span>. When they try to buy this level of products, they may encounter some frictions <span class="math inline">\(\bxi_{it}\)</span> which cause them to deviate from <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> — in rough words, the supermarket might not have their favorite cereal. If these “frictions” are uncorrelated with <span class="math inline">\(\bbeta_i\)</span>, then the required consistency holds. In the consumption example, this fact means that unpredictable deviation in short-term choices do not necessarily bias the estimation of overall preferences.</p>
 </section>
 <section id="why-panel-data-is-useful" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="why-panel-data-is-useful"><span class="header-section-number">3.3.4</span> Why Panel Data is Useful</h3>
 <p>It is useful to contrast condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) with the stronger condition that <span id="eq-linear-within-cross-sectional-mean-indep"><span class="math display">\[
 \E[\bEta_i|\bX_i]=0.
-\tag{3.9}\]</span></span> Note the difference in the conditioning sets.</p>
-<p>Condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) is stronger than (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) by the tower property of conditional expectation. Intuitively, we can compute <span class="math inline">\(\tilde{\bX}_i\)</span> from <span class="math inline">\(\bX_i\)</span>, but not vice versa. The requirement that <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> may be very strong, since it would in general require that <span class="math inline">\(\E[\bx_{it}|\bbeta_i]\)</span> does not depend on <span class="math inline">\(\bbeta_i\)</span> — we rule out a systemic dependence even on average.</p>
-<p>This contrast also highlights the advantages of panel data. If you want to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> using OLS and cross-sectional data, you need the very strong condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) or at least that <span class="math inline">\(\E[\bx_i\bx_i'\bbeta_i]=0\)</span>. With panel data, weaker conditions are sufficient, and systemic dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span> is possible.</p>
+\tag{3.9}\]</span></span> Note the difference in the conditioning sets!</p>
+<p>Condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) is stronger than (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) by the tower property of conditional expectation. Intuitively, we can compute <span class="math inline">\(\tilde{\bX}_i\)</span> from <span class="math inline">\(\bX_i\)</span>, but not vice versa. The requirement that <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> may be very strong, since it would in general require that <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> does not depend on <span class="math inline">\(\bbeta_i\)</span> — we rule out a systemic dependence even on average.</p>
+<p>This contrast also highlights the advantages of panel data. If you want to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> using OLS and cross-sectional data, you need the strong condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) or at least that <span class="math inline">\(\E[\bX_i\bX_i'\bbeta_i]=0\)</span>. With panel data, weaker conditions are sufficient, and systemic dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_{it}\)</span> is possible.</p>
 </section>
 <section id="example" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="example"><span class="header-section-number">3.3.5</span> Example</h3>
 <p>We conclude this section with a small illustration of the results in a tractable model (see <a href="https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/">this blog post</a> for a simulation with some dramatic examples). Specifically, we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor: <span class="math display">\[
-y_{it} = \alpha_i + \beta_i x_{it} + u_{it}, \quad t=1,2.
+Y_{it} = A_i + \beta_i X_{it} + U_{it}, \quad t=1,2.
 \]</span></p>
 <p>where <span class="math inline">\(\bX_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> are jointly normal:</p>
 <p><span id="eq-within_normal_dgp"><span class="math display">\[
 \begin{aligned}
     \begin{pmatrix}
-      x_{i1}\\
-      x_{i2}\\
+      X_{i1}\\
+      X_{i2}\\
       \beta_i
     \end{pmatrix} \sim N\left(  \begin{pmatrix}
     1\\
@@ -856,17 +856,17 @@ y_{it} = \alpha_i + \beta_i x_{it} + u_{it}, \quad t=1,2.
     \rho_{1, \beta} &amp; \rho_{2, \beta} &amp; 1
     \end{pmatrix}   \right),
 \end{aligned}
-\tag{3.10}\]</span></span> where the various <span class="math inline">\(\rho\)</span> parameters are correlations. The correlation between <span class="math inline">\(x_{i1}\)</span> and <span class="math inline">\(x_{i2}\)</span> is such that they are only correlated through <span class="math inline">\(\beta_i\)</span>. The distribution of the <span class="math inline">\(\alpha_i\)</span> does not have to be specified, as it is not involved in the consistency conditions. Likewise, we only need to assume that <span class="math inline">\(\E[u_{it}|x_{i1}, x_{i2}]=0\)</span> without further specifying the distribution of <span class="math inline">\(u_{it}\)</span>.</p>
+\tag{3.10}\]</span></span> where the various <span class="math inline">\(\rho\)</span> parameters are correlations. The setting is such that <span class="math inline">\(X_{i1}\)</span> and <span class="math inline">\(X_{i2}\)</span> are only correlated through <span class="math inline">\(\beta_i\)</span>. The distribution of the <span class="math inline">\(A_i\)</span> does not have to be specified, as it is not involved in the consistency conditions. Likewise, we only need to assume that <span class="math inline">\(\E[U_{it}|X_{i1}, X_{i2}]=0\)</span> without further specifying the distribution of <span class="math inline">\(U_{it}\)</span>.</p>
 <p>The within transformations yields the following equation: <span class="math display">\[
-                y_{i2} - y_{i1} = \beta_i(x_{i2}-x_{i1}) + (u_{i2}-u_{i1})
+                Y_{i2} - Y_{i1} = \beta_i(X_{i2}-X_{i1}) + (U_{i2}-U_{i1})
 \]</span> The mean independence condition <a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a> takes form <span class="math display">\[
-    \E[ \beta_i|x_{i2} - x_{i1}]  = 0.5.
+    \E[ \beta_i|X_{i2} - X_{i1}]  = 0.5.
 \]</span></p>
 <p>It is not difficult to work out <span class="citation" data-cites="Brockwell2016IntroductionTimeSeries">(<a href="../references/references.html#ref-Brockwell2016IntroductionTimeSeries" role="doc-biblioref">Brockwell and Davis 2016, A.3.1</a>)</span> that <span class="math display">\[
-\E[ \beta_i|x_{i2} - x_{i1}]  = 0.5 + (\rho_{2, \beta}- \rho_{1, \beta})(x_{i2} - x_{i1} - 1)
-\]</span> Thus, <span class="math inline">\(\E[ \beta_i|x_{i2} - x_{i1}]=0.5\)</span> only holds if <span id="eq-within-normal-example"><span class="math display">\[
+\E[ \beta_i|X_{i2} - X_{i1}]  = 0.5 + (\rho_{2, \beta}- \rho_{1, \beta})(X_{i2} - X_{i1} - 1)
+\]</span> Thus, <span class="math inline">\(\E[ \beta_i|X_{i2} - X_{i1}]=0.5\)</span> only holds if <span id="eq-within-normal-example"><span class="math display">\[
 \rho_{2, \beta} = \rho_{1, \beta}.
-\tag{3.11}\]</span></span> In this case, <span class="math inline">\(x_{it}\)</span> becomes stationary, and does not have dynamics that depend on <span class="math inline">\(\beta_i\)</span> in the mean.</p>
+\tag{3.11}\]</span></span> In this case, <span class="math inline">\(X_{it}\)</span> becomes stationary, and does not have dynamics that depend on <span class="math inline">\(\beta_i\)</span> in the mean.</p>
 <p>If condition (<a href="#eq-within-normal-example" class="quarto-xref"><span>3.11</span></a>) holds, the within estimator is consistent for <span class="math inline">\(\E[\beta_i]\)</span>. It is also possible to show that if condition (<a href="#eq-within-normal-example" class="quarto-xref"><span>3.11</span></a>) fails, so does the more general <a href="#eq-average_orthogonality_condition" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>, and the within estimator is inconsistent for <span class="math inline">\(\E[\beta_i]\)</span>. We represent this fact on <a href="#fig-within-normal" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, where we fix <span class="math inline">\(\rho_{1, beta}=0.25\)</span>, and vary <span class="math inline">\(\rho_{2, \beta}\)</span> between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>. Observe that the within estimator is consistent if <span class="math inline">\(\rho_{2, \beta} = \rho_{1, \beta} = 0.25\)</span>. Otherwise, it is biased, potentially severely. For <span class="math inline">\(\rho_{2, \beta}\leq -0.6\)</span>, the estimand of the within estimator has a sign different from that of <span class="math inline">\(\E[\beta_i]\)</span>.</p>
 <div id="fig-within-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

@@ -13,7 +13,7 @@ open-graph:
 
 This section discusses why strict exogeneity fails in dynamic models and introduces the "workhorse" dynamic panel instrumental variable estimators.
   
-By the end of this section, you should
+By the end of this section, you should be able to:
 
 - Understand why strict exogeneity fails in dynamic panel models.  
 - Differentiate between strict and sequential exogeneity.  
@@ -25,60 +25,60 @@ By the end of this section, you should
 
 ### Introduction
 
-Throughout the previous section, we assumed that the idiosyncratic term $u_{it}$ satisfied strict exogeneity with respect to the data:
+Throughout the previous section, we assumed that the idiosyncratic term $U_{it}$ satisfied strict exogeneity with respect to the data:
 $$
-	\E[u_{it}|\bX_i] = 0.
+	\E[U_{it}|\bX_i] = 0.
 $${#eq-dynamic-interlude-strict-orthogonality}
 
 However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices $s, t$ it holds that 
 $$
-	\E[u_{it}\bx_{is}] =0.
+	\E[U_{it}\bX_{is}] =0.
 $$ {#eq-dynamic-interlude-strict-orthogonality}
 
-For $t<s$, @eq-dynamic-interlude-strict-orthogonality means that *past* shocks are uncorrelated with *future* values of $\bx$.  In other words, one cannot predict *past* shocks from *future* $\bx$s. 
+For $t<s$, @eq-dynamic-interlude-strict-orthogonality means that *past* shocks are uncorrelated with *future* values of $\bX$.  In other words, one cannot predict *past* shocks from *future* $\bX$s. 
 
-This requirement might fail if $\bx$ is dynamic and its evolution is affected by $u_{it}$. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data. 
+This requirement might fail if $\bX$ is dynamic and its evolution is affected by $U_{it}$. In this section, we discuss this challenge and some traditional approaches to dealing with it with short panel data. 
 
 ### No Strict Exogeneity for Dynamic Models
 
 
-A particularly clear example of failure of ([-@eq-dynamic-interlude-strict-orthogonality]) is the case when $\bx_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
+A particularly clear example of failure of ([-@eq-dynamic-interlude-strict-orthogonality]) is the case when $\bX_{it}$ includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case. 
 
 
 For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)):
 $$
-	y_t = \alpha + \lambda y_{t-1} + u_{t},
+	Y_t = \alpha + \lambda Y_{t-1} + U_{t},
 $$
-where  $t=1, \dots, T$ and the innovation $u_t$ satisfies $\E[u_t]=0$. 
+where  $t=1, \dots, T$ and the innovation $U_t$ satisfies $\E[U_t]=0$. 
 
  
-To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that ([-@eq-dynamic-interlude-strict-orthogonality])  is not true. Specifically, we will take $s=t+1$ and show that $\E[y_{it+1}u_t]$ is not necessarily zero.
+To show that strict exogeneity fails, it is sufficient to find a single pair of $(t, s)$ such that ([-@eq-dynamic-interlude-strict-orthogonality])  is not true. Specifically, we take $s=t+1$ and show that $\E[Y_{it+1}U_t]$ is not necessarily zero.
 
 To evaluate this expectation, we write the model at $t+1$
 $$
-	y_{t+1} = \alpha + \lambda y_t + u_{t+1}.
+	Y_{t+1} = \alpha + \lambda Y_t + U_{t+1}.
 $$ {#eq-dynamic-interlude-simple-ar1}
-We then substitute the model into $\E[y_{it+1}u_t]$
+We then substitute the model into $\E[Y_{it+1}U_t]$
 $$
 \begin{aligned}
-	\E[y_{t+1}u_t] & = \lambda\E[y_t u_t] + \E[u_{t+1}u_t] \\
-	&  = \lambda^2\E[y_{t-1}u_t] + \lambda\E[u_t^2] + \E[u_{t+1}u_t] .
+	\E[Y_{t+1}U_t] & = \lambda\E[Y_t U_t] + \E[U_{t+1}U_t] \\
+	&  = \lambda^2\E[Y_{t-1}U_t] + \lambda\E[U_t^2] + \E[U_{t+1}U_t] .
 \end{aligned}
 $$
 
 What can we say about the right hand side? In many contexts, we may reasonably assume that
 
-- One cannot predict the shocks of tomorrow from what you have today, so that $$\E[y_{t-1}u_t]=0.$$
-- $u_{t}$ is uncorrelated over time, so that $$\E[u_{t+1}u_t]=0.$$ 
+- One cannot predict the shocks of tomorrow from what you have today, so that $$\E[Y_{t-1}U_t]=0.$$
+- $U_{t}$ is uncorrelated over time, so that $$\E[U_{t+1}U_t]=0.$$ 
 
-However, $\lambda\E[u_t^2]$ is zero only in two unreasonable cases: 
+However, $\lambda\E[U_t^2]$ is zero only in two unreasonable cases: 
 
 - If $\lambda=0$, and so the model is not actually dynamic
-- $\E[u_t^2]=0$, and so the process is actually fully deterministic. 
+- $\E[U_t^2]=0$, and so the process is actually fully deterministic. 
 
 Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. We conclude that in dynamic models it is the case
 $$
-\E[y_{it+1}u_t] \neq 0.
+\E[Y_{it+1}U_t] \neq 0.
 $$ {#eq-dynamic-interlude-no-strict-exogeneity}
 A fortiori, strict exogeneity generally fails in dynamic models. 
 
@@ -88,37 +88,43 @@ So what can you do if you want to allow for dynamic models? Since strict exogene
 
 One popular weaker assumption compatible with dynamic models is *sequential exogeneity* (or *predeterminedness*). In context of the simple univariate time series model ([-@eq-dynamic-interlude-simple-ar1]), sequential exogeneity may be stated as 
 $$
-		\E[u_{t}| y_{t-1}, y_{t-2}, \dots] =0.
+		\E[U_{t}| Y_{t-1}, Y_{t-2}, \dots] =0.
 $$
 Intuitively, sequential exogeneity states that future shocks cannot be predicted  using past covariates. However, it does not restrict our ability to predict the past from the future — the context which created problems for strict exogeneity. 
 
 More generally, consider a panel data linear model with homogeneous coefficients, a random intercept, and a dynamic process for the outcome:
 $$
-y_{it} = \alpha_i + \sum_{k=1}^K \lambda_k y_{it-k} + \bbeta'\bx_{it} + u_{it}.  
+Y_{it} = A_i + \sum_{k=1}^K \lambda_k Y_{it-k} + \bbeta'\bX_{it} + U_{it}.  
 $$ {#eq-dynamic-interlude-dynamic-panel}
 In this model, a sequential exogeneity assumption takes form
 $$
-	 \E[u_{it}|\curl{y_{is-1}, \bx_{is}}_{s\leq t}] =0. 
+	 \E[U_{it}|\curl{Y_{is-1}, \bX_{is}}_{s\leq t}] =0. 
 $$
 Model ([-@eq-dynamic-interlude-dynamic-panel]) is a dynamic counterpart of the static model ([-@eq-within-lecture-random-intercept]) we discussed in the last section.  
 
+::: {.column-margin}
+
+One may write down the potential outcomes corresponding to @eq-dynamic-interlude-dynamic-panel. However, it is a bit inconvenient, and so we work directly with realized equations from the start.
+
+:::
+
 ## Handling Dynamic Panels with a Random Intercept
  
-Before moving on and introducing heterogeneous coefficients in dynamic linear models, we will discuss model ([-@eq-dynamic-interlude-dynamic-panel]) in more detail. In particular, we will develop the standard workhorse instrumental variable estimators. We will  analyze how these estimators fare in the more general model ([-@eq-lecture_model]) in the next section.
+Before moving on and introducing heterogeneous coefficients in dynamic linear models, we  discuss model ([-@eq-dynamic-interlude-dynamic-panel]) in more detail. In particular, we develop the standard workhorse instrumental variable estimators. We  analyze how these estimators fare in the more general model ([-@eq-lecture_model]) in the next section.
  
  
 
 ### Model
 
-For the sake of simplicity, we will discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bx_{it}$ and with only one lag of $y_{it}$:
+For the sake of simplicity, we discuss a simple version of model ([-@eq-dynamic-interlude-dynamic-panel]) without extra covariates $\bX_{it}$ and with only one lag of $Y_{it}$:
 $$
-y_{it} = \alpha_i + \lambda y_{it-1} + u_{it}, 
+Y_{it} = A_i + \lambda Y_{it-1} + U_{it}, 
 $$ {#eq-dynamic-interlude-dynamic-simple}
-where $u_{it}$ satisfies sequential exogeneity in the form $\E[u_{it}|y_{is}, s<t] = 0$. This random intercept dynamic model has extensively considered in the literature [e.g. @Anderson1982; @Arellano1991; @Blundell1998].
+where $U_{it}$ satisfies sequential exogeneity in the form $\E[U_{it}|Y_{is}, s<t] = 0$. This random intercept dynamic model has extensively considered in the literature [e.g. @Anderson1982; @Arellano1991; @Blundell1998].
 
 The key parameter of interest is $\lambda$. By homogeneity of $\lambda$, it also plays the role of the average coefficient for model ([-@eq-dynamic-interlude-dynamic-simple]).
 
-Here, we will primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
+Here, we primarily focus on the large-$N$, fixed-$T$ case, though model ([-@eq-dynamic-interlude-dynamic-panel]) has also been extensively studied in the large-($N, T$)  case [e.g. @Alvarez2003].
 
 ### Endogeneity
 
@@ -126,37 +132,37 @@ Here, we will primarily focus on the large-$N$, fixed-$T$ case, though model ([-
 To work towards an estimator for $\lambda$, let us difference @eq-dynamic-interlude-dynamic-panel across $t$ to eliminate the random intercept $\alpha_i$. The differenced equation takes form
 $$
 \begin{aligned}
-\Delta y_{it} & = \lambda \Delta y_{it-1} + \Delta u_{it}, \\
-\Delta y_{it} & = y_{it} - y_{it-1}.
+\Delta Y_{it} & = \lambda \Delta Y_{it-1} + \Delta U_{it}, \\
+\Delta Y_{it} & = Y_{it} - Y_{it-1}.
 \end{aligned}
 $$ {#eq-dynamic-interlude-homogeneous-differenced}
-@eq-dynamic-interlude-homogeneous-differenced seems like a simple regression equation. It is tempting to just apply OLS and regress $\Delta y_{it}$ on $\Delta y_{it-1}$.
+@eq-dynamic-interlude-homogeneous-differenced seems like a simple regression equation. It is tempting to just apply OLS and regress $\Delta Y_{it}$ on $\Delta Y_{it-1}$.
 
-It turns out that this approach will fail as there is an endogeneity problem in @eq-dynamic-interlude-homogeneous-differenced! Sequential exogeneity is not enough to guarantee that
+It turns out that this approach fails as there is an endogeneity problem in @eq-dynamic-interlude-homogeneous-differenced! Sequential exogeneity is not enough to guarantee that
 $$
-\E[\Delta y_{it-1}\Delta u_{it}] = 0.
+\E[\Delta Y_{it-1}\Delta U_{it}] = 0.
 $$
 
-To see why, we expand $\E[\Delta y_{it-1}\Delta u_{it}]$ as  
+To see why, we expand $\E[\Delta Y_{it-1}\Delta U_{it}]$ as  
 $$
 \begin{aligned} 
-	& \E\left[(u_{it}-u_{it-1})(y_{it-1}-y_{it-2}) \right] \\
-	& = \E[ u_{it}y_{it-1} ] + \E[(u_{it-1}-u_{it})y_{it-2}] - \E[u_{it-1}y_{it-1}]  \\
-	& = -\E[u_{it-1} y_{it-1}].
+	& \E\left[(U_{it}-U_{it-1})(Y_{it-1}-Y_{it-2}) \right] \\
+	& = \E[ U_{it}Y_{it-1} ] + \E[(U_{it-1}-U_{it})Y_{it-2}] - \E[U_{it-1}Y_{it-1}]  \\
+	& = -\E[U_{it-1} Y_{it-1}].
 \end{aligned}
 $$
-Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute $y_{it-1}$ to see that 
+Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute $Y_{it-1}$ to see that 
 $$
 \begin{aligned}
-	\E[u_{it-1}y_{it-1}] & = \lambda\E[u_{it-1}y_{it-2}] + \E[u_{it-1}^2]\\
-	& = \E[u_{it-1}^2]
+	\E[U_{it-1}Y_{it-1}] & = \lambda\E[U_{it-1}Y_{it-2}] + \E[U_{it-1}^2]\\
+	& = \E[U_{it-1}^2]
 \end{aligned}
 $$
-As noted above, in general we expect that $\E[u_{it-1}^2] \neq 0$. Hence  we conclude that 
+As noted above, in general we expect that $\E[U_{it-1}^2] \neq 0$. Hence  we conclude that 
 $$
-	\E[\Delta y_{it-1}\Delta u_{it}]\neq 0.
+	\E[\Delta Y_{it-1}\Delta U_{it}]\neq 0.
 $$ {#eq-dynamic-interlude-differenced-endogeneity}
-In other words,  $\Delta y_{it-1}$ is an endogenous regressor in the differenced @eq-dynamic-interlude-homogeneous-differenced. 
+In other words,  $\Delta Y_{it-1}$ is an endogenous regressor in the differenced @eq-dynamic-interlude-homogeneous-differenced. 
 
 ::: {.callout-caution appearance=minimal}
 
@@ -166,53 +172,47 @@ One should not confuse endogeneity in @eq-dynamic-interlude-differenced-endogene
 
 ## IV Estimation of Dynamic Panel Models
 
-Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables $z_{it}$ which satisfy relevance and exogeneity conditions:
+Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables $Z_{it}$ which satisfy relevance and exogeneity conditions:
 $$
 \begin{aligned}
-	\E[z_{it}\Delta y_{it-1}] \neq 0,\\
-	\E[z_{it}\Delta u_{it}] = 0.
+	\E[Z_{it}\Delta Y_{it-1}] \neq 0,\\
+	\E[Z_{it}\Delta U_{it}] = 0.
 \end{aligned}
 $$
 
 In most contexts, one has to look for external variables that can serve as instruments.
 
-However, model  ([-@eq-dynamic-interlude-homogeneous-differenced]) is a very special case where one can use instruments internal to the model! 
+However, model ([-@eq-dynamic-interlude-homogeneous-differenced]) is a very special case where one can use instruments internal to the model! 
 
 ### The Anderson-Hsiao Estimator
 
-In particular, consider using $y_{it-2}$ as an instrument. 
+In particular, consider using $Y_{it-2}$ as an instrument. 
 
-- Relevance seems to be relatively straightforward, as the target endogenous variable $\Delta y_{it-1}= y_{it-1}-y_{it-2}$ actually has the instrument inside.
-- Exogeneity can be justified by appealing to sequential exogeneity: $$	\E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. $$
+- Relevance seems to be relatively straightforward, as the target endogenous variable $\Delta Y_{it-1}= Y_{it-1}-Y_{it-2}$ actually has the instrument inside.
+- Exogeneity can be justified by appealing to sequential exogeneity: $$	\E[Y_{it-2}\Delta U_{it}]  = \E[Y_{it-2}U_{it} - Y_{it-2}U_{it-1}]=0. $$
 
-Hence $y_{it-2}$ is a valid instrument! 
+Hence $Y_{it-2}$ is a valid instrument! 
 
 The resulting IV estimator is known as the @Anderson1982 estimator and given by
 $$
-\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it-1} }.
+\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T Y_{it-2}\Delta Y_{it} }{\sum_{t=2}^T Y_{it-2}\Delta Y_{it-1} }.
 $$
 
 ### Further Dynamic Panel IV Estimators
 
-Are there more instruments that can use for $\Delta y_{it-1}$? Using more instruments will induce overidentification and potentially lead to more precise estimators, solving one of the key drawbacks of the @Anderson1982 estimator [@Arellano1989]. 
+Are there more instruments that can use for $\Delta Y_{it-1}$? Using more instruments induces overidentification and potentially leads to more precise estimators, solving one of the key drawbacks of the @Anderson1982 estimator [@Arellano1989]. 
  
-As a partial answer, suppose we consider $y_{it-k}$ for $k\geq 2$. By applying sequential exogeneity again we can show that $y_{it-k}$ is exogenous:
+As a partial answer, suppose we consider $Y_{it-k}$ for $k\geq 2$. By applying sequential exogeneity again we can show that $Y_{it-k}$ is exogenous:
 $$	
-\E[y_{it-k}\Delta u_{it}]  = \E[y_{it-k}u_{it} - y_{it-k}u_{it-1}]=0. 
+\E[Y_{it-k}\Delta U_{it}]  = \E[Y_{it-k}U_{it} - Y_{it-k}U_{it-1}]=0. 
 $$
-Provided $y_{it-k}$ is correlated with $\Delta y_{it-1}$ and available in the data, it also becomes a valid instrument.  Following this chain of reasoning and using all available lags $y_{it-k}$ yields the @Arellano1991 estimator. 
+Provided $Y_{it-k}$ is correlated with $\Delta Y_{it-1}$ and available in the data, it also becomes a valid instrument.  Following this chain of reasoning and using all available lags $Y_{it-k}$ yields the @Arellano1991 estimator. 
  
 Even further instruments have been found for ([-@eq-dynamic-interlude-homogeneous-differenced]) by @Ahn1995 and @Blundell1998, among others.
-
-All of  these estimators are implemented in 
-
-- R: [plm](https://cran.r-project.org/web/packages/plm/index.html}).
-- Python: [pydynpd](https://github.com/dazhwu/pydynpd/).
-
-
+ 
 ### Properties of Dynamic Panel IV Estimators
 
-Under some standard conditions, the above instrumental variable estimators will all be consistent and asymptotically normal for $\lambda$ as $N\to\infty$ and $T$ is fixed. 
+Under some standard conditions, the above instrumental variable estimators are all consistent and asymptotically normal for $\lambda$ as $N\to\infty$ and $T$ is fixed. 
 The matter is rather more delicate if both $N$ and $T$ are large, and the above dynamic panel IV estimators offer an interesting and natural example of the *many moments* bias. See @Alvarez2003. 
 
 
@@ -221,20 +221,20 @@ The matter is rather more delicate if both $N$ and $T$ are large, and the above 
 One may think that we had the endogeneity problem ([-@eq-dynamic-interlude-differenced-endogeneity]) because we took first differences instead of applying the within transformation. 
 
 However, the same endogeneity issue affects the within estimator. First, for $T=2$ the above discussion applies directly, as the within transformation is numerically identical to first differencing. 
-Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
+Second, more generally, the within estimator suffers from its own version of endogeneity. To see the issue, note that the within-transformed model ([-@eq-dynamic-interlude-dynamic-simple]) can be written as (see @eq-within_transformed):
 $$
-	\tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.
+	\tilde{Y}_{it} = \lambda \tilde{Y}_{it-1} + \tilde{U}_{it}.
 $$ 
 
-One can now immediately see that $\tilde{y}_{it-1}$ will also be an endogenous regressor as
+One can now immediately see that $\tilde{Y}_{it-1}$ is also an endogenous regressor as
 
 $$
-	\E[\tilde{y}_{it-1}\tilde{u}_{it}] = \E\left[\left(y_{it-1}- T^{-1}\sum_{s=0}^{T-1} y_{is} \right)\left(u_{it} - T^{-1}\sum_{r=1}^{T}u_{ir} \right) \right].
+	\E[\tilde{Y}_{it-1}\tilde{U}_{it}] = \E\left[\left(Y_{it-1}- T^{-1}\sum_{s=0}^{T-1} Y_{is} \right)\left(U_{it} - T^{-1}\sum_{r=1}^{T}U_{ir} \right) \right].
 $$
 
-The expectation on the right hand side contains "bad" expectations of the form $\E[u_{it}y_{is}]$ with $t<s$ (recall @eq-dynamic-interlude-no-strict-exogeneity). 
+The expectation on the right-hand side contains "bad" expectations of the form $\E[U_{it}Y_{is}]$ with $t<s$ (recall @eq-dynamic-interlude-no-strict-exogeneity). 
 
-We conclude that for any fixed $T$ the within estimator will also suffer from endogeneity bias. @Nickell1981 shows that it is of the order $O(T^{-1})$.  Furthermore, this bias is likely to be large in practice [see @Kiviet1995].
+We conclude that for any fixed $T$ the within estimator also suffers from endogeneity bias. @Nickell1981 shows that it is of the order $O(T^{-1})$.  Furthermore, this bias is likely to be large in practice [see @Kiviet1995].
 
 ---
 

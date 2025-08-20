@@ -502,7 +502,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -685,19 +685,20 @@ Summary and Learning Outcomes
 <h2 data-number="6.1" class="anchored" data-anchor-id="mean-group-estimation"><span class="header-section-number">6.1</span> Mean Group Estimation</h2>
 <p>The results of the previous section and section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> leave us with key two questions:</p>
 <ul>
-<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
+<li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bX_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
 <li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
 </ul>
 <p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
 <section id="model" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">6.1.1</span> Model</h3>
 <p>To formally define the mean group estimator, we return to the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span class="math display">\[
-    \by_{it} = \bx_{it}'\bbeta_i + u_{it},
-\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>. We can also express this model in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
-\by_i = \bX_i\bbeta_i + \bu_i,
+    \bY_{it}^{\bx} = \bbeta_i'\bx + U_{it},
+\]</span> where we label the dimension of the vectors <span class="math inline">\(\bx\)</span> and <span class="math inline">\(\bbeta_i\)</span> as <span class="math inline">\(p\)</span>.</p>
+<p>For convenience, express the corresponding realized outcome equations in unit-level matrix form by stacking observations across <span class="math inline">\(t\)</span> for each unit <span class="math inline">\(i\)</span>: <span class="math display">\[
+\bY_i = \bX_i\bbeta_i + \bU_i,
 \]</span> where <span class="math inline">\(\bX_i\)</span> is now a <span class="math inline">\(T\times p\)</span> matrix of covariates, with <span class="math inline">\(T\)</span> representing the number of observations for each unit.</p>
-<p>In what follows, we will assume that the regressors <span class="math inline">\(\bx_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(u_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
-\E[\bx_{it}u_{it}] =0.
+<p>In what follows, we assume that the regressors <span class="math inline">\(\bX_{it}\)</span> are orthogonal to the unobserved component <span class="math inline">\(U_{it}\)</span>: <span id="eq-linear-mg-orthogonality"><span class="math display">\[
+\E[\bX_{it}U_{it}] =0.
 \tag{6.1}\]</span></span> This assumption is compatible with both static and dynamic models and is implied by sequential exogeneity.</p>
 </section>
 <section id="definition" class="level3" data-number="6.1.2">
@@ -708,10 +709,10 @@ Summary and Learning Outcomes
 <li><em>Non-singularity</em>: <span class="math inline">\(\bX_i'\bX_i\)</span> has rank maximal rank (<span class="math inline">\(p\)</span>) for all units <span class="math inline">\(i\)</span>.</li>
 </ol>
 <p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
-    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+    \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 \tag{6.2}\]</span></span></p>
 <p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
-    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\by_i.
+    \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 \]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -719,23 +720,23 @@ Summary and Learning Outcomes
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bx_{it}u_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bx_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
+<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bX_{it}U_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bX_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="properties" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="properties"><span class="header-section-number">6.1.3</span> Properties</h3>
-<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\by_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
-    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i.
+<p>To analyze the properties of the <span class="math inline">\(\hat{\bbeta}_{MG}\)</span>, we can substitute the model for <span class="math inline">\(\bY_i\)</span> into each individual estimator. This substitution yields the sampling error form of the estimator: <span class="math display">\[
+    \hat{\bbeta}_{MG}  = \dfrac{1}{N} \sum_{i=1}^N \bbeta_i    + \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i.
 \]</span></p>
-<p>As <span class="math inline">\(N\)</span> grows, the first term will converge to the average effect: <span class="math display">\[
+<p>As <span class="math inline">\(N\)</span> grows, the first term converges to the average effect: <span class="math display">\[
 \dfrac{1}{N} \sum_{i=1}^N \bbeta_i   \xrightarrow{p} \E[\bbeta_i].
 \]</span> This convergence holds regardless of assumptions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>.</p>
 <p>The second term’s behavior determines the estimator’s overall properties, depending on whether strict exogeneity holds:</p>
 <ul>
-<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
-<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator will typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bu_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> will be biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias will typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanish as <span class="math inline">\(T\to\infty\)</span>.</p></li>
+<li><p>If strict exogeneity holds, the mean group estimator is unbiased and consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> even for <span class="math inline">\(T\)</span> fixed. In this case it directly holds that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i\right] =0 \]</span> for any fixed value of <span class="math inline">\(T\)</span>.</p></li>
+<li><p>If the model is dynamic or strict exogeneity fails for any other reason, the mean group estimator is typically only be consistent as both <span class="math inline">\(N, T\to\infty\)</span>. In this case it may be that <span class="math display">\[ \E\left[ \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bU_i\right] \neq 0 ,\]</span> and <span class="math inline">\(\hat{\bbeta}_{MG}\)</span> is biased for any given finite <span class="math inline">\(T\)</span>. However, under standard assumptions that limit dependence across <span class="math inline">\(t\)</span>, this bias is typically be of the order <span class="math inline">\(O(T^{-1})\)</span> and vanishes as <span class="math inline">\(T\to\infty\)</span>.</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -743,7 +744,7 @@ Summary and Learning Outcomes
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>We implicitly assume the existence of any required moment involving <span class="math inline">\(\left(\bX_i'\bX_i\right)^{-1}\)</span>. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We will not discuss this point further, but see <span class="citation" data-cites="Graham2012">Graham and Powell (<a href="../references/references.html#ref-Graham2012" role="doc-biblioref">2012</a>)</span>.</p>
+<p>We implicitly assume the existence of any required moment involving <span class="math inline">\(\left(\bX_i'\bX_i\right)^{-1}\)</span>. This assumption is not always innocent and imposes certain constraints on the distribution of covariates — requirements of sufficient variation. We do not discuss this point further, but see <span class="citation" data-cites="Graham2012">Graham and Powell (<a href="../references/references.html#ref-Graham2012" role="doc-biblioref">2012</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -753,7 +754,7 @@ Summary and Learning Outcomes
 <h2 data-number="6.2" class="anchored" data-anchor-id="comparing-estimators"><span class="header-section-number">6.2</span> Comparing Estimators</h2>
 <section id="conditions-for-consistency" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="conditions-for-consistency"><span class="header-section-number">6.2.1</span> Conditions for Consistency</h3>
-<p>We now have have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
+<p>We now have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
 <p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
@@ -839,7 +840,7 @@ Summary and Learning Outcomes
 <p>If such a situation occurs in practice, a common solution is to drop the units with non-invertible <span class="math inline">\(\bX_i'\bX_i\)</span>. The mean group estimator is computed as an average over the remaining units. Formally, the corresponding mean group estimator is defined as <span class="math display">\[
     \hat{\bbeta}_{MG}^+  = \dfrac{1}{\sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} } \sum_{i=1}^N \I\curl{\det(\bX_i'\bX_i)&gt;0} \hat{\bbeta}_i.
 \]</span> Every unit is checked to see if <span class="math inline">\(\det(\bX_i'\bX_i)&gt;0\)</span>. If it is, their <span class="math inline">\(\hat{\bbeta}_i\)</span> is computed and added to the average.</p>
-<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bu_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data (subject to the above warning regarding existence of moments): <span class="math display">\[
+<p>What does this modified estimator estimate? For simplicity, suppose that <span class="math inline">\(\E[\bU_i|\bX_i]=0\)</span>. Then, as <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(\hat{\bbeta}_{MG}^+\)</span> converges to the average for the units that have enough variation in their data (subject to the above warning regarding existence of moments): <span class="math display">\[
     \hat{\bbeta}_{MG}^+ \to \E\left[\bbeta_i| \I\curl{\det(\bX_i'\bX_i)&gt;0}  \right].
 \]</span> This limit may be viewed as an average treatment effect of the treated.</p>
 <hr>

@@ -502,7 +502,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -673,7 +673,7 @@ Summary and Learning Outcomes
 </div>
 <div class="callout-body-container callout-body">
 <p>This section introduces linear models with heterogeneous coefficients, associated identification challenges, and the model used in this block of the course.</p>
-<p>By the end of this section, you should</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
 <li>Recognize cases where heterogeneous coefficients arise.</li>
 <li>Identify key challenges in estimating heterogeneous coefficients.</li>
@@ -685,14 +685,14 @@ Summary and Learning Outcomes
 <h2 data-number="2.1" class="anchored" data-anchor-id="linearity-and-heterogeneity"><span class="header-section-number">2.1</span> Linearity and Heterogeneity</h2>
 <section id="models-with-homogeneous-slopes" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="models-with-homogeneous-slopes"><span class="header-section-number">2.1.1</span> Models with Homogeneous Slopes</h3>
-<p>We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The “standard” linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., <span class="citation" data-cites="Hansen2022">Hansen (<a href="../references/references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>). A common cross-sectional specification is:</p>
+<p>We begin our journey where standard textbooks and first-year foundational courses in econometrics leave off. The “standard” linear models considered in such courses often assume homogeneity in individual responses to covariates (e.g., <span class="citation" data-cites="Hansen2022">Hansen (<a href="../references/references.html#ref-Hansen2022" role="doc-biblioref">2022</a>)</span>). A common cross-sectional specification of a linear potential outcomes model takes the form</p>
 <p><span id="eq-standard_linear"><span class="math display">\[
-y_i = \bbeta'\bx_i + u_{i},
-\tag{2.1}\]</span></span> where <span class="math inline">\(i=1, \dots, N\)</span> indexes cross-sectional units.</p>
+Y^{\bx}_i = \bbeta'\bx + U_{i},
+\tag{2.1}\]</span></span> where <span class="math inline">\(i=1, \dots, N\)</span> indexes cross-sectional units, <span class="math inline">\(\bx\)</span> is some potential treatment value (possibly vector-valued), and <span class="math inline">\(Y^{\bx}_i\)</span> is the potential outcome of unit <span class="math inline">\(i\)</span> under <span class="math inline">\(\bx\)</span>.</p>
 <p>In panel data, models often include unit-specific <span class="math inline">\((i)\)</span> and time-specific <span class="math inline">\((t)\)</span> intercepts while maintaining a common slope vector <span class="math inline">\(\bbeta\)</span>:</p>
 <p><span id="eq-panel_linear"><span class="math display">\[
-y_{it} = \alpha_i + \delta_t +  \bbeta'\bx_{it} + u_{it}.
-\tag{2.2}\]</span></span></p>
+Y_{it}^{\bx} = A_i + \Gamma_t +  \bbeta'\bx + U_{it},
+\tag{2.2}\]</span></span> where <span class="math inline">\(A_i\)</span> and <span class="math inline">\(\Gamma_t\)</span> are not observed.</p>
 </section>
 <section id="heterogeneity-in-slopes.-examples" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="heterogeneity-in-slopes.-examples"><span class="header-section-number">2.1.2</span> Heterogeneity in Slopes. Examples</h3>
@@ -700,19 +700,31 @@ y_{it} = \alpha_i + \delta_t +  \bbeta'\bx_{it} + u_{it}.
 <ol type="1">
 <li><p>Cross-sectional model (<a href="#eq-standard_linear" class="quarto-xref"><span>2.1</span></a>) generalizes to</p>
 <p><span id="eq-cross_sectional_hetero"><span class="math display">\[
-y_i = \bbeta_{i}'\bx + u_i.
+Y_i^{\bx} = \bbeta_{i}'\bx + U_i.
 \tag{2.3}\]</span></span></p></li>
 <li><p>Panel data model (<a href="#eq-panel_linear" class="quarto-xref"><span>2.2</span></a>) generalizes to</p>
 <p><span id="eq-panel_hetero"><span class="math display">\[
-y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
+Y_{it}^{\bx}  = \bbeta_{it}'\bx + U_{it}.
 \tag{2.4}\]</span></span></p></li>
 </ol>
 <p>Such models are worth studying, as they naturally arise in a variety of contexts:</p>
 <ul>
 <li><p><strong>Structural models with parametric restrictions:</strong> Certain parametric restrictions yield linear relationships in coefficients. An example is given by firm-level Cobb-Douglas production functions where firm-specific productivity differences induce heterogeneous coefficients (<span class="citation" data-cites="Combes2012b">Combes et al. (<a href="../references/references.html#ref-Combes2012b" role="doc-biblioref">2012</a>)</span>; <span class="citation" data-cites="Sury2011">Sury (<a href="../references/references.html#ref-Sury2011" role="doc-biblioref">2011</a>)</span>).</p></li>
-<li><p><strong>Binary covariates and interaction terms</strong>: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (see, e.g., <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="../references/references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>).</p></li>
+<li><p><strong>Binary covariates and interaction terms</strong>: if all covariates are binary and all interactions are included, a linear model encodes all treatment effects without loss of generality (e.g., <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="../references/references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span>).</p></li>
 <li><p><strong>Log-linearized models:</strong> Nonlinear models may be approximated by linear models around a steady-state. For example, <span class="citation" data-cites="Heckman1998">Heckman and Vytlacil (<a href="../references/references.html#ref-Heckman1998" role="doc-biblioref">1998</a>)</span> demonstrate how the nonlinear <span class="citation" data-cites="Card2001">Card (<a href="../references/references.html#ref-Card2001" role="doc-biblioref">2001</a>)</span> education model simplifies to a heterogeneous linear specification after linearization.</p></li>
 </ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In this block, we use notation <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bbeta_{it}\)</span> for the heterogeneous coefficients. This convention is in line with the well-established literature and models (<a href="#eq-standard_linear" class="quarto-xref"><span>2.1</span></a>-<a href="#eq-panel_linear" class="quarto-xref"><span>2.2</span></a>). However, note that this notation can be connected to the general model in <a href="../intro.html#eq-intro-potential-outcomes" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> as <span class="math display">\[
+Y_i^{\bx} = \phi(\bx, A_i) = \beta(A_i)'\bx + U_i,
+\]</span> where <span class="math inline">\(U_i\)</span> is a component of the general vector <span class="math inline">\(A_i\)</span> of unobserved components and <span class="math inline">\(\beta(\cdot)\)</span> is some vector-valued function.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="what-do-we-care-about-identification" class="level2" data-number="2.2">
@@ -730,10 +742,10 @@ y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
 </section>
 <section id="regarding-identification" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="regarding-identification"><span class="header-section-number">2.2.2</span> Regarding Identification</h3>
-<p>Unfortunately, greater flexibility in terms of parameters also leads to greater challenges in terms of identification. Models (<a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) are too general to permit identification of any of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:</p>
+<p>Unfortunately, greater flexibility in terms of parameters also leads to greater challenges in terms of identification. Models (<a href="#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) are too general to permit identification of the above parameters without further assumptions. This failure of identification is driven by the combination of the following two issues:</p>
 <ol type="1">
-<li>Limited observations per coefficient vector. Since each unit <span class="math inline">\(i\)</span> (or pair <span class="math inline">\((i,t)\)</span>) provides only indirect information through <span class="math inline">\(\bbeta_i'\bx_i\)</span> (or <span class="math inline">\(\bbeta_{it}'\bx_{it}\)</span>), there is effectively less than one observation per <span class="math inline">\(\bbeta_i\)</span>.</li>
-<li>Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span>, identification is difficult.</li>
+<li>Limited observations per coefficient vector. Since each unit <span class="math inline">\(i\)</span> (or pair <span class="math inline">\((i,t)\)</span>) provides only indirect information through the realized <span class="math inline">\(\bbeta_i'\bX_i\)</span> (or <span class="math inline">\(\bbeta_{it}'\bX_{it}\)</span>), there is effectively less than one observation per <span class="math inline">\(\bbeta_i\)</span>.</li>
+<li>Unrestricted dependence between coefficients and covariates. Without assumptions on the relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span>, one can generally not separate the influence of the two components on linear indices of the form <span class="math inline">\(\bbeta_i'\bX_i\)</span>.</li>
 </ol>
 <p>Identification is typically achieved by mitigating one of these challenges. Common strategies to address these challenges include:</p>
 <ul>
@@ -741,15 +753,15 @@ y_{it}  = \bbeta_{it}'\bx_{it} + u_{it}.
 <ul>
 <li><p>In panel settings, assuming time-invariant coefficients simplifies <a href="#eq-panel_hetero" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> to:</p>
 <p><span id="eq-time_invariant"><span class="math display">\[
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
 \tag{2.5}\]</span></span></p></li>
 <li><p>Alternative approaches assume a finite number of latent groups, each with its own coefficient vector, yielding the grouped structure:</p>
 <p><span id="eq-grouped_model"><span class="math display">\[
-y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_{g_i, t}'\bx + U_{it}.
 \tag{2.6}\]</span></span></p>
 <p>This model in discussed in <span class="citation" data-cites="Bonhomme2015">Bonhomme and Manresa (<a href="../references/references.html#ref-Bonhomme2015" role="doc-biblioref">2015</a>)</span>, <span class="citation" data-cites="Bester2016">Bester and Hansen (<a href="../references/references.html#ref-Bester2016" role="doc-biblioref">2016</a>)</span> (see also <span class="citation" data-cites="Bonhomme2022DiscretizingUnobservedHeterogeneity">Bonhomme, Lamadon, and Manresa (<a href="../references/references.html#ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" role="doc-biblioref">2022</a>)</span>).</p></li>
 </ul></li>
-<li>Restricting dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span>. For example, there is a strand of literature that assumes that <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_i\)</span> are independent <span class="citation" data-cites="Beran1996 Hoderlein2010">(<a href="../references/references.html#ref-Beran1996" role="doc-biblioref">Beran, Feuerverger, and Hall 1996</a>; <a href="../references/references.html#ref-Hoderlein2010" role="doc-biblioref">Hoderlein, Klemelä, and Mammen 2010</a>)</span>.</li>
+<li>Restricting dependence between <span class="math inline">\(\bbeta_i\)</span> and the realized treatment <span class="math inline">\(\bX_i\)</span>. For example, there is a strand of literature that assumes that <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span> are independent <span class="citation" data-cites="Beran1996 Hoderlein2010">(<a href="../references/references.html#ref-Beran1996" role="doc-biblioref">Beran, Feuerverger, and Hall 1996</a>; <a href="../references/references.html#ref-Hoderlein2010" role="doc-biblioref">Hoderlein, Klemelä, and Mammen 2010</a>)</span>.</li>
 </ul>
 </section>
 </section>
@@ -757,9 +769,13 @@ y_{it} = \bbeta_{g_i, t}'\bx_{it} + u_{it}.
 <h2 data-number="2.3" class="anchored" data-anchor-id="model-of-this-block"><span class="header-section-number">2.3</span> Model of This Block</h2>
 <p>This block primarily focuses on the first strategy. Specifically, we will consider a version of model (<a href="#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) with <em>time-invariant</em> heterogeneous coefficients:</p>
 <p><span id="eq-lecture_model"><span class="math display">\[
-y_{it} = \bbeta_i'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
 \tag{2.7}\]</span></span></p>
-<p>We do not impose restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bx_{it}\)</span>. In general, it is important to allow for such dependence outside of experimental data — economic agents can select their covariates <span class="math inline">\(\bx_{it}\)</span> based on knowledge of their own <span class="math inline">\(\bbeta_i\)</span>. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.</p>
+<p>The time-invariant coefficients <span class="math inline">\(\bbeta_i\)</span> play the role of <span class="math inline">\(A_i\)</span> in <a href="../intro.html#eq-intro-potential-outcomes" class="quarto-xref">Equation&nbsp;<span>1.1</span></a>.</p>
+<p>The observed realized values <span class="math inline">\((Y_i, \bX_{it})\)</span> satisfy <span class="math display">\[
+Y_{it}= Y_{ii}^{\bX_{it}} = \bbeta_i'\bX_{it} + U_{it}.
+\]</span></p>
+<p>We impose <em>no</em> restrictions on the dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_{it}\)</span>. As noted in the introduction, it is important to allow for such dependence outside of experimental data — economic agents can select their covariates <span class="math inline">\(\bX_{it}\)</span> based on knowledge of their own <span class="math inline">\(\bbeta_i\)</span>. Since parametrizing this dependence is non-trivial, we impose no assumptions on it.</p>
 <p>We will also generally focus on the case where the number <span class="math inline">\(N\)</span> of units is large, while the number <span class="math inline">\(T\)</span> of observations per unit is fixed and not necessarily large.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -773,7 +789,7 @@ y_{it} = \bbeta_i'\bx_{it} + u_{it}.
 </div>
 <p>Note that model (<a href="#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) includes a particular special case — the random intercept model (confusingly also called the “fixed effects model”). The random intercept model imposes homogeneity on all parameters except the intercept term. In the one-way case, the model takes the form:</p>
 <p><span id="eq-random_intercept"><span class="math display">\[
-y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
+Y_{it}^{\bx} = A_i + \bbeta'\bx + U_{it}.
 \tag{2.8}\]</span></span> Model (<a href="#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) is one of the oldest ways of including unobserved heterogeneity in linear models and goes back at least to <span class="citation" data-cites="Mundlak1961EmpiricalProductionFunction">Mundlak (<a href="../references/references.html#ref-Mundlak1961EmpiricalProductionFunction" role="doc-biblioref">1961</a>)</span>.</p>
 </section>
 <section id="plan-for-this-block" class="level2" data-number="2.4">
@@ -785,7 +801,7 @@ y_{it} = \alpha_i + \bbeta'\bx_{it} + u_{it}.
 <li>First, we demonstrate that standard estimators for the random intercept model (<a href="#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) are generally inconsistent for <span class="math inline">\(\E[\bbeta_i]\)</span> in the more general model (<a href="#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</li>
 <li>Next, we introduce a mean group estimator robust to heterogeneity and dynamics.</li>
 </ul></li>
-<li><p><strong>Variance <span class="math inline">\(\var(\bbeta_i)\)</span></strong>: we show how one can identify and estimate <span class="math inline">\(\var(\bbeta_i)\)</span> by imposing structure on the temporal dependence in the residuals <span class="math inline">\(u_{it}\)</span>.</p></li>
+<li><p><strong>Variance <span class="math inline">\(\var(\bbeta_i)\)</span></strong>: we show how one can identify and estimate <span class="math inline">\(\var(\bbeta_i)\)</span> by imposing structure on the temporal dependence in the residuals <span class="math inline">\(U_{it}\)</span>.</p></li>
 <li><p><strong>Identifying the Full Distribution of <span class="math inline">\(\bbeta_i\)</span>:</strong> we show how one can obtain the distribution of <span class="math inline">\(\bbeta_i\)</span> with a deconvolution argument.</p></li>
 </ol>
 <p>Knowing these features of the distribution of <span class="math inline">\(\bbeta_i\)</span> allows one to compute the corresponding features of the treatment effects of changing from some treatment value <span class="math inline">\(\bx_1\)</span> to <span class="math inline">\(\bx_2\)</span> — these treatment effects are given by <span class="math inline">\(\bbeta_1(\bx_2-\bx_1)\)</span>.</p>
@@ -1400,8 +1416,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="../intro.html" class="pagination-link" aria-label="Introduction: Causal Inference with Unobserved Heterogeneity">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -12,7 +12,8 @@ This repository contains lecture notes for the course *Econometrics with Unobser
 
 
 
-Unobserved heterogeneity is a pervasive issue in economics — agent-specific parameters, unmeasured covariates, and heterogeneous treatment effects all provide example of unobserved differences. This course introduces econometric methods for estimating parameters of interest in settings with such heterogeneity, especially in observational cross-sectional and panel data contexts.
+Causal inference with unobserved heterogeneity is the core challenge of empirical economics. Whether due to heterogeneous treatment effects, omitted confounders, or measurement error, unobserved factors create confounding in the data and require developing appropriate methods. This course surveys some modern identification strategies and estimation methods designed to recover causal relationships from observational data, where treatments are endogenously selected and key determinants of outcomes are hidden.
+
 
 
 ## Course Overview

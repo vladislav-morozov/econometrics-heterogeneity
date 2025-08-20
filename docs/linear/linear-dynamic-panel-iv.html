@@ -453,7 +453,7 @@ window.Quarto = {
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -502,7 +502,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -647,7 +647,7 @@ window.Quarto = {
 <div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-iv.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-iv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -679,7 +679,7 @@ Summary and Learning Outcomes
 </div>
 <div class="callout-body-container callout-body">
 <p>This section discusses why strict exogeneity fails in dynamic models and introduces the “workhorse” dynamic panel instrumental variable estimators.</p>
-<p>By the end of this section, you should</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
 <li>Understand why strict exogeneity fails in dynamic panel models.<br>
 </li>
@@ -692,98 +692,101 @@ Summary and Learning Outcomes
 </ul>
 </div>
 </div>
-<section id="exogeneity-and-dynamic-models" class="level2" data-number="4.1">
+<section id="exogeneity-and-dynamic-models" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="exogeneity-and-dynamic-models"><span class="header-section-number">4.1</span> Exogeneity and Dynamic Models</h2>
 <section id="introduction" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">4.1.1</span> Introduction</h3>
-<p>Throughout the previous section, we assumed that the idiosyncratic term <span class="math inline">\(u_{it}\)</span> satisfied strict exogeneity with respect to the data: <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
-    \E[u_{it}|\bX_i] = 0.
+<p>Throughout the previous section, we assumed that the idiosyncratic term <span class="math inline">\(U_{it}\)</span> satisfied strict exogeneity with respect to the data: <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
+    \E[U_{it}|\bX_i] = 0.
 \tag{4.1}\]</span></span></p>
 <p>However, strict exogeneity is not an innocent assumption. In particular, it implies that for all pairs of indices <span class="math inline">\(s, t\)</span> it holds that <span id="eq-dynamic-interlude-strict-orthogonality"><span class="math display">\[
-    \E[u_{it}\bx_{is}] =0.
+    \E[U_{it}\bX_{is}] =0.
 \tag{4.2}\]</span></span></p>
-<p>For <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bx\)</span>. In other words, one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bx\)</span>s.</p>
-<p>This requirement might fail if <span class="math inline">\(\bx\)</span> is dynamic and its evolution is affected by <span class="math inline">\(u_{it}\)</span>. In this section, we will discuss this challenge and some traditional approaches to dealing with it with short panel data.</p>
+<p>For <span class="math inline">\(t&lt;s\)</span>, <a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> means that <em>past</em> shocks are uncorrelated with <em>future</em> values of <span class="math inline">\(\bX\)</span>. In other words, one cannot predict <em>past</em> shocks from <em>future</em> <span class="math inline">\(\bX\)</span>s.</p>
+<p>This requirement might fail if <span class="math inline">\(\bX\)</span> is dynamic and its evolution is affected by <span class="math inline">\(U_{it}\)</span>. In this section, we discuss this challenge and some traditional approaches to dealing with it with short panel data.</p>
 </section>
 <section id="no-strict-exogeneity-for-dynamic-models" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="no-strict-exogeneity-for-dynamic-models"><span class="header-section-number">4.1.2</span> No Strict Exogeneity for Dynamic Models</h3>
-<p>A particularly clear example of failure of (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is the case when <span class="math inline">\(\bx_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
+<p>A particularly clear example of failure of (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is the case when <span class="math inline">\(\bX_{it}\)</span> includes lagged values of the outcome. As we show now, strict exogeneity cannot hold in this case.</p>
 <p>For simplicity, we momentarily forget about the cross-sectional dimension and consider a simple autoregressive model with 1 lag (AR(1)): <span class="math display">\[
-    y_t = \alpha + \lambda y_{t-1} + u_{t},
-\]</span> where <span class="math inline">\(t=1, \dots, T\)</span> and the innovation <span class="math inline">\(u_t\)</span> satisfies <span class="math inline">\(\E[u_t]=0\)</span>.</p>
-<p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is not true. Specifically, we will take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[y_{it+1}u_t]\)</span> is not necessarily zero.</p>
+    Y_t = \alpha + \lambda Y_{t-1} + U_{t},
+\]</span> where <span class="math inline">\(t=1, \dots, T\)</span> and the innovation <span class="math inline">\(U_t\)</span> satisfies <span class="math inline">\(\E[U_t]=0\)</span>.</p>
+<p>To show that strict exogeneity fails, it is sufficient to find a single pair of <span class="math inline">\((t, s)\)</span> such that (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is not true. Specifically, we take <span class="math inline">\(s=t+1\)</span> and show that <span class="math inline">\(\E[Y_{it+1}U_t]\)</span> is not necessarily zero.</p>
 <p>To evaluate this expectation, we write the model at <span class="math inline">\(t+1\)</span> <span id="eq-dynamic-interlude-simple-ar1"><span class="math display">\[
-    y_{t+1} = \alpha + \lambda y_t + u_{t+1}.
-\tag{4.3}\]</span></span> We then substitute the model into <span class="math inline">\(\E[y_{it+1}u_t]\)</span> <span class="math display">\[
+    Y_{t+1} = \alpha + \lambda Y_t + U_{t+1}.
+\tag{4.3}\]</span></span> We then substitute the model into <span class="math inline">\(\E[Y_{it+1}U_t]\)</span> <span class="math display">\[
 \begin{aligned}
-    \E[y_{t+1}u_t] &amp; = \lambda\E[y_t u_t] + \E[u_{t+1}u_t] \\
-    &amp;  = \lambda^2\E[y_{t-1}u_t] + \lambda\E[u_t^2] + \E[u_{t+1}u_t] .
+    \E[Y_{t+1}U_t] &amp; = \lambda\E[Y_t U_t] + \E[U_{t+1}U_t] \\
+    &amp;  = \lambda^2\E[Y_{t-1}U_t] + \lambda\E[U_t^2] + \E[U_{t+1}U_t] .
 \end{aligned}
 \]</span></p>
 <p>What can we say about the right hand side? In many contexts, we may reasonably assume that</p>
 <ul>
-<li>One cannot predict the shocks of tomorrow from what you have today, so that <span class="math display">\[\E[y_{t-1}u_t]=0.\]</span></li>
-<li><span class="math inline">\(u_{t}\)</span> is uncorrelated over time, so that <span class="math display">\[\E[u_{t+1}u_t]=0.\]</span></li>
+<li>One cannot predict the shocks of tomorrow from what you have today, so that <span class="math display">\[\E[Y_{t-1}U_t]=0.\]</span></li>
+<li><span class="math inline">\(U_{t}\)</span> is uncorrelated over time, so that <span class="math display">\[\E[U_{t+1}U_t]=0.\]</span></li>
 </ul>
-<p>However, <span class="math inline">\(\lambda\E[u_t^2]\)</span> is zero only in two unreasonable cases:</p>
+<p>However, <span class="math inline">\(\lambda\E[U_t^2]\)</span> is zero only in two unreasonable cases:</p>
 <ul>
 <li>If <span class="math inline">\(\lambda=0\)</span>, and so the model is not actually dynamic</li>
-<li><span class="math inline">\(\E[u_t^2]=0\)</span>, and so the process is actually fully deterministic.</li>
+<li><span class="math inline">\(\E[U_t^2]=0\)</span>, and so the process is actually fully deterministic.</li>
 </ul>
 <p>Both of these options are unpleasant. The first one goes against the idea of allowing any dynamics. The second is extremely unlikely with any kind of social data. We conclude that in dynamic models it is the case <span id="eq-dynamic-interlude-no-strict-exogeneity"><span class="math display">\[
-\E[y_{it+1}u_t] \neq 0.
+\E[Y_{it+1}U_t] \neq 0.
 \tag{4.4}\]</span></span> A fortiori, strict exogeneity generally fails in dynamic models.</p>
 </section>
-<section id="sequential-exogeneity" class="level3" data-number="4.1.3">
+<section id="sequential-exogeneity" class="level3 page-columns page-full" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="sequential-exogeneity"><span class="header-section-number">4.1.3</span> Sequential Exogeneity</h3>
 <p>So what can you do if you want to allow for dynamic models? Since strict exogeneity (<a href="#eq-dynamic-interlude-strict-orthogonality" class="quarto-xref"><span>4.2</span></a>) is effectively impossible to satisfy, we need a weaker form of exogeneity.</p>
 <p>One popular weaker assumption compatible with dynamic models is <em>sequential exogeneity</em> (or <em>predeterminedness</em>). In context of the simple univariate time series model (<a href="#eq-dynamic-interlude-simple-ar1" class="quarto-xref"><span>4.3</span></a>), sequential exogeneity may be stated as <span class="math display">\[
-        \E[u_{t}| y_{t-1}, y_{t-2}, \dots] =0.
+        \E[U_{t}| Y_{t-1}, Y_{t-2}, \dots] =0.
 \]</span> Intuitively, sequential exogeneity states that future shocks cannot be predicted using past covariates. However, it does not restrict our ability to predict the past from the future — the context which created problems for strict exogeneity.</p>
 <p>More generally, consider a panel data linear model with homogeneous coefficients, a random intercept, and a dynamic process for the outcome: <span id="eq-dynamic-interlude-dynamic-panel"><span class="math display">\[
-y_{it} = \alpha_i + \sum_{k=1}^K \lambda_k y_{it-k} + \bbeta'\bx_{it} + u_{it}.  
+Y_{it} = A_i + \sum_{k=1}^K \lambda_k Y_{it-k} + \bbeta'\bX_{it} + U_{it}.  
 \tag{4.5}\]</span></span> In this model, a sequential exogeneity assumption takes form <span class="math display">\[
-     \E[u_{it}|\curl{y_{is-1}, \bx_{is}}_{s\leq t}] =0.
+     \E[U_{it}|\curl{Y_{is-1}, \bX_{is}}_{s\leq t}] =0.
 \]</span> Model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) is a dynamic counterpart of the static model (<a href="linear-within-estimator.html#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>) we discussed in the last section.</p>
-</section>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>One may write down the potential outcomes corresponding to <a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref">Equation&nbsp;<span>4.5</span></a>. However, it is a bit inconvenient, and so we work directly with realized equations from the start.</p>
+</div></div></section>
 </section>
 <section id="handling-dynamic-panels-with-a-random-intercept" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="handling-dynamic-panels-with-a-random-intercept"><span class="header-section-number">4.2</span> Handling Dynamic Panels with a Random Intercept</h2>
-<p>Before moving on and introducing heterogeneous coefficients in dynamic linear models, we will discuss model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) in more detail. In particular, we will develop the standard workhorse instrumental variable estimators. We will analyze how these estimators fare in the more general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) in the next section.</p>
+<p>Before moving on and introducing heterogeneous coefficients in dynamic linear models, we discuss model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) in more detail. In particular, we develop the standard workhorse instrumental variable estimators. We analyze how these estimators fare in the more general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) in the next section.</p>
 <section id="model" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="model"><span class="header-section-number">4.2.1</span> Model</h3>
-<p>For the sake of simplicity, we will discuss a simple version of model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) without extra covariates <span class="math inline">\(\bx_{it}\)</span> and with only one lag of <span class="math inline">\(y_{it}\)</span>: <span id="eq-dynamic-interlude-dynamic-simple"><span class="math display">\[
-y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
-\tag{4.6}\]</span></span> where <span class="math inline">\(u_{it}\)</span> satisfies sequential exogeneity in the form <span class="math inline">\(\E[u_{it}|y_{is}, s&lt;t] = 0\)</span>. This random intercept dynamic model has extensively considered in the literature <span class="citation" data-cites="Anderson1982 Arellano1991 Blundell1998">(e.g. <a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">Anderson and Hsiao 1982</a>; <a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">Arellano and Bond 1991</a>; <a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">Blundell and Bond 1998</a>)</span>.</p>
+<p>For the sake of simplicity, we discuss a simple version of model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) without extra covariates <span class="math inline">\(\bX_{it}\)</span> and with only one lag of <span class="math inline">\(Y_{it}\)</span>: <span id="eq-dynamic-interlude-dynamic-simple"><span class="math display">\[
+Y_{it} = A_i + \lambda Y_{it-1} + U_{it},
+\tag{4.6}\]</span></span> where <span class="math inline">\(U_{it}\)</span> satisfies sequential exogeneity in the form <span class="math inline">\(\E[U_{it}|Y_{is}, s&lt;t] = 0\)</span>. This random intercept dynamic model has extensively considered in the literature <span class="citation" data-cites="Anderson1982 Arellano1991 Blundell1998">(e.g. <a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">Anderson and Hsiao 1982</a>; <a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">Arellano and Bond 1991</a>; <a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">Blundell and Bond 1998</a>)</span>.</p>
 <p>The key parameter of interest is <span class="math inline">\(\lambda\)</span>. By homogeneity of <span class="math inline">\(\lambda\)</span>, it also plays the role of the average coefficient for model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>).</p>
-<p>Here, we will primarily focus on the large-<span class="math inline">\(N\)</span>, fixed-<span class="math inline">\(T\)</span> case, though model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) has also been extensively studied in the large-(<span class="math inline">\(N, T\)</span>) case <span class="citation" data-cites="Alvarez2003">(e.g. <a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">Alvarez and Arellano 2003</a>)</span>.</p>
+<p>Here, we primarily focus on the large-<span class="math inline">\(N\)</span>, fixed-<span class="math inline">\(T\)</span> case, though model (<a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref"><span>4.5</span></a>) has also been extensively studied in the large-(<span class="math inline">\(N, T\)</span>) case <span class="citation" data-cites="Alvarez2003">(e.g. <a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">Alvarez and Arellano 2003</a>)</span>.</p>
 </section>
 <section id="endogeneity" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="endogeneity"><span class="header-section-number">4.2.2</span> Endogeneity</h3>
 <p>To work towards an estimator for <span class="math inline">\(\lambda\)</span>, let us difference <a href="#eq-dynamic-interlude-dynamic-panel" class="quarto-xref">Equation&nbsp;<span>4.5</span></a> across <span class="math inline">\(t\)</span> to eliminate the random intercept <span class="math inline">\(\alpha_i\)</span>. The differenced equation takes form <span id="eq-dynamic-interlude-homogeneous-differenced"><span class="math display">\[
 \begin{aligned}
-\Delta y_{it} &amp; = \lambda \Delta y_{it-1} + \Delta u_{it}, \\
-\Delta y_{it} &amp; = y_{it} - y_{it-1}.
+\Delta Y_{it} &amp; = \lambda \Delta Y_{it-1} + \Delta U_{it}, \\
+\Delta Y_{it} &amp; = Y_{it} - Y_{it-1}.
 \end{aligned}
-\tag{4.7}\]</span></span> <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> seems like a simple regression equation. It is tempting to just apply OLS and regress <span class="math inline">\(\Delta y_{it}\)</span> on <span class="math inline">\(\Delta y_{it-1}\)</span>.</p>
-<p>It turns out that this approach will fail as there is an endogeneity problem in <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>! Sequential exogeneity is not enough to guarantee that <span class="math display">\[
-\E[\Delta y_{it-1}\Delta u_{it}] = 0.
+\tag{4.7}\]</span></span> <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> seems like a simple regression equation. It is tempting to just apply OLS and regress <span class="math inline">\(\Delta Y_{it}\)</span> on <span class="math inline">\(\Delta Y_{it-1}\)</span>.</p>
+<p>It turns out that this approach fails as there is an endogeneity problem in <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>! Sequential exogeneity is not enough to guarantee that <span class="math display">\[
+\E[\Delta Y_{it-1}\Delta U_{it}] = 0.
 \]</span></p>
-<p>To see why, we expand <span class="math inline">\(\E[\Delta y_{it-1}\Delta u_{it}]\)</span> as<br>
+<p>To see why, we expand <span class="math inline">\(\E[\Delta Y_{it-1}\Delta U_{it}]\)</span> as<br>
 <span class="math display">\[
 \begin{aligned}
-    &amp; \E\left[(u_{it}-u_{it-1})(y_{it-1}-y_{it-2}) \right] \\
-    &amp; = \E[ u_{it}y_{it-1} ] + \E[(u_{it-1}-u_{it})y_{it-2}] - \E[u_{it-1}y_{it-1}]  \\
-    &amp; = -\E[u_{it-1} y_{it-1}].
+    &amp; \E\left[(U_{it}-U_{it-1})(Y_{it-1}-Y_{it-2}) \right] \\
+    &amp; = \E[ U_{it}Y_{it-1} ] + \E[(U_{it-1}-U_{it})Y_{it-2}] - \E[U_{it-1}Y_{it-1}]  \\
+    &amp; = -\E[U_{it-1} Y_{it-1}].
 \end{aligned}
-\]</span> Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute <span class="math inline">\(y_{it-1}\)</span> to see that <span class="math display">\[
+\]</span> Sequential exogeneity is sufficient to immediately eliminate the first 2 expectations. For the last expectation remaining, we can substitute <span class="math inline">\(Y_{it-1}\)</span> to see that <span class="math display">\[
 \begin{aligned}
-    \E[u_{it-1}y_{it-1}] &amp; = \lambda\E[u_{it-1}y_{it-2}] + \E[u_{it-1}^2]\\
-    &amp; = \E[u_{it-1}^2]
+    \E[U_{it-1}Y_{it-1}] &amp; = \lambda\E[U_{it-1}Y_{it-2}] + \E[U_{it-1}^2]\\
+    &amp; = \E[U_{it-1}^2]
 \end{aligned}
-\]</span> As noted above, in general we expect that <span class="math inline">\(\E[u_{it-1}^2] \neq 0\)</span>. Hence we conclude that <span id="eq-dynamic-interlude-differenced-endogeneity"><span class="math display">\[
-    \E[\Delta y_{it-1}\Delta u_{it}]\neq 0.
-\tag{4.8}\]</span></span> In other words, <span class="math inline">\(\Delta y_{it-1}\)</span> is an endogenous regressor in the differenced <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>.</p>
+\]</span> As noted above, in general we expect that <span class="math inline">\(\E[U_{it-1}^2] \neq 0\)</span>. Hence we conclude that <span id="eq-dynamic-interlude-differenced-endogeneity"><span class="math display">\[
+    \E[\Delta Y_{it-1}\Delta U_{it}]\neq 0.
+\tag{4.8}\]</span></span> In other words, <span class="math inline">\(\Delta Y_{it-1}\)</span> is an endogenous regressor in the differenced <a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref">Equation&nbsp;<span>4.7</span></a>.</p>
 <div class="callout callout-style-simple callout-caution no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -798,56 +801,51 @@ y_{it} = \alpha_i + \lambda y_{it-1} + u_{it},
 </section>
 <section id="iv-estimation-of-dynamic-panel-models" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="iv-estimation-of-dynamic-panel-models"><span class="header-section-number">4.3</span> IV Estimation of Dynamic Panel Models</h2>
-<p>Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables <span class="math inline">\(z_{it}\)</span> which satisfy relevance and exogeneity conditions: <span class="math display">\[
+<p>Given the endogeneity issue in first-differencing, instrumental variable methods offer a potential solution. We only need to find suitable instruments — variables <span class="math inline">\(Z_{it}\)</span> which satisfy relevance and exogeneity conditions: <span class="math display">\[
 \begin{aligned}
-    \E[z_{it}\Delta y_{it-1}] \neq 0,\\
-    \E[z_{it}\Delta u_{it}] = 0.
+    \E[Z_{it}\Delta Y_{it-1}] \neq 0,\\
+    \E[Z_{it}\Delta U_{it}] = 0.
 \end{aligned}
 \]</span></p>
 <p>In most contexts, one has to look for external variables that can serve as instruments.</p>
 <p>However, model (<a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref"><span>4.7</span></a>) is a very special case where one can use instruments internal to the model!</p>
 <section id="the-anderson-hsiao-estimator" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="the-anderson-hsiao-estimator"><span class="header-section-number">4.3.1</span> The Anderson-Hsiao Estimator</h3>
-<p>In particular, consider using <span class="math inline">\(y_{it-2}\)</span> as an instrument.</p>
+<p>In particular, consider using <span class="math inline">\(Y_{it-2}\)</span> as an instrument.</p>
 <ul>
-<li>Relevance seems to be relatively straightforward, as the target endogenous variable <span class="math inline">\(\Delta y_{it-1}= y_{it-1}-y_{it-2}\)</span> actually has the instrument inside.</li>
-<li>Exogeneity can be justified by appealing to sequential exogeneity: <span class="math display">\[ \E[y_{it-2}\Delta u_{it}]  = \E[y_{it-2}u_{it} - y_{it-2}u_{it-1}]=0. \]</span></li>
+<li>Relevance seems to be relatively straightforward, as the target endogenous variable <span class="math inline">\(\Delta Y_{it-1}= Y_{it-1}-Y_{it-2}\)</span> actually has the instrument inside.</li>
+<li>Exogeneity can be justified by appealing to sequential exogeneity: <span class="math display">\[ \E[Y_{it-2}\Delta U_{it}]  = \E[Y_{it-2}U_{it} - Y_{it-2}U_{it-1}]=0. \]</span></li>
 </ul>
-<p>Hence <span class="math inline">\(y_{it-2}\)</span> is a valid instrument!</p>
+<p>Hence <span class="math inline">\(Y_{it-2}\)</span> is a valid instrument!</p>
 <p>The resulting IV estimator is known as the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator and given by <span class="math display">\[
-\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T y_{it-2}\Delta y_{it} }{\sum_{t=2}^T y_{it-2}\Delta y_{it-1} }.
+\hat{\lambda}^{AH} = \dfrac{ \sum_{t=2}^T Y_{it-2}\Delta Y_{it} }{\sum_{t=2}^T Y_{it-2}\Delta Y_{it-1} }.
 \]</span></p>
 </section>
 <section id="further-dynamic-panel-iv-estimators" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="further-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.2</span> Further Dynamic Panel IV Estimators</h3>
-<p>Are there more instruments that can use for <span class="math inline">\(\Delta y_{it-1}\)</span>? Using more instruments will induce overidentification and potentially lead to more precise estimators, solving one of the key drawbacks of the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator <span class="citation" data-cites="Arellano1989">(<a href="../references/references.html#ref-Arellano1989" role="doc-biblioref">Arellano 1989</a>)</span>.</p>
-<p>As a partial answer, suppose we consider <span class="math inline">\(y_{it-k}\)</span> for <span class="math inline">\(k\geq 2\)</span>. By applying sequential exogeneity again we can show that <span class="math inline">\(y_{it-k}\)</span> is exogenous: <span class="math display">\[  
-\E[y_{it-k}\Delta u_{it}]  = \E[y_{it-k}u_{it} - y_{it-k}u_{it-1}]=0.
-\]</span> Provided <span class="math inline">\(y_{it-k}\)</span> is correlated with <span class="math inline">\(\Delta y_{it-1}\)</span> and available in the data, it also becomes a valid instrument. Following this chain of reasoning and using all available lags <span class="math inline">\(y_{it-k}\)</span> yields the <span class="citation" data-cites="Arellano1991">Arellano and Bond (<a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">1991</a>)</span> estimator.</p>
+<p>Are there more instruments that can use for <span class="math inline">\(\Delta Y_{it-1}\)</span>? Using more instruments induces overidentification and potentially leads to more precise estimators, solving one of the key drawbacks of the <span class="citation" data-cites="Anderson1982">Anderson and Hsiao (<a href="../references/references.html#ref-Anderson1982" role="doc-biblioref">1982</a>)</span> estimator <span class="citation" data-cites="Arellano1989">(<a href="../references/references.html#ref-Arellano1989" role="doc-biblioref">Arellano 1989</a>)</span>.</p>
+<p>As a partial answer, suppose we consider <span class="math inline">\(Y_{it-k}\)</span> for <span class="math inline">\(k\geq 2\)</span>. By applying sequential exogeneity again we can show that <span class="math inline">\(Y_{it-k}\)</span> is exogenous: <span class="math display">\[  
+\E[Y_{it-k}\Delta U_{it}]  = \E[Y_{it-k}U_{it} - Y_{it-k}U_{it-1}]=0.
+\]</span> Provided <span class="math inline">\(Y_{it-k}\)</span> is correlated with <span class="math inline">\(\Delta Y_{it-1}\)</span> and available in the data, it also becomes a valid instrument. Following this chain of reasoning and using all available lags <span class="math inline">\(Y_{it-k}\)</span> yields the <span class="citation" data-cites="Arellano1991">Arellano and Bond (<a href="../references/references.html#ref-Arellano1991" role="doc-biblioref">1991</a>)</span> estimator.</p>
 <p>Even further instruments have been found for (<a href="#eq-dynamic-interlude-homogeneous-differenced" class="quarto-xref"><span>4.7</span></a>) by <span class="citation" data-cites="Ahn1995">Ahn and Schmidt (<a href="../references/references.html#ref-Ahn1995" role="doc-biblioref">1995</a>)</span> and <span class="citation" data-cites="Blundell1998">Blundell and Bond (<a href="../references/references.html#ref-Blundell1998" role="doc-biblioref">1998</a>)</span>, among others.</p>
-<p>All of these estimators are implemented in</p>
-<ul>
-<li>R: <a href="https://cran.r-project.org/web/packages/plm/index.html%7D">plm</a>.</li>
-<li>Python: <a href="https://github.com/dazhwu/pydynpd/">pydynpd</a>.</li>
-</ul>
 </section>
 <section id="properties-of-dynamic-panel-iv-estimators" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="properties-of-dynamic-panel-iv-estimators"><span class="header-section-number">4.3.3</span> Properties of Dynamic Panel IV Estimators</h3>
-<p>Under some standard conditions, the above instrumental variable estimators will all be consistent and asymptotically normal for <span class="math inline">\(\lambda\)</span> as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed. The matter is rather more delicate if both <span class="math inline">\(N\)</span> and <span class="math inline">\(T\)</span> are large, and the above dynamic panel IV estimators offer an interesting and natural example of the <em>many moments</em> bias. See <span class="citation" data-cites="Alvarez2003">Alvarez and Arellano (<a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">2003</a>)</span>.</p>
+<p>Under some standard conditions, the above instrumental variable estimators are all consistent and asymptotically normal for <span class="math inline">\(\lambda\)</span> as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed. The matter is rather more delicate if both <span class="math inline">\(N\)</span> and <span class="math inline">\(T\)</span> are large, and the above dynamic panel IV estimators offer an interesting and natural example of the <em>many moments</em> bias. See <span class="citation" data-cites="Alvarez2003">Alvarez and Arellano (<a href="../references/references.html#ref-Alvarez2003" role="doc-biblioref">2003</a>)</span>.</p>
 </section>
 </section>
 <section id="extra-endogeneity-and-the-within-estimator" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="extra-endogeneity-and-the-within-estimator"><span class="header-section-number">4.4</span> Extra: Endogeneity and the Within Estimator</h2>
 <p>One may think that we had the endogeneity problem (<a href="#eq-dynamic-interlude-differenced-endogeneity" class="quarto-xref"><span>4.8</span></a>) because we took first differences instead of applying the within transformation.</p>
-<p>However, the same endogeneity issue affects the within estimator. First, for <span class="math inline">\(T=2\)</span> the above discussion applies directly, as the within transformation is numerically identical to first differencing. Second, more generally, the within estimator will suffer from its own version of endogeneity. To see the issue, note that the within-transformed model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>) can be written as (see <a href="linear-within-estimator.html#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>): <span class="math display">\[
-    \tilde{y}_{it} = \lambda \tilde{y}_{it-1} + \tilde{u}_{it}.
+<p>However, the same endogeneity issue affects the within estimator. First, for <span class="math inline">\(T=2\)</span> the above discussion applies directly, as the within transformation is numerically identical to first differencing. Second, more generally, the within estimator suffers from its own version of endogeneity. To see the issue, note that the within-transformed model (<a href="#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>) can be written as (see <a href="linear-within-estimator.html#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>): <span class="math display">\[
+    \tilde{Y}_{it} = \lambda \tilde{Y}_{it-1} + \tilde{U}_{it}.
 \]</span></p>
-<p>One can now immediately see that <span class="math inline">\(\tilde{y}_{it-1}\)</span> will also be an endogenous regressor as</p>
+<p>One can now immediately see that <span class="math inline">\(\tilde{Y}_{it-1}\)</span> is also an endogenous regressor as</p>
 <p><span class="math display">\[
-    \E[\tilde{y}_{it-1}\tilde{u}_{it}] = \E\left[\left(y_{it-1}- T^{-1}\sum_{s=0}^{T-1} y_{is} \right)\left(u_{it} - T^{-1}\sum_{r=1}^{T}u_{ir} \right) \right].
+    \E[\tilde{Y}_{it-1}\tilde{U}_{it}] = \E\left[\left(Y_{it-1}- T^{-1}\sum_{s=0}^{T-1} Y_{is} \right)\left(U_{it} - T^{-1}\sum_{r=1}^{T}U_{ir} \right) \right].
 \]</span></p>
-<p>The expectation on the right hand side contains “bad” expectations of the form <span class="math inline">\(\E[u_{it}y_{is}]\)</span> with <span class="math inline">\(t&lt;s\)</span> (recall <a href="#eq-dynamic-interlude-no-strict-exogeneity" class="quarto-xref">Equation&nbsp;<span>4.4</span></a>).</p>
-<p>We conclude that for any fixed <span class="math inline">\(T\)</span> the within estimator will also suffer from endogeneity bias. <span class="citation" data-cites="Nickell1981">Nickell (<a href="../references/references.html#ref-Nickell1981" role="doc-biblioref">1981</a>)</span> shows that it is of the order <span class="math inline">\(O(T^{-1})\)</span>. Furthermore, this bias is likely to be large in practice <span class="citation" data-cites="Kiviet1995">(see <a href="../references/references.html#ref-Kiviet1995" role="doc-biblioref">Kiviet 1995</a>)</span>.</p>
+<p>The expectation on the right-hand side contains “bad” expectations of the form <span class="math inline">\(\E[U_{it}Y_{is}]\)</span> with <span class="math inline">\(t&lt;s\)</span> (recall <a href="#eq-dynamic-interlude-no-strict-exogeneity" class="quarto-xref">Equation&nbsp;<span>4.4</span></a>).</p>
+<p>We conclude that for any fixed <span class="math inline">\(T\)</span> the within estimator also suffers from endogeneity bias. <span class="citation" data-cites="Nickell1981">Nickell (<a href="../references/references.html#ref-Nickell1981" role="doc-biblioref">1981</a>)</span> shows that it is of the order <span class="math inline">\(O(T^{-1})\)</span>. Furthermore, this bias is likely to be large in practice <span class="citation" data-cites="Kiviet1995">(see <a href="../references/references.html#ref-Kiviet1995" role="doc-biblioref">Kiviet 1995</a>)</span>.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
