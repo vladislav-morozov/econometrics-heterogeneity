@@ -23,7 +23,7 @@ By the end of this section, you should be able to:
 :::
   
 
-In the preceding sections, we focused on average marginal effects, which are basic summaries of how treatments influence outcomes. However, as emphasized in our discussion of linear models, higher-order features — variances, other moments, and distributions — are equally important.  
+In the preceding sections, we focused on average marginal effects, which are basic summaries of how treatments influence outcomes. However, as emphasized in our discussion of linear models, higher-order features — variances, other moments, and distributions — are also important and useful in policy analysis.
 
 Unfortunately, the finite-difference approach used for average effects does not extend to variances in the fully nonseparable model ([-@eq-nonparametric-model-full-nonsep]). Below, we formalize this limitation and then show that variance is identified under additive separability ([-@eq-nonparametric-model-u-sep]).
 
@@ -90,23 +90,28 @@ The above argument does not show lack of identification --- only that a particul
 
 ### Model and Parameter of Interest
 
-However, it turns out, the approach based on the second moment of  finite differences does succeed in a particular class of models where   $A_i$ remains unrestricted, but $U_{it}$ is assumed to enter additively. Specifically, we consider model ([-@eq-nonparametric-model-u-sep])
+The finite-difference approach fails in the fully nonseparable model because the time-varying shocks $U_{it}$​ "corrupt" the second moment. However, if we assume additive separability (model ([-@eq-nonparametric-model-u-sep]))
 $$
 	Y_{it}^x = \phi(x, A_i)  + U_{it}, \quad i=1, \dots, N, \quad t=1, 2.
 $$ 
-We drop the assumption of stationarity on $U_{it}$. We only assume that that the conditional mean of $U_{it}$ is invariant over time. Moreover, we assume that it is zero in the sense of mean exogeneity:
+the problem disappears. Here, $U_{it}$ does not affect the distribution of the marginal effect $\partial_x \phi(x, A_i)$, and hence it may be possible to suitably modify the finite difference argument to obtain identification, as shown by @Morozov2023jmp
+
+We make the following assumption:
+
+- Mean exogeneity: 
+$$  
+	 \E[U_{it}|X_{i1}, X_{i2}, A_i] =0. 
 $$ 
-\begin{equation}
-	 \E[U_{it}|X_{i1}, X_{i2}, A_i] =0.
-\end{equation} 
-$$ 
-We will further assume that $U_{i1}$ and $U_{i2}$ are uncorrelated conditional on $(X_{i1}, X_{i2})$. This model was considered by @Morozov2023jmp.
+- Uncorrelated $U_{it}$:   $U_{i1}$ and $U_{i2}$ are uncorrelated conditional on $(X_{i1}, X_{i2})$.
+
+  
+Importantly, we do not need the assumption of stationarity on $U_{it}$ anymore and hence drop it. If $U_{it}$ is restricted to be stationary, model ([-@eq-nonparametric-model-u-sep]) is a special case of model ([-@eq-nonparametric-model-full-nonsep]), though not otherwise. 
 
 As above, the parameter of interest is the variance of marginal effects for stayers:
 $$
-	 \var(\partial_x \phi(x, \alpha_i)|x_{i1}=x_{i2}=x).
+	 \var(\partial_x \phi(x, A_i)|x_{i1}=x_{i2}=x).
 $$
-By additive separability, the distribution of $U_{it}$ does not influence the marginal effects anymore.
+By additive separability, the distribution of $U_{it}$ does not influence the marginal effects anymore, and hence $U_{it}$ does not appear in the expression.
 
 
 ### Identification of the Second Moment of Finite Differences
