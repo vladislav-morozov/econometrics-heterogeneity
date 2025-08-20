@@ -93,12 +93,12 @@ Typically, such assumptions fall into two categories:
 
 ## Models of This Block
 
-To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we will assume that the outcome $Y_{it}$ is continuous and that $T=2$.
+To make progress, we focus on two general but tractable versions of the general nonparametric panel model ([-@eq-nonparametric-generic-panel]) in these notes. In both cases, we assume that the outcome $Y_{it}$ is continuous and that $T=2$.
 
  
 ### First Model {.unnumbered}
 
-We will begin with the following model:
+We begin with the following model:
 $$
 	Y_{it}^{x} = \phi(x, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
 $$ {#eq-nonparametric-model-full-nonsep}
@@ -118,7 +118,7 @@ At the same time, we impose an assumption of **stationarity** on $U_{it}$.  Its 
 
 ### Second Model {.unnumbered}
 
-After reaching the (probable) limits of identification with ([-@eq-nonparametric-model-full-nonsep]),  we will consider a different flavor of model ([-@eq-nonparametric-generic-panel]), where the time-varying unobserved component $U_{it}$ is scalar and affects the outcome $Y_{it}$ additively:
+After reaching the (probable) limits of identification with ([-@eq-nonparametric-model-full-nonsep]),  we consider a different flavor of model ([-@eq-nonparametric-generic-panel]), where the time-varying unobserved component $U_{it}$ is scalar and affects the outcome $Y_{it}$ additively:
 $$
 Y_{it}^{x} = \phi(x, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
 $$ {#eq-nonparametric-model-u-sep}
@@ -127,7 +127,7 @@ In contrast to model ([-@eq-nonparametric-model-full-nonsep]), we do not assume 
 
 ## Plan for This Block
 
-In this block, we will focus on models ([-@eq-nonparametric-model-full-nonsep])-([-@eq-nonparametric-model-u-sep]) and consider identification of some distributional features of treatment effects ([-@eq-nonparametric-effects]). Specifically,
+In this block, we focus on models ([-@eq-nonparametric-model-full-nonsep])-([-@eq-nonparametric-model-u-sep]) and consider identification of some distributional features of treatment effects ([-@eq-nonparametric-effects]). Specifically,
 
 1. **Average** treatment and marginal **effects** for model ([-@eq-nonparametric-model-full-nonsep]):
    - Show that identifying average effects is more complicated than  considering averages of the outcome directly.
@@ -137,7 +137,7 @@ In this block, we will focus on models ([-@eq-nonparametric-model-full-nonsep])-
 2. **Variance** of treatment and marginal effects in model ([-@eq-nonparametric-model-u-sep]): identify the variance of effects  ([-@eq-nonparametric-effects]) by requiring that $U_{it}$ cannot depend on future values of $\bX_{it}$
 
  
-In the next block, we will also revisit model ([-@eq-nonparametric-model-full-nonsep]) through the lens of quantile regression.
+In the next block, we also revisit model ([-@eq-nonparametric-model-full-nonsep]) through the lens of quantile regression.
 
 ## A Brief Classification of Nonparametric Models
 
