@@ -27,7 +27,7 @@ By the end of this section, you should be able to:
 
 As noted in the previous section, we first focus our attention on the fully nonseparable panel data model ([-@eq-nonparametric-model-full-nonsep]):
 $$
-Y_{it} = \phi(X_{it}, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2},
+Y_{it}^{x} = \phi(x, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2},
 $$ {#eq-nonparametric-model-full-nonsep-het-bias}
 where $\phi(x, a, u)$ is differentiable in $x$ for each possible value $(a, u)$.
 
@@ -46,11 +46,11 @@ Both of these assumptions are easy to relax at the price of more complex notatio
 
 In studying economic models with continuous treatments or inputs, marginal effects provide interpretable measures of how units respond to small changes in covariates. Accordingly, our key object of interest is the *average marginal effect*:
 $$
-	\E[\partial_x \phi(x, A_i, U_{it})|X_{it}=x, \dots],
+	\E\left[\partial_x Y^x_{it}|X_{it}=x, \dots \right] = \E[\partial_x \phi(x, A_i, U_{it})|X_{it}=x, \dots],
 $$ {#eq-nonparametric-me-1}
 where $x$ is some fixed point, and  the conditioning set defines some population of interest in terms of $X_{it}$ and other variables. Such marginal effects are standard objects of interest in models with continuous covariates and outcomes [@Hoderlein2007; @Hoderlein2012; @Chernozhukov2015].
 
-The parameter ([-@eq-nonparametric-me-1]) has a standard causal interpretation. We  consider the population of units with $x_{it}=x$, along with other characteristics captured by the conditioning set. For these units, we exogenously change their $x_{it}$ infinitesimally.  Effect ([-@eq-nonparametric-me-1]) reports the average change in outcomes for this fixed population of units.
+The parameter ([-@eq-nonparametric-me-1]) has a standard causal interpretation. We  consider the population of units with $X_{it}=x$, along with other characteristics captured by the conditioning set. For these units, we exogenously change their $X_{it}$ infinitesimally.  Effect ([-@eq-nonparametric-me-1]) reports the average change in outcomes for this fixed population of units.
 
 
 
@@ -67,7 +67,7 @@ The parameter ([-@eq-nonparametric-me-1]) has a standard causal interpretation. 
 ### Intuitive Approach
 
 
-One may think that it is easy to identify effect ([-@eq-nonparametric-me-1]) even from cross-sectional data. It is tempting to consider the derivative of the conditional expectation of $Y$ given $X_{it}$. However, as we will now see, this approach fails in the presence of non-random treatment assignment, typical in observational settings.
+One may think that it is easy to identify effect ([-@eq-nonparametric-me-1]) even from cross-sectional data. It is tempting to consider the derivative of the conditional expectation of $Y$ given $X_{it}$. However, as we now see, this approach fails in the presence of non-random treatment assignment — typical in observational settings.
 
 
 Consider the conditional average of $Y_{it}$ for the units with $X_{it}=x$:
@@ -93,7 +93,7 @@ However, this reasoning fails when covariates may be correlated with unobserved 
 $$
 \E[Y_{it}|X_{it}=x]  = \int \phi(x, v)f_{V_{it}|X_{it}}(v|x)\mu(dv).
 $$
-We assume that $f_{V_{it}|X_{it}}(v|x)$ is differentiable in the conditioning argument $x$. In other words, there is smooth dependence between $X_{it}$ and $V_{it}$ in a distributional sense.
+We assume that $f_{V_{it}|X_{it}}(v|x)$ is differentiable in the conditioning argument $x$: there is smooth dependence between $X_{it}$ and $V_{it}$ in a distributional sense. Intuitively, the shares of the unobserved "types" $v$ very smoothly with $x$.
 
 
 Assuming we can swap the integral and the derivative, we obtain the following expression for the derivative
@@ -118,7 +118,7 @@ So why does the heterogeneity bias appear? Fundamentally, it arises when the tre
 
 As a result, units with different values of $X_{it}$ may systematically differ in their unobserved characteristics. When we compute the derivative $\partial_x \E[Y_{it} | X_{it} = x]$, we are not isolating the effect of changing $x$ for a fixed unit. Instead, we are comparing different populations—those for whom $X_{it} = x$ versus those for whom $X_{it} = x + \varepsilon$. Each such population potentially has a different distribution of $(A_i, U_{it})$.
 
-This violates the *ceteris paribus* logic required for causal interpretation of marginal effects. In particular, the expression $\partial_x \E[Y_{it} | X_{it} = x]$ combines the genuine marginal effect of $x$ with a compositional shift due to variation in the distribution of unobservables across $x$.  
+This violates the *ceteris paribus* logic required for causal interpretation of marginal effects. In particular, the expression $\partial_x \E[Y_{it} | X_{it} = x]$ combines the genuine marginal effect $\E[\partial_x Y_{it}^x|X_{it}=x]$  with a compositional shift due to variation in the distribution of unobservables across $x$.  
 
 The bias term does vanish if the conditional distribution of $(A_i, U_{it})$ given $X_{it}$ does not vary with $x$. That is, a sufficient condition for identification of average marginal effects from average outcomes is
 $$
@@ -133,7 +133,7 @@ In observational data, this assumption typically fails, and the heterogeneity bi
 ::: {.callout-note appearance="simple" icon=false}
 
 
-Note that it is also possible to  consider the case where $(A_i, U_{it})$ and $X_{it}$ are independent only conditionally on some additional observed variable  $Z_{it}$ (ignorability/unconfoundedness assumption). The results will then be conditional on $Z_{it}$. See @Altonji2005 for this flavor of results in continuous settings.
+Note that it is also possible to  consider the case where $(A_i, U_{it})$ and $X_{it}$ are independent only conditionally on some additional observed variable  $Z_{it}$ (ignorability/unconfoundedness assumption). The results are then conditional on $Z_{it}$. See @Altonji2005 for this flavor of results in continuous settings.
 
 
 ::: 
