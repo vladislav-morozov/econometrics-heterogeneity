@@ -1,9 +1,11 @@
 --- 
-description: "Learn   (Lecture Notes)"
+description: "Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)"
 
 open-graph:
-    description: "Learn     (Lecture Notes)"
+    description: "Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)"
 ---
+
+
 
 
 # Beyond Stayers with CRE Assumptions {#sec-nonparametric-cre}
@@ -12,7 +14,12 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  
+This section discusses how to extend identification beyond stayers using index restrictions.
+
+By the end of this section, you should be able to: 
+
+- Broadly understand index (CRE) restrictions.
+- Use a one-dimensional index restriction to identify average marginal effects for non-stayers in model ([-@eq-nonparametric-model-full-nonsep]).
 
 :::
  
@@ -149,4 +156,4 @@ Under the second scenario, one instead regresses  $Y_{i2}-Y_{i1}$ directly on th
 
 #### Next Section {.unnumbered}
 
-In the next section, we discuss
+In the next section, we go beyond average effects and discuss identification of variance in models with unrestricted unobserved heterogeneity.
