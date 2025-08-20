@@ -8,7 +8,7 @@ open-graph:
 
 
 
-# Beyond Stayers with CRE Assumptions {#sec-nonparametric-cre}
+# Beyond Stayers Using Index Restrictions {#sec-nonparametric-cre}
 
 ::: {.callout-note appearance="simple" icon=false}
 
