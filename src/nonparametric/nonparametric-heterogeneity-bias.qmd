@@ -89,7 +89,7 @@ $$
 
 However, this reasoning fails when covariates may be correlated with unobserved factors affecting the outcome.
 
- To make this intuition precise, let $f_{V_{it}|X_{it}}(v|x)$ be the conditional density of $V_{it}$ given $X_{it}=x$ with respect to some dominating measure $\mu$ that does not depend on $x$ (its existence is an assumption, but not a particularly important one right now). With this notation, the above expectation can be written as 
+ To make this intuition precise, let $f_{V_{it}|X_{it}}(v|x)$ be the conditional density of $V_{it}$ given $X_{it}=x$ with respect to some dominating measure $\mu$ that does not depend on $x$ (its existence is an assumption, but not a particularly important one right now, see section [-@sec-nonparametric-avg-id]). With this notation, the above expectation can be written as 
 $$
 \E[Y_{it}|X_{it}=x]  = \int \phi(x, v)f_{V_{it}|X_{it}}(v|x)\mu(dv).
 $$

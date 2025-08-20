@@ -6,7 +6,7 @@ open-graph:
 ---
 
 
-# Nonparametric Estimation of Average Effects {#sec-nonparametric-avg-id}
+# Nonparametric Estimation of Average Effects {#sec-nonparametric-avg-est}
 
 ::: {.callout-note appearance="simple" icon=false}
 
