@@ -1,0 +1,31 @@
+--- 
+description: "Learn   (Lecture Notes)"
+
+open-graph:
+    description: "Learn   (Lecture Notes)"
+---
+
+
+
+
+# Variance of Marginal Effects {#sec-nonparametric-cre}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section discusses variance
+
+By the end of this section, you should be able to: 
+
+- Variance
+
+:::
+  
+## Variance 
+
+--- 
+
+#### Next Section {.unnumbered}
+
+In the next section, quantile
