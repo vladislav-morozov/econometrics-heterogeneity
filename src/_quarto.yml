@@ -4,6 +4,16 @@ project:
 
 html-math-method: mathjax
 
+filters:
+  - diagram  
+diagram:
+  engine:
+    tikz:
+      execpath: pdflatex
+      header-includes:
+        - '\usepackage{adjustbox}'
+        - '\usetikzlibrary{arrows,calc,fit,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathmorphing,patterns,positioning,swigs}' 
+
 book:
   title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
@@ -41,6 +51,7 @@ book:
         - nonparametric/nonparametric-average-identification.qmd
         - nonparametric/nonparametric-average-estimation.qmd
         - nonparametric/nonparametric-location-scale.qmd
+        - nonparametric/nonparametric-cre.qmd
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
 

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)">
 
-<title>References – Econometrics with Unobserved Heterogeneity</title>
+<title>16&nbsp; Beyond Stayers Using Index Restrictions – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +25,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -49,7 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../nonparametric/nonparametric-cre.html" rel="prev">
+<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-location-scale.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -415,7 +418,40 @@ div.csl-indent {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="16&nbsp; Beyond Stayers Using Index Restrictions – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-cre_files/mediabag/c9e41db55cd6ad6c4a10cef4e262874e10f772f4.svg">
+<meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
 <body class="nav-sidebar floating">
@@ -427,7 +463,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../references/references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-cre.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -576,7 +612,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span></a>
   </div>
 </li>
@@ -588,7 +624,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references/references.html" class="sidebar-item-text sidebar-link active">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -597,15 +633,31 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#index-restrictions" id="toc-index-restrictions" class="nav-link active" data-scroll-target="#index-restrictions"><span class="header-section-number">16.1</span> Index Restrictions</a>
+  <ul class="collapse">
+  <li><a href="#regarding-stayers" id="toc-regarding-stayers" class="nav-link" data-scroll-target="#regarding-stayers"><span class="header-section-number">16.1.1</span> Regarding Stayers</a></li>
+  <li><a href="#index-restrictions-1" id="toc-index-restrictions-1" class="nav-link" data-scroll-target="#index-restrictions-1"><span class="header-section-number">16.1.2</span> Index Restrictions</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">16.1.3</span> Intuition</a></li>
+  </ul></li>
+  <li><a href="#average-marginal-effects-beyond-stayers" id="toc-average-marginal-effects-beyond-stayers" class="nav-link" data-scroll-target="#average-marginal-effects-beyond-stayers"><span class="header-section-number">16.2</span> Average Marginal Effects Beyond Stayers</a>
+  <ul class="collapse">
+  <li><a href="#example-identification-argument" id="toc-example-identification-argument" class="nav-link" data-scroll-target="#example-identification-argument"><span class="header-section-number">16.2.1</span> Example Identification Argument</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">16.2.2</span> Estimation</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-cre.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-cre.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span id="sec-nonparametric-cre" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span></h1>
 </div>
 
 
@@ -622,415 +674,127 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Ahn1995" class="csl-entry" role="listitem">
-Ahn, Seung Chan, and Peter Schmidt. 1995. <span>“<span class="nocase">Efficient Estimation of Models for Dynamic Panel
-Data</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 5–27. <a href="https://doi.org/10.1016/0304-4076(94)01641-C">https://doi.org/10.1016/0304-4076(94)01641-C</a>.
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Summary and Learning Outcomes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section discusses how to extend identification beyond stayers using index restrictions.</p>
+<p>By the end of this section, you should be able to:</p>
+<ul>
+<li>Broadly understand index (CRE) restrictions.</li>
+<li>Use a one-dimensional index restriction to identify average marginal effects for non-stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>).</li>
+</ul>
+</div>
+</div>
+<hr>
+<section id="index-restrictions" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="index-restrictions"><span class="header-section-number">16.1</span> Index Restrictions</h2>
+<section id="regarding-stayers" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="regarding-stayers"><span class="header-section-number">16.1.1</span> Regarding Stayers</h3>
+<p>All the results of sections <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-location-scale.html" class="quarto-xref"><span>15</span></a> for the average marginal effect in models (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="nonparametric-location-scale.html#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) are limited to the subpopulation of stayers (units <span class="math inline">\(X_{i1}=X_{i2}\)</span>).</p>
+<p>This restriction is a direct consequence of imposing no structure on how <span class="math inline">\((X_{i1}, X_{i2})\)</span> relate to the unobserved components <span class="math inline">\((A_i, U_{it})\)</span>. Without restrictions, the dependence between treatments and unobservables may be arbitrarily complex, and <span class="citation" data-cites="Cooprider2022">Cooprider, Hoderlein, and Meister (<a href="../references/references.html#ref-Cooprider2022" role="doc-biblioref">2022</a>)</span> shows that no identification is possible for non-stayers if <span class="math inline">\((A_i, U_{it})\)</span> is multidimensional.</p>
+</section>
+<section id="index-restrictions-1" class="level3" data-number="16.1.2">
+<h3 data-number="16.1.2" class="anchored" data-anchor-id="index-restrictions-1"><span class="header-section-number">16.1.2</span> Index Restrictions</h3>
+<p>To extend identification beyond stayers, we must restrict the dependence structure between treatments <span class="math inline">\((X_{i1}, X_{i2})\)</span> and unobserved components <span class="math inline">\((A_i, U_{it})\)</span>. In this section, we look at a popular class of restrictions known as <em>index restrictions</em>. Broadly, index restrictions reduce the dimensionality of the dependence structure between the treatments and the unobserved components by assuming that <span class="math inline">\((A_i, U_{it})\)</span> depends on <span class="math inline">\((X_{i1}, X_{i2})\)</span> only through a low-dimensional index. They were introduced and studied by <span class="citation" data-cites="Altonji2005">Altonji and Matzkin (<a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">2005</a>)</span> (see also <span class="citation" data-cites="Bester2009">Bester and Hansen (<a href="../references/references.html#ref-Bester2009" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Liu2021">Liu, Poirier, and Shiu (<a href="../references/references.html#ref-Liu2021" role="doc-biblioref">2024</a>)</span>).</p>
+<p>As a simple example, consider again model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), with the potential outcome in period <span class="math inline">\(t\)</span> determined as <span class="math display">\[
+Y_{it}^x = \phi(x, A_i, U_{it}), \quad t=1, 2.
+\]</span></p>
+<p>We now make an assumption about how <span class="math inline">\((X_{i1}, X_{i2})\)</span> and <span class="math inline">\((A_i, U_{i1}, U_{i2})\)</span> relate to each other. Specifically, we assume that the joint distribution of <span class="math inline">\((A_i, U_{i1}, U_{i2})\)</span> only depends on <span class="math inline">\((X_{i1}, X_{i2})\)</span> through the sum <span class="math inline">\(X_{i1}+X_{i2}\)</span>: <span id="eq-nonparametric-index-2"><span class="math display">\[
+\begin{aligned}
+    &amp; f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2) \\
+    &amp; = f_{A_i, U_{i1}, U_{i2}|X_{i1}+ X_{i2}}(a, u_1, u_2|x_1+x_2).        
+\end{aligned}
+\tag{16.1}\]</span></span> In other words, the <span class="math inline">\(X_{i1}+X_{i2}\)</span> plays the role of an <em>index</em> or a sufficient statistic that captures all the relevant dimensions of the dependence structure between the treatments and the unobserved components. Economically, restriction (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) arises when agents respond to aggregate exposure (see the example below).</p>
+<p>More generally, in a setting with <span class="math inline">\(T\)</span> time periods one may assume that the joint distribution of potential outcomes <span class="math inline">\((Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})\)</span> only depends on the treatments <span class="math inline">\((X_{i1}, \dots, X_{iT})\)</span> through <span class="math inline">\(k&lt;T\)</span> <em>index</em> functions <span class="math inline">\(g_1(\cdot), \dots, g_k(\cdot)\)</span>:</p>
+<p><span id="eq-nonparametric-index-general"><span class="math display">\[\begin{aligned}
+     &amp; (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|X_{i1}, \dots, X_{iT} \\
+     &amp; \overset{d}{=} (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|g_1(X_{i1}, \dots, X_{iT}), \dots, g_k(X_{i1}, \dots, X_{iT}).
+\end{aligned}
+\tag{16.2}\]</span></span> The index functions <span class="math inline">\(g_{\cdot}(\cdot)\)</span> are typically assumed known (averages, variances, etc.), though there are some results with unknown indidex <span class="math inline">\(g(\cdot)\)</span> <span class="citation" data-cites="Bester2009">(<a href="../references/references.html#ref-Bester2009" role="doc-biblioref">Bester and Hansen 2009</a>)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In panel data terminology, such index restrictions are sometimes called “correlated random effects” (CRE) assumptions. CRE settings lie between fixed effects settings that do not restrict the dependence structure at all and random effects settings which assume full unconditional independence.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="intuition" class="level3" data-number="16.1.3">
+<h3 data-number="16.1.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">16.1.3</span> Intuition</h3>
+<p>To get some intuition for index restrictions, let us consider a consumption example. Suppose that <span class="math inline">\(X_{it}\)</span> is the income in period <span class="math inline">\(t\)</span>, <span class="math inline">\(Y_{it}\)</span> is the expenditure on a given consumption category (say, entertainment). The components <span class="math inline">\((A_i, U_{it})\)</span> represent preferences, prices and other unobserved variables.</p>
+<p>If consumers smooth consumption based on total income <span class="math inline">\(X_{i1} + X_{i2}\)</span> (e.g., due to savings or credit), then deviations in <span class="math inline">\((X_{i1}, X_{i2})\)</span> are independent of <span class="math inline">\((A_i, U_{it})\)</span> conditional on the total income. Here, <span class="math inline">\(X_{i1} + X_{i2}\)</span> is the index; it plays the role of a sufficient statistic for consumption decisions.</p>
+</section>
+</section>
+<section id="average-marginal-effects-beyond-stayers" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="average-marginal-effects-beyond-stayers"><span class="header-section-number">16.2</span> Average Marginal Effects Beyond Stayers</h2>
+<section id="example-identification-argument" class="level3" data-number="16.2.1">
+<h3 data-number="16.2.1" class="anchored" data-anchor-id="example-identification-argument"><span class="header-section-number">16.2.1</span> Example Identification Argument</h3>
+<p>Index restrictions in the spirit of equations (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) and (<a href="#eq-nonparametric-index-general" class="quarto-xref"><span>16.2</span></a>) can be used to obtain more general identification results. Broadly, they exploit the idea that units with the same index value are “comparable” in terms of unobserved heterogeneity, even if their individual treatments differ.</p>
+<p>For example, under (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>), two units with <span class="math inline">\((X_{i1}, X_{i2}) = (x_1, x_2)\)</span> and <span class="math inline">\((X_{i1}, X_{i2}) = (x_2, x_1)\)</span> share the same index <span class="math inline">\(x_1 + x_2\)</span> and thus the same distribution of <span class="math inline">\((A_i, U_{it})\)</span>. This allows us to borrow information from stayers (where <span class="math inline">\(X_{i1} = X_{i2}\)</span>) to identify effects for non-stayers with the same index.</p>
+<p>More formally, assumption (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) implies that the average marginal effect of a change of <span class="math inline">\(x\)</span> is the <em>same</em> for <em>all</em> units whose covariates are the same <em>on average across time</em>: <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \partial_x Y_{it}^x |X_{i1}=x_1, X_{i2}= x \right] \\
+&amp;  = \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}= x_1, X_{i2}=x_2] \\
+&amp; =\E\left[\partial_x \phi(x, A_i, U_{it})\Bigg|\dfrac{X_{i1}+X_{i2}}{2}=\dfrac{x_1+x_2}{2}\right].
+\end{aligned}
+\]</span></p>
+<p>In particular, the above equality holds if we consider the stayers on one of the sides of the equations: <span id="eq-nonparametric-index-ex"><span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x] \\
+    &amp;  =\E\left[\partial_x \phi(x, A_i, U_{it})\Big|\dfrac{X_{i1}+X_{i2}}{2}=x\right]
+\end{aligned}
+\tag{16.3}\]</span></span> Provided there exist stayers at <span class="math inline">\(x\)</span>, the argument of section <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a> identifies <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x]\)</span>.</p>
+<p>Thus, if stayers exist at <span class="math inline">\(x\)</span>, we can identify effects for all units with <span class="math inline">\((X_{i1} + X_{i2})/2 = x\)</span>. The diagram below visually illustrates the identified set:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="nonparametric-cre_files\mediabag\c9e41db55cd6ad6c4a10cef4e262874e10f772f4.svg" class="img-fluid figure-img"></p>
+<figcaption>Identified set under index restrictions. The diagonal (stayers) anchors identification. The shaded region includes all <span class="math inline">\((x_1, x_2)\)</span> pairs where <span class="math inline">\((x_1 + x_2)/2\)</span> matches a stayer’s average treatment, enabling extrapolation via the index restriction.</figcaption>
+</figure>
+</div>
+<p>Summarizing, identification of the average marginal effect with an index restriction proceeds in two steps. First, we identify the average marginal effects for the subpopulation of stayers as before (the diagonal on the diagram). Second, we extrapolate these effects to subpopulations that share the same values of the index as the stayers.</p>
+</section>
+<section id="estimation" class="level3" data-number="16.2.2">
+<h3 data-number="16.2.2" class="anchored" data-anchor-id="estimation"><span class="header-section-number">16.2.2</span> Estimation</h3>
+<p>Index restrictions open some new possibilities for estimation. One now faces a choice between two possible approaches:</p>
+<ul>
+<li>Using only stayer data.</li>
+<li>Pooling data and performing estimation in the index space.</li>
+</ul>
+<p>In the first scenario, one construct estimators for the average effects for stayers using the data for stayers, exactly as in section (<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>). Then those estimators are automatically consistent and asymptotically normal estimators for average marginal effects in virtue of <a href="#eq-nonparametric-index-ex" class="quarto-xref">Equation&nbsp;<span>16.3</span></a>.</p>
+<p>Under the second scenario, one instead regresses <span class="math inline">\(Y_{i2}-Y_{i1}\)</span> directly on the index <span class="math inline">\(X_{i1} + X_{i2}\)</span>. The key connection to data is obtained by combining equations (<a href="#eq-nonparametric-index-ex" class="quarto-xref"><span>16.3</span></a>) and (<a href="nonparametric-average-estimation.html#eq-nonparametric-avg-est-me" class="quarto-xref"><span>14.2</span></a>). This approach is naturally more efficient, as it relies on more data. However, a potential risk is that even the average marginal effects for stayers may be estimated inconsistently if the index restriction is</p>
+<hr>
+<section id="next-section" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
+<p>In the next section, we go beyond average effects and discuss identification of variance in models with unrestricted unobserved heterogeneity.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Altonji2005" class="csl-entry" role="listitem">
-Altonji, Joseph G., and Rosa L. Matzkin. 2005. <span>“<span class="nocase">Cross Section and Panel Data Estimators for Nonseparable
-Models with Endogenous Regerssors</span>.”</span> <em>Econometrica</em>
-73 (4): 1053–1102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
-</div>
-<div id="ref-Alvarez2003" class="csl-entry" role="listitem">
-Alvarez, Javier, and Manuel Arellano. 2003. <span>“<span class="nocase">The Time Series and Cross-Section Asymptotics of Dynamic
-Panel Data Estimators</span>.”</span> <em>Econometrica</em> 71 (4):
-1121–59.
-</div>
-<div id="ref-Anderson1982" class="csl-entry" role="listitem">
-Anderson, T. W., and Cheng Hsiao. 1982. <span>“<span class="nocase">Formulation and estimation of dynamic models using panel
-data</span>.”</span> <em>Journal of Econometrics</em> 18 (1): 47–82. <a href="https://doi.org/10.1016/0304-4076(82)90095-1">https://doi.org/10.1016/0304-4076(82)90095-1</a>.
-</div>
-<div id="ref-Arellano1989" class="csl-entry" role="listitem">
-Arellano, Manuel. 1989. <span>“<span class="nocase">A note on the
-Anderson-Hsiao estimator for panel data</span>.”</span> <em>Economics
-Letters</em> 31 (4): 337–41. <a href="https://doi.org/10.1016/0165-1765(89)90025-6">https://doi.org/10.1016/0165-1765(89)90025-6</a>.
-</div>
-<div id="ref-Arellano1991" class="csl-entry" role="listitem">
-Arellano, Manuel, and Stephen Bond. 1991. <span>“<span class="nocase">Some Tests of Specification for Panel Carlo Application
-to Data: Monte Carlo Evidence and an Application to Employment
-Equations</span>.”</span> <em>Review of Economic Studies</em> 58:
-277–97.
-</div>
-<div id="ref-Arellano2012" class="csl-entry" role="listitem">
-Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random
-coefficients panel data models</span>.”</span> <em>Review of Economic
-Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
-</div>
-<div id="ref-Bai2009" class="csl-entry" role="listitem">
-Bai, Jushan. 2009. <span>“<span>Panel Data Models With Interactive Fixed
-Effects</span>.”</span> <em>Econometrica</em> 77 (4): 1229–79. <a href="https://doi.org/10.3982/ECTA6135">https://doi.org/10.3982/ECTA6135</a>.
-</div>
-<div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
-Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023.
-<span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous
-Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June,
-S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
-</div>
-<div id="ref-Beckert2008HeterogeneityNonParametricAnalysis" class="csl-entry" role="listitem">
-Beckert, Walter, and Richard Blundell. 2008. <span>“Heterogeneity and
-the <span>Non</span>-<span>Parametric</span> <span>Analysis</span> of
-<span>Consumer</span> <span>Choice</span>: <span>Conditions</span> for
-<span>Invertibility</span>.”</span> <em>The Review of Economic
-Studies</em> 75 (4): 1069–80. <a href="https://doi.org/10.1111/j.1467-937X.2008.00500.x">https://doi.org/10.1111/j.1467-937X.2008.00500.x</a>.
-</div>
-<div id="ref-Beran1996" class="csl-entry" role="listitem">
-Beran, Rudolf, Andrey Feuerverger, and Peter Hall. 1996. <span>“<span class="nocase">On Nonparametric Estimation of Intercept and Slope
-Distributions in Random Coefficient Regression</span>.”</span> <em>The
-Annals of Statistics</em> 24 (6): 2569–92. <a href="https://doi.org/10.1214/aos/1032181170">https://doi.org/10.1214/aos/1032181170</a>.
+Altonji, Joseph G., and Rosa L. Matzkin. 2005. <span>“<span class="nocase">Cross Section and Panel Data Estimators for Nonseparable Models with Endogenous Regerssors</span>.”</span> <em>Econometrica</em> 73 (4): 1053–1102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
 </div>
 <div id="ref-Bester2009" class="csl-entry" role="listitem">
-Bester, C Alan, and Christian Hansen. 2009. <span>“<span class="nocase">Identification of Marginal Effects in a Nonparametric
-Correlated Random Effects Model</span>.”</span> <em>Journal of Business
-and Economic Statistics</em> 27 (2): 235–50. <a href="https://doi.org/10.1198/jbes.2009.0017">https://doi.org/10.1198/jbes.2009.0017</a>.
-</div>
-<div id="ref-Bester2016" class="csl-entry" role="listitem">
-Bester, C Alan, and Christian B Hansen. 2016. <span>“<span class="nocase">Grouped Effects Estimators in Fixed Effects
-Models</span>.”</span> <em>Journal of Econometrics</em> 190 (1):
-197–208. <a href="https://doi.org/10.1016/j.jeconom.2012.08.022">https://doi.org/10.1016/j.jeconom.2012.08.022</a>.
-</div>
-<div id="ref-Blundell1998" class="csl-entry" role="listitem">
-Blundell, Richard, and Stephen Bond. 1998. <span>“<span class="nocase">Initial Conditions and Moment Restrictions in Dynamic
-Panel Data Models</span>.”</span> <em>Journal of Econometrics</em> 87:
-115–43.
-</div>
-<div id="ref-Blundell2012b" class="csl-entry" role="listitem">
-Blundell, Richard, Joel L. Horowitz, and Matthias Parey. 2012.
-<span>“<span class="nocase">Measuring The Price Responsiveness of
-Gasoline Demand: Economic Shape Restrictions and Nonparametric Demand
-Estimation</span>.”</span> <em>Quantitative Economics</em> 3 (1): 29–51.
-<a href="https://doi.org/10.3982/qe91">https://doi.org/10.3982/qe91</a>.
-</div>
-<div id="ref-Boneva2015SemiparametricModelHeterogeneous" class="csl-entry" role="listitem">
-Boneva, Lena, Oliver Linton, and Michael Vogt. 2015. <span>“A
-Semiparametric Model for Heterogeneous Panel Data with Fixed
-Effects.”</span> <em>Journal of Econometrics</em>, Heterogeneity in
-<span>Panel</span> <span>Data</span> and in <span>Nonparametric</span>
-<span>Analysis</span> in honor of <span>Professor</span>
-<span>Cheng</span> <span>Hsiao</span>, 188 (2): 327–45. <a href="https://doi.org/10.1016/j.jeconom.2015.03.003">https://doi.org/10.1016/j.jeconom.2015.03.003</a>.
-</div>
-<div id="ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" class="csl-entry" role="listitem">
-Bonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022.
-<span>“Discretizing <span>Unobserved Heterogeneity</span>.”</span>
-<em>Econometrica</em> 90 (2): 625–43. <a href="https://doi.org/10.3982/ECTA15238">https://doi.org/10.3982/ECTA15238</a>.
-</div>
-<div id="ref-Bonhomme2015" class="csl-entry" role="listitem">
-Bonhomme, Stéphane, and Elena Manresa. 2015. <span>“<span class="nocase">Grouped Patterns of Heterogeneity in Panel
-Data</span>.”</span> <em>Econometrica</em> 83 (3): 1147–84. <a href="https://doi.org/10.3982/ecta11319">https://doi.org/10.3982/ecta11319</a>.
-</div>
-<div id="ref-Bonhomme2009AssessingEqualizingForce" class="csl-entry" role="listitem">
-Bonhomme, Stéphane, and Jean-Marc Robin. 2009. <span>“Assessing the
-<span>Equalizing Force</span> of <span>Mobility Using Short
-Panels</span>: <span>France</span>, 1990–2000.”</span> <em>The Review of
-Economic Studies</em> 76 (1): 63–92. <a href="https://doi.org/10.1111/j.1467-937X.2008.00521.x">https://doi.org/10.1111/j.1467-937X.2008.00521.x</a>.
-</div>
-<div id="ref-Bonhomme2010GeneralizedNonParametricDeconvolution" class="csl-entry" role="listitem">
-———. 2010. <span>“Generalized <span>Non-Parametric Deconvolution</span>
-with an <span>Application</span> to <span>Earnings
-Dynamics</span>.”</span> <em>Review of Economic Studies</em> 77 (2):
-491–533. <a href="https://doi.org/10.1111/j.1467-937X.2009.00577.x">https://doi.org/10.1111/j.1467-937X.2009.00577.x</a>.
-</div>
-<div id="ref-Breitung2021" class="csl-entry" role="listitem">
-Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope
-Variations</span>.”</span> <em>Journal of Econometrics</em> 220 (2):
-399–415. <a href="https://doi.org/10.1016/j.jeconom.2020.04.007">https://doi.org/10.1016/j.jeconom.2020.04.007</a>.
-</div>
-<div id="ref-Brockwell2016IntroductionTimeSeries" class="csl-entry" role="listitem">
-Brockwell, Peter J., and Richard A. Davis. 2016. <em>Introduction to
-<span>Time Series</span> and <span>Forecasting</span></em>. Springer
-<span>Texts</span> in <span>Statistics</span>. Springer International
-Publishing.
-</div>
-<div id="ref-Campello2019" class="csl-entry" role="listitem">
-Campello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. <span>“<span class="nocase">Testing for Slope Heterogeneity Bias in Panel Data
-Models</span>.”</span> <em>Journal of Business and Economic
-Statistics</em> 37 (4): 749–60. <a href="https://doi.org/10.1080/07350015.2017.1421545">https://doi.org/10.1080/07350015.2017.1421545</a>.
-</div>
-<div id="ref-Card2001" class="csl-entry" role="listitem">
-Card, David. 2001. <span>“<span class="nocase">Estimating the Return to
-Schooling: Progress on Some Persistent Econometric
-Problems</span>.”</span> <em>Econometrica</em> 69 (5): 1127–60. <a href="https://doi.org/10.1111/1468-0262.00237">https://doi.org/10.1111/1468-0262.00237</a>.
-</div>
-<div id="ref-Chamberlain1982" class="csl-entry" role="listitem">
-Chamberlain, Gary. 1982. <span>“<span class="nocase">Multivariate
-Regression Models for Panel Data</span>.”</span> <em>Journal of
-Econometrics</em> 18 (1): 5–46. <a href="https://doi.org/10.1016/0304-4076(82)90094-X">https://doi.org/10.1016/0304-4076(82)90094-X</a>.
-</div>
-<div id="ref-Chen2003" class="csl-entry" role="listitem">
-Chen, Xiaohong, and Chunrong Ai. 2003. <span>“<span class="nocase">Efficient Estimation of Models with Conditional Moment
-Restrictions Containing Unknown Functions</span>.”</span>
-<em>Econometrica</em> 71 (6): 1795–1843.
-</div>
-<div id="ref-Chernozhukov2013" class="csl-entry" role="listitem">
-Chernozhukov, Victor, Iván Fernández-Val, Jinyong Hahn, and Whitney K.
-Newey. 2013. <span>“<span class="nocase">Average and Quantile Effects in
-Nonseparable Panel Models</span>.”</span> <em>Econometrica</em> 81 (2):
-535–80. <a href="https://doi.org/10.3982/ecta8405">https://doi.org/10.3982/ecta8405</a>.
-</div>
-<div id="ref-Chernozhukov2015" class="csl-entry" role="listitem">
-Chernozhukov, Victor, Iván Fernández-Val, Stefan Hoderlein, Hajo
-Holzmann, and Whitney Newey. 2015. <span>“<span class="nocase">Nonparametric Identification in Panels Using
-Quantiles</span>.”</span> <em>Journal of Econometrics</em> 188 (2):
-378–92. <a href="https://doi.org/10.1016/j.jeconom.2015.03.006">https://doi.org/10.1016/j.jeconom.2015.03.006</a>.
-</div>
-<div id="ref-Chesher2017" class="csl-entry" role="listitem">
-Chesher, Andrew, and Adam M. Rosen. 2017. <span>“<span>Generalized
-Instrumental Variable Models</span>.”</span> <em>Econometrica</em> 85
-(3): 959–89. <a href="https://doi.org/10.3982/ecta12223">https://doi.org/10.3982/ecta12223</a>.
-</div>
-<div id="ref-Chesher2020" class="csl-entry" role="listitem">
-———. 2020. <em><span class="nocase">Generalized Instrumental Variable
-Models, Methods, and Applications</span></em>. Vol. 7. Elsevier B.V. <a href="https://doi.org/10.1016/bs.hoe.2019.11.001">https://doi.org/10.1016/bs.hoe.2019.11.001</a>.
-</div>
-<div id="ref-Combes2012b" class="csl-entry" role="listitem">
-Combes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga,
-and Sébastien Roux. 2012. <span>“<span class="nocase">The Productivity
-Advantages of Large Cities: Distinguishing Agglomeration From Firm
-Selection</span>.”</span> <em>Econometrica</em> 80 (6): 2543–94. <a href="https://doi.org/10.3982/ecta8442">https://doi.org/10.3982/ecta8442</a>.
+Bester, C Alan, and Christian Hansen. 2009. <span>“<span class="nocase">Identification of Marginal Effects in a Nonparametric Correlated Random Effects Model</span>.”</span> <em>Journal of Business and Economic Statistics</em> 27 (2): 235–50. <a href="https://doi.org/10.1198/jbes.2009.0017">https://doi.org/10.1198/jbes.2009.0017</a>.
 </div>
 <div id="ref-Cooprider2022" class="csl-entry" role="listitem">
-Cooprider, Joseph, Stefan Hoderlein, and Alexander Meister. 2022.
-<span>“<span class="nocase">A Panel Data Estimator for the Distribution
-and Quantiles of Marginal Effects in Nonlinear Structural Models with an
-Application to the Demand for Junk Food</span>.”</span> <a href="https://doi.org/10.2139/ssrn.3545485">https://doi.org/10.2139/ssrn.3545485</a>.
-</div>
-<div id="ref-Durrett2019" class="csl-entry" role="listitem">
-Durrett, Rick. 2019. <em><span class="nocase">Probability: Theory and
-Examples</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108591034">https://doi.org/10.1017/9781108591034</a>.
-</div>
-<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
-Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and
-Estimation of a Nonparametric Panel Data Model with Unobserved
-Heterogeneity</span>.”</span>
-</div>
-<div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
-Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span>
-<em>Econometric Theory</em> 28 (4): 925–32. <a href="https://doi.org/10.1017/S0266466611000831">https://doi.org/10.1017/S0266466611000831</a>.
-</div>
-<div id="ref-Fan1996" class="csl-entry" role="listitem">
-Fan, Jianqing, and Irene Gijbels. 1996. <em><span class="nocase">Local
-Polynomial Modelling and Its Applications</span></em>. Springer New
-York.
-</div>
-<div id="ref-Graham2012" class="csl-entry" role="listitem">
-Graham, Bryan S, and James L Powell. 2012. <span>“<span class="nocase">Identification and Estimation of Average Partial Effects
-in "Irregular" Correlated Random Coefficient Panel Data
-Models</span>.”</span> <em>Econometrica</em> 80 (5): 2105–52. <a href="https://doi.org/10.3982/ecta8220">https://doi.org/10.3982/ecta8220</a>.
-</div>
-<div id="ref-Hansen2022" class="csl-entry" role="listitem">
-Hansen, Bruce. 2022. <em>Econometrics</em>. Princeton University Press.
-</div>
-<div id="ref-Heckman1997" class="csl-entry" role="listitem">
-Heckman, James J., Jeffrey Smith, and Nancy Clements. 1997. <span>“<span class="nocase">Making the Most out of Programme Evaluations and Social
-Experiments : Accounting for Heterogeneity in Programme
-Impacts</span>.”</span> <em>Review of Economic Studies</em> 64 (4):
-487–535. <a href="https://doi.org/10.2307/2971729">https://doi.org/10.2307/2971729</a>.
-</div>
-<div id="ref-Heckman1998" class="csl-entry" role="listitem">
-Heckman, James, and Edward Vytlacil. 1998. <span>“<span class="nocase">Instrumental variables methods for the correlated random
-coefficient model</span>.”</span> <em>Journal of Human Resources</em> 33
-(4): 974–87.
-</div>
-<div id="ref-Henderson2008NonparametricEstimationTesting" class="csl-entry" role="listitem">
-Henderson, Daniel J., Raymond J. Carroll, and Qi Li. 2008.
-<span>“Nonparametric Estimation and Testing of Fixed Effects Panel Data
-Models.”</span> <em>Journal of Econometrics</em> 144 (1): 257–75. <a href="https://doi.org/10.1016/j.jeconom.2008.01.005">https://doi.org/10.1016/j.jeconom.2008.01.005</a>.
-</div>
-<div id="ref-Henderson2024NonparametricModelsFixed" class="csl-entry" role="listitem">
-Henderson, Daniel J., and Alexandra Soberon. 2024. <span>“Nonparametric
-<span>Models</span> with <span>Fixed</span>
-<span>Effects</span>.”</span> In <em>The <span>Econometrics</span> of
-<span>Multi</span>-Dimensional <span>Panels</span>: <span>Theory</span>
-and <span>Applications</span></em>, edited by Laszlo Matyas, 285–323.
-Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-49849-7_9">https://doi.org/10.1007/978-3-031-49849-7_9</a>.
-</div>
-<div id="ref-Hoderlein2010" class="csl-entry" role="listitem">
-Hoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. <span>“<span class="nocase">Analyzing the Random Coefficient Model
-Nonparametrically</span>.”</span> <em>Econometric Theory</em> 26 (03):
-804–37. <a href="https://doi.org/10.1017/S0266466609990119">https://doi.org/10.1017/S0266466609990119</a>.
-</div>
-<div id="ref-Hoderlein2007" class="csl-entry" role="listitem">
-Hoderlein, Stefan, and Enno Mammen. 2007. <span>“<span class="nocase">Identification of Marginal Effects in Nonseparable Models
-without Monotonicity</span>.”</span> <em>Econometrica</em> 75 (5):
-1513–18. <a href="https://doi.org/10.1111/j.1468-0262.2007.00801.x">https://doi.org/10.1111/j.1468-0262.2007.00801.x</a>.
-</div>
-<div id="ref-Hoderlein2012" class="csl-entry" role="listitem">
-Hoderlein, Stefan, and Halbert White. 2012. <span>“<span class="nocase">Nonparametric Identification in Nonseparable Panel Data
-Models with Generalized Fixed Effects</span>.”</span> <em>Journal of
-Econometrics</em> 168 (2): 300–314. <a href="https://doi.org/10.1016/j.jeconom.2012.01.033">https://doi.org/10.1016/j.jeconom.2012.01.033</a>.
-</div>
-<div id="ref-Hsiao1999" class="csl-entry" role="listitem">
-Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999.
-<span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients
-in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels
-and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
-</div>
-<div id="ref-Huntington-Klein2025EffectIntroductionResearch" class="csl-entry" role="listitem">
-Huntington-Klein, Nick. 2025. <em>The <span>Effect</span>: <span>An
-Introduction</span> to <span>Research Design</span> and
-<span>Causality</span></em>. S.l.: <span>Chapman and Hall/CRC</span>.
-</div>
-<div id="ref-Imbens2009" class="csl-entry" role="listitem">
-Imbens, Guido W., and Whitney K. Newey. 2009. <span>“<span class="nocase">Identification and Estimation of Triangular Simultaneous
-Equations Models Without Additivity</span>.”</span>
-<em>Econometrica</em> 77 (5): 1481–1512. <a href="https://doi.org/10.3982/ecta7108">https://doi.org/10.3982/ecta7108</a>.
-</div>
-<div id="ref-Kato2021RobustInferenceDeconvolutiona" class="csl-entry" role="listitem">
-Kato, Kengo, Yuya Sasaki, and Takuya Ura. 2021. <span>“Robust
-<span>Inference</span> in <span>Deconvolution</span>.”</span>
-<em>Quantitative Economics</em> 12 (1): 109–42. <a href="https://doi.org/10.3982/QE1643">https://doi.org/10.3982/QE1643</a>.
-</div>
-<div id="ref-Kiviet1995" class="csl-entry" role="listitem">
-Kiviet, Jan F. 1995. <span>“<span class="nocase">On Bias, Inconsistency,
-and Efficiency of Various Estimators in Dynamic Panel Data
-Models</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 53–78.
-<a href="https://doi.org/10.1016/0304-4076(94)01643-E">https://doi.org/10.1016/0304-4076(94)01643-E</a>.
-</div>
-<div id="ref-Kotlarski1967CharacterizingGammaNormal" class="csl-entry" role="listitem">
-Kotlarski, Ignacy. 1967. <span>“On <span>Characterizing</span> the
-<span>Gamma</span> and the <span>Normal Distribution</span>.”</span>
-<em>Pacific Journal of Mathematics</em> 20 (1): 69–76. <a href="https://doi.org/10.2140/pjm.1967.20.69">https://doi.org/10.2140/pjm.1967.20.69</a>.
-</div>
-<div id="ref-Laage2019" class="csl-entry" role="listitem">
-Laage, Louise. 2024. <span>“A <span>Correlated Random Coefficient Panel
-Model With Time-Varying Endogeneity</span>.”</span> <em>Journal of
-Econometrics</em> 242 (2): 105804. <a href="https://doi.org/10.1016/j.jeconom.2024.105804">https://doi.org/10.1016/j.jeconom.2024.105804</a>.
-</div>
-<div id="ref-Lee2015PanelNonparametricRegression" class="csl-entry" role="listitem">
-Lee, Jungyoon, and Peter M. Robinson. 2015. <span>“Panel Nonparametric
-Regression with Fixed Effects.”</span> <em>Journal of Econometrics</em>,
-Heterogeneity in <span>Panel</span> <span>Data</span> and in
-<span>Nonparametric</span> <span>Analysis</span> in honor of
-<span>Professor</span> <span>Cheng</span> <span>Hsiao</span>, 188 (2):
-346–62. <a href="https://doi.org/10.1016/j.jeconom.2015.03.004">https://doi.org/10.1016/j.jeconom.2015.03.004</a>.
-</div>
-<div id="ref-Lewbel2022" class="csl-entry" role="listitem">
-Lewbel, Arthur. 2022. <span>“<span class="nocase">Kotlarski with a
-Factor Loading</span>.”</span> <em>Journal of Econometrics</em> 229 (1):
-176–79. <a href="https://doi.org/10.1016/j.jeconom.2020.12.012">https://doi.org/10.1016/j.jeconom.2020.12.012</a>.
-</div>
-<div id="ref-Lewbel2024IdentificationTriangularTwo" class="csl-entry" role="listitem">
-Lewbel, Arthur, Susanne M. Schennach, and Linqi Zhang. 2024.
-<span>“Identification of a <span>Triangular Two Equation System Without
-Instruments</span>.”</span> <em>Journal of Business &amp; Economic
-Statistics</em> 42 (1): 14–25. <a href="https://doi.org/10.1080/07350015.2023.2166052">https://doi.org/10.1080/07350015.2023.2166052</a>.
-</div>
-<div id="ref-Li2007" class="csl-entry" role="listitem">
-Li, Qi, and Jeffrey Scott Racine. 2007. <em><span class="nocase">Nonparametric Econometrics: Theory and
-Practice</span></em>. Princeton University Press.
+Cooprider, Joseph, Stefan Hoderlein, and Alexander Meister. 2022. <span>“<span class="nocase">A Panel Data Estimator for the Distribution and Quantiles of Marginal Effects in Nonlinear Structural Models with an Application to the Demand for Junk Food</span>.”</span> <a href="https://doi.org/10.2139/ssrn.3545485">https://doi.org/10.2139/ssrn.3545485</a>.
 </div>
 <div id="ref-Liu2021" class="csl-entry" role="listitem">
-Liu, Laura, Alexandre Poirier, and Ji-Liang Shiu. 2024.
-<span>“Identification and <span>Estimation</span> of <span>Partial
-Effects</span> in <span>Nonlinear Semiparametric Panel
-Models</span>.”</span> <em>Journal of Econometrics</em>, September,
-105860. <a href="https://doi.org/10.1016/j.jeconom.2024.105860">https://doi.org/10.1016/j.jeconom.2024.105860</a>.
-</div>
-<div id="ref-Lumsdaine2023EstimationPanelGroup" class="csl-entry" role="listitem">
-Lumsdaine, Robin L., Ryo Okui, and Wendun Wang. 2023. <span>“Estimation
-of <span>Panel Group Structure Models With Structural Breaks</span> in
-<span>Group Memberships</span> and <span>Coefficients</span>.”</span>
-<em>Journal of Econometrics</em> 233 (1): 45–65. <a href="https://doi.org/10.1016/j.jeconom.2022.01.001">https://doi.org/10.1016/j.jeconom.2022.01.001</a>.
-</div>
-<div id="ref-Manski1987" class="csl-entry" role="listitem">
-Manski, Charles F. 1987. <span>“<span class="nocase">Semiparametric
-Analysis of Random Effects Linear Models from Binary Panel
-Data</span>.”</span> <em>Econometrica</em> 55 (2): 357. <a href="https://doi.org/10.2307/1913240">https://doi.org/10.2307/1913240</a>.
-</div>
-<div id="ref-Masry1996" class="csl-entry" role="listitem">
-Masry, Elias. 1996a. <span>“<span class="nocase">Multivariate Local
-Polynomial Regression for Time Series: Uniform Strong Consistency and
-Rates</span>.”</span> <em>Journal of Time Series Analysis</em> 17 (6):
-571–99. <a href="https://doi.org/10.1111/j.1467-9892.1996.tb00294.x">https://doi.org/10.1111/j.1467-9892.1996.tb00294.x</a>.
-</div>
-<div id="ref-Masry1996b" class="csl-entry" role="listitem">
-———. 1996b. <span>“<span class="nocase">Multivariate Regression
-Estimation: Local Polynomial Fitting for Time Series</span>.”</span>
-<em>Stochastic Processes and Their Applications</em> 65 (1): 3575–81. <a href="https://doi.org/10.1016/S0304-4149(96)00095-6">https://doi.org/10.1016/S0304-4149(96)00095-6</a>.
-</div>
-<div id="ref-Masten2018" class="csl-entry" role="listitem">
-Masten, Matthew A. 2018. <span>“<span class="nocase">Random Coefficients
-on Endogenous Variables in Simultaneous Equations Models</span>.”</span>
-<em>Review of Economic Studies</em> 85 (2): 1193–1250. <a href="https://doi.org/10.1093/restud/rdx047">https://doi.org/10.1093/restud/rdx047</a>.
-</div>
-<div id="ref-Matzkin2003" class="csl-entry" role="listitem">
-Matzkin, Rosa L. 2003. <span>“<span class="nocase">Nonparametric
-Estimation of Nonadditive Random Functions</span>.”</span>
-<em>Econometrica</em> 71 (5): 1339–75. <a href="https://doi.org/10.1111/1468-0262.00452">https://doi.org/10.1111/1468-0262.00452</a>.
-</div>
-<div id="ref-Morozov2023jmp" class="csl-entry" role="listitem">
-Morozov, Vladislav. 2023. <span>“<span class="nocase">Estimating the
-Moments and the Distribution of Heterogeneous Marginal Effects Using
-Panel Data</span>.”</span>
-</div>
-<div id="ref-Mundlak1961EmpiricalProductionFunction" class="csl-entry" role="listitem">
-Mundlak, Yair. 1961. <span>“Empirical <span>Production Function
-Free</span> of <span>Management Bias</span>.”</span> <em>Journal of Farm
-Economics</em> 43 (1): 44. <a href="https://doi.org/10.2307/1235460">https://doi.org/10.2307/1235460</a>.
-</div>
-<div id="ref-Murtazashvili2008" class="csl-entry" role="listitem">
-Murtazashvili, Irina, and Jeffrey M. Wooldridge. 2008. <span>“<span class="nocase">Fixed effects instrumental variables estimation in
-correlated random coefficient panel data models</span>.”</span>
-<em>Journal of Econometrics</em> 142 (1): 539–52. <a href="https://doi.org/10.1016/j.jeconom.2007.09.001">https://doi.org/10.1016/j.jeconom.2007.09.001</a>.
-</div>
-<div id="ref-Nickell1981" class="csl-entry" role="listitem">
-Nickell, Stephen. 1981. <span>“<span>Biases In Dynamic Models With Fixed
-Effects</span>.”</span> <em>Econometrica</em> 49 (6): 1417–26.
-</div>
-<div id="ref-Pesaran1996" class="csl-entry" role="listitem">
-Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous
-Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>,
-edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
-</div>
-<div id="ref-Pesaran2006" class="csl-entry" role="listitem">
-Pesaran, M. Hashem. 2006. <span>“<span class="nocase">Estimation and
-Inference in Large Heterogeneous Panels with a Multifactor Error
-Structure</span>.”</span> <em>Econometrica</em> 74 (4): 967–1012. <a href="https://doi.org/10.1111/j.1468-0262.2006.00692.x">https://doi.org/10.1111/j.1468-0262.2006.00692.x</a>.
-</div>
-<div id="ref-Pesaran1999" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous
-Panels</span>.”</span> <em>Journal of the American Statistical
-Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
-</div>
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic
-heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em>
-6061: 473–77.
-</div>
-<div id="ref-Sasaki2021" class="csl-entry" role="listitem">
-Sasaki, Yuya, and Takuya Ura. 2021. <span>“<span class="nocase">Slow
-Movers in Panel Data</span>,”</span> 1–40. <a href="https://arxiv.org/abs/2110.12041">https://arxiv.org/abs/2110.12041</a>.
-</div>
-<div id="ref-Schennach2016RecentAdvancesMeasurement" class="csl-entry" role="listitem">
-Schennach, Susanne M. 2016. <span>“Recent <span>Advances</span> in the
-<span>Measurement Error Literature</span>.”</span> <em>Annual Review of
-Economics</em> 8 (1): 341–77. <a href="https://doi.org/10.1146/annurev-economics-080315-015058">https://doi.org/10.1146/annurev-economics-080315-015058</a>.
-</div>
-<div id="ref-Stefanski1985" class="csl-entry" role="listitem">
-Stefanski, Leonard A., and Raymond J. Carroll. 1985. <span>“<span class="nocase">Covariate Measurement Error in Logistic
-Regression</span>.”</span> <em>The Annals of Statistics</em> 13 (4):
-1335–51. <a href="https://doi.org/10.1214/aos/1176349741">https://doi.org/10.1214/aos/1176349741</a>.
-</div>
-<div id="ref-Sury2011" class="csl-entry" role="listitem">
-Sury, Tavneet. 2011. <span>“<span class="nocase">Selection and
-Comparative Advantage in Technology Adoption</span>.”</span>
-<em>Econometrica</em> 79 (1): 159–209. <a href="https://doi.org/10.3982/ecta7749">https://doi.org/10.3982/ecta7749</a>.
-</div>
-<div id="ref-Wooldridge2003" class="csl-entry" role="listitem">
-Wooldridge, Jeffrey M. 2003. <span>“<span class="nocase">Fixed Effects
-Estimation of the Population-Averaged Slopes in a Panel Data Random
-Coefficient Model</span>.”</span> <em>Econometric Theory</em> 19:
-411–13. <a href="https://doi.org/10+10170S0266466603002081">https://doi.org/10+10170S0266466603002081</a>.
-</div>
-<div id="ref-Wooldridge2005" class="csl-entry" role="listitem">
-———. 2005. <span>“<span class="nocase">Fixed-effects and related
-estimators for correlated random-coefficient and treatment-effect panel
-data models</span>.”</span> <em>The Review of Economics and
-Statistics</em> 87 (May): 385–90.
+Liu, Laura, Alexandre Poirier, and Ji-Liang Shiu. 2024. <span>“Identification and <span>Estimation</span> of <span>Partial Effects</span> in <span>Nonlinear Semiparametric Panel Models</span>.”</span> <em>Journal of Econometrics</em>, September, 105860. <a href="https://doi.org/10.1016/j.jeconom.2024.105860">https://doi.org/10.1016/j.jeconom.2024.105860</a>.
 </div>
 </div>
-
-
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1596,11 +1360,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../nonparametric/nonparametric-cre.html" class="pagination-link" aria-label="Beyond Stayers Using Index Restrictions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span>
+      <a href="../nonparametric/nonparametric-location-scale.html" class="pagination-link" aria-label="Relaxing Stationarity with Nonparametric Time Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1608,4 +1375,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/references/references.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-cre.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
