@@ -20,9 +20,139 @@ This section
 
 
 
-## Regarding Stayers
+## Index Restrictions
+
+### Regarding Stayers
+
+All the results of sections [-@sec-nonparametric-avg-id]-[-@sec-nonparametric-loc-scale] for the average marginal effect in models ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-loc-scale-model]) are limited to the subpopulation of stayers (units $X_{i1}=X_{i2}$).
+
+This limited scope is a natural consequence of *not restricting* the relationship between $(X_{i1}, X_{i2})$ and the unobserved components $(A_i, U_{it})$ which control the potential outcomes. In particular, the results of @Cooprider2022 suggest there is no identification for populations other than the population of stayers as long as one allows $(A_i, U_{it})$ to be multidimensional. 
+ 
+### Index Restrictions
+
+However, in some contexts some restrictions may be justified. Such restrictions, if present, may then be used to obtain identification for subpopulations other than the stayers. 
+
+In this section, we look at a popular class of restrictions known as *index restrictions*. Broadly, index restrictions reduce the dimensionality of the dependence structure between the treatments and the unobserved components. They were introduced and studied by @Altonji2005 (see also @Bester2009 and @Liu2021).
+ 
+As a simple example, consider again model ([-@eq-nonparametric-model-full-nonsep]), with the potential outcome in period $t$ determined as 
+$$
+Y_{it}^x = \phi(x, A_i, U_{it}), \quad t=1, 2.
+$$
+
+We now make an assumption about how $(X_{i1}, X_{i2})$ and $(A_i, U_{i1}, U_{i2})$ relate to each other. Specifically, we assume that the joint distribution of $(A_i, U_{i1}, U_{i2})$ only depends on $(X_{i1}, X_{i2})$ through the sum $X_{i1}+X_{i2}$:
+$$
+\begin{aligned} 
+	& f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2) \\
+    & = f_{A_i, U_{i1}, U_{i2}|X_{i1}+ X_{i2}}(a, u_1, u_2|x_1+x_2).		
+\end{aligned}
+$$
+In other words, the $X_{i1}+X_{i2}$ plays the role of an *index* or a sufficient statistic that captures all the relevant dimensions of the dependence structure between the treatments and the unobserved components.
+
+More generally, in a setting with $T$ time periods one may assume that the joint distribution of potential outcomes $(Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})$ only depends on the treatments $(X_{i1}, \dots, X_{iT})$ through $k$ *index* functions $g_1(\cdot), \dots, g_k(\cdot)$:
+
+$$\begin{aligned} 
+	 & (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|X_{i1}, \dots, X_{iT} \\
+     & \overset{d}{=} (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|g_1(X_{i1}, \dots, X_{iT}), \dots, g_k(X_{i1}, \dots, X_{iT}).
+\end{aligned}
+$$
+$k$ is assumed to be smaller than $T$, creating a lower-dimensional dependence structure.
+
+Typically, the index functions $g_{\cdot}(\cdot)$ are assumed known, though it is also posssible to obtain some results in settings with unknown $g(\cdot)$ [@Bester2009].
+
+### Intuition
+
+\paragraph{Empirical example: consumption}
+
+To get some intuition for the above restriction, let us return to the Engel curve example.
+
+Suppose that the agents are not financially constrained and have knowledge of both $(x_{i1}, x_{i2})$ in both $t=1, 2$. 
+
+It is reasonable to assume that the agents will smooth consumption and income. 
+
+Conditional on the average income across periods, the deviations in $(x_{i1}, x_{i2})$ are then assumed to be independent from the unobserved components of the model.
+
+		, and that total consumption each period will only depend on total income $x_{i1}+x_{i2}$.
+ 
 
 
+
+
+
+
+		This is a form of sufficiency assumption: $\bar{X}$ is a sufficient statistic.
+
+
+## Average Marginal Effects Beyond Stayers
+
+A consequence of this assumption is that 
+\begin{equation}\label{nonparametric:equation:marginal_effects_hw12_sufficiency}
+	\E[\partial_x \phi(x, \alpha_i, u_{it})|x_{i1}= x_1, x_{i2}=x_2] =\E\left[\partial_x \phi(x, \alpha_i, u_{it})\Big|\dfrac{x_{i1}+x_{i2}}{2}=\dfrac{x_1+x_2}{2}\right].
+\end{equation}
+In other words, the average marginal effect is the same for all people whose covariates  are the same \emph{on average across time}.
+
+In some cases the index function 
+
+This assumption allows us to identify and estimate average marginal effects for populations beyond the stayers.
+
+The argument is based on the following special case of eq. \eqref{nonparametric:equation:marginal_effects_hw12_sufficiency}:
+\begin{equation} 
+	\E[\partial_x \phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x] =\E\left[\partial_x \phi(x, \alpha_i, u_{it})\Big|\dfrac{x_{i1}+x_{i2}}{2}=x\right] 
+\end{equation}
+Provided there are stayers at $x$, the argument of section \ref{nonparametric:subsection:hoderlein_white_identification} identifies the left hand side.
+
+
+We conclude that $\E[\partial_x \phi( (x_1+x_2)/2, \alpha_i, u_{it})|x_{i1}=x_1, x_{i2}=x_2]$ is identified for all values of $(x_1, x_2)$ such that there are stayers at $(x_1+x_2)/2$. 
+		, provided there are stayers at $(x_1+x_2)/2$. 
+\textcolor{DarkGoldenrod}{Add a diagram of the identified set}
+
+Estimation proceeds as before: the average marginal effect is estimated for a suitable population of stayers at $x$
+
+The resulting value directly yields an estimator for the other unit with the same average value of $(x_{i1}, x_{i2})$.
+
+
+ 
+
+``` tikz
+%%| fig-cap: Shaded area: populations with an identified average marginal effect
+%%| fig-align: center
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+\begin{tikzpicture}[x=2.2cm,y=1.4cm, every path/.style={color=gray!70}]
+\draw[->] (-0.3,0) -- (4.3,0) node[right] {$x_{1}$};
+\draw[->] (0,-0.3) -- (0,4.8) node[above] {$x_{2}$};
+
+% Draw rectangle
+%  		\fill[pattern=north west lines] (1,1) rectangle (3,3);
+
+% Draw rectangle border
+\draw (1,1) rectangle (4,3);
+
+% Draw identified set
+\fill[pattern=north west lines, pattern color=gray!50] (1,1) -- (1,3) -- (3,3) -- (4,2) -- (4,1) -- cycle;
+
+% Draw lines to axes
+\draw[dashed] (1,1) -- (1,0) node[below] {min $x_1$};
+\draw[dashed] (1,1) -- (0,1) node[left] {min $x_2$};
+\draw[dashed] (4,3) -- (4,0) node[below] {max $x_1$};
+\draw[dashed] (4,3) -- (0,3) node[left] {max $x_2$};
+
+% Draw the stayer line
+\draw[dashed] (0, 0) -- (4, 4) node[right] {Stayers};
+\draw (1, 1) -- (3, 3)  ;
+\end{tikzpicture}
+```
+
+
+\paragraph{Further references}
+
+The above argument was one  example of a correlated random effects setting in which the distribution of unobservables depends only on some reduced ``index'' of observables.
+
+In our case this index is one-dimensional and equal to the average covariate value.
+
+However, in principle, more general indices are possible (average, variance, higher-order power, etc).
+
+
+Easy to generalize ([-@eq-nonparametric-loc-scale-model])
+ 
 --- 
 
 #### Next Section {.unnumbered}

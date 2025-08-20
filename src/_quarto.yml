@@ -4,6 +4,16 @@ project:
 
 html-math-method: mathjax
 
+filters:
+  - diagram  
+diagram:
+  engine:
+    tikz:
+      execpath: pdflatex
+      header-includes:
+        - '\usepackage{adjustbox}'
+        - '\usetikzlibrary{arrows,calc,fit,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathmorphing,patterns,positioning,swigs}' 
+
 book:
   title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
