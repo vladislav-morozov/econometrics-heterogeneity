@@ -1,10 +1,9 @@
 --- 
-description: "Learn   (Lecture Notes)"
+description: "Learn identification of variance of marginal effects in nonparametric models with infinite-dimensional heterogeneity (Lecture Notes)"
 
 open-graph:
-    description: "Learn   (Lecture Notes)"
+    description: "Learn identification of variance of marginal effects in nonparametric models with infinite-dimensional heterogeneity (Lecture Notes)"
 ---
-
 
 
 
