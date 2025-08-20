@@ -1,0 +1,191 @@
+--- 
+description: "Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)"
+
+open-graph:
+    description: "Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)"
+---
+
+
+# Relaxing Stationarity with Nonparametric Time Effects {#sec-nonparametric-loc-scale}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section shows how to extend identification of marginal effects to a model with nonparametric location-scale time effects.
+
+By the end of this section, you should be able to: 
+ 
+- Identify the average marginal effects for stayers under a model with location-scale effects and potentially infinite-dimensional heterogeneity.  
+- Propose estimators for the average marginal effects.
+- Draw parallels between the models of this block and event study/difference-in-differences approaches.
+
+:::
+ 
+---
+
+
+
+## A More General Model
+
+### The Drawbacks of Stationarity 
+
+The stationarity assumption ([-@eq-nonparam-stationarity-u]) is crucial to the identification argument of section ([-@sec-nonparametric-avg-id]). It allows us to connect the average change in the realized outcomes $Y_{it}$ to finite differences of the structural function $\phi(\cdot, \cdot, \cdot)$. In turn, this connection leads to our key identification result for average marginal effects: 
+$$
+\begin{aligned}
+    & \E[\partial^x Y_{it}^{x}|X_{i1} = X_{i2} = x]\\
+	& = \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    & = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+$$
+
+While useful for identification, assumption ([-@eq-nonparam-stationarity-u]) imposes that the function $\phi(\cdot, \cdot, \cdot)$ *cannot* change across periods. Such time invariance may be reasonable if consecutive observations are not separated by long periods of time. In contrast, it may be untenable if the interval between observations is large or there are meaningful changes in the overall "context" in which the units operate.
+
+
+### Including Location-Scale Time Effects
+
+However, it is possible to accommodate some changes over time while preserving our identification results. In particular, it is possible to accommodate flexible location-scale effects that depend on the observables nonparametrically.
+
+Specifically, we now consider the following extension of the model ([-@eq-nonparametric-model-full-nonsep]), discussed by @Chernozhukov2015:
+$$ 
+\begin{aligned}
+	Y_{i1}^{x_1}  &= \phi(x_1, A_i, U_{it}),\\
+	Y_{i2}^{x_2} & = \mu(x_2) + \sigma(x_2) \phi(x_2, A_i, U_{i2}).
+\end{aligned}
+$$ {#eq-nonparametric-loc-scale-model}
+The functions $\mu(\cdot)$ and $\sigma(\cdot)$ may be viewed as flexible nonparametric *location-scale* time effects. We assume throughout that $\sigma(\cdot)\neq 0$.
+
+Although we allow the function $\phi$ to change, we retain the conditional stationarity assumption ([-@eq-nonparam-stationarity-u]): 
+$$
+U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i).
+$$ 
+
+The key objects of interest are the average marginal effects of $x$ for stayers in periods $t=1$:
+$$
+\begin{aligned}
+  \E[\partial_x Y_{i1}^x|X_{i1}=X_{i2} =x] & = \E\left[ \partial_x \phi(x, A_{i}, U_{it}) |X_{i1}=X_{i2} =x\right], 
+\end{aligned}$$ {#eq-nonparametric-loc-scale-t1}
+and $t=2$:
+$$
+\begin{aligned}
+ & \E[\partial_x Y_{i2}^x|X_{i1}=X_{i2} =x]\\
+  & = \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it})  \right)|X_{i1}=X_{i2} =x\right]
+\end{aligned}
+$$ {#eq-nonparametric-loc-scale-t2}
+Observe that there is now time variation in the average effects, unlike under model  ([-@eq-nonparam-stationarity-u]). 
+
+### Discussion
+
+Model ([-@eq-nonparametric-loc-scale-model]) preserves the two attractive features of the simpler model ([-@eq-nonparametric-model-full-nonsep]):
+
+1. $(A_i, U_{it})$ can take any form, have any dimension, and affect the potential outcomes arbitrarily. 
+2. There are no restrictions on the dependence between the treatment $X_{it}$ and potential outcomes. 
+
+Intuitively, the connection between models ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-loc-scale-model]) mirrors familiar binary-treatment settings. The time-invariant model ([-@eq-nonparametric-model-full-nonsep]) corresponds to a nonparametric event-study design with a continuous treatment (see chapter 17 of @Huntington-Klein2025EffectIntroductionResearch regarding event studies with no trends in the outcome). The location-scale extension ([-@eq-nonparametric-loc-scale-model]), by contrast, generalizes this to a nonparametric difference-in-differences framework, accommodating nonparametric trends in the outcomes.
+
+## Identification
+
+We now turn to identification of the average marginal effects ([-@eq-nonparametric-loc-scale-t1]) and ([-@eq-nonparametric-loc-scale-t2]). Identification proceeds in three steps: 
+
+1. Identifying the scale function $\sigma(\cdot)$.
+2. Identifying the location function $\mu(\cdot)$.
+3. Identifying the average value $\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]$  of $\phi$ and the average value of its derivative $\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]$.
+
+Together, these components are sufficient to identify both ([-@eq-nonparametric-loc-scale-t1]) and ([-@eq-nonparametric-loc-scale-t2]), since the second period effect can be represented as
+$$
+\begin{aligned}
+& \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it}) \right)|X_{i1}=X_{i2} =x\right] \\
+& = \partial_x \mu(x) \\
+& \quad + \sigma(x) \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+& \quad + \left(\partial_x \sigma(x)\right) \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+\end{aligned}
+$$
+
+### Scale Effect
+
+
+We begin by identifying the scale function $\sigma(\cdot)$. The scale is directly connect to the variance of the second period realized outcome for the subpopulation of stayers as 
+$$
+\begin{aligned}
+	& \var(Y_{i2}|X_{i1}=X_{i2}=x) \\
+    & = \sigma^2(x)\var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
+$$
+As before, the notation $U_{it}$ under $\phi$ emphasizes stationarity of $U_{it}$.
+
+
+At the same time, the conditional variance of $\phi(x, A_i, U_{it})$ for stayers is directly obtained from the variance of the first period realized outcome:
+$$
+\begin{aligned} 
+	& \var\left(Y_{i1}|X_{i1}=X_{i2}=x \right) \\
+    & = \var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
+$$
+
+Combining the two expression yields an explicit formula for the scale effect, provided $\var\left(Y_{i1}|X_{i1}=X_{i2}=x \right)\neq 0$:
+$$
+	\sigma^2(x) = \dfrac{	\var(Y_{i2}|X_{i1}=X_{i2}=x) }{	\var(Y_{i1}|X_{i1}=X_{i2}=x) }.
+$$
+
+### Location Effect and Average of $\phi$
+
+To obtain the location effect $\mu(\cdot)$ and $\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]$, we instead look at the averages of the realized outcomes for stayers. By model ([-@eq-nonparametric-loc-scale-model]) it holds that
+$$
+\begin{aligned}
+	\E[Y_{i1}|X_{i1}=X_{i2}=x] & = \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x], \\
+	\E[Y_{i2}|X_{i1}=X_{i2}=x] & = \mu(x) + \sigma(x)\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x].
+\end{aligned}
+$$
+Identification for $\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]$ is thus immediate. To obtain $\mu(\cdot)$, we rearrange and multiply the first line by $\sigma(x)$:
+$$
+\begin{aligned}
+	\mu(x) & = \E[Y_{i2}|X_{i1}=X_{i2}=x] - \sigma(x)\E[Y_{i1}|X_{i1}=X_{i2}=x] \\
+	& = \E[Y_{i2}|X_{i1}=X_{i2}=x] \\
+    & \quad - \sqrt{\dfrac{	\var(Y_{i1}|X_{i1}=X_{i2}=x) }{	\var(Y_{i1}|X_{i1}=X_{i2}=x) }}\E[Y_{i2}|X_{i1}=X_{i2}=x] . 
+\end{aligned}
+$$
+
+
+### Average Derivative of $\phi$ 
+
+Finally, having identified $\mu(\cdot)$ and $\sigma(\cdot)$, we can now proceed to identify $\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]$. To do so, we define new synthetic outcomes that eliminate the location-scale effects, reducing the problem to the stationary case ([-@eq-nonparametric-model-full-nonsep]):
+$$
+\begin{aligned}
+Z_{i1} & = Y_{i1}, \\
+Z_{i2} & = \dfrac{Y_{i2}- \mu(X_{i2})}{\sigma(X_{i2})}.
+\end{aligned}
+$$
+
+The new variables $(Z_{i1}, Z_{it})$ satisfy two key properties:
+
+- The distribution of $(Z_{i1}, Z_{i2}, X_{i1}, X_{i2})$ is identified.
+- The variables follow
+$$
+Z_{it} = \phi(X_{it}, A_i, U_{it}).
+$$ 
+
+In other words, $(Z_{i1}, Z_{i2})$ follow model ([-@eq-nonparametric-model-full-nonsep]). 
+
+By applying the results of sections [-@sec-nonparametric-avg-id]-[-@sec-nonparametric-avg-est] we conclude that 
+$$
+\begin{aligned} 
+	& \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    & = \partial_{x_2} \E\left[ Z_{i2}- Z_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+$$
+
+Combining the above results together yields overall identification for average marginal effects ([-@eq-nonparametric-loc-scale-t1]) and ([-@eq-nonparametric-loc-scale-t2]). 
+
+
+## Estimation
+
+Estimation of ([-@eq-nonparametric-loc-scale-t1]) and ([-@eq-nonparametric-loc-scale-t2]) is now straightforward. As in  section [-@sec-nonparametric-avg-est], we have shown that the objects of interest can be expressed in terms of explicit functions of conditional expectations of $(Y_{i1}, Y_{i2})$ given $(X_{i1}, X_{i2})$. This expectations can be replaced with local polynomial estimators, following the logic of section [-@sec-nonparametric-avg-est]. The resulting estimator for the average marginal effects of interest will be consistent and asymptotically normal by the delta method, as local polynomial estimators are consistent and jointly asymptotically normal.
+
+
+For inference, the simplest approach is to use the bootstrap rather than use the expression for the variance implied by the delta method. Accordingly, the simplest way to conduct valid inference  is by using bootstrap and recomputing all conditional expectations. See @Chernozhukov2015 regarding bootstrap inference, and also alternative estimation using global methods (as opposed to the local polynomial approach).
+
+--- 
+
+#### Next Section {.unnumbered}
+
+In the next section, we extend our identification results for average marginal effects beyond the population of stayers using restrictions on the dependence between $(A_i, U_{it})$ and $X_{it}$.
