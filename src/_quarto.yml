@@ -52,6 +52,7 @@ book:
         - nonparametric/nonparametric-average-estimation.qmd
         - nonparametric/nonparametric-location-scale.qmd
         - nonparametric/nonparametric-cre.qmd
+        - nonparametric/nonparametric-variance.qmd
     - part: "Quantile and Distributional Methods"
     - references/references.qmd
 

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/index.html</loc>
-    <lastmod>2025-08-20T11:54:35.748Z</lastmod>
+    <lastmod>2025-08-20T20:12:50.641Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/intro.html</loc>
@@ -66,7 +66,11 @@
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-cre.html</loc>
-    <lastmod>2025-08-20T17:13:31.801Z</lastmod>
+    <lastmod>2025-08-20T17:15:15.731Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-variance.html</loc>
+    <lastmod>2025-08-20T20:11:14.623Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.github.io/econometrics-heterogeneity/references/references.html</loc>
