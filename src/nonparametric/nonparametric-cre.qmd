@@ -1,0 +1,30 @@
+--- 
+description: "Learn   (Lecture Notes)"
+
+open-graph:
+    description: "Learn     (Lecture Notes)"
+---
+
+
+# Beyond Stayers with CRE Assumptions {#sec-nonparametric-cre}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+:::
+ 
+---
+
+
+
+## Regarding Stayers
+
+
+--- 
+
+#### Next Section {.unnumbered}
+
+In the next section, we 
