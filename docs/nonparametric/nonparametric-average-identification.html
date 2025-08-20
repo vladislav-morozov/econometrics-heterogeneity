@@ -671,7 +671,7 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows how stationary panel data can overcome heterogeneity bias and identify average marginal effects even with infinite-dimensional unobserved heterogeneity in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>).</p>
+<p>This section shows how stationary panel data can overcome heterogeneity bias and identify average marginal effects even with infinite-dimensional unobserved heterogeneity and without randomized treatment assignment.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
 <li>Identify the average marginal effects for the population of stayers using stationarity and continuity assumptions.</li>
@@ -693,7 +693,8 @@ Summary and Learning Outcomes
 \tag{13.1}\]</span></span> Notice that the conditioning sets on the two expectations are different. Consequently, the conditional distributions of <span class="math inline">\((A_i, U_{it})\)</span> given <span class="math inline">\(X_{it}\)</span> are different between the two expectations. In other words, we cannot hold the distribution of <span class="math inline">\((A_i, U_{it})\)</span> fixed as we vary <span class="math inline">\(x\)</span> in <span class="math inline">\(\E[Y_{it}|X_{it}]\)</span>. This violates the <em>ceteris paribus</em> logic required for interpreting <span class="math inline">\(\partial_x \E[Y_{it} | X_{it} = x]\)</span> as a causal effect, as mentioned in the previous section.</p>
 <p>The average marginal effect can itself be restated using a finite difference as <span id="eq-nonparametric-avg-exp-fd-phi"><span class="math display">\[
 \begin{aligned}
-&amp; \E[\partial_x\phi(x+h, A_i, U_{it}|\cdots] \\
+&amp; \E[\partial_x Y_{it}^x|\cdots]\\
+&amp; = \E[\partial_x\phi(x+h, A_i, U_{it}|\cdots] \\
 &amp;  = \E\left[\lim_{h\to 0}  \dfrac{ \phi(x+h, A_i, U_{it}) - \phi(x, A_i, U_{it})    }{h} \Bigg| \cdots \right].
 \end{aligned}
 \tag{13.2}\]</span></span> In this view, the failure of the naive approach of the previous section stems from the fact that we cannot interchange finite differences and expectations when using cross-sectional data in <a href="#eq-nonparametric-avg-FD-exp" class="quarto-xref">Equation&nbsp;<span>13.1</span></a>.</p>
@@ -702,16 +703,18 @@ Summary and Learning Outcomes
 <h2 data-number="13.2" class="anchored" data-anchor-id="identifying-average-marginal-effects-for-stayers"><span class="header-section-number">13.2</span> Identifying Average Marginal Effects for Stayers</h2>
 <section id="stationarity-time-as-an-instrument" class="level3" data-number="13.2.1">
 <h3 data-number="13.2.1" class="anchored" data-anchor-id="stationarity-time-as-an-instrument"><span class="header-section-number">13.2.1</span> Stationarity: Time as an Instrument</h3>
-<p>Panel data offers a natural way to address this failure of ceteris paribus reasoning. By comparing outcomes within the same unit, we can hold <span class="math inline">\(A_i\)</span> constant, isolating variation over time.</p>
+<p>Panel data offers a natural way to address this failure of ceteris paribus reasoning. By comparing outcomes within the same unit, we can hold <span class="math inline">\(A_i\)</span> constant.</p>
 <p>At the same time, contrasting outcomes within the same unit necessarily means contrasting outcomes from different periods — and hence dealing with variation in <span class="math inline">\(U_{it}\)</span>.</p>
-<p>As it turns out, to handle such comparisons it is sufficient to assume that <span class="math inline">\(U_{it}\)</span> is conditionally stationary. Formally, we assume that the distribution <span class="math inline">\(U_{i1}\)</span> conditional on <span class="math inline">\((X_{i1}, X_{i2}, A_i)\)</span> is equal to the conditional distribution of <span class="math inline">\(U_{i2}\)</span>. Under this assumption, the distribution of <span class="math inline">\(\phi(x, A_i, U_{it})\)</span> does not depend on time <span class="math inline">\(t\)</span> any more given <span class="math inline">\((X_{i1}, X_{i2})\)</span>. Intuitively, one may think that time is randomly assigned to observations; an interpretation called “time as an instrument” <span class="citation" data-cites="Chernozhukov2013">(<a href="../references/references.html#ref-Chernozhukov2013" role="doc-biblioref">Chernozhukov et al. 2013</a>)</span>. The variation in <span class="math inline">\(U_{it}\)</span> over time becomes non-systemic and we can use the time dimension to isolate causal effects.</p>
+<p>As it turns out, to handle such comparisons it is sufficient to assume that <span class="math inline">\(U_{it}\)</span> is conditionally stationary. Formally, we assume that the distribution <span class="math inline">\(U_{i1}\)</span> conditional on <span class="math inline">\((X_{i1}, X_{i2}, A_i)\)</span> is equal to the conditional distribution of <span class="math inline">\(U_{i2}\)</span>: <span class="math display">\[
+U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i) .
+\]</span> Under this assumption, the distribution of the potential outcomes <span class="math inline">\(Y_{it}^x=\phi(x, A_i, U_{it})\)</span> does not depend on time <span class="math inline">\(t\)</span> any more given <span class="math inline">\((X_{i1}, X_{i2})\)</span>. Intuitively, one may think that time is randomly assigned to observations; an interpretation called “time as an instrument” <span class="citation" data-cites="Chernozhukov2013">(<a href="../references/references.html#ref-Chernozhukov2013" role="doc-biblioref">Chernozhukov et al. 2013</a>)</span>. The variation in <span class="math inline">\(U_{it}\)</span> over time becomes non-systemic and we can use the time dimension to isolate causal effects.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>The stationarity assumption actually imposes a time-invariance assumption on the structural function <span class="math inline">\(\phi\)</span>. To see why, note that under this assumption <span class="math inline">\(U_{it}\)</span> cannot contain changing deterministic variables, including time <span class="math inline">\(t\)</span>. In general, if <span class="math inline">\(t\)</span> is part of <span class="math inline">\(U_{it}\)</span>, then the function could change arbitrarily between periods. There is effectively no value in panel data if such arbitrary changes are possible. The stationarity assumption rules out such situations.</p>
+<p>The stationarity assumption actually imposes a time-invariance assumption on the structural function <span class="math inline">\(\phi\)</span>. To see why, note that stationarity means that <span class="math inline">\(U_{it}\)</span> cannot contain changing deterministic variables, including time <span class="math inline">\(t\)</span>. In general, if <span class="math inline">\(t\)</span> is part of <span class="math inline">\(U_{it}\)</span>, then the function could change arbitrarily between periods. There is effectively no value in panel data if such arbitrary changes are possible. The stationarity assumption rules out such situations.</p>
 </div>
 </div>
 </div>
@@ -727,13 +730,13 @@ Summary and Learning Outcomes
 </ul>
 <p>The latter point means that (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) does not involve a genuine finite difference in contrast to <a href="#eq-nonparametric-avg-exp-fd-phi" class="quarto-xref">Equation&nbsp;<span>13.2</span></a>. As a consequence, there are two key conceptual pieces in our analysis:</p>
 <ul>
-<li><em>Convergence</em>: showing that expectation (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) does converge to the average marginal effect as <span class="math inline">\(h\to 0\)</span>, despite not involving the “correct” finite difference.</li>
+<li><em>Convergence</em>: showing that expectation (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) <em>does</em> converge to the average marginal effect as <span class="math inline">\(h\to 0\)</span>, despite not involving the “correct” finite difference.</li>
 <li><em>Identification</em>: showing that the limit of expectation (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) is identified as <span class="math inline">\(h\to 0\)</span>, at least for some subpopulation of interest.</li>
 </ul>
 </section>
 <section id="identifying-moments-of-finite-difference" class="level3" data-number="13.2.3">
 <h3 data-number="13.2.3" class="anchored" data-anchor-id="identifying-moments-of-finite-difference"><span class="header-section-number">13.2.3</span> Identifying Moments of Finite Difference</h3>
-<p>We begin with the identification step, showing how the expression in (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) maps onto observable quantities. To identify the limit of expectation (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) as <span class="math inline">\(h\to 0\)</span>, it is sufficient to identify (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) for all <span class="math inline">\(h&gt;0\)</span> in some neighborhood of 0. To do so, consider the population of units with <span class="math inline">\(\curl{ X_{i1} = x, X_{i2}  = x+h}\)</span>. By model (<a href="nonparametric-heterogeneity-bias.html#eq-nonparametric-model-full-nonsep-het-bias" class="quarto-xref"><span>12.1</span></a>), the outcomes of these units satisfy <span class="math display">\[
+<p>We begin with the identification step, showing how the expression in (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) maps onto observable quantities. To identify the limit of expectation (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) as <span class="math inline">\(h\to 0\)</span>, it is sufficient to identify (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) for all <span class="math inline">\(h&gt;0\)</span> in some neighborhood of 0. To do so, consider the population of units with <span class="math inline">\(\curl{ X_{i1} = x, X_{i2}  = x+h}\)</span>. By model (<a href="nonparametric-heterogeneity-bias.html#eq-nonparametric-model-full-nonsep-het-bias" class="quarto-xref"><span>12.1</span></a>), the <em>realized</em> outcomes of these units satisfy <span class="math display">\[
 \begin{aligned}
     Y_{i2} &amp; = \phi(x+h, A_i, U_{i2}),\\
     Y_{i1} &amp; = \phi(x, A_i, U_{i1}).
@@ -744,19 +747,19 @@ Summary and Learning Outcomes
     &amp; = \E\left[\dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\Bigg|X_{i1} = x, X_{i2} = x+h  \right].
 \end{aligned}
 \tag{13.4}\]</span></span> We conclude that (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) is identified for all <span class="math inline">\(h&gt;0\)</span> small enough, provided that the joint density of <span class="math inline">\((X_{i1}, X_{i2})\)</span> is positive in some neighborhood of <span class="math inline">\((x, x)\)</span>,</p>
-<p>This shows that we can observe the difference in outcomes directly in panel data for near-stayers — units whose covariates change only slightly over time (<span class="math inline">\(X_{i1}=x, X_{i2}=x+h\)</span> for small <span class="math inline">\(h&gt;0\)</span>; see e.g. <span class="citation" data-cites="Sasaki2021">Sasaki and Ura (<a href="../references/references.html#ref-Sasaki2021" role="doc-biblioref">2021</a>)</span>). It also determines the population for which we are able to identify the parameter of interest. We return to this topic below.</p>
+<p>This shows that we can observe the difference in outcomes directly in panel data for near-stayers — units whose covariates change only slightly over time (<span class="math inline">\(X_{i1}=x, X_{i2}=x+h\)</span> for small <span class="math inline">\(h&gt;0\)</span>; see <span class="citation" data-cites="Sasaki2021">Sasaki and Ura (<a href="../references/references.html#ref-Sasaki2021" role="doc-biblioref">2021</a>)</span> and the references cited therein). It also determines the population for which we are able to identify the parameter of interest. We return to this topic below.</p>
 </section>
 <section id="average-differences-and-almost-marginal-effects" class="level3" data-number="13.2.4">
 <h3 data-number="13.2.4" class="anchored" data-anchor-id="average-differences-and-almost-marginal-effects"><span class="header-section-number">13.2.4</span> Average Differences and Almost Marginal Effects</h3>
-<p>With identification in hand, we now analyze the behavior of this expression as <span class="math inline">\(h\to 0\)</span> to ensure that it converges to a marginal effect. Establishing convergence requires some continuity assumptions on the relationship between <span class="math inline">\(X_{it}\)</span>, <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span>. To motivate their form, we write out (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) as an integral, similarly to how we proceeded in the previous section. To that end, define the following conditional densities:</p>
+<p>With identification of (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) in hand, we now analyze the behavior of this expression as <span class="math inline">\(h\to 0\)</span> to ensure that it converges to a marginal effect. Establishing convergence requires some continuity assumptions on the relationship between <span class="math inline">\(X_{it}\)</span>, <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span>. To motivate their form, we write out (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) as an integral, similarly to how we proceeded in the previous section. To that end, define the following conditional densities:</p>
 <ul>
 <li><span class="math inline">\(f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2)\)</span> be the conditional density of <span class="math inline">\((A_i, U_{i1}, U_{i2})\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2}\)</span>;</li>
 <li><span class="math inline">\(f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)\)</span> be the conditional density of <span class="math inline">\((U_{i1}, U_{i2})\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}\)</span>;</li>
 <li><span class="math inline">\(f_{A_i|X_{i1}, X_{i2}}(a|x_1, x_2)\)</span> be the conditional density of <span class="math inline">\(A_i\)</span> given <span class="math inline">\(\curl{X_{i1}=x_1, X_{i2}=x_2}\)</span></li>
-<li><span class="math inline">\(f_{U_{it}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x_1, x_2, a)\)</span> be the conditional density of <span class="math inline">\(U_{it}\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}\)</span>.</li>
-<li><span class="math inline">\(f_{A_i, U_{it}|X_{i1}, X_{i2}}(u_1, u_2|x_1, x_2, a)\)</span> be the conditional density of <span class="math inline">\((A_i, U_{it})\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2}\)</span>.</li>
+<li><span class="math inline">\(f_{U_{it}|X_{i1}, X_{i2}, A_i}(u|x_1, x_2, a)\)</span> be the conditional density of <span class="math inline">\(U_{it}\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2, A_i=a}\)</span>.</li>
+<li><span class="math inline">\(f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)\)</span> be the conditional density of <span class="math inline">\((A_i, U_{it})\)</span> given <span class="math inline">\(\curl{X_{i1} =x_1, X_{i2}=x_2}\)</span>.</li>
 </ul>
-<p>Observe that the latter two densities do not depend on <span class="math inline">\(t\)</span> by assumption of stationarity! This property will be crucial to reducing (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) to an integral of a finite difference in <span class="math inline">\(\phi\)</span>.</p>
+<p>Observe that the latter two densities do not depend on <span class="math inline">\(t\)</span> by assumption of stationarity! This property is crucial to reducing (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) to an integral of a finite difference in <span class="math inline">\(\phi\)</span>.</p>
 <p>Throughout, we assume that the above densities are taken with respect to some overall dominating measure <span class="math inline">\(\mu\)</span> that does not depend on <span class="math inline">\((x_1, x_2)\)</span>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -791,11 +794,11 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
         \\
     &amp; \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2)\\
     %
-        &amp; = \int \left[\phi(x+h, a, u_2) - \phi(x, a, u_1) \right]
-    \\
-    &amp; \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a)
-        \\
-    &amp; \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2).
+    %       &amp; = \int \left[\phi(x+h, a, u_2) - \phi(x, a, u_1) \right]
+    % \\
+    % &amp; \hspace{2cm}\times   f_{U_{i1}, U_{i2}|X_{i1}, X_{i2}, A_i}(u_1, u_2|x, x+h, a)
+    %       \\
+    % &amp; \hspace{2cm}\times f_{A_i|X_{i1}, X_{i2}}(a|x, x+h) \mu(da, du_1, du_2).
 \end{aligned}
 \]</span> Now we make four key observations:</p>
 <ol type="1">
@@ -829,7 +832,7 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 &amp; = \int \left[ \phi(x+h, a, u)  - \phi(x, a, u) \right]f_{A_i, U_{it}|X_{i1}, X_{i2}, A_i}(a, u|x, x+h) \mu(da, du)
 \end{aligned}
 \]</span></p>
-<p>The achievement of the above representation is that we managed to obtain a genuine finite difference involving <span class="math inline">\(\phi\)</span> — notice that only <span class="math inline">\(x\)</span> changes under <span class="math inline">\(\phi\)</span>, while the same <span class="math inline">\(a\)</span> and <span class="math inline">\(u\)</span> appear in both terms. We can apply the mean value theorem to this finite difference as <span id="eq-nonparametric-avg-mvt"><span class="math display">\[
+<p>The achievement of the above representation is that we managed to obtain a genuine finite difference involving <span class="math inline">\(\phi\)</span>! Only <span class="math inline">\(x\)</span> changes under <span class="math inline">\(\phi\)</span>, while the same <span class="math inline">\(a\)</span> and <span class="math inline">\(u\)</span> appear in both terms. We can now apply the mean value theorem to this finite difference as <span id="eq-nonparametric-avg-mvt"><span class="math display">\[
 \phi(x+h, a, u) = \phi(x, a, u) + h\partial_x\phi(\tilde{x}, a, u),
 \tag{13.5}\]</span></span> where <span class="math inline">\(\tilde{x}\)</span> is a point between <span class="math inline">\(x\)</span> and <span class="math inline">\(x+h\)</span>; <span class="math inline">\(\tilde{x}\)</span> possibly depends on <span class="math inline">\(a\)</span> and <span class="math inline">\(u\)</span>.</p>
 <p>Substituting <a href="#eq-nonparametric-avg-mvt" class="quarto-xref">Equation&nbsp;<span>13.5</span></a> into the above representation for (<a href="#eq-nonparametric-avg-key-exp" class="quarto-xref"><span>13.3</span></a>) we conclude that <span id="eq-nonparametric-avg-almost-me"><span class="math display">\[
@@ -841,11 +844,11 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 </section>
 <section id="distributional-continuity-in-unobservables" class="level3" data-number="13.2.5">
 <h3 data-number="13.2.5" class="anchored" data-anchor-id="distributional-continuity-in-unobservables"><span class="header-section-number">13.2.5</span> Distributional Continuity in Unobservables</h3>
-<p>To convert this representation into a true marginal effect, we analyze the integrand in <a href="#eq-nonparametric-avg-almost-me" class="quarto-xref">Equation&nbsp;<span>13.6</span></a>. In expectation form, we can write it as <span class="math display">\[
+<p>In expectation form, we can write the integral as <span class="math display">\[
 \E[\partial_x \phi(\tilde{x}, A_i, U_{it})|X_{i1}=x, X_{i2}=x+h].
 \]</span> This object is not quite an average marginal effect — the function <span class="math inline">\(\phi\)</span> is evaluated at a potentially random point <span class="math inline">\(\tilde{x}=\tilde{x}(A_i, U_{it})\)</span>.</p>
 <p>To resolve this issue, we need to enforce <span class="math inline">\(\tilde{x} = x\)</span>. Since <span class="math inline">\(\tilde{x} \in [x-h, x+h]\)</span>, this result can be achieved by taking <span class="math inline">\(h\to 0\)</span> in <a href="#eq-nonparametric-avg-almost-me" class="quarto-xref">Equation&nbsp;<span>13.6</span></a>, while preserving the expectation interpretation of the result.</p>
-<p>To ensure this limiting behavior is well-defined, we impose our second key <strong>assumption</strong> to allow taking <span class="math inline">\(h\to\infty\)</span>. We assume that the density <span class="math inline">\(f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)\)</span> is continuous in <span class="math inline">\((x_1, x_2)\)</span>. In words, we assume that the distribution of unobserved components varies smoothly as we vary covarites.</p>
+<p>To ensure this limiting behavior is well-defined, we impose our second key <strong>assumption</strong> to allow taking <span class="math inline">\(h\to 0\)</span>. We assume that the density <span class="math inline">\(f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x_1, x_2)\)</span> is continuous in <span class="math inline">\((x_1, x_2)\)</span>. In words, we assume that the distribution of unobserved components varies smoothly as we vary the treatments.</p>
 <p>With this assumption, the integrand in <a href="#eq-nonparametric-avg-almost-me" class="quarto-xref">Equation&nbsp;<span>13.6</span></a> converges as <span class="math inline">\(h\to 0\)</span> <span class="math display">\[
 \begin{aligned}
 &amp; \partial_x\phi(\tilde{x}, a, u)f_{A_i, U_{it}|X_{i1}, X_{i2}}(a, u|x, x+h) \\
@@ -863,7 +866,8 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 <h3 data-number="13.2.6" class="anchored" data-anchor-id="result-statement"><span class="header-section-number">13.2.6</span> Result Statement</h3>
 <p>Combining equations (<a href="#eq-nonparametric-avg-me-id" class="quarto-xref"><span>13.4</span></a>), (<a href="#eq-nonparametric-avg-almost-me" class="quarto-xref"><span>13.6</span></a>), and (<a href="#eq-nonparametric-avg-me-stayers" class="quarto-xref"><span>13.7</span></a>), we obtain our identification result: <span id="eq-nonparametric-avg-me-identification-result"><span class="math display">\[
 \begin{aligned}
-&amp; \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+&amp; \E[\partial_x Y_{it}^x | X_{i1} = X_{i2}= x]\\
+&amp; = \E\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] \\
 &amp; = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
 \tag{13.8}\]</span></span> This result, derived by <span class="citation" data-cites="Hoderlein2012">Hoderlein and White (<a href="../references/references.html#ref-Hoderlein2012" role="doc-biblioref">2012</a>)</span> and <span class="citation" data-cites="Chernozhukov2015">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">2015</a>)</span>, establishes nonparametric identification of average marginal effects for <em>stayers at x</em> — units with identical values of <span class="math inline">\(X_{i1}\)</span> and <span class="math inline">\(X_{i2}\)</span>.</p>
@@ -872,7 +876,7 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 <li>Conditional stationarity of <span class="math inline">\(U_{it}\)</span>: used to convert expected change in outcomes into an expected finite difference in <span class="math inline">\(\phi\)</span></li>
 <li>Continuity of the conditional distribution of <span class="math inline">\((A_i, U_{it})\)</span> in the conditioning variables.</li>
 </ul>
-<p>What makes <a href="#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a> especially powerful is that it is compatible with potentially <em>infinite</em>-dimensional unobserved heterogeneity. We can nonparametrically identify meaningful causal parameters without even needing to know the dimension and the form of the unobserved components <span class="math inline">\((A_i, U_{it})\)</span>.</p>
+<p>What makes <a href="#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a> especially powerful is that it is compatible with potentially <em>infinite</em>-dimensional unobserved heterogeneity <em>without</em> independence assumptions. We can nonparametrically identify meaningful causal parameters without even needing to know the dimension and the form of the unobserved components <span class="math inline">\((A_i, U_{it})\)</span>. Moreover, we did not restrict the dependence between <span class="math inline">\(X_{it}\)</span> and <span class="math inline">\((A_{i}, U_{it})\)</span>.</p>
 <p>This is a remarkably flexible framework. For example,</p>
 <ul>
 <li>In a consumption context, individuals may have arbitrarily different preferences.<br>
@@ -880,7 +884,7 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 <li>In a production setting, firms may differ in their entire technology sets.</li>
 </ul>
 <p>As long as there is smoothness in the distribution of unobservables and comparability over time (i.e., conditional stationarity), the average marginal effect for stayers is identified.</p>
-<p>In the next section, we will refine <a href="#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a> to provide an even more explicit identification result and discuss estimation.</p>
+<p>In the next section, we refine <a href="#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a> to provide an even more explicit identification result and discuss estimation.</p>
 </section>
 </section>
 <section id="interpretation-and-stayers" class="level2" data-number="13.3">
@@ -888,7 +892,7 @@ Regarding the existence of <span class="math inline">\(\mu\)</span>
 <p>Before proceeding, we briefly discuss the population for which <a href="#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a> identifies marginal effects. Stayers represent an important subpopulation in nonparametric panel data analysis, dating back to the seminal work of <span class="citation" data-cites="Chamberlain1982">Chamberlain (<a href="../references/references.html#ref-Chamberlain1982" role="doc-biblioref">1982</a>)</span>.</p>
 <p>Stayers matter for two main reasons, one positive, one negative:</p>
 <ol type="1">
-<li><p><strong>Empirical relevance</strong>: In many microdata settings, stayers and near-stayers comprise a substantial share or an outright majority of the population. See, for example, the evidence and discussion in <span class="citation" data-cites="Sasaki2022">Sasaki and Wang (<a href="../references/references.html#ref-Sasaki2022" role="doc-biblioref">2022</a>)</span>.</p></li>
+<li><p><strong>Empirical relevance</strong>: In many microdata settings, stayers and near-stayers comprise a substantial share or an outright majority of the population. See, for example, the evidence and discussion in <span class="citation" data-cites="Sasaki2021">Sasaki and Ura (<a href="../references/references.html#ref-Sasaki2021" role="doc-biblioref">2021</a>)</span>.</p></li>
 <li><p><strong>Theoretical necessity</strong>: Stayers are typically the <strong>only</strong> population for which identification is possible without meaningful restrictions on the dependence between <span class="math inline">\(X_{it}\)</span> and <span class="math inline">\((A_i, U_{it})\)</span>. As shown by the constructive counterexamples in <span class="citation" data-cites="Cooprider2022">Cooprider, Hoderlein, and Meister (<a href="../references/references.html#ref-Cooprider2022" role="doc-biblioref">2022</a>)</span>, identification generally fails for all distributional features of marginal effects for non-stayers in models (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="nonparametric-introduction.html#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>).</p></li>
 </ol>
 <hr>
@@ -915,9 +919,6 @@ Hoderlein, Stefan, and Halbert White. 2012. <span>“<span class="nocase">Nonpar
 </div>
 <div id="ref-Sasaki2021" class="csl-entry" role="listitem">
 Sasaki, Yuya, and Takuya Ura. 2021. <span>“<span class="nocase">Slow Movers in Panel Data</span>,”</span> 1–40. <a href="https://arxiv.org/abs/2110.12041">https://arxiv.org/abs/2110.12041</a>.
-</div>
-<div id="ref-Sasaki2022" class="csl-entry" role="listitem">
-Sasaki, Yuya, and Yulong Wang. 2022. <span>“<span class="nocase">Fixed-k Inference for Conditional Extremal Quantiles</span>.”</span> <em>Journal of Business and Economic Statistics</em> 40 (2): 829–37. <a href="https://doi.org/10.1080/07350015.2020.1870985">https://doi.org/10.1080/07350015.2020.1870985</a>.
 </div>
 </div>
 </section>
