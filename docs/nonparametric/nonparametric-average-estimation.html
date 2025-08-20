@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-location-scale.html" rel="next">
 <link href="../nonparametric/nonparametric-average-identification.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -603,6 +603,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -683,7 +689,7 @@ Summary and Learning Outcomes
 </div>
 <section id="an-estimable-form-of-the-average-marginal-effect" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</h2>
-<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>): <span class="math display">\[
+<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.9</span></a>): <span class="math display">\[
 \begin{aligned}
 &amp; \E\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] \\
 &amp; = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
@@ -707,7 +713,7 @@ g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
 &amp; \to \partial_{x_2} g(x, x),
 \end{aligned}
 \tag{14.1}\]</span></span> where <span class="math inline">\(\partial_{x_2}\)</span> means the partial derivative with respect to the second argument.</p>
-<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
+<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.9</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
 \begin{aligned}
     &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
     &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
@@ -1401,8 +1407,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../nonparametric/nonparametric-location-scale.html" class="pagination-link" aria-label="Relaxing Stationarity with Nonparametric Time Effects">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

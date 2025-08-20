@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients. Lecture notes.">
+<meta name="description" content="Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)">
 
-<title>3&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity</title>
+<title>15&nbsp; Relaxing Stationarity with Nonparametric Time Effects – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-dynamic-panel-iv.html" rel="next">
-<link href="../linear/linear-introduction.html" rel="prev">
+<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-average-estimation.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -448,9 +448,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="3&nbsp; Within (Fixed Effects) Estimator and Heterogeneous Coefficients – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn why the within (fixed effects) estimator works only under narrow conditions with heterogeneous coefficients. Lecture notes.">
-<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/figures/ols_heterogeneity.svg">
+<meta property="og:title" content="15&nbsp; Relaxing Stationarity with Nonparametric Time Effects – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -463,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-within-estimator.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-location-scale.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -523,7 +522,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
@@ -606,7 +605,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
   </div>
 </li>
@@ -632,33 +631,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">3.1</span> Introduction</a>
+  <li><a href="#a-more-general-model" id="toc-a-more-general-model" class="nav-link active" data-scroll-target="#a-more-general-model"><span class="header-section-number">15.1</span> A More General Model</a>
   <ul class="collapse">
-  <li><a href="#focus-workhorse-estimators-under-heterogeneity" id="toc-focus-workhorse-estimators-under-heterogeneity" class="nav-link" data-scroll-target="#focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">3.1.1</span> Focus: Workhorse Estimators under Heterogeneity</a></li>
-  <li><a href="#this-section-static-model-and-fixed-t" id="toc-this-section-static-model-and-fixed-t" class="nav-link" data-scroll-target="#this-section-static-model-and-fixed-t"><span class="header-section-number">3.1.2</span> This Section: Static Model and Fixed <span class="math inline">\(T\)</span></a></li>
+  <li><a href="#the-drawbacks-of-stationarity" id="toc-the-drawbacks-of-stationarity" class="nav-link" data-scroll-target="#the-drawbacks-of-stationarity"><span class="header-section-number">15.1.1</span> The Drawbacks of Stationarity</a></li>
+  <li><a href="#including-location-scale-time-effects" id="toc-including-location-scale-time-effects" class="nav-link" data-scroll-target="#including-location-scale-time-effects"><span class="header-section-number">15.1.2</span> Including Location-Scale Time Effects</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">15.1.3</span> Discussion</a></li>
   </ul></li>
-  <li><a href="#recall-within-estimator-in-the-random-intercept-model" id="toc-recall-within-estimator-in-the-random-intercept-model" class="nav-link" data-scroll-target="#recall-within-estimator-in-the-random-intercept-model"><span class="header-section-number">3.2</span> Recall: Within Estimator in the Random Intercept Model</a>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">15.2</span> Identification</a>
   <ul class="collapse">
-  <li><a href="#construction" id="toc-construction" class="nav-link" data-scroll-target="#construction"><span class="header-section-number">3.2.1</span> Construction</a></li>
-  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">3.2.2</span> Properties</a></li>
+  <li><a href="#scale-effect" id="toc-scale-effect" class="nav-link" data-scroll-target="#scale-effect"><span class="header-section-number">15.2.1</span> Scale Effect</a></li>
+  <li><a href="#location-effect-and-average-of-phi" id="toc-location-effect-and-average-of-phi" class="nav-link" data-scroll-target="#location-effect-and-average-of-phi"><span class="header-section-number">15.2.2</span> Location Effect and Average of <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#average-derivative-of-phi" id="toc-average-derivative-of-phi" class="nav-link" data-scroll-target="#average-derivative-of-phi"><span class="header-section-number">15.2.3</span> Average Derivative of <span class="math inline">\(\phi\)</span></a></li>
   </ul></li>
-  <li><a href="#adding-heterogeneous-coefficients" id="toc-adding-heterogeneous-coefficients" class="nav-link" data-scroll-target="#adding-heterogeneous-coefficients"><span class="header-section-number">3.3</span> Adding Heterogeneous Coefficients</a>
-  <ul class="collapse">
-  <li><a href="#sampling-error-form" id="toc-sampling-error-form" class="nav-link" data-scroll-target="#sampling-error-form"><span class="header-section-number">3.3.1</span> Sampling Error Form</a></li>
-  <li><a href="#conditions-for-estimating-average-coefficients" id="toc-conditions-for-estimating-average-coefficients" class="nav-link" data-scroll-target="#conditions-for-estimating-average-coefficients"><span class="header-section-number">3.3.2</span> Conditions for Estimating Average Coefficients</a></li>
-  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">3.3.3</span> Intuition</a></li>
-  <li><a href="#why-panel-data-is-useful" id="toc-why-panel-data-is-useful" class="nav-link" data-scroll-target="#why-panel-data-is-useful"><span class="header-section-number">3.3.4</span> Why Panel Data is Useful</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">3.3.5</span> Example</a></li>
-  </ul></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">15.3</span> Estimation</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-within-estimator.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-location-scale.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-within-estimator.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-location-scale.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-within" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-loc-scale" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></h1>
 </div>
 
 
@@ -685,229 +679,154 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows that the within (fixed effects) estimator consistently estimates average coefficients only under narrow assumptions.</p>
-<p>By the end of this section, you should</p>
+<p>This section shows how to extend identification of marginal effects to a model with nonparametric location-scale time effects.</p>
+<p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Refresh your knowledge of within (fixed effects) estimation.</li>
-<li>Learn when the within estimator gives consistent estimates of average coefficients in heterogeneous models.</li>
-<li>See the first example of heterogeneity bias in this course.</li>
+<li>Identify the average marginal effects for stayers under a model with location-scale effects and potentially infinite-dimensional heterogeneity.<br>
+</li>
+<li>Propose estimators for the average marginal effects.</li>
+<li>Draw parallels between the models of this block and event study/difference-in-differences approaches.</li>
 </ul>
 </div>
 </div>
-<section id="introduction" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>As noted in the previous section, in this block we focus our attention on the linear panel data model with unit-specific heterogeneous coefficients (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref">Equation&nbsp;<span>2.7</span></a>): <span id="eq-within-lecture-model"><span class="math display">\[
-Y_{it}^{\bx} = \bbeta_i'\bx + U_{it}.
-\tag{3.1}\]</span></span></p>
-<p>Our first key parameter of interest is the <em>average coefficient vector <span class="math inline">\(\E[\bbeta_i]\)</span></em>— the linear model analog to the average treatment effect.</p>
-<section id="focus-workhorse-estimators-under-heterogeneity" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="focus-workhorse-estimators-under-heterogeneity"><span class="header-section-number">3.1.1</span> Focus: Workhorse Estimators under Heterogeneity</h3>
-<p>Can existing workhorse estimators for linear panel data models — the within (fixed effects) and dynamic panel IV estimators — correctly estimate <span class="math inline">\(\E[\bbeta_i]\)</span>? Of course, those methods were developed in the context of the simpler random intercept model (<a href="linear-introduction.html#eq-random_intercept" class="quarto-xref"><span>2.8</span></a>) <span id="eq-within-lecture-random-intercept"><span class="math display">\[
-Y_{it}^{\bx} = A_i + \bbeta'\bx + U_{it}.
-\tag{3.2}\]</span></span> However, if they can also handle the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>, then all the better for us — we do not need to develop any new methods.</p>
-<p>Unfortunately, such standard estimators usually fail when coefficients vary across units, as we demonstrate in this and the next few sections. This failure holds both for static and the dynamic formulations of <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>.</p>
+<hr>
+<section id="a-more-general-model" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="a-more-general-model"><span class="header-section-number">15.1</span> A More General Model</h2>
+<section id="the-drawbacks-of-stationarity" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="the-drawbacks-of-stationarity"><span class="header-section-number">15.1.1</span> The Drawbacks of Stationarity</h3>
+<p>The stationarity assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>) is crucial to the identification argument of section (<a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>). It allows us to connect the average change in the realized outcomes <span class="math inline">\(Y_{it}\)</span> to finite differences of the structural function <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span>. In turn, this connection leads to our key identification result for average marginal effects: <span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial^x Y_{it}^{x}|X_{i1} = X_{i2} = x]\\
+    &amp; = \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+\]</span></p>
+<p>While useful for identification, assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>) imposes that the function <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span> <em>cannot</em> change across periods. Such time invariance may be reasonable if consecutive observations are not separated by long periods of time. In contrast, it may be untenable if the interval between observations is large or there are meaningful changes in the overall “context” in which the units operate.</p>
 </section>
-<section id="this-section-static-model-and-fixed-t" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="this-section-static-model-and-fixed-t"><span class="header-section-number">3.1.2</span> This Section: Static Model and Fixed <span class="math inline">\(T\)</span></h3>
-<p>In this section, we consider the static case and the associated workhorse estimator — the within (fixed effects) estimator. By “static”, we mean that the model does not include lagged dependent variables as regressors. In addition, we assume strict exogeneity <span class="math display">\[
-\E[\bU_i|\bX_i]=0,
-\]</span> where <span class="math inline">\(\bU_i = (U_{i1}, \dots, U_{it})\)</span> and <span class="math inline">\(\bX_i = (\bX_{i1}', \dots, \bX_{iT}')'\)</span>.</p>
-<p>Throughout, we assume that the number <span class="math inline">\(N\)</span> of cross-sectional units is potentially large, while the number <span class="math inline">\(T\)</span> of data points per unit is fixed. This setup is more reflective of typical micropanels.</p>
+<section id="including-location-scale-time-effects" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="including-location-scale-time-effects"><span class="header-section-number">15.1.2</span> Including Location-Scale Time Effects</h3>
+<p>However, it is possible to accommodate some changes over time while preserving our identification results. In particular, it is possible to accommodate flexible location-scale effects that depend on the observables nonparametrically.</p>
+<p>Specifically, we now consider the following extension of the model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), discussed by <span class="citation" data-cites="Chernozhukov2015">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">2015</a>)</span>: <span id="eq-nonparametric-loc-scale-model"><span class="math display">\[
+\begin{aligned}
+    Y_{i1}^{x_1}  &amp;= \phi(x_1, A_i, U_{it}),\\
+    Y_{i2}^{x_2} &amp; = \mu(x_2) + \sigma(x_2) \phi(x_2, A_i, U_{i2}).
+\end{aligned}
+\tag{15.1}\]</span></span> The functions <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\sigma(\cdot)\)</span> may be viewed as flexible nonparametric <em>location-scale</em> time effects. We assume throughout that <span class="math inline">\(\sigma(\cdot)\neq 0\)</span>.</p>
+<p>Although we allow the function <span class="math inline">\(\phi\)</span> to change, we retain the conditional stationarity assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>): <span class="math display">\[
+U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i).
+\]</span></p>
+<p>The key objects of interest are the average marginal effects of <span class="math inline">\(x\)</span> for stayers in periods <span class="math inline">\(t=1\)</span>: <span id="eq-nonparametric-loc-scale-t1"><span class="math display">\[
+\begin{aligned}
+  \E[\partial_x Y_{i1}^x|X_{i1}=X_{i2} =x] &amp; = \E\left[ \partial_x \phi(x, A_{i}, U_{it}) |X_{i1}=X_{i2} =x\right],
+\end{aligned} \tag{15.2}\]</span></span> and <span class="math inline">\(t=2\)</span>: <span id="eq-nonparametric-loc-scale-t2"><span class="math display">\[
+\begin{aligned}
+&amp; \E[\partial_x Y_{i2}^x|X_{i1}=X_{i2} =x]\\
+  &amp; = \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it})  \right)|X_{i1}=X_{i2} =x\right]
+\end{aligned}
+\tag{15.3}\]</span></span> Observe that there is now time variation in the average effects, unlike under model (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>).</p>
 </section>
-</section>
-<section id="recall-within-estimator-in-the-random-intercept-model" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="recall-within-estimator-in-the-random-intercept-model"><span class="header-section-number">3.2</span> Recall: Within Estimator in the Random Intercept Model</h2>
-<p>To begin, we briefly go through the construction and the properties of the within estimator under the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>).</p>
-<section id="construction" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="construction"><span class="header-section-number">3.2.1</span> Construction</h3>
-<p>Within (“fixed effects”) estimation of the random intercept model has two steps:</p>
+<section id="discussion" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="discussion"><span class="header-section-number">15.1.3</span> Discussion</h3>
+<p>Model (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) preserves the two attractive features of the simpler model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>):</p>
 <ol type="1">
-<li>Apply the within transformation to each unit.</li>
-<li>Apply OLS to the resulting pooled data.</li>
+<li><span class="math inline">\((A_i, U_{it})\)</span> can take any form, have any dimension, and affect the potential outcomes arbitrarily.</li>
+<li>There are no restrictions on the dependence between the treatment <span class="math inline">\(X_{it}\)</span> and potential outcomes.</li>
 </ol>
-<section id="step-1-within-transformation" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="step-1-within-transformation"><span class="header-section-number">3.2.1.1</span> Step 1: Within Transformation</h4>
-<p>To perform the within transformation, we first average the equations for unit <span class="math inline">\(i\)</span> across <span class="math inline">\(t\)</span>. Label the average of <span class="math inline">\(Y_{it}\)</span> across <span class="math inline">\(t\)</span> for unit <span class="math inline">\(i\)</span> as</p>
-<p><span class="math display">\[
-Y_{i\cdot} = \frac{1}{T} \sum_{t=1}^{T} Y_{it}.
+<p>Intuitively, the connection between models (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) mirrors familiar binary-treatment settings. The time-invariant model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) corresponds to a nonparametric event-study design with a continuous treatment (see chapter 17 of <span class="citation" data-cites="Huntington-Klein2025EffectIntroductionResearch">Huntington-Klein (<a href="../references/references.html#ref-Huntington-Klein2025EffectIntroductionResearch" role="doc-biblioref">2025</a>)</span> regarding event studies with no trends in the outcome). The location-scale extension (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>), by contrast, generalizes this to a nonparametric difference-in-differences framework, accommodating nonparametric trends in the outcomes.</p>
+</section>
+</section>
+<section id="identification" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="identification"><span class="header-section-number">15.2</span> Identification</h2>
+<p>We now turn to identification of the average marginal effects (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>). Identification proceeds in three steps:</p>
+<ol type="1">
+<li>Identifying the scale function <span class="math inline">\(\sigma(\cdot)\)</span>.</li>
+<li>Identifying the location function <span class="math inline">\(\mu(\cdot)\)</span>.</li>
+<li>Identifying the average value <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span> of <span class="math inline">\(\phi\)</span> and the average value of its derivative <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>.</li>
+</ol>
+<p>Together, these components are sufficient to identify both (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>), since the second period effect can be represented as <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it}) \right)|X_{i1}=X_{i2} =x\right] \\
+&amp; = \partial_x \mu(x) \\
+&amp; \quad + \sigma(x) \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+&amp; \quad + \left(\partial_x \sigma(x)\right) \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+\end{aligned}
 \]</span></p>
-<p>The averaged realized outcome <span class="math inline">\(Y_{i\cdot}\)</span> satisfies the averaged equation</p>
-<p><span class="math display">\[
-Y_{i\cdot} = A_i + \bbeta' \bX_{i\cdot} + U_{i\cdot},
-\]</span> where the averaged variables <span class="math inline">\(\bX_{i\cdot}\)</span> and <span class="math inline">\(U_{i\cdot}\)</span> are defined analogously to <span class="math inline">\(Y_{i\cdot}\)</span>.</p>
-<p>Define the within-transformed variables by subtracting this averaged equation from the original equation for each <span class="math inline">\(t\)</span>: <span class="math display">\[
-\tilde{Y}_{it} = Y_{it} - Y_{i\cdot}.
+<section id="scale-effect" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="scale-effect"><span class="header-section-number">15.2.1</span> Scale Effect</h3>
+<p>We begin by identifying the scale function <span class="math inline">\(\sigma(\cdot)\)</span>. The scale is directly connect to the variance of the second period realized outcome for the subpopulation of stayers as <span class="math display">\[
+\begin{aligned}
+    &amp; \var(Y_{i2}|X_{i1}=X_{i2}=x) \\
+    &amp; = \sigma^2(x)\var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
+\]</span> As before, the notation <span class="math inline">\(U_{it}\)</span> under <span class="math inline">\(\phi\)</span> emphasizes stationarity of <span class="math inline">\(U_{it}\)</span>.</p>
+<p>At the same time, the conditional variance of <span class="math inline">\(\phi(x, A_i, U_{it})\)</span> for stayers is directly obtained from the variance of the first period realized outcome: <span class="math display">\[
+\begin{aligned}
+    &amp; \var\left(Y_{i1}|X_{i1}=X_{i2}=x \right) \\
+    &amp; = \var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
 \]</span></p>
-<p>If <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> is true, the realized within transformed variables follow the within-transformed equation:</p>
-<p><span id="eq-within_transformed"><span class="math display">\[
-\tilde{Y}_{it} = \bbeta' \tilde{\bX}_{it} + \tilde{Y}_{it}.
-\tag{3.3}\]</span></span></p>
-<p>Under <a href="#eq-within-lecture-random-intercept" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>, the within transformation eliminates the individual random intercepts <span class="math inline">\(A_i\)</span>. <a href="#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> now looks like a regular homogeneous regression.</p>
+<p>Combining the two expression yields an explicit formula for the scale effect, provided <span class="math inline">\(\var\left(Y_{i1}|X_{i1}=X_{i2}=x \right)\neq 0\)</span>: <span class="math display">\[
+    \sigma^2(x) = \dfrac{   \var(Y_{i2}|X_{i1}=X_{i2}=x) }{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }.
+\]</span></p>
 </section>
-<section id="step-2-ols-on-the-within-transformed-equation" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="step-2-ols-on-the-within-transformed-equation"><span class="header-section-number">3.2.1.2</span> Step 2: OLS on the Within-Transformed Equation</h4>
-<p>The within (fixed effects) estimator is obtained by simply pooling the data across <span class="math inline">\(i\)</span> and <span class="math inline">\(t\)</span> in <a href="#eq-within_transformed" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> and applying OLS to it. Specifically, the estimator is given by</p>
-<p><span id="eq-within_representation_random_intercept"><span class="math display">\[
-\hat{\bbeta}^W = \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bY}_i,
-\tag{3.4}\]</span></span> where <span class="math inline">\(\bY_i = (Y_{i1}, \dots, Y_{iT})\)</span>.</p>
+<section id="location-effect-and-average-of-phi" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="location-effect-and-average-of-phi"><span class="header-section-number">15.2.2</span> Location Effect and Average of <span class="math inline">\(\phi\)</span></h3>
+<p>To obtain the location effect <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>, we instead look at the averages of the realized outcomes for stayers. By model (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) it holds that <span class="math display">\[
+\begin{aligned}
+    \E[Y_{i1}|X_{i1}=X_{i2}=x] &amp; = \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x], \\
+    \E[Y_{i2}|X_{i1}=X_{i2}=x] &amp; = \mu(x) + \sigma(x)\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x].
+\end{aligned}
+\]</span> Identification for <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span> is thus immediate. To obtain <span class="math inline">\(\mu(\cdot)\)</span>, we rearrange and multiply the first line by <span class="math inline">\(\sigma(x)\)</span>: <span class="math display">\[
+\begin{aligned}
+    \mu(x) &amp; = \E[Y_{i2}|X_{i1}=X_{i2}=x] - \sigma(x)\E[Y_{i1}|X_{i1}=X_{i2}=x] \\
+    &amp; = \E[Y_{i2}|X_{i1}=X_{i2}=x] \\
+    &amp; \quad - \sqrt{\dfrac{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }}\E[Y_{i2}|X_{i1}=X_{i2}=x] .
+\end{aligned}
+\]</span></p>
 </section>
-</section>
-<section id="properties" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="properties"><span class="header-section-number">3.2.2</span> Properties</h3>
-<p>The within estimator enjoys several desirable properties if the underlying causal model is actually given by the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>). Most of these properties can be derived from its sampling error representation <span id="eq-within-sampling-error-homogeneous"><span class="math display">\[
-\hat{\bbeta}^W = \bbeta + \left(\sum_{i=1}^{N} \tilde{\bX}_i' \tilde{\bX}_i \right)^{-1} \sum_{i=1}^{N} \tilde{\bX}_i \tilde{\bU}_i.
-\tag{3.5}\]</span></span></p>
+<section id="average-derivative-of-phi" class="level3" data-number="15.2.3">
+<h3 data-number="15.2.3" class="anchored" data-anchor-id="average-derivative-of-phi"><span class="header-section-number">15.2.3</span> Average Derivative of <span class="math inline">\(\phi\)</span></h3>
+<p>Finally, having identified <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\sigma(\cdot)\)</span>, we can now proceed to identify <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>. To do so, we define new synthetic outcomes that eliminate the location-scale effects, reducing the problem to the stationary case (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>): <span class="math display">\[
+\begin{aligned}
+Z_{i1} &amp; = Y_{i1}, \\
+Z_{i2} &amp; = \dfrac{Y_{i2}- \mu(X_{i2})}{\sigma(X_{i2})}.
+\end{aligned}
+\]</span></p>
+<p>The new variables <span class="math inline">\((Z_{i1}, Z_{it})\)</span> satisfy two key properties:</p>
 <ul>
-<li><p><span class="math inline">\(\hat{\bbeta}^W\)</span> is unbiased for <span class="math inline">\(\bbeta\)</span>. To show this, it is sufficient to notice that strict exogeneity of <span class="math inline">\(\bU_i\)</span> with respect to <span class="math inline">\(\bX_i\)</span> implies strict exogeneity of <span class="math inline">\(\tilde{\bU}_i\)</span> with respect to <span class="math inline">\(\tilde{\bX}_i\)</span>: <span class="math display">\[
-\E[\tilde{\bU}_i|\tilde{\bX}_i] =
-\E[\E[\tilde{\bU}_i|\bX_i]|\tilde{\bX}_i] = 0.
-\]</span> It follows that the mean of the second term in <a href="#eq-within-sampling-error-homogeneous" class="quarto-xref">Equation&nbsp;<span>3.5</span></a> is 0, and so <span class="math display">\[
-\E[\hat{\bbeta}^W] = \bbeta.
-\]</span></p></li>
-<li><p><span class="math inline">\(\hat{\bbeta}^W\)</span> is consistent for <span class="math inline">\(\bbeta\)</span> and asymptotically normal, provided a standard rank condition holds for <span class="math inline">\(\tilde{\bX}_i\)</span>: <span id="eq-within_asymptotic"><span class="math display">\[
-\hat{\bbeta}^W \xrightarrow{p} \bbeta, \quad \sqrt{N}(\hat{\bbeta}^W - \bbeta) \Rightarrow N(0, \Sigma).  
-\tag{3.6}\]</span></span></p></li>
+<li>The distribution of <span class="math inline">\((Z_{i1}, Z_{i2}, X_{i1}, X_{i2})\)</span> is identified.</li>
+<li>The variables follow <span class="math display">\[
+Z_{it} = \phi(X_{it}, A_i, U_{it}).
+\]</span></li>
 </ul>
-<p>Since <span class="math inline">\(\bbeta\)</span> is the average coefficient vector in this homogeneous model, we conclude that the within estimator consistently estimates average coefficients under the random intercept model (<a href="#eq-within-lecture-random-intercept" class="quarto-xref"><span>3.2</span></a>).</p>
-</section>
-</section>
-<section id="adding-heterogeneous-coefficients" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="adding-heterogeneous-coefficients"><span class="header-section-number">3.3</span> Adding Heterogeneous Coefficients</h2>
-<p>However, there is usually no theoretical reason for the slopes <span class="math inline">\(\bbeta\)</span> to be homogeneous. An assumption of slope homogeneity goes against acknowledging heterogeneity and including the random intercept terms <span class="math inline">\(A_i\)</span> in the first place. It is rather more realistic to consider the more general <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>. Accordingly, we now turn to studying the properties of <span class="math inline">\(\hat{\bbeta}^W\)</span> in this more realistic setting.</p>
-<section id="sampling-error-form" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="sampling-error-form"><span class="header-section-number">3.3.1</span> Sampling Error Form</h3>
-<p>Applying the within transformation to the heterogeneous <a href="#eq-within-lecture-model" class="quarto-xref">Equation&nbsp;<span>3.1</span></a> yields another version of the within-transformed equation:</p>
-<p><span class="math display">\[
-\tilde{Y}_{it} = \bbeta_i' \tilde{\bX}_{it} + \tilde{U}_{it}.
-\]</span></p>
-<p>Note that now the individual heterogeneity is not eliminated! The heterogeneous coefficients <span class="math inline">\(\bbeta_i\)</span> remain in the equation.</p>
-<p>The within estimator on the above equation may then be represented as <span class="math display">\[
+<p>In other words, <span class="math inline">\((Z_{i1}, Z_{i2})\)</span> follow model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>).</p>
+<p>By applying the results of sections <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a> we conclude that <span class="math display">\[
 \begin{aligned}
-\hat{\bbeta}^W  &amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bY}_i \\
-&amp; = \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bbeta_i + \left(\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \sum_{i=1}^N \tilde{\bX}_i \tilde{\bU}_i.
+    &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[ Z_{i2}- Z_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
-\]</span> Note the difference of the sampling error representation with <a href="#eq-within-sampling-error-homogeneous" class="quarto-xref">Equation&nbsp;<span>3.5</span></a>. The first term is now a weighted average of the individual coefficients. The weights themselves depend on the second moments of the within-transformed explanatory variables, which may be viewed as a kind of variance weighting for units.</p>
-<p>Does the within estimator target <span class="math inline">\(\E[\bbeta_i]\)</span>? To proceed, we decompose <span class="math inline">\(\bbeta_i\)</span> into a common mean component <span class="math inline">\(\E[\bbeta_i]\)</span> and an idiosyncratic deviation <span class="math inline">\(\bEta_i\)</span>: <span class="math display">\[
-\bbeta_i = \E[\bbeta_i] + \bEta_i
 \]</span></p>
-<p>With this representation, we can further analyze the within estimator as <span class="math display">\[
-\begin{aligned}
-    \hat{\bbeta} &amp; = \E[\bbeta_i]  + \left( \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1}  \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bX}_i\bEta_i \\
-    &amp;  \phantom{ = \E[\bbeta_i] } \hspace{1.3mm} + \left( \dfrac{1}{N}\sum_{i=1}^N  \tilde{\bX}_i'\tilde{\bX}_i \right)^{-1} \dfrac{1}{N}\sum_{i=1}^N \tilde{\bX}_i \tilde{\bU}_i\\
-    &amp; \xrightarrow{p} \E[\bbeta_i]  + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i \right]  \\
-  &amp;    \phantom{ \xrightarrow{p} \E[\bbeta_i] } \hspace{1.3mm} + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bU}_i \right]\\
-    &amp; = \E[\bbeta_i] + \left(\E\left[\tilde{\bX}_i'\tilde{\bX}_i \right] \right)^{-1} \E\left[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i \right],
-\end{aligned}
-\]</span> where we have assumed that a suitable law of large numbers applies as <span class="math inline">\(N\to\infty\)</span> and <span class="math inline">\(T\)</span> is fixed, and where <span class="math inline">\(\E\left[\tilde{\bX}_i'\tilde{\bU}_i \right]=0\)</span> as above.</p>
+<p>Combining the above results together yields overall identification for average marginal effects (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>).</p>
 </section>
-<section id="conditions-for-estimating-average-coefficients" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="conditions-for-estimating-average-coefficients"><span class="header-section-number">3.3.2</span> Conditions for Estimating Average Coefficients</h3>
-<p>The above representation shows that the within estimator is not estimating <span class="math inline">\(\E[\bbeta_i]\)</span> unless the following orthogonality condition holds: <span id="eq-average_orthogonality_condition"><span class="math display">\[
-    \E\left[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i \right] =0.
-\tag{3.7}\]</span></span> Even though <span class="math inline">\(\E[\bEta_i]=0\)</span>, the above condition does not necessarily hold if <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_i\)</span> are allowed to dependent.</p>
-<p>If condition (<a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>3.7</span></a>) holds, the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span> in the heterogeneous coefficient model (<a href="#eq-within-lecture-model" class="quarto-xref"><span>3.1</span></a>). If it fails, the estimator is biased. The difference between the estimand and <span class="math inline">\(\E[\bbeta_i]\)</span> is known as <em>heterogeneity bias</em> <span class="citation" data-cites="Campello2019">(see <a href="../references/references.html#ref-Campello2019" role="doc-biblioref">Campello, Galvao, and Juhl 2019</a> in the linear case)</span>.</p>
-<p>This orthogonality condition (<a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>3.7</span></a>) is a bit complicated to understand. A simpler sufficient condition is a mean independence on the coefficients given the within transformed covariates: <span id="eq-mean_independence_condition"><span class="math display">\[
-\E[\boldsymbol{\eta}_i|\tilde{\bX}_i] = 0.  
-\tag{3.8}\]</span></span> Under this condition <span class="math inline">\(\E[\tilde{\bX}_i'\tilde{\bX}_i\bEta_i] =0\)</span>, and thus the within estimator is consistent for <span class="math inline">\(\E[\bbeta_i]\)</span>. These conditions were proposed by <span class="citation" data-cites="Wooldridge2003">Wooldridge (<a href="../references/references.html#ref-Wooldridge2003" role="doc-biblioref">2003</a>)</span>, <span class="citation" data-cites="Wooldridge2005">Wooldridge (<a href="../references/references.html#ref-Wooldridge2005" role="doc-biblioref">2005</a>)</span> (see all <span class="citation" data-cites="Murtazashvili2008">Murtazashvili and Wooldridge (<a href="../references/references.html#ref-Murtazashvili2008" role="doc-biblioref">2008</a>)</span> for the IV within estimator case).</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Conditions (<a href="#eq-average_orthogonality_condition" class="quarto-xref"><span>3.7</span></a>) and (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) restrict the dependence structure between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_{it}\)</span>. Such conditions are sometimes called correlated random effects (CRE) in the literature. CRE assumptions lie between fixed effects (FE) frameworks — which do not restrict the dependence — and random effects (RE) — which assume that unobserved components are independent of the observed ones.</p>
-</div>
-</div>
-</div>
 </section>
-<section id="intuition" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">3.3.3</span> Intuition</h3>
-<p>How can we interpret condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>)? Intuitively, it requires that the changes in <span class="math inline">\(\bX_{it}\)</span> over time are uncorrelated with the individual coefficients.</p>
-<p>To see this interpretation, it is helpful to think of the following example framework. Suppose that <span class="math inline">\(\bX_{it}\)</span> is stationary, that is, its distribution does not depend on <span class="math inline">\(t\)</span>. Decompose <span class="math inline">\(\bX_{it}\)</span> as <span class="math display">\[
-\bX_{it} = \E[\bX_{it}|\bbeta_i]  + \bxi_{it},
-\]</span></p>
-<p>Then the within transformed variables satisfy: <span class="math display">\[
-    \tilde{\bX}_{it} = \tilde{\bxi}_{it}.
-\]</span></p>
-<p>The “systemic” component <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> is not present in <span class="math inline">\(\tilde{\bX}_{it}\)</span>. Only the deviations across time <span class="math inline">\(\tilde{\bxi}_{it}\)</span> are left. Condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) requires that <span class="math inline">\(\tilde{\bxi}_{it}\)</span> and <span class="math inline">\(\bEta_i\)</span> are unrelated on average. At the same time, it permits an arbitrary relationship between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span>.</p>
-<p>As an example, suppose that we are working with consumption data. A consumer knows their marginal utilities <span class="math inline">\(\bbeta_i\)</span> of consuming more of a variety of products. With this knowledge, they choose the optimal desired level of consumption — <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span>. When they try to buy this level of products, they may encounter some frictions <span class="math inline">\(\bxi_{it}\)</span> which cause them to deviate from <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> — in rough words, the supermarket might not have their favorite cereal. If these “frictions” are uncorrelated with <span class="math inline">\(\bbeta_i\)</span>, then the required consistency holds. In the consumption example, this fact means that unpredictable deviation in short-term choices do not necessarily bias the estimation of overall preferences.</p>
-</section>
-<section id="why-panel-data-is-useful" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="why-panel-data-is-useful"><span class="header-section-number">3.3.4</span> Why Panel Data is Useful</h3>
-<p>It is useful to contrast condition (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) with the stronger condition that <span id="eq-linear-within-cross-sectional-mean-indep"><span class="math display">\[
-\E[\bEta_i|\bX_i]=0.
-\tag{3.9}\]</span></span> Note the difference in the conditioning sets!</p>
-<p>Condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) is stronger than (<a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a>) by the tower property of conditional expectation. Intuitively, we can compute <span class="math inline">\(\tilde{\bX}_i\)</span> from <span class="math inline">\(\bX_i\)</span>, but not vice versa. The requirement that <span class="math inline">\(\E[\bEta_i|\bX_i]=0\)</span> may be very strong, since it would in general require that <span class="math inline">\(\E[\bX_{it}|\bbeta_i]\)</span> does not depend on <span class="math inline">\(\bbeta_i\)</span> — we rule out a systemic dependence even on average.</p>
-<p>This contrast also highlights the advantages of panel data. If you want to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span> using OLS and cross-sectional data, you need the strong condition (<a href="#eq-linear-within-cross-sectional-mean-indep" class="quarto-xref"><span>3.9</span></a>) or at least that <span class="math inline">\(\E[\bX_i\bX_i'\bbeta_i]=0\)</span>. With panel data, weaker conditions are sufficient, and systemic dependence between <span class="math inline">\(\bbeta_i\)</span> and <span class="math inline">\(\bX_{it}\)</span> is possible.</p>
-</section>
-<section id="example" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="example"><span class="header-section-number">3.3.5</span> Example</h3>
-<p>We conclude this section with a small illustration of the results in a tractable model (see <a href="https://vladislav-morozov.github.io/blog/statistics/heterogeneity/2025-02-01-fixed_effects_danger/">this blog post</a> for a simulation with some dramatic examples). Specifically, we consider the following panel model with two periods, coefficient heterogeneity, and a scalar regressor: <span class="math display">\[
-Y_{it} = A_i + \beta_i X_{it} + U_{it}, \quad t=1,2.
-\]</span></p>
-<p>where <span class="math inline">\(\bX_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span> are jointly normal:</p>
-<p><span id="eq-within_normal_dgp"><span class="math display">\[
-\begin{aligned}
-    \begin{pmatrix}
-      X_{i1}\\
-      X_{i2}\\
-      \beta_i
-    \end{pmatrix} \sim N\left(  \begin{pmatrix}
-    1\\
-    2\\
-    0.5
-    \end{pmatrix}, \begin{pmatrix}
-    1 &amp; \rho_{1, \beta}\rho_{2, \beta} &amp; \rho_{1, \beta}\\
-    \rho_{1, \beta}\rho_{2, \beta} &amp; 1 &amp; \rho_{2, \beta}\\
-    \rho_{1, \beta} &amp; \rho_{2, \beta} &amp; 1
-    \end{pmatrix}   \right),
-\end{aligned}
-\tag{3.10}\]</span></span> where the various <span class="math inline">\(\rho\)</span> parameters are correlations. The setting is such that <span class="math inline">\(X_{i1}\)</span> and <span class="math inline">\(X_{i2}\)</span> are only correlated through <span class="math inline">\(\beta_i\)</span>. The distribution of the <span class="math inline">\(A_i\)</span> does not have to be specified, as it is not involved in the consistency conditions. Likewise, we only need to assume that <span class="math inline">\(\E[U_{it}|X_{i1}, X_{i2}]=0\)</span> without further specifying the distribution of <span class="math inline">\(U_{it}\)</span>.</p>
-<p>The within transformations yields the following equation: <span class="math display">\[
-                Y_{i2} - Y_{i1} = \beta_i(X_{i2}-X_{i1}) + (U_{i2}-U_{i1})
-\]</span> The mean independence condition <a href="#eq-mean_independence_condition" class="quarto-xref"><span>3.8</span></a> takes form <span class="math display">\[
-    \E[ \beta_i|X_{i2} - X_{i1}]  = 0.5.
-\]</span></p>
-<p>It is not difficult to work out <span class="citation" data-cites="Brockwell2016IntroductionTimeSeries">(<a href="../references/references.html#ref-Brockwell2016IntroductionTimeSeries" role="doc-biblioref">Brockwell and Davis 2016, A.3.1</a>)</span> that <span class="math display">\[
-\E[ \beta_i|X_{i2} - X_{i1}]  = 0.5 + (\rho_{2, \beta}- \rho_{1, \beta})(X_{i2} - X_{i1} - 1)
-\]</span> Thus, <span class="math inline">\(\E[ \beta_i|X_{i2} - X_{i1}]=0.5\)</span> only holds if <span id="eq-within-normal-example"><span class="math display">\[
-\rho_{2, \beta} = \rho_{1, \beta}.
-\tag{3.11}\]</span></span> In this case, <span class="math inline">\(X_{it}\)</span> becomes stationary, and does not have dynamics that depend on <span class="math inline">\(\beta_i\)</span> in the mean.</p>
-<p>If condition (<a href="#eq-within-normal-example" class="quarto-xref"><span>3.11</span></a>) holds, the within estimator is consistent for <span class="math inline">\(\E[\beta_i]\)</span>. It is also possible to show that if condition (<a href="#eq-within-normal-example" class="quarto-xref"><span>3.11</span></a>) fails, so does the more general <a href="#eq-average_orthogonality_condition" class="quarto-xref">Equation&nbsp;<span>3.7</span></a>, and the within estimator is inconsistent for <span class="math inline">\(\E[\beta_i]\)</span>. We represent this fact on <a href="#fig-within-normal" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, where we fix <span class="math inline">\(\rho_{1, beta}=0.25\)</span>, and vary <span class="math inline">\(\rho_{2, \beta}\)</span> between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>. Observe that the within estimator is consistent if <span class="math inline">\(\rho_{2, \beta} = \rho_{1, \beta} = 0.25\)</span>. Otherwise, it is biased, potentially severely. For <span class="math inline">\(\rho_{2, \beta}\leq -0.6\)</span>, the estimand of the within estimator has a sign different from that of <span class="math inline">\(\E[\beta_i]\)</span>.</p>
-<div id="fig-within-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-within-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ols_heterogeneity.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-within-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: The within estimator under coefficient heterogeneity. Consistency and inconsistency for the average coefficient under data generating process (<a href="#eq-within_normal_dgp" class="quarto-xref"><span>3.10</span></a>)
-</figcaption>
-</figure>
-</div>
+<section id="estimation" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">15.3</span> Estimation</h2>
+<p>Estimation of (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>) is now straightforward. As in section <a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>, we have shown that the objects of interest can be expressed in terms of explicit functions of conditional expectations of <span class="math inline">\((Y_{i1}, Y_{i2})\)</span> given <span class="math inline">\((X_{i1}, X_{i2})\)</span>. This expectations can be replaced with local polynomial estimators, following the logic of section <a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>. The resulting estimator for the average marginal effects of interest will be consistent and asymptotically normal by the delta method, as local polynomial estimators are consistent and jointly asymptotically normal.</p>
+<p>For inference, the simplest approach is to use the bootstrap rather than use the expression for the variance implied by the delta method. Accordingly, the simplest way to conduct valid inference is by using bootstrap and recomputing all conditional expectations. See <span class="citation" data-cites="Chernozhukov2015">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">2015</a>)</span> regarding bootstrap inference, and also alternative estimation using global methods (as opposed to the local polynomial approach).</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we turn to the dynamic case and briefly introduce the “standard” dynamic panel instrumental variable estimators.</p>
+<p>In the next section, we extend our identification results for average marginal effects beyond the population of stayers using restrictions on the dependence between <span class="math inline">\((A_i, U_{it})\)</span> and <span class="math inline">\(X_{it}\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Brockwell2016IntroductionTimeSeries" class="csl-entry" role="listitem">
-Brockwell, Peter J., and Richard A. Davis. 2016. <em>Introduction to <span>Time Series</span> and <span>Forecasting</span></em>. Springer <span>Texts</span> in <span>Statistics</span>. Springer International Publishing.
+<div id="ref-Chernozhukov2015" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, Stefan Hoderlein, Hajo Holzmann, and Whitney Newey. 2015. <span>“<span class="nocase">Nonparametric Identification in Panels Using Quantiles</span>.”</span> <em>Journal of Econometrics</em> 188 (2): 378–92. <a href="https://doi.org/10.1016/j.jeconom.2015.03.006">https://doi.org/10.1016/j.jeconom.2015.03.006</a>.
 </div>
-<div id="ref-Campello2019" class="csl-entry" role="listitem">
-Campello, Murillo, Antonio F. Galvao, and Ted Juhl. 2019. <span>“<span class="nocase">Testing for Slope Heterogeneity Bias in Panel Data Models</span>.”</span> <em>Journal of Business and Economic Statistics</em> 37 (4): 749–60. <a href="https://doi.org/10.1080/07350015.2017.1421545">https://doi.org/10.1080/07350015.2017.1421545</a>.
-</div>
-<div id="ref-Murtazashvili2008" class="csl-entry" role="listitem">
-Murtazashvili, Irina, and Jeffrey M. Wooldridge. 2008. <span>“<span class="nocase">Fixed effects instrumental variables estimation in correlated random coefficient panel data models</span>.”</span> <em>Journal of Econometrics</em> 142 (1): 539–52. <a href="https://doi.org/10.1016/j.jeconom.2007.09.001">https://doi.org/10.1016/j.jeconom.2007.09.001</a>.
-</div>
-<div id="ref-Wooldridge2003" class="csl-entry" role="listitem">
-Wooldridge, Jeffrey M. 2003. <span>“<span class="nocase">Fixed Effects Estimation of the Population-Averaged Slopes in a Panel Data Random Coefficient Model</span>.”</span> <em>Econometric Theory</em> 19: 411–13. <a href="https://doi.org/10+10170S0266466603002081">https://doi.org/10+10170S0266466603002081</a>.
-</div>
-<div id="ref-Wooldridge2005" class="csl-entry" role="listitem">
-———. 2005. <span>“<span class="nocase">Fixed-effects and related estimators for correlated random-coefficient and treatment-effect panel data models</span>.”</span> <em>The Review of Economics and Statistics</em> 87 (May): 385–90.
+<div id="ref-Huntington-Klein2025EffectIntroductionResearch" class="csl-entry" role="listitem">
+Huntington-Klein, Nick. 2025. <em>The <span>Effect</span>: <span>An Introduction</span> to <span>Research Design</span> and <span>Causality</span></em>. S.l.: <span>Chapman and Hall/CRC</span>.
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1475,13 +1394,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-introduction.html" class="pagination-link" aria-label="Intro: Linear Models with Heterogeneous Coefficients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span>
+      <a href="../nonparametric/nonparametric-average-estimation.html" class="pagination-link" aria-label="Nonparametric Estimation of Average Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1490,4 +1409,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-within-estimator.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-location-scale.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
