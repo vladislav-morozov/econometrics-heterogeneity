@@ -12,12 +12,13 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section provides  
+This section shows how to extend identification of marginal effects to a model with nonparametric location-scale time effects.
 
 By the end of this section, you should be able to: 
  
-- Derive  
- 
+- Identify the average marginal effects for stayers under a model with location-scale effects and potentially infinite-dimensional heterogeneity.  
+- Propose estimators for the average marginal effects.
+- Draw parallels between the models of this block and event study/difference-in-differences approaches.
 
 :::
  
@@ -187,4 +188,4 @@ For inference, the simplest approach is to use the bootstrap rather than use the
 
 #### Next Section {.unnumbered}
 
-In the next section, we extend our identification results for average marginal effects beyond the population of stayers by restricting the dependence between $(A_i, U_{it})$ and $X_{it}$.
+In the next section, we extend our identification results for average marginal effects beyond the population of stayers using restrictions on the dependence between $(A_i, U_{it})$ and $X_{it}$.
