@@ -8,7 +8,7 @@ open-graph:
 
 
 
-# Variance of Marginal Effects {#sec-nonparametric-cre}
+# Variance of Marginal Effects {#sec-nonparametric-var}
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -22,7 +22,99 @@ By the end of this section, you should be able to:
 
 :::
   
-## Variance 
+
+In the preceding sections, we focused on average marginal effects, which are basic summaries of how treatments influence outcomes. However, as emphasized in our discussion of linear models, higher-order features — variances, other moments, and distributions — are equally important.  
+
+Unfortunately, the finite-difference approach used for average effects does not extend to variances in the fully nonseparable model ([-@eq-nonparametric-model-full-nonsep]). Below, we formalize this limitation and then show that variance is identified under additive separability ([-@eq-nonparametric-model-u-sep]).
+
+
+## Issues in Fully Nonseparable Model
+
+### Setting and Parameter of Interest
+
+We start our discussion by returning to model ([-@eq-nonparametric-model-full-nonsep]):
+$$
+Y_{it}^{x} = \phi(x, A_i, U_{it}), \quad t=1, 2.
+$$
+As previous, we assume that $U_{it}$ is conditionally stationary given $(X_{i1}, X_{i2}, A_i)$. We do not restrict the dependence structure between the covariates and the unobserved components, focusing on stayers, as in prior sections.
+
+We are interested in identifying and estimating the variance of marginal effects for stayers:
+$$
+	 \var\left(\partial_x \phi(x, A_i, U_{it}) |X_{i1} = X_{i2}= x\right).
+$$
+This variance captures how much variation there is in a response to an infinitesimal change in $x$.
+
+### Issue with Finite Difference-Based Approach
+
+
+
+Unfortunately, our previous approach based on difference of outcomes across periods does not extend to second moments. To see why, first note that the convergence argument of section [-@sec-nonparametric-avg-id] can be extended to the square of finite differences as
+$$
+\begin{aligned}
+ & \E\left[ \left(\partial_x \phi(x, A_i, U_{it})  \right)^2|X_{i1}=X_{i2} = x \right]	\\
+ &  = \lim\limits_{h\to 0} \E\left[ \left(\dfrac{\phi(x+h, A_i, U_{it}) - \phi(x, A_i, U_{it})}{h}\right)^2 \Bigg| X_{i1} = x, X_{i2} = x+h  \right].
+\end{aligned}
+$$
+As before, the same $U_{it}$ appears under both $\phi$ on the right-hand side. 
+
+
+The problem is that to identify the right-hand side, we need to observe the second moment of finite differences for all $h>0$ small enough (or at least for a sequence of $h$ convergent to 0). Previously, we identified the average finite difference by considering the average change in outcomes for near-stayers. Attempting the same approach leads to the representation:
+$$
+\begin{aligned}
+	& \E\left[ \left(\dfrac{Y_{i2}-Y_{i1}}{h}\right)^2\Bigg|X_{i1} = x, X_{i2} = x+h \right] \\
+	& =\E \left[ \left(  \dfrac{\phi(x+h, A_i, U_{i2}) - \phi(x, A_i, U_{i1})}{h}\right)^2\Bigg|X_{i1} = x, X_{i2} = x+h    \right]
+\end{aligned}
+$$
+
+Unfortunately, this expectation is in general not the expectation we are interested in, and there is an irreducible contamination term driving a wedge between the two expectations: 
+$$
+\begin{aligned} 
+	& \E\left[ \left(\dfrac{Y_{i2}-Y_{i1}}{h}\right)^2\Bigg|X_{i1} = x, X_{i2} = x+h \right] \\
+	& \quad - \E\left[ \left(\dfrac{\phi(x+h, A_i, U_{it}) - \phi(x, A_i, U_{it})}{h}\right)^2 \Bigg| X_{i1} = x, X_{i2} = x+h  \right]\\
+	& = 2\E\left[ \dfrac{\phi(x, A_i, U_{i1})\left(\phi(x, A_i, U_{i2}) -\phi(x, A_i, U_{i1})\right)  }{h^2}   \Bigg|X_{i1} = x, X_{i2} = x+h \right].
+\end{aligned}
+$$ {#eq-nonparametric-var-diff-nonsep} 
+
+The existence of a difference in @eq-nonparametric-var-diff-nonsep means that our previous approach does not generalize to variances, without an obvious alternative path. In general, the expression @eq-nonparametric-var-diff-nonsep is non-zero unless $U_{it}$ is perfectly correlated over time (and thus part of $A_i$). Intuitively, this failure is driven by the same reason why the variance of treatment effect is generally not identified: different drivers may affect different potential outcomes preventing identification of correlation.
+ 
+
+::: {.callout-note appearance="simple" icon=false}
+
+The above argument does not show lack of identification --- only that a particular approach  does not work. To formally prove lack of identification, one must construct a pair of data-generating process which generate the same distributions for $(Y_{i1}, Y_{i2}, X_{i1}, X_{i2})$ but different values of $\var\left(\partial_x \phi(x, A_i, U_{it}) |X_{i1} = X_{i2}= x\right)$. 
+
+
+:::
+
+
+## Identifying Variance in Models with Additively Separable $U_{it}$
+
+### Model and Parameter of Interest
+
+However, it turns out, the approach based on the second moment of  finite differences does succeed in a particular class of models where   $A_i$ remains unrestricted, but $U_{it}$ is assumed to enter additively. Specifically, we consider model ([-@eq-nonparametric-model-u-sep])
+$$
+	Y_{it}^x = \phi(x, A_i)  + U_{it}, \quad i=1, \dots, N, \quad t=1, 2.
+$$ 
+We drop the assumption of stationarity on $U_{it}$. We only assume that that the conditional mean of $U_{it}$ is invariant over time. Moreover, we assume that it is zero in the sense of mean exogeneity:
+$$ 
+\begin{equation}
+	 \E[U_{it}|X_{i1}, X_{i2}, A_i] =0.
+\end{equation} 
+$$ 
+We will further assume that $U_{i1}$ and $U_{i2}$ are uncorrelated conditional on $(X_{i1}, X_{i2})$. This model was considered by @Morozov2023jmp.
+
+As above, the parameter of interest is the variance of marginal effects for stayers:
+$$
+	 \var(\partial_x \phi(x, \alpha_i)|x_{i1}=x_{i2}=x).
+$$
+By additive separability, the distribution of $U_{it}$ does not influence the marginal effects anymore.
+
+
+### Identification of the Second Moment of Finite Differences
+
+
+### A More Explicit Representation
+
+### Extension to Higher-Order Moments and the Distribution
 
 --- 
 
