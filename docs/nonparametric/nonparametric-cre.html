@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Vladislav Morozov">
-<meta name="dcterms.date" content="2025-01-01">
-<meta name="description" content="Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression">
+<meta name="description" content="Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)">
 
-<title>Econometrics with Unobserved Heterogeneity</title>
+<title>16&nbsp; Beyond Stayers with CRE Assumptions – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +21,50 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
-<link href="./themes/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-location-scale.html" rel="prev">
+<link href="../themes/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2b45bed95172e221bc55a94b858b1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d922cade42bc4f32e00ea3a44fd4d3b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -399,9 +418,39 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="16&nbsp; Beyond Stayers with CRE Assumptions – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/nonparametric/nonparametric-cre_files/mediabag/c9e41db55cd6ad6c4a10cef4e262874e10f772f4.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -414,7 +463,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Course Information</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-cre.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers with CRE Assumptions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -429,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Econometrics with Unobserved Heterogeneity</a> 
+      <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
@@ -447,13 +496,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Information</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
@@ -468,55 +517,55 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Intro: Linear Models with Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-within-estimator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Within (Fixed Effects) Estimator and Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-iv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-mean-group.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-coefficient-variance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-chf.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
+  <a href="../linear/linear-conclusion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusion: Linear Models</span></span></a>
   </div>
 </li>
@@ -533,37 +582,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Nonparametric Models with Unobserved Heterogeneity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-heterogeneity-bias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Average Effects and Heterogeneity Bias</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-identification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Average Effects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-average-estimation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers with CRE Assumptions</span></span></a>
   </div>
 </li>
@@ -575,7 +624,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -589,47 +638,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#course-information" id="toc-course-information" class="nav-link active" data-scroll-target="#course-information">Course Information</a>
+  <li><a href="#index-restrictions" id="toc-index-restrictions" class="nav-link active" data-scroll-target="#index-restrictions"><span class="header-section-number">16.1</span> Index Restrictions</a>
   <ul class="collapse">
-  <li><a href="#short-description" id="toc-short-description" class="nav-link" data-scroll-target="#short-description">Short Description</a></li>
-  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials">Course Materials</a></li>
-  <li><a href="#about-these-notes" id="toc-about-these-notes" class="nav-link" data-scroll-target="#about-these-notes">About These Notes</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning Outcomes</a></li>
-  <li><a href="#syllabus" id="toc-syllabus" class="nav-link" data-scroll-target="#syllabus">Syllabus</a></li>
+  <li><a href="#regarding-stayers" id="toc-regarding-stayers" class="nav-link" data-scroll-target="#regarding-stayers"><span class="header-section-number">16.1.1</span> Regarding Stayers</a></li>
+  <li><a href="#index-restrictions-1" id="toc-index-restrictions-1" class="nav-link" data-scroll-target="#index-restrictions-1"><span class="header-section-number">16.1.2</span> Index Restrictions</a></li>
+  <li><a href="#intuition" id="toc-intuition" class="nav-link" data-scroll-target="#intuition"><span class="header-section-number">16.1.3</span> Intuition</a></li>
+  </ul></li>
+  <li><a href="#average-marginal-effects-beyond-stayers" id="toc-average-marginal-effects-beyond-stayers" class="nav-link" data-scroll-target="#average-marginal-effects-beyond-stayers"><span class="header-section-number">16.2</span> Average Marginal Effects Beyond Stayers</a>
+  <ul class="collapse">
+  <li><a href="#example-identification-argument" id="toc-example-identification-argument" class="nav-link" data-scroll-target="#example-identification-argument"><span class="header-section-number">16.2.1</span> Example Identification Argument</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">16.2.2</span> Estimation</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-cre.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-cre.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers with CRE Assumptions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Econometrics with Unobserved Heterogeneity</h1>
+<h1 class="title"><span id="sec-nonparametric-cre" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers with CRE Assumptions</span></span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Learn unobserved heterogeneity-robust causal inference methods — heterogeneous coefficients, nonparametric models, and quantile and distribution regression
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Vladislav Morozov </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -639,132 +674,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="https://vladislav-morozov.github.io/assets/img/teaching/ecm_htg.png" alt="Econometrics with Unobserved Heterogeneity" style="width: 100%;  border-radius: 15px; margin-bottom: 6px;"></p>
-<section id="course-information" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="course-information">Course Information</h2>
-<p><strong>Instructor:</strong> Vladislav Morozov<br>
-<strong>Email:</strong> <a href="mailto:morozov@uni-bonn.de">morozov [at] uni-bonn.de</a><br>
-<strong>Level:</strong> Second-year Master’s and PhD students<br>
-<strong>Course Website:</strong> eCampus and this website<br>
-<strong>DOI</strong>: <a href="https://doi.org/10.5281/zenodo.15459848"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15459848-gold" class="img-fluid" alt="DOI"></a></p>
-<section id="short-description" class="level3">
-<h3 class="anchored" data-anchor-id="short-description">Short Description</h3>
-<p>Causal inference with unobserved heterogeneity is the core challenge of empirical economics. Whether due to heterogeneous treatment effects, omitted confounders, or measurement error, unobserved factors create confounding in the data and require developing appropriate methods. This course surveys some modern identification strategies and estimation methods designed to recover causal relationships from observational data, where treatments are endogenously selected and key determinants of outcomes are hidden.</p>
-<p>The course is structured into three main parts:</p>
-<ol type="1">
-<li>Linear models with heterogeneous coefficients.</li>
-<li>Nonparametric models with unobserved heterogeneity.</li>
-<li>Quantile and distributional treatment effects and quantile and distributional regression methods.</li>
-</ol>
-<p>We focus exclusively on observational cross-sectional and panel data, where unobserved heterogeneity cannot be ignored. The emphasis is on identification, rather than asymptotic theory or prediction.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summary and Learning Outcomes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section discusses how to extend identification beyond stayers using index restrictions.</p>
+<p>By the end of this section, you should be able to:</p>
+<ul>
+<li>Broadly understand index (CRE) restrictions.</li>
+<li>Use a one-dimensional index restriction to identify average marginal effects for non-stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>).</li>
+</ul>
+</div>
+</div>
+<hr>
+<section id="index-restrictions" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="index-restrictions"><span class="header-section-number">16.1</span> Index Restrictions</h2>
+<section id="regarding-stayers" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="regarding-stayers"><span class="header-section-number">16.1.1</span> Regarding Stayers</h3>
+<p>All the results of sections <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-location-scale.html" class="quarto-xref"><span>15</span></a> for the average marginal effect in models (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="nonparametric-location-scale.html#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) are limited to the subpopulation of stayers (units <span class="math inline">\(X_{i1}=X_{i2}\)</span>).</p>
+<p>This restriction is a direct consequence of imposing no structure on how <span class="math inline">\((X_{i1}, X_{i2})\)</span> relate to the unobserved components <span class="math inline">\((A_i, U_{it})\)</span>. Without restrictions, the dependence between treatments and unobservables may be arbitrarily complex, and <span class="citation" data-cites="Cooprider2022">Cooprider, Hoderlein, and Meister (<a href="../references/references.html#ref-Cooprider2022" role="doc-biblioref">2022</a>)</span> shows that no identification is possible for non-stayers if <span class="math inline">\((A_i, U_{it})\)</span> is multidimensional.</p>
 </section>
-<section id="course-materials" class="level3">
-<h3 class="anchored" data-anchor-id="course-materials">Course Materials</h3>
-<p><strong>Textbook:</strong> None. This course is based on lecture notes and background articles, which are listed in the references.<br>
-<strong>Recommended Readings:</strong> Please see the bibliography for a detailed reading list.</p>
+<section id="index-restrictions-1" class="level3" data-number="16.1.2">
+<h3 data-number="16.1.2" class="anchored" data-anchor-id="index-restrictions-1"><span class="header-section-number">16.1.2</span> Index Restrictions</h3>
+<p>To extend identification beyond stayers, we must restrict the dependence structure between treatments <span class="math inline">\((X_{i1}, X_{i2})\)</span> and unobserved components <span class="math inline">\((A_i, U_{it})\)</span>. In this section, we look at a popular class of restrictions known as <em>index restrictions</em>. Broadly, index restrictions reduce the dimensionality of the dependence structure between the treatments and the unobserved components by assuming that <span class="math inline">\((A_i, U_{it})\)</span> depends on <span class="math inline">\((X_{i1}, X_{i2})\)</span> only through a low-dimensional index. They were introduced and studied by <span class="citation" data-cites="Altonji2005">Altonji and Matzkin (<a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">2005</a>)</span> (see also <span class="citation" data-cites="Bester2009">Bester and Hansen (<a href="../references/references.html#ref-Bester2009" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Liu2021">Liu, Poirier, and Shiu (<a href="../references/references.html#ref-Liu2021" role="doc-biblioref">2024</a>)</span>).</p>
+<p>As a simple example, consider again model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), with the potential outcome in period <span class="math inline">\(t\)</span> determined as <span class="math display">\[
+Y_{it}^x = \phi(x, A_i, U_{it}), \quad t=1, 2.
+\]</span></p>
+<p>We now make an assumption about how <span class="math inline">\((X_{i1}, X_{i2})\)</span> and <span class="math inline">\((A_i, U_{i1}, U_{i2})\)</span> relate to each other. Specifically, we assume that the joint distribution of <span class="math inline">\((A_i, U_{i1}, U_{i2})\)</span> only depends on <span class="math inline">\((X_{i1}, X_{i2})\)</span> through the sum <span class="math inline">\(X_{i1}+X_{i2}\)</span>: <span id="eq-nonparametric-index-2"><span class="math display">\[
+\begin{aligned}
+    &amp; f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2) \\
+    &amp; = f_{A_i, U_{i1}, U_{i2}|X_{i1}+ X_{i2}}(a, u_1, u_2|x_1+x_2).        
+\end{aligned}
+\tag{16.1}\]</span></span> In other words, the <span class="math inline">\(X_{i1}+X_{i2}\)</span> plays the role of an <em>index</em> or a sufficient statistic that captures all the relevant dimensions of the dependence structure between the treatments and the unobserved components. Economically, restriction (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) arises when agents respond to aggregate exposure (see the example below).</p>
+<p>More generally, in a setting with <span class="math inline">\(T\)</span> time periods one may assume that the joint distribution of potential outcomes <span class="math inline">\((Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})\)</span> only depends on the treatments <span class="math inline">\((X_{i1}, \dots, X_{iT})\)</span> through <span class="math inline">\(k&lt;T\)</span> <em>index</em> functions <span class="math inline">\(g_1(\cdot), \dots, g_k(\cdot)\)</span>:</p>
+<p><span id="eq-nonparametric-index-general"><span class="math display">\[\begin{aligned}
+     &amp; (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|X_{i1}, \dots, X_{iT} \\
+     &amp; \overset{d}{=} (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|g_1(X_{i1}, \dots, X_{iT}), \dots, g_k(X_{i1}, \dots, X_{iT}).
+\end{aligned}
+\tag{16.2}\]</span></span> The index functions <span class="math inline">\(g_{\cdot}(\cdot)\)</span> are typically assumed known (averages, variances, etc.), though there are some results with unknown indidex <span class="math inline">\(g(\cdot)\)</span> <span class="citation" data-cites="Bester2009">(<a href="../references/references.html#ref-Bester2009" role="doc-biblioref">Bester and Hansen 2009</a>)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In panel data terminology, such index restrictions are sometimes called “correlated random effects” (CRE) assumptions. CRE settings lie between fixed effects settings that do not restrict the dependence structure at all and random effects settings which assume full unconditional independence.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="about-these-notes" class="level3">
-<h3 class="anchored" data-anchor-id="about-these-notes">About These Notes</h3>
-<p>These lectures notes are based on a topics course I delivered at the University of Bonn. They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!</p>
-<p>Current version (June 8, 2025): material up to identifying average effects in nonparametric models with potentially infinite unobserved heterogeneity.</p>
+<section id="intuition" class="level3" data-number="16.1.3">
+<h3 data-number="16.1.3" class="anchored" data-anchor-id="intuition"><span class="header-section-number">16.1.3</span> Intuition</h3>
+<p>To get some intuition for index restrictions, let us consider a consumption example. Suppose that <span class="math inline">\(X_{it}\)</span> is the income in period <span class="math inline">\(t\)</span>, <span class="math inline">\(Y_{it}\)</span> is the expenditure on a given consumption category (say, entertainment). The components <span class="math inline">\((A_i, U_{it})\)</span> represent preferences, prices and other unobserved variables.</p>
+<p>If consumers smooth consumption based on total income <span class="math inline">\(X_{i1} + X_{i2}\)</span> (e.g., due to savings or credit), then deviations in <span class="math inline">\((X_{i1}, X_{i2})\)</span> are independent of <span class="math inline">\((A_i, U_{it})\)</span> conditional on the total income. Here, <span class="math inline">\(X_{i1} + X_{i2}\)</span> is the index; it plays the role of a sufficient statistic for consumption decisions.</p>
 </section>
-<section id="learning-outcomes" class="level3">
-<h3 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h3>
-<p>By the end of this course, students will be able to:</p>
-<ul>
-<li>Identify and explain different sources of unobserved heterogeneity in economic data.</li>
-<li>Apply econometric methods, such as heterogeneous coefficient models and quantile regression, to account for unobserved heterogeneity.</li>
-<li>Evaluate the trade-offs and assumptions underlying different modeling approaches in empirical research.</li>
-</ul>
 </section>
-<section id="syllabus" class="level3">
-<h3 class="anchored" data-anchor-id="syllabus">Syllabus</h3>
-<p><strong>Block 0:</strong> Introduction to Unobserved Heterogeneity</p>
+<section id="average-marginal-effects-beyond-stayers" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="average-marginal-effects-beyond-stayers"><span class="header-section-number">16.2</span> Average Marginal Effects Beyond Stayers</h2>
+<section id="example-identification-argument" class="level3" data-number="16.2.1">
+<h3 data-number="16.2.1" class="anchored" data-anchor-id="example-identification-argument"><span class="header-section-number">16.2.1</span> Example Identification Argument</h3>
+<p>Index restrictions in the spirit of equations (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) and (<a href="#eq-nonparametric-index-general" class="quarto-xref"><span>16.2</span></a>) can be used to obtain more general identification results. Broadly, they exploit the idea that units with the same index value are “comparable” in terms of unobserved heterogeneity, even if their individual treatments differ.</p>
+<p>For example, under (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>), two units with <span class="math inline">\((X_{i1}, X_{i2}) = (x_1, x_2)\)</span> and <span class="math inline">\((X_{i1}, X_{i2}) = (x_2, x_1)\)</span> share the same index <span class="math inline">\(x_1 + x_2\)</span> and thus the same distribution of <span class="math inline">\((A_i, U_{it})\)</span>. This allows us to borrow information from stayers (where <span class="math inline">\(X_{i1} = X_{i2}\)</span>) to identify effects for non-stayers with the same index.</p>
+<p>More formally, assumption (<a href="#eq-nonparametric-index-2" class="quarto-xref"><span>16.1</span></a>) implies that the average marginal effect of a change of <span class="math inline">\(x\)</span> is the <em>same</em> for <em>all</em> units whose covariates are the same <em>on average across time</em>: <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \partial_x Y_{it}^x |X_{i1}=x_1, X_{i2}= x \right] \\
+&amp;  = \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}= x_1, X_{i2}=x_2] \\
+&amp; =\E\left[\partial_x \phi(x, A_i, U_{it})\Bigg|\dfrac{X_{i1}+X_{i2}}{2}=\dfrac{x_1+x_2}{2}\right].
+\end{aligned}
+\]</span></p>
+<p>In particular, the above equality holds if we consider the stayers on one of the sides of the equations: <span id="eq-nonparametric-index-ex"><span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x] \\
+    &amp;  =\E\left[\partial_x \phi(x, A_i, U_{it})\Big|\dfrac{X_{i1}+X_{i2}}{2}=x\right]
+\end{aligned}
+\tag{16.3}\]</span></span> Provided there exist stayers at <span class="math inline">\(x\)</span>, the argument of section <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a> identifies <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x]\)</span>.</p>
+<p>Thus, if stayers exist at <span class="math inline">\(x\)</span>, we can identify effects for all units with <span class="math inline">\((X_{i1} + X_{i2})/2 = x\)</span>. The diagram below visually illustrates the identified set:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="nonparametric-cre_files\mediabag\c9e41db55cd6ad6c4a10cef4e262874e10f772f4.svg" class="img-fluid figure-img"></p>
+<figcaption>Identified set under index restrictions. The diagonal (stayers) anchors identification. The shaded region includes all <span class="math inline">\((x_1, x_2)\)</span> pairs where <span class="math inline">\((x_1 + x_2)/2\)</span> matches a stayer’s average treatment, enabling extrapolation via the index restriction.</figcaption>
+</figure>
+</div>
+<p>Summarizing, identification of the average marginal effect with an index restriction proceeds in two steps. First, we identify the average marginal effects for the subpopulation of stayers as before (the diagonal on the diagram). Second, we extrapolate these effects to subpopulations that share the same values of the index as the stayers.</p>
+</section>
+<section id="estimation" class="level3" data-number="16.2.2">
+<h3 data-number="16.2.2" class="anchored" data-anchor-id="estimation"><span class="header-section-number">16.2.2</span> Estimation</h3>
+<p>Index restrictions open some new possibilities for estimation. One now faces a choice between two possible approaches:</p>
 <ul>
-<li>Definition and a brief classification</li>
-<li>Examples in applied econometrics</li>
-<li>Overview of key methodological challenges</li>
+<li>Using only stayer data.</li>
+<li>Pooling data and performing estimation in the index space.</li>
 </ul>
-<p><strong>Block 1:</strong> Linear Models with Heterogeneous Coefficients</p>
-<ul>
-<li>Linear models and their applicability<br>
-</li>
-<li>Heterogeneity in linear models<br>
-</li>
-<li><strong>Average effects:</strong>
-<ul>
-<li>Issues with the within estimator under heterogeneity<br>
-</li>
-<li>Interlude: Dynamic panels with random intercepts<br>
-</li>
-<li>Issues with dynamic panel IV estimators under heterogeneity<br>
-</li>
-<li>Robust estimation with the mean group estimator<br>
-</li>
-</ul></li>
-<li><strong>Variance of coefficients</strong><br>
-</li>
-<li><strong>Distribution of coefficients:</strong>
-<ul>
-<li>A primer on deconvolution<br>
-</li>
-<li>Identification of the distribution<br>
-</li>
-<li>Estimation with discrete covariates</li>
-</ul></li>
-</ul>
-<p><strong>Block 2:</strong> Nonparametric Models with Unobserved Heterogeneity</p>
-<ul>
-<li>A partial classification of nonparametric models with unobserved heterogeneity<br>
-</li>
-<li>Introduction to nonseparable models<br>
-</li>
-<li>Heterogeneity bias and issues with identification in cross-sectional settings<br>
-</li>
-<li><strong>Identification and estimation of average marginal effects in fully nonseparable models with panel data:</strong>
-<ul>
-<li>Identification for stayers under strong stationarity<br>
-</li>
-<li>Extending identification results beyond stayers<br>
-</li>
-<li>Accommodating changes in the structural function<br>
-</li>
-</ul></li>
-<li><strong>Variance of marginal effects in nonseparable models</strong></li>
-</ul>
-<p><strong>Block 3:</strong> Quantile and Distribution Treatment Effects:</p>
-<ul>
-<li><strong>Background:</strong> Quantiles and their properties<br>
-</li>
-<li><strong>Causal framework:</strong> Quantile and distributional treatment effects and their interpretation<br>
-</li>
-<li><strong>Identification of QTEs and DTEs under unconfoundedness</strong><br>
-</li>
-<li><strong>Methods:</strong>
-<ul>
-<li><em>Quantile regression:</em>
-<ul>
-<li>General formulation<br>
-</li>
-<li>When is quantile regression correctly specified?<br>
-</li>
-<li>Quantile crossing and rearrangement techniques<br>
-</li>
-</ul></li>
-<li><em>Distribution regression:</em>
-<ul>
-<li>General formulation<br>
-</li>
-<li>Rearrangement for distribution regression<br>
-</li>
-</ul></li>
-</ul></li>
-<li><strong>Estimation of QTEs and DTEs</strong><br>
-</li>
-<li><strong>What can quantile regressions tell us about nonseparable models?</strong></li>
-</ul>
+<p>In the first scenario, one construct estimators for the average effects for stayers using the data for stayers, exactly as in section (<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>). Then those estimators are automatically consistent and asymptotically normal estimators for average marginal effects in virtue of <a href="#eq-nonparametric-index-ex" class="quarto-xref">Equation&nbsp;<span>16.3</span></a>.</p>
+<p>Under the second scenario, one instead regresses <span class="math inline">\(Y_{i2}-Y_{i1}\)</span> directly on the index <span class="math inline">\(X_{i1} + X_{i2}\)</span>. The key connection to data is obtained by combining equations (<a href="#eq-nonparametric-index-ex" class="quarto-xref"><span>16.3</span></a>) and (<a href="nonparametric-average-estimation.html#eq-nonparametric-avg-est-me" class="quarto-xref"><span>14.2</span></a>). This approach is naturally more efficient, as it relies on more data. However, a potential risk is that even the average marginal effects for stayers may be estimated inconsistently if the index restriction is</p>
+<hr>
+<section id="next-section" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
+<p>In the next section, we go beyond average effects and discuss identification of variance in models with unrestricted unobserved heterogeneity.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Altonji2005" class="csl-entry" role="listitem">
+Altonji, Joseph G., and Rosa L. Matzkin. 2005. <span>“<span class="nocase">Cross Section and Panel Data Estimators for Nonseparable Models with Endogenous Regerssors</span>.”</span> <em>Econometrica</em> 73 (4): 1053–1102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
+</div>
+<div id="ref-Bester2009" class="csl-entry" role="listitem">
+Bester, C Alan, and Christian Hansen. 2009. <span>“<span class="nocase">Identification of Marginal Effects in a Nonparametric Correlated Random Effects Model</span>.”</span> <em>Journal of Business and Economic Statistics</em> 27 (2): 235–50. <a href="https://doi.org/10.1198/jbes.2009.0017">https://doi.org/10.1198/jbes.2009.0017</a>.
+</div>
+<div id="ref-Cooprider2022" class="csl-entry" role="listitem">
+Cooprider, Joseph, Stefan Hoderlein, and Alexander Meister. 2022. <span>“<span class="nocase">A Panel Data Estimator for the Distribution and Quantiles of Marginal Effects in Nonlinear Structural Models with an Application to the Demand for Junk Food</span>.”</span> <a href="https://doi.org/10.2139/ssrn.3545485">https://doi.org/10.2139/ssrn.3545485</a>.
+</div>
+<div id="ref-Liu2021" class="csl-entry" role="listitem">
+Liu, Laura, Alexandre Poirier, and Ji-Liang Shiu. 2024. <span>“Identification and <span>Estimation</span> of <span>Partial Effects</span> in <span>Nonlinear Semiparametric Panel Models</span>.”</span> <em>Journal of Econometrics</em>, September, 105860. <a href="https://doi.org/10.1016/j.jeconom.2024.105860">https://doi.org/10.1016/j.jeconom.2024.105860</a>.
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1332,10 +1360,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../nonparametric/nonparametric-location-scale.html" class="pagination-link" aria-label="Relaxing Stationarity with Nonparametric Time Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction: Causal Inference with Unobserved Heterogeneity">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Causal Inference with Unobserved Heterogeneity</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../references/references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1344,4 +1375,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-cre.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
