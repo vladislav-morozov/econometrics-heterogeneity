@@ -22,6 +22,133 @@ By the end of this section, you should be able to:
  
 ---
 
+## A More General Model
+
+### The Drawbacks of Stationarity 
+
+The stationarity assumption ([-@eq-nonparam-stationarity-u]) is crucial to the identification argument of section ([-@sec-nonparametric-avg-id]). It allows us to connect the average change in the realized outcomes $Y_{it}$ to finite differences of the structural function $\phi(\cdot, \cdot, \cdot)$. In turn, this connection leads to our key identification result for average marginal effects: 
+$$
+\begin{aligned}
+    & \E[\partial^x Y_{it}^{x}|X_{i1} = X_{i2} = x]\\
+	& = \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    & = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+$$
+
+An important drawback of assumption ([-@eq-nonparam-stationarity-u]) is that the function $\phi(\cdot, \cdot, \cdot)$ *cannot* change across periods. Such time invariance may be reasonable if consecutive observations are not separated by long periods of time. However, it may be an untenable assumption if the interval between observations is large or there are meaningful changes in the overall "context" in which the units operate.
+
+
+### Including Location-Scale Time Effects
+
+However, it is possible to accommodate some changes over time while preserving our identification results. In particular, it is possible to accommodate certain location-shift effects that depend on the observables.
+
+Specifically, we now consider the following extension of the model ([-@eq-nonparametric-model-full-nonsep]), discussed by @Chernozhukov2015:
+$$ 
+\begin{aligned}
+	Y_{i1}^{x_1}  &= \phi(x_1, A_i, U_{it}),\\
+	Y_{i2}^{x_2} & = \mu(x_2) + \sigma(x_2) \phi(x_2, A_i, U_{i2}).
+\end{aligned}
+$$
+We retain the conditional stationarity assumption ([-@eq-nonparam-stationarity-u]): 
+$$
+U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i) .
+$$ 
+
+The key objects of interest are the average marginal effects of $x$ for stayers in periods $t=1$:
+$$
+\begin{aligned}
+  \E[\partial_x Y_{i1}^x|X_{i1}=X_{i2} =x] & = \E\left[ \partial_x \phi(x, A_{i}, U_{it}) |X_{i1}=X_{i2} =x\right] ,
+\end{aligned}
+$$ {#eq-nonparametric-loc-scale-model}
+and $t=2$:
+$$
+\begin{aligned}
+ & \E[\partial_x Y_{i2}^x|X_{i1}=X_{i2} =x]\\
+  & = \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it})  \right)|X_{i1}=X_{i2} =x\right]
+\end{aligned}
+$$
+Observe that there is now time variation in the average effects, unlike under model  ([-@eq-nonparam-stationarity-u]). 
+
+### Discussion
+
+Model ([-@eq-nonparametric-loc-scale-model]) preserves the two attractive features of the simpler model ([-@eq-nonparametric-model-full-nonsep]):
+
+1. $(A_i, U_{it})$ can take any form, have any dimension, and affect the potential outcomes arbitrarily. 
+2. There are no restrictions on the dependence between the treatment $X_{it}$ and potential outcomes. 
+
+Intuitively, the connection between models ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-loc-scale-model]) can also be described in terms of familiar approaches with a binary treatment. The more time-invariant model ([-@eq-nonparametric-model-full-nonsep]) may be viewed as a nonparametric event study setting with a continuous treatment (see chapter 17 of @Huntington-Klein2025EffectIntroductionResearch regarding event studies). In contrast, the considerably considerably more flexible model ([-@eq-nonparametric-loc-scale-model]) may be viewed as continuous *nonparametric difference-in-differences* model.
+
+## Identification
+
+
+### Scale Effect
+
+
+We begin by identifying the scale function $\sigma(\cdot)$. 
+
+This function we can identify from the conditional variance of $y_{it}$ for stayers.
+
+Note that 
+\begin{equation}
+	\var(y_{i2}|x_{i1}=x_{i2}=x) = \sigma^2(x)\var(\phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x).
+\end{equation}
+We write $u_{it}$ under $\phi$ to emphasize stationarity of $u_{it}$.
+
+
+At the same time, the conditional variance of $\phi$ for stayers is directly obtained from
+\begin{equation} 
+	\var\left(y_{i1}|x_{i1}=x_{i2}=x \right)= \var(\phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x).
+\end{equation}
+Combining, we immediately obtain that
+\begin{equation}
+	\sigma^2(x) = \dfrac{	\var(y_{i2}|x_{i1}=x_{i2}=x) }{	\var(y_{i1}|x_{i1}=x_{i2}=x) }.
+\end{equation}
+
+
+
+### Location Effect
+
+To obtain the location shift, we observe that
+\begin{align}
+	\E[y_{i1}|x_{i1}=x_{i2}=x] & = \E[\phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x],\\
+	\E[y_{i2}|x_{i1}=x_{i2}=x] & =  \mu(x) + \sigma(x)\E[\phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x].
+\end{align}
+Rearranging and multiply the first line by $\sigma(x)$, we get that
+\begin{align}
+	\mu(x) & = \E[y_{i2}|x_{i1}=x_{i2}=x] - \sigma(x)\E[y_{i1}|x_{i1}=x_{i2}=x] \\
+	&   = \E[y_{i2}|x_{i1}=x_{i2}=x] - \sqrt{\dfrac{	\var(y_{i1}|x_{i1}=x_{i2}=x) }{	\var(y_{i1}|x_{i1}=x_{i2}=x) }}\E[y_{i2}|x_{i1}=x_{i2}=x] . 
+\end{align}
+
+### Average Marginal Effects
+
+
+
+Having identified $\mu(\cdot)$ and $\sigma(\cdot)$, we can now proceed to identify $\E[\partial_x \phi(x, \alpha_i, u_{it})|x_{i1}=x_{i2}=x]$. To do so, we transform the second-period observations as 
+\begin{equation}
+	\dfrac{y_{i2}- \mu(x_{i2})}{\sigma(x_{i2})} = \phi(x_{i2}, \alpha_i, u_{i2}).
+\end{equation}
+We can then apply the argument of section \ref{nonparametric:subsection:hoderlein_white_identification} to the transformed data $(y_{i1}, (y_{i2}-\mu(x_{i2}))/\sigma(x_{i2}))$.
+
+
+## Estimation
+
+
+As before, we have shown that the objects of interest can be expressed in terms of explicit functions of conditional expectations of $(y_{i1}, y_{i2})$ given $(x_{i1}, x_{i2})$.
+
+This expectations can again all be replaced with local polynomial estimators.
+
+
+The resulting estimator for the average marginal effects of interest will be consistent and asymptotically normal by the delta method, as local polynomial estimators are consistent and jointly asymptotically normal.
+
+
+For inference, the simplest approach is to use the bootstrap rather than use the expression for the variance implied by the delta method.
+
+Accordingly, the simplest way to conduct valid inference  is by using bootstrap and recomputing all conditional expectations.
+
+See @Chernozhukov2015 regarding bootstrap inference, and also alternative estimation using global methods (as opposed to the local polynomial approach).
+
+--- 
+
 #### Next Section {.unnumbered}
 
 In the next section, we  

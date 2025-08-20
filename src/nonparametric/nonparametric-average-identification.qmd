@@ -65,7 +65,7 @@ At the same time, contrasting outcomes within the same unit necessarily means co
 As it turns out, to handle such comparisons it is sufficient to assume that $U_{it}$ is conditionally stationary. Formally, we assume that the distribution $U_{i1}$ conditional on $(X_{i1}, X_{i2}, A_i)$ is equal to the conditional distribution of $U_{i2}$:
 $$
 U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i) .
-$$
+$$ {#eq-nonparam-stationarity-u}
  Under this assumption, the distribution of the potential outcomes $Y_{it}^x=\phi(x, A_i, U_{it})$ does not depend on time $t$ any more given $(X_{i1}, X_{i2})$. Intuitively, one may think that time is randomly assigned to observations; an interpretation called "time as an instrument" [@Chernozhukov2013].  The variation in $U_{it}$ over time becomes non-systemic and we can use the time dimension to isolate causal effects. 
 
 ::: {.callout-note appearance="simple" icon=false}
