@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
+<meta name="description" content="Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)">
 
-<title>8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity</title>
+<title>15&nbsp; Relaxing Stationarity with Nonparametric Time Effects – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-distribution.html" rel="next">
-<link href="../linear/linear-coefficient-variance.html" rel="prev">
+<link href="../nonparametric/nonparametric-cre.html" rel="next">
+<link href="../nonparametric/nonparametric-average-estimation.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -448,8 +448,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="8&nbsp; Interlude: Characteristic Functions and Deconvolution – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Review characteristic functions and deconvolution for identifying distributions in econometrics. (Lecture Notes)">
+<meta property="og:title" content="15&nbsp; Relaxing Stationarity with Nonparametric Time Effects – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to identify average effects in a nonparametric continuous difference-in-differences model with infinite-dimensional heterogeneity (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -462,7 +462,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-location-scale.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -552,7 +552,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-chf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></a>
   </div>
 </li>
@@ -605,7 +605,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
   </div>
 </li>
@@ -643,17 +643,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#characteristic-functions" id="toc-characteristic-functions" class="nav-link active" data-scroll-target="#characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</a></li>
-  <li><a href="#deconvolution" id="toc-deconvolution" class="nav-link" data-scroll-target="#deconvolution"><span class="header-section-number">8.2</span> Deconvolution</a></li>
+  <li><a href="#a-more-general-model" id="toc-a-more-general-model" class="nav-link active" data-scroll-target="#a-more-general-model"><span class="header-section-number">15.1</span> A More General Model</a>
+  <ul class="collapse">
+  <li><a href="#the-drawbacks-of-stationarity" id="toc-the-drawbacks-of-stationarity" class="nav-link" data-scroll-target="#the-drawbacks-of-stationarity"><span class="header-section-number">15.1.1</span> The Drawbacks of Stationarity</a></li>
+  <li><a href="#including-location-scale-time-effects" id="toc-including-location-scale-time-effects" class="nav-link" data-scroll-target="#including-location-scale-time-effects"><span class="header-section-number">15.1.2</span> Including Location-Scale Time Effects</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">15.1.3</span> Discussion</a></li>
+  </ul></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">15.2</span> Identification</a>
+  <ul class="collapse">
+  <li><a href="#scale-effect" id="toc-scale-effect" class="nav-link" data-scroll-target="#scale-effect"><span class="header-section-number">15.2.1</span> Scale Effect</a></li>
+  <li><a href="#location-effect-and-average-of-phi" id="toc-location-effect-and-average-of-phi" class="nav-link" data-scroll-target="#location-effect-and-average-of-phi"><span class="header-section-number">15.2.2</span> Location Effect and Average of <span class="math inline">\(\phi\)</span></a></li>
+  <li><a href="#average-derivative-of-phi" id="toc-average-derivative-of-phi" class="nav-link" data-scroll-target="#average-derivative-of-phi"><span class="header-section-number">15.2.3</span> Average Derivative of <span class="math inline">\(\phi\)</span></a></li>
+  </ul></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation"><span class="header-section-number">15.3</span> Estimation</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-location-scale.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-chf.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-location-scale.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-linear-chf" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Interlude: Characteristic Functions and Deconvolution</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-loc-scale" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></h1>
 </div>
 
 
@@ -680,89 +691,152 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section reviews characteristic functions and deconvolution.</p>
+<p>This section shows how to extend identification of marginal effects to a model with nonparametric location-scale time effects.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>State some key properties of characteristic functions.</li>
-<li>Carry out a basic nonparametric deconvolution argument for identifying distributions.<br>
+<li>Identify the average marginal effects for stayers under a model with location-scale effects and potentially infinite-dimensional heterogeneity.<br>
 </li>
+<li>Propose estimators for the average marginal effects.</li>
+<li>Draw parallels between the models of this block and event study/difference-in-differences approaches.</li>
 </ul>
 </div>
 </div>
-<p>To discuss the identification of the full distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>), we need to review two key concepts: characteristic functions and deconvolution. This brief section can be freely skipped if you are familiar with both.</p>
-<section id="characteristic-functions" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="characteristic-functions"><span class="header-section-number">8.1</span> Characteristic Functions</h2>
-<p>If <span class="math inline">\(\bV\)</span> is a random <span class="math inline">\(T\)</span>-vector, then the characteristic function <span class="math inline">\(\varphi_{\bV}(s): \R^T\to \C\)</span> of <span class="math inline">\(\bV\)</span> is defined as follows: <span class="math display">\[
-\varphi_{\bV}(\bs) = \E[\exp(i\bs'\bV)].
-\]</span> See <span class="citation" data-cites="Durrett2019">Durrett (<a href="../references/references.html#ref-Durrett2019" role="doc-biblioref">2019</a>)</span> (or your favorite probability textbook) regarding general properties of characteristic functions.</p>
-<p>For our purposes, we need the following three key properties:</p>
-<ol type="1">
-<li><p>The characteristic function uniquely determines the distribution.</p></li>
-<li><p>Let <span class="math inline">\(\bV, \bU\)</span> be two independent random vectors. Then the characteristic function of their sum <span class="math inline">\(\bV+\bU\)</span> is equal to the product of characteristic function of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>: <span id="eq-linear-chf-independence"><span class="math display">\[
+<hr>
+<section id="a-more-general-model" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="a-more-general-model"><span class="header-section-number">15.1</span> A More General Model</h2>
+<section id="the-drawbacks-of-stationarity" class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="the-drawbacks-of-stationarity"><span class="header-section-number">15.1.1</span> The Drawbacks of Stationarity</h3>
+<p>The stationarity assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>) is crucial to the identification argument of section (<a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>). It allows us to connect the average change in the realized outcomes <span class="math inline">\(Y_{it}\)</span> to finite differences of the structural function <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span>. In turn, this connection leads to our key identification result for average marginal effects: <span class="math display">\[
 \begin{aligned}
-     \varphi_{\bV+\bU}(\bs) &amp; =  \E\left[e^{i\bs'(\bV+\bU)}\right] = \E\left[e^{i\bs'\bV}e^{i\bs'\bU} \right]\\
-     &amp; = \E\left[e^{i\bs'\bV}\right]\E\left[e^{i\bs'\bU}\right]\\
-     &amp;  =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
+    &amp; \E[\partial^x Y_{it}^{x}|X_{i1} = X_{i2} = x]\\
+    &amp; = \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
-\tag{8.1}\]</span></span></p></li>
-<li><p>Let <span class="math inline">\(\bbeta\)</span> be a random <span class="math inline">\(p\)</span>-vector and <span class="math inline">\(\bX\)</span> a matrix. Then <span id="eq-linear-chf-product"><span class="math display">\[
-\begin{aligned}
-     \varphi_{\bX\bbeta}(\bs) &amp; = \E\left[\exp(i\bs'(\bX\bbeta)) \right] \\
-     &amp; = \E\left[\exp(i(\bX'\bs)'\bbeta) \right]\\
-     &amp;  = \varphi_{\bbeta}(\bX'\bs)
-\end{aligned}
-\tag{8.2}\]</span></span></p></li>
-</ol>
-<p>Conditional characteristic functions may be defined analogously using conditional expectations in place of unconditional ones.</p>
+\]</span></p>
+<p>While useful for identification, assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>) imposes that the function <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span> <em>cannot</em> change across periods. Such time invariance may be reasonable if consecutive observations are not separated by long periods of time. In contrast, it may be untenable if the interval between observations is large or there are meaningful changes in the overall “context” in which the units operate.</p>
 </section>
-<section id="deconvolution" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="deconvolution"><span class="header-section-number">8.2</span> Deconvolution</h2>
-<p>Property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) is particularly useful for statistical applications. It forms the basis of an estimation and identification approach known as <em>deconvolution</em>. This approach helps us identify the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in the next section.</p>
-<p>At heart, deconvolution is simple. Suppose that we observe a random vector <span class="math inline">\(\bY\)</span>. <span class="math inline">\(\bY\)</span> is generated as a sum of two independent vector <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. The distribution of <span class="math inline">\(\bU\)</span> is known, while the distribution of <span class="math inline">\(\bV\)</span> is the object of interest.</p>
-<p>By property (<a href="#eq-linear-chf-independence" class="quarto-xref"><span>8.1</span></a>) the characteristic function of <span class="math inline">\(\bY\)</span> satisfies <span class="math display">\[
-    \varphi_{\bY}(\bs)   =  \varphi_{\bV}(\bs) \varphi_{\bU}(\bs).
-\]</span> If <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span>, we can divide and rearrange to obtain <span class="math display">\[
-\varphi_{\bV}(\bs) = \dfrac{\varphi_{\bY}(\bs) }{\varphi_{\bU}(\bs)}
-\]</span> By assumption, the distributions of <span class="math inline">\(\bY\)</span> and <span class="math inline">\(\bU\)</span> are known, and thus <span class="math inline">\(\varphi_{\bY}(\bs)\)</span> and <span class="math inline">\(\varphi_{\bU}(\bs)\)</span> are identified. It follows that the full <span class="math inline">\(\varphi_{\bV}(\cdot)\)</span> is also identified provided <span class="math inline">\(\varphi_{\bU}(\bs)\neq 0\)</span> for all <span class="math inline">\(\bs\)</span> (or at least <span class="math inline">\(\varphi_{\bU}(\bs)= 0\)</span> for “not too many” <span class="math inline">\(\bs\)</span>, see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>). The distribution of <span class="math inline">\(\bV\)</span> is identified since characteristic functions uniquely identify distributions.</p>
-<p>This identification strategy is called deconvolution. The name of the procedure stems from the fact that the distribution of <span class="math inline">\(\bY\)</span> is the convolution of distributions of <span class="math inline">\(\bV\)</span> and <span class="math inline">\(\bU\)</span>. Extracting the distribution of <span class="math inline">\(\bV\)</span> from the laws of <span class="math inline">\(\bY, \bU\)</span> may be viewed as an inverse operation.</p>
-<p>Observe that the argument is nonparametric, as it imposes no parametric form assumptions on the distributions involved.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>It is possible to relax the assumption that the distribution of <span class="math inline">\(\bU\)</span> is known by using mulitple observations. We discuss one approach in the following section. Another approach uses a second observation of <span class="math inline">\(\bY\)</span> using a result called Kotlarski’s lemma <span class="citation" data-cites="Kotlarski1967CharacterizingGammaNormal">(<a href="../references/references.html#ref-Kotlarski1967CharacterizingGammaNormal" role="doc-biblioref">Kotlarski 1967</a>)</span> (see <span class="citation" data-cites="Evdokimov2012">Evdokimov and White (<a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">2012</a>)</span>, <span class="citation" data-cites="Lewbel2022">Lewbel (<a href="../references/references.html#ref-Lewbel2022" role="doc-biblioref">2022</a>)</span> for extensions). Used with measurement error <span class="citation" data-cites="Schennach2016RecentAdvancesMeasurement">(see a review in <a href="../references/references.html#ref-Schennach2016RecentAdvancesMeasurement" role="doc-biblioref">Schennach 2016</a>)</span>, nonparametric panel data models <span class="citation" data-cites="Evdokimov2010">(<a href="../references/references.html#ref-Evdokimov2010" role="doc-biblioref">Evdokimov 2010</a>)</span>, and identification of systems of simultaneous equations <span class="citation" data-cites="Lewbel2024IdentificationTriangularTwo">(<a href="../references/references.html#ref-Lewbel2024IdentificationTriangularTwo" role="doc-biblioref">Lewbel, Schennach, and Zhang 2024</a>)</span>.</p>
-</div>
-</div>
-</div>
+<section id="including-location-scale-time-effects" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="including-location-scale-time-effects"><span class="header-section-number">15.1.2</span> Including Location-Scale Time Effects</h3>
+<p>However, it is possible to accommodate some changes over time while preserving our identification results. In particular, it is possible to accommodate flexible location-scale effects that depend on the observables nonparametrically.</p>
+<p>Specifically, we now consider the following extension of the model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), discussed by <span class="citation" data-cites="Chernozhukov2015">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">2015</a>)</span>: <span id="eq-nonparametric-loc-scale-model"><span class="math display">\[
+\begin{aligned}
+    Y_{i1}^{x_1}  &amp;= \phi(x_1, A_i, U_{it}),\\
+    Y_{i2}^{x_2} &amp; = \mu(x_2) + \sigma(x_2) \phi(x_2, A_i, U_{i2}).
+\end{aligned}
+\tag{15.1}\]</span></span> The functions <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\sigma(\cdot)\)</span> may be viewed as flexible nonparametric <em>location-scale</em> time effects. We assume throughout that <span class="math inline">\(\sigma(\cdot)\neq 0\)</span>.</p>
+<p>Although we allow the function <span class="math inline">\(\phi\)</span> to change, we retain the conditional stationarity assumption (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>): <span class="math display">\[
+U_{i1}|(X_{i1}, X_{i2}, A_i) \overset{d}{=} U_{i2}|(X_{i1}, X_{i2}, A_i).
+\]</span></p>
+<p>The key objects of interest are the average marginal effects of <span class="math inline">\(x\)</span> for stayers in periods <span class="math inline">\(t=1\)</span>: <span id="eq-nonparametric-loc-scale-t1"><span class="math display">\[
+\begin{aligned}
+  \E[\partial_x Y_{i1}^x|X_{i1}=X_{i2} =x] &amp; = \E\left[ \partial_x \phi(x, A_{i}, U_{it}) |X_{i1}=X_{i2} =x\right],
+\end{aligned} \tag{15.2}\]</span></span> and <span class="math inline">\(t=2\)</span>: <span id="eq-nonparametric-loc-scale-t2"><span class="math display">\[
+\begin{aligned}
+&amp; \E[\partial_x Y_{i2}^x|X_{i1}=X_{i2} =x]\\
+  &amp; = \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it})  \right)|X_{i1}=X_{i2} =x\right]
+\end{aligned}
+\tag{15.3}\]</span></span> Observe that there is now time variation in the average effects, unlike under model (<a href="nonparametric-average-identification.html#eq-nonparam-stationarity-u" class="quarto-xref"><span>13.3</span></a>).</p>
+</section>
+<section id="discussion" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="discussion"><span class="header-section-number">15.1.3</span> Discussion</h3>
+<p>Model (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) preserves the two attractive features of the simpler model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>):</p>
+<ol type="1">
+<li><span class="math inline">\((A_i, U_{it})\)</span> can take any form, have any dimension, and affect the potential outcomes arbitrarily.</li>
+<li>There are no restrictions on the dependence between the treatment <span class="math inline">\(X_{it}\)</span> and potential outcomes.</li>
+</ol>
+<p>Intuitively, the connection between models (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) mirrors familiar binary-treatment settings. The time-invariant model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) corresponds to a nonparametric event-study design with a continuous treatment (see chapter 17 of <span class="citation" data-cites="Huntington-Klein2025EffectIntroductionResearch">Huntington-Klein (<a href="../references/references.html#ref-Huntington-Klein2025EffectIntroductionResearch" role="doc-biblioref">2025</a>)</span> regarding event studies with no trends in the outcome). The location-scale extension (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>), by contrast, generalizes this to a nonparametric difference-in-differences framework, accommodating nonparametric trends in the outcomes.</p>
+</section>
+</section>
+<section id="identification" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="identification"><span class="header-section-number">15.2</span> Identification</h2>
+<p>We now turn to identification of the average marginal effects (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>). Identification proceeds in three steps:</p>
+<ol type="1">
+<li>Identifying the scale function <span class="math inline">\(\sigma(\cdot)\)</span>.</li>
+<li>Identifying the location function <span class="math inline">\(\mu(\cdot)\)</span>.</li>
+<li>Identifying the average value <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span> of <span class="math inline">\(\phi\)</span> and the average value of its derivative <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>.</li>
+</ol>
+<p>Together, these components are sufficient to identify both (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>), since the second period effect can be represented as <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \partial_x \left(\mu(x) + \sigma(x)\phi(x, A_{i}, U_{it}) \right)|X_{i1}=X_{i2} =x\right] \\
+&amp; = \partial_x \mu(x) \\
+&amp; \quad + \sigma(x) \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+&amp; \quad + \left(\partial_x \sigma(x)\right) \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
+\end{aligned}
+\]</span></p>
+<section id="scale-effect" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="scale-effect"><span class="header-section-number">15.2.1</span> Scale Effect</h3>
+<p>We begin by identifying the scale function <span class="math inline">\(\sigma(\cdot)\)</span>. The scale is directly connect to the variance of the second period realized outcome for the subpopulation of stayers as <span class="math display">\[
+\begin{aligned}
+    &amp; \var(Y_{i2}|X_{i1}=X_{i2}=x) \\
+    &amp; = \sigma^2(x)\var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
+\]</span> As before, the notation <span class="math inline">\(U_{it}\)</span> under <span class="math inline">\(\phi\)</span> emphasizes stationarity of <span class="math inline">\(U_{it}\)</span>.</p>
+<p>At the same time, the conditional variance of <span class="math inline">\(\phi(x, A_i, U_{it})\)</span> for stayers is directly obtained from the variance of the first period realized outcome: <span class="math display">\[
+\begin{aligned}
+    &amp; \var\left(Y_{i1}|X_{i1}=X_{i2}=x \right) \\
+    &amp; = \var(\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x).
+\end{aligned}
+\]</span></p>
+<p>Combining the two expression yields an explicit formula for the scale effect, provided <span class="math inline">\(\var\left(Y_{i1}|X_{i1}=X_{i2}=x \right)\neq 0\)</span>: <span class="math display">\[
+    \sigma^2(x) = \dfrac{   \var(Y_{i2}|X_{i1}=X_{i2}=x) }{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }.
+\]</span></p>
+</section>
+<section id="location-effect-and-average-of-phi" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="location-effect-and-average-of-phi"><span class="header-section-number">15.2.2</span> Location Effect and Average of <span class="math inline">\(\phi\)</span></h3>
+<p>To obtain the location effect <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>, we instead look at the averages of the realized outcomes for stayers. By model (<a href="#eq-nonparametric-loc-scale-model" class="quarto-xref"><span>15.1</span></a>) it holds that <span class="math display">\[
+\begin{aligned}
+    \E[Y_{i1}|X_{i1}=X_{i2}=x] &amp; = \E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x], \\
+    \E[Y_{i2}|X_{i1}=X_{i2}=x] &amp; = \mu(x) + \sigma(x)\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x].
+\end{aligned}
+\]</span> Identification for <span class="math inline">\(\E[\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span> is thus immediate. To obtain <span class="math inline">\(\mu(\cdot)\)</span>, we rearrange and multiply the first line by <span class="math inline">\(\sigma(x)\)</span>: <span class="math display">\[
+\begin{aligned}
+    \mu(x) &amp; = \E[Y_{i2}|X_{i1}=X_{i2}=x] - \sigma(x)\E[Y_{i1}|X_{i1}=X_{i2}=x] \\
+    &amp; = \E[Y_{i2}|X_{i1}=X_{i2}=x] \\
+    &amp; \quad - \sqrt{\dfrac{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }{ \var(Y_{i1}|X_{i1}=X_{i2}=x) }}\E[Y_{i2}|X_{i1}=X_{i2}=x] .
+\end{aligned}
+\]</span></p>
+</section>
+<section id="average-derivative-of-phi" class="level3" data-number="15.2.3">
+<h3 data-number="15.2.3" class="anchored" data-anchor-id="average-derivative-of-phi"><span class="header-section-number">15.2.3</span> Average Derivative of <span class="math inline">\(\phi\)</span></h3>
+<p>Finally, having identified <span class="math inline">\(\mu(\cdot)\)</span> and <span class="math inline">\(\sigma(\cdot)\)</span>, we can now proceed to identify <span class="math inline">\(\E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]\)</span>. To do so, we define new synthetic outcomes that eliminate the location-scale effects, reducing the problem to the stationary case (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>): <span class="math display">\[
+\begin{aligned}
+Z_{i1} &amp; = Y_{i1}, \\
+Z_{i2} &amp; = \dfrac{Y_{i2}- \mu(X_{i2})}{\sigma(X_{i2})}.
+\end{aligned}
+\]</span></p>
+<p>The new variables <span class="math inline">\((Z_{i1}, Z_{it})\)</span> satisfy two key properties:</p>
+<ul>
+<li>The distribution of <span class="math inline">\((Z_{i1}, Z_{i2}, X_{i1}, X_{i2})\)</span> is identified.</li>
+<li>The variables follow <span class="math display">\[
+Z_{it} = \phi(X_{it}, A_i, U_{it}).
+\]</span></li>
+</ul>
+<p>In other words, <span class="math inline">\((Z_{i1}, Z_{i2})\)</span> follow model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>).</p>
+<p>By applying the results of sections <a href="nonparametric-average-identification.html" class="quarto-xref"><span>13</span></a>-<a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a> we conclude that <span class="math display">\[
+\begin{aligned}
+    &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
+    &amp; = \partial_{x_2} \E\left[ Z_{i2}- Z_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
+\end{aligned}
+\]</span></p>
+<p>Combining the above results together yields overall identification for average marginal effects (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>).</p>
+</section>
+</section>
+<section id="estimation" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="estimation"><span class="header-section-number">15.3</span> Estimation</h2>
+<p>Estimation of (<a href="#eq-nonparametric-loc-scale-t1" class="quarto-xref"><span>15.2</span></a>) and (<a href="#eq-nonparametric-loc-scale-t2" class="quarto-xref"><span>15.3</span></a>) is now straightforward. As in section <a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>, we have shown that the objects of interest can be expressed in terms of explicit functions of conditional expectations of <span class="math inline">\((Y_{i1}, Y_{i2})\)</span> given <span class="math inline">\((X_{i1}, X_{i2})\)</span>. This expectations can be replaced with local polynomial estimators, following the logic of section <a href="nonparametric-average-estimation.html" class="quarto-xref"><span>14</span></a>. The resulting estimator for the average marginal effects of interest will be consistent and asymptotically normal by the delta method, as local polynomial estimators are consistent and jointly asymptotically normal.</p>
+<p>For inference, the simplest approach is to use the bootstrap rather than use the expression for the variance implied by the delta method. Accordingly, the simplest way to conduct valid inference is by using bootstrap and recomputing all conditional expectations. See <span class="citation" data-cites="Chernozhukov2015">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">2015</a>)</span> regarding bootstrap inference, and also alternative estimation using global methods (as opposed to the local polynomial approach).</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we discuss identification of the distribution of the coefficients <span class="math inline">\(\bbeta_i\)</span> in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>) using the tools of this section.</p>
+<p>In the next section, we extend our identification results for average marginal effects beyond the population of stayers using restrictions on the dependence between <span class="math inline">\((A_i, U_{it})\)</span> and <span class="math inline">\(X_{it}\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Durrett2019" class="csl-entry" role="listitem">
-Durrett, Rick. 2019. <em><span class="nocase">Probability: Theory and Examples</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108591034">https://doi.org/10.1017/9781108591034</a>.
+<div id="ref-Chernozhukov2015" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, Stefan Hoderlein, Hajo Holzmann, and Whitney Newey. 2015. <span>“<span class="nocase">Nonparametric Identification in Panels Using Quantiles</span>.”</span> <em>Journal of Econometrics</em> 188 (2): 378–92. <a href="https://doi.org/10.1016/j.jeconom.2015.03.006">https://doi.org/10.1016/j.jeconom.2015.03.006</a>.
 </div>
-<div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
-Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and Estimation of a Nonparametric Panel Data Model with Unobserved Heterogeneity</span>.”</span>
-</div>
-<div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
-Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span> <em>Econometric Theory</em> 28 (4): 925–32. <a href="https://doi.org/10.1017/S0266466611000831">https://doi.org/10.1017/S0266466611000831</a>.
-</div>
-<div id="ref-Kotlarski1967CharacterizingGammaNormal" class="csl-entry" role="listitem">
-Kotlarski, Ignacy. 1967. <span>“On <span>Characterizing</span> the <span>Gamma</span> and the <span>Normal Distribution</span>.”</span> <em>Pacific Journal of Mathematics</em> 20 (1): 69–76. <a href="https://doi.org/10.2140/pjm.1967.20.69">https://doi.org/10.2140/pjm.1967.20.69</a>.
-</div>
-<div id="ref-Lewbel2022" class="csl-entry" role="listitem">
-Lewbel, Arthur. 2022. <span>“<span class="nocase">Kotlarski with a Factor Loading</span>.”</span> <em>Journal of Econometrics</em> 229 (1): 176–79. <a href="https://doi.org/10.1016/j.jeconom.2020.12.012">https://doi.org/10.1016/j.jeconom.2020.12.012</a>.
-</div>
-<div id="ref-Lewbel2024IdentificationTriangularTwo" class="csl-entry" role="listitem">
-Lewbel, Arthur, Susanne M. Schennach, and Linqi Zhang. 2024. <span>“Identification of a <span>Triangular Two Equation System Without Instruments</span>.”</span> <em>Journal of Business &amp; Economic Statistics</em> 42 (1): 14–25. <a href="https://doi.org/10.1080/07350015.2023.2166052">https://doi.org/10.1080/07350015.2023.2166052</a>.
-</div>
-<div id="ref-Schennach2016RecentAdvancesMeasurement" class="csl-entry" role="listitem">
-Schennach, Susanne M. 2016. <span>“Recent <span>Advances</span> in the <span>Measurement Error Literature</span>.”</span> <em>Annual Review of Economics</em> 8 (1): 341–77. <a href="https://doi.org/10.1146/annurev-economics-080315-015058">https://doi.org/10.1146/annurev-economics-080315-015058</a>.
+<div id="ref-Huntington-Klein2025EffectIntroductionResearch" class="csl-entry" role="listitem">
+Huntington-Klein, Nick. 2025. <em>The <span>Effect</span>: <span>An Introduction</span> to <span>Research Design</span> and <span>Causality</span></em>. S.l.: <span>Chapman and Hall/CRC</span>.
 </div>
 </div>
 </section>
@@ -1332,13 +1406,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-coefficient-variance.html" class="pagination-link" aria-label="Variance of Heterogeneous Coefficients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Variance of Heterogeneous Coefficients</span></span>
+      <a href="../nonparametric/nonparametric-average-estimation.html" class="pagination-link" aria-label="Nonparametric Estimation of Average Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-distribution.html" class="pagination-link" aria-label="Distribution of Heterogeneous Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Distribution of Heterogeneous Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../nonparametric/nonparametric-cre.html" class="pagination-link" aria-label="Beyond Stayers Using Index Restrictions">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1347,4 +1421,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-chf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/nonparametric/nonparametric-location-scale.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

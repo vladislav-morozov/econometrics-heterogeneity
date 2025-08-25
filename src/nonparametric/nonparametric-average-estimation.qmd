@@ -6,7 +6,7 @@ open-graph:
 ---
 
 
-# Nonparametric Estimation of Average Effects {#sec-nonparametric-avg-id}
+# Nonparametric Estimation of Average Effects {#sec-nonparametric-avg-est}
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -27,17 +27,17 @@ By the end of this section, you should be able to:
 In the previous section, we have identified the average marginal effect for stayers in model ([-@eq-nonparametric-model-full-nonsep]) in terms of a limit of average change in outcomes across periods (@eq-nonparametric-avg-me-identification-result):
 $$
 \begin{aligned}
- & \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+ & \E\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] \\
  & = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
 $$
 This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.
 
-However, the limit-based representation poses challenges for estimation, which typically benefits from an explicit representation. To address this, we define the following function:
+However, the limit-based representation poses challenges for estimation, which would benefit from a more explicit representation. To provide such a representation, we define the following function:
 $$
 	g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
 $$
-This function captures how the average outcome difference changes with changes in the covariates. It plays a central role in constructing our estimator.
+This function captures how the average difference in outcomes depends on the treatment values in both periods. $g(\cdot, \cdot)$ plays a central role in constructing our estimator.
 
 Observe that $g(x, x) = 0$, since 
 $$
@@ -80,9 +80,9 @@ In principle, many nonparametric regression methods can estimate derivatives. Of
  We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in @Li2007 and @Fan1996 for some standard references. 
 
 
-To motivate the approach, let $g(\cdot, \cdot)$ be a smooth function of two variables, and suppose that we see observations $(Y_i, X_{i1}, X_{i2})$ such that 
+To motivate the approach, let $g(\cdot, \cdot)$ be a smooth function of two variables, and suppose that we see observations $(Y_i, X_{i1}, X_{i2})$ such that
 $$
-	\E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
+	\E[Y_i|X_{i1}, X_{i2}] =  g(X_{i1}, X_{i2}), \quad i=1, \dots, N.
 $$
 Let $(x_1, x_2)$ be some fixed point.
  
@@ -123,7 +123,7 @@ This expansion suggests that we can estimate the leading derivatives $\bbeta(x_1
 ### Estimator
 
 
-We formalize the idea of closeness using a bivariate *kernel* function $K(\cdot, \cdot)$ that will measure the distance between data points and the target point $(x_1, x_2)$. In principle, we can take any function $K$ that satisfies the following properties: 
+We formalize the idea of closeness using a bivariate *kernel* function $K(\cdot, \cdot)$ that  measures the distance between data points and the target point $(x_1, x_2)$. In principle, we can take any function $K$ that satisfies the following properties: 
 $$
 \begin{aligned}
 K(u_1, u_2) & \geq 0,  \\
@@ -162,7 +162,7 @@ Which order of local polynomials should one use? The standard advice is to take 
 
 Equipped with the local polynomial estimator, we can now estimate the average marginal effect of stayers. To do so, we use $Y_{i2}-Y_{i1}$ as the dependent variable in @eq-nonparametric-avg-lp and select the target point as $(x_1, x_2)=(x, x)$. The third coordinate of $\hat{\bbeta}(x, x)$ is an estimator for the partial derivative of $\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]$ with respect to $x_2$, evaluated at $(x, x)$ — precisely the average marginal effect of interest by  @eq-nonparametric-avg-est-me:
 $$
-\widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
+\widehat{ \E}\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
 $$
 
 
@@ -176,10 +176,10 @@ Our estimator inherits all the desirable properties of local polynomial estimato
 ## Another Estimator
 
 
-Before we move on to generalizations of the identification result, it is worth discussing @eq-nonparametric-avg-est-me somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference $(\phi(x+h, a, u)-\phi(x, a, u))$. While the one-sided finite difference yields a valid estimator, symmetric (central) differences [often provide more accurate approximations to derivatives.](https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives). We now present a refinement of our identification result based on this idea. 
+Before we move on to generalizations of the identification result, it is worth discussing @eq-nonparametric-avg-est-me somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference $(\phi(x+h, a, u)-\phi(x, a, u))$. While the one-sided finite difference yields a valid estimator, symmetric (central) differences [often provide more accurate approximations to derivatives.](https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives).  
 
 
-By suitably adjusting the above argument, one can show that 
+By suitably adjusting the above argument, one can indeed obtain an identification argument based on central differences:
 $$
 \begin{aligned}
 	& \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
@@ -189,11 +189,11 @@ $$
     & \hspace{2cm} -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Bigg|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
 $$
-A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to $x_2$ and $x_1$, i.e., the third and second elements of $\hat{\bbeta}(x)$.
+A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to $x_2$ and $x_1$, i.e., the third and second elements of $\hat{\bbeta}(x, x)$.
 
 ---
 
 #### Next Section {.unnumbered}
 
-In the next section, we somewhat relax the stationarity assumption on the model by allowing certain changes in the structural function. 
+In the next section, we somewhat relax the stationarity assumption on the model by allowing location-scale shifts in the structural function. 
 

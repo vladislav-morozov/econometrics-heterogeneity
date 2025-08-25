@@ -1,0 +1,159 @@
+--- 
+description: "Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)"
+
+open-graph:
+    description: "Learn how index restrictions (Altonji-Matzkin) extend causal identification beyond stayers in panel data with unobserved heterogeneity (Lecture Notes)"
+---
+
+
+
+
+# Beyond Stayers Using Index Restrictions {#sec-nonparametric-cre}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section discusses how to extend identification beyond stayers using index restrictions.
+
+By the end of this section, you should be able to: 
+
+- Broadly understand index (CRE) restrictions.
+- Use a one-dimensional index restriction to identify average marginal effects for non-stayers in model ([-@eq-nonparametric-model-full-nonsep]).
+
+:::
+ 
+---
+
+
+
+## Index Restrictions
+
+### Regarding Stayers
+
+All the results of sections [-@sec-nonparametric-avg-id]-[-@sec-nonparametric-loc-scale] for the average marginal effect in models ([-@eq-nonparametric-model-full-nonsep]) and ([-@eq-nonparametric-loc-scale-model]) are limited to the subpopulation of stayers (units $X_{i1}=X_{i2}$).
+
+This restriction is a direct consequence of imposing no structure on how $(X_{i1}, X_{i2})$ relate to the unobserved components $(A_i, U_{it})$. Without restrictions, the dependence between treatments and unobservables may be arbitrarily complex, and @Cooprider2022 shows that no identification is possible for non-stayers if $(A_i, U_{it})$ is multidimensional. 
+
+### Index Restrictions
+ 
+To extend identification beyond stayers, we must restrict the dependence structure between treatments $(X_{i1}, X_{i2})$ and unobserved components $(A_i, U_{it})$. In this section, we look at a popular class of restrictions known as *index restrictions*. Broadly, index restrictions reduce the dimensionality of the dependence structure between the treatments and the unobserved components by assuming that $(A_i, U_{it})$ depends on $(X_{i1}, X_{i2})$ only through a low-dimensional index. They were introduced and studied by @Altonji2005 (see also @Bester2009 and @Liu2021). 
+ 
+
+As a simple example, consider again model ([-@eq-nonparametric-model-full-nonsep]), with the potential outcome in period $t$ determined as 
+$$
+Y_{it}^x = \phi(x, A_i, U_{it}), \quad t=1, 2.
+$$
+
+We now make an assumption about how $(X_{i1}, X_{i2})$ and $(A_i, U_{i1}, U_{i2})$ relate to each other. Specifically, we assume that the joint distribution of $(A_i, U_{i1}, U_{i2})$ only depends on $(X_{i1}, X_{i2})$ through the sum $X_{i1}+X_{i2}$:
+$$
+\begin{aligned} 
+	& f_{A_i, U_{i1}, U_{i2}|X_{i1}, X_{i2}}(a, u_1, u_2|x_1, x_2) \\
+    & = f_{A_i, U_{i1}, U_{i2}|X_{i1}+ X_{i2}}(a, u_1, u_2|x_1+x_2).		
+\end{aligned}
+$$ {#eq-nonparametric-index-2}
+In other words, the $X_{i1}+X_{i2}$ plays the role of an *index* or a sufficient statistic that captures all the relevant dimensions of the dependence structure between the treatments and the unobserved components. Economically, restriction ([-@eq-nonparametric-index-2]) arises when agents respond to aggregate exposure (see the example below).
+
+More generally, in a setting with $T$ time periods one may assume that the joint distribution of potential outcomes $(Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})$ only depends on the treatments $(X_{i1}, \dots, X_{iT})$ through $k<T$ *index* functions $g_1(\cdot), \dots, g_k(\cdot)$:
+
+$$\begin{aligned} 
+	 & (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|X_{i1}, \dots, X_{iT} \\
+     & \overset{d}{=} (Y_{i1}^{x_1}, \dots, Y_{iT}^{x_T})|g_1(X_{i1}, \dots, X_{iT}), \dots, g_k(X_{i1}, \dots, X_{iT}).
+\end{aligned}
+$$ {#eq-nonparametric-index-general}
+The index functions $g_{\cdot}(\cdot)$ are typically assumed known (averages, variances, etc.), though there are some results with unknown indidex $g(\cdot)$ [@Bester2009].
+
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+In panel data terminology, such index restrictions are sometimes called "correlated random effects" (CRE) assumptions. CRE settings lie between fixed effects settings that do not restrict the dependence structure at all and random effects settings which assume full unconditional independence.
+
+:::
+ 
+ 
+### Intuition 
+
+To get some intuition for index restrictions, let us consider a consumption example. Suppose that $X_{it}$ is the income in period $t$, $Y_{it}$ is the expenditure on a given consumption category (say, entertainment). The components $(A_i, U_{it})$ represent preferences, prices and other unobserved variables. 
+
+If consumers smooth consumption based on total income $X_{i1} + X_{i2}$ (e.g., due to savings or credit), then deviations in $(X_{i1}, X_{i2})$ are independent of $(A_i, U_{it})$ conditional on the total income. Here, $X_{i1} + X_{i2}$ is the index; it plays the role of a sufficient statistic for consumption decisions.
+
+
+## Average Marginal Effects Beyond Stayers
+
+
+### Example Identification Argument
+
+
+Index restrictions in the spirit of equations ([-@eq-nonparametric-index-2]) and ([-@eq-nonparametric-index-general]) can be used to obtain more general identification results. Broadly, they exploit the idea that units with the same index value are "comparable" in terms of unobserved heterogeneity, even if their individual treatments differ. 
+
+For example, under ([-@eq-nonparametric-index-2]), two units with $(X_{i1}, X_{i2}) = (x_1, x_2)$ and $(X_{i1}, X_{i2}) = (x_2, x_1)$ share the same index $x_1 + x_2$ and thus the same distribution of $(A_i, U_{it})$. This allows us to borrow information from stayers (where $X_{i1} = X_{i2}$) to identify effects for non-stayers with the same index.
+
+
+More formally, assumption ([-@eq-nonparametric-index-2]) implies  that the average marginal effect of a change of $x$ is the *same* for *all* units whose covariates  are the same *on average across time*:
+$$
+\begin{aligned}
+ & \E\left[ \partial_x Y_{it}^x |X_{i1}=x_1, X_{i2}= x \right] \\
+ &	= \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}= x_1, X_{i2}=x_2] \\
+ & =\E\left[\partial_x \phi(x, A_i, U_{it})\Bigg|\dfrac{X_{i1}+X_{i2}}{2}=\dfrac{x_1+x_2}{2}\right].
+\end{aligned} 
+$$
+  
+In particular, the above equality holds if we consider the stayers on one of the sides of the equations: 
+$$
+\begin{aligned} 
+	& \E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x] \\
+    &  =\E\left[\partial_x \phi(x, A_i, U_{it})\Big|\dfrac{X_{i1}+X_{i2}}{2}=x\right] 
+\end{aligned}
+$$ {#eq-nonparametric-index-ex}
+Provided there exist stayers at $x$, the argument of section [-@sec-nonparametric-avg-id]-[-@sec-nonparametric-avg-est] identifies $\E[\partial_x \phi(x, A_i, U_{it})| X_{i1}=X_{i2}=x]$.
+ 
+Thus, if stayers exist at $x$, we can identify effects for all units with $(X_{i1} + X_{i2})/2 = x$. The diagram below visually illustrates the identified set:  
+
+``` tikz
+%%| fig-cap: Identified set under index restrictions. The diagonal (stayers) anchors identification. The shaded region includes all $(x_1, x_2)$ pairs where $(x_1 + x_2)/2$ matches a stayer's average treatment, enabling extrapolation via the index restriction.
+%%| fig-align: center
+\tikzstyle{mynode}=[thick,draw=blue,fill=blue!20,circle,minimum size=22]
+\begin{tikzpicture}[x=2.2cm,y=1.4cm, every path/.style={color=gray!70}]
+\draw[->] (-0.3,0) -- (4.3,0) node[right] {$x_{1}$};
+\draw[->] (0,-0.3) -- (0,4.8) node[above] {$x_{2}$};
+
+% Draw rectangle
+%  		\fill[pattern=north west lines] (1,1) rectangle (3,3);
+
+% Draw rectangle border
+\draw (1,1) rectangle (4,3);
+
+% Draw identified set
+\fill[pattern=north west lines, pattern color=gray!50] (1,1) -- (1,3) -- (3,3) -- (4,2) -- (4,1) -- cycle;
+
+% Draw lines to axes
+\draw[dashed] (1,1) -- (1,0) node[below] {min $x_1$};
+\draw[dashed] (1,1) -- (0,1) node[left] {min $x_2$};
+\draw[dashed] (4,3) -- (4,0) node[below] {max $x_1$};
+\draw[dashed] (4,3) -- (0,3) node[left] {max $x_2$};
+
+% Draw the stayer line
+\draw[dashed] (0, 0) -- (4, 4) node[right] {Stayers};
+\draw (1, 1) -- (3, 3)  ;
+\end{tikzpicture}
+```
+
+Summarizing, identification of the average marginal effect with an index restriction proceeds in two steps. First, we identify the average marginal effects for the subpopulation of stayers as before (the diagonal on the diagram). Second, we extrapolate these effects to subpopulations that share the same values of the index as the stayers.
+  
+### Estimation
+
+Index restrictions open some new possibilities for estimation. One now faces a choice between two possible approaches: 
+
+- Using only stayer data.
+- Pooling data and performing estimation in the index space.
+
+In the first scenario, one construct estimators for the average effects for stayers using the data for stayers, exactly as in section ([-@sec-nonparametric-avg-est]). Then those estimators are automatically consistent and asymptotically normal estimators for average marginal effects in virtue of @eq-nonparametric-index-ex.
+
+Under the second scenario, one instead regresses  $Y_{i2}-Y_{i1}$ directly on the index $X_{i1} + X_{i2}$. The key connection to data is obtained by combining equations ([-@eq-nonparametric-index-ex]) and ([-@eq-nonparametric-avg-est-me}]). This approach is naturally more efficient, as it relies on more data. However, a potential risk is that even the average marginal effects for stayers may be estimated inconsistently if the index restriction is 
+
+--- 
+
+#### Next Section {.unnumbered}
+
+In the next section, we go beyond average effects and discuss identification of variance in models with unrestricted unobserved heterogeneity.

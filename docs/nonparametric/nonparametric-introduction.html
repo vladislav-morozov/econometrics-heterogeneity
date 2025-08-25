@@ -603,6 +603,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Variance of Marginal Effects</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -694,25 +712,25 @@ Summary and Learning Outcomes
 </section>
 <section id="nonparametric-models" class="level3" data-number="11.1.2">
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="nonparametric-models"><span class="header-section-number">11.1.2</span> Nonparametric Models</h3>
-<p>Nonparametric models address functional form concerns directly. Rather than imposing a specific shape on the relationship between <span class="math inline">\(y\)</span> and the covariates <span class="math inline">\(\bx\)</span>, we assume only that this relationship is governed by an unknown function <span class="math inline">\(\phi\)</span> of observed and unobserved variables. This leads to the following general setup:</p>
+<p>Nonparametric models address functional form concerns directly. Rather than imposing a specific shape on the relationship between <span class="math inline">\(Y\)</span> and the treatments <span class="math inline">\(\bX\)</span>, we assume only that this relationship is governed by an unknown function <span class="math inline">\(\phi\)</span> of observed and unobserved variables. This leads to the following general potential outcome models:</p>
 <ul>
 <li><p>In cross-sectional settings: <span id="eq-nonparametric-generic-cross-section"><span class="math display">\[
-  Y_i = \phi(\bX_i, A_i), \quad {}_{i=1,\dots, N},
+  Y_i^{\bx} = \phi(\bx, A_i), \quad {}_{i=1,\dots, N},
 \tag{11.1}\]</span></span> where <span class="math inline">\(\bX_{i}\)</span> includes the observed variables and <span class="math inline">\(A_i\)</span> includes the unobserved components.</p></li>
 <li><p>In panel data settings <span id="eq-nonparametric-generic-panel"><span class="math display">\[
-Y_{it} = \phi(\bX_{it}, A_i, U_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
+Y_{it}^{\bx} = \phi(\bx, A_i, U_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
 \tag{11.2}\]</span></span> where both <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span> are not observed.</p></li>
 </ul>
 <p>Models (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) parallel and generalize models (<a href="../linear/linear-introduction.html#eq-cross_sectional_hetero" class="quarto-xref"><span>2.3</span></a>) and (<a href="../linear/linear-introduction.html#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>).</p>
 <p>In both cases the nature of <span class="math inline">\((A_i, U_{it})\)</span> is not restricted a priori. These unobserved components may include both finite-dimensional vectors (such as unobserved variables or coefficients) and infinite-dimensional objects (such as utility functions). In such a fully unrestricted setting, we can equivalently represent (<a href="#eq-nonparametric-generic-cross-section" class="quarto-xref"><span>11.1</span></a>) and (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) as <span class="math display">\[
-    Y_i = \phi_i(X_i), \quad \quad  Y_{it} = \phi_{it}(X_{it}),
+    Y_i^{\bx} = \phi_i(\bx), \quad \quad  Y_{it}^{\bx} = \phi_{it}(\bx),
 \]</span> respectively.</p>
 </section>
 <section id="object-of-interest" class="level3" data-number="11.1.3">
 <h3 data-number="11.1.3" class="anchored" data-anchor-id="object-of-interest"><span class="header-section-number">11.1.3</span> Object of Interest</h3>
 <p>As in the linear case, possible objects of interest include:</p>
 <ul>
-<li>The full structural function <span class="math inline">\(\phi(\cdot, \cdot)\)</span> or <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span>. This function fully describes the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(\bX\)</span> for all individuals. This corresponds to the problem of identifying individual treatment effects.</li>
+<li>The full structural function <span class="math inline">\(\phi(\cdot, \cdot)\)</span> or <span class="math inline">\(\phi(\cdot, \cdot, \cdot)\)</span>. This function fully traces out the potential outcomes <span class="math inline">\(Y^{\bx}\)</span> for all individuals. This corresponds to the problem of identifying individual treatment effects.</li>
 <li>Some distributional features of “treatment effects” — changes in outcomes due to variation in <span class="math inline">\(\bX_{it}\)</span>, conditional on unobserved heterogeneity. In the context of model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>), these effects are given by <span id="eq-nonparametric-effects"><span class="math display">\[
   \begin{aligned}
       &amp;   \phi(\bx_2, A_i, U_{it}) - \phi(\bx_1, A_i, U_{it}),\\
@@ -743,41 +761,43 @@ Y_{it} = \phi(\bX_{it}, A_i, U_{it}), \quad {}_{i=1,\dots, N}^{t= 1, \dots, T},
 </section>
 <section id="models-of-this-block" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="models-of-this-block"><span class="header-section-number">11.2</span> Models of This Block</h2>
-<p>To make progress, we focus on two general but tractable versions of the general nonparametric panel model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) in these notes. In both cases, we will assume that the outcome <span class="math inline">\(Y_{it}\)</span> is continuous and that <span class="math inline">\(T=2\)</span>.</p>
+<p>To make progress, we focus on two general but tractable versions of the general nonparametric panel model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>) in these notes. In both cases, we assume that the outcome <span class="math inline">\(Y_{it}\)</span> is continuous and that <span class="math inline">\(T=2\)</span>.</p>
 <section id="first-model" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="first-model">First Model</h3>
-<p>We will begin with the following model: <span id="eq-nonparametric-model-full-nonsep"><span class="math display">\[
-    Y_{it} = \phi(X_{it}, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
-\tag{11.4}\]</span></span> where for simplicity we assume that <span class="math inline">\(X_{it}\)</span> is scalar. The variable <span class="math inline">\(X_{it}\)</span> is assumed to be continuously distributed, and <span class="math inline">\(\phi\)</span> is continuous in <span class="math inline">\(X_{it}\)</span> for all values of <span class="math inline">\((A_i, U_{it})\)</span>.</p>
+<p>We begin with the following model: <span id="eq-nonparametric-model-full-nonsep"><span class="math display">\[
+    Y_{it}^{x} = \phi(x, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
+\tag{11.4}\]</span></span> where for simplicity we assume that <span class="math inline">\(x\)</span> is scalar. The realized treatment <span class="math inline">\(X_{it}\)</span> is assumed to be continuously distributed, and <span class="math inline">\(\phi\)</span> is continuous in <span class="math inline">\(x\)</span> for all values of <span class="math inline">\((A_i, U_{it})\)</span>. As always, the realized outcomes <span class="math inline">\(Y_{it}\)</span> satisfy <span class="math display">\[
+Y_{it} = Y_{it}^{X_{it}} =  \phi(x, A_i, U_{it}), \quad {}_{i=1, \dots, N}^{t=1, 2}.
+\]</span></p>
 <p>We consider a version of (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) that is very general in terms of unobserved variables <span class="math inline">\((A_{i}, U_{it})\)</span>. In particular, we do not restrict</p>
 <ul>
 <li>The dimension and the form of <span class="math inline">\(A_i\)</span> and <span class="math inline">\(U_{it}\)</span>;</li>
 <li>How the outcome depends on <span class="math inline">\((A_{i}, U_{it})\)</span>;</li>
 <li>The dependence structure between <span class="math inline">\((A_i, U_{it})\)</span> and <span class="math inline">\(X_{it}\)</span>.</li>
 </ul>
-<p>At the same time, we impose an assumption of stationarity on <span class="math inline">\(U_{it}\)</span>. Its distribution is stable over time conditional on observed and unobserved covariates, allowing us to isolate changes in <span class="math inline">\(Y_{it}\)</span> attributable to variation in <span class="math inline">\(X_{it}\)</span>.</p>
+<p>At the same time, we impose an assumption of <strong>stationarity</strong> on <span class="math inline">\(U_{it}\)</span>. Its distribution is stable over time conditional on observed and unobserved covariates, allowing us to isolate changes in <span class="math inline">\(Y_{it}\)</span> attributable to variation in <span class="math inline">\(X_{it}\)</span>.</p>
 </section>
 <section id="second-model" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="second-model">Second Model</h3>
-<p>After reaching the (probable) limits of identification with (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), we will consider a different flavor of model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>), where the time-varying unobserved component <span class="math inline">\(U_{it}\)</span> is scalar and affects the outcome <span class="math inline">\(Y_{it}\)</span> additively: <span id="eq-nonparametric-model-u-sep"><span class="math display">\[
-Y_{it} = \phi(X_{it}, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
+<p>After reaching the (probable) limits of identification with (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), we consider a different flavor of model (<a href="#eq-nonparametric-generic-panel" class="quarto-xref"><span>11.2</span></a>), where the time-varying unobserved component <span class="math inline">\(U_{it}\)</span> is scalar and affects the outcome <span class="math inline">\(Y_{it}\)</span> additively: <span id="eq-nonparametric-model-u-sep"><span class="math display">\[
+Y_{it}^{x} = \phi(x, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
 \tag{11.5}\]</span></span> In contrast to model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>), we do not assume that <span class="math inline">\(U_{it}\)</span> is stationary. Models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) and (<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>) are hence non-nested. We continue to allow <span class="math inline">\(A_i\)</span> to have unrestricted dimensionality and structure. It may also have a complex dependence structure with <span class="math inline">\(X_{it}\)</span>.</p>
 </section>
 </section>
 <section id="plan-for-this-block" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="plan-for-this-block"><span class="header-section-number">11.3</span> Plan for This Block</h2>
-<p>In this block, we will focus on models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>)-(<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>) and consider identification of some distributional features of treatment effects (<a href="#eq-nonparametric-effects" class="quarto-xref"><span>11.3</span></a>). Specifically,</p>
+<p>In this block, we focus on models (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>)-(<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>) and consider identification of some distributional features of treatment effects (<a href="#eq-nonparametric-effects" class="quarto-xref"><span>11.3</span></a>). Specifically,</p>
 <ol type="1">
 <li><strong>Average</strong> treatment and marginal <strong>effects</strong> for model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>):
 <ul>
 <li>Show that identifying average effects is more complicated than considering averages of the outcome directly.</li>
-<li>Discuss heterogeneity bias, another form of confounding.</li>
+<li>Discuss heterogeneity bias, a form and consequence of confounding.</li>
 <li>Show how stationarity assumptions on <span class="math inline">\(U_{it}\)</span> allow us to identify the average effects for a population of stayers — units with <span class="math inline">\(X_{i1}=X_{i2}\)</span> — without any further assumptions.</li>
 <li>Consider two generalizations of the identification result: beyond the population of stayers and allowing some non-stationarity in the structural function.</li>
 </ul></li>
 <li><strong>Variance</strong> of treatment and marginal effects in model (<a href="#eq-nonparametric-model-u-sep" class="quarto-xref"><span>11.5</span></a>): identify the variance of effects (<a href="#eq-nonparametric-effects" class="quarto-xref"><span>11.3</span></a>) by requiring that <span class="math inline">\(U_{it}\)</span> cannot depend on future values of <span class="math inline">\(\bX_{it}\)</span></li>
 </ol>
-<p>In the next block, we will also revisit model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) through the lens of quantile regression.</p>
+<p>In the next block, we also revisit model (<a href="#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) through the lens of quantile regression.</p>
 </section>
 <section id="a-brief-classification-of-nonparametric-models" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="a-brief-classification-of-nonparametric-models"><span class="header-section-number">11.4</span> A Brief Classification of Nonparametric Models</h2>
@@ -785,7 +805,7 @@ Y_{it} = \phi(X_{it}, A_i) + U_{it}, \quad {}_{i=1, \dots, N}^{t=1, 2}
 <ul>
 <li><em>How unobserved heterogeneity enters in the system</em>:
 <ul>
-<li>Full non-separable models <span class="citation" data-cites="Altonji2005 Hoderlein2007 Hoderlein2007 Chernozhukov2015">(<a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">Altonji and Matzkin 2005</a>; <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">Hoderlein and Mammen 2007</a>, <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>; <a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span>.</li>
+<li>Fully non-separable models <span class="citation" data-cites="Altonji2005 Hoderlein2007 Hoderlein2007 Chernozhukov2015">(<a href="../references/references.html#ref-Altonji2005" role="doc-biblioref">Altonji and Matzkin 2005</a>; <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">Hoderlein and Mammen 2007</a>, <a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>; <a href="../references/references.html#ref-Chernozhukov2015" role="doc-biblioref">Chernozhukov et al. 2015</a>)</span>.</li>
 <li>Partially additive separable panel models: <span class="citation" data-cites="Chen2003 Evdokimov2012 Blundell2012b Morozov2023jmp">(<a href="../references/references.html#ref-Chen2003" role="doc-biblioref">Chen and Ai 2003</a>; <a href="../references/references.html#ref-Evdokimov2012" role="doc-biblioref">Evdokimov and White 2012</a>; <a href="../references/references.html#ref-Blundell2012b" role="doc-biblioref">Blundell, Horowitz, and Parey 2012</a>; <a href="../references/references.html#ref-Morozov2023jmp" role="doc-biblioref">Morozov 2023</a>)</span>.</li>
 <li>Fully separable, additively <span class="citation" data-cites="Henderson2008NonparametricEstimationTesting Boneva2015SemiparametricModelHeterogeneous Lee2015PanelNonparametricRegression Henderson2024NonparametricModelsFixed">(<a href="../references/references.html#ref-Henderson2008NonparametricEstimationTesting" role="doc-biblioref">Henderson, Carroll, and Li 2008</a>; <a href="../references/references.html#ref-Boneva2015SemiparametricModelHeterogeneous" role="doc-biblioref">Boneva, Linton, and Vogt 2015</a>; <a href="../references/references.html#ref-Lee2015PanelNonparametricRegression" role="doc-biblioref">Lee and Robinson 2015</a>; <a href="../references/references.html#ref-Henderson2024NonparametricModelsFixed" role="doc-biblioref">Henderson and Soberon 2024</a>)</span> or multiplicatively <span class="citation" data-cites="Beckert2008HeterogeneityNonParametricAnalysis">(<a href="../references/references.html#ref-Beckert2008HeterogeneityNonParametricAnalysis" role="doc-biblioref">Beckert and Blundell 2008</a>)</span>.</li>
 </ul></li>

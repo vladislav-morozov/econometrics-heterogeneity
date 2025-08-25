@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../nonparametric/nonparametric-location-scale.html" rel="next">
 <link href="../nonparametric/nonparametric-average-identification.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -603,6 +603,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-location-scale.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-cre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Beyond Stayers Using Index Restrictions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../nonparametric/nonparametric-variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Variance of Marginal Effects</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -645,7 +663,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-introduction.html">Nonparametrics and Heterogeneity</a></li><li class="breadcrumb-item"><a href="../nonparametric/nonparametric-average-estimation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-nonparametric-avg-id" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></h1>
+<h1 class="title"><span id="sec-nonparametric-avg-est" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nonparametric Estimation of Average Effects</span></span></h1>
 </div>
 
 
@@ -683,15 +701,15 @@ Summary and Learning Outcomes
 </div>
 <section id="an-estimable-form-of-the-average-marginal-effect" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="an-estimable-form-of-the-average-marginal-effect"><span class="header-section-number">14.1</span> An Estimable Form of the Average Marginal Effect</h2>
-<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>): <span class="math display">\[
+<p>In the previous section, we have identified the average marginal effect for stayers in model (<a href="nonparametric-introduction.html#eq-nonparametric-model-full-nonsep" class="quarto-xref"><span>11.4</span></a>) in terms of a limit of average change in outcomes across periods (<a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.9</span></a>): <span class="math display">\[
 \begin{aligned}
-&amp; \E\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] \\
+&amp; \E\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] \\
 &amp; = \lim_{h\to 0} \left[ \dfrac{Y_{i2}-Y_{i1}}{h}\Bigg|X_{i1}=x, X_{i2} = x+h \right].
 \end{aligned}
 \]</span> This representation is convenient for identification and explicitly shows that the source of identification is the within variation of near-stayers.</p>
-<p>However, the limit-based representation poses challenges for estimation, which typically benefits from an explicit representation. To address this, we define the following function: <span class="math display">\[
+<p>However, the limit-based representation poses challenges for estimation, which would benefit from a more explicit representation. To provide such a representation, we define the following function: <span class="math display">\[
     g(x_1, x_2) = \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right] .
-\]</span> This function captures how the average outcome difference changes with changes in the covariates. It plays a central role in constructing our estimator.</p>
+\]</span> This function captures how the average difference in outcomes depends on the treatment values in both periods. <span class="math inline">\(g(\cdot, \cdot)\)</span> plays a central role in constructing our estimator.</p>
 <p>Observe that <span class="math inline">\(g(x, x) = 0\)</span>, since <span class="math display">\[
 \begin{aligned}
 g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
@@ -707,7 +725,7 @@ g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
 &amp; \to \partial_{x_2} g(x, x),
 \end{aligned}
 \tag{14.1}\]</span></span> where <span class="math inline">\(\partial_{x_2}\)</span> means the partial derivative with respect to the second argument.</p>
-<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.8</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
+<p>By combining <a href="#eq-nonparametric-avg-est-g" class="quarto-xref">Equation&nbsp;<span>14.1</span></a> with <a href="nonparametric-average-identification.html#eq-nonparametric-avg-me-identification-result" class="quarto-xref">Equation&nbsp;<span>13.9</span></a>, we obtain the following representation for the average marginal effects of stayers: <span id="eq-nonparametric-avg-est-me"><span class="math display">\[
 \begin{aligned}
     &amp; \E[\partial_x\phi (x, A_i, U_{it})|X_{i1}=X_{i2}=x] \\
     &amp; = \partial_{x_2} \E\left[Y_{i2}- Y_{i1}|X_{i1}=x_1, X_{i2} = x_2 \right]\Big|_{(x_1, x_2)=(x, x)}.
@@ -722,7 +740,7 @@ g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
 <p>In principle, many nonparametric regression methods can estimate derivatives. Of these, local polynomial (LP) regression provides a particularly convenient approach. LP estimators are available in closed form, can estimate derivatives directly, and have favorable asymptotic properties.</p>
 <p>We now provide the essential idea for a local quadratic estimator for a bivariate regression function. However, it is straightforward to extend the argument to any higher order polynomial and any number of variables. See 2.5.2 in <span class="citation" data-cites="Li2007">Li and Racine (<a href="../references/references.html#ref-Li2007" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="Fan1996">Fan and Gijbels (<a href="../references/references.html#ref-Fan1996" role="doc-biblioref">1996</a>)</span> for some standard references.</p>
 <p>To motivate the approach, let <span class="math inline">\(g(\cdot, \cdot)\)</span> be a smooth function of two variables, and suppose that we see observations <span class="math inline">\((Y_i, X_{i1}, X_{i2})\)</span> such that <span class="math display">\[
-    \E[y_i|x_{i1}, x_{i2}] =  g(x_{i1}, x_{i2}), \quad i=1, \dots, N.
+    \E[Y_i|X_{i1}, X_{i2}] =  g(X_{i1}, X_{i2}), \quad i=1, \dots, N.
 \]</span> Let <span class="math inline">\((x_1, x_2)\)</span> be some fixed point.</p>
 <p>The bivariate Taylor’s theorem tell us that, if <span class="math inline">\((X_{i1}, X_{i2})\)</span> is “close” to <span class="math inline">\((x_1, x_2)\)</span>, then (expanding up to the second order) <span class="math display">\[
 \begin{aligned}
@@ -756,7 +774,7 @@ g(x, x)  &amp; = \E\left[Y_{i2}- Y_{i1}|X_{i1}=X_{i2} = x \right] \\
 </section>
 <section id="estimator" class="level3" data-number="14.2.2">
 <h3 data-number="14.2.2" class="anchored" data-anchor-id="estimator"><span class="header-section-number">14.2.2</span> Estimator</h3>
-<p>We formalize the idea of closeness using a bivariate <em>kernel</em> function <span class="math inline">\(K(\cdot, \cdot)\)</span> that will measure the distance between data points and the target point <span class="math inline">\((x_1, x_2)\)</span>. In principle, we can take any function <span class="math inline">\(K\)</span> that satisfies the following properties: <span class="math display">\[
+<p>We formalize the idea of closeness using a bivariate <em>kernel</em> function <span class="math inline">\(K(\cdot, \cdot)\)</span> that measures the distance between data points and the target point <span class="math inline">\((x_1, x_2)\)</span>. In principle, we can take any function <span class="math inline">\(K\)</span> that satisfies the following properties: <span class="math display">\[
 \begin{aligned}
 K(u_1, u_2) &amp; \geq 0,  \\
 \iint K(u_1, u_2)du_1du_2 &amp; =1, \\
@@ -789,7 +807,7 @@ K(x_1, x_2) = K_1(x_1) K(x_2),
 <section id="estimator-1" class="level3" data-number="14.3.1">
 <h3 data-number="14.3.1" class="anchored" data-anchor-id="estimator-1"><span class="header-section-number">14.3.1</span> Estimator</h3>
 <p>Equipped with the local polynomial estimator, we can now estimate the average marginal effect of stayers. To do so, we use <span class="math inline">\(Y_{i2}-Y_{i1}\)</span> as the dependent variable in <a href="#eq-nonparametric-avg-lp" class="quarto-xref">Equation&nbsp;<span>14.3</span></a> and select the target point as <span class="math inline">\((x_1, x_2)=(x, x)\)</span>. The third coordinate of <span class="math inline">\(\hat{\bbeta}(x, x)\)</span> is an estimator for the partial derivative of <span class="math inline">\(\E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]\)</span> with respect to <span class="math inline">\(x_2\)</span>, evaluated at <span class="math inline">\((x, x)\)</span> — precisely the average marginal effect of interest by <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a>: <span class="math display">\[
-\widehat{ \E}\left[ \partial_x\phi(x, a, u)|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
+\widehat{ \E}\left[ \partial_x\phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x \right] = \hat{\bbeta}_3(x, x).
 \]</span></p>
 </section>
 <section id="asymptotic-properties" class="level3" data-number="14.3.2">
@@ -799,8 +817,8 @@ K(x_1, x_2) = K_1(x_1) K(x_2),
 </section>
 <section id="another-estimator" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="another-estimator"><span class="header-section-number">14.4</span> Another Estimator</h2>
-<p>Before we move on to generalizations of the identification result, it is worth discussing <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference <span class="math inline">\((\phi(x+h, a, u)-\phi(x, a, u))\)</span>. While the one-sided finite difference yields a valid estimator, symmetric (central) differences <a href="https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives">often provide more accurate approximations to derivatives.</a>. We now present a refinement of our identification result based on this idea.</p>
-<p>By suitably adjusting the above argument, one can show that <span class="math display">\[
+<p>Before we move on to generalizations of the identification result, it is worth discussing <a href="#eq-nonparametric-avg-est-me" class="quarto-xref">Equation&nbsp;<span>14.2</span></a> somewhat more. The preceding identification and estimation arguments were based on the one-sided finite difference <span class="math inline">\((\phi(x+h, a, u)-\phi(x, a, u))\)</span>. While the one-sided finite difference yields a valid estimator, symmetric (central) differences <a href="https://en.wikipedia.org/wiki/Finite_difference#Relation_with_derivatives">often provide more accurate approximations to derivatives.</a>.</p>
+<p>By suitably adjusting the above argument, one can indeed obtain an identification argument based on central differences: <span class="math display">\[
 \begin{aligned}
     &amp; \E[\partial_x \phi(x, A_i, U_{it})|X_{i1}=X_{i2}=x]
     \\
@@ -808,11 +826,11 @@ K(x_1, x_2) = K_1(x_1) K(x_2),
     &amp; = \dfrac{1}{2}\Bigg(  \partial_{x_2}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2] \\
     &amp; \hspace{2cm} -\partial_{x_1}  \E[Y_{i2}-Y_{i1}|X_{i1}=x_1, X_{i2}=x_2]     \Bigg)\Bigg|_{(x_1, x_2)=(x, x)}.
 \end{aligned}
-\]</span> A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_1\)</span>, i.e., the third and second elements of <span class="math inline">\(\hat{\bbeta}(x)\)</span>.</p>
+\]</span> A symmetric estimator would then be based on the difference based on the difference between the estimated partial derivatives with respect to <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_1\)</span>, i.e., the third and second elements of <span class="math inline">\(\hat{\bbeta}(x, x)\)</span>.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we somewhat relax the stationarity assumption on the model by allowing certain changes in the structural function.</p>
+<p>In the next section, we somewhat relax the stationarity assumption on the model by allowing location-scale shifts in the structural function.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1401,8 +1419,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../nonparametric/nonparametric-location-scale.html" class="pagination-link" aria-label="Relaxing Stationarity with Nonparametric Time Effects">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Relaxing Stationarity with Nonparametric Time Effects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
