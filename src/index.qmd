@@ -42,7 +42,7 @@ We focus exclusively on observational cross-sectional and panel data, where unob
 These lectures notes are based on a topics course I delivered at the University of Bonn. 
 They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!
 
-Current version (August 21, 2025): the first two blocks are fully complete. Latest addition: beyond stationarity, stayers, and average effect in nonparametric models with multidimensional unobserved heterogeneity.
+Current version (August 26, 2025): the first two blocks are fully complete. Latest addition: beyond stationarity, stayers, and average effect in nonparametric models with multidimensional unobserved heterogeneity.
 
 ### Learning Outcomes
 
