@@ -1,0 +1,33 @@
+--- 
+description: "Learn  (Lecture Notes)"
+
+open-graph:
+    description: "Learn (Lecture Notes)"
+---
+
+
+# Defining Quantile and Distributional Treatment Effects {#sec-qte-intro}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to: 
+
+- Understand  
+
+:::
+   
+--- 
+
+## Introduction
+
+
+
+
+
+#### Next Section {.unnumbered}
+
+In the next section, we discuss

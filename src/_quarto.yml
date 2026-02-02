@@ -54,6 +54,9 @@ book:
         - nonparametric/nonparametric-cre.qmd
         - nonparametric/nonparametric-variance.qmd
     - part: "Quantile and Distributional Treatment Effects"
+      chapters: 
+        - qte-dte/qte-dte-intro.qmd
+
     - references/references.qmd
 
 bibliography: references/eco.bib
