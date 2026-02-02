@@ -22,7 +22,50 @@ By the end of this section, you should be able to:
    
 --- 
 
-## Introduction
+## Towards Cross-Sectional Data
+
+The panel data results discussed in the previous sections
+
+Unfortunately, the same success is generally hard to replicate in cross-sectional data. Typically need monotonicity assumptions [@Matzkin2003; @Matzkin2007]
+
+This sections marks a shift: cross-sectional data and new parameters of interest --- quantile and distributional treatment effects.
+
+## Defining QTEs and DTEs
+
+
+
+### Potential Outcome Framwork 
+
+To formally define the new parameters of interest, we go back to the cross-sectional potential outcome model of @eq-intro-potential-outcomes. Let $X_i$ be some treatment, scalar- or vector-valued. We are interested in the effect of $X_i$ on some outcome $Y_i$. 
+
+To each value $x$ of $X_i$ we associate a potential outcome $Y^x_i$, determined as 
+$$
+Y_i^x = \phi(x, A_i),
+$$
+where $\phi$ is some unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional. In this block, we will generally suppress the $A_i$ and directly work with $Y_{i}^x$. 
+
+As before, we assume that SUTVA holds throughout, though see the comment box below regarding this point. 
+
+### QTEs and DTEs
+
+### Interpretation
+
+
+Are the DTEs and QTEs of any policy interest?  A typical interpretation under SUTVA goes as follows.   QTEs and DTEs express the distributional effects of making one of the treatment options universal. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes. The QTEs and the DTEs will contrast the distributions under these two alternative options. 
+
+Between the QTE and the DTE, the QTE is slightly easier to interpret, as QTEs are are expressed in terms of the outcome variable. In contrast, the DTEs are slightly more complicated to interpret, as they are expressed in terms of changes in CDFs.
+
+The name is perhaps somewhat misleading.
+
+
+#### Conditional or Unconditional Effects? {.unnumbered}
+
+When non-treatment covariates $X_i$ are available, one must   choose whether the interest lies in quantiles that are conditional or unconditional given $X_i$.  In contrast to average effects, this choice leads to parameters that are not connected by integrating over $X_i$ and involve different identification arguments. 
+
+To understand the practical difference, consider the following example.  Let $D_i$ be a job training program, $X_i$ be the person's education attainment, and $Y_i$ be earnings. The 10th percentile of the potential outcomes for \emph{college}-educated people may lie fairly high in the overall (marginal) distribution of outcomes.
+
+## QTEs vs Quantiles of Treatment Effects
+
 
 
 
@@ -30,4 +73,4 @@ By the end of this section, you should be able to:
 
 #### Next Section {.unnumbered}
 
-In the next section, we discuss
+In the next section, we discuss identification of QTEs and DTEs in a simple randomized control trial setting with (unconditional) unconfoundedness.
