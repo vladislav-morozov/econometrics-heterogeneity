@@ -53,7 +53,7 @@ book:
         - nonparametric/nonparametric-location-scale.qmd
         - nonparametric/nonparametric-cre.qmd
         - nonparametric/nonparametric-variance.qmd
-    - part: "Quantile and Distributional Methods"
+    - part: "Quantile and Distributional Treatment Effects"
     - references/references.qmd
 
 bibliography: references/eco.bib
