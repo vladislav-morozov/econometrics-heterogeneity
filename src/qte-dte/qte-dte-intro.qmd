@@ -36,17 +36,54 @@ This sections marks a shift: cross-sectional data and new parameters of interest
 
 ### Potential Outcome Framwork 
 
-To formally define the new parameters of interest, we go back to the cross-sectional potential outcome model of @eq-intro-potential-outcomes. Let $X_i$ be some treatment, scalar- or vector-valued. We are interested in the effect of $X_i$ on some outcome $Y_i$. 
+To formally define the new parameters of interest, we go back to the cross-sectional potential outcome model of @eq-intro-potential-outcomes. Let $X_i$ be some treatment. $X_i$ may be scalar- or vector-valued. We are interested in the effect of $X_i$ on some outcome $Y_i$. 
 
 To each value $x$ of $X_i$ we associate a potential outcome $Y^x_i$, determined as 
 $$
-Y_i^x = \phi(x, A_i),
+Y_i^x = \phi(x, A_i).
 $$
-where $\phi$ is some unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional. In this block, we will generally suppress the $A_i$ and directly work with $Y_{i}^x$. 
+Like in the previous block,  $\phi$ is an unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional. In this block, we will generally suppress the $A_i$ and directly work with $Y_{i}^x$ notation.
 
 As before, we assume that SUTVA holds throughout, though see the comment box below regarding this point. 
 
+Throughout, the distribution of potential outcomes plays a key role in identification. Formally, by "distribution" we mean either the cumulative distribution function $F_{Y^x}(\cdot)$ of $Y^x_i$ or its quantile function   $Q_{Y^x}(\cdot)$. 
+
+
 ### QTEs and DTEs
+ 
+
+
+The new "distributional" parameters of interest are built up by contrasting the distributions of $Y^x$ for different values of $x$. For example, the unconditional  *quantile*  and *distributional  treatment effect* (QTE and DTE) of switching from $x_1$ to $x_2$ are defined as
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
+		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+where $x_1, x_2$ are some values of the treatment and $\tau\in [0, 1]$. 
+
+If the treatment is continuous, we  may further consider derivatives of $Q_{Y^x}(\tau)$ and $F_{Y^x}(y)$ with respect to $x$, yielding marginal QTEs and DTEs. 
+
+We may also condition on the realized treatment values $X_i$ or on other control variables. For the first scenario,  let $F_{Y^{x_2}|X}(y|x_1)$ be the CDF of $Y^{x_2}$ conditional on $X=x_1$, similarly for the quantile function $Q_{Y^{x_2}|X}(\tau|x_1)$. The QTEs and DTEs  of switching from $x_1$ to $x_2$ for the population of units with realized treatment value $x_3$ are defined as 
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|x_3) &  =Q_{Y^{x_2}|X}(\tau|x_3) - 	Q_{Y^{x_1}|X}(\tau|x_3) ,\\
+	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
+\end{align}
+$$
+If $X_i$ is a scalar binary treatment, the quantile effects are also known as the   quantile treatment effects  for the treated or the control group, depending on whether $x_3=1$ or $x_3=0$ (QTT and QTC, respectively).
+	
+For the second scenario, let $W_i$ be some other covariates or control variables. One may consider the QTEs and DTEs within the $w$-stratum of $W_i$:
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+ 
+The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on the topic. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in @Chernozhukov2013b for some further details.
+ 
+ 
 
 ### Interpretation
 
@@ -62,7 +99,7 @@ The name is perhaps somewhat misleading.
 
 When non-treatment covariates $X_i$ are available, one must   choose whether the interest lies in quantiles that are conditional or unconditional given $X_i$.  In contrast to average effects, this choice leads to parameters that are not connected by integrating over $X_i$ and involve different identification arguments. 
 
-To understand the practical difference, consider the following example.  Let $D_i$ be a job training program, $X_i$ be the person's education attainment, and $Y_i$ be earnings. The 10th percentile of the potential outcomes for \emph{college}-educated people may lie fairly high in the overall (marginal) distribution of outcomes.
+To understand the practical difference, consider the following example.  Let $D_i$ be a job training program, $X_i$ be the person's education attainment, and $Y_i$ be earnings. The 10th percentile of the potential outcomes for college}-educated people may lie fairly high in the overall (marginal) distribution of outcomes.
 
 ## QTEs vs Quantiles of Treatment Effects
 
