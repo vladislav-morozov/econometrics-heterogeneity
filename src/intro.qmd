@@ -145,7 +145,7 @@ digraph CombinedGraph {
 
 Ignoring this confounding leads to misleading conclusions. The issues manifests even in simple linear regression, with some basic examples including:
 
-- [Omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias): if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates are be biased and inconsistent.
+- [Omitted variable bias](https://en.wikipedia.org/wiki/Omitted-variable_bias): if an important explanatory variable is missing and correlated with observed covariates, coefficient estimates may be biased and inconsistent.
 - [Attenuation bias](https://en.wikipedia.org/wiki/Regression_dilution): When covariates suffer from measurement error, estimated effects tend to be systematically biased toward zero.
 
 In nonlinear models, the resulting biases become completely unpredictable even in parametric models [e.g. @Stefanski1985]. 
