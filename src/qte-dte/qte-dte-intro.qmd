@@ -85,14 +85,80 @@ The above QTEs and DTEs may be viewed as the core parameters of interest in the 
  
  
 
-### Interpretation
+### Interpretations
 
+#### Geometric Interpetation {.unnumbered}
+
+Geometrically, DTEs and QTEs  effects can be viewed as measures of  the distance in the distributions of potential outcomes. The DTE measures the vertical difference between the CDFs, whereas the QTE measures the horizontal distance instead.   The figure offers a visual representation. 
+
+``` tikz
+%%| fig-cap: Visual representation of distributional treatment effects (DTEs) and quantile treatement effects (QTEs).  Depicted: $DTE(3)$ --- difference of CDFs of potential outcomes distributions at $y=3$ and $QTE(0.5)$ --- difference of medians of potential outcome distributions
+%%| fig-align: center
+\begin{tikzpicture}[every path/.style={color=gray!70}] 
+	\begin{axis}[
+		width=12cm, height=8cm,
+		xmin=0, xmax=4,
+		ymin=0, ymax=1.1,
+		axis lines=middle,
+		xlabel={$x$},
+		ylabel={},
+		xtick={0,1,2,3},
+		ytick={0,0.5,1},
+		legend pos=south east,
+		tick label style={font=\small},
+		label style={font=\small},
+		axis line style={thick}
+		]
+		
+		% Plot the first nonlinear CDF (blue)
+		\addplot[
+		ultra thick,
+		smooth,
+		color=blue
+		] coordinates {
+			(0,0) (0.5,0.1) (1,0.35) (1.5,0.7) (2,0.9) (2.5,0.96) (4, 1)
+		};
+		\addlegendentry{$F_{Y^0}$}
+		
+		% Plot the second nonlinear CDF (red)
+		\addplot[
+		ultra thick,
+		dash dot,
+		color=brown
+		] coordinates {
+		(0, 0) (0.5, 0)	(1,0.1)   (2,0.38) (2.35, 0.5)   (3,0.85) (3.5,0.96) (4, 1)
+		};
+		\addlegendentry{$F_{Y^1}$}
+		
+		% Vertical dashed line for DTE
+		\draw[dashed] (axis cs:0,0.85) -- (axis cs:3,0.85) -- (axis cs:3,0.975) -- (axis cs:0,0.975);
+		
+		\draw[dashed] (axis cs:3,0)  -- (axis cs:3,0.85);			
+
+
+			\draw[decoration={brace,mirror, raise=3pt},decorate]
+		(axis cs: 0,0.85) -- node[right=1pt] {$DTE(3)$} (axis cs: 0, 0.975); 
+		
+		% Horizontal dashed line for QTE
+		\draw[dashed] (axis cs:1.23,0) -- (axis cs:1.23,0.5) -- (axis cs:2.35,0.5) -- (axis cs:2.35,0);
+		
+		\draw[dashed] (axis cs:0,0.5)  -- (axis cs:1.23,0.5) ;
+		
+	
+		\draw[decoration={brace,raise=1pt},decorate]
+			(axis cs: 1.23, 0) -- node[above=1pt] {$QTE(0.5)$} (axis cs: 2.35, 0);
+		
+	\end{axis}
+	
+\end{tikzpicture}
+```
+
+#### Causal Interpretation {.unnumbered}
 
 Are the DTEs and QTEs of any policy interest?  A typical interpretation under SUTVA goes as follows.   QTEs and DTEs express the distributional effects of making one of the treatment options universal. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes. The QTEs and the DTEs will contrast the distributions under these two alternative options. 
 
 Between the QTE and the DTE, the QTE is slightly easier to interpret, as QTEs are are expressed in terms of the outcome variable. In contrast, the DTEs are slightly more complicated to interpret, as they are expressed in terms of changes in CDFs.
 
-The name is perhaps somewhat misleading.
 
 
 #### Conditional or Unconditional Effects? {.unnumbered}
@@ -103,7 +169,7 @@ To understand the practical difference, consider the following example.  Let $D_
 
 ## QTEs vs Quantiles of Treatment Effects
 
-
+Including "treatment effects" is possibly somewhat misleading
 
 
 
