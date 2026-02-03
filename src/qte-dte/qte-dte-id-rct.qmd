@@ -1,0 +1,31 @@
+--- 
+description: "Learn to (Lecture Notes)"
+
+open-graph:
+    description: "Learn to  (Lecture Notes)"
+---
+
+
+# Identification of QTEs and DTEs in RCTs {#sec-qte-id-rct}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section defines  
+
+By the end of this section, you should be able to: 
+
+- Define  
+:::
+    
+ 
+
+##  
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we continue
