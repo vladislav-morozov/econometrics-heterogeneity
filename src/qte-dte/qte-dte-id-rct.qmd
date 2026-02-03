@@ -124,26 +124,39 @@ $$
 ### Unconditional Quantile Function of Potential Outcomes
 
 
-In order to identify the quantiles of potential outcomes, we will assume that the corresponding distribution functions are continuous and strictly increasing. By the arguments of section \ref{quantile:section:quantile_properties}, it follows that the $\tau$th quantile of potential outcomes is uniquely characterized by the following moment condition:
+In order to identify the quantiles $Q_{Y^x}(\tau)$ of potential outcomes, we assume for $x$ the CDF $F_{Y^x}(\cdot)$ is continuous and strictly increasing. It then follows that the $\tau$th quantile of potential outcomes is uniquely characterized by the following moment condition:
 $$
-  P\left(Y^d_i\leq  Q_{Y^d}(\tau)  \right) = 	 \tau  .
-$$
-
-We can now again apply a conditioning argument to the above moment:
-$$
-\begin{aligned}
-	\tau & = P\left(Y^d_i\leq  Q_{Y^d}(\tau)  \right) = \E\left[ \I\curl*{Y^d_i\leq Q_{Y^d}(\tau)} \right] \\
-	& = \E\left[\I\curl*{Y^d_i\leq Q_{Y^d}(\tau) }  |D_i=d   \right]\\
-	& = \E\left[\I\curl*{Y_i\leq Q_{Y^d}(\tau) }|D_i=d \right].
-\end{aligned}
-$$
-As with the CDF, the second line uses unconfoundedness, while third line follows by the definition of $Y_i$.
-
-Under our continuity and monotonicity assumptions, we conclude that 
-$$
-	 Q_{Y^d}(\tau) = Q_{Y|D}(\tau|d).
+  P\left(Y^x_i\leq  Q_{Y^x}(\tau)  \right) = 	 \tau  
 $$ 
-In other words, the $\tau$th quantile of $Y^d_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $D_i=d$. 
+or, in other words, that
+$$
+\tau  =  \E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right]
+$$
+
+We can now again apply the same conditioning argument to the above moment to conclude that
+$$
+\E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right] = \E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+$$
+
+Finally, we can again use that $Y^x_i=Y_i$ under $X_i=x$ to connect the above moment to observed variables:
+$$
+\E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right] = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+$$
+
+Combining the two extreme of the above chain of equalities, we obtain that $Q_{Y^x}(\tau)$ must satisfy the moment condition:
+$$
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right]
+$$
+At the same, under our continuity and strict monotonicity assumptions we know that $Q_Y(\tau) (quantile of the *observed* outcome $Y_i)$ uniquely satisfies
+$$
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y}(\tau) }  |X_i=x   \right].
+$$
+
+We conclude that it must be the case that
+$$
+	 Q_{Y^x}(\tau) = Q_{Y|x}(\tau|x).
+$$ 
+In other words, the $\tau$th quantile of $Y^x_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $X_i=d$. 
  
 
 ### CDF and Quantiles Conditional on Covariatesx
