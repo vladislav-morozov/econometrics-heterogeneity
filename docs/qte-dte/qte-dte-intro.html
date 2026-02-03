@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn (Lecture Notes)">
+<meta name="description" content="Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs.&nbsp;quantiles of treatment effects (Lecture Notes)">
 
 <title>18&nbsp; Defining Quantile and Distributional Treatment Effects – Econometrics with Unobserved Heterogeneity</title>
 <style>
@@ -450,7 +450,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="18&nbsp; Defining Quantile and Distributional Treatment Effects – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn (Lecture Notes)">
+<meta property="og:description" content="Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs.&nbsp;quantiles of treatment effects (Lecture Notes)">
 <meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/qte-dte-intro_files/mediabag/dac8e9ca56f1886bf5b97845938c178d54b71fcc.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
@@ -821,7 +821,7 @@ window.Quarto = {
   <li><a href="#towards-cross-sectional-data" id="toc-towards-cross-sectional-data" class="nav-link active" data-scroll-target="#towards-cross-sectional-data"><span class="header-section-number">18.1</span> Towards Cross-Sectional Data</a></li>
   <li><a href="#defining-qtes-and-dtes" id="toc-defining-qtes-and-dtes" class="nav-link" data-scroll-target="#defining-qtes-and-dtes"><span class="header-section-number">18.2</span> Defining QTEs and DTEs</a>
   <ul class="collapse">
-  <li><a href="#potential-outcome-framwork" id="toc-potential-outcome-framwork" class="nav-link" data-scroll-target="#potential-outcome-framwork"><span class="header-section-number">18.2.1</span> Potential Outcome Framwork</a></li>
+  <li><a href="#potential-outcome-framework" id="toc-potential-outcome-framework" class="nav-link" data-scroll-target="#potential-outcome-framework"><span class="header-section-number">18.2.1</span> Potential Outcome Framework</a></li>
   <li><a href="#qtes-and-dtes" id="toc-qtes-and-dtes" class="nav-link" data-scroll-target="#qtes-and-dtes"><span class="header-section-number">18.2.2</span> QTEs and DTEs</a></li>
   <li><a href="#interpretations" id="toc-interpretations" class="nav-link" data-scroll-target="#interpretations"><span class="header-section-number">18.2.3</span> Interpretations</a></li>
   </ul></li>
@@ -867,10 +867,12 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section</p>
+<p>This section defines quantile and distributional treatment effects (QTEs and DTEs) in a cross-sectional nonparametric model.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Understand</li>
+<li>Define QTEs and DTEs.</li>
+<li>Interpret QTEs and DTEs geometrically and causally.</li>
+<li>Contrast QTEs and DTEs with the quantiles and distributions of treatment effects.</li>
 </ul>
 </div>
 </div>
@@ -887,7 +889,7 @@ Summary and Learning Outcomes
 <p>The literature’s response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are <em>not</em> quantiles or distribution <em>of</em> treatment effects, a point we discuss in this section.</p>
 <p>In this block, we:</p>
 <ul>
-<li>Define QTEs and DTEs, along with discussing their intepretations.</li>
+<li>Define QTEs and DTEs, along with discussing their interpretations.</li>
 <li>Discuss their identification under various form of unconfoundedness.</li>
 <li>Introduce quantile and distributional regression as estimation tools.</li>
 <li>Connect these methods to the nonseparable panel models from the previous block.</li>
@@ -895,12 +897,12 @@ Summary and Learning Outcomes
 </section>
 <section id="defining-qtes-and-dtes" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="defining-qtes-and-dtes"><span class="header-section-number">18.2</span> Defining QTEs and DTEs</h2>
-<section id="potential-outcome-framwork" class="level3" data-number="18.2.1">
-<h3 data-number="18.2.1" class="anchored" data-anchor-id="potential-outcome-framwork"><span class="header-section-number">18.2.1</span> Potential Outcome Framwork</h3>
+<section id="potential-outcome-framework" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="potential-outcome-framework"><span class="header-section-number">18.2.1</span> Potential Outcome Framework</h3>
 <p>To formalize the setting of this block and define the new parameters of interest, we go back to the cross-sectional potential outcome model of <a href="../intro.html#eq-intro-potential-outcomes" class="quarto-xref">Equation&nbsp;<span>1.1</span></a>.</p>
 <p>Let <span class="math inline">\(X_i\)</span> be some treatment. <span class="math inline">\(X_i\)</span> may be scalar- or vector-valued. We are interested in the effect of <span class="math inline">\(X_i\)</span> on some outcome <span class="math inline">\(Y_i\)</span>. To each value <span class="math inline">\(x\)</span> of <span class="math inline">\(X_i\)</span> we associate a potential outcome <span class="math inline">\(Y^x_i\)</span>, determined as <span class="math display">\[
 Y_i^x = \phi(x, A_i).
-\]</span> Like in the previous block, <span class="math inline">\(\phi\)</span> is an unknown function and <span class="math inline">\(A_i\)</span> is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve <span class="math inline">\(Y_{i}^x\)</span>. Accordingly, we use the <span class="math inline">\(\phi(\cdot, A_i)\)</span> representation less.</p>
+\]</span> Like in the previous block, <span class="math inline">\(\phi\)</span> is an unknown function and <span class="math inline">\(A_i\)</span> is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve <span class="math inline">\(Y_{i}^x\)</span>, rather than the <span class="math inline">\(\phi(\cdot, A_i)\)</span> representation.</p>
 <p>As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see <a href="#wrn-causal-sutva" class="quarto-xref">Warning&nbsp;<span>18.1</span></a> for caveats).</p>
 <p>The key role in this section is played by the distribution of potential outcomes, where by “distribution” we mean either the cumulative distribution function <span class="math inline">\(F_{Y^x}(\cdot)\)</span> of <span class="math inline">\(Y^x_i\)</span> or its quantile function <span class="math inline">\(Q_{Y^x}(\cdot)\)</span>.</p>
 </section>
@@ -942,14 +944,13 @@ Y_i^x = \phi(x, A_i).
 <section id="interpretations" class="level3" data-number="18.2.3">
 <h3 data-number="18.2.3" class="anchored" data-anchor-id="interpretations"><span class="header-section-number">18.2.3</span> Interpretations</h3>
 <p>What are the QTEs and the DTEs?</p>
-<section id="geometric-interpetation" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="geometric-interpetation">Geometric Interpetation</h4>
+<section id="geometric-interpretation" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="geometric-interpretation">Geometric Interpretation</h4>
 <p>The first and simpler interpretation is purely geometric. As shown on <a href="#fig-qte-dte" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>, DTEs and QTEs can be viewed as measures of the distance in the distributions of potential outcomes:</p>
 <ul>
 <li>The DTEs measure the vertical difference between the CDFs of the potential outcomes.</li>
-<li>The QTE measures the horizontal difference between the CDFs.</li>
+<li>the QTE corresponds to the vertical distance between quantile functions (or equivalently, the horizontal distance between CDFs, since quantile functions are inverses of CDFs).</li>
 </ul>
-<p>Since the quantile function can be obtained by rotating the CDF axes 90 degrees, the QTE may also be viewed as vertical distance between quantile functions.</p>
 <div id="fig-qte-dte" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qte-dte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -963,7 +964,7 @@ Figure&nbsp;18.1: Visual representation of distributional treatment effects (DTE
 </section>
 <section id="causal-interpretation" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="causal-interpretation">Causal Interpretation</h4>
-<p>The second and deeper interpretation of QTEs and DTEs is causal. This intepretation requires SUTVA and typically goes as follows <span class="citation" data-cites="Athey2017handbook">(<a href="../references/references.html#ref-Athey2017handbook" role="doc-biblioref">Athey and Imbens 2017</a>)</span>. The QTE and DTE of a change from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> describe how the entire outcome distribution would shift if all units moved from treatment value <span class="math inline">\(x_1\)</span> to value <span class="math inline">\(x_2\)</span>. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes. For example, a QTE of +5 at <span class="math inline">\(\tau=0.25\)</span> means the 25th percentile of earnings would rise by 5 units under the treatment change.</p>
+<p>The second and deeper interpretation of QTEs and DTEs is causal. This interpretation requires SUTVA and typically goes as follows <span class="citation" data-cites="Athey2017handbook">(<a href="../references/references.html#ref-Athey2017handbook" role="doc-biblioref">Athey and Imbens 2017</a>)</span>. The QTE and DTE of a change from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> describe how the entire outcome distribution would shift if all units moved from treatment value <span class="math inline">\(x_1\)</span> to value <span class="math inline">\(x_2\)</span>. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes. For example, a QTE of +5 at <span class="math inline">\(\tau=0.25\)</span> means the 25th percentile of earnings would rise by 5 units under the treatment change.</p>
 <div id="wrn-causal-sutva" class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -974,7 +975,7 @@ Warning&nbsp;18.1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>SUTVA is critical in the above intepretation, as it rules out general equilibrium effects of such a universal shift in treatment.</p>
+<p>SUTVA is critical in the above interpretation, as it rules out general equilibrium effects of such a universal shift in treatment.</p>
 <p>In many settings such an assumption may be unrealistic. However, as these lecture notes are written, analysis of “global” QTEs appears to only be a nascent field.</p>
 </div>
 </div>
@@ -988,7 +989,7 @@ Warning&nbsp;18.1
 <h3 data-number="18.3.1" class="anchored" data-anchor-id="qtes-vs.-quantiles-of-treatment-effects"><span class="header-section-number">18.3.1</span> QTEs vs.&nbsp;Quantiles of Treatment Effects</h3>
 <p>An important aspect of QTEs and DTEs is that those objects are <em>not</em> equal to the quantiles or distributions of treatment effects outside of some special cases. For example, for quantiles it is usually the case that <span class="math display">\[
      Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
-\]</span> Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs “treatment effects” may be somewhat misleading, and one should always be careful in practice with the intepretations assigned to these objects.</p>
+\]</span> Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs “treatment effects” may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.</p>
 </section>
 <section id="bounds-for-distribution-and-quantiles-of-treatment-effects" class="level3" data-number="18.3.2">
 <h3 data-number="18.3.2" class="anchored" data-anchor-id="bounds-for-distribution-and-quantiles-of-treatment-effects"><span class="header-section-number">18.3.2</span> Bounds for Distribution and Quantiles of Treatment Effects</h3>
@@ -1016,7 +1017,7 @@ Warning&nbsp;18.1
 <p>In this special case it is indeed true that the difference in quantiles is equal to the quantile of the difference (the treatment effect). Moreover, the above representation also implies that the potential outcomes can be determined as <span class="math display">\[
     Y^1_i = F_{Y^1}^{-1}\left( F_{Y^0} (Y^0_i) \right).
 \]</span></p>
-<p>Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that <span class="math inline">\(x\)</span> are different possible career paths (e.g.&nbsp;ballet and space flight) and that <span class="math inline">\(Y_i^x\)</span> are earnings of person <span class="math inline">\(i\)</span> in career <span class="math inline">\(x\)</span>. Comonotonicity would mean that the person is <em>equally</em> good or bad at both ballet and being an austronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.</p>
+<p>Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that <span class="math inline">\(x\)</span> are different possible career paths (e.g.&nbsp;ballet dance and astronaut) and that <span class="math inline">\(Y_i^x\)</span> are earnings of person <span class="math inline">\(i\)</span> in career <span class="math inline">\(x\)</span>. Comonotonicity would mean that the person is <em>equally</em> good or bad at both ballet and being an astronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
