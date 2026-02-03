@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../qte-dte/qte-dte-id-rct.html" rel="next">
 <link href="../nonparametric/nonparametric-variance.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -800,6 +800,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/qte-dte-id-rct.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -908,25 +914,25 @@ Y_i^x = \phi(x, A_i).
 <section id="qtes-and-dtes" class="level3" data-number="18.2.2">
 <h3 data-number="18.2.2" class="anchored" data-anchor-id="qtes-and-dtes"><span class="header-section-number">18.2.2</span> QTEs and DTEs</h3>
 <p>The new distributional parameters of interest are built up by contrasting the distributions of <span class="math inline">\(Y^x_i\)</span> for different values of <span class="math inline">\(x\)</span>.</p>
-<p>The most fundamental parameters of interest are the unconditional <em>quantile</em> and <em>distributional treatment effects</em> (QTE and DTE) of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span>, which are defined as <span class="math display">\[
+<p>The most fundamental parameters of interest are the unconditional <em>quantile</em> and <em>distributional treatment effects</em> (QTE and DTE) of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span>, which are defined as <span id="eq-qte-dfn-uncond"><span class="math display">\[
 \begin{aligned}
     QTE(x_1, x_2, \tau ) &amp;  =Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau) ,\\
         DTE(x_1, x_2, y) &amp; = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y).
 \end{aligned}
-\]</span> where <span class="math inline">\(x_1, x_2\)</span> are some values of the treatment and <span class="math inline">\(\tau\in [0, 1]\)</span>.</p>
+\tag{18.1}\]</span></span> where <span class="math inline">\(x_1, x_2\)</span> are some values of the treatment and <span class="math inline">\(\tau\in [0, 1]\)</span>.</p>
 <p>If the treatment is continuous, we may further consider derivatives of <span class="math inline">\(Q_{Y^x}(\tau)\)</span> and <span class="math inline">\(F_{Y^x}(y)\)</span> with respect to <span class="math inline">\(x\)</span>, yielding marginal QTEs and DTEs.</p>
-<p>We may also condition on the realized treatment values <span class="math inline">\(X_i\)</span> or on other control variables <span class="math inline">\(W_i\)</span>. For the first scenario, let <span class="math inline">\(F_{Y^{x_2}|X}(y|x_1)\)</span> be the CDF of <span class="math inline">\(Y^{x_2}\)</span> for the units that actually receive <span class="math inline">\(X=x_1\)</span>; similarly for the quantile function <span class="math inline">\(Q_{Y^{x_2}|X}(\tau|x_1)\)</span>. The QTEs and DTEs of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> for the population of units with realized treatment value <span class="math inline">\(x_3\)</span> are defined as <span class="math display">\[
+<p>We may also condition on the realized treatment values <span class="math inline">\(X_i\)</span> or on other control variables <span class="math inline">\(W_i\)</span>. For the first scenario, let <span class="math inline">\(F_{Y^{x_2}|X}(y|x_1)\)</span> be the CDF of <span class="math inline">\(Y^{x_2}\)</span> for the units that actually receive <span class="math inline">\(X=x_1\)</span>; similarly for the quantile function <span class="math inline">\(Q_{Y^{x_2}|X}(\tau|x_1)\)</span>. The QTEs and DTEs of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> for the population of units with realized treatment value <span class="math inline">\(x_3\)</span> are defined as <span id="eq-qte-dfn-cond-treat"><span class="math display">\[
 \begin{align}
     QTE(x_1, x_2, \tau|x_3) &amp;  =Q_{Y^{x_2}|X}(\tau|x_3) -   Q_{Y^{x_1}|X}(\tau|x_3) ,\\
     DTE(x_1, x_2, y|x_3) &amp; = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3).
 \end{align}
-\]</span> If <span class="math inline">\(X_i\)</span> is a scalar binary treatment, the quantile effects are also known as the quantile treatment effects for the treated or the control group, depending on whether <span class="math inline">\(x_3=1\)</span> or <span class="math inline">\(x_3=0\)</span> (shortened to QTT and QTC, respectively).</p>
-<p>For the second scenario, let <span class="math inline">\(W_i\)</span> be some other covariates or control variables. One may consider the QTEs and DTEs within the <span class="math inline">\(w\)</span>-stratum of <span class="math inline">\(W_i\)</span>: <span class="math display">\[
+\tag{18.2}\]</span></span> If <span class="math inline">\(X_i\)</span> is a scalar binary treatment, the quantile effects are also known as the quantile treatment effects for the treated or the control group, depending on whether <span class="math inline">\(x_3=1\)</span> or <span class="math inline">\(x_3=0\)</span> (shortened to QTT and QTC, respectively).</p>
+<p>For the second scenario, let <span class="math inline">\(W_i\)</span> be some other covariates or control variables. One may consider the QTEs and DTEs within the <span class="math inline">\(w\)</span>-stratum of <span class="math inline">\(W_i\)</span>: <span id="eq-qte-dfn-cond"><span class="math display">\[
 \begin{align}
     QTE(x_1, x_2, \tau|w) &amp; = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
         DTE(x_1, x_2, y|w) &amp; = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
 \end{align}
-\]</span></p>
+\tag{18.3}\]</span></span></p>
 <p>The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on distributional effects. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in <span class="citation" data-cites="Chernozhukov2013b">Chernozhukov, Fernández-Val, and Melly (<a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">2013</a>)</span> for some further details.</p>
 <div class="callout callout-style-simple callout-warning no-icon">
 <div class="callout-body d-flex">
@@ -1482,8 +1488,8 @@ Williamson, Robert C., and Tom Downs. 1990. <span>“<span class="nocase">Probab
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/qte-dte-id-rct.html" class="pagination-link" aria-label="Nonparametric Identification of QTEs and DTEs in Simple RCTs">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

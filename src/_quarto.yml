@@ -56,6 +56,7 @@ book:
     - part: "Quantile and Distributional Treatment Effects"
       chapters: 
         - qte-dte/qte-dte-intro.qmd
+        - qte-dte/qte-dte-id-rct.qmd
 
     - references/references.qmd
 
