@@ -31,7 +31,7 @@ We structure our discussion in two steps:
 
 ::: {.callout-note appearance="simple"}
 
- Identification under endogeneity is also possible, although outside the scope of this course; see @Chernozhukov2005IVModelQuantile. 
+ Identification under endogeneity is also possible, although outside the scope of this course; see @Chernozhukov2005IVModelQuantile and chapter 17 in @Koenker2017HandbookQuantileRegression. 
 
 
 :::
@@ -47,9 +47,11 @@ In this section we consider the simplest setting in which the treatment $X_i$ is
 $$
 	\curl{Y^x_i}_{x} \independent X_i.
 $$ {#eq-qte-rct}  
-There may potentially be some covariates $W_i$, which are also marginally independent of $X_i$. This setting is represented by the single-world intervention graph on @fig-rct-swig, where the realized treatment node $X_i$ is independent from the potential outcome $Y_i^x$ (see chapter 7 of @Hernan2024CausalInferenceWhat for a textbook introduction to single-world intervention graphs). 
-
-Intuitively, the setting of @eq-qte-rct is a simple randomized controlled trial where the treatment is assigned independently of potential outcomes and other individual characteristics  (unconditional unconfoundedness or a random effects setting, in panel data terminology).
+There may potentially be some covariates $W_i$, which are also marginally independent of $X_i$:
+$$
+	W_i \independent X_i.
+$$ {#eq-qte-rct-cov-tr}  
+ This setting is represented by the single-world intervention graph on @fig-rct-swig, where the realized treatment node $X_i$ is independent from the potential outcome $Y_i^x$ (see chapter 7 of @Hernan2024CausalInferenceWhat for a textbook introduction to single-world intervention graphs). 
 
 
 ::: {#fig-rct-swig}
@@ -68,6 +70,10 @@ Intuitively, the setting of @eq-qte-rct is a simple randomized controlled trial 
 
 graphical representation of setting @eq-qte-rct. Note that the arrow is going from $x$ to $Y^x_i$, not from $X_i$ to $Y^x_i$
 :::
+
+Intuitively, the setting of @eq-qte-rct is a simple randomized controlled trial where the treatment is assigned independently of potential outcomes and other individual characteristics  (unconditional unconfoundedness or a random effects setting, in panel data terminology).
+
+
 
 As always, the realized outcome $Y_i$ is equal to $Y^x_i$ if $X_i=x$ (i.e., we observe the potential outcome corresponding to the treatment actually received). The treatment $X_i$ may be discrete- or continuous-valued. For continuous treatments, we assume standard regularity conditions (e.g., existence of densities) to ensure that conditioning on $\curl{X_i=x}$ is well-defined.
 
@@ -109,7 +115,7 @@ For all parameters of interest, it is sufficient to identify the quantile or dis
 ### Unconditional CDF of Potential Outcomes
 
 
-We begin with the CDF $F_{Y^x}(\cdot)$ of $Y^x_i$. To start, observe that we use the independence assumption ([-@eq-qte-rct]) to write
+We begin with the CDF $F_{Y^x}(\cdot)$ of $Y^x_i$. To start, observe that we can use the independence assumption ([-@eq-qte-rct]) to write
 $$
 	F_{Y^x}(y)  \equiv \E\left[ \I\curl{Y^x_i\leq y} \right] = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right].
 $$
@@ -152,7 +158,7 @@ Combining the two extreme of the above chain of equalities, we obtain that $Q_{Y
 $$
 \tau = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right]
 $$
-At the same, under our continuity and strict monotonicity assumptions we know that $Q_Y(\tau) (quantile of the *observed* outcome $Y_i)$ uniquely satisfies
+At the same time, under our continuity and strict monotonicity assumptions we know that $Q_Y(\tau)$ (the $\tau$th quantile of the *observed* outcome $Y_i$) uniquely satisfies
 $$
 \tau = \E\left[\I\curl{Y_i\leq Q_{Y}(\tau) }  |X_i=x   \right].
 $$
@@ -161,14 +167,14 @@ We conclude that it must be the case that
 $$
 	 Q_{Y^x}(\tau) = Q_{Y|X}(\tau|x).
 $$ 
-In other words, the $\tau$th quantile of $Y^x_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $X_i=d$. 
+In other words, the $\tau$th quantile of $Y^x_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $X_i=x$. 
  
 
 ### CDF and Quantiles Conditional on Covariates
 
 Finally, we turn to identifying the conditional distribution function $F_{Y^x|W}(y|w)$ and conditional quantile function $Q_{Y^x|W}(\tau|w)$ that appear in the conditional QTE and DTE of @eq-qte-dfn-cond.
 
-The argument for conditional CDFs and quantiles mirrors that of the unconditional case and again relies on the independence restriction ([-@eq-qte-rct]). For example, the identification argument for the CDF looks as follows:
+The argument for conditional CDFs and quantiles mirrors that of the unconditional case and again relies on the independence restriction ([-@eq-qte-rct]), along with the independence condition ([-@eq-qte-rct-cov-tr]). For example, the identification argument for the CDF looks as follows:
 $$
 \begin{aligned}
 F_{Y^x|W}(y|w) & = \E\left[ \I\curl{Y^x_i\leq y}|W_i=w \right] \\
