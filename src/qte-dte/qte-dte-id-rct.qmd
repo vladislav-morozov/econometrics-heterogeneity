@@ -154,24 +154,28 @@ $$
 
 We conclude that it must be the case that
 $$
-	 Q_{Y^x}(\tau) = Q_{Y|x}(\tau|x).
+	 Q_{Y^x}(\tau) = Q_{Y|X}(\tau|x).
 $$ 
 In other words, the $\tau$th quantile of $Y^x_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $X_i=d$. 
  
 
-### CDF and Quantiles Conditional on Covariatesx
+### CDF and Quantiles Conditional on Covariates
 
+Finally, we turn to identifying the conditional distribution function $F_{Y^x|W}(y|w)$ and conditional quantile function $Q_{Y^x|W}(\tau|w)$ that appear in the conditional QTE and DTE of @eq-qte-dfn-cond.
 
-Identification of the conditional distribution and quantiles of potential outcomes is also straightforward. We only consider the CDF:
+The argument is similar to that of marginal CDFs and quantiles, and again relies on the independence restriction ([-@eq-qte-rct]). For example, the identification argument for the CDF looks as follows:
 $$
 \begin{aligned}
-F_{Y^d|X}(y|x) & = \E\left[ \I\curl{Y^d_i\leq y}|X_i=x \right] \\
-& = \E\left[ \I\curl{Y^d_i\leq y} |D_i=d, X_i=x \right]\\
-& = \E\left[ \I\curl{Y_i\leq y}|D_i=d, X_i=x \right]\\
-& = F_{Y|D, X}(y|d, x).
+F_{Y^x|W}(y|w) & = \E\left[ \I\curl{Y^x_i\leq y}|W_i=w \right] \\
+& = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x, W_i=w \right]\\
+& = \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i=w \right]\\
+& = F_{Y|X, W}(y|x, w),
 \end{aligned}
 $$
-Here we use the independence of $D_i$ and $X_i$ in addition to the unconfoundedness condition ([-@eq-qte-rct]). The argument for the quantiles of $Y^d_i$ is entirely analogous. 
+where $F_{Y|X, W}(y|x, w)$ is the CDF of the realized outcome $Y_i$ in the subpopulation of units with $X_i=x$ and $W_i=w$. As before, the group of units with $X_i=x$ identifies the distribution of potential outcomes under $x$. The argument for the quantiles of $Y^d_i$ is entirely analogous, and leads to the identifying expression
+$$
+	 Q_{Y^x|W}(\tau|w) = Q_{Y|X, W}(\tau|x, w).
+$$
 
 
 
@@ -179,4 +183,4 @@ Here we use the independence of $D_i$ and $X_i$ in addition to the unconfoundedn
 
 #### Next Section {.unnumbered}
 
-In the next section, we continue
+In the next section, we our discussion of identification and consider identification under the (conditional) unconfoundedness assumption that $Y_i^x\independent X_i|W_i$.
