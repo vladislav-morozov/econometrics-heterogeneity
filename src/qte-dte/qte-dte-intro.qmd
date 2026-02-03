@@ -76,7 +76,7 @@ $$
 	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
 		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
 \end{aligned}
-$$
+$$ {#eq-qte-dfn-uncond}
 where $x_1, x_2$ are some values of the treatment and $\tau\in [0, 1]$. 
 
 If the treatment is continuous, we  may further consider derivatives of $Q_{Y^x}(\tau)$ and $F_{Y^x}(y)$ with respect to $x$, yielding marginal QTEs and DTEs. 
@@ -87,7 +87,7 @@ $$
 	QTE(x_1, x_2, \tau|x_3) &  =Q_{Y^{x_2}|X}(\tau|x_3) - 	Q_{Y^{x_1}|X}(\tau|x_3) ,\\
 	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
 \end{align}
-$$
+$$ {#eq-qte-dfn-cond-treat}
 If $X_i$ is a scalar binary treatment, the quantile effects are also known as the   quantile treatment effects  for the treated or the control group, depending on whether $x_3=1$ or $x_3=0$ (shortened to QTT and QTC, respectively).
 	
 For the second scenario, let $W_i$ be some other covariates or control variables. One may consider the QTEs and DTEs within the $w$-stratum of $W_i$:
@@ -96,7 +96,7 @@ $$
 	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
 		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
 \end{align}
-$$
+$$ {#eq-qte-dfn-cond}
  
 The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on distributional effects. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in @Chernozhukov2013b for some further details.
  

@@ -6,7 +6,7 @@ open-graph:
 ---
 
 
-# Identification of QTEs and DTEs in RCTs {#sec-qte-id-rct}
+# Nonparametric Identification of QTEs and DTEs in Simple RCTs {#sec-qte-id-rct}
 
 ::: {.callout-note appearance="simple" icon=false}
 
@@ -21,7 +21,145 @@ By the end of this section, you should be able to:
     
  
 
-##  
+## Introduction
+
+
+Having set the stage, we now turn to identification of quantile and distributional treatment effects discussed in section [-@sec-qte-intro]. 
+
+We structure our discussion in two steps. First, in this section we consider identification in a simple (pure) randomized control settings where the realized treatment $X_i$ is fully independent from potential outcomes $Y_i^x$. Second, in the next section we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditional on some variables $W_i$.
+
+::: {.callout-note appearance="simple"}
+
+ Identification under endogeneity is also possible, although outside the scope of this course; see @Chernozhukov2005IVModelQuantile. 
+
+
+:::
+ 
+Throughout, our approach is nonparametric in terms of how potential outcomes are determined. We impose no functional form restrictions on potential outcomes or individual-level unobserved heterogeneity.
+
+ 
+
+## Setting
+
+### Assumption: Unconditional Unconfoundedness
+ 
+In this section we aconsider the simplest setting in which the treatment $D_i$ is marginally independent from the collection of potential outcomes:
+$$
+	\curl{Y^x_i}_{x} \independent X_i.
+$$ {#eq-qte-rct}  
+There may potentially be some covariates $W_i$, which are also marginally independent of $X_i$. This setting is represented by the single-world intervention graph on @fig-rct-swig. 
+
+Intuitively, the setting of @eq-qte-rct is a simple randomized controlled trial where the treatment is assigned independently of potential outcomes and other individual characteristics  (unconditional unconfoundedness or a random effects setting, in panel data terminology).
+
+
+::: {#fig-rct-swig}
+
+``` tikz  
+%%| fig-align: center
+\begin{tikzpicture}[thick, scale=12, every path/.style={color=gray!70}]  
+		
+		\node (v1) at (0.397,-0.432) {$X|x$};
+		\node (v2) at (0.573,-0.432) {$Y^x$}; 
+		\node (v3) at (0.367,-0.322) {$W$}; 
+		\draw [->] (v1) -- (v2); 
+		\draw [->] (v3) -- (v2);
+	\end{tikzpicture}
+```
+
+graphical representation of setting @eq-qte-rct 
+:::
+
+As always, the realized outcome $Y_i$ will be equal to $Y^x_i$ if $X_i=x$. The treatment $X_i$ may be discrete- or continuous-valued. In the latter case, we implicitly assume all the regularity conditions which permit us to meaningfully work conditionally on events of the form $\curl{X_i=x}$.
+
+### Parameters of Interest
+
+In the setting of @eq-qte-rct,  interest lies in two kinds of QTEs and DTEs:
+
+- Unconditional QTE and DTE of @eq-qte-dfn-uncond: 
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
+		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+
+- QTEs and DTEs conditional on some value of $W_i$, defined in  @eq-qte-dfn-cond: 
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+
+
+
+Observe that there is no new parameter is gained by conditioning on values of $X_i$ --- the independence restriction in @eq-qte-rct  implies that $F_{Y^{x_1}|X}(\cdot|x_1) = F_{Y^{x_1}}(\cdot)$ for any $(x_1, x_2)$. Hence the QTEs and DTEs of @eq-qte-dfn-cond-treat are equal to the unconditional QTEs and DTEs in @eq-qte-dfn-uncond.
+
+## Identification
+
+
+For all of the parameters of interest,  it is be sufficient to identify the quantile or distribution functions of the potential outcomes.
+
+
+### Unconditional CDF of Potential Outcomes
+
+
+We begin with the CDF $F_{Y^x}(\cdot)$ of $Y^x_i$. To start, observe that we use the independence assumption ([-@@eq-qte-rct]) to write
+$$
+	F_{Y^x}(y)  \equiv \E\left[ \I\curl{Y^x_i\leq y} \right] = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right].
+$$
+Since $Y^x_i$ is independent from $X_i$, we may freely condition on event involving $X_i$ without changing the expected value.
+
+Next, under the event $\curl{X_i=x}$ it holds that the realized outcome $Y_i$ is exactly $Y^x_i$, allowing us to conclude that
+$$
+\E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right]= \E\left[ \I\curl{Y_i\leq y}|X_i=x \right] \equiv  F_{Y|X}(y|x), 
+$$
+where $F_{Y|X}(y|x)$ is the CDF of the realized outcome $Y_i$ in the subpopulation of units with $X_i=x$.
+
+We conclude that, as long as there exist units with $X_i=x$ in population, the marginal CDF of $Y^x_i$ is identified as
+$$
+F_{Y^x}(y) = F_{Y|X}(y|x).
+$$
+
+### Unconditional Quantile Function of Potential Outcomes
+
+
+In order to identify the quantiles of potential outcomes, we will assume that the corresponding distribution functions are continuous and strictly increasing. By the arguments of section \ref{quantile:section:quantile_properties}, it follows that the $\tau$th quantile of potential outcomes is uniquely characterized by the following moment condition:
+$$
+  P\left(Y^d_i\leq  Q_{Y^d}(\tau)  \right) = 	 \tau  .
+$$
+
+We can now again apply a conditioning argument to the above moment:
+$$
+\begin{aligned}
+	\tau & = P\left(Y^d_i\leq  Q_{Y^d}(\tau)  \right) = \E\left[ \I\curl*{Y^d_i\leq Q_{Y^d}(\tau)} \right] \\
+	& = \E\left[\I\curl*{Y^d_i\leq Q_{Y^d}(\tau) }  |D_i=d   \right]\\
+	& = \E\left[\I\curl*{Y_i\leq Q_{Y^d}(\tau) }|D_i=d \right].
+\end{aligned}
+$$
+As with the CDF, the second line uses unconfoundedness, while third line follows by the definition of $Y_i$.
+
+Under our continuity and monotonicity assumptions, we conclude that 
+$$
+	 Q_{Y^d}(\tau) = Q_{Y|D}(\tau|d).
+$$ 
+In other words, the $\tau$th quantile of $Y^d_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $D_i=d$. 
+ 
+
+### CDF and Quantiles Conditional on Covariatesx
+
+
+Identification of the conditional distribution and quantiles of potential outcomes is also straightforward. We only consider the CDF:
+$$
+\begin{aligned}
+F_{Y^d|X}(y|x) & = \E\left[ \I\curl{Y^d_i\leq y}|X_i=x \right] \\
+& = \E\left[ \I\curl{Y^d_i\leq y} |D_i=d, X_i=x \right]\\
+& = \E\left[ \I\curl{Y_i\leq y}|D_i=d, X_i=x \right]\\
+& = F_{Y|D, X}(y|d, x).
+\end{aligned}
+$$
+Here we use the independence of $D_i$ and $X_i$ in addition to the unconfoundedness condition ([-@eq-qte-rct]). The argument for the quantiles of $Y^d_i$ is entirely analogous. 
+
 
 
 ---
