@@ -21,8 +21,7 @@ By the end of this section, you should be able to:
 - Contrast QTEs and DTEs with the quantiles and distributions of treatment effects.
 
 :::
-   
---- 
+    
  
 
 ## Towards Cross-Sectional Data
