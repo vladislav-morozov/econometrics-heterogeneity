@@ -1,8 +1,8 @@
 --- 
-description: "Learn  (Lecture Notes)"
+description: "Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs. quantiles of treatment effects (Lecture Notes)"
 
 open-graph:
-    description: "Learn (Lecture Notes)"
+    description: "Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs. quantiles of treatment effects (Lecture Notes)"
 ---
 
 
@@ -12,11 +12,13 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  
+This section defines  quantile and distributional treatment effects (QTEs and DTEs) in a cross-sectional nonparametric model.
 
 By the end of this section, you should be able to: 
 
-- Understand  
+- Define QTEs and DTEs.
+- Interpret QTEs and DTEs geometrically and causally.
+- Contrast QTEs and DTEs with the quantiles and distributions of treatment effects.
 
 :::
    
