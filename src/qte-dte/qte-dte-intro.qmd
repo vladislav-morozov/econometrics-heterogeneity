@@ -1,0 +1,266 @@
+--- 
+description: "Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs. quantiles of treatment effects (Lecture Notes)"
+
+open-graph:
+    description: "Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs. quantiles of treatment effects (Lecture Notes)"
+---
+
+
+# Defining Quantile and Distributional Treatment Effects {#sec-qte-intro}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section defines  quantile and distributional treatment effects (QTEs and DTEs) in a cross-sectional nonparametric model.
+
+By the end of this section, you should be able to: 
+
+- Define QTEs and DTEs.
+- Interpret QTEs and DTEs geometrically and causally.
+- Contrast QTEs and DTEs with the quantiles and distributions of treatment effects.
+
+:::
+    
+ 
+
+## Towards Cross-Sectional Data
+
+In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit 
+
+- Multiple unobserved components (including functional-valued differences),
+- Nonparametric dependence of potential outcomes on treatments and unobservables.
+ 
+However, these results come at an important price: they require panel data with (at least approximate) stationarity. Such data may often not be available. Many datasets provide only one observation per unit, or have cross-sections spaced too far apart in time to justify stationarity assumptions. This motivates a key question: what distributional features of treatment effects can we learn from cross-sectional data alone?
+
+Unfortunately, the above success is generally hard to replicate in cross-sectional data. Some identification of distributional features beyond averages is certainly possible, but it typically requires monotonicity assumptions [@Matzkin2003; @Matzkin2007]. However, as @Hoderlein2007 argue, monotonicity assumptions are often unrealistic. They require that a single scalar unobservable (e.g., "ability") monotonically determines all potential outcomes, a restriction that clashes with most economic models. For example, earnings may depend on both ability and risk aversion (a multidimensional unobservable), or responses to treatments may be nonmonotonic (e.g., intermediate doses of a policy having larger effects than high doses).
+
+The literature's response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are *not* quantiles or distribution *of* treatment effects, a point we discuss in this section. 
+
+In this block, we:
+
+- Define QTEs and DTEs, along with discussing their interpretations.
+- Discuss their identification under various form of unconfoundedness.
+- Introduce quantile and distributional regression as estimation tools.
+- Connect these methods to the nonseparable panel models from the previous block. 
+
+## Defining QTEs and DTEs
+
+
+
+### Potential Outcome Framework 
+
+To formalize the setting of this block and define the new parameters of interest, we go back to the cross-sectional potential outcome model of @eq-intro-potential-outcomes. 
+
+Let $X_i$ be some treatment. $X_i$ may be scalar- or vector-valued. We are interested in the effect of $X_i$ on some outcome $Y_i$. 
+To each value $x$ of $X_i$ we associate a potential outcome $Y^x_i$, determined as 
+$$
+Y_i^x = \phi(x, A_i).
+$$
+Like in the previous block,  $\phi$ is an unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve $Y_{i}^x$, rather than the $\phi(\cdot, A_i)$ representation. 
+
+As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see @wrn-causal-sutva for caveats).
+
+The key role in this section is played by the distribution of potential outcomes, where by "distribution" we mean either the cumulative distribution function $F_{Y^x}(\cdot)$ of $Y^x_i$ or its quantile function   $Q_{Y^x}(\cdot)$. 
+
+
+### QTEs and DTEs
+ 
+
+
+The new distributional parameters of interest are built up by contrasting the distributions of $Y^x_i$ for different values of $x$. 
+
+The most fundamental parameters of interest are the unconditional  *quantile*  and *distributional  treatment effects* (QTE and DTE) of switching from $x_1$ to $x_2$, which are defined as
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
+		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+where $x_1, x_2$ are some values of the treatment and $\tau\in [0, 1]$. 
+
+If the treatment is continuous, we  may further consider derivatives of $Q_{Y^x}(\tau)$ and $F_{Y^x}(y)$ with respect to $x$, yielding marginal QTEs and DTEs. 
+
+We may also condition on the realized treatment values $X_i$ or on other control variables $W_i$. For the first scenario,  let $F_{Y^{x_2}|X}(y|x_1)$ be the CDF of $Y^{x_2}$ for the units that actually receive $X=x_1$; similarly for the quantile function $Q_{Y^{x_2}|X}(\tau|x_1)$. The QTEs and DTEs  of switching from $x_1$ to $x_2$ for the population of units with realized treatment value $x_3$ are defined as 
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|x_3) &  =Q_{Y^{x_2}|X}(\tau|x_3) - 	Q_{Y^{x_1}|X}(\tau|x_3) ,\\
+	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
+\end{align}
+$$
+If $X_i$ is a scalar binary treatment, the quantile effects are also known as the   quantile treatment effects  for the treated or the control group, depending on whether $x_3=1$ or $x_3=0$ (shortened to QTT and QTC, respectively).
+	
+For the second scenario, let $W_i$ be some other covariates or control variables. One may consider the QTEs and DTEs within the $w$-stratum of $W_i$:
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+ 
+The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on distributional effects. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in @Chernozhukov2013b for some further details.
+ 
+
+::: {.callout-warning appearance="simple" icon=false}
+
+There is an important difference between ATEs and QTEs when dealing with conditional and unconditional effects. When working with average effects, one may integrate the conditional average treatment effects given $W_i$ to obtain the ATE. This connection no longer holds for QTEs, and so the choice between conditional and unconditional QTEs leads to different interpretations. 
+
+To understand the difference between conditional and unconditional quantiles, consider the following example.  Let $W_i$ be the person's education level, and $Y_i$ be earnings. The 10th percentile of the $Y_i$ for college-educated people may lie fairly high in the overall (marginal) distribution of $Y_i$. See @Powell2020 for more discussion and further references.
+
+:::
+
+### Interpretations
+
+What are the QTEs and the DTEs? 
+
+#### Geometric Interpretation {.unnumbered}
+
+
+
+The first and simpler interpretation is purely geometric. As shown on @fig-qte-dte, DTEs and QTEs can be viewed as measures of  the distance in the distributions of potential outcomes:
+
+- The DTEs measure the vertical difference between the CDFs of the potential outcomes.
+- the QTE corresponds to the vertical distance between quantile functions (or equivalently, the horizontal distance between CDFs, since quantile functions are inverses of CDFs).
+
+::: {#fig-qte-dte}
+
+``` tikz  
+%%| fig-align: center
+\begin{tikzpicture}[every path/.style={color=gray!70}] 
+	\begin{axis}[
+		width=12cm, height=8cm,
+		xmin=0, xmax=4,
+		ymin=0, ymax=1.1,
+		axis lines=middle,
+		xlabel={$x$},
+		ylabel={},
+		xtick={0,1,2,3},
+		ytick={0,0.5,1},
+		legend pos=south east,
+		tick label style={font=\small},
+		label style={font=\small},
+		axis line style={thick}
+		]
+		
+		% Plot the first nonlinear CDF (blue)
+		\addplot[
+		ultra thick,
+		smooth,
+		color=blue
+		] coordinates {
+			(0,0) (0.5,0.1) (1,0.35) (1.5,0.7) (2,0.9) (2.5,0.96) (4, 1)
+		};
+		\addlegendentry{$F_{Y^0}$}
+		
+		% Plot the second nonlinear CDF (red)
+		\addplot[
+		ultra thick,
+		dash dot,
+		color=brown
+		] coordinates {
+		(0, 0) (0.5, 0)	(1,0.1)   (2,0.38) (2.35, 0.5)   (3,0.85) (3.5,0.96) (4, 1)
+		};
+		\addlegendentry{$F_{Y^1}$}
+		
+		% Vertical dashed line for DTE
+		\draw[dashed] (axis cs:0,0.85) -- (axis cs:3,0.85) -- (axis cs:3,0.975) -- (axis cs:0,0.975);
+		
+		\draw[dashed] (axis cs:3,0)  -- (axis cs:3,0.85);			
+
+
+			\draw[decoration={brace,mirror, raise=3pt},decorate]
+		(axis cs: 0,0.85) -- node[right=1pt] {$DTE(3)$} (axis cs: 0, 0.975); 
+		
+		% Horizontal dashed line for QTE
+		\draw[dashed] (axis cs:1.23,0) -- (axis cs:1.23,0.5) -- (axis cs:2.35,0.5) -- (axis cs:2.35,0);
+		
+		\draw[dashed] (axis cs:0,0.5)  -- (axis cs:1.23,0.5) ;
+		
+	
+		\draw[decoration={brace,raise=1pt},decorate]
+			(axis cs: 1.23, 0) -- node[above=1pt] {$QTE(0.5)$} (axis cs: 2.35, 0);
+		
+	\end{axis}
+	
+\end{tikzpicture}
+```
+
+Visual representation of distributional treatment effects (DTEs) and quantile treatement effects (QTEs).  Depicted: $DTE(3)$ --- difference of CDFs of potential outcomes distributions at $y=3$ and $QTE(0.5)$ --- difference of medians of potential outcome distributions
+
+:::
+
+#### Causal Interpretation {.unnumbered}
+
+The second and deeper interpretation of QTEs and DTEs is causal. This interpretation requires SUTVA and typically goes as follows [@Athey2017handbook]. The QTE and DTE of a change from $x_1$ to $x_2$ describe how the entire outcome distribution would shift if all units moved from treatment value $x_1$ to value $x_2$. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes.  For example, a QTE of +5 at $\tau=0.25$ means the 25th percentile of earnings would rise by 5 units under the treatment change.
+
+
+::: {#wrn-causal-sutva .callout-warning}
+
+SUTVA is critical in the above interpretation, as it rules out  general equilibrium effects of such a universal shift in treatment.
+
+In many settings such an assumption may be unrealistic. However, as these lecture notes are written, analysis of "global" QTEs appears to only be a nascent field. 
+
+:::
+
+Between the QTE and the DTE, the QTE is slightly easier to interpret, as QTEs are expressed in the same units as the outcome variable. In contrast, the DTEs are slightly more complicated to interpret, as they are expressed in terms of changes in CDFs.
+
+
+ 
+
+## QTEs vs Quantiles of Treatment Effects
+
+### QTEs vs. Quantiles of Treatment Effects
+
+An important aspect of QTEs and DTEs is that those objects are *not* equal to the quantiles or distributions of treatment effects outside of some special cases. For example, for quantiles it is usually the case that 
+$$
+	 Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
+$$
+Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs "treatment effects" may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.
+
+
+### Bounds for Distribution and Quantiles of Treatment Effects
+ 
+The focus on QTEs and DTEs is driven by the fact the actual distribution of quantile effects is only *partially* identified even in  experimental settings (outside of restrictive settings). Even the best experiments usually allow us to identify at most the marginal   distributions $F_{Y^1}$ and $F_{Y^0}$, but not the joint distribution of the two potential outcomes. The following bounds are the most that can be said about the distribution  $F_{Y^1-Y^0}(\cdot)$ and about the quantiles of $Y^1_i-Y_i^0$:
+$$
+\begin{aligned}
+	F^L(y) & \leq F_{Y^1-Y^0}(y)\leq F^U(y),\\
+	Q^L(\tau) & \leq Q_{Y^1-Y^0}(\tau) \leq Q^U(\tau),
+\end{aligned} 
+$$
+for
+$$
+\begin{aligned}
+	F^L(y) & = \sup_w \max\curl{(F_1(w) - F_0(w-y), 0},\\
+	F^U(y) & = 1+ \inf_w\min\curl{F_1(w) - F_0(w-y), 0 },\\
+			Q^L(\tau) & = \sup_{w\in [0, \tau]}\left( F_X^{-1}(w) + F_Y^{-1}(\tau-w) \right), \\
+			 Q^U(\tau) & = \inf_{w\in [\tau, 1]} \left(F_X^{-1}(w)  + F^{-1}_Y(1+\tau-w)\right). \\
+\end{aligned}
+$$ See  @Makarov1981 and @Williamson1990 regarding these bounds. They are known to be pointwise sharp without further assumptions, though @Firpo2019 describe some refinements in case of looking at multiple values of $y$ or $\tau$. @Fan2010 discuss inference on such bounds in practice.
+
+Ultimately, the switch to the less satisfactory QTE and DTE parameters is the price that we pay for working in cross-sectional settings and not restricting the form of potential outcomes.
+
+### The Comonotonic Case
+
+
+QTEs do correspond to the quantile of the treatment effect in the special case of perfect rank correlation (comonotonicity, rank preservation) between potential outcomes [@Doksum1974EmpiricalProbabilityPlots]. Consider the case of a binary treatment $x=0, 1$.  Under comonotonicity, potential outcomes share a common rank structure. Formally, they admit a Skorokhod representation
+$$
+	(Y^1_i, Y^0_i) = \left(F_{Y^1}^{-1}(U_i), F_{Y^0}^{-1}(U_i)\right).
+$$
+where $U_i$ is a common Uniform[0, 1] random variable. 
+
+Intuitively, under comonotonicity each individual has the same rank in all of the potential outcome distributions. For example, if a person would be in the 80th percentile of earnings after a training program, they would be in the 80th percentile of earnings without training too. The same preservation of rank would hold for all units.
+
+
+In this special case it is indeed true that the difference in quantiles is equal to the quantile of the difference (the treatment effect). Moreover, the above representation also implies that the potential outcomes can be determined as 
+$$
+	Y^1_i = F_{Y^1}^{-1}\left( F_{Y^0} (Y^0_i) \right).
+$$
+
+Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that $x$ are different possible career paths (e.g. ballet dance and astronaut) and that $Y_i^x$ are earnings of person $i$ in career $x$. Comonotonicity would mean that the person is *equally* good or bad at both ballet and being an astronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we start our discussion of identification of QTEs and DTEs with a simple randomized control trial setting with (unconditional) unconfoundedness.
