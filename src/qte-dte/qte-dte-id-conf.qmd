@@ -1,0 +1,31 @@
+--- 
+description: "Learn to  (Lecture Notes)"
+
+open-graph:
+    description: "Learn to  (Lecture Notes)"
+---
+ 
+# Nonparametric Identification of QTEs and DTEs under Unconfoundedness {#sec-qte-id-conf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to:
+
+- Identify 
+
+:::
+    
+ 
+
+## Setting
+ 
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we  

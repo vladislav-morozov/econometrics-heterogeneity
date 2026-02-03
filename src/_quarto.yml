@@ -57,6 +57,7 @@ book:
       chapters: 
         - qte-dte/qte-dte-intro.qmd
         - qte-dte/qte-dte-id-rct.qmd
+        - qte-dte/qte-dte-id-conf.qmd
 
     - references/references.qmd
 
