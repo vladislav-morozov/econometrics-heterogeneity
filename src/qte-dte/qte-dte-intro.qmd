@@ -38,7 +38,7 @@ The literature's response has been to refocus on distributional treatment effect
 
 In this block, we:
 
-- Define QTEs and DTEs, along with discussing their intepretations.
+- Define QTEs and DTEs, along with discussing their interpretations.
 - Discuss their identification under various form of unconfoundedness.
 - Introduce quantile and distributional regression as estimation tools.
 - Connect these methods to the nonseparable panel models from the previous block. 
@@ -47,7 +47,7 @@ In this block, we:
 
 
 
-### Potential Outcome Framwork 
+### Potential Outcome Framework 
 
 To formalize the setting of this block and define the new parameters of interest, we go back to the cross-sectional potential outcome model of @eq-intro-potential-outcomes. 
 
@@ -56,7 +56,7 @@ To each value $x$ of $X_i$ we associate a potential outcome $Y^x_i$, determined 
 $$
 Y_i^x = \phi(x, A_i).
 $$
-Like in the previous block,  $\phi$ is an unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve $Y_{i}^x$. Accordingly, we use the $\phi(\cdot, A_i)$ representation less. 
+Like in the previous block,  $\phi$ is an unknown function and $A_i$ is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve $Y_{i}^x$, rather than the $\phi(\cdot, A_i)$ representation. 
 
 As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see @wrn-causal-sutva for caveats).
 
@@ -112,16 +112,14 @@ To understand the difference between conditional and unconditional quantiles, co
 
 What are the QTEs and the DTEs? 
 
-#### Geometric Interpetation {.unnumbered}
+#### Geometric Interpretation {.unnumbered}
 
 
 
 The first and simpler interpretation is purely geometric. As shown on @fig-qte-dte, DTEs and QTEs can be viewed as measures of  the distance in the distributions of potential outcomes:
 
 - The DTEs measure the vertical difference between the CDFs of the potential outcomes.
-- The QTE measures the horizontal difference between the CDFs.
-
-Since the quantile function can be obtained by rotating the CDF axes 90 degrees, the QTE may also be viewed as vertical distance between quantile functions.  
+- the QTE corresponds to the vertical distance between quantile functions (or equivalently, the horizontal distance between CDFs, since quantile functions are inverses of CDFs).
 
 ::: {#fig-qte-dte}
 
@@ -192,12 +190,12 @@ Visual representation of distributional treatment effects (DTEs) and quantile tr
 
 #### Causal Interpretation {.unnumbered}
 
-The second and deeper interpretation of QTEs and DTEs is causal. This intepretation requires SUTVA and typically goes as follows [@Athey2017handbook]. The QTE and DTE of a change from $x_1$ to $x_2$ describe how the entire outcome distribution would shift if all units moved from treatment value $x_1$ to value $x_2$. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes.  For example, a QTE of +5 at $\tau=0.25$ means the 25th percentile of earnings would rise by 5 units under the treatment change.
+The second and deeper interpretation of QTEs and DTEs is causal. This interpretation requires SUTVA and typically goes as follows [@Athey2017handbook]. The QTE and DTE of a change from $x_1$ to $x_2$ describe how the entire outcome distribution would shift if all units moved from treatment value $x_1$ to value $x_2$. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes.  For example, a QTE of +5 at $\tau=0.25$ means the 25th percentile of earnings would rise by 5 units under the treatment change.
 
 
 ::: {#wrn-causal-sutva .callout-warning}
 
-SUTVA is critical in the above intepretation, as it rules out  general equilibrium effects of such a universal shift in treatment.
+SUTVA is critical in the above interpretation, as it rules out  general equilibrium effects of such a universal shift in treatment.
 
 In many settings such an assumption may be unrealistic. However, as these lecture notes are written, analysis of "global" QTEs appears to only be a nascent field. 
 
@@ -216,7 +214,7 @@ An important aspect of QTEs and DTEs is that those objects are *not* equal to th
 $$
 	 Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
 $$
-Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs "treatment effects" may be somewhat misleading, and one should always be careful in practice with the intepretations assigned to these objects.
+Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs "treatment effects" may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.
 
 
 ### Bounds for Distribution and Quantiles of Treatment Effects
@@ -257,9 +255,10 @@ $$
 	Y^1_i = F_{Y^1}^{-1}\left( F_{Y^0} (Y^0_i) \right).
 $$
 
-Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that $x$ are different possible career paths (e.g. ballet and space flight) and that $Y_i^x$ are earnings of person $i$ in career $x$. Comonotonicity would mean that the person is *equally* good or bad at both ballet and being an austronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.
+Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that $x$ are different possible career paths (e.g. ballet dance and astronaut) and that $Y_i^x$ are earnings of person $i$ in career $x$. Comonotonicity would mean that the person is *equally* good or bad at both ballet and being an astronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.
 
 
+---
 
 #### Next Section {.unnumbered}
 

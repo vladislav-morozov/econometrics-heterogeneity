@@ -12,8 +12,8 @@ diagram:
       execpath: pdflatex
       header-includes:
         - '\usepackage{adjustbox}'
-        - '\usetikzlibrary{arrows,calc,fit,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathmorphing,patterns,positioning,swigs}' 
-
+        - '\usepackage{pgfplots}'
+        - '\usetikzlibrary{arrows,arrows.meta,calc,fit,decorations.shapes,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathreplacing,decorations.pathmorphing,patterns,positioning,swigs}' 
 book:
   title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
