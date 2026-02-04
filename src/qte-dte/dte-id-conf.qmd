@@ -1,0 +1,63 @@
+--- 
+description: "Learn to  (Lecture Notes)"
+
+open-graph:
+    description: "Learn to  (Lecture Notes)"
+---
+ 
+# Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness {#sec-qte-id-conf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to:
+
+- Identify 
+
+:::
+    
+ 
+
+## Focus: Distributional Treatment Effects
+
+We retain the (conditional) unconfoundedness assumption ([-@#eq-qte-unconf]).
+
+$$
+ \curl{Y_i^x}_x \independent X_i|W_i.
+$$ 
+
+### Parameters of Interest
+
+The setting of @eq-qte-unconf is richer than that of @eq-qte-rct. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section [-@sec-qte-intro].  Specifically, we focus on the following parameters (in the order of identification):
+
+1. QTE and DTE conditional on $W_i=w$ (@eq-qte-dfn-cond):
+$$
+\begin{align} 
+DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+2. Unconditional QTE and DTE (@eq-qte-dfn-uncond):
+$$
+\begin{aligned} 
+DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+3. QTE and DTE conditional on $X_i=x_3$ (@eq-qte-dfn-cond-treat):
+$$
+\begin{align} 
+	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
+\end{align}
+$$
+ 
+
+
+## Identification of CDFs
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we  

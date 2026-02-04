@@ -1,0 +1,254 @@
+--- 
+description: "Learn to  (Lecture Notes)"
+
+open-graph:
+    description: "Learn to  (Lecture Notes)"
+---
+ 
+# Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness {#sec-qte-id-conf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section  
+
+By the end of this section, you should be able to:
+
+- Identify 
+
+:::
+    
+ 
+
+## Setting
+
+### Assumption: Unconfoudedness
+ 
+In the simple RCT setting of the previous section, identification of QTE and DTEs is particularly simple. The required quantile and distribution functions can be directly read off from conditional quantile and distribution functions of the realized outcomes. 
+
+However, in practice, it is more frequent and realistic to see a weaker (conditional) unconfoundedness assumption, which requires that the realized treatment $X_i$ and the collection of potential outcomes $\curl{Y_i^x}_x$ are independent only conditionally on some  covariates $W_i$:
+$$
+ \curl{Y_i^x}_x \independent X_i|W_i.
+$$ {#eq-qte-unconf}
+This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may correspond both to observational settings and experiments with stratification.
+ 
+::: {#fig-swig-obs}
+
+``` tikz
+
+\begin{tikzpicture}[thick, scale=12, every path/.style={color=gray!70}]
+    
+    \node (v1) at (0.397,-0.432) {$X_i|x$};
+    \node (v2) at (0.573,-0.432) {$Y^x_i$}; 
+    \node (v3) at (0.367,-0.322) {$W_i$}; 
+    \draw [->] (v1) -- (v2); 
+    \draw [->] (v3) -- (v2);
+    \draw [->] (v3) -- (v1);
+\end{tikzpicture}
+
+```
+
+representation of setting of @eq-qte-unconf. Note that the arrow is going from $x$ to $Y^x_i$, not from $X_i$ to $Y^x_i$. Likewise, the arrow is going from $W_i$ to $X_i$, not $x$.
+
+:::
+
+### Focus: Quantile Treatment Effects
+
+The setting of @eq-qte-unconf is richer than that of @eq-qte-rct. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section [-@sec-qte-intro].  Specifically, we focus on the following parameters (in the order of identification):
+
+1. QTE  conditional on $W_i=w$ (@eq-qte-dfn-cond):
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w).
+\end{align}
+$$
+2. Unconditional QTE (@eq-qte-dfn-uncond):
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) .
+\end{aligned}
+$$
+3. QTE  conditional on $X_i=x_3$ (@eq-qte-dfn-cond-treat):
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|x_3) &  =Q_{Y^{x_2}|X}(\tau|x_3) - 	Q_{Y^{x_1}|X}(\tau|x_3) .
+\end{align}
+$$
+
+As in the previous section, it is sufficient to identify suitable CDFs and quantile functions of $Y^x_i$
+ 
+### Quantile Function Conditional on $W_i$
+
+
+We begin with the simplest identification argument --- that of the conditional quantiles of $Y^x_i$ given $W_i=w$.
+
+Like in the previous section, we assume that that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
+
+$$
+\E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |W_i=w\right] =  \tau.
+$$
+
+As before, now our goal is to connect the above moment condition to the the realized outcome $Y_i$. To do so, we first use the unconfoundedness condition ([-@eq-qte-unconf]) to insert conditioning on $X_i=x$:
+$$
+\begin{aligned}
+& \E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |W_i=w\right] \\
+& =  \E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |X_i=x, W_i=w\right].
+\end{aligned}
+$$
+Next, we use that $Y_i=Y^x_i$ if $X_i=x$ to replace $Y^x_i$ with $Y_i$:
+$$
+\begin{aligned}
+&
+\E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |X_i=x, W_i=w\right] \\
+& = \E\left[ \I\curl{ Y_i \leq Q_{Y^x|W}(\tau|w) } |X_i=x, W_i=w\right] .
+\end{aligned}
+$$
+We conclude that $Q_{Y^x|W}(\tau|w)$ must satisfy the moment condition 
+$$
+\tau = \E\left[ \I\curl{ Y_i \leq Q_{Y^x|W}(\tau|w) } |X_i=x, W_i=w\right].
+$$
+Here we again observe that the CDF of $Y_i$ given $W_i=w$ and $X_i=x$ is exactly the CDF of $Y^x_i$ given $W_i=w$, and hence strictly increasing and continuous. Let $Q_{Y|X, W}(\tau|x, w)$ be the $\tau$th quantile of $Y_i$ given $\curl{X_i=x, W_i=w}$. By continuity and monotonicity, $Q_{Y|X, W}(\tau|x, w)$ also uniquely satisfies the above moment condition. We conclude the following identification result:
+$$
+    Q_{Y^x|W}(\tau|w) = Q_{Y|X, W}(\tau|x, w).
+$$ {#eq-qte-unconf-cond-w-quant}
+In other words, the conditional quantile of potential outcome given covariates is equal to the conditional quantile of the observed outcomes given both covariates and the treatment. 
+ 
+ 
+
+## Unconditional Quantile Function
+
+
+The argument for unconditional quantile $Q_{Y^x}(\tau)$ is more delicate. In contrast to average effects,  we cannot integrate @eq-qte-unconf-cond-w-quant with respect to the marginal distribution of $W_i$ (see @wrn-qte-intro-cond). Instead, identifying $Q_{Y^x}(\tau)$ involves adapting the preceding approach to the unconditional case.
+ 
+As before, we start with the moment condition satisfied by the quantile of interest:
+$$
+\tau = P(Y^x_i\leq Q_{Y^x}(\tau) ).
+$$
+In order to use the condition ([-@eq-qte-unconf]) and the same trick of conditioning on $X_i=x$, we first need to iterate expectations with respect to $W_i$:
+$$
+\begin{aligned}
+	\tau & = P(Y^x_i\leq Q_{Y^x}(\tau) ) \\
+    & =  \E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)  }\right] =  \E\left[ \E\left[ \I\curl{Y^x_i\leq  Q_{Y^x}(\tau)  }|W_i \right]  \right] \\
+\end{aligned}
+$$
+We can now apply unconfoundedness inside the conditional expectation to link the moment condition to the observed outcome $Y_i$:
+$$
+\begin{aligned}
+    & \E\left[\E\left[ \I\curl{Y^x_i\leq  Q_{Y^x}(\tau)  }|W_i \right]  \right] \\
+    & =   \E\left[ \E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau)  }| X_i=x, W_i\right]\right]  \\
+	& = \E\left[ \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau)  }| X_i=x, W_i\right]\right].
+\end{aligned}
+$$
+In principle, we now have obtained a moment condition that characterizes the quantile of interest:
+$$
+\tau = \E\left[ \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau)  }| X_i=x, W_i\right]\right].
+$$
+
+However, this condition is impractical: it involves iterating an expectation.
+
+Instead, we now develop a more practical characterization where conditioning is limited to propensity scores. To start, we observe that under the event $\curl{X_i=x}$ it holds that $\I\curl{X_i=x}$ is equal to 1. We can then multiply by $\I\curl{X_i=x}$(=1) under the conditional expectation:
+$$
+    \begin{aligned}
+        &  \E\left[ \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau)  }| X_i=d, X_i\right]\right] \\
+        & =  \E\left[ \E\left[\I\curl{D_i=d}\I\curl{Y\leq Q_{Y^x}(\tau) }|X_i=d, X\right]\right]
+    \end{aligned}
+$$ {#eq-qte-uncond-q-interm}
+
+To proceed, we use the following version of the law of total expectations: 
+
+::: {.callout-note appearance="simple"}
+
+If $V, Z$ are random variables and $T$ is a 0/1 random variable, then
+$$
+\begin{aligned}
+ 		\E[Z|V]  & =  P(T=1|V) \E[Z|V, T=1] \\
+        & \quad   + (1-P(T=0|V)) \E[Z|V, T=0].
+\end{aligned}
+$$ {#eq-qte-tot-exp}
+:::
+
+To apply the above law, we take $T = \I\curl{X_i=x}$ and  $Z = T\I\curl{Y_i\leq Q_{Y^x}(\tau)}$.  By construction, if $T=0$, then $Z=0$, and so the second term in @eq-qte-tot-exp is zero, and hence it holds that
+$$
+ 	\begin{aligned}
+ & 		\E\left[\I\curl{X_i=x}\I\curl{Y_i\leq Q_{Y^x}(\tau) }|X_i=d, W_i\right] 
+ \\ 
+ & = \dfrac{1}{P\left(X_i=x|W_i\right)} \E[\I\curl{X_i=x} \I\curl{Y_i\leq  Q_{Y^x}(\tau) }|W_i].
+ 	\end{aligned}
+$$
+
+We can now insert this characterization back into @eq-qte-uncond-q-interm, and finish the argument as follows:
+$$
+ \begin{aligned}
+  &  \E\left[ \E\left[\I\curl{X_i=x}\I\curl{Y_i\leq Q_{Y^x}(\tau) }|X_i=x, W_i\right]\right]\\
+ 	& = \E\left[ \dfrac{1}{P\left(X_i=x|W_i\right)} \E[\curl{X_i=x} \I\curl{Y_i\leq  Q_{Y^x}(\tau) }|W_i] \right]\\
+ 	& =  \E\left[\E\left[  \dfrac{\I\curl{X_i=x}}{P\left(X_i=x|W_i\right)}  \I\curl{Y_i\leq  Q_{Y^x}(\tau) }|W_i\right] \right] \\
+ 	& = \E\left[  \dfrac{\I\curl{X_i=x} }{P\left(X_i=x|W_i\right)}\I\curl{Y_i\leq Q_{Y^x}(\tau) }\right].
+ \end{aligned}
+$$
+Here we have again used the defining property of conditional expectations, this time to get rid of the internal conditional expectation. 
+
+
+In summary, we have shown that the unconditional quantile of interest  $Q_{Y^x}(\tau)$ satisfies the following moment condition:
+$$
+ 	 \E\left[  \dfrac{\I\curl{X_i=x} }{P\left(X_i=x|W_i\right)}\I\curl{Y_i\leq Q_{Y^x}(\tau) }\right] = \tau.
+$$
+This argument is originally due to @Firpo2007EfficientSemiparametricEstimation.
+
+
+Intuitively, this moment conditions shows that $Q_{Y^x}(\tau)$ is the $\tau$th quantile of a suitably reweighted distribution of the observed outcome. Weighting is done by the inverse of the propensity scores $P(X_i=d|W_i)$, and hence the above result is an instance of identification using inverse probability weighting. 
+
+## Quantile Function Conditional on $X_i$
+
+A similar argument to the above one can be used to identify quantiles of the form $Q_{Y^x|D}(\tau|x_3)$.
+   
+$$
+\begin{aligned}
+    \tau & =  P\left(Y^x_i \leq Q_{Y^x|X, W}(\tau|x_3, w)|X_i=x_3, W_i=w \right)\\
+    &  = \E\left[ \I\curl{Y^x_i \leq Q_{Y^x|X, W}(\tau|x_3, w)}| X_i=x_3, W_i=w \right]\\
+    & = \E\left[ \I\curl{Y^x_i \leq Q_{Y^x|X, W}(\tau|x_3, w)}| X_i=x, W_i=w \right]\\
+    & = \E\left[ \I\curl{Y_i \leq Q_{Y^x|X, W}(\tau|x_3, w)}| X_i=x, W_i=w \right]
+\end{aligned}
+$$	
+	
+
+
+The previous arguments can now be leveraged to obtain identification of quantiles of the form $Q_{Y^d|D}(\tau|k)$.  
+
+
+$$
+\begin{aligned}
+    \tau & =  P\left(Y^x_i \leq Q_{Y^x|X}(\tau|x_3)|X_i=x_3\right)\\
+     & =  \E\left[\I\curl{Y^x_i \leq Q_{Y^x|X}(\tau|x_3)}|X_i=x_3 \right]\\
+     & = \E\left[  \E\left[\I\curl{Y^x_i \leq Q_{Y^x|X}(\tau|x_3)} |X_i=x_3, W_i\right] |X_i=x_3   \right] \\
+          & = \E\left[  \E\left[\I\curl{Y^x_i \leq Q_{Y^x|X}(\tau|x_3)} |X_i=x, W_i\right] |X_i=x_3   \right] \\
+          & = \E\left[  \E\left[\I\curl{Y_i \leq Q_{Y^x|X}(\tau|x_3)} |X_i=x, W_i\right] |X_i=x_3   \right]
+\end{aligned}
+$$	
+	
+As above, we can write the conditional expectation as 
+$$
+\begin{aligned}
+& \E\left[\I\curl{Y_i \leq Q_{Y^x|X}(\tau|x_3)} |X_i=x, W_i\right] \\
+& =  \dfrac{1}{P\left(X_i=x|W_i\right)} \E[\I\curl{X_i=x} \I\curl{Y_i\leq  Q_{Y^x|X}(\tau|x_3) }|W_i].
+\end{aligned}
+$$
+
+and hence
+$$
+\begin{aligned}
+& \E\left[  \E\left[\I\curl{Y_i \leq Q_{Y^x|X}(\tau|x_3)} |X_i=x, W_i\right] |X_i=x_3   \right] \\
+& = \E\left[\dfrac{1}{P\left(X_i=x|W_i\right)} \E[\I\curl{X_i=x} \I\curl{Y_i\leq  Q_{Y^x|X}(\tau|x_3) }|W_i] |X_i=x_3\right] \\
+& = \E\left[\E\left[ \dfrac{\I\curl{X_i=x}}{P\left(X_i=x|W_i\right)} \I\curl{Y_i\leq  Q_{Y^x|X}(\tau|x_3) }|W_i\right]   \Bigg|X_i=x_3\right] \\
+& = \E\left[ \dfrac{\I\curl{X_i=x}}{P\left(X_i=x|W_i\right)} \I\curl{Y_i\leq  Q_{Y^x|X}(\tau|x_3) }|X_i=x_3\right]
+\end{aligned}
+$$
+
+
+## Identification of CDFs
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we  
