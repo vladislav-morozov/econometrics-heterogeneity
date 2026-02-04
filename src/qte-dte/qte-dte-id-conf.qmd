@@ -22,7 +22,69 @@ By the end of this section, you should be able to:
  
 
 ## Setting
+
+### Assumption: Unconfoudedness
  
+In the simple RCT setting of the previous section, identification of QTE and DTEs is particularly simple. The required quantile and distribution functions can be directly read off from conditional quantile and distribution functions of the realized outcome. 
+
+However, in practice, it is more frequent and realistic to see a weaker (conditional) unconfoundedness assumption, which requires that the realized treatment $X_i$ and the collection of potential outcomes $\curl{Y_i^x}_x$ are independent only conditionally on some  covariates $W_i$:
+$$
+ \curl{Y_i^x}_x \independent X_i|W_i.
+$$ {#eq-qte-unconf}
+This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may correspond both to observational settings and experiments with stratification.
+ 
+::: {#fig-swig-obs}
+
+``` tikz
+
+\begin{tikzpicture}[thick, scale=12, every path/.style={color=gray!70}]
+    
+    \node (v1) at (0.397,-0.432) {$X_i|x$};
+    \node (v2) at (0.573,-0.432) {$Y^x_i$}; 
+    \node (v3) at (0.367,-0.322) {$W_i$}; 
+    \draw [->] (v1) -- (v2); 
+    \draw [->] (v3) -- (v2);
+    \draw [->] (v3) -- (v1);
+\end{tikzpicture}
+
+```
+
+representation of setting of @eq-qte-unconf. Note that the arrow is going from $x$ to $Y^x_i$, not from $X_i$ to $Y^x_i$. Likewise, the arrow is going from $W_i$ to $X_i$, not $x$.
+
+:::
+
+### Parameters of Interest
+
+The setting of @eq-qte-unconf is fairly rich and allows us to consider both unconditional and conditional QTEs and DTEs, as described in section [-@sec-qte-intro].  Specifically, we focus on the following parameters (in the order of identification):
+
+1. QTE and DTE conditional on $W_i=w$ (@eq-qte-dfn-cond):
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+2. Unconditional QTE and DTE (@eq-qte-dfn-uncond):
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
+		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+3. QTE and DTE conditional on $X_i=x$ (@eq-qte-dfn-cond-treat):
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|x_3) &  =Q_{Y^{x_2}|X}(\tau|x_3) - 	Q_{Y^{x_1}|X}(\tau|x_3) ,\\
+	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
+\end{align}
+$$
+
+As in the previous section, it is sufficient to identify suitable CDFs and quantile functions of $Y^x_i$
+
+## Identification of Quantile Functions
+
+
+## Identification of CDFs
 
 ---
 
