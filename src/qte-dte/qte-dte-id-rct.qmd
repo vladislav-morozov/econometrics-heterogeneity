@@ -27,7 +27,7 @@ We structure our discussion in two steps:
 
 1. This section: we consider identification in a simple (pure) randomized control settings where the realized treatment $X_i$ is fully independent from potential outcomes $Y_i^x$. 
 
-2. Next section: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables $W_i$.
+2. The next two sections: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables $W_i$.
 
 ::: {.callout-note appearance="simple"}
 
