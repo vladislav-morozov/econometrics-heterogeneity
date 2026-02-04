@@ -58,7 +58,7 @@ $$ {#eq-qte-rct-cov-tr}
 
 ``` tikz  
 %%| fig-align: center
-\begin{tikzpicture}[thick, scale=12, every path/.style={color=gray!70}]  
+\begin{tikzpicture}[thick, scale=36, every path/.style={color=gray!70}]  
 		
 		\node (v1) at (0.397,-0.432) {$X_i|x$};
 		\node (v2) at (0.573,-0.432) {$Y^x_i$}; 
