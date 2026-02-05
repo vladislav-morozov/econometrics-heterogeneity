@@ -81,7 +81,38 @@ $$
  
 
 
-## Identification of CDFs
+## CDF Conditional on $W_i$
+
+
+The arguments for identifying the distribution functions of potential outcomes flow similarly to the ones for quantiles.  First, we consider the conditional CDF of $Y^d_i$ given $X_i=x$:
+$$
+\begin{align}
+	F_{Y^d|X}(y|x) & =\E\left[\I\curl{Y^d_i\leq y}|X_i=x \right]\\
+	& = \E\left[\I\curl{Y^d_i\leq y}|D_i=d, X_i=x \right]\\
+	& = \E\left[ \I\curl{Y_i\leq y}|D_i=d, X_i=x   \right]\\
+	& = F_{Y|D, X}(y|d, x),
+\end{align}
+$$
+where we have again used unconfoundedness and the definition of $Y_i$.
+In words, the CDF of interest is equal to a particular conditional distribution of the observed outcome $Y_i$.
+
+## Unconditional CDF
+
+
+To identify the marginal CDF of $Y^d_i$, we adapt the above conditional argument and iterate expectations as follows:
+\begin{align}
+	F_{Y^d}(y) &  = \E\left[ \I\curl{Y^d_i \leq y} \right] = \E\left[ \E\left[ \I\curl{Y^d_i \leq y}|X_i \right]\right]\\
+	& = \E\left[ \E\left[ \I\curl{Y^d_i \leq y}|D_i=d, X_i \right]\right]\\
+	& = \E\left[ \E\left[ \I\curl*{Y_i\leq y}| D_i=d, X_i \right]  \right]\\
+	& = \E\left[  F_{Y|D, X}(y|d, X_i) \right]\\
+	& = \int F_{Y|D, X}(y|d, x)F_X(dx).
+\end{align} 
+The marginal CDF of interest is identified as a suitably reweighted conditional CDF of the observed outcome. Observe that the object in the last line is \emph{not} the same as $F_{Y|D}(y|d)$. 
+
+
+
+
+## CDF Conditional on $X_i$
 
 ---
 
