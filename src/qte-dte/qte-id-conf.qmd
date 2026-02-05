@@ -102,7 +102,9 @@ As before, we start with the moment condition satisfied by the quantile of inter
 $$
 \tau = P(Y^x_i\leq Q_{Y^x}(\tau) ).
 $$
-In order to use the condition ([-@eq-qte-unconf]) and the same trick of conditioning on $X_i=x$, we first need to iterate expectations with respect to $W_i$:
+
+??????????????????????
+
 $$
 \begin{aligned}
 	\tau & = P(Y^x_i\leq Q_{Y^x}(\tau) ) \\
@@ -179,7 +181,7 @@ Intuitively, this moment conditions shows that $Q_{Y^x}(\tau)$ is the $\tau$th q
 Note that it is also possible to obtain an IPW expression for $F_{Y^d}(y)$ by proceeding as with $Q_{Y^d}$ starting from the iterated expectation. See @Donald2014EstimationInferenceDistribution.
 
 ## Quantile Function Conditional on $X_i$
-D
+
 Last, we focus the conditional quantile function $Q_{Y^x|X}(\tau|x_3)$ — the quantiles of the potential outcome under $x$ in the group which received a potentially different treatment $x_3$. 
 
 To identify these quantiles, we need showcase one more trick: swapping the treatment value in the conditioning set using condition ([-@eq-qte-unconf]). 
