@@ -176,6 +176,8 @@ This argument is originally due to @Firpo2007EfficientSemiparametricEstimation.
 
 Intuitively, this moment conditions shows that $Q_{Y^x}(\tau)$ is the $\tau$th quantile of a suitably reweighted distribution of the observed outcome. Weighting is done by the inverse of the propensity scores $P(X_i=x|W_i)$, and hence the above result is an instance of identification using inverse probability weighting. 
 
+Note that it is also possible to obtain an IPW expression for $F_{Y^d}(y)$ by proceeding as with $Q_{Y^d}$ starting from the iterated expectation. See @Donald2014EstimationInferenceDistribution.
+
 ## Quantile Function Conditional on $X_i$
 D
 Last, we focus the conditional quantile function $Q_{Y^x|X}(\tau|x_3)$ — the quantiles of the potential outcome under $x$ in the group which received a potentially different treatment $x_3$. 
