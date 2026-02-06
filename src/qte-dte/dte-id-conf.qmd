@@ -1,9 +1,11 @@
 --- 
-description: "Learn to  (Lecture Notes)"
+description: "Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)"
 
 open-graph:
-    description: "Learn to  (Lecture Notes)"
+    description: "Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)"
 ---
+
+
  
 # Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness {#sec-dte-id-conf}
 
@@ -11,11 +13,13 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section  
+This section shows how to identify distributional treatment effects under conditional unconfoundedness
 
 By the end of this section, you should be able to:
 
-- Identify 
+- Use conditioning tricks to connect observed outcomes to potential ones.
+- Identify conditional and unconditional DTEs.
+- State the importance of common support for identifying conditional DTEs.
 
 :::
     
