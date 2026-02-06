@@ -23,14 +23,14 @@ By the end of this section, you should be able to:
 
 ## Setting 
  
-In the simple RCT setting of the previous section, identification of QTE and DTEs is particularly simple. The required quantile and distribution functions can be directly obtained from conditional quantile and distribution functions of the realized outcomes. 
+In the simple RCT setting of the previous section, identification of QTEs and DTEs is particularly simple. The required quantile and distribution functions can be directly obtained from conditional quantile and distribution functions of the realized outcomes. 
 
 However, in practice, it is more frequent and realistic to see a weaker (conditional) unconfoundedness assumption, which requires that the realized treatment $X_i$ and the collection of potential outcomes $\curl{Y_i^x}_x$ are independent only conditionally on some  covariates $W_i$:
 $$
  \curl{Y_i^x}_x \independent X_i|W_i.
 $$ {#eq-qte-unconf}
-This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may correspond both to observational settings and experiments with stratification.
- 
+This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may arise both in observational settings and in experiments with randomization occurs within strata defined by $W_i$.
+
 ::: {#fig-swig-obs}
 
 ``` tikz
@@ -56,8 +56,9 @@ representation of setting of @eq-qte-unconf. Note that the arrow is going from $
 
 The setting of @eq-qte-unconf is richer than that of @eq-qte-rct. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section [-@sec-qte-intro].  
 
-Specifically, in this section we focus on distributional treatment effects, while quantile treatment effects are discussed in the next section.
-In order of identification, our parameteres of interest are:
+Specifically, this section focuses exclusively on DTE, whose identification is more explicit and allows us to showcase the key tools. QTEs are deferred to the next section.
+
+In order of identification, our parameters of interest are:
 
 
 1.  DTE conditional on $W_i=w$ (@eq-qte-dfn-cond):
@@ -79,26 +80,26 @@ $$
 \end{align}
 $$
  
-
+As before, identifying DTEs reduces to identifying the CDFs $F_{Y^{x}|W}(y|w)$, $F_{Y^{x}}(y)$,  and $F_{Y^{x}|X}(y|x_3)$. The following subsections tackle these CDFs in turn. 
 
 ## CDF Conditional on $W_i$
 
 
-We begin with the simplest identification argument --- that of the conditional distribution of $Y^x_i$ given $W_i=w$.
+We begin with with the most straightforward identification argument --- that of the conditional distribution of $Y^x_i$ given $W_i=w$.
  
 By definition, we can write the target CDF as
 $$
 F_{Y^x|W}(y|w) = \E[\I\curl{Y^x_i \leq y}|W_i=w].
 $$
 
-As before, the overall goal is to connect the above expression to the the realized outcome $Y_i$. To do so, we first use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i=x$:
+As before, the overall goal is to connect the above expression to the realized variables $(Y_i, X_i, W_i)$, chief of them the outcome $Y_i$. To do so, we first use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i=x$:
 $$
 \begin{aligned}
 & \E[\I\curl{Y^x_i \leq y}|W_i=w] \\
 & =  \E[\I\curl{Y^x_i \leq y}|X_i=x, W_i=w].
 \end{aligned}
 $$
-Since $Y^x_i$ and $X_i$ are conditionally independent given $W_i$, we do not change the value of the expectation by conditioning on any value of $X_i$, including $x$.
+Since $Y^x_i$ and $X_i$ are conditionally independent given $W_i$, this conditioning operation does not change the value of the expectation regardless of the value of $X_i$, including $x$.
 
 Next, we use that $Y_i=Y^x_i$ if $X_i=x$ to replace $Y^x_i$ with $Y_i$:
 $$
@@ -118,13 +119,18 @@ In words, the CDF of interest is equal to a particular conditional distribution 
 
 ## Unconditional CDF
 
-We now turn to the unconditional CDF of $Y^x_i$:
+We now turn to the unconditional  CDF of $Y^x_i$:
 $$
 F_{Y^x}(y)   = \E\left[ \I\curl{Y^x_i \leq y} \right].
 $$
 As before, we would like to replace $Y^x_i$ with the observed outcome $Y_i$. However, this time we cannot naively insert conditioning on $\curl{X_i=x}$ without changing the expectation. 
 
-To solution is to again use the condition ([-@eq-qte-unconf]) by first conditioning with respect to $W_i$ using the defining property of conditional expectation:
+To solution is to iterate expectations: 
+
+1. First condition on $W_i$  using the defining property of conditional expectations.
+2. Apply the condition ([-@eq-qte-unconf]) to the conditional expectation.
+
+The first step produces the following identity:
 $$
 \begin{aligned}
  & \E\left[ \I\curl{Y^x_i \leq y} \right] \\
@@ -132,7 +138,7 @@ $$
 \end{aligned}
 $$
 
-We can now use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i$ inside the conditional expectation. This conditioning does not affect the expectation (more precisely, the distribution of the conditional expectation in question):
+We can now use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i$ inside the conditional expectation. By conditional independence in ([-@eq-qte-unconf]), this conditioning does not affect the expectation (more precisely, the distribution of the conditional expectation in question):
 
 $$
 \begin{aligned}
@@ -163,28 +169,46 @@ In words, the marginal CDF of $Y^x_i$ is equal to a reweighted conditional CDF o
 
 ## CDF Conditional on $X_i$
 
-Finally, we consider the CDF $F_{Y^x|X}(y|x_3)$  — the distribution of the potential outcome under $x$ in the group which received a potentially different treatment $x_3$. 
+Finally, we consider the CDF $F_{Y^x|X}(y|x_3)$  — the distribution of the potential outcome under $x$ in the group which received a potentially different treatment $x_3$. This CDF can be represented as 
+$$
+F_{Y^x|X}(y|x_3) = \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right].
+$$
+Identification here requires a new trick: exploiting conditional independence  ([-@eq-qte-unconf]) to swap treatment values in the conditioning set. 
+ 
+Like for the unconditional CDF, we start by iterating expectations with respect to $W_i$
+$$
+\begin{aligned} 
+  &    \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right] \\
+    & = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
+	& =  \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right].
+\end{aligned}
+$$
 
-Extending the above logic, we can also identify the conditional CDF $F_{Y^x|X}(y|x_3)$ through the following argument:
+Previously, at this point we would replace $Y^x_i$ by $Y_i$ to continue. However, the conditioning set in the internal expectation specifies that $\curl{X_i=x_3}$, in which case $Y_i$ is actually equal to $Y^{x_3}_i$. 
+
+To resolve this obstacle, observe that by the unconfoundedness assumption ([-@eq-qte-unconf]), conditioning on $X_i$ does not affect the expectation (more precisely, the distribution of the conditional expectation in question). We can then replace $\curl{X_i=x_3}$ with $\curl{X_i=x}$:
 $$
 \begin{aligned}
-	F_{Y^x|X}(y|x_3)  & =  \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right] \\
-    & = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
-	& =  \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right]\\
+	& \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right] \\
 	& = \E\left[ \E\left[ \I\curl{Y_i\leq y}|D_i=x, W_i \right]|X_i=x_3\right]\\
 	& = \E\left[ F_{Y|X, W}(y|x, W_i)|X_i=x_3 \right]\\
 	& = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3).  
 \end{aligned}
 $$
-In the last line we make an implicit assumption  that  the support of $X_i$ conditional on $D_i=k$ is included in the support of $X_i$ conditional on $D_i=d$. Without such an assumption the integral may not be well-defined. 
+Note that this derivation makes an assumption of *common support*. Specifically, we assume that  the support of $W_i$ conditional on $X_i=x_3$ is included in the support of $W_i$ conditional on $X_i=x$. Without such an assumption the integral may not be well-defined. 
 
-When $k=d$, the above argument simply reduces to 
+Combining the above equalities, we obtain the identifying expression:
 $$
-	 F_{Y^d|D}(y|k) = F_{Y|D}(y|d).
+F_{Y^x|X}(y|x_3) = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3),
 $$
+When $x=x_3$, the above argument simply reduces to 
+$$
+	 F_{Y^x|X}(y|x) = F_{Y|X}(y|x).
+$$
+
 
 ---
 
 #### Next Section {.unnumbered}
 
-In the next section, we discuss identification of quantile treatment effects in the setting of @eq-qte-unconf.
+In the next section, we complement the results of this section with identification of quantile treatment effects in the setting of @eq-qte-unconf.
