@@ -118,7 +118,7 @@ where $F_{Y|X, W}(y|x, w)$ is the conditional CDF of the realized outcome $Y_i$ 
 Combining the above chain of equalities, we conclude that
 $$
 F_{Y^x|W}(y|w) = F_{Y|X, W}(y|x, w).
-$$
+$$ {#eq-qte-dte-cond-id}
 In words, the CDF of interest is equal to a particular conditional distribution of the observed outcome $Y_i$.
 
 ## Unconditional CDF
@@ -129,7 +129,7 @@ F_{Y^x}(y)   = \E\left[ \I\curl{Y^x_i \leq y} \right].
 $$
 As before, we would like to replace $Y^x_i$ with the observed outcome $Y_i$. However, this time we cannot naively insert conditioning on $\curl{X_i=x}$ without changing the expectation. 
 
-To solution is to iterate expectations: 
+The solution we follow is to iterate expectations: 
 
 1. First condition on $W_i$  using the defining property of conditional expectations.
 2. Apply the condition ([-@eq-qte-unconf]) to the conditional expectation.
@@ -168,8 +168,7 @@ F_{Y^x}(y) = \int F_{Y|X, W}(y|x, w)F_W(dw).
 $$
 In words, the marginal CDF of $Y^x_i$ is equal to a reweighted conditional CDF of the observed outcome, where the weights are calculated over $w$ and correspond to the marginal distribution of $W_i$. Observe that the object in the last line is not equal to $F_{Y|X}(y|x)$. 
 
-
-
+Note that the same result can be obtained by simply integrating $W_i$ out in the conditional CDF expression in @eq-qte-dte-cond-id. Since the CDF is an average, @wrn-qte-intro-cond does not apply to it. However, there is merit in studying the conditioning argument presented above, as it is useful both for the remaining conditional CDF and gives a path forward for unconditional quantiles (to which @wrn-qte-intro-cond does apply).
 
 ## CDF Conditional on $X_i$
 
@@ -209,6 +208,12 @@ When $x=x_3$, the above argument simply reduces to
 $$
 	 F_{Y^x|X}(y|x) = F_{Y|X}(y|x).
 $$
+
+::: {.callout-note}
+
+Note that the counterfactual distribution is expressed in terms of distributions of realized variables. It only acquires a causal interpretations under suitable conditions (e.g. unconfoundedness, as we describe in this section)
+
+:::
 
 
 ---
