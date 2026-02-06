@@ -1,21 +1,24 @@
 --- 
-description: "Learn to  (Lecture Notes)"
+description: "Learn how to nonparametrically identify quantile treatment effects (QTEs) under unconfoundedness. Conditional + unconditional quantiles (Lecture Notes)"
 
 open-graph:
-    description: "Learn to  (Lecture Notes)"
+    description: "Learn how to nonparametrically identify quantile treatment effects (QTEs) under unconfoundedness. Conditional + unconditional quantiles (Lecture Notes)"
 ---
  
+
+
 # Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness {#sec-qte-id-conf}
 
 ::: {.callout-note appearance="simple" icon=false}
 
 ## Summary and Learning Outcomes
 
-This section  
+This section  shows how to identify quantile treatment effects under conditional unconfoundedness.
 
 By the end of this section, you should be able to:
 
-- Identify 
+- Use conditioning arguments to identify conditional and unconditional QTEs.
+- Derive an inverse probability weighted representation for unconditional quantiles of potential outcomes. 
 
 :::
     
@@ -24,15 +27,15 @@ By the end of this section, you should be able to:
 
 ## Focus: Quantile Treatment Effects
 
-Having established identification for DTEs, we now turn to the question of QTEs. 
+Having established identification for distributional treatment effects (DTEs), we now turn to the question of quantile treatment effects (QTEs). Our arguments in this section are broadly similar to those for DTEs, but present some quantile-specific challenges.
 
-As in the previous section, we maintain the (conditional) unconfoundedness assumption ([-@eq-qte-unconf]).
+As in the previous section, we maintain the (conditional) unconfoundedness assumption from @eq-qte-unconf:
 
 $$
  \curl{Y_i^x}_x \independent X_i|W_i.
 $$ 
 
-As laid out in section [-@sec-qte-intro], we focus on the following parameters.
+As noted in section [-@sec-qte-intro], we focus on the following parameters:
 
 
 1. QTE  conditional on $W_i=w$ (@eq-qte-dfn-cond):
@@ -58,7 +61,7 @@ Of these, we show a detailed identification result for the first two, while the 
  
 ## Quantile Function Conditional on $W_i$
 
-Yet again, we begin with the conditional quantiles of $Y^x_i$ given $W_i=w$.
+We again begin with the conditional quantiles of $Y^x_i$ given $W_i=w$, which is the most straightforward quantile to identify.
 
 Like in the previous section, we assume that that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
 
@@ -92,14 +95,14 @@ Here we again observe that the CDF of $Y_i$ given $W_i=w$ and $X_i=x$ is exactly
 $$
     Q_{Y^x|W}(\tau|w) = Q_{Y|X, W}(\tau|x, w).
 $$ {#eq-qte-unconf-cond-w-quant}
-In other words, the conditional quantile of potential outcome given covariates is equal to the conditional quantile of the observed outcomes given both covariates and the treatment. 
+In other words, the conditional quantile of potential outcome given covariates is equal to the conditional quantile of the observed outcomes given both covariates and the treatment. This result is a direct mirror of the CDF identification result (@eq-qte-dte-cond-id).
  
  
 
 ## Unconditional Quantile Function
 
 
-The argument for unconditional quantile $Q_{Y^x}(\tau)$ is more delicate. In contrast to average effects,  we cannot integrate @eq-qte-unconf-cond-w-quant with respect to the marginal distribution of $W_i$ (see @wrn-qte-intro-cond). Instead, identifying $Q_{Y^x}(\tau)$ involves adapting the preceding approach to the unconditional case.
+The argument for unconditional quantile $Q_{Y^x}(\tau)$ is more delicate. In contrast to the CDF,  we cannot integrate @eq-qte-unconf-cond-w-quant with respect to the marginal distribution of $W_i$ (see @wrn-qte-intro-cond). Instead, identifying $Q_{Y^x}(\tau)$ involves using the conditioning trick showcased for the unconditional CDF in the last session.
  
 As before, we start with the moment condition satisfied by the quantile of interest:
 $$
@@ -188,4 +191,4 @@ As a final observation, we note that it is also possible to obtain a somewhat si
 
 #### Next Section {.unnumbered}
 
-In the next section, we move towards estimation and briefly discuss the essential aspects of quantile regression.
+In the next section, we move towards estimation of these parameters by briefly introducing quantile regression.
