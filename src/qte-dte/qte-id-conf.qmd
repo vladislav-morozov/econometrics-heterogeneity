@@ -27,7 +27,7 @@ By the end of this section, you should be able to:
 
 ## Focus: Quantile Treatment Effects
 
-Having established identification for distributional treatment effects (DTEs), we now turn to the question of quantile treatment effects (QTEs). Our arguments in this section are broadly similar to those for DTEs, but present some quantile-specific challenges.
+Having established identification for distributional treatment effects (DTEs), we now turn to the question of quantile treatment effects (QTEs). Our arguments in this section are broadly similar to those for DTEs, but tackle some quantile-specific challenges.
 
 As in the previous section, we maintain the (conditional) unconfoundedness assumption from @eq-qte-unconf:
 
@@ -57,13 +57,13 @@ $$
 \end{align}
 $$
 
-Of these, we show a detailed identification result for the first two, while the latter conditional QTE can be identified using a combination of previous arguments. As before, it is sufficient to identify the quantile of $Y^x_i$, a task to which we now turn.
+Of these three parameters, we show a detailed identification result for the first two, while the second conditional QTE can be identified using a combination of previous arguments. As before, it is sufficient to identify the quantile of $Y^x_i$, a task to which we now turn.
  
 ## Quantile Function Conditional on $W_i$
 
 We again begin with the conditional quantiles of $Y^x_i$ given $W_i=w$, which is the most straightforward quantile to identify.
 
-Like in the previous section, we assume that that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
+Like in section [-@sec-qte-id-rct], we assume that that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
 
 $$
 \E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |W_i=w\right] =  \tau.
@@ -71,7 +71,7 @@ $$
 
 We again aim to connect to write the above moment only in terms of $(Y_i, W_i, X_i)$ and the unknown target parameter $Q_{Y^x|W}(\tau|w)$. 
 
-The first step is use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i=x$:
+The first step is to use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i=x$:
 $$
 \begin{aligned}
 & \E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |W_i=w\right] \\
