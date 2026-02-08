@@ -13,11 +13,11 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section shows how to identify distributional treatment effects under conditional unconfoundedness
+This section shows how to identify distributional treatment effects under conditional unconfoundedness.
 
 By the end of this section, you should be able to:
 
-- Use conditioning tricks to connect observed outcomes to potential ones.
+- Use conditioning arguments to connect observed outcomes to potential ones.
 - Identify conditional and unconditional DTEs.
 - State the importance of common support for identifying conditional DTEs.
 
@@ -33,7 +33,7 @@ However, in practice, it is more frequent and realistic to see a weaker (conditi
 $$
  \curl{Y_i^x}_x \independent X_i|W_i.
 $$ {#eq-qte-unconf}
-This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may arise both in observational settings and in experiments with randomization occurs within strata defined by $W_i$.
+This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may arise both in observational settings and in experiments where randomization occurs within strata defined by $W_i$.
 
 ::: {#fig-swig-obs}
 
@@ -182,18 +182,18 @@ Like for the unconditional CDF, we start by iterating expectations with respect 
 $$
 \begin{aligned} 
   &    \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right] \\
-    & = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
-	& =  \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right].
+    & = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right].
 \end{aligned}
 $$
 
-Previously, at this point we would replace $Y^x_i$ by $Y_i$ to continue. However, the conditioning set in the internal expectation specifies that $\curl{X_i=x_3}$, in which case $Y_i$ is actually equal to $Y^{x_3}_i$. 
+Previously, at this point we would replace $Y^x_i$ by $Y_i$ to continue. However, the conditioning set in the internal conditional expectation specifies that $\curl{X_i=x_3}$, in which case $Y_i$ is actually equal to $Y^{x_3}_i$. 
 
 To resolve this obstacle, observe that by the unconfoundedness assumption ([-@eq-qte-unconf]), conditioning on $X_i$ does not affect the expectation (more precisely, the distribution of the conditional expectation in question). We can then replace $\curl{X_i=x_3}$ with $\curl{X_i=x}$:
 $$
 \begin{aligned}
-	& \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right] \\
-	& = \E\left[ \E\left[ \I\curl{Y_i\leq y}|D_i=x, W_i \right]|X_i=x_3\right]\\
+	& \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
+	& = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right] \\
+	& = \E\left[ \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i \right]|X_i=x_3\right]\\
 	& = \E\left[ F_{Y|X, W}(y|x, W_i)|X_i=x_3 \right]\\
 	& = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3).  
 \end{aligned}
@@ -203,15 +203,23 @@ Note that this derivation makes an assumption of *common support*. Specifically,
 Combining the above equalities, we obtain the identifying expression:
 $$
 F_{Y^x|X}(y|x_3) = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3),
-$$
+$$ 
 When $x=x_3$, the above argument simply reduces to 
 $$
 	 F_{Y^x|X}(y|x) = F_{Y|X}(y|x).
 $$
 
-::: {.callout-note}
+::: {.callout-note title="Counterfactual distributions"}
 
-Note that the counterfactual distribution is expressed in terms of distributions of realized variables. It only acquires a causal interpretations under suitable conditions (e.g. unconfoundedness, as we describe in this section)
+Integrals of the kind
+$$
+\int F_{Y|X, W}(y|x_1, w) F_{W|X}(dw|x_2),
+$$ {#eq-dte-counterf-distr}
+are sometimes called *counterfactual distributions* [@Machado2005CounterfactualDecompositionChanges; @Chernozhukov2013b].
+
+To understand the name, consider the following example. Let $X_i$ be gender, $Y_i$ wages, and $W_i$ be further earnings-relevant covariates. Then $\int F_{Y|X, W}(y|\text{man}, w) F_{W|X}(dw|\text{woman})$ may be interpreted as the distribution of wages for women (that is, computed using the demographic composition of women with $F_{W|X}(\cdot|\text{woman})$) if they faced men's wage schedule $F_{Y|X, W}(\cdot|\text{man}, w)$ (how $Y_i$ is determined for each $w$ for men). Such integrals may be used to compute Oaxaca-Blinder-type decompositions.
+
+Note that the counterfactual distribution ([-@eq-dte-counterf-distr]) is expressed in terms of distributions of realized variables. It only acquires a causal interpretations under suitable conditions (e.g. unconfoundedness, as we describe in this section).
 
 :::
 
