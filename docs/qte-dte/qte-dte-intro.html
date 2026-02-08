@@ -896,14 +896,14 @@ Summary and Learning Outcomes
 </div>
 <section id="towards-cross-sectional-data" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="towards-cross-sectional-data"><span class="header-section-number">18.1</span> Towards Cross-Sectional Data</h2>
-<p>In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit</p>
+<p>In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit:</p>
 <ul>
 <li>Multiple unobserved components (including functional-valued differences),</li>
 <li>Nonparametric dependence of potential outcomes on treatments and unobservables.</li>
 </ul>
 <p>However, these results come at an important price: they require panel data with (at least approximate) stationarity. Such data may often not be available. Many datasets provide only one observation per unit, or have cross-sections spaced too far apart in time to justify stationarity assumptions. This motivates a key question: what distributional features of treatment effects can we learn from cross-sectional data alone?</p>
 <p>Unfortunately, the above success is generally hard to replicate in cross-sectional data. Some identification of distributional features beyond averages is certainly possible, but it typically requires monotonicity assumptions <span class="citation" data-cites="Matzkin2003 Matzkin2007">(<a href="../references/references.html#ref-Matzkin2003" role="doc-biblioref">Matzkin 2003</a>, <a href="../references/references.html#ref-Matzkin2007" role="doc-biblioref">2007</a>)</span>. However, as <span class="citation" data-cites="Hoderlein2007">Hoderlein and Mammen (<a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>)</span> argue, monotonicity assumptions are often unrealistic. They require that a single scalar unobservable (e.g., “ability”) monotonically determines all potential outcomes, a restriction that clashes with most economic models. For example, earnings may depend on both ability and risk aversion (a multidimensional unobservable), or responses to treatments may be nonmonotonic (e.g., intermediate doses of a policy having larger effects than high doses).</p>
-<p>The literature’s response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are <em>not</em> quantiles or distribution <em>of</em> treatment effects, a point we discuss in this section.</p>
+<p>The literature’s response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are <em>not</em> the quantiles or the distributions <em>of</em> treatment effects, a point we discuss in this section.</p>
 <p>In this block, we:</p>
 <ul>
 <li>Define QTEs and DTEs, along with discussing their interpretations.</li>
@@ -1009,7 +1009,7 @@ Warning&nbsp;18.2
 <h3 data-number="18.3.1" class="anchored" data-anchor-id="qtes-vs.-quantiles-of-treatment-effects"><span class="header-section-number">18.3.1</span> QTEs vs.&nbsp;Quantiles of Treatment Effects</h3>
 <p>An important aspect of QTEs and DTEs is that those objects are <em>not</em> equal to the quantiles or distributions of treatment effects outside of some special cases. For example, for quantiles it is usually the case that <span class="math display">\[
      Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
-\]</span> Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs “treatment effects” may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.</p>
+\]</span> Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, calling QTEs and DTEs “treatment effects” may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.</p>
 </section>
 <section id="bounds-for-distribution-and-quantiles-of-treatment-effects" class="level3" data-number="18.3.2">
 <h3 data-number="18.3.2" class="anchored" data-anchor-id="bounds-for-distribution-and-quantiles-of-treatment-effects"><span class="header-section-number">18.3.2</span> Bounds for Distribution and Quantiles of Treatment Effects</h3>

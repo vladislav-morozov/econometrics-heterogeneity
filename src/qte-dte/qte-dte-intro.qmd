@@ -26,7 +26,7 @@ By the end of this section, you should be able to:
 
 ## Towards Cross-Sectional Data
 
-In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit 
+In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit:
 
 - Multiple unobserved components (including functional-valued differences),
 - Nonparametric dependence of potential outcomes on treatments and unobservables.
@@ -35,7 +35,7 @@ However, these results come at an important price: they require panel data with 
 
 Unfortunately, the above success is generally hard to replicate in cross-sectional data. Some identification of distributional features beyond averages is certainly possible, but it typically requires monotonicity assumptions [@Matzkin2003; @Matzkin2007]. However, as @Hoderlein2007 argue, monotonicity assumptions are often unrealistic. They require that a single scalar unobservable (e.g., "ability") monotonically determines all potential outcomes, a restriction that clashes with most economic models. For example, earnings may depend on both ability and risk aversion (a multidimensional unobservable), or responses to treatments may be nonmonotonic (e.g., intermediate doses of a policy having larger effects than high doses).
 
-The literature's response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are *not* quantiles or distribution *of* treatment effects, a point we discuss in this section. 
+The literature's response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are *not* the quantiles or the distributions *of* treatment effects, a point we discuss in this section. 
 
 In this block, we:
 
@@ -215,7 +215,7 @@ An important aspect of QTEs and DTEs is that those objects are *not* equal to th
 $$
 	 Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
 $$
-Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, called QTEs and DTEs "treatment effects" may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.
+Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, calling QTEs and DTEs "treatment effects" may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.
 
 
 ### Bounds for Distribution and Quantiles of Treatment Effects
