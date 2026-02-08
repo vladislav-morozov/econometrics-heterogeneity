@@ -806,6 +806,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/dte-id-conf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/qte-id-conf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -908,7 +920,7 @@ Summary and Learning Outcomes
 <p>Let <span class="math inline">\(X_i\)</span> be some treatment. <span class="math inline">\(X_i\)</span> may be scalar- or vector-valued. We are interested in the effect of <span class="math inline">\(X_i\)</span> on some outcome <span class="math inline">\(Y_i\)</span>. To each value <span class="math inline">\(x\)</span> of <span class="math inline">\(X_i\)</span> we associate a potential outcome <span class="math inline">\(Y^x_i\)</span>, determined as <span class="math display">\[
 Y_i^x = \phi(x, A_i).
 \]</span> Like in the previous block, <span class="math inline">\(\phi\)</span> is an unknown function and <span class="math inline">\(A_i\)</span> is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve <span class="math inline">\(Y_{i}^x\)</span>, rather than the <span class="math inline">\(\phi(\cdot, A_i)\)</span> representation.</p>
-<p>As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see <a href="#wrn-causal-sutva" class="quarto-xref">Warning&nbsp;<span>18.1</span></a> for caveats).</p>
+<p>As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see <a href="#wrn-causal-sutva" class="quarto-xref">Warning&nbsp;<span>18.2</span></a> for caveats).</p>
 <p>The key role in this section is played by the distribution of potential outcomes, where by “distribution” we mean either the cumulative distribution function <span class="math inline">\(F_{Y^x}(\cdot)\)</span> of <span class="math inline">\(Y^x_i\)</span> or its quantile function <span class="math inline">\(Q_{Y^x}(\cdot)\)</span>.</p>
 </section>
 <section id="qtes-and-dtes" class="level3" data-number="18.2.2">
@@ -934,15 +946,18 @@ Y_i^x = \phi(x, A_i).
 \end{align}
 \tag{18.3}\]</span></span></p>
 <p>The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on distributional effects. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in <span class="citation" data-cites="Chernozhukov2013b">Chernozhukov, Fernández-Val, and Melly (<a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">2013</a>)</span> for some further details.</p>
-<div class="callout callout-style-simple callout-warning no-icon">
-<div class="callout-body d-flex">
+<div id="wrn-qte-intro-cond" class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+Warning&nbsp;18.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>There is an important difference between ATEs and QTEs when dealing with conditional and unconditional effects. When working with average effects, one may integrate the conditional average treatment effects given <span class="math inline">\(W_i\)</span> to obtain the ATE. This connection no longer holds for QTEs, and so the choice between conditional and unconditional QTEs leads to different interpretations.</p>
 <p>To understand the difference between conditional and unconditional quantiles, consider the following example. Let <span class="math inline">\(W_i\)</span> be the person’s education level, and <span class="math inline">\(Y_i\)</span> be earnings. The 10th percentile of the <span class="math inline">\(Y_i\)</span> for college-educated people may lie fairly high in the overall (marginal) distribution of <span class="math inline">\(Y_i\)</span>. See <span class="citation" data-cites="Powell2020">Powell (<a href="../references/references.html#ref-Powell2020" role="doc-biblioref">2020</a>)</span> for more discussion and further references.</p>
-</div>
 </div>
 </div>
 </section>
@@ -976,7 +991,7 @@ Figure&nbsp;18.1: Visual representation of distributional treatment effects (DTE
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning&nbsp;18.1
+Warning&nbsp;18.2
 </div>
 </div>
 <div class="callout-body-container callout-body">

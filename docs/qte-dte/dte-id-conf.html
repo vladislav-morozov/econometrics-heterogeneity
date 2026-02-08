@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn to (Lecture Notes)">
+<meta name="description" content="Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)">
 
-<title>21&nbsp; Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness – Econometrics with Unobserved Heterogeneity</title>
+<title>20&nbsp; Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,8 +51,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
-<link href="../qte-dte/qte-id-conf.html" rel="prev">
+<link href="../qte-dte/qte-id-conf.html" rel="next">
+<link href="../qte-dte/qte-dte-id-rct.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -429,8 +449,9 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="21&nbsp; Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn to (Lecture Notes)">
+<meta property="og:title" content="20&nbsp; Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/dte-id-conf_files/mediabag/3ba883d2031025124c5c5c3e02e05f2781ba8ed2.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -603,7 +624,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/dte-id-conf.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/dte-id-conf.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -787,13 +808,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/qte-id-conf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
+  <a href="../qte-dte/dte-id-conf.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/dte-id-conf.html" class="sidebar-item-text sidebar-link active">
+  <a href="../qte-dte/qte-id-conf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
   </div>
 </li>
@@ -815,11 +836,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#focus-distributional-treatment-effects" id="toc-focus-distributional-treatment-effects" class="nav-link active" data-scroll-target="#focus-distributional-treatment-effects"><span class="header-section-number">21.1</span> Focus: Distributional Treatment Effects</a>
-  <ul class="collapse">
-  <li><a href="#parameters-of-interest" id="toc-parameters-of-interest" class="nav-link" data-scroll-target="#parameters-of-interest"><span class="header-section-number">21.1.1</span> Parameters of Interest</a></li>
-  </ul></li>
-  <li><a href="#identification-of-cdfs" id="toc-identification-of-cdfs" class="nav-link" data-scroll-target="#identification-of-cdfs"><span class="header-section-number">21.2</span> Identification of CDFs</a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link active" data-scroll-target="#setting"><span class="header-section-number">20.1</span> Setting</a></li>
+  <li><a href="#parameters-of-interest" id="toc-parameters-of-interest" class="nav-link" data-scroll-target="#parameters-of-interest"><span class="header-section-number">20.2</span> Parameters of Interest</a></li>
+  <li><a href="#cdf-conditional-on-w_i" id="toc-cdf-conditional-on-w_i" class="nav-link" data-scroll-target="#cdf-conditional-on-w_i"><span class="header-section-number">20.3</span> CDF Conditional on <span class="math inline">\(W_i\)</span></a></li>
+  <li><a href="#unconditional-cdf" id="toc-unconditional-cdf" class="nav-link" data-scroll-target="#unconditional-cdf"><span class="header-section-number">20.4</span> Unconditional CDF</a></li>
+  <li><a href="#cdf-conditional-on-x_i" id="toc-cdf-conditional-on-x_i" class="nav-link" data-scroll-target="#cdf-conditional-on-x_i"><span class="header-section-number">20.5</span> CDF Conditional on <span class="math inline">\(X_i\)</span></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/dte-id-conf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -827,9 +848,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/dte-id-conf.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/dte-id-conf.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-qte-id-conf" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></h1>
+<h1 class="title"><span id="sec-dte-id-conf" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span></h1>
 </div>
 
 
@@ -856,49 +877,173 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section</p>
+<p>This section shows how to identify distributional treatment effects under conditional unconfoundedness.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Identify</li>
+<li>Use conditioning arguments to connect observed outcomes to potential ones.</li>
+<li>Identify conditional and unconditional DTEs.</li>
+<li>State the importance of common support for identifying conditional DTEs.</li>
 </ul>
 </div>
 </div>
-<section id="focus-distributional-treatment-effects" class="level2" data-number="21.1">
-<h2 data-number="21.1" class="anchored" data-anchor-id="focus-distributional-treatment-effects"><span class="header-section-number">21.1</span> Focus: Distributional Treatment Effects</h2>
-<p>We retain the (conditional) unconfoundedness assumption ([-@#eq-qte-unconf]).</p>
-<p><span class="math display">\[
+<section id="setting" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="setting"><span class="header-section-number">20.1</span> Setting</h2>
+<p>In the simple RCT setting of the previous section, identification of QTEs and DTEs is particularly simple. The required quantile and distribution functions can be directly obtained from conditional quantile and distribution functions of the realized outcomes.</p>
+<p>However, in practice, it is more frequent and realistic to see a weaker (conditional) unconfoundedness assumption, which requires that the realized treatment <span class="math inline">\(X_i\)</span> and the collection of potential outcomes <span class="math inline">\(\curl{Y_i^x}_x\)</span> are independent only conditionally on some covariates <span class="math inline">\(W_i\)</span>: <span id="eq-qte-unconf"><span class="math display">\[
 \curl{Y_i^x}_x \independent X_i|W_i.
-\]</span></p>
-<section id="parameters-of-interest" class="level3" data-number="21.1.1">
-<h3 data-number="21.1.1" class="anchored" data-anchor-id="parameters-of-interest"><span class="header-section-number">21.1.1</span> Parameters of Interest</h3>
-<p>The setting of <a href="qte-id-conf.html#eq-qte-unconf" class="quarto-xref">Equation&nbsp;<span>20.1</span></a> is richer than that of <a href="qte-dte-id-rct.html#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section <a href="qte-dte-intro.html" class="quarto-xref"><span>18</span></a>. Specifically, we focus on the following parameters (in the order of identification):</p>
+\tag{20.1}\]</span></span> This setting is depicted on <a href="#fig-swig-obs" class="quarto-xref">Figure&nbsp;<span>20.1</span></a>. The setting of <a href="#eq-qte-unconf" class="quarto-xref">Equation&nbsp;<span>20.1</span></a> may arise both in observational settings and in experiments where randomization occurs within strata defined by <span class="math inline">\(W_i\)</span>.</p>
+<div id="fig-swig-obs" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-swig-obs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="dte-id-conf_files\mediabag\3ba883d2031025124c5c5c3e02e05f2781ba8ed2.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-swig-obs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20.1: representation of setting of <a href="#eq-qte-unconf" class="quarto-xref">Equation&nbsp;<span>20.1</span></a>. Note that the arrow is going from <span class="math inline">\(x\)</span> to <span class="math inline">\(Y^x_i\)</span>, not from <span class="math inline">\(X_i\)</span> to <span class="math inline">\(Y^x_i\)</span>. Likewise, the arrow is going from <span class="math inline">\(W_i\)</span> to <span class="math inline">\(X_i\)</span>, not <span class="math inline">\(x\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="parameters-of-interest" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="parameters-of-interest"><span class="header-section-number">20.2</span> Parameters of Interest</h2>
+<p>The setting of <a href="#eq-qte-unconf" class="quarto-xref">Equation&nbsp;<span>20.1</span></a> is richer than that of <a href="qte-dte-id-rct.html#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section <a href="qte-dte-intro.html" class="quarto-xref"><span>18</span></a>.</p>
+<p>Specifically, this section focuses exclusively on DTE, whose identification is more explicit and allows us to showcase the key tools. QTEs are deferred to the next section.</p>
+<p>In order of identification, our parameters of interest are:</p>
 <ol type="1">
-<li>QTE and DTE conditional on <span class="math inline">\(W_i=w\)</span> (<a href="qte-dte-intro.html#eq-qte-dfn-cond" class="quarto-xref">Equation&nbsp;<span>18.3</span></a>): <span class="math display">\[
+<li>DTE conditional on <span class="math inline">\(W_i=w\)</span> (<a href="qte-dte-intro.html#eq-qte-dfn-cond" class="quarto-xref">Equation&nbsp;<span>18.3</span></a>): <span class="math display">\[
 \begin{align}
 DTE(x_1, x_2, y|w) &amp; = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
 \end{align}
 \]</span></li>
-<li>Unconditional QTE and DTE (<a href="qte-dte-intro.html#eq-qte-dfn-uncond" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>): <span class="math display">\[
+<li>Unconditional DTE (<a href="qte-dte-intro.html#eq-qte-dfn-uncond" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>): <span class="math display">\[
 \begin{aligned}
 DTE(x_1, x_2, y) &amp; = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y).
 \end{aligned}
 \]</span></li>
-<li>QTE and DTE conditional on <span class="math inline">\(X_i=x_3\)</span> (<a href="qte-dte-intro.html#eq-qte-dfn-cond-treat" class="quarto-xref">Equation&nbsp;<span>18.2</span></a>): <span class="math display">\[
+<li>DTE conditional on <span class="math inline">\(X_i=x_3\)</span> (<a href="qte-dte-intro.html#eq-qte-dfn-cond-treat" class="quarto-xref">Equation&nbsp;<span>18.2</span></a>): <span class="math display">\[
 \begin{align}
 DTE(x_1, x_2, y|x_3) &amp; = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3).
 \end{align}
 \]</span></li>
 </ol>
+<p>As before, identifying DTEs reduces to identifying the CDFs <span class="math inline">\(F_{Y^{x}|W}(y|w)\)</span>, <span class="math inline">\(F_{Y^{x}}(y)\)</span>, and <span class="math inline">\(F_{Y^{x}|X}(y|x_3)\)</span>. The following subsections tackle these CDFs in turn.</p>
 </section>
+<section id="cdf-conditional-on-w_i" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="cdf-conditional-on-w_i"><span class="header-section-number">20.3</span> CDF Conditional on <span class="math inline">\(W_i\)</span></h2>
+<p>We begin with with the most straightforward identification argument — that of the conditional distribution of <span class="math inline">\(Y^x_i\)</span> given <span class="math inline">\(W_i=w\)</span>.</p>
+<p>By definition, we can write the target CDF as <span class="math display">\[
+F_{Y^x|W}(y|w) = \E[\I\curl{Y^x_i \leq y}|W_i=w].
+\]</span></p>
+<p>As before, the overall goal is to connect the above expression to the realized variables <span class="math inline">\((Y_i, X_i, W_i)\)</span>, chief of them the outcome <span class="math inline">\(Y_i\)</span>. To do so, we first use the unconfoundedness assumption (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>) to condition on <span class="math inline">\(X_i=x\)</span>: <span class="math display">\[
+\begin{aligned}
+&amp; \E[\I\curl{Y^x_i \leq y}|W_i=w] \\
+&amp; =  \E[\I\curl{Y^x_i \leq y}|X_i=x, W_i=w].
+\end{aligned}
+\]</span> Since <span class="math inline">\(Y^x_i\)</span> and <span class="math inline">\(X_i\)</span> are conditionally independent given <span class="math inline">\(W_i\)</span>, this conditioning operation does not change the value of the expectation regardless of the value of <span class="math inline">\(X_i\)</span>, including <span class="math inline">\(x\)</span>.</p>
+<p>Next, we use that <span class="math inline">\(Y_i=Y^x_i\)</span> if <span class="math inline">\(X_i=x\)</span> to replace <span class="math inline">\(Y^x_i\)</span> with <span class="math inline">\(Y_i\)</span>: <span class="math display">\[
+\begin{align}
+    &amp;   \E\left[\I\curl{Y^x_i\leq y}|X_i=d, W_i=w \right]\\
+    &amp; = \E\left[ \I\curl{Y_i\leq y}|X_i=d, W_i=w   \right]\\
+    &amp; \equiv F_{Y|X, W}(y|x, w),
+\end{align}
+\]</span> where <span class="math inline">\(F_{Y|X, W}(y|x, w)\)</span> is the conditional CDF of the realized outcome <span class="math inline">\(Y_i\)</span> given <span class="math inline">\(X_i=x\)</span> and <span class="math inline">\(W_i=w\)</span>.</p>
+<p>Combining the above chain of equalities, we conclude that <span id="eq-qte-dte-cond-id"><span class="math display">\[
+F_{Y^x|W}(y|w) = F_{Y|X, W}(y|x, w).
+\tag{20.2}\]</span></span> In words, the CDF of interest is equal to a particular conditional distribution of the observed outcome <span class="math inline">\(Y_i\)</span>.</p>
 </section>
-<section id="identification-of-cdfs" class="level2" data-number="21.2">
-<h2 data-number="21.2" class="anchored" data-anchor-id="identification-of-cdfs"><span class="header-section-number">21.2</span> Identification of CDFs</h2>
+<section id="unconditional-cdf" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="unconditional-cdf"><span class="header-section-number">20.4</span> Unconditional CDF</h2>
+<p>We now turn to the unconditional CDF of <span class="math inline">\(Y^x_i\)</span>: <span class="math display">\[
+F_{Y^x}(y)   = \E\left[ \I\curl{Y^x_i \leq y} \right].
+\]</span> As before, we would like to replace <span class="math inline">\(Y^x_i\)</span> with the observed outcome <span class="math inline">\(Y_i\)</span>. However, this time we cannot naively insert conditioning on <span class="math inline">\(\curl{X_i=x}\)</span> without changing the expectation.</p>
+<p>The solution we follow is to iterate expectations:</p>
+<ol type="1">
+<li>First condition on <span class="math inline">\(W_i\)</span> using the defining property of conditional expectations.</li>
+<li>Apply the condition (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>) to the conditional expectation.</li>
+</ol>
+<p>The first step produces the following identity: <span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \I\curl{Y^x_i \leq y} \right] \\
+&amp; = \E\left[ \E\left[\I\curl{Y^x_i \leq y} | W_i  \right]\right].
+\end{aligned}
+\]</span></p>
+<p>We can now use the unconfoundedness assumption (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>) to condition on <span class="math inline">\(X_i\)</span> inside the conditional expectation. By conditional independence in (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>), this conditioning does not affect the expectation (more precisely, the distribution of the conditional expectation in question):</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \E\left[ \E\left[\I\curl{Y^x_i \leq y} | W_i  \right]\right]\\
+&amp; = \E\left[ \E\left[\I\curl{Y^x_i \leq y} | X_i=x, W_i  \right]\right].
+\end{aligned}
+\]</span></p>
+<p>From this point out, we can replace <span class="math inline">\(Y^x_i\)</span> with <span class="math inline">\(Y_i\)</span> under the conditional expectation to finish the argument. In order to obtain a more explicit representation, let <span class="math inline">\(F_W(\cdot)\)</span> be the marginal CDF of <span class="math inline">\(W_i\)</span>. Then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp;   \E\left[ \E\left[\I\curl{Y^x_i \leq y} | X_i=x, W_i  \right]\right] \\
+    &amp; = \E\left[ \E\left[ \I\curl{Y_i\leq y}| X_i=x, W_i \right]  \right]\\
+    &amp; = \E\left[  F_{Y|X, W}(y|x, W_i) \right]\\
+    &amp; = \int F_{Y|X, W}(y|x, w)F_W(dw).
+\end{aligned}
+\]</span></p>
+<p>Combining the above equalities, we obtain the identifying expression: <span class="math display">\[
+F_{Y^x}(y) = \int F_{Y|X, W}(y|x, w)F_W(dw).
+\]</span> In words, the marginal CDF of <span class="math inline">\(Y^x_i\)</span> is equal to a reweighted conditional CDF of the observed outcome, where the weights are calculated over <span class="math inline">\(w\)</span> and correspond to the marginal distribution of <span class="math inline">\(W_i\)</span>. Observe that the object in the last line is not equal to <span class="math inline">\(F_{Y|X}(y|x)\)</span>.</p>
+<p>Note that the same result can be obtained by simply integrating <span class="math inline">\(W_i\)</span> out in the conditional CDF expression in <a href="#eq-qte-dte-cond-id" class="quarto-xref">Equation&nbsp;<span>20.2</span></a>. Since the CDF is an average, <a href="qte-dte-intro.html#wrn-qte-intro-cond" class="quarto-xref">Warning&nbsp;<span>18.1</span></a> does not apply to it. However, there is merit in studying the conditioning argument presented above, as it is useful both for the remaining conditional CDF and gives a path forward for unconditional quantiles (to which <a href="qte-dte-intro.html#wrn-qte-intro-cond" class="quarto-xref">Warning&nbsp;<span>18.1</span></a> does apply).</p>
+</section>
+<section id="cdf-conditional-on-x_i" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="cdf-conditional-on-x_i"><span class="header-section-number">20.5</span> CDF Conditional on <span class="math inline">\(X_i\)</span></h2>
+<p>Finally, we consider the CDF <span class="math inline">\(F_{Y^x|X}(y|x_3)\)</span> — the distribution of the potential outcome under <span class="math inline">\(x\)</span> in the group which received a potentially different treatment <span class="math inline">\(x_3\)</span>. This CDF can be represented as <span class="math display">\[
+F_{Y^x|X}(y|x_3) = \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right].
+\]</span> Identification here requires a new trick: exploiting conditional independence (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>) to swap treatment values in the conditioning set.</p>
+<p>Like for the unconditional CDF, we start by iterating expectations with respect to <span class="math inline">\(W_i\)</span> <span class="math display">\[
+\begin{aligned}
+  &amp;    \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right] \\
+    &amp; = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right].
+\end{aligned}
+\]</span></p>
+<p>Previously, at this point we would replace <span class="math inline">\(Y^x_i\)</span> by <span class="math inline">\(Y_i\)</span> to continue. However, the conditioning set in the internal conditional expectation specifies that <span class="math inline">\(\curl{X_i=x_3}\)</span>, in which case <span class="math inline">\(Y_i\)</span> is actually equal to <span class="math inline">\(Y^{x_3}_i\)</span>.</p>
+<p>To resolve this obstacle, observe that by the unconfoundedness assumption (<a href="#eq-qte-unconf" class="quarto-xref"><span>20.1</span></a>), conditioning on <span class="math inline">\(X_i\)</span> does not affect the expectation (more precisely, the distribution of the conditional expectation in question). We can then replace <span class="math inline">\(\curl{X_i=x_3}\)</span> with <span class="math inline">\(\curl{X_i=x}\)</span>: <span class="math display">\[
+\begin{aligned}
+    &amp; \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
+    &amp; = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right] \\
+    &amp; = \E\left[ \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i \right]|X_i=x_3\right]\\
+    &amp; = \E\left[ F_{Y|X, W}(y|x, W_i)|X_i=x_3 \right]\\
+    &amp; = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3).  
+\end{aligned}
+\]</span> Note that this derivation makes an assumption of <em>common support</em>. Specifically, we assume that the support of <span class="math inline">\(W_i\)</span> conditional on <span class="math inline">\(X_i=x_3\)</span> is included in the support of <span class="math inline">\(W_i\)</span> conditional on <span class="math inline">\(X_i=x\)</span>. Without such an assumption the integral may not be well-defined.</p>
+<p>Combining the above equalities, we obtain the identifying expression: <span class="math display">\[
+F_{Y^x|X}(y|x_3) = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3),
+\]</span> When <span class="math inline">\(x=x_3\)</span>, the above argument simply reduces to <span class="math display">\[
+     F_{Y^x|X}(y|x) = F_{Y|X}(y|x).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Counterfactual distributions">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Counterfactual distributions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Integrals of the kind <span id="eq-dte-counterf-distr"><span class="math display">\[
+\int F_{Y|X, W}(y|x_1, w) F_{W|X}(dw|x_2),
+\tag{20.3}\]</span></span> are sometimes called <em>counterfactual distributions</em> <span class="citation" data-cites="Machado2005CounterfactualDecompositionChanges Chernozhukov2013b">(<a href="../references/references.html#ref-Machado2005CounterfactualDecompositionChanges" role="doc-biblioref">Machado and Mata 2005</a>; <a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">Chernozhukov, Fernández-Val, and Melly 2013</a>)</span>.</p>
+<p>To understand the name, consider the following example. Let <span class="math inline">\(X_i\)</span> be gender, <span class="math inline">\(Y_i\)</span> wages, and <span class="math inline">\(W_i\)</span> be further earnings-relevant covariates. Then <span class="math inline">\(\int F_{Y|X, W}(y|\text{man}, w) F_{W|X}(dw|\text{woman})\)</span> may be interpreted as the distribution of wages for women (that is, computed using the demographic composition of women with <span class="math inline">\(F_{W|X}(\cdot|\text{woman})\)</span>) if they faced men’s wage schedule <span class="math inline">\(F_{Y|X, W}(\cdot|\text{man}, w)\)</span> (how <span class="math inline">\(Y_i\)</span> is determined for each <span class="math inline">\(w\)</span> for men). Such integrals may be used to compute Oaxaca-Blinder-type decompositions.</p>
+<p>Note that the counterfactual distribution (<a href="#eq-dte-counterf-distr" class="quarto-xref"><span>20.3</span></a>) is expressed in terms of distributions of realized variables. It only acquires a causal interpretations under suitable conditions (e.g.&nbsp;unconfoundedness, as we describe in this section).</p>
+</div>
+</div>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we</p>
+<p>In the next section, we complement the results of this section with identification of quantile treatment effects in the setting of <a href="#eq-qte-unconf" class="quarto-xref">Equation&nbsp;<span>20.1</span></a>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Chernozhukov2013b" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Blaise Melly. 2013. <span>“<span class="nocase">Inference on Counterfactual Distributions</span>.”</span> <em>Econometrica</em> 81 (6): 2205–68. <a href="https://doi.org/10.3982/ecta10582">https://doi.org/10.3982/ecta10582</a>.
+</div>
+<div id="ref-Machado2005CounterfactualDecompositionChanges" class="csl-entry" role="listitem">
+Machado, José A. F., and José Mata. 2005. <span>“Counterfactual <span>Decomposition</span> of <span>Changes</span> in <span>Wage Distributions Using Quantile Regression</span>.”</span> <em>Journal of Applied Econometrics</em> 20 (4): 445–65. <a href="https://doi.org/10.1002/jae.788">https://doi.org/10.1002/jae.788</a>.
+</div>
+</div>
 </section>
 </section>
 
@@ -1317,13 +1462,13 @@ DTE(x_1, x_2, y|x_3) &amp; = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3).
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../qte-dte/qte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span>
+      <a href="../qte-dte/qte-dte-id-rct.html" class="pagination-link" aria-label="Nonparametric Identification of QTEs and DTEs in Simple RCTs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/qte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
