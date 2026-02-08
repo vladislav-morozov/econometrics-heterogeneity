@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../qte-dte/dte-id-conf.html" rel="next">
 <link href="../qte-dte/qte-dte-intro.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -451,7 +451,7 @@ window.Quarto = {
 
 <meta property="og:title" content="19&nbsp; Nonparametric Identification of QTEs and DTEs in Simple RCTs – Econometrics with Unobserved Heterogeneity">
 <meta property="og:description" content="Learn to identify conditional and unconditional quantile and distributional treatment effects in randomized control trials (Lecture Notes)">
-<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/qte-dte-id-rct_files/mediabag/a2ae830e3745447653fd910a1580478f3bb84a92.svg">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/qte-dte-id-rct_files/mediabag/35fc538404bbde26a58ccd9e47629a1fb37c458e.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -806,6 +806,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/dte-id-conf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/qte-id-conf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -882,7 +894,7 @@ Summary and Learning Outcomes
 <p>We structure our discussion in two steps:</p>
 <ol type="1">
 <li><p>This section: we consider identification in a simple (pure) randomized control settings where the realized treatment <span class="math inline">\(X_i\)</span> is fully independent from potential outcomes <span class="math inline">\(Y_i^x\)</span>.</p></li>
-<li><p>Next section: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditional on some variables <span class="math inline">\(W_i\)</span>.</p></li>
+<li><p>The next two sections: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables <span class="math inline">\(W_i\)</span>.</p></li>
 </ol>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -910,7 +922,7 @@ This setting is represented by the single-world intervention graph on <a href="#
 <div id="fig-rct-swig" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rct-swig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="qte-dte-id-rct_files\mediabag\a2ae830e3745447653fd910a1580478f3bb84a92.svg" class="img-fluid figure-img">
+<img src="qte-dte-id-rct_files\mediabag\35fc538404bbde26a58ccd9e47629a1fb37c458e.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rct-swig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;19.1: graphical representation of setting <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>. Note that the arrow is going from <span class="math inline">\(x\)</span> to <span class="math inline">\(Y^x_i\)</span>, not from <span class="math inline">\(X_i\)</span> to <span class="math inline">\(Y^x_i\)</span>
@@ -937,7 +949,7 @@ Figure&nbsp;19.1: graphical representation of setting <a href="#eq-qte-rct" clas
 \end{align}
 \]</span></p></li>
 </ul>
-<p>Observe that there is no new parameter is gained by conditioning on values of <span class="math inline">\(X_i\)</span> — the independence restriction in <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> implies that <span class="math display">\[
+<p>Observe that no new parameter is gained by conditioning on values of <span class="math inline">\(X_i\)</span> — the independence restriction in <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> implies that <span class="math display">\[
 F_{Y^{x_1}|X}(\cdot|x_1) = F_{Y^{x_1}}(\cdot)
 \]</span> for any <span class="math inline">\((x_1, x_2)\)</span>. Hence the QTEs and DTEs of <a href="qte-dte-intro.html#eq-qte-dfn-cond-treat" class="quarto-xref">Equation&nbsp;<span>18.2</span></a> are equal to the unconditional QTEs and DTEs in <a href="qte-dte-intro.html#eq-qte-dfn-uncond" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>.</p>
 </section>
@@ -1433,8 +1445,8 @@ Koenker, Roger, Victor Chernozhukov, Xuming He, and Limin Peng, eds. 2017. <em>H
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/dte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

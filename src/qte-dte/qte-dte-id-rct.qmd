@@ -27,7 +27,7 @@ We structure our discussion in two steps:
 
 1. This section: we consider identification in a simple (pure) randomized control settings where the realized treatment $X_i$ is fully independent from potential outcomes $Y_i^x$. 
 
-2. Next section: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditional on some variables $W_i$.
+2. The next two sections: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables $W_i$.
 
 ::: {.callout-note appearance="simple"}
 
@@ -58,9 +58,9 @@ $$ {#eq-qte-rct-cov-tr}
 
 ``` tikz  
 %%| fig-align: center
-\begin{tikzpicture}[thick, scale=12, every path/.style={color=gray!70}]  
+\begin{tikzpicture}[thick, scale=36, every path/.style={color=gray!70}]  
 		
-		\node (v1) at (0.397,-0.432) {$X_i|x_i$};
+		\node (v1) at (0.397,-0.432) {$X_i|x$};
 		\node (v2) at (0.573,-0.432) {$Y^x_i$}; 
 		\node (v3) at (0.367,-0.322) {$W_i$}; 
 		\draw [->] (v1) -- (v2); 
@@ -99,7 +99,7 @@ $$
 
 
 
-Observe that there is no new parameter is gained by conditioning on values of $X_i$ --- the independence restriction in @eq-qte-rct  implies that 
+Observe that no new parameter is gained by conditioning on values of $X_i$ --- the independence restriction in @eq-qte-rct  implies that 
 $$
 F_{Y^{x_1}|X}(\cdot|x_1) = F_{Y^{x_1}}(\cdot)
 $$ 
