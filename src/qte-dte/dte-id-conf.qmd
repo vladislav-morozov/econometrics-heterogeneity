@@ -1,0 +1,231 @@
+--- 
+description: "Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)"
+
+open-graph:
+    description: "Learn how to nonparametrically identify distributional treatment effects (DTEs) under unconfoundedness. Conditional + unconditional effects (Lecture Notes)"
+---
+
+
+ 
+# Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness {#sec-dte-id-conf}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section shows how to identify distributional treatment effects under conditional unconfoundedness.
+
+By the end of this section, you should be able to:
+
+- Use conditioning arguments to connect observed outcomes to potential ones.
+- Identify conditional and unconditional DTEs.
+- State the importance of common support for identifying conditional DTEs.
+
+:::
+    
+
+
+## Setting 
+ 
+In the simple RCT setting of the previous section, identification of QTEs and DTEs is particularly simple. The required quantile and distribution functions can be directly obtained from conditional quantile and distribution functions of the realized outcomes. 
+
+However, in practice, it is more frequent and realistic to see a weaker (conditional) unconfoundedness assumption, which requires that the realized treatment $X_i$ and the collection of potential outcomes $\curl{Y_i^x}_x$ are independent only conditionally on some  covariates $W_i$:
+$$
+ \curl{Y_i^x}_x \independent X_i|W_i.
+$$ {#eq-qte-unconf}
+This setting is depicted on @fig-swig-obs. The setting of @eq-qte-unconf may arise both in observational settings and in experiments where randomization occurs within strata defined by $W_i$.
+
+::: {#fig-swig-obs}
+
+``` tikz
+
+\begin{tikzpicture}[thick, scale=30, every path/.style={color=gray!70}]
+    
+    \node (v1) at (0.397,-0.432) {$X_i|x$};
+    \node (v2) at (0.573,-0.432) {$Y^x_i$}; 
+    \node (v3) at (0.367,-0.322) {$W_i$}; 
+    \draw [->] (v1) -- (v2); 
+    \draw [->] (v3) -- (v2);
+    \draw [->] (v3) -- (v1);
+\end{tikzpicture}
+
+```
+
+representation of setting of @eq-qte-unconf. Note that the arrow is going from $x$ to $Y^x_i$, not from $X_i$ to $Y^x_i$. Likewise, the arrow is going from $W_i$ to $X_i$, not $x$.
+
+:::
+
+
+## Parameters of Interest
+
+The setting of @eq-qte-unconf is richer than that of @eq-qte-rct. It allows us to consider all of the unconditional and conditional QTEs and DTEs described in section [-@sec-qte-intro].  
+
+Specifically, this section focuses exclusively on DTE, whose identification is more explicit and allows us to showcase the key tools. QTEs are deferred to the next section.
+
+In order of identification, our parameters of interest are:
+
+
+1.  DTE conditional on $W_i=w$ (@eq-qte-dfn-cond):
+$$
+\begin{align} 
+DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+2. Unconditional  DTE (@eq-qte-dfn-uncond):
+$$
+\begin{aligned} 
+DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+3. DTE conditional on $X_i=x_3$ (@eq-qte-dfn-cond-treat):
+$$
+\begin{align} 
+	DTE(x_1, x_2, y|x_3) & = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3). 
+\end{align}
+$$
+ 
+As before, identifying DTEs reduces to identifying the CDFs $F_{Y^{x}|W}(y|w)$, $F_{Y^{x}}(y)$,  and $F_{Y^{x}|X}(y|x_3)$. The following subsections tackle these CDFs in turn. 
+
+## CDF Conditional on $W_i$
+
+
+We begin with with the most straightforward identification argument --- that of the conditional distribution of $Y^x_i$ given $W_i=w$.
+ 
+By definition, we can write the target CDF as
+$$
+F_{Y^x|W}(y|w) = \E[\I\curl{Y^x_i \leq y}|W_i=w].
+$$
+
+As before, the overall goal is to connect the above expression to the realized variables $(Y_i, X_i, W_i)$, chief of them the outcome $Y_i$. To do so, we first use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i=x$:
+$$
+\begin{aligned}
+& \E[\I\curl{Y^x_i \leq y}|W_i=w] \\
+& =  \E[\I\curl{Y^x_i \leq y}|X_i=x, W_i=w].
+\end{aligned}
+$$
+Since $Y^x_i$ and $X_i$ are conditionally independent given $W_i$, this conditioning operation does not change the value of the expectation regardless of the value of $X_i$, including $x$.
+
+Next, we use that $Y_i=Y^x_i$ if $X_i=x$ to replace $Y^x_i$ with $Y_i$:
+$$
+\begin{align} 
+	&   \E\left[\I\curl{Y^x_i\leq y}|X_i=d, W_i=w \right]\\
+	& = \E\left[ \I\curl{Y_i\leq y}|X_i=d, W_i=w   \right]\\
+	& \equiv F_{Y|X, W}(y|x, w),
+\end{align}
+$$ 
+where $F_{Y|X, W}(y|x, w)$ is the conditional CDF of the realized outcome $Y_i$ given $X_i=x$ and $W_i=w$.
+
+Combining the above chain of equalities, we conclude that
+$$
+F_{Y^x|W}(y|w) = F_{Y|X, W}(y|x, w).
+$$ {#eq-qte-dte-cond-id}
+In words, the CDF of interest is equal to a particular conditional distribution of the observed outcome $Y_i$.
+
+## Unconditional CDF
+
+We now turn to the unconditional  CDF of $Y^x_i$:
+$$
+F_{Y^x}(y)   = \E\left[ \I\curl{Y^x_i \leq y} \right].
+$$
+As before, we would like to replace $Y^x_i$ with the observed outcome $Y_i$. However, this time we cannot naively insert conditioning on $\curl{X_i=x}$ without changing the expectation. 
+
+The solution we follow is to iterate expectations: 
+
+1. First condition on $W_i$  using the defining property of conditional expectations.
+2. Apply the condition ([-@eq-qte-unconf]) to the conditional expectation.
+
+The first step produces the following identity:
+$$
+\begin{aligned}
+ & \E\left[ \I\curl{Y^x_i \leq y} \right] \\
+ & = \E\left[ \E\left[\I\curl{Y^x_i \leq y} | W_i  \right]\right].
+\end{aligned}
+$$
+
+We can now use the unconfoundedness assumption ([-@eq-qte-unconf]) to condition on $X_i$ inside the conditional expectation. By conditional independence in ([-@eq-qte-unconf]), this conditioning does not affect the expectation (more precisely, the distribution of the conditional expectation in question):
+
+$$
+\begin{aligned}
+ & \E\left[ \E\left[\I\curl{Y^x_i \leq y} | W_i  \right]\right]\\
+ & = \E\left[ \E\left[\I\curl{Y^x_i \leq y} | X_i=x, W_i  \right]\right].
+\end{aligned}
+$$
+
+From this point out, we can replace $Y^x_i$ with $Y_i$ under the conditional expectation to finish the argument. In order to obtain a more explicit representation, let $F_W(\cdot)$ be the marginal CDF of $W_i$. Then:
+
+$$
+\begin{aligned} 
+	&   \E\left[ \E\left[\I\curl{Y^x_i \leq y} | X_i=x, W_i  \right]\right] \\
+	& = \E\left[ \E\left[ \I\curl{Y_i\leq y}| X_i=x, W_i \right]  \right]\\
+	& = \E\left[  F_{Y|X, W}(y|x, W_i) \right]\\
+	& = \int F_{Y|X, W}(y|x, w)F_W(dw).
+\end{aligned} 
+$$
+
+Combining the above equalities, we obtain the identifying expression:
+$$
+F_{Y^x}(y) = \int F_{Y|X, W}(y|x, w)F_W(dw).
+$$
+In words, the marginal CDF of $Y^x_i$ is equal to a reweighted conditional CDF of the observed outcome, where the weights are calculated over $w$ and correspond to the marginal distribution of $W_i$. Observe that the object in the last line is not equal to $F_{Y|X}(y|x)$. 
+
+Note that the same result can be obtained by simply integrating $W_i$ out in the conditional CDF expression in @eq-qte-dte-cond-id. Since the CDF is an average, @wrn-qte-intro-cond does not apply to it. However, there is merit in studying the conditioning argument presented above, as it is useful both for the remaining conditional CDF and gives a path forward for unconditional quantiles (to which @wrn-qte-intro-cond does apply).
+
+## CDF Conditional on $X_i$
+
+Finally, we consider the CDF $F_{Y^x|X}(y|x_3)$  — the distribution of the potential outcome under $x$ in the group which received a potentially different treatment $x_3$. This CDF can be represented as 
+$$
+F_{Y^x|X}(y|x_3) = \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right].
+$$
+Identification here requires a new trick: exploiting conditional independence  ([-@eq-qte-unconf]) to swap treatment values in the conditioning set. 
+ 
+Like for the unconditional CDF, we start by iterating expectations with respect to $W_i$
+$$
+\begin{aligned} 
+  &    \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3 \right] \\
+    & = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right].
+\end{aligned}
+$$
+
+Previously, at this point we would replace $Y^x_i$ by $Y_i$ to continue. However, the conditioning set in the internal conditional expectation specifies that $\curl{X_i=x_3}$, in which case $Y_i$ is actually equal to $Y^{x_3}_i$. 
+
+To resolve this obstacle, observe that by the unconfoundedness assumption ([-@eq-qte-unconf]), conditioning on $X_i$ does not affect the expectation (more precisely, the distribution of the conditional expectation in question). We can then replace $\curl{X_i=x_3}$ with $\curl{X_i=x}$:
+$$
+\begin{aligned}
+	& \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x_3, W_i \right]|X_i=x_3\right]\\
+	& = \E\left[ \E\left[ \I\curl{Y^x_i \leq y}|X_i=x, W_i \right]|X_i=x_3\right] \\
+	& = \E\left[ \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i \right]|X_i=x_3\right]\\
+	& = \E\left[ F_{Y|X, W}(y|x, W_i)|X_i=x_3 \right]\\
+	& = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3).  
+\end{aligned}
+$$
+Note that this derivation makes an assumption of *common support*. Specifically, we assume that  the support of $W_i$ conditional on $X_i=x_3$ is included in the support of $W_i$ conditional on $X_i=x$. Without such an assumption the integral may not be well-defined. 
+
+Combining the above equalities, we obtain the identifying expression:
+$$
+F_{Y^x|X}(y|x_3) = \int F_{Y|X, W}(y|x, w) F_{W|X}(dw|x_3),
+$$ 
+When $x=x_3$, the above argument simply reduces to 
+$$
+	 F_{Y^x|X}(y|x) = F_{Y|X}(y|x).
+$$
+
+::: {.callout-note title="Counterfactual distributions"}
+
+Integrals of the kind
+$$
+\int F_{Y|X, W}(y|x_1, w) F_{W|X}(dw|x_2),
+$$ {#eq-dte-counterf-distr}
+are sometimes called *counterfactual distributions* [@Machado2005CounterfactualDecompositionChanges; @Chernozhukov2013b].
+
+To understand the name, consider the following example. Let $X_i$ be gender, $Y_i$ wages, and $W_i$ be further earnings-relevant covariates. Then $\int F_{Y|X, W}(y|\text{man}, w) F_{W|X}(dw|\text{woman})$ may be interpreted as the distribution of wages for women (that is, computed using the demographic composition of women with $F_{W|X}(\cdot|\text{woman})$) if they faced men's wage schedule $F_{Y|X, W}(\cdot|\text{man}, w)$ (how $Y_i$ is determined for each $w$ for men). Such integrals may be used to compute Oaxaca-Blinder-type decompositions.
+
+Note that the counterfactual distribution ([-@eq-dte-counterf-distr]) is expressed in terms of distributions of realized variables. It only acquires a causal interpretations under suitable conditions (e.g. unconfoundedness, as we describe in this section).
+
+:::
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we complement the results of this section with identification of quantile treatment effects in the setting of @eq-qte-unconf.

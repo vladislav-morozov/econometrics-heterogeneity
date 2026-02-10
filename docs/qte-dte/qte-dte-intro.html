@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta name="description" content="Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs.&nbsp;quantiles of treatment effects (Lecture Notes)">
 
-<title>5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
+<title>18&nbsp; Defining Quantile and Distributional Treatment Effects – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-mean-group.html" rel="next">
-<link href="../linear/linear-dynamic-panel-iv.html" rel="prev">
+<link href="../qte-dte/qte-dte-id-rct.html" rel="next">
+<link href="../nonparametric/nonparametric-variance.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -449,8 +449,9 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta property="og:title" content="18&nbsp; Defining Quantile and Distributional Treatment Effects – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to define and interpret quantile and distributional treatment effects in cross sections. QTEs vs.&nbsp;quantiles of treatment effects (Lecture Notes)">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/qte-dte-intro_files/mediabag/dac8e9ca56f1886bf5b97845938c178d54b71fcc.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -623,7 +624,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -695,7 +696,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
@@ -795,7 +796,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/qte-dte-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../qte-dte/qte-dte-intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></span></a>
   </div>
 </li>
@@ -835,24 +836,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-and-model" id="toc-introduction-and-model" class="nav-link active" data-scroll-target="#introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</a></li>
-  <li><a href="#endogeneity-due-to-heterogeneity" id="toc-endogeneity-due-to-heterogeneity" class="nav-link" data-scroll-target="#endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</a>
+  <li><a href="#towards-cross-sectional-data" id="toc-towards-cross-sectional-data" class="nav-link active" data-scroll-target="#towards-cross-sectional-data"><span class="header-section-number">18.1</span> Towards Cross-Sectional Data</a></li>
+  <li><a href="#defining-qtes-and-dtes" id="toc-defining-qtes-and-dtes" class="nav-link" data-scroll-target="#defining-qtes-and-dtes"><span class="header-section-number">18.2</span> Defining QTEs and DTEs</a>
   <ul class="collapse">
-  <li><a href="#endogeneity-in-differenced-heterogeneous-equation" id="toc-endogeneity-in-differenced-heterogeneous-equation" class="nav-link" data-scroll-target="#endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</a></li>
-  <li><a href="#conditions-for-instruments" id="toc-conditions-for-instruments" class="nav-link" data-scroll-target="#conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</a></li>
-  <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</a></li>
-  <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
+  <li><a href="#potential-outcome-framework" id="toc-potential-outcome-framework" class="nav-link" data-scroll-target="#potential-outcome-framework"><span class="header-section-number">18.2.1</span> Potential Outcome Framework</a></li>
+  <li><a href="#qtes-and-dtes" id="toc-qtes-and-dtes" class="nav-link" data-scroll-target="#qtes-and-dtes"><span class="header-section-number">18.2.2</span> QTEs and DTEs</a></li>
+  <li><a href="#interpretations" id="toc-interpretations" class="nav-link" data-scroll-target="#interpretations"><span class="header-section-number">18.2.3</span> Interpretations</a></li>
+  </ul></li>
+  <li><a href="#qtes-vs-quantiles-of-treatment-effects" id="toc-qtes-vs-quantiles-of-treatment-effects" class="nav-link" data-scroll-target="#qtes-vs-quantiles-of-treatment-effects"><span class="header-section-number">18.3</span> QTEs vs Quantiles of Treatment Effects</a>
+  <ul class="collapse">
+  <li><a href="#qtes-vs.-quantiles-of-treatment-effects" id="toc-qtes-vs.-quantiles-of-treatment-effects" class="nav-link" data-scroll-target="#qtes-vs.-quantiles-of-treatment-effects"><span class="header-section-number">18.3.1</span> QTEs vs.&nbsp;Quantiles of Treatment Effects</a></li>
+  <li><a href="#bounds-for-distribution-and-quantiles-of-treatment-effects" id="toc-bounds-for-distribution-and-quantiles-of-treatment-effects" class="nav-link" data-scroll-target="#bounds-for-distribution-and-quantiles-of-treatment-effects"><span class="header-section-number">18.3.2</span> Bounds for Distribution and Quantiles of Treatment Effects</a></li>
+  <li><a href="#the-comonotonic-case" id="toc-the-comonotonic-case" class="nav-link" data-scroll-target="#the-comonotonic-case"><span class="header-section-number">18.3.3</span> The Comonotonic Case</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/qte-dte-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></h1>
+<h1 class="title"><span id="sec-qte-intro" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></span></h1>
 </div>
 
 
@@ -879,95 +885,198 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.</p>
+<p>This section defines quantile and distributional treatment effects (QTEs and DTEs) in a cross-sectional nonparametric model.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
-<li>Describe the overall challenge of finding valid instruments under</li>
-<li>Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models.</li>
+<li>Define QTEs and DTEs.</li>
+<li>Interpret QTEs and DTEs geometrically and causally.</li>
+<li>Contrast QTEs and DTEs with the quantiles and distributions of treatment effects.</li>
 </ul>
 </div>
 </div>
-<section id="introduction-and-model" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</h2>
-<p>As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.</p>
-<p>As a consequence, we now consider heterogeneous dynamic models. In this section we again focus on a simple AR(1) model with no exogenous regressors. Specifically, we look at the following heterogeneous version of model (<a href="linear-dynamic-panel-iv.html#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>): <span id="eq-dynamic-heterogeneity-model"><span class="math display">\[
-\begin{aligned}
-    Y_{it}   &amp; = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
-0 &amp; = \E[Y_{it}| \curl{Y_{is}}_{s\leq t}] .
-\end{aligned}
-\tag{5.1}\]</span></span> This model allows for unit-specific dynamics, as the coefficients <span class="math inline">\(\lambda_i\)</span> can vary across <span class="math inline">\(i\)</span>. The above model is also another instance of the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</p>
-<p>As before, we are interested in the average coefficient <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
-</section>
-<section id="endogeneity-due-to-heterogeneity" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</h2>
-<p>Can the IV estimators of the previous section estimate <span class="math inline">\(\E[\lambda_i]\)</span> under model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>)? Under what conditions? To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of <span class="math inline">\(Y_{it}\)</span> as instruments.</p>
-<section id="endogeneity-in-differenced-heterogeneous-equation" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</h3>
-<p>To replicate the procedure, we take differences in <a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and write the differenced model as <span id="eq-dynamic-heterogeneity-differenced"><span class="math display">\[
-\begin{aligned}
-    \Delta Y_{it} &amp; = \lambda \Delta Y_{it-1} +  V_{it}, \\
-    V_{it} &amp; = \eta_i\Delta Y_{it-1} + \Delta U_{it} =0,
-\end{aligned}
-\tag{5.2}\]</span></span> where we label <span class="math display">\[
-\begin{aligned}
-\lambda &amp; = \E[\lambda_i], \\
-\eta_i &amp; = \lambda_i - \lambda.
-\end{aligned}
-\]</span></p>
-<p>It is easy to check that <span class="math inline">\(\Delta Y_{it-1}\)</span> is still endogenous because it contains <span class="math inline">\(U_{it-1}\)</span>, which is correlated with the residual term. The same problematic term <span class="math inline">\(\lambda \E[U_{it-1}^2]\)</span> is present in <span class="math inline">\(\E[V_{it}\Delta Y_{it-1}]\)</span>.</p>
-</section>
-<section id="conditions-for-instruments" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</h3>
-<p>Can we find a suitable instrument for <span class="math inline">\(\Delta Y_{it-1}\)</span>? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: <span class="math display">\[
-\begin{aligned}
-    \E[Z_{it}\Delta Y_{it-1}] &amp;  \neq 0 ,\\
-    \E[Z_{it} V_{it}] &amp; = \E[ \eta_i Z_{it}\Delta Y_{it-1} ] + \E[Z_{it}U_{it}].
-\end{aligned}
-\]</span> Note that a new <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\)</span> term now appears in the exogeneity condition.</p>
-</section>
-<section id="endogeneity-of-lagged-outcomes" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</h3>
-<p>Unlike in the homogeneous case, <span class="math inline">\(Y_{it-2}\)</span> is not a valid instrument anymore. We show that <span class="math inline">\(Y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
+<section id="towards-cross-sectional-data" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="towards-cross-sectional-data"><span class="header-section-number">18.1</span> Towards Cross-Sectional Data</h2>
+<p>In the previous block we have discussed that one can learn average treatment effects, the variance of treatment effects, and even the full distribution of treatment effects in settings that permit:</p>
 <ul>
-<li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
-<li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
-Y_{it} = \dfrac{A_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k U_{it-k}.
-\]</span></li>
-<li><span class="math inline">\(\curl{U_{it}}_t\)</span> is an IID sequence with finite second moments, and <span class="math inline">\(U_{it}\)</span> is independent of <span class="math inline">\((A_i, \lambda_i)\)</span>.</li>
+<li>Multiple unobserved components (including functional-valued differences),</li>
+<li>Nonparametric dependence of potential outcomes on treatments and unobservables.</li>
 </ul>
-<p>Under the above assumptions the first expectation in <span class="math inline">\(\E[Y_{it-2} V_{it}]\)</span> can be evaluated as follows: <span class="math display">\[
-\begin{aligned}
-&amp; \E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]
-\\
-% &amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
-&amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} U_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} U^2_{i,t-k-2}\right)  \right)\right] \\
-&amp; = \E[U_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
-\end{aligned}
-\]</span> In general, there is no reason to expect the above expectation to be zero if <span class="math inline">\(\eta_i\)</span> is not zero. The second term involves a sum of even-order moments of <span class="math inline">\(\eta_i\)</span> (equivalently, <span class="math inline">\(\lambda_i)\)</span>; such a sum would in general be non-zero.</p>
-<p>We conclude that <span class="math display">\[
-\E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]\neq 0,
-\]</span> and so in general that <span class="math display">\[
-\E[Y_{it-2} V_{it}]\neq 0.
-\]</span> In other words, <span class="math inline">\(Y_{it-2}\)</span> <em>is not a valid instrument under the heterogeneous mode</em>l (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(Y_{it}\)</span>.</p>
-<p>More broadly, the problem of finding a valid instrument <span class="math inline">\(Z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(Z_{it}\)</span> be correlated with <span class="math inline">\(\Delta Y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(Z_{it}\)</span> is also correlated with <span class="math inline">\(\eta_i \Delta Y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta Y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
-<p>We conclude that the IV estimators of the previous section do not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
+<p>However, these results come at an important price: they require panel data with (at least approximate) stationarity. Such data may often not be available. Many datasets provide only one observation per unit, or have cross-sections spaced too far apart in time to justify stationarity assumptions. This motivates a key question: what distributional features of treatment effects can we learn from cross-sectional data alone?</p>
+<p>Unfortunately, the above success is generally hard to replicate in cross-sectional data. Some identification of distributional features beyond averages is certainly possible, but it typically requires monotonicity assumptions <span class="citation" data-cites="Matzkin2003 Matzkin2007">(<a href="../references/references.html#ref-Matzkin2003" role="doc-biblioref">Matzkin 2003</a>, <a href="../references/references.html#ref-Matzkin2007" role="doc-biblioref">2007</a>)</span>. However, as <span class="citation" data-cites="Hoderlein2007">Hoderlein and Mammen (<a href="../references/references.html#ref-Hoderlein2007" role="doc-biblioref">2007</a>)</span> argue, monotonicity assumptions are often unrealistic. They require that a single scalar unobservable (e.g., “ability”) monotonically determines all potential outcomes, a restriction that clashes with most economic models. For example, earnings may depend on both ability and risk aversion (a multidimensional unobservable), or responses to treatments may be nonmonotonic (e.g., intermediate doses of a policy having larger effects than high doses).</p>
+<p>The literature’s response has been to refocus on distributional treatment effects (DTEs) and quantile treatment effects (QTEs). These do not require monotonicity and can often be point-identified from cross-sectional data, even with multidimensional unobservables. At the same time, this identification has a price — QTEs and DTEs are <em>not</em> the quantiles or the distributions <em>of</em> treatment effects, a point we discuss in this section.</p>
+<p>In this block, we:</p>
+<ul>
+<li>Define QTEs and DTEs, along with discussing their interpretations.</li>
+<li>Discuss their identification under various form of unconfoundedness.</li>
+<li>Introduce quantile and distributional regression as estimation tools.</li>
+<li>Connect these methods to the nonseparable panel models from the previous block.</li>
+</ul>
 </section>
-<section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
-<p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
-<p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((A_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(Y_{it-1}\)</span> through <span class="math display">\[
-Y_{it-1} = A_i + \lambda_i Y_{it-2} + U_{it-2}.
-\]</span> As a result, <span class="math inline">\(Y_{it-1}\)</span> and <span class="math inline">\((A_i, \lambda_i)\)</span> cannot be (mean) independent by construction.</p>
+<section id="defining-qtes-and-dtes" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="defining-qtes-and-dtes"><span class="header-section-number">18.2</span> Defining QTEs and DTEs</h2>
+<section id="potential-outcome-framework" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="potential-outcome-framework"><span class="header-section-number">18.2.1</span> Potential Outcome Framework</h3>
+<p>To formalize the setting of this block and define the new parameters of interest, we go back to the cross-sectional potential outcome model of <a href="../intro.html#eq-intro-potential-outcomes" class="quarto-xref">Equation&nbsp;<span>1.1</span></a>.</p>
+<p>Let <span class="math inline">\(X_i\)</span> be some treatment. <span class="math inline">\(X_i\)</span> may be scalar- or vector-valued. We are interested in the effect of <span class="math inline">\(X_i\)</span> on some outcome <span class="math inline">\(Y_i\)</span>. To each value <span class="math inline">\(x\)</span> of <span class="math inline">\(X_i\)</span> we associate a potential outcome <span class="math inline">\(Y^x_i\)</span>, determined as <span class="math display">\[
+Y_i^x = \phi(x, A_i).
+\]</span> Like in the previous block, <span class="math inline">\(\phi\)</span> is an unknown function and <span class="math inline">\(A_i\)</span> is some unobserved component, potentially infinite-dimensional in nature. In this block, our identification results mostly directly involve <span class="math inline">\(Y_{i}^x\)</span>, rather than the <span class="math inline">\(\phi(\cdot, A_i)\)</span> representation.</p>
+<p>As before, we maintain the Stable Unit Treatment Value Assumption (SUTVA) throughout, ruling out spillovers or general equilibrium effects (see <a href="#wrn-causal-sutva" class="quarto-xref">Warning&nbsp;<span>18.2</span></a> for caveats).</p>
+<p>The key role in this section is played by the distribution of potential outcomes, where by “distribution” we mean either the cumulative distribution function <span class="math inline">\(F_{Y^x}(\cdot)\)</span> of <span class="math inline">\(Y^x_i\)</span> or its quantile function <span class="math inline">\(Q_{Y^x}(\cdot)\)</span>.</p>
+</section>
+<section id="qtes-and-dtes" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="qtes-and-dtes"><span class="header-section-number">18.2.2</span> QTEs and DTEs</h3>
+<p>The new distributional parameters of interest are built up by contrasting the distributions of <span class="math inline">\(Y^x_i\)</span> for different values of <span class="math inline">\(x\)</span>.</p>
+<p>The most fundamental parameters of interest are the unconditional <em>quantile</em> and <em>distributional treatment effects</em> (QTE and DTE) of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span>, which are defined as <span id="eq-qte-dfn-uncond"><span class="math display">\[
+\begin{aligned}
+    QTE(x_1, x_2, \tau ) &amp;  =Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau) ,\\
+        DTE(x_1, x_2, y) &amp; = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y).
+\end{aligned}
+\tag{18.1}\]</span></span> where <span class="math inline">\(x_1, x_2\)</span> are some values of the treatment and <span class="math inline">\(\tau\in [0, 1]\)</span>.</p>
+<p>If the treatment is continuous, we may further consider derivatives of <span class="math inline">\(Q_{Y^x}(\tau)\)</span> and <span class="math inline">\(F_{Y^x}(y)\)</span> with respect to <span class="math inline">\(x\)</span>, yielding marginal QTEs and DTEs.</p>
+<p>We may also condition on the realized treatment values <span class="math inline">\(X_i\)</span> or on other control variables <span class="math inline">\(W_i\)</span>. For the first scenario, let <span class="math inline">\(F_{Y^{x_2}|X}(y|x_1)\)</span> be the CDF of <span class="math inline">\(Y^{x_2}\)</span> for the units that actually receive <span class="math inline">\(X=x_1\)</span>; similarly for the quantile function <span class="math inline">\(Q_{Y^{x_2}|X}(\tau|x_1)\)</span>. The QTEs and DTEs of switching from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> for the population of units with realized treatment value <span class="math inline">\(x_3\)</span> are defined as <span id="eq-qte-dfn-cond-treat"><span class="math display">\[
+\begin{align}
+    QTE(x_1, x_2, \tau|x_3) &amp;  =Q_{Y^{x_2}|X}(\tau|x_3) -   Q_{Y^{x_1}|X}(\tau|x_3) ,\\
+    DTE(x_1, x_2, y|x_3) &amp; = F_{Y^{x_2}|X}(y|x_3) - F_{Y^{x_1}|X}(y|x_3).
+\end{align}
+\tag{18.2}\]</span></span> If <span class="math inline">\(X_i\)</span> is a scalar binary treatment, the quantile effects are also known as the quantile treatment effects for the treated or the control group, depending on whether <span class="math inline">\(x_3=1\)</span> or <span class="math inline">\(x_3=0\)</span> (shortened to QTT and QTC, respectively).</p>
+<p>For the second scenario, let <span class="math inline">\(W_i\)</span> be some other covariates or control variables. One may consider the QTEs and DTEs within the <span class="math inline">\(w\)</span>-stratum of <span class="math inline">\(W_i\)</span>: <span id="eq-qte-dfn-cond"><span class="math display">\[
+\begin{align}
+    QTE(x_1, x_2, \tau|w) &amp; = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+        DTE(x_1, x_2, y|w) &amp; = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+\tag{18.3}\]</span></span></p>
+<p>The above QTEs and DTEs may be viewed as the core parameters of interest in the literature on distributional effects. However, one may also consider Gini-like and other transformations of the marginal distributions of potential outcomes, see section 2.1 in <span class="citation" data-cites="Chernozhukov2013b">Chernozhukov, Fernández-Val, and Melly (<a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">2013</a>)</span> for some further details.</p>
+<div id="wrn-qte-intro-cond" class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning&nbsp;18.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There is an important difference between ATEs and QTEs when dealing with conditional and unconditional effects. When working with average effects, one may integrate the conditional average treatment effects given <span class="math inline">\(W_i\)</span> to obtain the ATE. This connection no longer holds for QTEs, and so the choice between conditional and unconditional QTEs leads to different interpretations.</p>
+<p>To understand the difference between conditional and unconditional quantiles, consider the following example. Let <span class="math inline">\(W_i\)</span> be the person’s education level, and <span class="math inline">\(Y_i\)</span> be earnings. The 10th percentile of the <span class="math inline">\(Y_i\)</span> for college-educated people may lie fairly high in the overall (marginal) distribution of <span class="math inline">\(Y_i\)</span>. See <span class="citation" data-cites="Powell2020">Powell (<a href="../references/references.html#ref-Powell2020" role="doc-biblioref">2020</a>)</span> for more discussion and further references.</p>
+</div>
+</div>
+</section>
+<section id="interpretations" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="interpretations"><span class="header-section-number">18.2.3</span> Interpretations</h3>
+<p>What are the QTEs and the DTEs?</p>
+<section id="geometric-interpretation" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="geometric-interpretation">Geometric Interpretation</h4>
+<p>The first and simpler interpretation is purely geometric. As shown on <a href="#fig-qte-dte" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>, DTEs and QTEs can be viewed as measures of the distance in the distributions of potential outcomes:</p>
+<ul>
+<li>The DTEs measure the vertical difference between the CDFs of the potential outcomes.</li>
+<li>the QTE corresponds to the vertical distance between quantile functions (or equivalently, the horizontal distance between CDFs, since quantile functions are inverses of CDFs).</li>
+</ul>
+<div id="fig-qte-dte" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qte-dte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="qte-dte-intro_files\mediabag\dac8e9ca56f1886bf5b97845938c178d54b71fcc.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qte-dte-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18.1: Visual representation of distributional treatment effects (DTEs) and quantile treatement effects (QTEs). Depicted: <span class="math inline">\(DTE(3)\)</span> — difference of CDFs of potential outcomes distributions at <span class="math inline">\(y=3\)</span> and <span class="math inline">\(QTE(0.5)\)</span> — difference of medians of potential outcome distributions
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="causal-interpretation" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="causal-interpretation">Causal Interpretation</h4>
+<p>The second and deeper interpretation of QTEs and DTEs is causal. This interpretation requires SUTVA and typically goes as follows <span class="citation" data-cites="Athey2017handbook">(<a href="../references/references.html#ref-Athey2017handbook" role="doc-biblioref">Athey and Imbens 2017</a>)</span>. The QTE and DTE of a change from <span class="math inline">\(x_1\)</span> to <span class="math inline">\(x_2\)</span> describe how the entire outcome distribution would shift if all units moved from treatment value <span class="math inline">\(x_1\)</span> to value <span class="math inline">\(x_2\)</span>. Under SUTVA, the resulting distribution of outcomes will be exactly given by the marginal distribution of the corresponding potential outcomes. For example, a QTE of +5 at <span class="math inline">\(\tau=0.25\)</span> means the 25th percentile of earnings would rise by 5 units under the treatment change.</p>
+<div id="wrn-causal-sutva" class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning&nbsp;18.2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>SUTVA is critical in the above interpretation, as it rules out general equilibrium effects of such a universal shift in treatment.</p>
+<p>In many settings such an assumption may be unrealistic. However, as these lecture notes are written, analysis of “global” QTEs appears to only be a nascent field.</p>
+</div>
+</div>
+<p>Between the QTE and the DTE, the QTE is slightly easier to interpret, as QTEs are expressed in the same units as the outcome variable. In contrast, the DTEs are slightly more complicated to interpret, as they are expressed in terms of changes in CDFs.</p>
+</section>
+</section>
+</section>
+<section id="qtes-vs-quantiles-of-treatment-effects" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="qtes-vs-quantiles-of-treatment-effects"><span class="header-section-number">18.3</span> QTEs vs Quantiles of Treatment Effects</h2>
+<section id="qtes-vs.-quantiles-of-treatment-effects" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="qtes-vs.-quantiles-of-treatment-effects"><span class="header-section-number">18.3.1</span> QTEs vs.&nbsp;Quantiles of Treatment Effects</h3>
+<p>An important aspect of QTEs and DTEs is that those objects are <em>not</em> equal to the quantiles or distributions of treatment effects outside of some special cases. For example, for quantiles it is usually the case that <span class="math display">\[
+     Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau)  \neq Q_{Y^{x_2}- Y^{x_1}}(\tau).
+\]</span> Similarly, the DTE in general is only loosely related to the distribution of treatment effects. In this sense, calling QTEs and DTEs “treatment effects” may be somewhat misleading, and one should always be careful in practice with the interpretations assigned to these objects.</p>
+</section>
+<section id="bounds-for-distribution-and-quantiles-of-treatment-effects" class="level3" data-number="18.3.2">
+<h3 data-number="18.3.2" class="anchored" data-anchor-id="bounds-for-distribution-and-quantiles-of-treatment-effects"><span class="header-section-number">18.3.2</span> Bounds for Distribution and Quantiles of Treatment Effects</h3>
+<p>The focus on QTEs and DTEs is driven by the fact the actual distribution of quantile effects is only <em>partially</em> identified even in experimental settings (outside of restrictive settings). Even the best experiments usually allow us to identify at most the marginal distributions <span class="math inline">\(F_{Y^1}\)</span> and <span class="math inline">\(F_{Y^0}\)</span>, but not the joint distribution of the two potential outcomes. The following bounds are the most that can be said about the distribution <span class="math inline">\(F_{Y^1-Y^0}(\cdot)\)</span> and about the quantiles of <span class="math inline">\(Y^1_i-Y_i^0\)</span>: <span class="math display">\[
+\begin{aligned}
+    F^L(y) &amp; \leq F_{Y^1-Y^0}(y)\leq F^U(y),\\
+    Q^L(\tau) &amp; \leq Q_{Y^1-Y^0}(\tau) \leq Q^U(\tau),
+\end{aligned}
+\]</span> for <span class="math display">\[
+\begin{aligned}
+    F^L(y) &amp; = \sup_w \max\curl{(F_1(w) - F_0(w-y), 0},\\
+    F^U(y) &amp; = 1+ \inf_w\min\curl{F_1(w) - F_0(w-y), 0 },\\
+            Q^L(\tau) &amp; = \sup_{w\in [0, \tau]}\left( F_X^{-1}(w) + F_Y^{-1}(\tau-w) \right), \\
+             Q^U(\tau) &amp; = \inf_{w\in [\tau, 1]} \left(F_X^{-1}(w)  + F^{-1}_Y(1+\tau-w)\right). \\
+\end{aligned}
+\]</span> See <span class="citation" data-cites="Makarov1981">Makarov (<a href="../references/references.html#ref-Makarov1981" role="doc-biblioref">1981</a>)</span> and <span class="citation" data-cites="Williamson1990">Williamson and Downs (<a href="../references/references.html#ref-Williamson1990" role="doc-biblioref">1990</a>)</span> regarding these bounds. They are known to be pointwise sharp without further assumptions, though <span class="citation" data-cites="Firpo2019">Firpo and Ridder (<a href="../references/references.html#ref-Firpo2019" role="doc-biblioref">2019</a>)</span> describe some refinements in case of looking at multiple values of <span class="math inline">\(y\)</span> or <span class="math inline">\(\tau\)</span>. <span class="citation" data-cites="Fan2010">Fan and Park (<a href="../references/references.html#ref-Fan2010" role="doc-biblioref">2010</a>)</span> discuss inference on such bounds in practice.</p>
+<p>Ultimately, the switch to the less satisfactory QTE and DTE parameters is the price that we pay for working in cross-sectional settings and not restricting the form of potential outcomes.</p>
+</section>
+<section id="the-comonotonic-case" class="level3" data-number="18.3.3">
+<h3 data-number="18.3.3" class="anchored" data-anchor-id="the-comonotonic-case"><span class="header-section-number">18.3.3</span> The Comonotonic Case</h3>
+<p>QTEs do correspond to the quantile of the treatment effect in the special case of perfect rank correlation (comonotonicity, rank preservation) between potential outcomes <span class="citation" data-cites="Doksum1974EmpiricalProbabilityPlots">(<a href="../references/references.html#ref-Doksum1974EmpiricalProbabilityPlots" role="doc-biblioref">Doksum 1974</a>)</span>. Consider the case of a binary treatment <span class="math inline">\(x=0, 1\)</span>. Under comonotonicity, potential outcomes share a common rank structure. Formally, they admit a Skorokhod representation <span class="math display">\[
+    (Y^1_i, Y^0_i) = \left(F_{Y^1}^{-1}(U_i), F_{Y^0}^{-1}(U_i)\right).
+\]</span> where <span class="math inline">\(U_i\)</span> is a common Uniform[0, 1] random variable.</p>
+<p>Intuitively, under comonotonicity each individual has the same rank in all of the potential outcome distributions. For example, if a person would be in the 80th percentile of earnings after a training program, they would be in the 80th percentile of earnings without training too. The same preservation of rank would hold for all units.</p>
+<p>In this special case it is indeed true that the difference in quantiles is equal to the quantile of the difference (the treatment effect). Moreover, the above representation also implies that the potential outcomes can be determined as <span class="math display">\[
+    Y^1_i = F_{Y^1}^{-1}\left( F_{Y^0} (Y^0_i) \right).
+\]</span></p>
+<p>Comonotonicity is an example of the monotonicity assumptions discussed at the beginning of the section. Accordingly, it is likely unrealistic in practice. For example, imagine that <span class="math inline">\(x\)</span> are different possible career paths (e.g.&nbsp;ballet dance and astronaut) and that <span class="math inline">\(Y_i^x\)</span> are earnings of person <span class="math inline">\(i\)</span> in career <span class="math inline">\(x\)</span>. Comonotonicity would mean that the person is <em>equally</em> good or bad at both ballet and being an astronaut (relative to the population), which seems like an implausibly strong assumption in most labor markets.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we study a simple estimator for <span class="math inline">\(\E[\bbeta_i]\)</span> that is robust both to coefficient heterogeneity and dynamics.</p>
+<p>In the next section, we start our discussion of identification of QTEs and DTEs with a simple randomized control trial setting with (unconditional) unconfoundedness.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Athey2017handbook" class="csl-entry" role="listitem">
+Athey, Susan, and G Imbens. 2017. <span>“<span class="nocase">The Econometrics of Randomized Experiments</span>.”</span> In <em>Handbook of Economic Field Experiments</em>, 1:73–140. North-Holland. <a href="https://doi.org/10.1016/bs.hefe.2016.10.003">https://doi.org/10.1016/bs.hefe.2016.10.003</a>.
+</div>
+<div id="ref-Chernozhukov2013b" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Blaise Melly. 2013. <span>“<span class="nocase">Inference on Counterfactual Distributions</span>.”</span> <em>Econometrica</em> 81 (6): 2205–68. <a href="https://doi.org/10.3982/ecta10582">https://doi.org/10.3982/ecta10582</a>.
+</div>
+<div id="ref-Doksum1974EmpiricalProbabilityPlots" class="csl-entry" role="listitem">
+Doksum, Kjell. 1974. <span>“Empirical <span>Probability Plots</span> and <span>Statistical Inference</span> for <span>Nonlinear Models</span> in the <span>Two-Sample Case</span>.”</span> <em>The Annals of Statistics</em> 2 (2). <a href="https://doi.org/10.1214/aos/1176342662">https://doi.org/10.1214/aos/1176342662</a>.
+</div>
+<div id="ref-Fan2010" class="csl-entry" role="listitem">
+Fan, Yanqin, and Sang Soo Park. 2010. <span>“<span class="nocase">Sharp bounds on the distribution of treatment effects and their statistical inference</span>.”</span> <em>Econometric Theory</em> 26 (3): 931–51. <a href="https://doi.org/10.1017/S0266466609990168">https://doi.org/10.1017/S0266466609990168</a>.
+</div>
+<div id="ref-Firpo2019" class="csl-entry" role="listitem">
+Firpo, Sergio, and Geert Ridder. 2019. <span>“<span class="nocase">Partial identification of the treatment effect distribution and its functionals</span>.”</span> <em>Journal of Econometrics</em> 213 (1): 210–34. <a href="https://doi.org/10.1016/j.jeconom.2019.04.012">https://doi.org/10.1016/j.jeconom.2019.04.012</a>.
+</div>
+<div id="ref-Hoderlein2007" class="csl-entry" role="listitem">
+Hoderlein, Stefan, and Enno Mammen. 2007. <span>“<span class="nocase">Identification of Marginal Effects in Nonseparable Models without Monotonicity</span>.”</span> <em>Econometrica</em> 75 (5): 1513–18. <a href="https://doi.org/10.1111/j.1468-0262.2007.00801.x">https://doi.org/10.1111/j.1468-0262.2007.00801.x</a>.
+</div>
+<div id="ref-Makarov1981" class="csl-entry" role="listitem">
+Makarov, G. D. 1981. <span>“<span class="nocase">Estimates for the Distribution Function of a Sum of Two Random Variables When the Marginal Distributions are Fixed</span>.”</span> <em>Theory of Probability Amd Its Applications</em> 26 (4): 803–6. <a href="https://doi.org/10.1137/1126086">https://doi.org/10.1137/1126086</a>.
+</div>
+<div id="ref-Matzkin2003" class="csl-entry" role="listitem">
+Matzkin, Rosa L. 2003. <span>“<span class="nocase">Nonparametric Estimation of Nonadditive Random Functions</span>.”</span> <em>Econometrica</em> 71 (5): 1339–75. <a href="https://doi.org/10.1111/1468-0262.00452">https://doi.org/10.1111/1468-0262.00452</a>.
+</div>
+<div id="ref-Matzkin2007" class="csl-entry" role="listitem">
+———. 2007. <span>“<span class="nocase">Nonparametric identification</span>.”</span> In <em>Handbook of Econometrics, Vol. 6B</em>, edited by James J Heckman and Edward E B T - Handbook of Econometrics Leamer, 6:5307–68. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+</div>
+<div id="ref-Powell2020" class="csl-entry" role="listitem">
+Powell, David. 2020. <span>“<span class="nocase">Quantile Treatment Effects in the Presence of Covariates</span>.”</span> <em>Review of Economics and Statistics</em> 102 (5): 994–1005. <a href="https://doi.org/10.1162/rest_a_00858">https://doi.org/10.1162/rest_a_00858</a>.
+</div>
+<div id="ref-Williamson1990" class="csl-entry" role="listitem">
+Williamson, Robert C., and Tom Downs. 1990. <span>“<span class="nocase">Probabilistic Arithmetic. I. Numerical Methods for Calculating Convolutions and Dependency Bounds</span>.”</span> <em>International Journal of Approximate Reasoning</em> 4 (2): 89–158. <a href="https://doi.org/10.1016/0888-613X(90)90022-T">https://doi.org/10.1016/0888-613X(90)90022-T</a>.
 </div>
 </div>
 </section>
@@ -1389,13 +1498,13 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span>
+      <a href="../nonparametric/nonparametric-variance.html" class="pagination-link" aria-label="Variance of Marginal Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Variance of Marginal Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/qte-dte-id-rct.html" class="pagination-link" aria-label="Nonparametric Identification of QTEs and DTEs in Simple RCTs">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1404,4 +1513,4 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/qte-dte-intro.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

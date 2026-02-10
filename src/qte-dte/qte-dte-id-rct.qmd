@@ -1,0 +1,197 @@
+--- 
+description: "Learn to identify conditional and unconditional quantile and distributional treatment effects in randomized control trials (Lecture Notes)"
+
+open-graph:
+    description: "Learn to identify conditional and unconditional quantile and distributional treatment effects in randomized control trials (Lecture Notes)"
+---
+ 
+# Nonparametric Identification of QTEs and DTEs in Simple RCTs {#sec-qte-id-rct}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section shows how to identify QTEs and DTEs in settings where the realized treatment is unconditionally independent from the potential outcomes  
+
+By the end of this section, you should be able to use conditioning arguments to identify the quantiles and the distributions  of potential outcomes under unconditional unconfoundedness
+:::
+    
+ 
+
+## Introduction
+
+
+Having set the stage, we now turn to identifying quantile and distributional treatment effects introduced in section [-@sec-qte-intro]. 
+
+We structure our discussion in two steps:
+
+1. This section: we consider identification in a simple (pure) randomized control settings where the realized treatment $X_i$ is fully independent from potential outcomes $Y_i^x$. 
+
+2. The next two sections: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables $W_i$.
+
+::: {.callout-note appearance="simple"}
+
+ Identification under endogeneity is also possible, although outside the scope of this course; see @Chernozhukov2005IVModelQuantile and chapter 17 in @Koenker2017HandbookQuantileRegression. 
+
+
+:::
+ 
+Our approach remains fully nonparametric: we impose no functional form restrictions on how potential outcomes depend on treatments or unobserved heterogeneity.
+ 
+
+## Setting
+
+### Assumption: Unconditional Unconfoundedness
+ 
+In this section we consider the simplest setting in which the treatment $X_i$ is marginally independent from the collection of potential outcomes indexed by treatment values $x$:
+$$
+	\curl{Y^x_i}_{x} \independent X_i.
+$$ {#eq-qte-rct}  
+There may potentially be some covariates $W_i$, which are also marginally independent of $X_i$:
+$$
+	W_i \independent X_i.
+$$ {#eq-qte-rct-cov-tr}  
+ This setting is represented by the single-world intervention graph on @fig-rct-swig, where the realized treatment node $X_i$ is independent from the potential outcome $Y_i^x$ (see chapter 7 of @Hernan2024CausalInferenceWhat for a textbook introduction to single-world intervention graphs). 
+
+
+::: {#fig-rct-swig}
+
+``` tikz  
+%%| fig-align: center
+\begin{tikzpicture}[thick, scale=36, every path/.style={color=gray!70}]  
+		
+		\node (v1) at (0.397,-0.432) {$X_i|x$};
+		\node (v2) at (0.573,-0.432) {$Y^x_i$}; 
+		\node (v3) at (0.367,-0.322) {$W_i$}; 
+		\draw [->] (v1) -- (v2); 
+		\draw [->] (v3) -- (v2);
+	\end{tikzpicture}
+```
+
+graphical representation of setting @eq-qte-rct. Note that the arrow is going from $x$ to $Y^x_i$, not from $X_i$ to $Y^x_i$
+:::
+
+Intuitively, the setting of @eq-qte-rct is a simple randomized controlled trial where the treatment is assigned independently of potential outcomes and other individual characteristics  (unconditional unconfoundedness or a random effects setting, in panel data terminology).
+
+
+
+As always, the realized outcome $Y_i$ is equal to $Y^x_i$ if $X_i=x$ (i.e., we observe the potential outcome corresponding to the treatment actually received). The treatment $X_i$ may be discrete- or continuous-valued. For continuous treatments, we assume standard regularity conditions (e.g., existence of densities) to ensure that conditioning on $\curl{X_i=x}$ is well-defined.
+
+### Parameters of Interest
+
+In the setting of @eq-qte-rct,  interest lies in two kinds of QTEs and DTEs:
+
+- Unconditional QTE and DTE of @eq-qte-dfn-uncond: 
+$$
+\begin{aligned}
+	QTE(x_1, x_2, \tau ) &  =Q_{Y^{x_2}}(\tau) - 	Q_{Y^{x_1}}(\tau) ,\\
+		DTE(x_1, x_2, y) & = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y). 
+\end{aligned}
+$$
+
+- QTEs and DTEs conditional on some value of $W_i$, defined in  @eq-qte-dfn-cond: 
+$$
+\begin{align}
+	QTE(x_1, x_2, \tau|w) & = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+		DTE(x_1, x_2, y|w) & = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+$$
+
+
+
+Observe that no new parameter is gained by conditioning on values of $X_i$ --- the independence restriction in @eq-qte-rct  implies that 
+$$
+F_{Y^{x_1}|X}(\cdot|x_1) = F_{Y^{x_1}}(\cdot)
+$$ 
+for any $(x_1, x_2)$. 
+Hence the QTEs and DTEs of @eq-qte-dfn-cond-treat are equal to the unconditional QTEs and DTEs in @eq-qte-dfn-uncond.
+
+## Identification
+
+
+For all parameters of interest, it is sufficient to identify the quantile or distribution functions of the potential outcomes.
+
+
+### Unconditional CDF of Potential Outcomes
+
+
+We begin with the CDF $F_{Y^x}(\cdot)$ of $Y^x_i$. To start, observe that we can use the independence assumption ([-@eq-qte-rct]) to write
+$$
+	F_{Y^x}(y)  \equiv \E\left[ \I\curl{Y^x_i\leq y} \right] = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right].
+$$
+Since $Y^x_i$ is independent from $X_i$, we may freely condition on event involving $X_i$ without changing the expected value.
+
+Next, under the event $\curl{X_i=x}$ it holds that the realized outcome $Y_i$ is exactly $Y^x_i$, allowing us to conclude that
+$$
+\E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right]= \E\left[ \I\curl{Y_i\leq y}|X_i=x \right] \equiv  F_{Y|X}(y|x), 
+$$
+where $F_{Y|X}(y|x)$ is the CDF of the realized outcome $Y_i$ in the subpopulation of units with $X_i=x$.
+
+We conclude that, as long as there exist units with $X_i=x$ in population, the marginal CDF of $Y^x_i$ is identified as
+$$
+F_{Y^x}(y) = F_{Y|X}(y|x).
+$$
+
+### Unconditional Quantile Function of Potential Outcomes
+
+
+In order to identify the quantiles $Q_{Y^x}(\tau)$ of potential outcomes, for each treatment value $x$, we assume the CDF $F_{Y^x}(\cdot)$ is continuous and strictly increasing. Then the quantile function $Q_{Y^x}(\tau)$ is well-defined and uniquely characterized by the moment condition
+$$
+  P\left(Y^x_i\leq  Q_{Y^x}(\tau)  \right) = 	 \tau  
+$$ 
+or, in other words, that
+$$
+\tau  =  \E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right]
+$$
+
+We can now again apply the same conditioning argument to the above moment to conclude that
+$$
+\E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right] = \E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+$$
+
+Finally, we can again use that $Y^x_i=Y_i$ under $X_i=x$ to connect the above moment to observed variables:
+$$
+\E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right] = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+$$
+
+Combining the two extreme of the above chain of equalities, we obtain that $Q_{Y^x}(\tau)$ must satisfy the moment condition:
+$$
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right]
+$$
+At the same time, under our continuity and strict monotonicity assumptions we know that $Q_Y(\tau)$ (the $\tau$th quantile of the *observed* outcome $Y_i$) uniquely satisfies
+$$
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y}(\tau) }  |X_i=x   \right].
+$$
+
+We conclude that it must be the case that
+$$
+	 Q_{Y^x}(\tau) = Q_{Y|X}(\tau|x).
+$$ 
+In other words, the $\tau$th quantile of $Y^x_i$ is exactly the $\tau$th quantile of the observed outcome $Y_i$ in the group with $X_i=x$. 
+ 
+
+### CDF and Quantiles Conditional on Covariates
+
+Finally, we turn to identifying the conditional distribution function $F_{Y^x|W}(y|w)$ and conditional quantile function $Q_{Y^x|W}(\tau|w)$ that appear in the conditional QTE and DTE of @eq-qte-dfn-cond.
+
+The argument for conditional CDFs and quantiles mirrors that of the unconditional case and again relies on the independence restriction ([-@eq-qte-rct]), along with the independence condition ([-@eq-qte-rct-cov-tr]). For example, the identification argument for the CDF looks as follows:
+$$
+\begin{aligned}
+F_{Y^x|W}(y|w) & = \E\left[ \I\curl{Y^x_i\leq y}|W_i=w \right] \\
+& = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x, W_i=w \right]\\
+& = \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i=w \right]\\
+& = F_{Y|X, W}(y|x, w),
+\end{aligned}
+$$
+where $F_{Y|X, W}(y|x, w)$ is the CDF of the realized outcome $Y_i$ in the subpopulation of units with $X_i=x$ and $W_i=w$. As before, the group of units with $X_i=x$ identifies the distribution of potential outcomes under $x$. The argument for the quantiles of $Y^x_i$ is entirely analogous, and leads to the identifying expression
+$$
+	 Q_{Y^x|W}(\tau|w) = Q_{Y|X, W}(\tau|x, w).
+$$
+
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we continue our discussion of identification and consider identification under the (conditional) unconfoundedness assumption that $Y_i^x\independent X_i|W_i$.

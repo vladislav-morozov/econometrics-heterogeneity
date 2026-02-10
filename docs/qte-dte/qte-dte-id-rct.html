@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta name="description" content="Learn to identify conditional and unconditional quantile and distributional treatment effects in randomized control trials (Lecture Notes)">
 
-<title>5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
+<title>19&nbsp; Nonparametric Identification of QTEs and DTEs in Simple RCTs – Econometrics with Unobserved Heterogeneity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +51,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-mean-group.html" rel="next">
-<link href="../linear/linear-dynamic-panel-iv.html" rel="prev">
+<link href="../qte-dte/dte-id-conf.html" rel="next">
+<link href="../qte-dte/qte-dte-intro.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -449,8 +449,9 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta property="og:title" content="19&nbsp; Nonparametric Identification of QTEs and DTEs in Simple RCTs – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn to identify conditional and unconditional quantile and distributional treatment effects in randomized control trials (Lecture Notes)">
+<meta property="og:image" content="https://vladislav-morozov.github.io/econometrics-heterogeneity/qte-dte/qte-dte-id-rct_files/mediabag/35fc538404bbde26a58ccd9e47629a1fb37c458e.svg">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -623,7 +624,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-id-rct.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -695,7 +696,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
@@ -801,7 +802,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/qte-dte-id-rct.html" class="sidebar-item-text sidebar-link">
+  <a href="../qte-dte/qte-dte-id-rct.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span></a>
   </div>
 </li>
@@ -835,24 +836,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-and-model" id="toc-introduction-and-model" class="nav-link active" data-scroll-target="#introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</a></li>
-  <li><a href="#endogeneity-due-to-heterogeneity" id="toc-endogeneity-due-to-heterogeneity" class="nav-link" data-scroll-target="#endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">19.1</span> Introduction</a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link" data-scroll-target="#setting"><span class="header-section-number">19.2</span> Setting</a>
   <ul class="collapse">
-  <li><a href="#endogeneity-in-differenced-heterogeneous-equation" id="toc-endogeneity-in-differenced-heterogeneous-equation" class="nav-link" data-scroll-target="#endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</a></li>
-  <li><a href="#conditions-for-instruments" id="toc-conditions-for-instruments" class="nav-link" data-scroll-target="#conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</a></li>
-  <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</a></li>
-  <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
+  <li><a href="#assumption-unconditional-unconfoundedness" id="toc-assumption-unconditional-unconfoundedness" class="nav-link" data-scroll-target="#assumption-unconditional-unconfoundedness"><span class="header-section-number">19.2.1</span> Assumption: Unconditional Unconfoundedness</a></li>
+  <li><a href="#parameters-of-interest" id="toc-parameters-of-interest" class="nav-link" data-scroll-target="#parameters-of-interest"><span class="header-section-number">19.2.2</span> Parameters of Interest</a></li>
+  </ul></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">19.3</span> Identification</a>
+  <ul class="collapse">
+  <li><a href="#unconditional-cdf-of-potential-outcomes" id="toc-unconditional-cdf-of-potential-outcomes" class="nav-link" data-scroll-target="#unconditional-cdf-of-potential-outcomes"><span class="header-section-number">19.3.1</span> Unconditional CDF of Potential Outcomes</a></li>
+  <li><a href="#unconditional-quantile-function-of-potential-outcomes" id="toc-unconditional-quantile-function-of-potential-outcomes" class="nav-link" data-scroll-target="#unconditional-quantile-function-of-potential-outcomes"><span class="header-section-number">19.3.2</span> Unconditional Quantile Function of Potential Outcomes</a></li>
+  <li><a href="#cdf-and-quantiles-conditional-on-covariates" id="toc-cdf-and-quantiles-conditional-on-covariates" class="nav-link" data-scroll-target="#cdf-and-quantiles-conditional-on-covariates"><span class="header-section-number">19.3.3</span> CDF and Quantiles Conditional on Covariates</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/qte-dte-id-rct.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-id-rct.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></h1>
+<h1 class="title"><span id="sec-qte-id-rct" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Nonparametric Identification of QTEs and DTEs in Simple RCTs</span></span></h1>
 </div>
 
 
@@ -879,95 +884,141 @@ Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.</p>
-<p>By the end of this section, you should be able to:</p>
-<ul>
-<li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
-<li>Describe the overall challenge of finding valid instruments under</li>
-<li>Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models.</li>
-</ul>
+<p>This section shows how to identify QTEs and DTEs in settings where the realized treatment is unconditionally independent from the potential outcomes</p>
+<p>By the end of this section, you should be able to use conditioning arguments to identify the quantiles and the distributions of potential outcomes under unconditional unconfoundedness</p>
 </div>
 </div>
-<section id="introduction-and-model" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</h2>
-<p>As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.</p>
-<p>As a consequence, we now consider heterogeneous dynamic models. In this section we again focus on a simple AR(1) model with no exogenous regressors. Specifically, we look at the following heterogeneous version of model (<a href="linear-dynamic-panel-iv.html#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>): <span id="eq-dynamic-heterogeneity-model"><span class="math display">\[
-\begin{aligned}
-    Y_{it}   &amp; = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
-0 &amp; = \E[Y_{it}| \curl{Y_{is}}_{s\leq t}] .
-\end{aligned}
-\tag{5.1}\]</span></span> This model allows for unit-specific dynamics, as the coefficients <span class="math inline">\(\lambda_i\)</span> can vary across <span class="math inline">\(i\)</span>. The above model is also another instance of the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</p>
-<p>As before, we are interested in the average coefficient <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
+<section id="introduction" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.1</span> Introduction</h2>
+<p>Having set the stage, we now turn to identifying quantile and distributional treatment effects introduced in section <a href="qte-dte-intro.html" class="quarto-xref"><span>18</span></a>.</p>
+<p>We structure our discussion in two steps:</p>
+<ol type="1">
+<li><p>This section: we consider identification in a simple (pure) randomized control settings where the realized treatment <span class="math inline">\(X_i\)</span> is fully independent from potential outcomes <span class="math inline">\(Y_i^x\)</span>.</p></li>
+<li><p>The next two sections: we generalize the arguments to a setting with (conditional) unconfoundedness, where independence may hold only conditionally on some variables <span class="math inline">\(W_i\)</span>.</p></li>
+</ol>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Identification under endogeneity is also possible, although outside the scope of this course; see <span class="citation" data-cites="Chernozhukov2005IVModelQuantile">Chernozhukov and Hansen (<a href="../references/references.html#ref-Chernozhukov2005IVModelQuantile" role="doc-biblioref">2005</a>)</span> and chapter 17 in <span class="citation" data-cites="Koenker2017HandbookQuantileRegression">Koenker et al. (<a href="../references/references.html#ref-Koenker2017HandbookQuantileRegression" role="doc-biblioref">2017</a>)</span>.</p>
+</div>
+</div>
+</div>
+<p>Our approach remains fully nonparametric: we impose no functional form restrictions on how potential outcomes depend on treatments or unobserved heterogeneity.</p>
 </section>
-<section id="endogeneity-due-to-heterogeneity" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</h2>
-<p>Can the IV estimators of the previous section estimate <span class="math inline">\(\E[\lambda_i]\)</span> under model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>)? Under what conditions? To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of <span class="math inline">\(Y_{it}\)</span> as instruments.</p>
-<section id="endogeneity-in-differenced-heterogeneous-equation" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</h3>
-<p>To replicate the procedure, we take differences in <a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and write the differenced model as <span id="eq-dynamic-heterogeneity-differenced"><span class="math display">\[
+<section id="setting" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="setting"><span class="header-section-number">19.2</span> Setting</h2>
+<section id="assumption-unconditional-unconfoundedness" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="assumption-unconditional-unconfoundedness"><span class="header-section-number">19.2.1</span> Assumption: Unconditional Unconfoundedness</h3>
+<p>In this section we consider the simplest setting in which the treatment <span class="math inline">\(X_i\)</span> is marginally independent from the collection of potential outcomes indexed by treatment values <span class="math inline">\(x\)</span>: <span id="eq-qte-rct"><span class="math display">\[
+    \curl{Y^x_i}_{x} \independent X_i.
+\tag{19.1}\]</span></span><br>
+There may potentially be some covariates <span class="math inline">\(W_i\)</span>, which are also marginally independent of <span class="math inline">\(X_i\)</span>: <span id="eq-qte-rct-cov-tr"><span class="math display">\[
+    W_i \independent X_i.
+\tag{19.2}\]</span></span><br>
+This setting is represented by the single-world intervention graph on <a href="#fig-rct-swig" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>, where the realized treatment node <span class="math inline">\(X_i\)</span> is independent from the potential outcome <span class="math inline">\(Y_i^x\)</span> (see chapter 7 of <span class="citation" data-cites="Hernan2024CausalInferenceWhat">Hernan and Robins (<a href="../references/references.html#ref-Hernan2024CausalInferenceWhat" role="doc-biblioref">2024</a>)</span> for a textbook introduction to single-world intervention graphs).</p>
+<div id="fig-rct-swig" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rct-swig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="qte-dte-id-rct_files\mediabag\35fc538404bbde26a58ccd9e47629a1fb37c458e.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rct-swig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: graphical representation of setting <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>. Note that the arrow is going from <span class="math inline">\(x\)</span> to <span class="math inline">\(Y^x_i\)</span>, not from <span class="math inline">\(X_i\)</span> to <span class="math inline">\(Y^x_i\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Intuitively, the setting of <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> is a simple randomized controlled trial where the treatment is assigned independently of potential outcomes and other individual characteristics (unconditional unconfoundedness or a random effects setting, in panel data terminology).</p>
+<p>As always, the realized outcome <span class="math inline">\(Y_i\)</span> is equal to <span class="math inline">\(Y^x_i\)</span> if <span class="math inline">\(X_i=x\)</span> (i.e., we observe the potential outcome corresponding to the treatment actually received). The treatment <span class="math inline">\(X_i\)</span> may be discrete- or continuous-valued. For continuous treatments, we assume standard regularity conditions (e.g., existence of densities) to ensure that conditioning on <span class="math inline">\(\curl{X_i=x}\)</span> is well-defined.</p>
+</section>
+<section id="parameters-of-interest" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="parameters-of-interest"><span class="header-section-number">19.2.2</span> Parameters of Interest</h3>
+<p>In the setting of <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a>, interest lies in two kinds of QTEs and DTEs:</p>
+<ul>
+<li><p>Unconditional QTE and DTE of <a href="qte-dte-intro.html#eq-qte-dfn-uncond" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>: <span class="math display">\[
 \begin{aligned}
-    \Delta Y_{it} &amp; = \lambda \Delta Y_{it-1} +  V_{it}, \\
-    V_{it} &amp; = \eta_i\Delta Y_{it-1} + \Delta U_{it} =0,
+  QTE(x_1, x_2, \tau ) &amp;  =Q_{Y^{x_2}}(\tau) -    Q_{Y^{x_1}}(\tau) ,\\
+      DTE(x_1, x_2, y) &amp; = F_{Y^{x_2}}(y) - F_{Y^{x_1}}(y).
 \end{aligned}
-\tag{5.2}\]</span></span> where we label <span class="math display">\[
-\begin{aligned}
-\lambda &amp; = \E[\lambda_i], \\
-\eta_i &amp; = \lambda_i - \lambda.
-\end{aligned}
+\]</span></p></li>
+<li><p>QTEs and DTEs conditional on some value of <span class="math inline">\(W_i\)</span>, defined in <a href="qte-dte-intro.html#eq-qte-dfn-cond" class="quarto-xref">Equation&nbsp;<span>18.3</span></a>: <span class="math display">\[
+\begin{align}
+  QTE(x_1, x_2, \tau|w) &amp; = Q_{Y^{x_2}|W}(\tau|w) - Q_{Y^{x_1}|W}(\tau|w), \\
+      DTE(x_1, x_2, y|w) &amp; = F_{Y^{x_2}|W}(y|w) - F_{Y^{x_1}|W}(y|w).
+\end{align}
+\]</span></p></li>
+</ul>
+<p>Observe that no new parameter is gained by conditioning on values of <span class="math inline">\(X_i\)</span> — the independence restriction in <a href="#eq-qte-rct" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> implies that <span class="math display">\[
+F_{Y^{x_1}|X}(\cdot|x_1) = F_{Y^{x_1}}(\cdot)
+\]</span> for any <span class="math inline">\((x_1, x_2)\)</span>. Hence the QTEs and DTEs of <a href="qte-dte-intro.html#eq-qte-dfn-cond-treat" class="quarto-xref">Equation&nbsp;<span>18.2</span></a> are equal to the unconditional QTEs and DTEs in <a href="qte-dte-intro.html#eq-qte-dfn-uncond" class="quarto-xref">Equation&nbsp;<span>18.1</span></a>.</p>
+</section>
+</section>
+<section id="identification" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="identification"><span class="header-section-number">19.3</span> Identification</h2>
+<p>For all parameters of interest, it is sufficient to identify the quantile or distribution functions of the potential outcomes.</p>
+<section id="unconditional-cdf-of-potential-outcomes" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="unconditional-cdf-of-potential-outcomes"><span class="header-section-number">19.3.1</span> Unconditional CDF of Potential Outcomes</h3>
+<p>We begin with the CDF <span class="math inline">\(F_{Y^x}(\cdot)\)</span> of <span class="math inline">\(Y^x_i\)</span>. To start, observe that we can use the independence assumption (<a href="#eq-qte-rct" class="quarto-xref"><span>19.1</span></a>) to write <span class="math display">\[
+    F_{Y^x}(y)  \equiv \E\left[ \I\curl{Y^x_i\leq y} \right] = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right].
+\]</span> Since <span class="math inline">\(Y^x_i\)</span> is independent from <span class="math inline">\(X_i\)</span>, we may freely condition on event involving <span class="math inline">\(X_i\)</span> without changing the expected value.</p>
+<p>Next, under the event <span class="math inline">\(\curl{X_i=x}\)</span> it holds that the realized outcome <span class="math inline">\(Y_i\)</span> is exactly <span class="math inline">\(Y^x_i\)</span>, allowing us to conclude that <span class="math display">\[
+\E\left[ \I\curl{Y^x_i\leq y} |X_i=x \right]= \E\left[ \I\curl{Y_i\leq y}|X_i=x \right] \equiv  F_{Y|X}(y|x),
+\]</span> where <span class="math inline">\(F_{Y|X}(y|x)\)</span> is the CDF of the realized outcome <span class="math inline">\(Y_i\)</span> in the subpopulation of units with <span class="math inline">\(X_i=x\)</span>.</p>
+<p>We conclude that, as long as there exist units with <span class="math inline">\(X_i=x\)</span> in population, the marginal CDF of <span class="math inline">\(Y^x_i\)</span> is identified as <span class="math display">\[
+F_{Y^x}(y) = F_{Y|X}(y|x).
 \]</span></p>
-<p>It is easy to check that <span class="math inline">\(\Delta Y_{it-1}\)</span> is still endogenous because it contains <span class="math inline">\(U_{it-1}\)</span>, which is correlated with the residual term. The same problematic term <span class="math inline">\(\lambda \E[U_{it-1}^2]\)</span> is present in <span class="math inline">\(\E[V_{it}\Delta Y_{it-1}]\)</span>.</p>
 </section>
-<section id="conditions-for-instruments" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</h3>
-<p>Can we find a suitable instrument for <span class="math inline">\(\Delta Y_{it-1}\)</span>? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: <span class="math display">\[
+<section id="unconditional-quantile-function-of-potential-outcomes" class="level3" data-number="19.3.2">
+<h3 data-number="19.3.2" class="anchored" data-anchor-id="unconditional-quantile-function-of-potential-outcomes"><span class="header-section-number">19.3.2</span> Unconditional Quantile Function of Potential Outcomes</h3>
+<p>In order to identify the quantiles <span class="math inline">\(Q_{Y^x}(\tau)\)</span> of potential outcomes, for each treatment value <span class="math inline">\(x\)</span>, we assume the CDF <span class="math inline">\(F_{Y^x}(\cdot)\)</span> is continuous and strictly increasing. Then the quantile function <span class="math inline">\(Q_{Y^x}(\tau)\)</span> is well-defined and uniquely characterized by the moment condition <span class="math display">\[
+  P\left(Y^x_i\leq  Q_{Y^x}(\tau)  \right) =     \tau  
+\]</span> or, in other words, that <span class="math display">\[
+\tau  =  \E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right]
+\]</span></p>
+<p>We can now again apply the same conditioning argument to the above moment to conclude that <span class="math display">\[
+\E\left[ \I\curl{Y^x_i\leq Q_{Y^x}(\tau)} \right] = \E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+\]</span></p>
+<p>Finally, we can again use that <span class="math inline">\(Y^x_i=Y_i\)</span> under <span class="math inline">\(X_i=x\)</span> to connect the above moment to observed variables: <span class="math display">\[
+\E\left[\I\curl{Y^x_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right] = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right].
+\]</span></p>
+<p>Combining the two extreme of the above chain of equalities, we obtain that <span class="math inline">\(Q_{Y^x}(\tau)\)</span> must satisfy the moment condition: <span class="math display">\[
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau) }  |X_i=x   \right]
+\]</span> At the same time, under our continuity and strict monotonicity assumptions we know that <span class="math inline">\(Q_Y(\tau)\)</span> (the <span class="math inline">\(\tau\)</span>th quantile of the <em>observed</em> outcome <span class="math inline">\(Y_i\)</span>) uniquely satisfies <span class="math display">\[
+\tau = \E\left[\I\curl{Y_i\leq Q_{Y}(\tau) }  |X_i=x   \right].
+\]</span></p>
+<p>We conclude that it must be the case that <span class="math display">\[
+     Q_{Y^x}(\tau) = Q_{Y|X}(\tau|x).
+\]</span> In other words, the <span class="math inline">\(\tau\)</span>th quantile of <span class="math inline">\(Y^x_i\)</span> is exactly the <span class="math inline">\(\tau\)</span>th quantile of the observed outcome <span class="math inline">\(Y_i\)</span> in the group with <span class="math inline">\(X_i=x\)</span>.</p>
+</section>
+<section id="cdf-and-quantiles-conditional-on-covariates" class="level3" data-number="19.3.3">
+<h3 data-number="19.3.3" class="anchored" data-anchor-id="cdf-and-quantiles-conditional-on-covariates"><span class="header-section-number">19.3.3</span> CDF and Quantiles Conditional on Covariates</h3>
+<p>Finally, we turn to identifying the conditional distribution function <span class="math inline">\(F_{Y^x|W}(y|w)\)</span> and conditional quantile function <span class="math inline">\(Q_{Y^x|W}(\tau|w)\)</span> that appear in the conditional QTE and DTE of <a href="qte-dte-intro.html#eq-qte-dfn-cond" class="quarto-xref">Equation&nbsp;<span>18.3</span></a>.</p>
+<p>The argument for conditional CDFs and quantiles mirrors that of the unconditional case and again relies on the independence restriction (<a href="#eq-qte-rct" class="quarto-xref"><span>19.1</span></a>), along with the independence condition (<a href="#eq-qte-rct-cov-tr" class="quarto-xref"><span>19.2</span></a>). For example, the identification argument for the CDF looks as follows: <span class="math display">\[
 \begin{aligned}
-    \E[Z_{it}\Delta Y_{it-1}] &amp;  \neq 0 ,\\
-    \E[Z_{it} V_{it}] &amp; = \E[ \eta_i Z_{it}\Delta Y_{it-1} ] + \E[Z_{it}U_{it}].
+F_{Y^x|W}(y|w) &amp; = \E\left[ \I\curl{Y^x_i\leq y}|W_i=w \right] \\
+&amp; = \E\left[ \I\curl{Y^x_i\leq y} |X_i=x, W_i=w \right]\\
+&amp; = \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i=w \right]\\
+&amp; = F_{Y|X, W}(y|x, w),
 \end{aligned}
-\]</span> Note that a new <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\)</span> term now appears in the exogeneity condition.</p>
-</section>
-<section id="endogeneity-of-lagged-outcomes" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</h3>
-<p>Unlike in the homogeneous case, <span class="math inline">\(Y_{it-2}\)</span> is not a valid instrument anymore. We show that <span class="math inline">\(Y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
-<ul>
-<li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
-<li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
-Y_{it} = \dfrac{A_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k U_{it-k}.
-\]</span></li>
-<li><span class="math inline">\(\curl{U_{it}}_t\)</span> is an IID sequence with finite second moments, and <span class="math inline">\(U_{it}\)</span> is independent of <span class="math inline">\((A_i, \lambda_i)\)</span>.</li>
-</ul>
-<p>Under the above assumptions the first expectation in <span class="math inline">\(\E[Y_{it-2} V_{it}]\)</span> can be evaluated as follows: <span class="math display">\[
-\begin{aligned}
-&amp; \E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]
-\\
-% &amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
-&amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} U_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} U^2_{i,t-k-2}\right)  \right)\right] \\
-&amp; = \E[U_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
-\end{aligned}
-\]</span> In general, there is no reason to expect the above expectation to be zero if <span class="math inline">\(\eta_i\)</span> is not zero. The second term involves a sum of even-order moments of <span class="math inline">\(\eta_i\)</span> (equivalently, <span class="math inline">\(\lambda_i)\)</span>; such a sum would in general be non-zero.</p>
-<p>We conclude that <span class="math display">\[
-\E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]\neq 0,
-\]</span> and so in general that <span class="math display">\[
-\E[Y_{it-2} V_{it}]\neq 0.
-\]</span> In other words, <span class="math inline">\(Y_{it-2}\)</span> <em>is not a valid instrument under the heterogeneous mode</em>l (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(Y_{it}\)</span>.</p>
-<p>More broadly, the problem of finding a valid instrument <span class="math inline">\(Z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(Z_{it}\)</span> be correlated with <span class="math inline">\(\Delta Y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(Z_{it}\)</span> is also correlated with <span class="math inline">\(\eta_i \Delta Y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta Y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
-<p>We conclude that the IV estimators of the previous section do not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
-</section>
-<section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
-<p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
-<p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((A_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(Y_{it-1}\)</span> through <span class="math display">\[
-Y_{it-1} = A_i + \lambda_i Y_{it-2} + U_{it-2}.
-\]</span> As a result, <span class="math inline">\(Y_{it-1}\)</span> and <span class="math inline">\((A_i, \lambda_i)\)</span> cannot be (mean) independent by construction.</p>
+\]</span> where <span class="math inline">\(F_{Y|X, W}(y|x, w)\)</span> is the CDF of the realized outcome <span class="math inline">\(Y_i\)</span> in the subpopulation of units with <span class="math inline">\(X_i=x\)</span> and <span class="math inline">\(W_i=w\)</span>. As before, the group of units with <span class="math inline">\(X_i=x\)</span> identifies the distribution of potential outcomes under <span class="math inline">\(x\)</span>. The argument for the quantiles of <span class="math inline">\(Y^x_i\)</span> is entirely analogous, and leads to the identifying expression <span class="math display">\[
+     Q_{Y^x|W}(\tau|w) = Q_{Y|X, W}(\tau|x, w).
+\]</span></p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we study a simple estimator for <span class="math inline">\(\E[\bbeta_i]\)</span> that is robust both to coefficient heterogeneity and dynamics.</p>
+<p>In the next section, we continue our discussion of identification and consider identification under the (conditional) unconfoundedness assumption that <span class="math inline">\(Y_i^x\independent X_i|W_i\)</span>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Chernozhukov2005IVModelQuantile" class="csl-entry" role="listitem">
+Chernozhukov, Victor, and Christian Hansen. 2005. <span>“An <span>IV Model</span> of <span>Quantile Treatment Effects</span>.”</span> <em>Econometrica</em> 73 (1): 245–61. <a href="https://doi.org/10.1111/j.1468-0262.2005.00570.x">https://doi.org/10.1111/j.1468-0262.2005.00570.x</a>.
+</div>
+<div id="ref-Hernan2024CausalInferenceWhat" class="csl-entry" role="listitem">
+Hernan, Miguel A., and James M. Robins. 2024. <em>Causal <span>Inference</span>: <span>What If</span></em>. First edition. Boca Raton: <span>Taylor and Francis</span>.
+</div>
+<div id="ref-Koenker2017HandbookQuantileRegression" class="csl-entry" role="listitem">
+Koenker, Roger, Victor Chernozhukov, Xuming He, and Limin Peng, eds. 2017. <em>Handbook of <span>Quantile Regression</span></em>. 1st ed. <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781315120256">https://doi.org/10.1201/9781315120256</a>.
 </div>
 </div>
 </section>
@@ -1389,13 +1440,13 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span>
+      <a href="../qte-dte/qte-dte-intro.html" class="pagination-link" aria-label="Defining Quantile and Distributional Treatment Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Defining Quantile and Distributional Treatment Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/dte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Distributional Treatment Effects under Unconfoundedness</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1404,4 +1455,4 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/qte-dte-id-rct.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

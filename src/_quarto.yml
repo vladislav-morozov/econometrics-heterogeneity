@@ -12,8 +12,8 @@ diagram:
       execpath: pdflatex
       header-includes:
         - '\usepackage{adjustbox}'
-        - '\usetikzlibrary{arrows,calc,fit,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathmorphing,patterns,positioning,swigs}' 
-
+        - '\usepackage{pgfplots}'
+        - '\usetikzlibrary{arrows,arrows.meta,calc,fit,decorations.shapes,shapes.arrows,shapes.geometric,shapes.multipart,decorations.pathreplacing,decorations.pathmorphing,patterns,positioning,swigs}' 
 book:
   title: "Econometrics with Unobserved Heterogeneity"
   author: "Vladislav Morozov"
@@ -53,7 +53,13 @@ book:
         - nonparametric/nonparametric-location-scale.qmd
         - nonparametric/nonparametric-cre.qmd
         - nonparametric/nonparametric-variance.qmd
-    - part: "Quantile and Distributional Methods"
+    - part: "Quantile and Distributional Treatment Effects"
+      chapters: 
+        - qte-dte/qte-dte-intro.qmd
+        - qte-dte/qte-dte-id-rct.qmd
+        - qte-dte/dte-id-conf.qmd
+        - qte-dte/qte-id-conf.qmd
+
     - references/references.qmd
 
 bibliography: references/eco.bib
