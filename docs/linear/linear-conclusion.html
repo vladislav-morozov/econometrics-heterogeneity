@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.10.11">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>10&nbsp; Conclusion: Linear Models – Econometrics with Unobserved Heterogeneity</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -25,7 +28,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,12 +62,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-20723c260624149940944109bbec0d15.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-42b6b074c9a9b52e1c5988a113e9f873.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5563d1243c07a021538a2a9893f7bae8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-91ca8f509bc98922f8d74911e9fa77a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dc7cdee54eafef3fc380b5b865ca0bbd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,329 +96,167 @@ div.csl-indent {
   }
 }</script>
  
-
 <!-- This is what works with Quarto and MathJax 3+ -->
-
 <script>
-
   MathJax = {
-
     tex: {
-
       tags: 'ams',  // should be 'ams', 'none', or 'all'
-
       macros: {
-
         vect: ["\\mathbf{#1}", 1],
-
         mat: ["\\mathbf{#1}", 1], 
 
-
-
         bA: "\\boldsymbol{A}",
-
         bB: "\\boldsymbol{B}",
-
         bC: "\\boldsymbol{C}",
-
         bD: "\\boldsymbol{D}",
-
         bE: "\\boldsymbol{E}",
-
         bF: "\\boldsymbol{F}",
-
         bG: "\\boldsymbol{G}",
-
         bH: "\\boldsymbol{H}",
-
         bI: "\\boldsymbol{I}",
-
         bJ: "\\boldsymbol{J}",
-
         bK: "\\boldsymbol{K}",
-
         bL: "\\boldsymbol{L}",
-
         bM: "\\boldsymbol{M}",
-
         bN: "\\boldsymbol{N}",
-
         bP: "\\boldsymbol{P}",
-
         bQ: "\\boldsymbol{Q}",
-
         bR: "\\boldsymbol{R}",
-
         bS: "\\boldsymbol{S}",
-
         bT: "\\boldsymbol{T}",
-
         bU: "\\boldsymbol{U}",
-
         bV: "\\boldsymbol{V}",
-
         bW: "\\boldsymbol{W}",
-
         bX: "\\boldsymbol{X}",
-
         bY: "\\boldsymbol{Y}",
-
         bZ: "\\boldsymbol{Z}",
-
         ba: "\\boldsymbol{a}",
-
         bb: "\\boldsymbol{b}",
-
         bc: "\\boldsymbol{c}",
-
         bd: "\\boldsymbol{d}",
-
         be: "\\boldsymbol{e}",
-
         bg: "\\boldsymbol{g}",
-
         bh: "\\boldsymbol{h}",
-
         bi: "\\boldsymbol{\\imath}",
-
         bm: "\\boldsymbol{m}",
-
         bp: "\\boldsymbol{p}",
-
         bq: "\\boldsymbol{q}",
-
         br: "\\boldsymbol{r}",
-
         bs: "\\boldsymbol{s}",
-
         bt: "\\boldsymbol{t}",
-
         bu: "\\boldsymbol{u}",
-
         bv: "\\boldsymbol{v}",
-
         bw: "\\boldsymbol{w}",
-
         bx: "\\boldsymbol{x}",
-
         by: "\\boldsymbol{y}",
-
         bz: "\\boldsymbol{z}",
 
-
-
         Acal: "\\mathcal{A}",
-
         Bcal: "\\mathcal{B}",
-
         Ccal: "\\mathcal{C}",
-
         Dcal: "\\mathcal{D}",
-
         Ecal: "\\mathcal{E}",
-
         Fcal: "\\mathcal{F}",
-
         Gcal: "\\mathcal{G}",
-
         Hcal: "\\mathcal{H}",
-
         Ical: "\\mathcal{I}",
-
         Jcal: "\\mathcal{J}",
-
         Kcal: "\\mathcal{K}",
-
         Lcal: "\\mathcal{L}",
-
         Mcal: "\\mathcal{M}",
-
         Ncal: "\\mathcal{N}",
-
         Ocal: "\\mathcal{O}",
-
         Pcal: "\\mathcal{P}",
-
         Qcal: "\\mathcal{Q}",
-
         Rcal: "\\mathcal{R}",
-
         Scal: "\\mathcal{S}",
-
         Tcal: "\\mathcal{T}",
-
         Ucal: "\\mathcal{U}",
-
         Vcal: "\\mathcal{V}",
-
         Wcal: "\\mathcal{W}",
-
         Xcal: "\\mathcal{X}",
-
         Ycal: "\\mathcal{Y}",
-
         Zcal: "\\mathcal{Z}",
 
-
-
         A: "\\mathbb{A}",
-
         B: "\\mathbb{B}",
-
         C: "\\mathbb{C}",
-
         D: "\\mathbb{D}",
-
         E: "\\mathbb{E}",
-
         F: "\\mathbb{F}",
-
         G: "\\mathbb{G}",
-
         H: "\\mathbb{H}",
-
         I: "\\mathbb{I}",
-
         J: "\\mathbb{J}",
-
         K: "\\mathbb{K}",
-
         L: "\\mathbb{L}",
-
         M: "\\mathbb{M}",
-
         N: "\\mathbb{N}",
-
         O: "\\mathbb{O}",
-
         P: "\\mathbb{P}",
-
         Q: "\\mathbb{Q}",
-
         R: "\\mathbb{R}",
-
         S: "\\mathbb{S}",
-
         T: "\\mathbb{T}",
-
         U: "\\mathbb{U}",
-
         V: "\\mathbb{V}",
-
         W: "\\mathbb{W}",
-
         X: "\\mathbb{X}",
-
         Y: "\\mathbb{Y}",
-
         Z: "\\mathbb{Z}",
 
-
-
         bAlpha: "\\boldsymbol{\\Alpha}",
-
         bBeta: "\\boldsymbol{\\beta}",
-
         bDelta: "\\boldsymbol{\\delta}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bGamma: "\\boldsymbol{\\Gamma}",
-
         bLambda: "\\boldsymbol{\\Lambda}",
-
         bOmega: "\\boldsymbol{\\Omega}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bSigma: "\\boldsymbol{\\Sigma}",
-
         bTau: "\\boldsymbol{\\tau}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         bbeta: "\\boldsymbol{\\beta}",
-
         bdelta: "\\boldsymbol{\\delta}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
         btau: "\\boldsymbol{\\tau}",
-
         bxi: "\\boldsymbol{\\xi}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
                    
-
         curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
-
         floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
-
         ceil: ["\\left\\lceil#1\\right\\rceil", 1],
-
         abs: ["\\left\\lvert#1\\right\\rvert", 1],
-
         norm: ["\\left\\lVert#1\\right\\rVert", 1],
-
-
 
         independent: "\\mathrel{\\perp\\!\\!\\perp}",
 
-
-
         var: "\\mathrm{var}",
-
         diag: "\\mathrm{diag}",
-
         rank: "\\mathrm{rank}",
-
         vecc: "\\mathrm{vec}",
-
       }
-
     }
-
   };
-
 </script>
 
 
@@ -611,7 +451,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
+    <a href="https://vladislav-morozov.eu/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/tree/main/src/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -851,9 +691,9 @@ div.csl-indent {
 <p>We have barely scratched the surface of the literature on linear models with unobserved heterogeneity is extensive. If you are interested, here is a selection of some further results:</p>
 <ul>
 <li><strong>Further results in model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>)</strong>: For example, it is possible to identify the average effect even when the number of periods equals the number of covariates (<span class="citation" data-cites="Graham2012">Graham and Powell (<a href="../references/references.html#ref-Graham2012" role="doc-biblioref">2012</a>)</span>). Additionally, endogeneity can be permitted in the equation (<span class="citation" data-cites="Laage2019">Laage (<a href="../references/references.html#ref-Laage2019" role="doc-biblioref">2024</a>)</span>).</li>
-<li><strong>Time-varying coefficients</strong>: Models (<a href="linear-introduction.html#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) with time-varying heterogeneous coefficients have also received some recent attention, particularly in the “grouped fixed effect” literature. Notable papers include <span class="citation" data-cites="Bonhomme2015">Bonhomme and Manresa (<a href="../references/references.html#ref-Bonhomme2015" role="doc-biblioref">2015</a>)</span> and <span class="citation" data-cites="Lumsdaine2023EstimationPanelGroup">Lumsdaine, Okui, and Wang (<a href="../references/references.html#ref-Lumsdaine2023EstimationPanelGroup" role="doc-biblioref">2023</a>)</span> (also see <span class="citation" data-cites="Bonhomme2022DiscretizingUnobservedHeterogeneity">Bonhomme, Lamadon, and Manresa (<a href="../references/references.html#ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" role="doc-biblioref">2022</a>)</span>).</li>
+<li><strong>Time-varying coefficients</strong>: Models (<a href="linear-introduction.html#eq-panel_hetero" class="quarto-xref"><span>2.4</span></a>) with time-varying heterogeneous coefficients have also received some recent attention, particularly in the “grouped fixed effect” literature. Notable papers include <span class="citation" data-cites="Bonhomme2015">Bonhomme and Manresa (<a href="../references/references.html#ref-Bonhomme2015" role="doc-biblioref">2015</a>)</span> and <span class="citation" data-cites="Lumsdaine2023EstimationPanelGroup">Lumsdaine et al. (<a href="../references/references.html#ref-Lumsdaine2023EstimationPanelGroup" role="doc-biblioref">2023</a>)</span> (also see <span class="citation" data-cites="Bonhomme2022DiscretizingUnobservedHeterogeneity">Bonhomme et al. (<a href="../references/references.html#ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" role="doc-biblioref">2022</a>)</span>).</li>
 <li><strong>Unobserved Factors</strong>: Models with unobserved factors allow for common shocks to impact individuals differently and provide a parsimonious way to include cross-sectional dependence. Key references include <span class="citation" data-cites="Pesaran2006">Pesaran (<a href="../references/references.html#ref-Pesaran2006" role="doc-biblioref">2006</a>)</span> and <span class="citation" data-cites="Bai2009">Bai (<a href="../references/references.html#ref-Bai2009" role="doc-biblioref">2009</a>)</span>.</li>
-<li><strong>Cross-Sectional Data</strong>: Some identification is possible with cross-sectional data, typically assuming that coefficients are independent from the covariates (a randomized experiment framework). See <span class="citation" data-cites="Hoderlein2010">Hoderlein, Klemelä, and Mammen (<a href="../references/references.html#ref-Hoderlein2010" role="doc-biblioref">2010</a>)</span> and <span class="citation" data-cites="Masten2018">Masten (<a href="../references/references.html#ref-Masten2018" role="doc-biblioref">2018</a>)</span> for identifying the full distribution of coefficients in single-equation and system of equations frameworks, respectively.</li>
+<li><strong>Cross-Sectional Data</strong>: Some identification is possible with cross-sectional data, typically assuming that coefficients are independent from the covariates (a randomized experiment framework). See <span class="citation" data-cites="Hoderlein2010">Hoderlein et al. (<a href="../references/references.html#ref-Hoderlein2010" role="doc-biblioref">2010</a>)</span> and <span class="citation" data-cites="Masten2018">Masten (<a href="../references/references.html#ref-Masten2018" role="doc-biblioref">2018</a>)</span> for identifying the full distribution of coefficients in single-equation and system of equations frameworks, respectively.</li>
 <li><strong>Deconvolution Applications</strong>: Deconvolution is a versatile technique with broad applications. For examples, see <span class="citation" data-cites="Bonhomme2009AssessingEqualizingForce">Bonhomme and Robin (<a href="../references/references.html#ref-Bonhomme2009AssessingEqualizingForce" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Bonhomme2010GeneralizedNonParametricDeconvolution">Bonhomme and Robin (<a href="../references/references.html#ref-Bonhomme2010GeneralizedNonParametricDeconvolution" role="doc-biblioref">2010</a>)</span>.</li>
 </ul>
 <hr>
@@ -862,7 +702,7 @@ div.csl-indent {
 <p>In the next section we will move beyond linearity and start our discussion of nonparametric models with unobserved heterogeneity.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Arellano2012" class="csl-entry" role="listitem">
 Arellano, Manuel, and Stéphane Bonhomme. 2012. <span>“<span class="nocase">Identifying distributional characteristics in random coefficients panel data models</span>.”</span> <em>Review of Economic Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045">https://doi.org/10.1093/restud/rdr045</a>.
 </div>
@@ -879,7 +719,7 @@ Bonhomme, Stéphane, and Elena Manresa. 2015. <span>“<span class="nocase">Grou
 Bonhomme, Stéphane, and Jean-Marc Robin. 2009. <span>“Assessing the <span>Equalizing Force</span> of <span>Mobility Using Short Panels</span>: <span>France</span>, 1990–2000.”</span> <em>The Review of Economic Studies</em> 76 (1): 63–92. <a href="https://doi.org/10.1111/j.1467-937X.2008.00521.x">https://doi.org/10.1111/j.1467-937X.2008.00521.x</a>.
 </div>
 <div id="ref-Bonhomme2010GeneralizedNonParametricDeconvolution" class="csl-entry" role="listitem">
-———. 2010. <span>“Generalized <span>Non-Parametric Deconvolution</span> with an <span>Application</span> to <span>Earnings Dynamics</span>.”</span> <em>Review of Economic Studies</em> 77 (2): 491–533. <a href="https://doi.org/10.1111/j.1467-937X.2009.00577.x">https://doi.org/10.1111/j.1467-937X.2009.00577.x</a>.
+Bonhomme, Stéphane, and Jean-Marc Robin. 2010. <span>“Generalized <span>Non-Parametric Deconvolution</span> with an <span>Application</span> to <span>Earnings Dynamics</span>.”</span> <em>Review of Economic Studies</em> 77 (2): 491–533. <a href="https://doi.org/10.1111/j.1467-937X.2009.00577.x">https://doi.org/10.1111/j.1467-937X.2009.00577.x</a>.
 </div>
 <div id="ref-Graham2012" class="csl-entry" role="listitem">
 Graham, Bryan S, and James L Powell. 2012. <span>“<span class="nocase">Identification and Estimation of Average Partial Effects in "Irregular" Correlated Random Coefficient Panel Data Models</span>.”</span> <em>Econometrica</em> 80 (5): 2105–52. <a href="https://doi.org/10.3982/ecta8220">https://doi.org/10.3982/ecta8220</a>.
@@ -894,7 +734,7 @@ Laage, Louise. 2024. <span>“A <span>Correlated Random Coefficient Panel Model 
 Lumsdaine, Robin L., Ryo Okui, and Wendun Wang. 2023. <span>“Estimation of <span>Panel Group Structure Models With Structural Breaks</span> in <span>Group Memberships</span> and <span>Coefficients</span>.”</span> <em>Journal of Econometrics</em> 233 (1): 45–65. <a href="https://doi.org/10.1016/j.jeconom.2022.01.001">https://doi.org/10.1016/j.jeconom.2022.01.001</a>.
 </div>
 <div id="ref-Masten2018" class="csl-entry" role="listitem">
-Masten, Matthew A. 2018. <span>“<span class="nocase">Random Coefficients on Endogenous Variables in Simultaneous Equations Models</span>.”</span> <em>Review of Economic Studies</em> 85 (2): 1193–1250. <a href="https://doi.org/10.1093/restud/rdx047">https://doi.org/10.1093/restud/rdx047</a>.
+Masten, Matthew A. 2018. <span>“<span class="nocase">Random Coefficients on Endogenous Variables in Simultaneous Equations Models</span>.”</span> <em>Review of Economic Studies</em> 85 (2): 1193–250. <a href="https://doi.org/10.1093/restud/rdx047">https://doi.org/10.1093/restud/rdx047</a>.
 </div>
 <div id="ref-Pesaran2006" class="csl-entry" role="listitem">
 Pesaran, M. Hashem. 2006. <span>“<span class="nocase">Estimation and Inference in Large Heterogeneous Panels with a Multifactor Error Structure</span>.”</span> <em>Econometrica</em> 74 (4): 967–1012. <a href="https://doi.org/10.1111/j.1468-0262.2006.00692.x">https://doi.org/10.1111/j.1468-0262.2006.00692.x</a>.
@@ -971,13 +811,14 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -992,7 +833,7 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/econometrics-heterogeneity\/");
+        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.eu\/econometrics-heterogeneity\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
