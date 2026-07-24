@@ -20,14 +20,14 @@ book:
   date: 03/03/2025
   date-format: "YYYY"
   favicon: themes/favicon.ico
-  site-url: https://vladislav-morozov.github.io/econometrics-heterogeneity/
+  site-url: https://vladislav-morozov.eu/econometrics-heterogeneity/
   repo-url: https://github.com/vladislav-morozov/econometrics-heterogeneity/
   repo-actions: [edit, issue]
   repo-subdir: "src" 
   sidebar:
     tools:
     - icon: person-arms-up
-      href: https://vladislav-morozov.github.io/ 
+      href: https://vladislav-morozov.eu/
     - icon: linkedin
       href: https://www.linkedin.com/in/vladislavvmorozov/
   chapters:

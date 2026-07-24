@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.10.11">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>References – Econometrics with Unobserved Heterogeneity</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -57,12 +60,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-20723c260624149940944109bbec0d15.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-42b6b074c9a9b52e1c5988a113e9f873.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5563d1243c07a021538a2a9893f7bae8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-91ca8f509bc98922f8d74911e9fa77a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dc7cdee54eafef3fc380b5b865ca0bbd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -91,329 +94,167 @@ div.csl-indent {
   }
 }</script>
  
-
 <!-- This is what works with Quarto and MathJax 3+ -->
-
 <script>
-
   MathJax = {
-
     tex: {
-
       tags: 'ams',  // should be 'ams', 'none', or 'all'
-
       macros: {
-
         vect: ["\\mathbf{#1}", 1],
-
         mat: ["\\mathbf{#1}", 1], 
 
-
-
         bA: "\\boldsymbol{A}",
-
         bB: "\\boldsymbol{B}",
-
         bC: "\\boldsymbol{C}",
-
         bD: "\\boldsymbol{D}",
-
         bE: "\\boldsymbol{E}",
-
         bF: "\\boldsymbol{F}",
-
         bG: "\\boldsymbol{G}",
-
         bH: "\\boldsymbol{H}",
-
         bI: "\\boldsymbol{I}",
-
         bJ: "\\boldsymbol{J}",
-
         bK: "\\boldsymbol{K}",
-
         bL: "\\boldsymbol{L}",
-
         bM: "\\boldsymbol{M}",
-
         bN: "\\boldsymbol{N}",
-
         bP: "\\boldsymbol{P}",
-
         bQ: "\\boldsymbol{Q}",
-
         bR: "\\boldsymbol{R}",
-
         bS: "\\boldsymbol{S}",
-
         bT: "\\boldsymbol{T}",
-
         bU: "\\boldsymbol{U}",
-
         bV: "\\boldsymbol{V}",
-
         bW: "\\boldsymbol{W}",
-
         bX: "\\boldsymbol{X}",
-
         bY: "\\boldsymbol{Y}",
-
         bZ: "\\boldsymbol{Z}",
-
         ba: "\\boldsymbol{a}",
-
         bb: "\\boldsymbol{b}",
-
         bc: "\\boldsymbol{c}",
-
         bd: "\\boldsymbol{d}",
-
         be: "\\boldsymbol{e}",
-
         bg: "\\boldsymbol{g}",
-
         bh: "\\boldsymbol{h}",
-
         bi: "\\boldsymbol{\\imath}",
-
         bm: "\\boldsymbol{m}",
-
         bp: "\\boldsymbol{p}",
-
         bq: "\\boldsymbol{q}",
-
         br: "\\boldsymbol{r}",
-
         bs: "\\boldsymbol{s}",
-
         bt: "\\boldsymbol{t}",
-
         bu: "\\boldsymbol{u}",
-
         bv: "\\boldsymbol{v}",
-
         bw: "\\boldsymbol{w}",
-
         bx: "\\boldsymbol{x}",
-
         by: "\\boldsymbol{y}",
-
         bz: "\\boldsymbol{z}",
 
-
-
         Acal: "\\mathcal{A}",
-
         Bcal: "\\mathcal{B}",
-
         Ccal: "\\mathcal{C}",
-
         Dcal: "\\mathcal{D}",
-
         Ecal: "\\mathcal{E}",
-
         Fcal: "\\mathcal{F}",
-
         Gcal: "\\mathcal{G}",
-
         Hcal: "\\mathcal{H}",
-
         Ical: "\\mathcal{I}",
-
         Jcal: "\\mathcal{J}",
-
         Kcal: "\\mathcal{K}",
-
         Lcal: "\\mathcal{L}",
-
         Mcal: "\\mathcal{M}",
-
         Ncal: "\\mathcal{N}",
-
         Ocal: "\\mathcal{O}",
-
         Pcal: "\\mathcal{P}",
-
         Qcal: "\\mathcal{Q}",
-
         Rcal: "\\mathcal{R}",
-
         Scal: "\\mathcal{S}",
-
         Tcal: "\\mathcal{T}",
-
         Ucal: "\\mathcal{U}",
-
         Vcal: "\\mathcal{V}",
-
         Wcal: "\\mathcal{W}",
-
         Xcal: "\\mathcal{X}",
-
         Ycal: "\\mathcal{Y}",
-
         Zcal: "\\mathcal{Z}",
 
-
-
         A: "\\mathbb{A}",
-
         B: "\\mathbb{B}",
-
         C: "\\mathbb{C}",
-
         D: "\\mathbb{D}",
-
         E: "\\mathbb{E}",
-
         F: "\\mathbb{F}",
-
         G: "\\mathbb{G}",
-
         H: "\\mathbb{H}",
-
         I: "\\mathbb{I}",
-
         J: "\\mathbb{J}",
-
         K: "\\mathbb{K}",
-
         L: "\\mathbb{L}",
-
         M: "\\mathbb{M}",
-
         N: "\\mathbb{N}",
-
         O: "\\mathbb{O}",
-
         P: "\\mathbb{P}",
-
         Q: "\\mathbb{Q}",
-
         R: "\\mathbb{R}",
-
         S: "\\mathbb{S}",
-
         T: "\\mathbb{T}",
-
         U: "\\mathbb{U}",
-
         V: "\\mathbb{V}",
-
         W: "\\mathbb{W}",
-
         X: "\\mathbb{X}",
-
         Y: "\\mathbb{Y}",
-
         Z: "\\mathbb{Z}",
 
-
-
         bAlpha: "\\boldsymbol{\\Alpha}",
-
         bBeta: "\\boldsymbol{\\beta}",
-
         bDelta: "\\boldsymbol{\\delta}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bGamma: "\\boldsymbol{\\Gamma}",
-
         bLambda: "\\boldsymbol{\\Lambda}",
-
         bOmega: "\\boldsymbol{\\Omega}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bSigma: "\\boldsymbol{\\Sigma}",
-
         bTau: "\\boldsymbol{\\tau}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         bbeta: "\\boldsymbol{\\beta}",
-
         bdelta: "\\boldsymbol{\\delta}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
         btau: "\\boldsymbol{\\tau}",
-
         bxi: "\\boldsymbol{\\xi}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
                    
-
         curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
-
         floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
-
         ceil: ["\\left\\lceil#1\\right\\rceil", 1],
-
         abs: ["\\left\\lvert#1\\right\\rvert", 1],
-
         norm: ["\\left\\lVert#1\\right\\rVert", 1],
-
-
 
         independent: "\\mathrel{\\perp\\!\\!\\perp}",
 
-
-
         var: "\\mathrm{var}",
-
         diag: "\\mathrm{diag}",
-
         rank: "\\mathrm{rank}",
-
         vecc: "\\mathrm{vec}",
-
       }
-
     }
-
   };
-
 </script>
 
 
@@ -605,7 +446,7 @@ div.csl-indent {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
+    <a href="https://vladislav-morozov.eu/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/tree/main/src/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -821,7 +662,7 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Ahn1995" class="csl-entry" role="listitem">
 Ahn, Seung Chan, and Peter Schmidt. 1995. <span>“<span class="nocase">Efficient Estimation of Models for Dynamic Panel
 Data</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 5–27. <a href="https://doi.org/10.1016/0304-4076(94)01641-C">https://doi.org/10.1016/0304-4076(94)01641-C</a>.
@@ -829,7 +670,7 @@ Data</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 5–27. <a href=
 <div id="ref-Altonji2005" class="csl-entry" role="listitem">
 Altonji, Joseph G., and Rosa L. Matzkin. 2005. <span>“<span class="nocase">Cross Section and Panel Data Estimators for Nonseparable
 Models with Endogenous Regerssors</span>.”</span> <em>Econometrica</em>
-73 (4): 1053–1102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
+73 (4): 1053–102. <a href="https://doi.org/10.1111/j.1468-0262.2005.00609.x">https://doi.org/10.1111/j.1468-0262.2005.00609.x</a>.
 </div>
 <div id="ref-Alvarez2003" class="csl-entry" role="listitem">
 Alvarez, Javier, and Manuel Arellano. 2003. <span>“<span class="nocase">The Time Series and Cross-Section Asymptotics of Dynamic
@@ -859,7 +700,7 @@ Studies</em> 79 (3): 987–1020. <a href="https://doi.org/10.1093/restud/rdr045"
 <div id="ref-Athey2017handbook" class="csl-entry" role="listitem">
 Athey, Susan, and G Imbens. 2017. <span>“<span class="nocase">The
 Econometrics of Randomized Experiments</span>.”</span> In <em>Handbook
-of Economic Field Experiments</em>, 1:73–140. North-Holland. <a href="https://doi.org/10.1016/bs.hefe.2016.10.003">https://doi.org/10.1016/bs.hefe.2016.10.003</a>.
+of Economic Field Experiments</em>, vol. 1. North-Holland. <a href="https://doi.org/10.1016/bs.hefe.2016.10.003">https://doi.org/10.1016/bs.hefe.2016.10.003</a>.
 </div>
 <div id="ref-Bai2009" class="csl-entry" role="listitem">
 Bai, Jushan. 2009. <span>“<span>Panel Data Models With Interactive Fixed
@@ -911,7 +752,7 @@ Semiparametric Model for Heterogeneous Panel Data with Fixed
 Effects.”</span> <em>Journal of Econometrics</em>, Heterogeneity in
 <span>Panel</span> <span>Data</span> and in <span>Nonparametric</span>
 <span>Analysis</span> in honor of <span>Professor</span>
-<span>Cheng</span> <span>Hsiao</span>, 188 (2): 327–45. <a href="https://doi.org/10.1016/j.jeconom.2015.03.003">https://doi.org/10.1016/j.jeconom.2015.03.003</a>.
+<span>Cheng</span> <span>Hsiao</span>, vol. 188 (2): 327–45. <a href="https://doi.org/10.1016/j.jeconom.2015.03.003">https://doi.org/10.1016/j.jeconom.2015.03.003</a>.
 </div>
 <div id="ref-Bonhomme2022DiscretizingUnobservedHeterogeneity" class="csl-entry" role="listitem">
 Bonhomme, Stéphane, Thibaut Lamadon, and Elena Manresa. 2022.
@@ -929,10 +770,10 @@ Panels</span>: <span>France</span>, 1990–2000.”</span> <em>The Review of
 Economic Studies</em> 76 (1): 63–92. <a href="https://doi.org/10.1111/j.1467-937X.2008.00521.x">https://doi.org/10.1111/j.1467-937X.2008.00521.x</a>.
 </div>
 <div id="ref-Bonhomme2010GeneralizedNonParametricDeconvolution" class="csl-entry" role="listitem">
-———. 2010. <span>“Generalized <span>Non-Parametric Deconvolution</span>
-with an <span>Application</span> to <span>Earnings
-Dynamics</span>.”</span> <em>Review of Economic Studies</em> 77 (2):
-491–533. <a href="https://doi.org/10.1111/j.1467-937X.2009.00577.x">https://doi.org/10.1111/j.1467-937X.2009.00577.x</a>.
+Bonhomme, Stéphane, and Jean-Marc Robin. 2010. <span>“Generalized
+<span>Non-Parametric Deconvolution</span> with an
+<span>Application</span> to <span>Earnings Dynamics</span>.”</span>
+<em>Review of Economic Studies</em> 77 (2): 491–533. <a href="https://doi.org/10.1111/j.1467-937X.2009.00577.x">https://doi.org/10.1111/j.1467-937X.2009.00577.x</a>.
 </div>
 <div id="ref-Breitung2021" class="csl-entry" role="listitem">
 Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimation of Heterogeneous Panels with Systematic Slope
@@ -963,7 +804,7 @@ Econometrics</em> 18 (1): 5–46. <a href="https://doi.org/10.1016/0304-4076(82)
 <div id="ref-Chen2003" class="csl-entry" role="listitem">
 Chen, Xiaohong, and Chunrong Ai. 2003. <span>“<span class="nocase">Efficient Estimation of Models with Conditional Moment
 Restrictions Containing Unknown Functions</span>.”</span>
-<em>Econometrica</em> 71 (6): 1795–1843.
+<em>Econometrica</em> 71 (6): 1795–843.
 </div>
 <div id="ref-Chernozhukov2013" class="csl-entry" role="listitem">
 Chernozhukov, Victor, Iván Fernández-Val, Jinyong Hahn, and Whitney K.
@@ -993,8 +834,8 @@ Instrumental Variable Models</span>.”</span> <em>Econometrica</em> 85
 (3): 959–89. <a href="https://doi.org/10.3982/ecta12223">https://doi.org/10.3982/ecta12223</a>.
 </div>
 <div id="ref-Chesher2020" class="csl-entry" role="listitem">
-———. 2020. <em><span class="nocase">Generalized Instrumental Variable
-Models, Methods, and Applications</span></em>. Vol. 7. Elsevier B.V. <a href="https://doi.org/10.1016/bs.hoe.2019.11.001">https://doi.org/10.1016/bs.hoe.2019.11.001</a>.
+Chesher, Andrew, and Adam M. Rosen. 2020. <em><span class="nocase">Generalized Instrumental Variable Models, Methods, and
+Applications</span></em>. Vol. 7. Elsevier B.V. <a href="https://doi.org/10.1016/bs.hoe.2019.11.001">https://doi.org/10.1016/bs.hoe.2019.11.001</a>.
 </div>
 <div id="ref-Combes2012b" class="csl-entry" role="listitem">
 Combes, Pierre Philippe, Gilles Duranton, Laurent Gobillon, Diego Puga,
@@ -1026,9 +867,9 @@ Durrett, Rick. 2019. <em><span class="nocase">Probability: Theory and
 Examples</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/9781108591034">https://doi.org/10.1017/9781108591034</a>.
 </div>
 <div id="ref-Evdokimov2010" class="csl-entry" role="listitem">
-Evdokimov, Kirill. 2010. <span>“<span class="nocase">Identification and
+Evdokimov, Kirill. 2010. <em><span class="nocase">Identification and
 Estimation of a Nonparametric Panel Data Model with Unobserved
-Heterogeneity</span>.”</span>
+Heterogeneity</span></em>.
 </div>
 <div id="ref-Evdokimov2012" class="csl-entry" role="listitem">
 Evdokimov, Kirill, and Halbert White. 2012. <span>“<span class="nocase">Some Extensions of a Lemma of Kotlarski</span>.”</span>
@@ -1083,13 +924,13 @@ Henderson, Daniel J., and Alexandra Soberon. 2024. <span>“Nonparametric
 <span>Models</span> with <span>Fixed</span>
 <span>Effects</span>.”</span> In <em>The <span>Econometrics</span> of
 <span>Multi</span>-Dimensional <span>Panels</span>: <span>Theory</span>
-and <span>Applications</span></em>, edited by Laszlo Matyas, 285–323.
-Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-49849-7_9">https://doi.org/10.1007/978-3-031-49849-7_9</a>.
+and <span>Applications</span></em>, edited by Laszlo Matyas. Springer
+International Publishing. <a href="https://doi.org/10.1007/978-3-031-49849-7_9">https://doi.org/10.1007/978-3-031-49849-7_9</a>.
 </div>
 <div id="ref-Hernan2024CausalInferenceWhat" class="csl-entry" role="listitem">
 Hernan, Miguel A., and James M. Robins. 2024. <em>Causal
-<span>Inference</span>: <span>What If</span></em>. First edition. Boca
-Raton: <span>Taylor and Francis</span>.
+<span>Inference</span>: <span>What If</span></em>. First edition.
+<span>Taylor and Francis</span>.
 </div>
 <div id="ref-Hoderlein2010" class="csl-entry" role="listitem">
 Hoderlein, Stefan, Jussi Klemelä, and Enno Mammen. 2010. <span>“<span class="nocase">Analyzing the Random Coefficient Model
@@ -1110,17 +951,17 @@ Econometrics</em> 168 (2): 300–314. <a href="https://doi.org/10.1016/j.jeconom
 Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999.
 <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients
 in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels
-and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
+and Limited Dependent Variable Models,</em>. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
 </div>
 <div id="ref-Huntington-Klein2025EffectIntroductionResearch" class="csl-entry" role="listitem">
 Huntington-Klein, Nick. 2025. <em>The <span>Effect</span>: <span>An
 Introduction</span> to <span>Research Design</span> and
-<span>Causality</span></em>. S.l.: <span>Chapman and Hall/CRC</span>.
+<span>Causality</span></em>. <span>Chapman and Hall/CRC</span>.
 </div>
 <div id="ref-Imbens2009" class="csl-entry" role="listitem">
 Imbens, Guido W., and Whitney K. Newey. 2009. <span>“<span class="nocase">Identification and Estimation of Triangular Simultaneous
 Equations Models Without Additivity</span>.”</span>
-<em>Econometrica</em> 77 (5): 1481–1512. <a href="https://doi.org/10.3982/ecta7108">https://doi.org/10.3982/ecta7108</a>.
+<em>Econometrica</em> 77 (5): 1481–512. <a href="https://doi.org/10.3982/ecta7108">https://doi.org/10.3982/ecta7108</a>.
 </div>
 <div id="ref-Kato2021RobustInferenceDeconvolutiona" class="csl-entry" role="listitem">
 Kato, Kengo, Yuya Sasaki, and Takuya Ura. 2021. <span>“Robust
@@ -1153,8 +994,8 @@ Lee, Jungyoon, and Peter M. Robinson. 2015. <span>“Panel Nonparametric
 Regression with Fixed Effects.”</span> <em>Journal of Econometrics</em>,
 Heterogeneity in <span>Panel</span> <span>Data</span> and in
 <span>Nonparametric</span> <span>Analysis</span> in honor of
-<span>Professor</span> <span>Cheng</span> <span>Hsiao</span>, 188 (2):
-346–62. <a href="https://doi.org/10.1016/j.jeconom.2015.03.004">https://doi.org/10.1016/j.jeconom.2015.03.004</a>.
+<span>Professor</span> <span>Cheng</span> <span>Hsiao</span>, vol. 188
+(2): 346–62. <a href="https://doi.org/10.1016/j.jeconom.2015.03.004">https://doi.org/10.1016/j.jeconom.2015.03.004</a>.
 </div>
 <div id="ref-Lewbel2022" class="csl-entry" role="listitem">
 Lewbel, Arthur. 2022. <span>“<span class="nocase">Kotlarski with a
@@ -1208,14 +1049,14 @@ Rates</span>.”</span> <em>Journal of Time Series Analysis</em> 17 (6):
 571–99. <a href="https://doi.org/10.1111/j.1467-9892.1996.tb00294.x">https://doi.org/10.1111/j.1467-9892.1996.tb00294.x</a>.
 </div>
 <div id="ref-Masry1996b" class="csl-entry" role="listitem">
-———. 1996b. <span>“<span class="nocase">Multivariate Regression
+Masry, Elias. 1996b. <span>“<span class="nocase">Multivariate Regression
 Estimation: Local Polynomial Fitting for Time Series</span>.”</span>
 <em>Stochastic Processes and Their Applications</em> 65 (1): 3575–81. <a href="https://doi.org/10.1016/S0304-4149(96)00095-6">https://doi.org/10.1016/S0304-4149(96)00095-6</a>.
 </div>
 <div id="ref-Masten2018" class="csl-entry" role="listitem">
 Masten, Matthew A. 2018. <span>“<span class="nocase">Random Coefficients
 on Endogenous Variables in Simultaneous Equations Models</span>.”</span>
-<em>Review of Economic Studies</em> 85 (2): 1193–1250. <a href="https://doi.org/10.1093/restud/rdx047">https://doi.org/10.1093/restud/rdx047</a>.
+<em>Review of Economic Studies</em> 85 (2): 1193–250. <a href="https://doi.org/10.1093/restud/rdx047">https://doi.org/10.1093/restud/rdx047</a>.
 </div>
 <div id="ref-Matzkin2003" class="csl-entry" role="listitem">
 Matzkin, Rosa L. 2003. <span>“<span class="nocase">Nonparametric
@@ -1223,15 +1064,15 @@ Estimation of Nonadditive Random Functions</span>.”</span>
 <em>Econometrica</em> 71 (5): 1339–75. <a href="https://doi.org/10.1111/1468-0262.00452">https://doi.org/10.1111/1468-0262.00452</a>.
 </div>
 <div id="ref-Matzkin2007" class="csl-entry" role="listitem">
-———. 2007. <span>“<span class="nocase">Nonparametric
+Matzkin, Rosa L. 2007. <span>“<span class="nocase">Nonparametric
 identification</span>.”</span> In <em>Handbook of Econometrics, Vol.
 6B</em>, edited by James J Heckman and Edward E B T - Handbook of
-Econometrics Leamer, 6:5307–68. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+Econometrics Leamer, vol. 6. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
 </div>
 <div id="ref-Morozov2023jmp" class="csl-entry" role="listitem">
 Morozov, Vladislav. 2023. <span>“<span class="nocase">Estimating the
 Moments and the Distribution of Heterogeneous Marginal Effects Using
-Panel Data</span>.”</span>
+Panel Data</span>.”</span> Unpublished manuscript.
 </div>
 <div id="ref-Mundlak1961EmpiricalProductionFunction" class="csl-entry" role="listitem">
 Mundlak, Yair. 1961. <span>“Empirical <span>Production Function
@@ -1250,7 +1091,7 @@ Effects</span>.”</span> <em>Econometrica</em> 49 (6): 1417–26.
 <div id="ref-Pesaran1996" class="csl-entry" role="listitem">
 Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous
 Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>,
-edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
+edited by L. Matyas and P. Sevestre. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
 </div>
 <div id="ref-Pesaran2006" class="csl-entry" role="listitem">
 Pesaran, M. Hashem. 2006. <span>“<span class="nocase">Estimation and
@@ -1273,8 +1114,8 @@ Effects in the Presence of Covariates</span>.”</span> <em>Review of
 Economics and Statistics</em> 102 (5): 994–1005. <a href="https://doi.org/10.1162/rest_a_00858">https://doi.org/10.1162/rest_a_00858</a>.
 </div>
 <div id="ref-Sasaki2021" class="csl-entry" role="listitem">
-Sasaki, Yuya, and Takuya Ura. 2021. <span>“<span class="nocase">Slow
-Movers in Panel Data</span>,”</span> 1–40. <a href="https://arxiv.org/abs/2110.12041">https://arxiv.org/abs/2110.12041</a>.
+Sasaki, Yuya, and Takuya Ura. 2021. <em><span class="nocase">Slow Movers
+in Panel Data</span></em>. 1–40. <a href="https://arxiv.org/abs/2110.12041">https://arxiv.org/abs/2110.12041</a>.
 </div>
 <div id="ref-Schennach2016RecentAdvancesMeasurement" class="csl-entry" role="listitem">
 Schennach, Susanne M. 2016. <span>“Recent <span>Advances</span> in the
@@ -1304,10 +1145,10 @@ Coefficient Model</span>.”</span> <em>Econometric Theory</em> 19:
 411–13. <a href="https://doi.org/10+10170S0266466603002081">https://doi.org/10+10170S0266466603002081</a>.
 </div>
 <div id="ref-Wooldridge2005" class="csl-entry" role="listitem">
-———. 2005. <span>“<span class="nocase">Fixed-effects and related
-estimators for correlated random-coefficient and treatment-effect panel
-data models</span>.��</span> <em>The Review of Economics and
-Statistics</em> 87 (May): 385–90.
+Wooldridge, Jeffrey M. 2005. <span>“<span class="nocase">Fixed-effects
+and related estimators for correlated random-coefficient and
+treatment-effect panel data models</span>.”</span> <em>The Review of
+Economics and Statistics</em> 87 (May): 385–90.
 </div>
 </div>
 
@@ -1378,13 +1219,14 @@ Statistics</em> 87 (May): 385–90.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1399,7 +1241,7 @@ Statistics</em> 87 (May): 385–90.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/econometrics-heterogeneity\/");
+        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.eu\/econometrics-heterogeneity\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

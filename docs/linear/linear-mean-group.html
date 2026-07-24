@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.10.11">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>6&nbsp; Mean Group: Robust Estimator for Average Coefficients – Econometrics with Unobserved Heterogeneity</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -25,7 +28,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,12 +62,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-20723c260624149940944109bbec0d15.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-42b6b074c9a9b52e1c5988a113e9f873.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-5563d1243c07a021538a2a9893f7bae8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-91ca8f509bc98922f8d74911e9fa77a4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dc7cdee54eafef3fc380b5b865ca0bbd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,333 +96,171 @@ div.csl-indent {
   }
 }</script>
  
-
 <!-- This is what works with Quarto and MathJax 3+ -->
-
 <script>
-
   MathJax = {
-
     tex: {
-
       tags: 'ams',  // should be 'ams', 'none', or 'all'
-
       macros: {
-
         vect: ["\\mathbf{#1}", 1],
-
         mat: ["\\mathbf{#1}", 1], 
 
-
-
         bA: "\\boldsymbol{A}",
-
         bB: "\\boldsymbol{B}",
-
         bC: "\\boldsymbol{C}",
-
         bD: "\\boldsymbol{D}",
-
         bE: "\\boldsymbol{E}",
-
         bF: "\\boldsymbol{F}",
-
         bG: "\\boldsymbol{G}",
-
         bH: "\\boldsymbol{H}",
-
         bI: "\\boldsymbol{I}",
-
         bJ: "\\boldsymbol{J}",
-
         bK: "\\boldsymbol{K}",
-
         bL: "\\boldsymbol{L}",
-
         bM: "\\boldsymbol{M}",
-
         bN: "\\boldsymbol{N}",
-
         bP: "\\boldsymbol{P}",
-
         bQ: "\\boldsymbol{Q}",
-
         bR: "\\boldsymbol{R}",
-
         bS: "\\boldsymbol{S}",
-
         bT: "\\boldsymbol{T}",
-
         bU: "\\boldsymbol{U}",
-
         bV: "\\boldsymbol{V}",
-
         bW: "\\boldsymbol{W}",
-
         bX: "\\boldsymbol{X}",
-
         bY: "\\boldsymbol{Y}",
-
         bZ: "\\boldsymbol{Z}",
-
         ba: "\\boldsymbol{a}",
-
         bb: "\\boldsymbol{b}",
-
         bc: "\\boldsymbol{c}",
-
         bd: "\\boldsymbol{d}",
-
         be: "\\boldsymbol{e}",
-
         bg: "\\boldsymbol{g}",
-
         bh: "\\boldsymbol{h}",
-
         bi: "\\boldsymbol{\\imath}",
-
         bm: "\\boldsymbol{m}",
-
         bp: "\\boldsymbol{p}",
-
         bq: "\\boldsymbol{q}",
-
         br: "\\boldsymbol{r}",
-
         bs: "\\boldsymbol{s}",
-
         bt: "\\boldsymbol{t}",
-
         bu: "\\boldsymbol{u}",
-
         bv: "\\boldsymbol{v}",
-
         bw: "\\boldsymbol{w}",
-
         bx: "\\boldsymbol{x}",
-
         by: "\\boldsymbol{y}",
-
         bz: "\\boldsymbol{z}",
 
-
-
         Acal: "\\mathcal{A}",
-
         Bcal: "\\mathcal{B}",
-
         Ccal: "\\mathcal{C}",
-
         Dcal: "\\mathcal{D}",
-
         Ecal: "\\mathcal{E}",
-
         Fcal: "\\mathcal{F}",
-
         Gcal: "\\mathcal{G}",
-
         Hcal: "\\mathcal{H}",
-
         Ical: "\\mathcal{I}",
-
         Jcal: "\\mathcal{J}",
-
         Kcal: "\\mathcal{K}",
-
         Lcal: "\\mathcal{L}",
-
         Mcal: "\\mathcal{M}",
-
         Ncal: "\\mathcal{N}",
-
         Ocal: "\\mathcal{O}",
-
         Pcal: "\\mathcal{P}",
-
         Qcal: "\\mathcal{Q}",
-
         Rcal: "\\mathcal{R}",
-
         Scal: "\\mathcal{S}",
-
         Tcal: "\\mathcal{T}",
-
         Ucal: "\\mathcal{U}",
-
         Vcal: "\\mathcal{V}",
-
         Wcal: "\\mathcal{W}",
-
         Xcal: "\\mathcal{X}",
-
         Ycal: "\\mathcal{Y}",
-
         Zcal: "\\mathcal{Z}",
 
-
-
         A: "\\mathbb{A}",
-
         B: "\\mathbb{B}",
-
         C: "\\mathbb{C}",
-
         D: "\\mathbb{D}",
-
         E: "\\mathbb{E}",
-
         F: "\\mathbb{F}",
-
         G: "\\mathbb{G}",
-
         H: "\\mathbb{H}",
-
         I: "\\mathbb{I}",
-
         J: "\\mathbb{J}",
-
         K: "\\mathbb{K}",
-
         L: "\\mathbb{L}",
-
         M: "\\mathbb{M}",
-
         N: "\\mathbb{N}",
-
         O: "\\mathbb{O}",
-
         P: "\\mathbb{P}",
-
         Q: "\\mathbb{Q}",
-
         R: "\\mathbb{R}",
-
         S: "\\mathbb{S}",
-
         T: "\\mathbb{T}",
-
         U: "\\mathbb{U}",
-
         V: "\\mathbb{V}",
-
         W: "\\mathbb{W}",
-
         X: "\\mathbb{X}",
-
         Y: "\\mathbb{Y}",
-
         Z: "\\mathbb{Z}",
 
-
-
         bAlpha: "\\boldsymbol{\\Alpha}",
-
         bBeta: "\\boldsymbol{\\beta}",
-
         bDelta: "\\boldsymbol{\\delta}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bGamma: "\\boldsymbol{\\Gamma}",
-
         bLambda: "\\boldsymbol{\\Lambda}",
-
         bOmega: "\\boldsymbol{\\Omega}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bSigma: "\\boldsymbol{\\Sigma}",
-
         bTau: "\\boldsymbol{\\tau}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         bbeta: "\\boldsymbol{\\beta}",
-
         bdelta: "\\boldsymbol{\\delta}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
         btau: "\\boldsymbol{\\tau}",
-
         bxi: "\\boldsymbol{\\xi}",
-
         bEta: "\\boldsymbol{\\eta}",
-
         bPhi: "\\boldsymbol{\\Phi}",
-
         bPi: "\\boldsymbol{\\Pi}",
-
         bPsi: "\\boldsymbol{\\Psi}",
-
         bXi: "\\boldsymbol{\\Xi}",
-
         blambda: "\\boldsymbol{\\lambda}",
-
         bmu: "\\boldsymbol{\\mu}",
-
         bphi: "\\boldsymbol{\\phi}",
-
         bpi: "\\boldsymbol{\\pi}",
-
         bpsi: "\\boldsymbol{\\psi}",
-
         brho: "\\boldsymbol{\\rho}",
-
         bsigma: "\\boldsymbol{\\sigma}",
-
                    
-
         curl: ["\\left\\lbrace#1\\right\\rbrace", 1],
-
         floor: ["\\left\\lfloor#1\\right\\rfloor", 1],
-
         ceil: ["\\left\\lceil#1\\right\\rceil", 1],
-
         abs: ["\\left\\lvert#1\\right\\rvert", 1],
-
         norm: ["\\left\\lVert#1\\right\\rVert", 1],
-
-
 
         independent: "\\mathrel{\\perp\\!\\!\\perp}",
 
-
-
         var: "\\mathrm{var}",
-
         diag: "\\mathrm{diag}",
-
         rank: "\\mathrm{rank}",
-
         vecc: "\\mathrm{vec}",
-
       }
-
     }
-
   };
-
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -433,7 +273,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -640,7 +480,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Econometrics with Unobserved Heterogeneity</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://vladislav-morozov.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
+    <a href="https://vladislav-morozov.eu/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-person-arms-up"></i></a>
     <a href="https://www.linkedin.com/in/vladislavvmorozov/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/tree/main/src/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -879,7 +719,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Summary and Learning Outcomes
+<span class="screen-reader-only">Note</span>Summary and Learning Outcomes
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -899,7 +739,7 @@ Summary and Learning Outcomes
 <li>In static models, can we estimate the average effect without imposing restrictions on the relationship between <span class="math inline">\(\bX_{it}\)</span> and <span class="math inline">\(\bbeta_i\)</span>?</li>
 <li>In dynamic models, can we estimate <span class="math inline">\(\E[\lambda_i]\)</span> at all?</li>
 </ul>
-<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">M. H. Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
+<p>As it turns out, there is indeed an estimator that is robust both to heterogeneity and dynamics. The <em>mean group</em> (MG) estimator, due to <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span>, permits estimating average coefficients in heterogeneous panels, regardless of the relationship between the coefficients and the covariates. It also does not require strict exogeneity and is compatible with dynamic models. However, this generality comes at a cost: the mean group estimator typically has stricter data requirements compared to non-robust alternatives.</p>
 <section id="model" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="model"><span class="header-section-number">6.1.1</span> Model</h3>
 <p>To formally define the mean group estimator, we return to the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>): <span class="math display">\[
@@ -922,7 +762,7 @@ Summary and Learning Outcomes
 <p>Under these assumptions, we can compute the OLS estimator of <span class="math inline">\(\bbeta_i\)</span> for each unit <span class="math inline">\(i\)</span> <span id="eq-linear-mg-individual-estimator"><span class="math display">\[
     \hat{\bbeta}_i = \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 \tag{6.2}\]</span></span></p>
-<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">M. H. Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
+<p>The mean group estimator <span class="citation" data-cites="Pesaran1995">(<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">Pesaran and Smith 1995</a>)</span> is defined as the average of unit-level estimators (<a href="#eq-linear-mg-individual-estimator" class="quarto-xref"><span>6.2</span></a>): <span class="math display">\[
     \hat{\bbeta}_{MG} = \dfrac{1}{N} \sum_{i=1}^N \hat{\bbeta}_i =  \dfrac{1}{N} \sum_{i=1}^N \left(\bX_i'\bX_i \right)^{-1}\bX_i'\bY_i.
 \]</span> In essence, the mean group estimator involves running separate regressions for each unit and averaging the resulting coefficients. The first step requires having enough observations per unit — at least one observation is available for each heterogeneous coefficient.</p>
 <div class="callout callout-style-simple callout-note no-icon">
@@ -931,7 +771,7 @@ Summary and Learning Outcomes
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bX_{it}U_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bX_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai, Marcellino, and Kapetanios 2023</a>)</span>.</p>
+<p>We introduce the MG estimator under the orthogonality condition (<a href="#eq-linear-mg-orthogonality" class="quarto-xref"><span>6.1</span></a>). However, it is also possible to introduce an analogous estimator if <span class="math inline">\(\E[\bX_{it}U_{it}]\neq 0\)</span>, but instruments for <span class="math inline">\(\bX_{it}\)</span> are available. In this case, suitable unit-level IV/2SLS estimators replace <span class="math inline">\(\hat{\bbeta}_i\)</span> <span class="citation" data-cites="Bai2023MeanGroupInstrumental">(e.g. <a href="../references/references.html#ref-Bai2023MeanGroupInstrumental" role="doc-biblioref">Bai et al. 2023</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -968,7 +808,7 @@ Summary and Learning Outcomes
 <p>We now have two estimation strategies per case. For the strictly exogenous case, we have within and mean group estimation. In the dynamic case, we can use dynamic panel IV estimators or again use the mean group estimators.</p>
 <p>The following tables summarize and contrast the requirements for each estimation strategy to consistently estimate <span class="math inline">\(\E[\bbeta_i]\)</span>:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Strict exogeneity</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Dynamic model with <span class="math inline">\(k\)</span> lags</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
@@ -1041,7 +881,7 @@ Summary and Learning Outcomes
 </section>
 <section id="efficiency" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="efficiency"><span class="header-section-number">6.2.2</span> Efficiency</h3>
-<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented <span class="citation" data-cites="Pesaran1996 Pesaran1999 Hsiao1999">(<a href="../references/references.html#ref-Pesaran1996" role="doc-biblioref">H. Pesaran, Smith, and Im 1996</a>; <a href="../references/references.html#ref-Pesaran1999" role="doc-biblioref">M. H. Pesaran, Shin, and Smith 1999</a>; <a href="../references/references.html#ref-Hsiao1999" role="doc-biblioref">Hsiao, Pesaran, and Tahmiscioglu 1999</a>)</span>.</p>
+<p>While the mean group estimator provides robustness to heterogeneity and dynamics, it is generally less efficient than alternative estimators when those alternatives are consistent. This loss of efficiency directly follows from the AM-HM inequality and is well-documented <span class="citation" data-cites="Pesaran1996 Pesaran1999 Hsiao1999">(<a href="../references/references.html#ref-Pesaran1996" role="doc-biblioref">Pesaran et al. 1996</a>; <a href="../references/references.html#ref-Pesaran1999" role="doc-biblioref">Pesaran et al. 1999</a>; <a href="../references/references.html#ref-Hsiao1999" role="doc-biblioref">Hsiao et al. 1999</a>)</span>.</p>
 <p>However, one might argue that this loss of efficiency is irrelevant, as the conditions for the consistency of alternatives require unrealistic restrictions on the coefficients. Still, there are some ways of obtaining a more efficient robust estimator, such as applying a Mundlak device, see <span class="citation" data-cites="Breitung2021">Breitung and Salish (<a href="../references/references.html#ref-Breitung2021" role="doc-biblioref">2021</a>)</span>.</p>
 </section>
 </section>
@@ -1060,7 +900,7 @@ Summary and Learning Outcomes
 <p>In the next section, we move beyond <span class="math inline">\(\E[\bbeta_i]\)</span> and discuss identification of the variance of <span class="math inline">\(\bbeta_i\)</span>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Bai2023MeanGroupInstrumental" class="csl-entry" role="listitem">
 Bai, Yu, Massimiliano Marcellino, and George Kapetanios. 2023. <span>“Mean <span>Group Instrumental Variable Estimation</span> of <span class="nocase">Time-varying Large Heterogeneous Panels With Endogenous Regressors</span>.”</span> <em>Econometrics and Statistics</em>, June, S2452306223000412. <a href="https://doi.org/10.1016/j.ecosta.2023.06.004">https://doi.org/10.1016/j.ecosta.2023.06.004</a>.
 </div>
@@ -1071,10 +911,10 @@ Breitung, Jörg, and Nazarii Salish. 2021. <span>“<span class="nocase">Estimat
 Graham, Bryan S, and James L Powell. 2012. <span>“<span class="nocase">Identification and Estimation of Average Partial Effects in "Irregular" Correlated Random Coefficient Panel Data Models</span>.”</span> <em>Econometrica</em> 80 (5): 2105–52. <a href="https://doi.org/10.3982/ecta8220">https://doi.org/10.3982/ecta8220</a>.
 </div>
 <div id="ref-Hsiao1999" class="csl-entry" role="listitem">
-Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em> 268–96. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
+Hsiao, Cheng, M. Hashem Pesaran, and A. Kamil Tahmiscioglu. 1999. <span>“<span class="nocase">Bayes Estimation of Short-Run Coefficients in Dynamic Panel Data Models</span>.”</span> In <em>Analysis of Panels and Limited Dependent Variable Models,</em>. <a href="https://doi.org/10.1017/cbo9780511493140.013">https://doi.org/10.1017/cbo9780511493140.013</a>.
 </div>
 <div id="ref-Pesaran1996" class="csl-entry" role="listitem">
-Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre, 145–95. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
+Pesaran, Hashem, Ron Smith, and Kyung So Im. 1996. <span>“<span class="nocase">Dynamic Linear Models for Heterogenous Panels</span>.”</span> In <em>The Econometrics of Panel Data</em>, edited by L. Matyas and P. Sevestre. <a href="https://doi.org/10.1007/978-94-009-0137-7_8">https://doi.org/10.1007/978-94-009-0137-7_8</a>.
 </div>
 <div id="ref-Pesaran1999" class="csl-entry" role="listitem">
 Pesaran, M. Hashem, Yongcheol Shin, and Ron P. Smith. 1999. <span>“<span class="nocase">Pooled Mean Group Estimation of Dynamic Heterogeneous Panels</span>.”</span> <em>Journal of the American Statistical Association</em> 94 (446): 621–34. <a href="https://doi.org/10.1080/01621459.1999.10474156">https://doi.org/10.1080/01621459.1999.10474156</a>.
@@ -1151,13 +991,14 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1172,7 +1013,7 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.github\.io\/econometrics-heterogeneity\/");
+        var filterRegex = new RegExp("https:\/\/vladislav-morozov\.eu\/econometrics-heterogeneity\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
