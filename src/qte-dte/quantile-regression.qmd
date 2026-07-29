@@ -42,7 +42,7 @@ In this section, we provide an essential introduction to quantile regression, wh
 
 We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For further information, see the monograph by @Koenker2005 and the *Handbook of Quantile Regression* [@Koenker2017HandbookQuantileRegression].
 
-As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$. We observe an i.i.d. sample $\curl{Y_i, Z_i}_{i=1}^n$. 
+As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$. We observe an i.i.d. sample $\curl{Y_i, Z_i}_{i=1}^N$. 
 
 Our goal is to estimate the $\tau$th conditional quantile $Q_{Y|Z}(\tau|z)$ of $Y_i$ given $Z_i=z$.
 
@@ -64,9 +64,14 @@ $$ {#eq-check-loss}
 
 ### Sample Objective Function
 
-The population characterization in @eq-qr-pop-min is not directly applicable for two reasons: we only have access to a finite sample, and the class of all measurable functions is too large to search through. We address the first problem by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
+The population characterization in @eq-qr-pop-min is not directly applicable for two reasons:
+
+1. We only have access to a finite sample;
+2. The class of all measurable functions is too large to search through. 
+
+We address the first problem by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
 $$
-	 \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{n} \sum_{i=1}^n \rho_{\tau} (Y_i - q(Z_i)). 
+	 \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{N} \sum_{i=1}^N \rho_{\tau} (Y_i - q(Z_i)). 
 $$ {#eq-qr-sample-obj}
 
 
@@ -79,25 +84,27 @@ $$ {#eq-qr-linear-spec}
 where $\psi(z)$ is some known transformation of covariates (e.g., polynomials, interactions, or basis functions).
 
 
-### Fitting Quantile Regression
+### Quantile Regression
 
 After specifying the functional form, the parameters $\beta(\tau)$ are estimated by minimizing the sample objective function for each $\tau$ of interest. In the linear case, this yields the canonical quantile regression estimator of @Koenker1978RegressionQuantiles:
 $$
-	\hat{\beta}(\tau)= \argmin_{b} \dfrac{1}{n}\sum_{i=1}^n \rho_{\tau}(Y_i-\psi(Z_i)'b).
+	\hat{\beta}(\tau)= \argmin_{b} \dfrac{1}{N}\sum_{i=1}^N \rho_{\tau}(Y_i-\psi(Z_i)'b).
 $$ {#eq-qr-fit}
-This problem can be represented as a linear program and solved efficiently even for large $n$ [@Koenker2017ComputationalMethodsQuantile]. The resulting estimator for the conditional quantile is:
+This problem can be represented as a linear program and solved efficiently even for large $N$ [@Koenker2017ComputationalMethodsQuantile]. The resulting estimator for the conditional quantile is:
 $$
 	 \hat{Q}_{Y|Z}(\tau|z) = \psi(z)'\hat{\beta}(\tau).
 $$
 
 
-### Parametric vs. Nonparametric Approaches
+
+
+## Parametric vs. Nonparametric Approaches
 
 As with mean regression, there are two perspectives on the choice of functional form:
 
 - **Parametric**: We fix a finite-dimensional class for $q(\cdot)$. If correctly specified, quantile regression consistently estimates $Q_{Y|Z}(\tau|z)$. If misspecified, it estimates a "best" linear approximation to the true quantile function [@Angrist2006QuantileRegressionMisspecification]. Specification testing can be performed using methods such as those in @Rothe2013MisspecificationTestingClass}.
 
-- **Nonparametric**: The complexity of the approximation $q(\cdot)$ grows with the sample size $n$. Various approaches exist, including local polynomials, splines [@Koenker1994QuantileSmoothingSplines], and random forests [@Meinshausen2006QuantileRegressionForests]. As $n$ grows, these methods consistently estimate $Q_{Y|Z}(\tau|z)$ under mild conditions.
+- **Nonparametric**: The complexity of the approximation $q(\cdot)$ grows with the sample size $N$. Various approaches exist, including local polynomials, splines [@Koenker1994QuantileSmoothingSplines], and random forests [@Meinshausen2006QuantileRegressionForests]. As $N$ grows, these methods consistently estimate $Q_{Y|Z}(\tau|z)$ under mild conditions.
 
 
 ---
