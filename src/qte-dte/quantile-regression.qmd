@@ -17,8 +17,7 @@ This section introduces quantile regression as a tool for estimating conditional
 By the end of this section, you should be able to: 
 
 - Define quantile regression as a check risk minimization problem.
-- Distinguish between parametric and nonparametric quantile regression.
-- Motivate the use of quantile regression for estimating causal effects.
+- Distinguish between parametric and nonparametric quantile regression. 
 
 :::
 
@@ -102,7 +101,7 @@ $$
 
 As with mean regression, there are two perspectives on the choice of functional form:
 
-- **Parametric**: We fix a finite-dimensional class for $q(\cdot)$. If correctly specified, quantile regression consistently estimates $Q_{Y|Z}(\tau|z)$. If misspecified, it estimates a "best" linear approximation to the true quantile function [@Angrist2006QuantileRegressionMisspecification]. Specification testing can be performed using methods such as those in @Rothe2013MisspecificationTestingClass}.
+- **Parametric**: We fix a finite-dimensional class for $q(\cdot)$. If correctly specified, quantile regression consistently estimates $Q_{Y|Z}(\tau|z)$. If misspecified, it estimates a "best" linear approximation to the true quantile function [@Angrist2006QuantileRegressionMisspecification]. Specification testing can be performed using methods such as those in @Rothe2013MisspecificationTestingClass.
 
 - **Nonparametric**: The complexity of the approximation $q(\cdot)$ grows with the sample size $N$. Various approaches exist, including local polynomials, splines [@Koenker1994QuantileSmoothingSplines], and random forests [@Meinshausen2006QuantileRegressionForests]. As $N$ grows, these methods consistently estimate $Q_{Y|Z}(\tau|z)$ under mild conditions.
 
