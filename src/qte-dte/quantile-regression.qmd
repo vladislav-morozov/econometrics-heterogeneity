@@ -1,0 +1,107 @@
+--- 
+description: "Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)"
+
+open-graph:
+    description: "Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)"
+---
+
+
+# Quantile Regression {#sec-quantile-regression}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces quantile regression as a tool for estimating conditional quantiles.
+
+By the end of this section, you should be able to: 
+
+- Define quantile regression as a check risk minimization problem.
+- Distinguish between parametric and nonparametric quantile regression.
+- Motivate the use of quantile regression for estimating causal effects.
+
+:::
+
+
+## Towards Estimation
+
+A common theme in the identification results of the previous sections is that we express the parameters of interest in terms of the conditional distributions or quantiles of the observed outcome $Y_i$. Thus, to estimate these objects, it is sufficient to estimate these conditional quantities.
+
+When all conditioning variables are discrete, estimation is straightforward: we can simply split the sample and use sample quantiles or empirical distribution functions within each subsample. However, when continuously-distributed variables are present, splitting the sample is not feasible. Instead, we must approximate the quantiles or the distribution function. 
+
+Quantile and distribution regression are two primary methods for this purpose:
+
+- **Quantile regression** directly models conditional quantiles of the type $Q_{Y|X, W}(\tau|x, w)$.
+- **Distribution regression** instead models the conditional distribution function $F_{Y|X, W}(y|x, w)$.
+
+In this section, we provide an essential introduction to quantile regression, while distribution regression is covered in the next section. Finally, in section TBA, we discuss how to use these methods to estimate QTEs and DTEs.
+
+## Introduction to Quantile Regression
+
+### Setting
+
+We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For further information, see the monograph by @Koenker2005 and the *Handbook of Quantile Regression* [@Koenker2017HandbookQuantileRegression].
+
+As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$. We observe an i.i.d. sample $\curl{Y_i, Z_i}_{i=1}^n$. 
+
+Our goal is to estimate the $\tau$th conditional quantile $Q_{Y|Z}(\tau|z)$ of $Y_i$ given $Z_i=z$.
+
+
+### Population Quantile Regression
+
+The starting point for quantile regression is the characterization of quantiles as minimizers of a specific loss function. Under our assumptions on the CDF of $Y_i$, the conditional quantile uniquely minimizes the **check risk**:
+$$
+	Q_{Y|Z}(\tau|Z)  =  \argmin_{q(Z)}  \E[\rho_{\tau}(Y-q(Z))],
+$$ {#eq-qr-pop-min}
+where the minimum is taken over the class of all measurable functions and $\rho_{\tau}(u)$ is the **check loss** function:
+$$
+\rho_{\tau}(u) = \begin{cases}
+	\tau u, & u \geq 0, \\
+	(\tau-1)u, & u<0.
+\end{cases}
+$$ {#eq-check-loss}
+
+
+### Sample Objective Function
+
+The population characterization in @eq-qr-pop-min is not directly applicable for two reasons: we only have access to a finite sample, and the class of all measurable functions is too large to search through. We address the first problem by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
+$$
+	 \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{n} \sum_{i=1}^n \rho_{\tau} (Y_i - q(Z_i)). 
+$$ {#eq-qr-sample-obj}
+
+
+### Linear Specification
+
+To address the second problem, we restrict $q(\cdot)$ to a simpler, typically finite-dimensional space. The most popular approach restricts the quantile function to be linear in parameters:
+$$
+	q(z, \beta(\tau)) = \psi(z)'\beta(\tau),
+$$ {#eq-qr-linear-spec}
+where $\psi(z)$ is some known transformation of covariates (e.g., polynomials, interactions, or basis functions).
+
+
+### Fitting Quantile Regression
+
+After specifying the functional form, the parameters $\beta(\tau)$ are estimated by minimizing the sample objective function for each $\tau$ of interest. In the linear case, this yields the canonical quantile regression estimator of @Koenker1978RegressionQuantiles:
+$$
+	\hat{\beta}(\tau)= \argmin_{b} \dfrac{1}{n}\sum_{i=1}^n \rho_{\tau}(Y_i-\psi(Z_i)'b).
+$$ {#eq-qr-fit}
+This problem can be represented as a linear program and solved efficiently even for large $n$ [@Koenker2017ComputationalMethodsQuantile]. The resulting estimator for the conditional quantile is:
+$$
+	 \hat{Q}_{Y|Z}(\tau|z) = \psi(z)'\hat{\beta}(\tau).
+$$
+
+
+### Parametric vs. Nonparametric Approaches
+
+As with mean regression, there are two perspectives on the choice of functional form:
+
+- **Parametric**: We fix a finite-dimensional class for $q(\cdot)$. If correctly specified, quantile regression consistently estimates $Q_{Y|Z}(\tau|z)$. If misspecified, it estimates a "best" linear approximation to the true quantile function [@Angrist2006QuantileRegressionMisspecification]. Specification testing can be performed using methods such as those in @Rothe2013MisspecificationTestingClass}.
+
+- **Nonparametric**: The complexity of the approximation $q(\cdot)$ grows with the sample size $n$. Various approaches exist, including local polynomials, splines [@Koenker1994QuantileSmoothingSplines], and random forests [@Meinshausen2006QuantileRegressionForests]. As $n$ grows, these methods consistently estimate $Q_{Y|Z}(\tau|z)$ under mild conditions.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we introduce distribution regression as an alternative tool for estimating the distribution of potential outcomes.
