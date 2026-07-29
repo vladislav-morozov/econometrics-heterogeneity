@@ -145,11 +145,11 @@ To proceed, we use the following version of the law of total expectations:
 
 ::: {.callout-note appearance="simple"}
 
-If $V, Z$ are random variables and $T$ is a 0/1 random variable, then
+If $W, Z$ are random variables and $T$ is a 0/1 random variable, then
 $$
 \begin{aligned}
- 		\E[Z|V]  & =  P(T=1|V) \E[Z|V, T=1] \\
-        & \quad   + (1-P(T=1|V)) \E[Z|V, T=0].
+ 		\E[Z|W]  & =  P(T=1|W) \E[Z|W, T=1] \\
+        & \quad   + (1-P(T=1|W)) \E[Z|W, T=0].
 \end{aligned}
 $$ {#eq-qte-tot-exp}
 :::
