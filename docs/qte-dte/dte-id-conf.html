@@ -781,8 +781,8 @@ F_{Y^x|W}(y|w) = \E[\I\curl{Y^x_i \leq y}|W_i=w].
 \]</span> Since <span class="math inline">\(Y^x_i\)</span> and <span class="math inline">\(X_i\)</span> are conditionally independent given <span class="math inline">\(W_i\)</span>, this conditioning operation does not change the value of the expectation regardless of the value of <span class="math inline">\(X_i\)</span>, including <span class="math inline">\(x\)</span>.</p>
 <p>Next, we use that <span class="math inline">\(Y_i=Y^x_i\)</span> if <span class="math inline">\(X_i=x\)</span> to replace <span class="math inline">\(Y^x_i\)</span> with <span class="math inline">\(Y_i\)</span>: <span class="math display">\[
 \begin{align}
-    &amp;   \E\left[\I\curl{Y^x_i\leq y}|X_i=d, W_i=w \right]\\
-    &amp; = \E\left[ \I\curl{Y_i\leq y}|X_i=d, W_i=w   \right]\\
+    &amp;   \E\left[\I\curl{Y^x_i\leq y}|X_i=x, W_i=w \right]\\
+    &amp; = \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i=w   \right]\\
     &amp; \equiv F_{Y|X, W}(y|x, w),
 \end{align}
 \]</span> where <span class="math inline">\(F_{Y|X, W}(y|x, w)\)</span> is the conditional CDF of the realized outcome <span class="math inline">\(Y_i\)</span> given <span class="math inline">\(X_i=x\)</span> and <span class="math inline">\(W_i=w\)</span>.</p>
