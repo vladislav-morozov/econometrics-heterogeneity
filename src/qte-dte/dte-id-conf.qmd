@@ -108,8 +108,8 @@ Since $Y^x_i$ and $X_i$ are conditionally independent given $W_i$, this conditio
 Next, we use that $Y_i=Y^x_i$ if $X_i=x$ to replace $Y^x_i$ with $Y_i$:
 $$
 \begin{align} 
-	&   \E\left[\I\curl{Y^x_i\leq y}|X_i=d, W_i=w \right]\\
-	& = \E\left[ \I\curl{Y_i\leq y}|X_i=d, W_i=w   \right]\\
+	&   \E\left[\I\curl{Y^x_i\leq y}|X_i=x, W_i=w \right]\\
+	& = \E\left[ \I\curl{Y_i\leq y}|X_i=x, W_i=w   \right]\\
 	& \equiv F_{Y|X, W}(y|x, w),
 \end{align}
 $$ 

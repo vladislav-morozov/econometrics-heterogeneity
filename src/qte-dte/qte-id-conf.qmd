@@ -63,7 +63,7 @@ Of these three parameters, we show a detailed identification result for the firs
 
 We again begin with the conditional quantiles of $Y^x_i$ given $W_i=w$, which is the most straightforward quantile to identify.
 
-Like in section [-@sec-qte-id-rct], we assume that that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
+Like in section [-@sec-qte-id-rct], we assume that for all $x$ the conditional CDF of $Y^x_i$ given $W_i=w$ is continuous and strictly increasing. Under these assumptions the conditional quantile $Q_{Y^x|W}(\tau|x)$ uniquely satisfies the following moment condition:
 
 $$
 \E\left[ \I\curl{ Y^x_i \leq Q_{Y^x|W}(\tau|w) } |W_i=w\right] =  \tau.
@@ -131,7 +131,7 @@ $$
 \tau = \E\left[ \E\left[\I\curl{Y_i\leq Q_{Y^x}(\tau)  }| X_i=x, W_i\right]\right].
 $$
 
-However, this condition is impractical: it involves an iterated expectation, and the parameter of interest is inside that conditional expectation.
+However, this condition is impractical: it involves an iterated expectation, and the parameter of interest is inside the conditional expectation.
 
 Instead, we now develop a more practical characterization where conditioning is limited to propensity scores. To start, we observe that under the event $\curl{X_i=x}$ it holds that $\I\curl{X_i=x}$ is equal to 1. We can then multiply by $\I\curl{X_i=x}$(=1) under the conditional expectation:
 $$
@@ -145,11 +145,11 @@ To proceed, we use the following version of the law of total expectations:
 
 ::: {.callout-note appearance="simple"}
 
-If $V, Z$ are random variables and $T$ is a 0/1 random variable, then
+If $W, Z$ are random variables and $T$ is a 0/1 random variable, then
 $$
 \begin{aligned}
- 		\E[Z|V]  & =  P(T=1|V) \E[Z|V, T=1] \\
-        & \quad   + (1-P(T=1|V)) \E[Z|V, T=0].
+ 		\E[Z|W]  & =  P(T=1|W) \E[Z|W, T=1] \\
+        & \quad   + (1-P(T=1|W)) \E[Z|W, T=0].
 \end{aligned}
 $$ {#eq-qte-tot-exp}
 :::
