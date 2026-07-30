@@ -110,7 +110,14 @@ Under standard regularity conditions, the estimator $\hat{\beta}(\tau)$ is $\sqr
 $$
 \sqrt{N} (\hat{\beta}(\tau) - \beta(\tau)) \Rightarrow \mathcal{N}(0, H^{-1} J H^{-1}),
 $$ {#eq-qr-asymptotics}
-where $J = \tau(1-\tau) \E[\psi(Z_i)\psi(Z_i)']$ and $H = \E[f_{Y|Z}(\psi(Z_i)'\beta(\tau)|Z_i) \psi(Z_i)\psi(Z_i)']$.
+where 
+$$
+\begin{aligned}
+J &= \tau(1-\tau) \E[\psi(Z_i)\psi(Z_i)'], \\
+H &= \E[f_{Y|Z}(\psi(Z_i)'\beta(\tau)|Z_i) \psi(Z_i)\psi(Z_i)'].
+\end{aligned}
+$$
+See chapter 4 of @Koenker2005 for a detailed discussion of the regularity conditions and proofs.
 
 The asymptotic variance  depends on the conditional density of $Y$ at the $\tau$th quantile, $f_{Y|Z}(Q_{Y|Z}(\tau|z)|z)$. This "sparsity" term in $H$ implies that estimation is typically less precise in the tails of the distribution where data is sparse ($f_{Y|Z}$ is small), which leads to a "flatter" sample objective function. 
 
