@@ -1,0 +1,160 @@
+--- 
+description: "Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)"
+
+open-graph:
+    description: "Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)"
+---
+
+
+# Quantile Regression {#sec-quantile-regression}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces quantile regression as a tool for estimating conditional quantiles.
+
+By the end of this section, you should be able to: 
+
+- Define quantile regression through check risk minimization and its associated moment conditions. 
+- Have a general perspective on the parametric and nonparametric approaches to quantile regression.
+
+:::
+
+
+## Towards Estimation
+
+A common theme in the identification results of the previous sections is that we express the parameters of interest in terms of the conditional distributions or quantiles of the observed outcome $Y_i$. Thus, to estimate these objects, it is sufficient to estimate these conditional quantities.
+
+When all conditioning variables are discrete, estimation is straightforward: we can simply split the sample and use sample quantiles or empirical distribution functions within each subsample. However, when continuously-distributed variables are present, splitting the sample is not feasible. Instead, we must approximate the quantiles or the distribution function. 
+
+Quantile and distribution regression are two primary methods for this purpose:
+
+- **Quantile regression** directly models conditional quantiles of the type $Q_{Y|X, W}(\tau|x, w)$.
+- **Distribution regression** instead models the conditional distribution function $F_{Y|X, W}(y|x, w)$.
+
+In this section, we provide an essential introduction to quantile regression, while distribution regression is covered in the next section. Finally, in section TBA, we discuss how to use these methods to estimate QTEs and DTEs.
+
+## Introduction to Quantile Regression
+
+### Setting
+
+We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For a more detailed treatment, see the monograph by @Koenker2005 and the *Handbook of Quantile Regression* [@Koenker2017HandbookQuantileRegression].
+
+As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$.  
+
+Our goal is to estimate the $\tau$th conditional quantile $Q_{Y|Z}(\tau|z)$ of $Y_i$ given $Z_i=z$ given a sample of $N$ i.i.d. observations $\{(Y_i, Z_i)\}_{i=1}^N$. 
+
+
+### Population Quantile Regression
+
+The starting point for quantile regression is the characterization of quantiles as minimizers of a specific loss function. Under our assumptions on the CDF of $Y_i$, the conditional quantile uniquely minimizes the **check risk**:
+$$
+	Q_{Y|Z}(\tau|Z)  =  \argmin_{q(Z)}  \E[\rho_{\tau}(Y-q(Z))],
+$$ {#eq-qr-pop-min}
+where the minimum is taken over the class of all measurable functions and $\rho_{\tau}(u)$ is the **check loss** function:
+$$
+\rho_{\tau}(u) = \begin{cases}
+	\tau u, & u \geq 0, \\
+	(\tau-1)u, & u<0.
+\end{cases}
+$$ {#eq-check-loss}
+
+
+### Sample Objective Function
+
+The population characterization in @eq-qr-pop-min cannot be used directly in practice for two reasons:
+
+1. We only have access to a finite sample;
+2. The class of all measurable functions is too large to search through. 
+
+The first problem is straightforward to address by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
+$$
+	 \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{N} \sum_{i=1}^N \rho_{\tau} (Y_i - q(Z_i)). 
+$$ {#eq-qr-sample-obj}
+
+
+### Linear Specification
+
+To address the second problem, we restrict the quantile function $q(\cdot)$ to a simpler, typically finite-dimensional space. The most popular approach restricts the quantile function to be linear in parameters:
+$$
+	q(z, \beta(\tau)) = \psi(z)'\beta(\tau),
+$$ {#eq-qr-linear-spec}
+where $\psi(z)$ is some known transformation of covariates (e.g., polynomials, interactions, or basis functions).
+
+
+### Quantile Regression
+
+After specifying the functional form, the parameters $\beta(\tau)$ are estimated by minimizing the sample objective function for each $\tau$ of interest. In the linear case, this yields the canonical quantile regression estimator of @Koenker1978RegressionQuantiles:
+$$
+	\hat{\beta}(\tau)= \argmin_{b} \dfrac{1}{N}\sum_{i=1}^N \rho_{\tau}(Y_i-\psi(Z_i)'b).
+$$ {#eq-qr-fit}
+This problem can be represented as a linear program and solved efficiently even for large $N$ [@Koenker2017ComputationalMethodsQuantile]. The resulting estimator for the conditional quantile is:
+$$
+	 \hat{Q}_{Y|Z}(\tau|z) = \psi(z)'\hat{\beta}(\tau).
+$$
+
+
+
+### Moment Representation
+
+While the check loss is non-smooth, the population minimizer $q(Z, \beta(\tau)) = \psi(Z)'\beta(\tau)$ satisfies the following system of moment conditions:
+$$
+\E\left[ \left( \tau - \mathbb{I}\{Y_i \leq \psi(Z_i)'\beta(\tau)\} \right) \psi(Z_i) \right] = 0.
+$$ {#eq-qr-moments}
+
+
+### Asymptotic Properties
+
+Under standard regularity conditions, the estimator $\hat{\beta}(\tau)$ is $\sqrt{N}$-consistent and asymptotically normal. Specifically, it holds that
+$$
+\sqrt{N} (\hat{\beta}(\tau) - \beta(\tau)) \Rightarrow \mathcal{N}(0, H^{-1} J H^{-1}),
+$$ {#eq-qr-asymptotics}
+where 
+$$
+\begin{aligned}
+J &= \tau(1-\tau) \E[\psi(Z_i)\psi(Z_i)'], \\
+H &= \E[f_{Y|Z}(\psi(Z_i)'\beta(\tau)|Z_i) \psi(Z_i)\psi(Z_i)'].
+\end{aligned}
+$$
+See chapter 4 of @Koenker2005 for a detailed discussion of the regularity conditions and proofs.
+
+The asymptotic variance  depends on the conditional density of $Y$ at the $\tau$th quantile, $f_{Y|Z}(Q_{Y|Z}(\tau|z)|z)$. This "sparsity" term in $H$ implies that estimation is typically less precise in the tails of the distribution where data is sparse ($f_{Y|Z}$ is small), which leads to a "flatter" sample objective function. 
+
+One can also establish the joint distribution of $\hat{\beta}(\tau)$ across different values of $\tau$ or a continuum of $\tau$ values, which is useful for inference on the entire conditional quantile function. See @Koenker2005 and @Koenker2017HandbookQuantileRegression for details.
+
+
+## Estimation and Identification Perspectives
+
+As with mean regression, the choice between parametric and nonparametric specifications involves a trade-off between bias and variance, as well as different identification targets under misspecification.
+
+### Parametric Specification
+
+In a parametric setting, we typically assume that $Q_{Y|Z}(\tau|z) = \psi(z)'\beta(\tau)$ for a fixed-dimensional $\psi(z)$. 
+
+- If the linear model holds, $\hat{\beta}(\tau)$ consistently estimates the true coefficients.
+- If the linear model is misspecified, @Angrist2006QuantileRegressionMisspecification show that QR identifies a "best" linear approximation to the true conditional quantile function. Specifically, $\beta(\tau)$ minimizes a weighted mean squared error between the true quantile function and the linear index, where the weights are determined by the conditional density of the outcome.
+
+### Nonparametric Specification
+
+In a nonparametric approach, we allow the complexity of the model to grow with the sample size $N$ to ensure consistency without functional form assumptions. Common strategies include:
+
+- Series estimation: The number of basis functions in $\psi(Z_i)$ (e.g., polynomials, B-splines) increases with $N$ at an appropriate rate.
+- Local methods: Approaches such as quantile smoothing splines [@Koenker1994QuantileSmoothingSplines] or local polynomial quantile regression approximate the quantile function locally around each $z$.
+- Quantile random forests [@Meinshausen2006QuantileRegressionForests] provide a flexible, data-driven way to partition the covariate space and estimate conditional quantiles within the resulting leaves.
+
+
+
+
+## Operational Challenge: Quantile Crossing
+
+A known issue in both parametric and nonparametric quantile regression is **quantile crossing**. Since $\hat{\beta}(\tau)$ is estimated separately for each $\tau$, the resulting surfaces $\psi(z)'\hat{\beta}(\tau)$ and $\psi(z)'\hat{\beta}(\tau')$ may cross for $\tau \neq \tau'$ in finite samples (or under misspecification).
+
+This violates the monotonicity of the quantile function and renders the resulting "distribution" invalid (e.g., non-monotonic CDFs). For operationalizing QTEs and DTEs, this is often addressed using **rearrangement** methods [@Chernozhukov2010QuantileProbabilityCurves], which monotonically transform the estimated curves to ensure they satisfy the basic properties of a quantile function.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we introduce distribution regression as an alternative tool for estimating the distribution of potential outcomes.
