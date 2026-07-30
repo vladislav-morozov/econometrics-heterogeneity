@@ -16,8 +16,8 @@ This section introduces quantile regression as a tool for estimating conditional
 
 By the end of this section, you should be able to: 
 
-- Define quantile regression as a check risk minimization problem.
-- Distinguish between parametric and nonparametric quantile regression. 
+- Define quantile regression through check risk minimization and its associated moment conditions. 
+- Identify the practical challenge of quantile crossing and the role of rearrangement.
 
 :::
 
@@ -39,11 +39,11 @@ In this section, we provide an essential introduction to quantile regression, wh
 
 ### Setting
 
-We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For further information, see the monograph by @Koenker2005 and the *Handbook of Quantile Regression* [@Koenker2017HandbookQuantileRegression].
+We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For a more detailed treatment, see the monograph by @Koenker2005 and the *Handbook of Quantile Regression* [@Koenker2017HandbookQuantileRegression].
 
-As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$. We observe an i.i.d. sample $\curl{Y_i, Z_i}_{i=1}^N$. 
+As always, let $Y_i$ be some outcome variable and $Z_i$ be a vector of covariates (which may include both the treatment $X_i$ and other controls $W_i$). We assume the conditional CDF $F_{Y|Z}(\cdot|z)$ is continuous and strictly increasing for all $z$.  
 
-Our goal is to estimate the $\tau$th conditional quantile $Q_{Y|Z}(\tau|z)$ of $Y_i$ given $Z_i=z$.
+Our goal is to estimate the $\tau$th conditional quantile $Q_{Y|Z}(\tau|z)$ of $Y_i$ given $Z_i=z$ given a sample of $N$ i.i.d. observations $\{(Y_i, Z_i)\}_{i=1}^N$. 
 
 
 ### Population Quantile Regression
@@ -63,12 +63,12 @@ $$ {#eq-check-loss}
 
 ### Sample Objective Function
 
-The population characterization in @eq-qr-pop-min is not directly applicable for two reasons:
+The population characterization in @eq-qr-pop-min cannot be used directly in practice for two reasons:
 
 1. We only have access to a finite sample;
 2. The class of all measurable functions is too large to search through. 
 
-We address the first problem by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
+The first problem is straightforward to address by replacing the population expectation with its sample counterpart to obtain the **sample objective function**:
 $$
 	 \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{N} \sum_{i=1}^N \rho_{\tau} (Y_i - q(Z_i)). 
 $$ {#eq-qr-sample-obj}
@@ -76,7 +76,7 @@ $$ {#eq-qr-sample-obj}
 
 ### Linear Specification
 
-To address the second problem, we restrict $q(\cdot)$ to a simpler, typically finite-dimensional space. The most popular approach restricts the quantile function to be linear in parameters:
+To address the second problem, we restrict the quantile function $q(\cdot)$ to a simpler, typically finite-dimensional space. The most popular approach restricts the quantile function to be linear in parameters:
 $$
 	q(z, \beta(\tau)) = \psi(z)'\beta(\tau),
 $$ {#eq-qr-linear-spec}
@@ -96,14 +96,34 @@ $$
 
 
 
+### Moment Representation
 
-## Parametric vs. Nonparametric Approaches
+While the check loss is non-smooth, the population minimizer $q(Z, \beta(\tau)) = \psi(Z)'\beta(\tau)$ satisfies the following system of moment conditions:
+$$
+\E\left[ \left( \tau - \mathbb{I}\{Y_i \leq \psi(Z_i)'\beta(\tau)\} \right) \psi(Z_i) \right] = 0.
+$$ {#eq-qr-moments}
 
-As with mean regression, there are two perspectives on the choice of functional form:
 
-- **Parametric**: We fix a finite-dimensional class for $q(\cdot)$. If correctly specified, quantile regression consistently estimates $Q_{Y|Z}(\tau|z)$. If misspecified, it estimates a "best" linear approximation to the true quantile function [@Angrist2006QuantileRegressionMisspecification]. Specification testing can be performed using methods such as those in @Rothe2013MisspecificationTestingClass.
+### Asymptotic Properties
 
-- **Nonparametric**: The complexity of the approximation $q(\cdot)$ grows with the sample size $N$. Various approaches exist, including local polynomials, splines [@Koenker1994QuantileSmoothingSplines], and random forests [@Meinshausen2006QuantileRegressionForests]. As $N$ grows, these methods consistently estimate $Q_{Y|Z}(\tau|z)$ under mild conditions.
+Under standard regularity conditions, the estimator $\hat{\beta}(\tau)$ is $\sqrt{N}$-consistent and asymptotically normal [@Koenker2005]. A key feature of the asymptotic variance is its dependence on the conditional density of $Y$ at the $\tau$th quantile, $f_{Y|Z}(Q_{Y|Z}(\tau|z)|z)$. This "sparsity" term implies that estimation is typically less precise in the tails of the distribution where data is sparse.
+
+
+
+
+## Parametric vs Nonparametric Approaches
+
+As with mean regression, we can approach quantile regression from either a parametric or a nonparametric perspective:
+
+- **Parametric**: We fix a finite-dimensional class for $q(\cdot)$ --- e.g. linear functions. If misspecified, quantile regression identifies a "best" linear approximation to the true conditional quantile function under the check loss [@Angrist2006QuantileRegressionMisspecification].
+- **Nonparametric**: The complexity of $\psi(Z_i)$ (e.g., number of basis functions) grows with $N$, or we use local methods like smoothing splines [@Koenker1994QuantileSmoothingSplines] or quantile random forests [@Meinshausen2006QuantileRegressionForests]. These allow for consistent estimation of $Q_{Y|Z}$ without functional form assumptions.
+
+
+## Operational Challenge: Quantile Crossing
+
+A known issue in both parametric and nonparametric quantile regression is **quantile crossing**. Since $\hat{\beta}(\tau)$ is estimated separately for each $\tau$, the resulting surfaces $\psi(z)'\hat{\beta}(\tau)$ and $\psi(z)'\hat{\beta}(\tau')$ may cross for $\tau \neq \tau'$ in finite samples (or under misspecification).
+
+This violates the monotonicity of the quantile function and renders the resulting "distribution" invalid (e.g., non-monotonic CDFs). For operationalizing QTEs and DTEs, this is often addressed using **rearrangement** methods [@Chernozhukov2010QuantileProbabilityCurves], which monotonically transform the estimated curves to ensure they satisfy the basic properties of a quantile function.
 
 
 ---
