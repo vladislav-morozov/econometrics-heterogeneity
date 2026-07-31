@@ -18,6 +18,7 @@ By the end of this section, you should be able to:
 
 - Understand distribution regression as a sequence of binary response models indexed by an outcome threshold.
 - Estimate conditional CDFs using a generalized linear specification.
+- Characterize the asymptotic properties of the estimated distribution regression process.
 
 :::
 
@@ -26,7 +27,7 @@ By the end of this section, you should be able to:
 
 The object needed for a DTE is a conditional distribution function. We can use quantile regression to approach this problem indirectly by estimating conditional quantiles and inverting them. 
 
-Distribution regression takes the opposite route: it models the conditional CDF $F_{Y|Z}(y|z)$ directly, where, as before, $Y_i$ is some outcome and $Z_i$ denotes the conditioning variables that may $Z_i$ may include the treatment $X_i$ and other controls $W_i$.
+Distribution regression takes the opposite route: it models the conditional CDF $F_{Y|Z}(y|z)$ directly, where, as before, $Y_i$ is some outcome and $Z_i$ denotes the conditioning variables, which may include the treatment $X_i$ and other controls $W_i$.
 
 To get the key idea, fix an outcome threshold $y$. For each observation, consider the binary question of whether the outcome falls below that threshold:
 $$
@@ -94,6 +95,34 @@ Operationally, the procedure is:
 4. Use the estimated CDF directly, or invert it to obtain quantiles.
 
 
+### Asymptotic Properties
+
+At any single threshold $y$, the estimator $\hat{\beta}(y)$ is a standard maximum likelihood estimator. Under standard regularity conditions, it is $\sqrt{N}$-consistent and asymptotically normal. To perform joint inference across multiple thresholds, we must analyze the entire distribution regression process $\hat{\beta}(\cdot)$ indexed by $y \in \mathcal{Y}$.
+
+@Chernozhukov2013b establish that the distribution regression process converges weakly to a Gaussian process:
+$$
+\sqrt{N} (\hat{\beta}(\cdot) - \beta(\cdot)) \Rightarrow \mathbb{G}(\cdot) \quad \text{in } \ell^\infty(\mathcal{Y})^d,
+$$ {#eq-dr-fclt}
+where $\mathbb{G}(\cdot)$ is a zero-mean Gaussian process with covariance function:
+$$
+\Sigma(y_1, y_2) = H(y_1)^{-1} \Omega(y_1, y_2) H(y_2)^{-1}.
+$$ {#eq-dr-covariance}
+
+Here, $H(y)$ is the Hessian of the binary likelihood at threshold $y$ and the matrix $\Omega(y_1, y_2) = \E[S_i(y_1)S_i(y_2)']$ is the covariance of the scores across two thresholds. The score contribution for unit $i$ at threshold $y$ is:
+$$
+S_i(y) = \frac{\mathbb{1}\{Y_i \leq y\} - \Lambda(\psi(Z_i)'\beta(y))}{\Lambda(\psi(Z_i)'\beta(y))(1 - \Lambda(\psi(Z_i)'\beta(y)))} \lambda(\psi(Z_i)'\beta(y)) \psi(Z_i),
+$$ {#eq-dr-score}
+where $\lambda$ is the derivative of the link function $\Lambda$. 
+
+::: {.callout-note appearance="simple" icon=false}
+
+
+
+Having a functional central limit theorem (FCLT) like @eq-dr-fclt is powerful and useful for working with parameters that transform the entire CDF (e.g. Gini coefficients) and constructing uniform bands. Similar uniform results are available for quantile regression, but they are more difficult to establish both because the check loss is non-smooth and because extreme (tail) quantiles have different asymptotic properties.
+
+:::
+
+
 ## Monotonicity and Inversion
 
 A final complication follows from estimating each binary regression separately. A CDF must be non-decreasing in $y$, but the function $y\mapsto\hat{F}_{Y|Z}(y|z)$ can decrease over some intervals because $\hat{\beta}(y)$ is estimated independently at each threshold. This can occur in finite samples even when the model is correctly specified. The resulting function is not a valid CDF and cannot be directly inverted to obtain quantiles.
@@ -114,7 +143,7 @@ The main practical differences are summarized below:
 | Most direct causal use | DTEs | QTEs |
 | Outcome support | Naturally accommodates continuous, discrete, and mixed outcomes | Most naturally formulated for continuous conditional distributions |
 
-The table describes the direction in which each method approaches the distribution, not an exclusivity condition. Either method can recover both CDFs and quantiles, but outside saturated designs their finite-sample estimates need not agree. The choice should therefore reflect both the parameter of interest and the support of the outcome. Distribution regression is especially attractive when DTEs or mixed outcomes are central; quantile regression is especially attractive when QTEs are the primary target.
+Either method can recover both CDFs and quantiles, but outside saturated designs their finite-sample estimates need not agree. The choice should therefore reflect both the parameter of interest and the support of the outcome. Distribution regression is especially attractive when DTEs or mixed outcomes are central; quantile regression is especially attractive when QTEs are the primary target.
 
 
 ---
