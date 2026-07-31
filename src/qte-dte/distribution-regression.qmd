@@ -1,8 +1,8 @@
 --- 
-description: "Learn distribution regression as a tool for estimating conditional distributions, DTEs, and QTEs. (Lecture Notes)"
+description: "Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)"
 
 open-graph:
-    description: "Learn distribution regression as a tool for estimating conditional distributions, DTEs, and QTEs. (Lecture Notes)"
+    description: "Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)"
 ---
 
 
