@@ -60,6 +60,7 @@ book:
         - qte-dte/dte-id-conf.qmd
         - qte-dte/qte-id-conf.qmd
         - qte-dte/quantile-regression.qmd
+        - qte-dte/distribution-regression.qmd
 
     - references/references.qmd
 
