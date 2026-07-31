@@ -1,0 +1,98 @@
+--- 
+description: "Learn distribution regression as a tool for estimating conditional distributions, DTEs, and QTEs. (Lecture Notes)"
+
+open-graph:
+    description: "Learn distribution regression as a tool for estimating conditional distributions, DTEs, and QTEs. (Lecture Notes)"
+---
+
+
+# Distribution Regression {#sec-distribution-regression}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces distribution regression as a tool for estimating conditional distributions.
+
+By the end of this section, you should be able to:
+
+- Understand distribution regression as a sequence of binary response models indexed by an outcome threshold.
+- Estimate conditional CDFs using a generalized linear specification.
+- Explain how distribution regression supports the estimation of DTEs and, after inversion, QTEs.
+
+:::
+
+
+## From Conditional CDFs to Binary Regressions
+
+Quantile regression models conditional quantiles directly. Distribution regression instead models the conditional CDF $F_{Y|Z}(y|z)$, where $Z_i$ denotes the conditioning variables. In the causal applications below, $Z_i$ may include the treatment $X_i$ and other controls $W_i$.
+
+The threshold $y$ is held fixed initially. For each value of $y$, define the binary variable
+$$
+B_i(y) = \I\curl{Y_i \leq y}.
+$$ {#eq-dr-binary-cdf}
+
+Its conditional mean is exactly the conditional CDF:
+$$
+\E[B_i(y)|Z_i=z] = P(Y_i\leq y|Z_i=z) = F_{Y|Z}(y|z).
+$$ {#eq-dr-cdf-moment}
+
+Thus, conditional on $Z_i=z$, $B_i(y)$ is Bernoulli with success probability $F_{Y|Z}(y|z)$. Distribution regression uses this observation to estimate the CDF by fitting a binary response model separately for every threshold $y$. The approach is associated with @Foresi1995ConditionalDistributionExcess and developed systematically by @Chernozhukov2013b.
+
+
+## Specification and Estimation
+
+### A Flexible CDF Is Not Directly Estimable
+
+In principle, one could maximize the Bernoulli likelihood while allowing $F_{Y|Z}(y|\cdot)$ to range over all functions. With a finite sample, however, the likelihood only restricts the function at the observed covariate values. Infinitely many functions can therefore have the same likelihood. A finite-dimensional or otherwise regularized approximation is needed to obtain an estimable object.
+
+### Generalized Linear Specification
+
+The standard distribution-regression specification is
+$$
+F_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\beta(y)\right),
+$$ {#eq-dr-specification}
+where $\psi(z)$ is a known transformation of the covariates, $\beta(y)$ is allowed to vary with the threshold, and $\Lambda$ is a known link function. Logistic and probit links are common choices. The link maps the index into $[0,1]$, as required for a CDF.
+
+This specification is parametric when $\psi(z)$ is fixed and finite-dimensional. It can also be used nonparametrically by allowing the dimension or flexibility of $\psi(z)$ to grow with the sample size. The link function is then a convenient modeling device rather than a substantive assumption that the outcome itself is logistic or probit.
+
+### Estimator
+
+For each threshold $y$, estimate $\beta(y)$ by binary maximum likelihood:
+$$
+\hat{\beta}(y) \in \argmax_b \sum_{i=1}^N \left[
+\I\curl{Y_i\leq y}\log\Lambda\left(\psi(Z_i)'b\right)
++
+\I\curl{Y_i>y}\log\left\{1-\Lambda\left(\psi(Z_i)'b\right)\right\}
+\right].
+$$ {#eq-dr-estimator}
+
+The estimated conditional CDF is then
+$$
+\hat{F}_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\hat{\beta}(y)\right).
+$$ {#eq-dr-cdf-estimator}
+
+Distribution regression is therefore a continuum of binary regressions, one for each value of $y$. This directly produces estimates of the conditional CDF needed for DTEs. Conditional quantiles can be obtained by numerically inverting $\hat{F}_{Y|Z}(\cdot|z)$.
+
+
+## Monotonicity and Inversion
+
+A CDF must be non-decreasing in $y$. Because $\hat{\beta}(y)$ is estimated separately at each threshold, however, the function $y\mapsto\hat{F}_{Y|Z}(y|z)$ can decrease over some intervals, even when the model is correctly specified. In that case it is not a valid CDF and cannot be directly inverted to obtain quantiles.
+
+As with quantile regression, rearrangement can be used to impose the required monotonicity [@Chernozhukov2010QuantileProbabilityCurves; @Chernozhukov2013b]. This step is particularly important when distribution regression is used to recover QTEs, while DTEs can be computed directly from the estimated CDFs.
+
+
+## Distribution and Quantile Regression Compared
+
+With sufficiently rich transformations $\psi(z)$, both distribution and quantile regression can approximate the conditional distribution arbitrarily well. Since conditional CDFs and quantile functions determine one another, the two approaches coincide in an appropriate large-sample, well-specified limit. In finite samples, they generally produce different estimates because they impose different approximations and optimize different criteria.
+
+Distribution regression has an important advantage when the outcome is discrete or mixed. The indicator $\I\curl{Y_i\leq y}$ remains well-defined regardless of whether $Y_i$ is continuous, discrete, or has both discrete and continuous components. Quantile regression is most naturally formulated for continuous conditional distributions and requires additional care in the presence of mass points.
+
+The distinction also matters for the target of estimation. Distribution regression estimates the CDF directly and is therefore especially convenient for DTEs. Quantile regression estimates quantiles directly and is therefore especially convenient for QTEs. Either method can be used to recover both objects, but outside saturated designs the resulting finite-sample estimates need not agree.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we use quantile and distribution regression to estimate the distributions, quantiles, QTEs, and DTEs of potential outcomes under unconfoundedness.
