@@ -84,21 +84,21 @@ $$
 \hat{F}_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\hat{\beta}(y)\right).
 $$ {#eq-dr-cdf-estimator}
 
-Distribution regression is therefore best understood as a continuum of binary regressions, one for each value of $y$. This perspective is useful for causal estimation. Once the relevant treatment and control variables are included in $Z_i$, the estimated CDF can be inserted into the identifying formulas for distributions of potential outcomes. Differences between such estimated CDFs produce DTEs directly. Conditional quantiles can be obtained by numerically inverting $\hat{F}_{Y|Z}(\cdot|z)$, which in turn permits the construction of QTEs.
+Distribution regression is best understood as a continuum of binary regressions, one for each value of $y$. 
 
 Operationally, the procedure is:
 
 1. Choose a grid of outcome thresholds $y$.
 2. For each threshold, regress $\I\curl{Y_i\leq y}$ on the covariates using the same link and transformation.
 3. Collect the fitted probabilities across thresholds to form $\hat{F}_{Y|Z}(y|z)$.
-4. Use the estimated CDF directly for DTEs, or invert it to obtain quantiles for QTEs.
+4. Use the estimated CDF directly, or invert it to obtain quantiles.
 
 
 ## Monotonicity and Inversion
 
 A final complication follows from estimating each binary regression separately. A CDF must be non-decreasing in $y$, but the function $y\mapsto\hat{F}_{Y|Z}(y|z)$ can decrease over some intervals because $\hat{\beta}(y)$ is estimated independently at each threshold. This can occur in finite samples even when the model is correctly specified. The resulting function is not a valid CDF and cannot be directly inverted to obtain quantiles.
 
-Rearrangement provides a way to impose the required monotonicity [@Chernozhukov2010QuantileProbabilityCurves; @Chernozhukov2013b]. This correction is particularly important when distribution regression is used to recover QTEs. For DTEs, the estimated CDFs are the objects of interest directly, although they should still be checked for the basic properties of a distribution function.
+As with quantiles, rearrangement provides a way to impose the required monotonicity [@Chernozhukov2010QuantileProbabilityCurves; @Chernozhukov2013b]. 
 
 
 ## Distribution and Quantile Regression Compared
@@ -112,7 +112,6 @@ The main practical differences are summarized below:
 | Primary object | Conditional CDF $F_{Y|Z}(y|z)$ | Conditional quantile $Q_{Y|Z}(\tau|z)$ |
 | Estimation problem | Binary response regression for each $y$ | Check-loss minimization for each $\tau$ |
 | Most direct causal use | DTEs | QTEs |
-| Recovering the other object | Numerically invert the estimated CDF | Construct or estimate the CDF from the quantile process |
 | Outcome support | Naturally accommodates continuous, discrete, and mixed outcomes | Most naturally formulated for continuous conditional distributions |
 
 The table describes the direction in which each method approaches the distribution, not an exclusivity condition. Either method can recover both CDFs and quantiles, but outside saturated designs their finite-sample estimates need not agree. The choice should therefore reflect both the parameter of interest and the support of the outcome. Distribution regression is especially attractive when DTEs or mixed outcomes are central; quantile regression is especially attractive when QTEs are the primary target.
