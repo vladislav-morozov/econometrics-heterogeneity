@@ -12,11 +12,11 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section connects the identification results from previous sections with the estimation tools of quantile and distribution regression. 
+This section connects the QTE and DTE identification results from previous sections with quantile and distribution regression.
 
 By the end of this section, you should be able to:
 
-- Distinguish between subsample-based and interaction-based estimation depending on treatment support.
+
 - Estimate marginal and conditional potential outcome distributions under unconditional unconfoundedness.
 - Implement Regression G-Computation via distribution regression to recover unconditional CDFs.
 - Implement Inverse Probability Weighted (IPW) quantile regression to estimate unconditional quantiles under selection on observables.
@@ -26,41 +26,41 @@ By the end of this section, you should be able to:
 
 ## Treatment Support and Estimation Strategy
 
-Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. In practice, the nature of the treatment variable dictates our functional form assumptions and determines whether we can fully avoid parametric restrictions.
+Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. The nature of the treatment variable dictates our functional form assumptions and determines whether we can avoid parametric restrictions.
 
-- **Continuous Treatment**: If $X_i$ takes values on a continuum, sample-splitting is fundamentally impossible since we rarely observe more than one unit at any exact treatment level. We must therefore treat $X_i$ as an additional covariate in our quantile or distribution regression specifications (e.g., as part of the index $\psi(X_i, W_i)$). The causal parameters are then evaluated at specific values of interest, $x_1$ and $x_2$, which relies heavily on the interpolation properties of our regression models.
-- **Discrete Treatment**: If $X_i$ has finite support, we have much more flexibility. Rather than assuming a common functional relationship across treatment arms, we can choose between:
-  1. **Subsample Estimation**: We split the sample and estimate separate models within each treatment subsample $\{i : X_i = x\}$. This approach is fully nonparametric with respect to how the treatment interacts with other covariates.
-  2. **Pooled Estimation with Interactions**: We pool the data but include treatment indicators fully interacted with the covariate vector $\psi(W_i)$. Under linear or generalized linear models, this is algebraically equivalent to subsample estimation. However, it provides a convenient framework for testing pooled inference or imposing common-slope restrictions if we believe certain covariate effects are homogeneous across treatment states.
+- If $X_i$ is continuously distributed, we treat $X_i$ as a covariate in our regression specifications (e.g., as part of the index $\psi(X_i, W_i)$). The causal parameters at specific values of interest, $x_1$ and $x_2$, are recovered from the estimated regression functions.
+- If $X_i$ has finite support, we have more flexibility. Rather than assuming a common functional relationship across treatment arms, we can choose between:
+  1. Subsample Estimation: split the sample and estimate separate models within each treatment subsample $\{i : X_i = x\}$. This approach is fully nonparametric with respect to how the treatment interacts with other covariates.
+  2. Pooled Estimation with Interactions: We pool the data but include treatment indicators fully interacted with the covariate vector $\psi(W_i)$. Under (generalized) linear models, this is algebraically equivalent to subsample estimation. However, it is convenient for pooled inference or imposing common-slope restrictions.
 
 
 ## Estimation under Unconditional Unconfoundedness
 
-Under the idealized benchmark of unconditional unconfoundedness (as in a perfectly executed randomized controlled trial), potential outcomes are completely independent of treatment assignment. Consequently, we do not need to control for selection bias or covariate differences. The causal parameters of interest are directly identified by the observed outcome distributions within each treatment group.
+Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. We do not need to control for selection bias or covariate differences; causal parameters are identified by the observed outcome distributions within each treatment group.
 
 ### Discrete Treatment
 
-When the treatment $X_i$ is discrete, estimation requires no modeling assumptions whatsoever. The unconditional potential outcome CDF $F_{Y^x}(y)$ can be estimated nonparametrically using the empirical CDF of the outcome $Y_i$ within the subsample assigned to treatment level $x$:
+When the treatment $X_i$ is discrete, estimation requires no modeling assumptions. The unconditional potential outcome CDF $F_{Y^x}(y)$ is estimated nonparametrically using the empirical CDF of the outcome $Y_i$ within the subsample assigned to treatment level $x$:
 $$
-\hat{F}_{Y^x}(y) = \frac{1}{\sum_{i=1}^N \mathbb{1}\{X_i = x\}} \sum_{i=1}^N \mathbb{1}\{Y_i \leq y\} \mathbb{1}\{X_i = x\}.
+\hat{F}_{Y^x}(y) = \frac{1}{\sum_{i=1}^N \mathbb{I}\{X_i = x\}} \sum_{i=1}^N \mathbb{I}\{Y_i \leq y\} \mathbb{I}\{X_i = x\}.
 $$ {#eq-est-rct-discrete-cdf}
 
-Similarly, the unconditional potential outcome quantile $Q_{Y^x}(\tau)$ is estimated directly by the sample $\tau$th quantile of the subsample for which $X_i = x$:
+Similarly, the unconditional potential outcome quantile $Q_{Y^x}(\tau)$ is estimated by the sample $\tau$th quantile of the subsample with $X_i = x$:
 $$
 \hat{Q}_{Y^x}(\tau) = \inf \left\{ q : \hat{F}_{Y^x}(q) \geq \tau \right\}.
 $$ {#eq-est-rct-discrete-quant}
 
-In this setting, the estimated QTEs and DTEs are simply differences in subsample quantiles and empirical CDFs.
+In this setting, the estimated QTEs and DTEs are differences in subsample quantiles and empirical CDFs.
 
 ### Continuous Treatment
 
-If the treatment $X_i$ is continuously distributed, we cannot construct subsamples for specific values of $x$. Instead, we must pool the data and rely on the smoothing properties of distribution or quantile regression to interpolate across treatment levels:
+If the treatment $X_i$ is continuous, we cannot construct subsamples for specific values of $x$. Instead, we pool the data and rely on the smoothing properties of distribution or quantile regression to interpolate across treatment levels:
 
-1. **Estimating the CDF**: We estimate $F_{Y^x}(y)$ by running a distribution regression of $Y_i$ on a vector of treatment transformations $\psi(X_i)$. This yields the fitted conditional CDF $\hat{F}_{Y|X}(y|x) = \Lambda(\psi(x)'\hat{\beta}(y))$. The estimator for the potential outcome CDF is then obtained by evaluating the fitted model at the specific treatment value of interest:
+1. Estimating the CDF: We estimate $F_{Y^x}(y)$ by running a distribution regression of $Y_i$ on a vector of treatment transformations $\psi(X_i)$. This yields the fitted conditional CDF $\hat{F}_{Y|X}(y|x) = \Lambda(\psi(x)'\hat{\beta}(y))$. The estimator for the potential outcome CDF is then obtained by evaluating the fitted model at the specific treatment value of interest:
    $$
    \hat{F}_{Y^x}(y) = \Lambda\left(\psi(x)'\hat{\beta}(y)\right).
    $$
-2. **Estimating the Quantiles**: We estimate $Q_{Y^x}(\tau)$ by running a quantile regression of $Y_i$ on $\psi(X_i)$, which yields the linear index evaluator:
+2. Estimating the Quantiles: We estimate $Q_{Y^x}(\tau)$ by running a quantile regression of $Y_i$ on $\psi(X_i)$, which yields the linear index evaluator:
    $$
    \hat{Q}_{Y^x}(\tau) = \psi(x)'\hat{\beta}(\tau).
    $$
@@ -68,79 +68,77 @@ If the treatment $X_i$ is continuously distributed, we cannot construct subsampl
 
 ## Estimation under Conditional Unconfoundedness
 
-In observational data, treatments are rarely assigned purely at random. When unconfoundedness only holds conditionally on a vector of control variables $W_i$ (often referred to as selection on observables), we must actively adjust for covariate differences across treatment arms to eliminate selection bias. Throughout this section, we focus on the case where the treatment $X_i$ is discrete.
+In observational data, treatments are rarely assigned purely at random. When unconfoundedness only holds conditionally on a vector of control variables $W_i$ (selection on observables), we must adjust for covariate differences across treatment arms to eliminate selection bias. Throughout this section, we assume the treatment $X_i$ is discrete.
 
 ### Conditional Parameters
 
-If our causal questions are local—meaning we only care about potential outcome distributions *conditional* on specific values of the covariates, $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$—the adjustment is simple. We can apply our standard distribution or quantile regression tools directly to the subsample of individuals who received the treatment value of interest, $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample directly identify the causal parameters:
+If our causal questions are conditional on covariates, $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$, adjustment is straightforward. We apply distribution or quantile regression of $Y_i$ on $\psi(W_i)$ within the subsample $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters:
 $$
-\hat{F}_{Y^x|W}(y|w) = \Lambda\left(\psi(w)'\hat{\beta}(y)\right), \quad \hat{Q}_{Y^x|W}(\tau|w) = \psi(w)'\hat{\beta}(\tau),
+\begin{aligned}
+\hat{F}_{Y^x|W}(y|w) & = \Lambda\left(\psi(w)'\hat{\beta}(y)\right), \\
+ \hat{Q}_{Y^x|W}(\tau|w)  & = \psi(w)'\hat{\beta}(\tau),
+\end{aligned}   
 $$
 where the parameters $\hat{\beta}(y)$ and $\hat{\beta}(\tau)$ are estimated solely using observations for which $X_i = x$.
 
 ### Unconditional CDFs via Regression G-Computation
 
-When our causal questions are global—meaning we want to learn about the *unconditional* distribution of potential outcomes $F_{Y^x}(y)$ in the entire population—the problem becomes more complex. For average treatment effects, we can simply average conditional mean effects. For distributions, we must use the **G-computation (standardization)** formula to integrate out the controls:
+When interest lies in the unconditional potential outcome distribution $F_{Y^x}(y)$ in the population, we must integrate out the controls via the G-computation (standardization) formula:
 $$
 F_{Y^x}(y) = \E\left[ F_{Y|X, W}(y|x, W_i) \right].
 $$
 This structure suggests a simple two-step estimator:
 
-1. **Step 1 (Conditional Estimation)**: We capture how covariates affect the outcome probability within the treatment arm of interest. Run a distribution regression of $Y_i$ on $\psi(W_i)$ using only the subsample with $X_i = x$. This yields the coefficient estimates $\hat{\beta}(y)$ and the conditional CDF estimator $\hat{F}_{Y|X, W}(y|x, w) = \Lambda(\psi(w)'\hat{\beta}(y))$.
-2. **Step 2 (Averaging/Standardization)**: We "standardize" or average these predicted probabilities over the *entire* sample's covariate distribution (including units that actually received a different treatment):
+1. Step 1 (Conditional Estimation): Run a distribution regression of $Y_i$ on $\psi(W_i)$ using only the subsample with $X_i = x$. This yields the coefficient estimates $\hat{\beta}(y)$ and the conditional CDF estimator $\hat{F}_{Y|X, W}(y|x, w) = \Lambda(\psi(w)'\hat{\beta}(y))$.
+2. Step 2 (Averaging/Standardization): Average these predicted probabilities over the entire sample's covariate distribution (including units that received a different treatment):
    $$
    \hat{F}_{Y^x}(y) = \frac{1}{N} \sum_{i=1}^N \Lambda\left(\psi(W_i)'\hat{\beta}(y)\right).
    $$ {#eq-g-comp-dr}
 
-By averaging over the entire sample's covariates, we reconstruct the counterfactual distribution as if everyone in the population had been assigned to treatment $x$. This G-computation estimator consistently estimates $F_{Y^x}(y)$ under standard regularity conditions, and contrasting these estimated CDFs for $x_1$ and $x_2$ directly yields the DTE.
+By averaging over the entire sample's covariates, we reconstruct the counterfactual distribution as if everyone in the population had been assigned to treatment $x$. This G-computation estimator consistently estimates $F_{Y^x}(y)$ under standard regularity conditions, and differences in these CDFs directly yield the DTE.
 
 
 ### Unconditional Quantiles via Inverse Probability Weighting
 
-Estimating unconditional potential outcome quantiles $Q_{Y^x}(\tau)$ introduces a fundamental hurdle: because the quantile operator is highly non-linear, we **cannot** simply average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile. 
+Estimating unconditional quantiles $Q_{Y^x}(\tau)$ introduces a hurdle: because the quantile operator is non-linear, we cannot average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile.
 
-To overcome this, we must exploit the propensity-score weighted moment condition that we established in previous sections:
+To overcome this, we exploit the propensity-score weighted moment condition ([-@eq-qte-uncond-mom]):
 $$
-\E\left[ \frac{\mathbb{1}\{X_i = x\}}{P(X_i = x | W_i)} \mathbb{1}\{Y_i \leq Q_{Y^x}(\tau)\} \right] = \tau.
+\E\left[ \frac{\mathbb{I}\{X_i = x\}}{P(X_i = x | W_i)} \mathbb{I}\{Y_i \leq Q_{Y^x}(\tau)\} \right] = \tau.
 $$ {#eq-est-ipw-moment}
 
-This condition reveals that the unconditional quantile of interest is the quantile of a reweighted distribution where each treated unit's contribution is scaled by the inverse of its probability of receiving the treatment. Based on this, @Firpo2007EfficientSemiparametricEstimation shows that we can estimate $Q_{Y^x}(\tau)$ via a two-step optimization procedure:
+@Firpo2007EfficientSemiparametricEstimation shows that we can estimate $Q_{Y^x}(\tau)$ via a two-step optimization procedure:
 
-1. **Step 1 (Propensity Score)**: Estimate the propensity score $p(w) \equiv P(X_i = x | W_i = w)$ using a standard binary response model (such as a logit or probit) on the full sample, which yields the fitted probabilities $\hat{p}(W_i)$.
-2. **Step 2 (Weighted Quantile Regression)**: Solve the weighted check-loss minimization problem:
+1. Step 1 (Propensity Score): Estimate the propensity score $p(w) \equiv P(X_i = x | W_i = w)$ using a standard binary response model (such as a logit or probit) on the full sample, which yields the fitted probabilities $\hat{p}(W_i)$.
+2. Step 2 (Weighted Quantile Regression): Solve the weighted check-loss minimization problem:
    $$
-   \hat{Q}_{Y^x}(\tau) = \argmin_{q} \sum_{i=1}^N \frac{\mathbb{1}\{X_i = x\}}{\hat{p}(W_i)} \rho_\tau(Y_i - q).
+   \hat{Q}_{Y^x}(\tau) = \argmin_{q} \sum_{i=1}^N \frac{\mathbb{I}\{X_i = x\}}{\hat{p}(W_i)} \rho_\tau(Y_i - q).
    $$ {#eq-est-ipw-qr}
 
-Because there are no covariates in the check-loss minimization problem other than the constant threshold $q$, @eq-est-ipw-qr is simply a weighted sample quantile. This is computationally trivial to solve and avoids the need to model the full conditional quantile process.
+Because there are no covariates in the check-loss minimization problem other than the constant threshold $q$, @eq-est-ipw-qr is a weighted sample quantile. This is computationally trivial to solve and avoids modeling the full conditional quantile process.
 
-::: {.callout-note appearance="simple" icon=false}
+<!-- ::: {.callout-note appearance="simple" icon=false}
 
 ### The Propensity Score Estimation Paradox
 
-In semiparametric estimation, a classic and highly counterintuitive result due to @Rosenbaum1987 and @Hirano2003 shows that using an *estimated* propensity score $\hat{p}(W_i)$ rather than the *true* known propensity score $p(W_i)$ actually increases the asymptotic efficiency of our estimator. 
+In semiparametric estimation, a classic result due to @Rosenbaum1987 and @Hirano2003 shows that using an *estimated* propensity score $\hat{p}(W_i)$ rather than the *true* propensity score $p(W_i)$ increases the asymptotic efficiency of the estimator.
 
-Intuitively, estimating the propensity score adjusts for sample-specific covariate imbalances between the treatment and control groups, thereby removing sample-specific noise that the true propensity score would ignore. This result carries over directly to the IPW quantile estimator of @Firpo2007EfficientSemiparametricEstimation.
+Intuitively, estimating the propensity score adjusts for sample-specific covariate imbalances between the treatment and control groups, removing noise that the true propensity score ignores. This result carries over directly to the IPW quantile estimator of @Firpo2007EfficientSemiparametricEstimation.
 
-:::
+::: -->
 
 
 ## Asymptotic Properties
 
-A remarkable feature of these estimators is their rate of convergence. Even though both the G-computation estimator $\hat{F}_{Y^x}(y)$ and the IPW estimator $\hat{Q}_{Y^x}(\tau)$ rely on first-step semiparametric or nonparametric estimations (either the distribution regression coefficients $\hat{\beta}(y)$ or the propensity scores $\hat{p}(W_i)$), they both achieve the parametric rate of convergence.
+Despite relying on first-step semiparametric or nonparametric estimators (either the distribution regression coefficients $\hat{\beta}(y)$ or the propensity scores $\hat{p}(W_i)$), both the G-computation estimator $\hat{F}_{Y^x}(y)$ and the IPW estimator $\hat{Q}_{Y^x}(\tau)$ achieve the parametric rate of convergence.
 
 Under standard regularity conditions, they are $\sqrt{N}$-consistent and asymptotically normal:
 $$
 \sqrt{N}\left(\hat{Q}_{Y^x}(\tau) - Q_{Y^x}(\tau)\right) \xrightarrow{d} \mathcal{N}\left(0, \sigma^2(\tau)\right).
 $$
 
-Intuitively, the averaging step in G-computation and the integration in the IPW check-loss objective function act as "smoothing" operators, filtering out the first-step estimation noise and allowing the final causal parameters to converge at the standard $\sqrt{N}$ parametric rate.
+The averaging step in G-computation and the integration in the IPW check-loss objective function act as "smoothing" operators, filtering out the first-step estimation noise to allow convergence at the $\sqrt{N}$ parametric rate.
 
 For detailed derivations of the semiparametric efficiency bounds and the exact sandwich formulas for the asymptotic variances, see @Firpo2007EfficientSemiparametricEstimation for QTEs and @Donald2014EstimationInferenceDistribution for DTEs.
 
 
----
-
-#### Next Section {.unnumbered}
-
-In the next section, we transition to nonseparable panel models and investigate how to identify and estimate distributional effects when panel data is available.
