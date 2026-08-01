@@ -178,7 +178,7 @@ Here we have again used the defining property of conditional expectations, this 
 In summary, we have shown that the unconditional quantile of interest  $Q_{Y^x}(\tau)$ satisfies the following moment condition:
 $$
  	 \E\left[  \dfrac{\I\curl{X_i=x} }{P\left(X_i=x|W_i\right)}\I\curl{Y_i\leq Q_{Y^x}(\tau) }\right] = \tau.
-$$
+$$ {#eq-qte-uncond-mom}
 This argument is originally due to @Firpo2007EfficientSemiparametricEstimation.
 
 
