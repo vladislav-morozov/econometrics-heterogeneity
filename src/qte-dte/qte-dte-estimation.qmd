@@ -12,14 +12,14 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section connects the QTE and DTE identification results from previous sections with quantile and distribution regression.
+This section discusses estimating QTEs and DTEs under unconfoundedness using quantile and distribution regression.
 
 By the end of this section, you should be able to:
 
 
 - Estimate marginal and conditional potential outcome distributions under unconditional unconfoundedness.
-- Implement Regression G-Computation via distribution regression to recover unconditional CDFs.
-- Implement Inverse Probability Weighted (IPW) quantile regression to estimate unconditional quantiles under selection on observables.
+- Implement regression G-computation via distribution regression to recover unconditional CDFs.
+- Implement inverse probability weighted quantile regression to estimate unconditional quantiles.
 
 :::
 
