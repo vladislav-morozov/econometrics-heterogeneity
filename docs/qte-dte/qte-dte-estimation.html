@@ -745,30 +745,26 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section connects the QTE and DTE identification results from previous sections with quantile and distribution regression.</p>
+<p>This section discusses estimating QTEs and DTEs under unconfoundedness using quantile and distribution regression.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
 <li>Estimate marginal and conditional potential outcome distributions under unconditional unconfoundedness.</li>
-<li>Implement Regression G-Computation via distribution regression to recover unconditional CDFs.</li>
-<li>Implement Inverse Probability Weighted (IPW) quantile regression to estimate unconditional quantiles under selection on observables.</li>
+<li>Implement regression G-computation via distribution regression to recover unconditional CDFs.</li>
+<li>Implement inverse probability weighted quantile regression to estimate unconditional quantiles.</li>
 </ul>
 </div>
 </div>
 <section id="treatment-support-and-estimation-strategy" class="level2" data-number="24.1">
 <h2 data-number="24.1" class="anchored" data-anchor-id="treatment-support-and-estimation-strategy"><span class="header-section-number">24.1</span> Treatment Support and Estimation Strategy</h2>
-<p>Before translating identifying equations into sample estimators, we must consider the support of the treatment <span class="math inline">\(X_i\)</span>. The nature of the treatment variable dictates our functional form assumptions and determines whether we can avoid parametric restrictions.</p>
+<p>Before translating identifying equations into sample estimators, we must consider the support of the treatment <span class="math inline">\(X_i\)</span>. That affects how we implement the regression specifications and whether we can avoid parametric assumptions.</p>
 <ul>
 <li>If <span class="math inline">\(X_i\)</span> is continuously distributed, we treat <span class="math inline">\(X_i\)</span> as a covariate in our regression specifications (e.g., as part of the index <span class="math inline">\(\psi(X_i, W_i)\)</span>). The causal parameters at specific values of interest, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, are recovered from the estimated regression functions.</li>
-<li>If <span class="math inline">\(X_i\)</span> has finite support, we have more flexibility. Rather than assuming a common functional relationship across treatment arms, we can choose between:
-<ol type="1">
-<li>Subsample Estimation: split the sample and estimate separate models within each treatment subsample <span class="math inline">\(\{i : X_i = x\}\)</span>. This approach is fully nonparametric with respect to how the treatment interacts with other covariates.</li>
-<li>Pooled Estimation with Interactions: We pool the data but include treatment indicators fully interacted with the covariate vector <span class="math inline">\(\psi(W_i)\)</span>. Under (generalized) linear models, this is algebraically equivalent to subsample estimation. However, it is convenient for pooled inference or imposing common-slope restrictions.</li>
-</ol></li>
+<li>If <span class="math inline">\(X_i\)</span> has finite support, we have more flexibility regarding how treatments interact with other covariates. Typically, one either splits the sample and estimates separate models within each treatment subsample <span class="math inline">\(\{i : X_i = x\}\)</span> or includes treatment dummies in the regression specifications.</li>
 </ul>
 </section>
 <section id="estimation-under-unconditional-unconfoundedness" class="level2" data-number="24.2">
 <h2 data-number="24.2" class="anchored" data-anchor-id="estimation-under-unconditional-unconfoundedness"><span class="header-section-number">24.2</span> Estimation under Unconditional Unconfoundedness</h2>
-<p>Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. We do not need to control for selection bias or covariate differences; causal parameters are identified by the observed outcome distributions within each treatment group.</p>
+<p>Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. Recall that causal parameters are identified by the observed outcome distributions within each treatment group (section <a href="qte-dte-id-rct.html" class="quarto-xref"><span>19</span></a>). Estimation is therefore straightforward.</p>
 <section id="discrete-treatment" class="level3" data-number="24.2.1">
 <h3 data-number="24.2.1" class="anchored" data-anchor-id="discrete-treatment"><span class="header-section-number">24.2.1</span> Discrete Treatment</h3>
 <p>When the treatment <span class="math inline">\(X_i\)</span> is discrete, estimation requires no modeling assumptions. The unconditional potential outcome CDF <span class="math inline">\(F_{Y^x}(y)\)</span> is estimated nonparametrically using the empirical CDF of the outcome <span class="math inline">\(Y_i\)</span> within the subsample assigned to treatment level <span class="math inline">\(x\)</span>: <span id="eq-est-rct-discrete-cdf"><span class="math display">\[
@@ -794,10 +790,10 @@ window.Quarto = {
 </section>
 <section id="estimation-under-conditional-unconfoundedness" class="level2" data-number="24.3">
 <h2 data-number="24.3" class="anchored" data-anchor-id="estimation-under-conditional-unconfoundedness"><span class="header-section-number">24.3</span> Estimation under Conditional Unconfoundedness</h2>
-<p>In observational data, treatments are rarely assigned purely at random. When unconfoundedness only holds conditionally on a vector of control variables <span class="math inline">\(W_i\)</span> (selection on observables), we must adjust for covariate differences across treatment arms to eliminate selection bias. Throughout this section, we assume the treatment <span class="math inline">\(X_i\)</span> is discrete.</p>
+<p>In case unconfoundedness only holds conditional on covariates <span class="math inline">\(W_i\)</span>, we must adjust for these covariates in our regression specifications. The estimation strategy depends on whether we are interested in conditional or unconditional causal parameters and is somewhat more involved. For simplicity, we assume the treatment <span class="math inline">\(X_i\)</span> is discrete for the remainder of this section.</p>
 <section id="conditional-parameters" class="level3" data-number="24.3.1">
 <h3 data-number="24.3.1" class="anchored" data-anchor-id="conditional-parameters"><span class="header-section-number">24.3.1</span> Conditional Parameters</h3>
-<p>If our causal questions are conditional on covariates, <span class="math inline">\(F_{Y^x|W}(y|w)\)</span> and <span class="math inline">\(Q_{Y^x|W}(\tau|w)\)</span>, adjustment is straightforward. We apply distribution or quantile regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(\psi(W_i)\)</span> within the subsample <span class="math inline">\(\{i : X_i = x\}\)</span>. Since conditioning on <span class="math inline">\(W_i\)</span> is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters: <span class="math display">\[
+<p>If we are interested in the conditional parameters <span class="math inline">\(F_{Y^x|W}(y|w)\)</span> and <span class="math inline">\(Q_{Y^x|W}(\tau|w)\)</span>, adjustment is straightforward. We apply distribution or quantile regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(\psi(W_i)\)</span> within the subsample <span class="math inline">\(\{i : X_i = x\}\)</span>. Since conditioning on <span class="math inline">\(W_i\)</span> is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters: <span class="math display">\[
 \begin{aligned}
 \hat{F}_{Y^x|W}(y|w) &amp; = \Lambda\left(\psi(w)'\hat{\beta}(y)\right), \\
 \hat{Q}_{Y^x|W}(\tau|w)  &amp; = \psi(w)'\hat{\beta}(\tau),
@@ -819,7 +815,7 @@ F_{Y^x}(y) = \E\left[ F_{Y|X, W}(y|x, W_i) \right].
 </section>
 <section id="unconditional-quantiles-via-inverse-probability-weighting" class="level3" data-number="24.3.3">
 <h3 data-number="24.3.3" class="anchored" data-anchor-id="unconditional-quantiles-via-inverse-probability-weighting"><span class="header-section-number">24.3.3</span> Unconditional Quantiles via Inverse Probability Weighting</h3>
-<p>Estimating unconditional quantiles <span class="math inline">\(Q_{Y^x}(\tau)\)</span> introduces a hurdle: because the quantile operator is non-linear, we cannot average the conditional quantiles <span class="math inline">\(\hat{Q}_{Y^x|W}(\tau|W_i)\)</span> to obtain the unconditional quantile.</p>
+<p>Estimating unconditional quantiles <span class="math inline">\(Q_{Y^x}(\tau)\)</span> requires a different approach: because the quantile operator is non-linear, we cannot average the conditional quantiles <span class="math inline">\(\hat{Q}_{Y^x|W}(\tau|W_i)\)</span> to obtain the unconditional quantile.</p>
 <p>To overcome this, we exploit the propensity-score weighted moment condition (<a href="qte-id-conf.html#eq-qte-uncond-mom" class="quarto-xref"><span>21.4</span></a>): <span id="eq-est-ipw-moment"><span class="math display">\[
 \E\left[ \frac{\mathbb{I}\{X_i = x\}}{P(X_i = x | W_i)} \mathbb{I}\{Y_i \leq Q_{Y^x}(\tau)\} \right] = \tau.
 \tag{24.4}\]</span></span></p>
