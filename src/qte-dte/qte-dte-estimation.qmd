@@ -33,7 +33,7 @@ Before translating identifying equations into sample estimators, we must conside
 
 ## Estimation under Unconditional Unconfoundedness
 
-Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. We do not need to control for selection bias or covariate differences; causal parameters are identified by the observed outcome distributions within each treatment group.
+Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. Recall that causal parameters are identified by the observed outcome distributions within each treatment group (section [-@sec-qte-dte-id-rct]). Estimation is therefore straightforward.
 
 ### Discrete Treatment
 
@@ -65,11 +65,11 @@ If the treatment $X_i$ is continuous, we cannot construct subsamples for specifi
 
 ## Estimation under Conditional Unconfoundedness
 
-In observational data, treatments are rarely assigned purely at random. When unconfoundedness only holds conditionally on a vector of control variables $W_i$ (selection on observables), we must adjust for covariate differences across treatment arms to eliminate selection bias. Throughout this section, we assume the treatment $X_i$ is discrete.
+In case unconfoundedness only holds conditional on covariates $W_i$, we must adjust for these covariates in our regression specifications. The estimation strategy depends on whether we are interested in conditional or unconditional causal parameters and is somewhat more involved. For simplicity, we assume the treatment $X_i$ is discrete for the remainder of this section.
 
 ### Conditional Parameters
 
-If our causal questions are conditional on covariates, $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$, adjustment is straightforward. We apply distribution or quantile regression of $Y_i$ on $\psi(W_i)$ within the subsample $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters:
+If we are interested in the conditional parameters $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$, adjustment is straightforward. We apply distribution or quantile regression of $Y_i$ on $\psi(W_i)$ within the subsample $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters:
 $$
 \begin{aligned}
 \hat{F}_{Y^x|W}(y|w) & = \Lambda\left(\psi(w)'\hat{\beta}(y)\right), \\
@@ -97,7 +97,7 @@ By averaging over the entire sample's covariates, we reconstruct the counterfact
 
 ### Unconditional Quantiles via Inverse Probability Weighting
 
-Estimating unconditional quantiles $Q_{Y^x}(\tau)$ introduces a hurdle: because the quantile operator is non-linear, we cannot average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile.
+Estimating unconditional quantiles $Q_{Y^x}(\tau)$ requires a different approach: because the quantile operator is non-linear, we cannot average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile.
 
 To overcome this, we exploit the propensity-score weighted moment condition ([-@eq-qte-uncond-mom]):
 $$
