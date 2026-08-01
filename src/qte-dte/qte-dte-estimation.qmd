@@ -1,8 +1,8 @@
 --- 
-description: "Learn to estimate unconditional and conditional QTEs and DTEs under unconditional and conditional unconfoundedness. From G-computation via distribution regression to inverse probability weighted quantile regression. (Lecture Notes)"
+description: "Learn to estimate quantile and distributional treatment effects under unconfoundedness using quantile and distribution regression (Lecture Notes)"
 
 open-graph:
-    description: "Learn to estimate unconditional and conditional QTEs and DTEs under unconditional and conditional unconfoundedness. (Lecture Notes)"
+    description: "Learn to estimate quantile and distributional treatment effects under unconfoundedness using quantile and distribution regression (Lecture Notes)"
 ---
 
 
