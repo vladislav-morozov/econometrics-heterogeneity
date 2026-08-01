@@ -26,13 +26,10 @@ By the end of this section, you should be able to:
 
 ## Treatment Support and Estimation Strategy
 
-Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. The nature of the treatment variable dictates our functional form assumptions and determines whether we can avoid parametric restrictions.
+Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. That affects how we implement the regression specifications and whether we can avoid parametric assumptions.
 
 - If $X_i$ is continuously distributed, we treat $X_i$ as a covariate in our regression specifications (e.g., as part of the index $\psi(X_i, W_i)$). The causal parameters at specific values of interest, $x_1$ and $x_2$, are recovered from the estimated regression functions.
-- If $X_i$ has finite support, we have more flexibility. Rather than assuming a common functional relationship across treatment arms, we can choose between:
-  1. Subsample Estimation: split the sample and estimate separate models within each treatment subsample $\{i : X_i = x\}$. This approach is fully nonparametric with respect to how the treatment interacts with other covariates.
-  2. Pooled Estimation with Interactions: We pool the data but include treatment indicators fully interacted with the covariate vector $\psi(W_i)$. Under (generalized) linear models, this is algebraically equivalent to subsample estimation. However, it is convenient for pooled inference or imposing common-slope restrictions.
-
+- If $X_i$ has finite support, we have more flexibility regarding how treatments interact with other covariates. Typically, one either splits the sample and estimates separate models within each treatment subsample $\{i : X_i = x\}$ or includes treatment dummies in the regression specifications.
 
 ## Estimation under Unconditional Unconfoundedness
 
