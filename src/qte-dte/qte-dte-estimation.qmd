@@ -1,0 +1,22 @@
+--- 
+description: "Learn   (Lecture Notes)"
+
+open-graph:
+    description: "Learn  (Lecture Notes)"
+---
+
+
+# Estimating QTEs and DTEs Under Unconfoundedness {#sec-qte-dte-estimation}
+
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section 
+
+By the end of this section, you should be able to:
+
+-  
+:::
+ 
