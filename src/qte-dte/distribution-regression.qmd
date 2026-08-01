@@ -71,13 +71,16 @@ The modeling choices are therefore separated into three components:
 
 ### Estimator
 
-For a given threshold $y$, the model turns the original outcome data into a binary regression problem. Estimate $\beta(y)$ by binary maximum likelihood:
+For a given threshold $y$, the model turns the original outcome data into a binary regression problem. The parameters $\beta(y)$ can be estimated by standard binary maximum likelihood:
 $$
-\hat{\beta}(y) \in \argmax_b \sum_{i=1}^N \left[
+\begin{aligned}
+\hat{\beta}(y)  & \in \argmax_b \sum_{i=1}^N \Big[
 \I\curl{Y_i\leq y}\log\Lambda\left(\psi(Z_i)'b\right)
-+
+ \\
+ & \hspace{4cm} +
 \I\curl{Y_i>y}\log\left\{1-\Lambda\left(\psi(Z_i)'b\right)\right\}
-\right].
+\Big].
+\end{aligned}
 $$ {#eq-dr-estimator}
 
 The fitted conditional probability is then interpreted as the estimated conditional CDF:
@@ -110,7 +113,8 @@ $$ {#eq-dr-covariance}
 
 Here, $H(y)$ is the Hessian of the binary likelihood at threshold $y$ and the matrix $\Omega(y_1, y_2) = \E[S_i(y_1)S_i(y_2)']$ is the covariance of the scores across two thresholds. The score contribution for unit $i$ at threshold $y$ is:
 $$
-S_i(y) = \frac{\mathbb{1}\{Y_i \leq y\} - \Lambda(\psi(Z_i)'\beta(y))}{\Lambda(\psi(Z_i)'\beta(y))(1 - \Lambda(\psi(Z_i)'\beta(y)))} \lambda(\psi(Z_i)'\beta(y)) \psi(Z_i),
+\hspace{-1cm}
+S_i(y) = \frac{\left( \mathbb{I}\{Y_i \leq y\} - \Lambda(\psi(Z_i)'\beta(y)) \right) \lambda(\psi(Z_i)'\beta(y)) \psi(Z_i) }{\Lambda(\psi(Z_i)'\beta(y))(1 - \Lambda(\psi(Z_i)'\beta(y)))},
 $$ {#eq-dr-score}
 where $\lambda$ is the derivative of the link function $\Lambda$. 
 
