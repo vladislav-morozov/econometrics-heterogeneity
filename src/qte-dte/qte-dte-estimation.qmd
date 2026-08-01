@@ -33,7 +33,7 @@ Before translating identifying equations into sample estimators, we must conside
 
 ## Estimation under Unconditional Unconfoundedness
 
-Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. Recall that causal parameters are identified by the observed outcome distributions within each treatment group (section [-@sec-qte-dte-id-rct]). Estimation is therefore straightforward.
+Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. Recall that causal parameters are identified by the observed outcome distributions within each treatment group (section [-@sec-qte-id-rct]). Estimation is therefore straightforward.
 
 ### Discrete Treatment
 
