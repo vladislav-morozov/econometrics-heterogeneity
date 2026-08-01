@@ -8,7 +8,7 @@
 
 This repository contains lecture notes for the course *Econometrics with Unobserved Heterogeneity*, based on a graduate-level topics course I taught at the University of Bonn.
 
-📖 **Read the lecture notes on my website:** <https://vladislav-morozov.github.io/econometrics-heterogeneity/>
+📖 **Read the lecture notes on my website:** <https://vladislav-morozov.eu/econometrics-heterogeneity/>
 
 
 
@@ -19,7 +19,7 @@ Causal inference with unobserved heterogeneity is the core challenge of empirica
 ## Course Overview
 
 **Instructor:** Vladislav Morozov\
-**DOI**: 10.5281/zenodo.15459849\
+**DOI**: 10.5281/zenodo.15459848\
 **Level:** Second-year Master’s and PhD students; accessible to sufficiently prepared upper-level undergraduate students
 
 The course is structured into three main parts:
@@ -44,9 +44,6 @@ By the end of this course, students will be able to:
 
 
 ## About These Notes, Feedback & Contributions
-
- 
-These notes are being written and uploaded incrementally as part of an ongoing effort to document the lecture material in a clear and structured format.  
 
 If you find any typos or have suggestions, please open an issue here on GitHub! Suggestions, typo reports, and comments are welcome!
 
