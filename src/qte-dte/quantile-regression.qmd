@@ -33,7 +33,7 @@ Quantile and distribution regression are two primary methods for this purpose:
 - **Quantile regression** directly models conditional quantiles of the type $Q_{Y|X, W}(\tau|x, w)$.
 - **Distribution regression** instead models the conditional distribution function $F_{Y|X, W}(y|x, w)$.
 
-In this section, we provide an essential introduction to quantile regression, while distribution regression is covered in the next section. Finally, in section TBA, we discuss how to use these methods to estimate QTEs and DTEs.
+In this section, we provide an essential introduction to quantile regression, while distribution regression is covered in the next section. Finally, in section [-@sec-qte-dte-estimation], we discuss how to use these methods to estimate QTEs and DTEs.
 
 ## Introduction to Quantile Regression
 
