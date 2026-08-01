@@ -53,7 +53,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../references/references.html" rel="next">
+<link href="../qte-dte/quantile-regression.html" rel="next">
 <link href="../qte-dte/dte-id-conf.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -254,6 +254,9 @@ div.csl-indent {
         diag: "\\mathrm{diag}",
         rank: "\\mathrm{rank}",
         vecc: "\\mathrm{vec}",
+
+        argmin: "\\operatorname*{argmin}",
+        argmax: "\\operatorname*{argmax}",
       }
     }
   };
@@ -657,6 +660,24 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/quantile-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/distribution-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/qte-dte-estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Estimating QTEs and DTEs Under Unconfoundedness</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -835,9 +856,9 @@ QTE(x_1, x_2, \tau|x_3) &amp;  =Q_{Y^{x_2}|X}(\tau|x_3) -   Q_{Y^{x_1}|X}(\tau|x
     &amp; = \E\left[  \dfrac{\I\curl{X_i=x} }{P\left(X_i=x|W_i\right)}\I\curl{Y_i\leq Q_{Y^x}(\tau) }\right].
 \end{aligned}
 \]</span> Here we have again used the defining property of conditional expectations, this time to get rid of the internal conditional expectation.</p>
-<p>In summary, we have shown that the unconditional quantile of interest <span class="math inline">\(Q_{Y^x}(\tau)\)</span> satisfies the following moment condition: <span class="math display">\[
+<p>In summary, we have shown that the unconditional quantile of interest <span class="math inline">\(Q_{Y^x}(\tau)\)</span> satisfies the following moment condition: <span id="eq-qte-uncond-mom"><span class="math display">\[
      \E\left[  \dfrac{\I\curl{X_i=x} }{P\left(X_i=x|W_i\right)}\I\curl{Y_i\leq Q_{Y^x}(\tau) }\right] = \tau.
-\]</span> This argument is originally due to <span class="citation" data-cites="Firpo2007EfficientSemiparametricEstimation">Firpo (<a href="../references/references.html#ref-Firpo2007EfficientSemiparametricEstimation" role="doc-biblioref">2007</a>)</span>.</p>
+\tag{21.4}\]</span></span> This argument is originally due to <span class="citation" data-cites="Firpo2007EfficientSemiparametricEstimation">Firpo (<a href="../references/references.html#ref-Firpo2007EfficientSemiparametricEstimation" role="doc-biblioref">2007</a>)</span>.</p>
 <p>Intuitively, this moment conditions shows that <span class="math inline">\(Q_{Y^x}(\tau)\)</span> is the <span class="math inline">\(\tau\)</span>th quantile of a suitably reweighted distribution of the observed outcome. Weighting is done by the inverse of the propensity scores <span class="math inline">\(P(X_i=x|W_i)\)</span>, and hence the above result is an instance of identification using inverse probability weighting.</p>
 <p>As a final observation, we note that it is also possible to obtain a somewhat similar IPW expression for <span class="math inline">\(F_{Y^d}(y)\)</span> by proceeding as with <span class="math inline">\(Q_{Y^d}\)</span> starting from the iterated expectation. See <span class="citation" data-cites="Donald2014EstimationInferenceDistribution">Donald and Hsu (<a href="../references/references.html#ref-Donald2014EstimationInferenceDistribution" role="doc-biblioref">2014</a>)</span>.</p>
 <hr>
@@ -1278,8 +1299,8 @@ Firpo, Sergio. 2007. <span>“Efficient <span>Semiparametric Estimation</span> o
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../references/references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/quantile-regression.html" class="pagination-link" aria-label="Quantile Regression">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

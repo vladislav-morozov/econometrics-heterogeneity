@@ -52,7 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../qte-dte/qte-id-conf.html" rel="prev">
+<link href="../qte-dte/qte-dte-estimation.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -252,6 +252,9 @@ div.csl-indent {
         diag: "\\mathrm{diag}",
         rank: "\\mathrm{rank}",
         vecc: "\\mathrm{vec}",
+
+        argmin: "\\operatorname*{argmin}",
+        argmax: "\\operatorname*{argmax}",
       }
     }
   };
@@ -623,6 +626,24 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/quantile-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/distribution-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qte-dte/qte-dte-estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Estimating QTEs and DTEs Under Unconfoundedness</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -680,6 +701,13 @@ Panel Data Estimators</span>.”</span> <em>Econometrica</em> 71 (4):
 <div id="ref-Anderson1982" class="csl-entry" role="listitem">
 Anderson, T. W., and Cheng Hsiao. 1982. <span>“<span class="nocase">Formulation and estimation of dynamic models using panel
 data</span>.”</span> <em>Journal of Econometrics</em> 18 (1): 47–82. <a href="https://doi.org/10.1016/0304-4076(82)90095-1">https://doi.org/10.1016/0304-4076(82)90095-1</a>.
+</div>
+<div id="ref-Angrist2006QuantileRegressionMisspecification" class="csl-entry" role="listitem">
+Angrist, Joshua, Victor Chernozhukov, and Iván Fernández-Val. 2006.
+<span>“Quantile <span>Regression</span> Under
+<span>Misspecification</span>, with an <span>Application</span> to the
+<span>U</span>.<span>S</span>. <span>Wage Structure</span>.”</span>
+<em>Econometrica</em> 74 (2): 539–63. <a href="https://doi.org/10.1111/j.1468-0262.2006.00671.x">https://doi.org/10.1111/j.1468-0262.2006.00671.x</a>.
 </div>
 <div id="ref-Arellano1989" class="csl-entry" role="listitem">
 Arellano, Manuel. 1989. <span>“<span class="nocase">A note on the
@@ -806,6 +834,11 @@ Chen, Xiaohong, and Chunrong Ai. 2003. <span>“<span class="nocase">Efficient E
 Restrictions Containing Unknown Functions</span>.”</span>
 <em>Econometrica</em> 71 (6): 1795–843.
 </div>
+<div id="ref-Chernozhukov2010QuantileProbabilityCurves" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Alfred Galichon. 2010.
+<span>“Quantile and <span>Probability Curves Without
+Crossing</span>.”</span> <em>Econometrica</em> 78 (3): 1093–125. <a href="https://doi.org/10.3982/ECTA7880">https://doi.org/10.3982/ECTA7880</a>.
+</div>
 <div id="ref-Chernozhukov2013" class="csl-entry" role="listitem">
 Chernozhukov, Victor, Iván Fernández-Val, Jinyong Hahn, and Whitney K.
 Newey. 2013. <span>“<span class="nocase">Average and Quantile Effects in
@@ -895,6 +928,12 @@ Firpo, Sergio, and Geert Ridder. 2019. <span>“<span class="nocase">Partial ide
 distribution and its functionals</span>.”</span> <em>Journal of
 Econometrics</em> 213 (1): 210–34. <a href="https://doi.org/10.1016/j.jeconom.2019.04.012">https://doi.org/10.1016/j.jeconom.2019.04.012</a>.
 </div>
+<div id="ref-Foresi1995ConditionalDistributionExcess" class="csl-entry" role="listitem">
+Foresi, Silverio, and Franco Peracchi. 1995. <span>“The
+<span>Conditional Distribution</span> of <span>Excess Returns</span>:
+<span>An Empirical Analysis</span>.”</span> <em>Journal of the American
+Statistical Association</em> 90 (430): 451–66. <a href="https://doi.org/10.1080/01621459.1995.10476537">https://doi.org/10.1080/01621459.1995.10476537</a>.
+</div>
 <div id="ref-Graham2012" class="csl-entry" role="listitem">
 Graham, Bryan S, and James L Powell. 2012. <span>“<span class="nocase">Identification and Estimation of Average Partial Effects
 in "Irregular" Correlated Random Coefficient Panel Data
@@ -974,10 +1013,30 @@ and Efficiency of Various Estimators in Dynamic Panel Data
 Models</span>.”</span> <em>Journal of Econometrics</em> 68 (1): 53–78.
 <a href="https://doi.org/10.1016/0304-4076(94)01643-E">https://doi.org/10.1016/0304-4076(94)01643-E</a>.
 </div>
+<div id="ref-Koenker2005" class="csl-entry" role="listitem">
+Koenker, Roger. 2005. <em><span>Quantile Regression</span></em>.
+Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511754098">https://doi.org/10.1017/CBO9780511754098</a>.
+</div>
+<div id="ref-Koenker2017ComputationalMethodsQuantile" class="csl-entry" role="listitem">
+Koenker, Roger. 2017. <span>“Computational <span>Methods</span> for
+<span>Quantile Regression</span>.”</span> In <em>Handbook of
+<span>Quantile Regression</span></em>, 1st ed., edited by Roger Koenker,
+Victor Chernozhukov, Xuming He, and Limin Peng. <span>Chapman and
+Hall/CRC</span>. <a href="https://doi.org/10.1201/9781315120256-5">https://doi.org/10.1201/9781315120256-5</a>.
+</div>
+<div id="ref-Koenker1978RegressionQuantiles" class="csl-entry" role="listitem">
+Koenker, Roger, and Gilbert Bassett. 1978. <span>“Regression
+<span>Quantiles</span>.”</span> <em>Econometrica</em> 46 (1): 33–50. <a href="https://doi.org/10.2307/1913643">https://doi.org/10.2307/1913643</a>.
+</div>
 <div id="ref-Koenker2017HandbookQuantileRegression" class="csl-entry" role="listitem">
 Koenker, Roger, Victor Chernozhukov, Xuming He, and Limin Peng, eds.
 2017. <em>Handbook of <span>Quantile Regression</span></em>. 1st ed.
 <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781315120256">https://doi.org/10.1201/9781315120256</a>.
+</div>
+<div id="ref-Koenker1994QuantileSmoothingSplines" class="csl-entry" role="listitem">
+Koenker, Roger, Pin Ng, and Stephen Portnoy. 1994. <span>“Quantile
+<span>Smoothing Splines</span>.”</span> <em>Biometrika</em> 81 (4):
+673–80. <a href="https://doi.org/10.1093/biomet/81.4.673">https://doi.org/10.1093/biomet/81.4.673</a>.
 </div>
 <div id="ref-Kotlarski1967CharacterizingGammaNormal" class="csl-entry" role="listitem">
 Kotlarski, Ignacy. 1967. <span>“On <span>Characterizing</span> the
@@ -1068,6 +1127,11 @@ Matzkin, Rosa L. 2007. <span>“<span class="nocase">Nonparametric
 identification</span>.”</span> In <em>Handbook of Econometrics, Vol.
 6B</em>, edited by James J Heckman and Edward E B T - Handbook of
 Econometrics Leamer, vol. 6. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+</div>
+<div id="ref-Meinshausen2006QuantileRegressionForests" class="csl-entry" role="listitem">
+Meinshausen, Nicolai. 2006. <span>“Quantile <span>Regression
+Forests</span>.”</span> <em>Journal of Machine Learning Research</em> 7
+(35): 983–99.
 </div>
 <div id="ref-Morozov2023jmp" class="csl-entry" role="listitem">
 Morozov, Vladislav. 2023. <span>“<span class="nocase">Estimating the
@@ -1570,8 +1634,8 @@ Economics and Statistics</em> 87 (May): 385–90.
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../qte-dte/qte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span>
+      <a href="../qte-dte/qte-dte-estimation.html" class="pagination-link" aria-label="Estimating QTEs and DTEs Under Unconfoundedness">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Estimating QTEs and DTEs Under Unconfoundedness</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
