@@ -39,11 +39,8 @@ We focus exclusively on observational cross-sectional and panel data, where unob
 
 ### About These Notes
 
-These lectures notes are based on a topics course I delivered at the University of Bonn. 
-They are currently being uploaded in blocks as I organize and transform my notes. These notes are a work in progress. If you find any typos or have suggestions, please open an issue on GitHub using the link on the right!
-
-Current version (February 10, 2026): the first two blocks are fully complete, with the third block in progress. Latest addition: introduction to quantile and distributional treatment effects, along with their identification.
-
+These lectures notes are based on a topics course I delivered at the University of Bonn. They are largely complete and reflect the content of the course. However, if you find any typos or have suggestions, please open an issue on GitHub using the link on the right!
+ 
 ### Learning Outcomes
 
 By the end of this course, students will be able to:
