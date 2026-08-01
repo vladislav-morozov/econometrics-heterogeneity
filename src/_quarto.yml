@@ -59,6 +59,9 @@ book:
         - qte-dte/qte-dte-id-rct.qmd
         - qte-dte/dte-id-conf.qmd
         - qte-dte/qte-id-conf.qmd
+        - qte-dte/quantile-regression.qmd
+        - qte-dte/distribution-regression.qmd
+        - qte-dte/qte-dte-estimation.qmd
 
     - references/references.qmd
 

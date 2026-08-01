@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta name="description" content="Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)">
 
-<title>5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
+<title>23&nbsp; Distribution Regression – Econometrics with Unobserved Heterogeneity</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -53,8 +53,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-mean-group.html" rel="next">
-<link href="../linear/linear-dynamic-panel-iv.html" rel="prev">
+<link href="../qte-dte/qte-dte-estimation.html" rel="next">
+<link href="../qte-dte/quantile-regression.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -292,8 +292,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta property="og:title" content="23&nbsp; Distribution Regression – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -466,7 +466,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/distribution-regression.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -538,7 +538,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
@@ -668,7 +668,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/distribution-regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../qte-dte/distribution-regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></span></a>
   </div>
 </li>
@@ -696,24 +696,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-and-model" id="toc-introduction-and-model" class="nav-link active" data-scroll-target="#introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</a></li>
-  <li><a href="#endogeneity-due-to-heterogeneity" id="toc-endogeneity-due-to-heterogeneity" class="nav-link" data-scroll-target="#endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</a>
+  <li><a href="#from-conditional-cdfs-to-binary-regressions" id="toc-from-conditional-cdfs-to-binary-regressions" class="nav-link active" data-scroll-target="#from-conditional-cdfs-to-binary-regressions"><span class="header-section-number">23.1</span> From Conditional CDFs to Binary Regressions</a></li>
+  <li><a href="#modeling-and-estimating-the-cdf" id="toc-modeling-and-estimating-the-cdf" class="nav-link" data-scroll-target="#modeling-and-estimating-the-cdf"><span class="header-section-number">23.2</span> Modeling and Estimating the CDF</a>
   <ul class="collapse">
-  <li><a href="#endogeneity-in-differenced-heterogeneous-equation" id="toc-endogeneity-in-differenced-heterogeneous-equation" class="nav-link" data-scroll-target="#endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</a></li>
-  <li><a href="#conditions-for-instruments" id="toc-conditions-for-instruments" class="nav-link" data-scroll-target="#conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</a></li>
-  <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</a></li>
-  <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
+  <li><a href="#a-flexible-cdf-is-not-directly-estimable" id="toc-a-flexible-cdf-is-not-directly-estimable" class="nav-link" data-scroll-target="#a-flexible-cdf-is-not-directly-estimable"><span class="header-section-number">23.2.1</span> A Flexible CDF Is Not Directly Estimable</a></li>
+  <li><a href="#generalized-linear-specification" id="toc-generalized-linear-specification" class="nav-link" data-scroll-target="#generalized-linear-specification"><span class="header-section-number">23.2.2</span> Generalized Linear Specification</a></li>
+  <li><a href="#estimator" id="toc-estimator" class="nav-link" data-scroll-target="#estimator"><span class="header-section-number">23.2.3</span> Estimator</a></li>
+  <li><a href="#asymptotic-properties" id="toc-asymptotic-properties" class="nav-link" data-scroll-target="#asymptotic-properties"><span class="header-section-number">23.2.4</span> Asymptotic Properties</a></li>
   </ul></li>
+  <li><a href="#monotonicity-and-inversion" id="toc-monotonicity-and-inversion" class="nav-link" data-scroll-target="#monotonicity-and-inversion"><span class="header-section-number">23.3</span> Monotonicity and Inversion</a></li>
+  <li><a href="#distribution-and-quantile-regression-compared" id="toc-distribution-and-quantile-regression-compared" class="nav-link" data-scroll-target="#distribution-and-quantile-regression-compared"><span class="header-section-number">23.4</span> Distribution and Quantile Regression Compared</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/distribution-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/distribution-regression.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></h1>
+<h1 class="title"><span id="sec-distribution-regression" class="quarto-section-identifier"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></span></h1>
 </div>
 
 
@@ -740,98 +742,159 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.</p>
+<p>This section introduces distribution regression as a tool for estimating conditional distributions.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
-<li>Describe the overall challenge of finding valid instruments under</li>
-<li>Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models.</li>
+<li>Understand distribution regression as a sequence of binary response models indexed by an outcome threshold.</li>
+<li>Estimate conditional CDFs using a generalized linear specification.</li>
+<li>Characterize the asymptotic properties of the estimated distribution regression process.</li>
 </ul>
 </div>
 </div>
-<section id="introduction-and-model" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</h2>
-<p>As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.</p>
-<p>As a consequence, we now consider heterogeneous dynamic models. In this section we again focus on a simple AR(1) model with no exogenous regressors. Specifically, we look at the following heterogeneous version of model (<a href="linear-dynamic-panel-iv.html#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>): <span id="eq-dynamic-heterogeneity-model"><span class="math display">\[
-\begin{aligned}
-    Y_{it}   &amp; = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
-0 &amp; = \E[Y_{it}| \curl{Y_{is}}_{s\leq t}] .
-\end{aligned}
-\tag{5.1}\]</span></span> This model allows for unit-specific dynamics, as the coefficients <span class="math inline">\(\lambda_i\)</span> can vary across <span class="math inline">\(i\)</span>. The above model is also another instance of the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</p>
-<p>As before, we are interested in the average coefficient <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
+<section id="from-conditional-cdfs-to-binary-regressions" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="from-conditional-cdfs-to-binary-regressions"><span class="header-section-number">23.1</span> From Conditional CDFs to Binary Regressions</h2>
+<p>The object needed for a DTE is a conditional distribution function. We can use quantile regression to approach this problem indirectly by estimating conditional quantiles and inverting them.</p>
+<p>Distribution regression takes the opposite route: it models the conditional CDF <span class="math inline">\(F_{Y|Z}(y|z)\)</span> directly, where, as before, <span class="math inline">\(Y_i\)</span> is some outcome and <span class="math inline">\(Z_i\)</span> denotes the conditioning variables, which may include the treatment <span class="math inline">\(X_i\)</span> and other controls <span class="math inline">\(W_i\)</span>.</p>
+<p>To get the key idea, fix an outcome threshold <span class="math inline">\(y\)</span>. For each observation, consider the binary question of whether the outcome falls below that threshold: <span id="eq-dr-binary-cdf"><span class="math display">\[
+B_i(y) = \I\curl{Y_i \leq y}.
+\tag{23.1}\]</span></span></p>
+<p>The conditional mean of this binary variable is exactly the conditional CDF: <span id="eq-dr-cdf-moment"><span class="math display">\[
+\E[B_i(y)|Z_i=z] = P(Y_i\leq y|Z_i=z) = F_{Y|Z}(y|z).
+\tag{23.2}\]</span></span></p>
+<p>Thus, conditional on <span class="math inline">\(Z_i=z\)</span>, <span class="math inline">\(B_i(y)\)</span> is Bernoulli with success probability <span class="math inline">\(F_{Y|Z}(y|z)\)</span>.</p>
+<p>Distribution regression exploits this simple identity: it fits a binary response model separately for each threshold <span class="math inline">\(y\)</span>, and then regards the fitted success probability as an estimate of the conditional CDF at that threshold. Repeating the procedure over a grid of thresholds traces out an estimated conditional distribution.</p>
+<p>The approach is associated with <span class="citation" data-cites="Foresi1995ConditionalDistributionExcess">Foresi and Peracchi (<a href="../references/references.html#ref-Foresi1995ConditionalDistributionExcess" role="doc-biblioref">1995</a>)</span> and developed systematically by <span class="citation" data-cites="Chernozhukov2013b">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">2013</a>)</span>.</p>
 </section>
-<section id="endogeneity-due-to-heterogeneity" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</h2>
-<p>Can the IV estimators of the previous section estimate <span class="math inline">\(\E[\lambda_i]\)</span> under model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>)? Under what conditions? To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of <span class="math inline">\(Y_{it}\)</span> as instruments.</p>
-<section id="endogeneity-in-differenced-heterogeneous-equation" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</h3>
-<p>To replicate the procedure, we take differences in <a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and write the differenced model as <span id="eq-dynamic-heterogeneity-differenced"><span class="math display">\[
-\begin{aligned}
-    \Delta Y_{it} &amp; = \lambda \Delta Y_{it-1} +  V_{it}, \\
-    V_{it} &amp; = \eta_i\Delta Y_{it-1} + \Delta U_{it} =0,
-\end{aligned}
-\tag{5.2}\]</span></span> where we label <span class="math display">\[
-\begin{aligned}
-\lambda &amp; = \E[\lambda_i], \\
-\eta_i &amp; = \lambda_i - \lambda.
-\end{aligned}
-\]</span></p>
-<p>It is easy to check that <span class="math inline">\(\Delta Y_{it-1}\)</span> is still endogenous because it contains <span class="math inline">\(U_{it-1}\)</span>, which is correlated with the residual term. The same problematic term <span class="math inline">\(\lambda \E[U_{it-1}^2]\)</span> is present in <span class="math inline">\(\E[V_{it}\Delta Y_{it-1}]\)</span>.</p>
+<section id="modeling-and-estimating-the-cdf" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="modeling-and-estimating-the-cdf"><span class="header-section-number">23.2</span> Modeling and Estimating the CDF</h2>
+<section id="a-flexible-cdf-is-not-directly-estimable" class="level3" data-number="23.2.1">
+<h3 data-number="23.2.1" class="anchored" data-anchor-id="a-flexible-cdf-is-not-directly-estimable"><span class="header-section-number">23.2.1</span> A Flexible CDF Is Not Directly Estimable</h3>
+<p>The identity in <a href="#eq-dr-cdf-moment" class="quarto-xref">Equation&nbsp;<span>23.2</span></a> does not by itself provide an estimable model when <span class="math inline">\(Z\)</span> contains continuously distributed variables. In principle, one could maximize the Bernoulli likelihood while allowing <span class="math inline">\(F_{Y|Z}(y|\cdot)\)</span> to range over all functions. With a finite sample, however, the likelihood only restricts the function at the observed covariate values. Infinitely many functions can therefore have the same likelihood. As in quantile regression, we need a finite-dimensional or otherwise regularized approximation.</p>
 </section>
-<section id="conditions-for-instruments" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</h3>
-<p>Can we find a suitable instrument for <span class="math inline">\(\Delta Y_{it-1}\)</span>? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: <span class="math display">\[
-\begin{aligned}
-    \E[Z_{it}\Delta Y_{it-1}] &amp;  \neq 0 ,\\
-    \E[Z_{it} V_{it}] &amp; = \E[ \eta_i Z_{it}\Delta Y_{it-1} ] + \E[Z_{it}U_{it}].
-\end{aligned}
-\]</span> Note that a new <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\)</span> term now appears in the exogeneity condition.</p>
-</section>
-<section id="endogeneity-of-lagged-outcomes" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</h3>
-<p>Unlike in the homogeneous case, <span class="math inline">\(Y_{it-2}\)</span> is not a valid instrument anymore. We show that <span class="math inline">\(Y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
+<section id="generalized-linear-specification" class="level3" data-number="23.2.2">
+<h3 data-number="23.2.2" class="anchored" data-anchor-id="generalized-linear-specification"><span class="header-section-number">23.2.2</span> Generalized Linear Specification</h3>
+<p>The standard choice is a generalized linear specification: <span id="eq-dr-specification"><span class="math display">\[
+F_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\beta(y)\right),
+\tag{23.3}\]</span></span> where <span class="math inline">\(\psi(z)\)</span> is a known transformation of the covariates, <span class="math inline">\(\beta(y)\)</span> is allowed to vary with the threshold, and <span class="math inline">\(\Lambda\)</span> is a known link function. Logistic and probit links are common choices. The link maps the index into <span class="math inline">\([0,1]\)</span>, as required for a probability. Importantly, the coefficients are indexed by <span class="math inline">\(y\)</span>: the relationship between the covariates and the probability of being below the threshold may differ across the outcome distribution.</p>
+<p>This specification is parametric when <span class="math inline">\(\psi(z)\)</span> is fixed and finite-dimensional. It can also be used nonparametrically by allowing the dimension or flexibility of <span class="math inline">\(\psi(z)\)</span> to grow with the sample size. In either case, the link function is a device for modeling a binary conditional probability; it does not assert that the outcome itself is logistic or probit.</p>
+<p>The modeling choices are therefore separated into three components:</p>
 <ul>
-<li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
-<li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
-Y_{it} = \dfrac{A_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k U_{it-k}.
-\]</span></li>
-<li><span class="math inline">\(\curl{U_{it}}_t\)</span> is an IID sequence with finite second moments, and <span class="math inline">\(U_{it}\)</span> is independent of <span class="math inline">\((A_i, \lambda_i)\)</span>.</li>
+<li>The transformation <span class="math inline">\(\psi(z)\)</span> determines how flexibly the CDF may vary with the covariates.</li>
+<li>The link function <span class="math inline">\(\Lambda\)</span> maps the index into a valid probability.</li>
+<li>The threshold-specific coefficient <span class="math inline">\(\beta(y)\)</span> allows the covariate relationship to vary across the outcome distribution.</li>
 </ul>
-<p>Under the above assumptions the first expectation in <span class="math inline">\(\E[Y_{it-2} V_{it}]\)</span> can be evaluated as follows: <span class="math display">\[
-\begin{aligned}
-&amp; \E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]
-\\
-% &amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
-&amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} U_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} U^2_{i,t-k-2}\right)  \right)\right] \\
-&amp; = \E[U_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
-\end{aligned}
-\]</span> In general, there is no reason to expect the above expectation to be zero if <span class="math inline">\(\eta_i\)</span> is not zero. The second term involves a sum of even-order moments of <span class="math inline">\(\eta_i\)</span> (equivalently, <span class="math inline">\(\lambda_i)\)</span>; such a sum would in general be non-zero.</p>
-<p>We conclude that <span class="math display">\[
-\E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]\neq 0,
-\]</span> and so in general that <span class="math display">\[
-\E[Y_{it-2} V_{it}]\neq 0.
-\]</span> In other words, <span class="math inline">\(Y_{it-2}\)</span> <em>is not a valid instrument under the heterogeneous mode</em>l (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(Y_{it}\)</span>.</p>
-<p>More broadly, the problem of finding a valid instrument <span class="math inline">\(Z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(Z_{it}\)</span> be correlated with <span class="math inline">\(\Delta Y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(Z_{it}\)</span> is also correlated with <span class="math inline">\(\eta_i \Delta Y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta Y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
-<p>We conclude that the IV estimators of the previous section do not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
 </section>
-<section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
-<p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
-<p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((A_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(Y_{it-1}\)</span> through <span class="math display">\[
-Y_{it-1} = A_i + \lambda_i Y_{it-2} + U_{it-2}.
-\]</span> As a result, <span class="math inline">\(Y_{it-1}\)</span> and <span class="math inline">\((A_i, \lambda_i)\)</span> cannot be (mean) independent by construction.</p>
+<section id="estimator" class="level3" data-number="23.2.3">
+<h3 data-number="23.2.3" class="anchored" data-anchor-id="estimator"><span class="header-section-number">23.2.3</span> Estimator</h3>
+<p>For a given threshold <span class="math inline">\(y\)</span>, the model turns the original outcome data into a binary regression problem. The parameters <span class="math inline">\(\beta(y)\)</span> can be estimated by standard binary maximum likelihood: <span id="eq-dr-estimator"><span class="math display">\[
+\begin{aligned}
+\hat{\beta}(y)  &amp; \in \argmax_b \sum_{i=1}^N \Big[
+\I\curl{Y_i\leq y}\log\Lambda\left(\psi(Z_i)'b\right)
+\\
+&amp; \hspace{4cm} +
+\I\curl{Y_i&gt;y}\log\left\{1-\Lambda\left(\psi(Z_i)'b\right)\right\}
+\Big].
+\end{aligned}
+\tag{23.4}\]</span></span></p>
+<p>The fitted conditional probability is then interpreted as the estimated conditional CDF: <span id="eq-dr-cdf-estimator"><span class="math display">\[
+\hat{F}_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\hat{\beta}(y)\right).
+\tag{23.5}\]</span></span></p>
+<p>Distribution regression is best understood as a continuum of binary regressions, one for each value of <span class="math inline">\(y\)</span>.</p>
+<p>Operationally, the procedure is:</p>
+<ol type="1">
+<li>Choose a grid of outcome thresholds <span class="math inline">\(y\)</span>.</li>
+<li>For each threshold, regress <span class="math inline">\(\I\curl{Y_i\leq y}\)</span> on the covariates using the same link and transformation.</li>
+<li>Collect the fitted probabilities across thresholds to form <span class="math inline">\(\hat{F}_{Y|Z}(y|z)\)</span>.</li>
+<li>Use the estimated CDF directly, or invert it to obtain quantiles.</li>
+</ol>
+</section>
+<section id="asymptotic-properties" class="level3" data-number="23.2.4">
+<h3 data-number="23.2.4" class="anchored" data-anchor-id="asymptotic-properties"><span class="header-section-number">23.2.4</span> Asymptotic Properties</h3>
+<p>At any single threshold <span class="math inline">\(y\)</span>, the estimator <span class="math inline">\(\hat{\beta}(y)\)</span> is a standard maximum likelihood estimator. Under standard regularity conditions, it is <span class="math inline">\(\sqrt{N}\)</span>-consistent and asymptotically normal. To perform joint inference across multiple thresholds, we must analyze the entire distribution regression process <span class="math inline">\(\hat{\beta}(\cdot)\)</span> indexed by <span class="math inline">\(y \in \mathcal{Y}\)</span>.</p>
+<p><span class="citation" data-cites="Chernozhukov2013b">Chernozhukov et al. (<a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">2013</a>)</span> establish that the distribution regression process converges weakly to a Gaussian process: <span id="eq-dr-fclt"><span class="math display">\[
+\sqrt{N} (\hat{\beta}(\cdot) - \beta(\cdot)) \Rightarrow \mathbb{G}(\cdot) \quad \text{in } \ell^\infty(\mathcal{Y})^d,
+\tag{23.6}\]</span></span> where <span class="math inline">\(\mathbb{G}(\cdot)\)</span> is a zero-mean Gaussian process with covariance function: <span id="eq-dr-covariance"><span class="math display">\[
+\Sigma(y_1, y_2) = H(y_1)^{-1} \Omega(y_1, y_2) H(y_2)^{-1}.
+\tag{23.7}\]</span></span></p>
+<p>Here, <span class="math inline">\(H(y)\)</span> is the Hessian of the binary likelihood at threshold <span class="math inline">\(y\)</span> and the matrix <span class="math inline">\(\Omega(y_1, y_2) = \E[S_i(y_1)S_i(y_2)']\)</span> is the covariance of the scores across two thresholds. The score contribution for unit <span class="math inline">\(i\)</span> at threshold <span class="math inline">\(y\)</span> is: <span id="eq-dr-score"><span class="math display">\[
+\hspace{-1cm}
+S_i(y) = \frac{\left( \mathbb{I}\{Y_i \leq y\} - \Lambda(\psi(Z_i)'\beta(y)) \right) \lambda(\psi(Z_i)'\beta(y)) \psi(Z_i) }{\Lambda(\psi(Z_i)'\beta(y))(1 - \Lambda(\psi(Z_i)'\beta(y)))},
+\tag{23.8}\]</span></span> where <span class="math inline">\(\lambda\)</span> is the derivative of the link function <span class="math inline">\(\Lambda\)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Having a functional central limit theorem (FCLT) like <a href="#eq-dr-fclt" class="quarto-xref">Equation&nbsp;<span>23.6</span></a> is powerful and useful for working with parameters that transform the entire CDF (e.g.&nbsp;Gini coefficients) and constructing uniform bands. Similar uniform results are available for quantile regression, but they are more difficult to establish both because the check loss is non-smooth and because extreme (tail) quantiles have different asymptotic properties.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="monotonicity-and-inversion" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="monotonicity-and-inversion"><span class="header-section-number">23.3</span> Monotonicity and Inversion</h2>
+<p>A final complication follows from estimating each binary regression separately. A CDF must be non-decreasing in <span class="math inline">\(y\)</span>, but the function <span class="math inline">\(y\mapsto\hat{F}_{Y|Z}(y|z)\)</span> can decrease over some intervals because <span class="math inline">\(\hat{\beta}(y)\)</span> is estimated independently at each threshold. This can occur in finite samples even when the model is correctly specified. The resulting function is not a valid CDF and cannot be directly inverted to obtain quantiles.</p>
+<p>As with quantiles, rearrangement provides a way to impose the required monotonicity <span class="citation" data-cites="Chernozhukov2010QuantileProbabilityCurves Chernozhukov2013b">(<a href="../references/references.html#ref-Chernozhukov2010QuantileProbabilityCurves" role="doc-biblioref">Chernozhukov et al. 2010</a>; <a href="../references/references.html#ref-Chernozhukov2013b" role="doc-biblioref">Chernozhukov et al. 2013</a>)</span>.</p>
+</section>
+<section id="distribution-and-quantile-regression-compared" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="distribution-and-quantile-regression-compared"><span class="header-section-number">23.4</span> Distribution and Quantile Regression Compared</h2>
+<p>Distribution and quantile regression are alternative ways of approximating the same underlying conditional distribution. With sufficiently rich transformations <span class="math inline">\(\psi(z)\)</span>, both methods can approximate that distribution arbitrarily well. Since conditional CDFs and quantile functions determine one another, the two approaches coincide in an appropriate large-sample, well-specified limit. In finite samples, however, they generally produce different estimates because they impose different approximations and optimize different criteria.</p>
+<p>The main practical differences are summarized below:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Distribution regression</th>
+<th style="text-align: left;">Quantile regression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Primary object</td>
+<td style="text-align: left;">Conditional CDF <span class="math inline">\(F_{Y|Z}(y|z)\)</span></td>
+<td style="text-align: left;">Conditional quantile <span class="math inline">\(Q_{Y|Z}(\tau|z)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Estimation problem</td>
+<td style="text-align: left;">Binary response regression for each <span class="math inline">\(y\)</span></td>
+<td style="text-align: left;">Check-loss minimization for each <span class="math inline">\(\tau\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Most direct causal use</td>
+<td style="text-align: left;">DTEs</td>
+<td style="text-align: left;">QTEs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Outcome support</td>
+<td style="text-align: left;">Naturally accommodates continuous, discrete, and mixed outcomes</td>
+<td style="text-align: left;">Most naturally formulated for continuous conditional distributions</td>
+</tr>
+</tbody>
+</table>
+<p>Either method can recover both CDFs and quantiles, but outside saturated designs their finite-sample estimates need not agree. The choice should therefore reflect both the parameter of interest and the support of the outcome. Distribution regression is especially attractive when DTEs or mixed outcomes are central; quantile regression is especially attractive when QTEs are the primary target.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we study a simple estimator for <span class="math inline">\(\E[\bbeta_i]\)</span> that is robust both to coefficient heterogeneity and dynamics.</p>
+<p>In the next section, we use quantile and distribution regression to estimate the distributions, quantiles, QTEs, and DTEs of potential outcomes under unconfoundedness.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Chernozhukov2010QuantileProbabilityCurves" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Alfred Galichon. 2010. <span>“Quantile and <span>Probability Curves Without Crossing</span>.”</span> <em>Econometrica</em> 78 (3): 1093–125. <a href="https://doi.org/10.3982/ECTA7880">https://doi.org/10.3982/ECTA7880</a>.
+</div>
+<div id="ref-Chernozhukov2013b" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Blaise Melly. 2013. <span>“<span class="nocase">Inference on Counterfactual Distributions</span>.”</span> <em>Econometrica</em> 81 (6): 2205–68. <a href="https://doi.org/10.3982/ecta10582">https://doi.org/10.3982/ecta10582</a>.
+</div>
+<div id="ref-Foresi1995ConditionalDistributionExcess" class="csl-entry" role="listitem">
+Foresi, Silverio, and Franco Peracchi. 1995. <span>“The <span>Conditional Distribution</span> of <span>Excess Returns</span>: <span>An Empirical Analysis</span>.”</span> <em>Journal of the American Statistical Association</em> 90 (430): 451–66. <a href="https://doi.org/10.1080/01621459.1995.10476537">https://doi.org/10.1080/01621459.1995.10476537</a>.
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1251,13 +1314,13 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span>
+      <a href="../qte-dte/quantile-regression.html" class="pagination-link" aria-label="Quantile Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/qte-dte-estimation.html" class="pagination-link" aria-label="Estimating QTEs and DTEs Under Unconfoundedness">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Estimating QTEs and DTEs Under Unconfoundedness</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1266,4 +1329,4 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/distribution-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
