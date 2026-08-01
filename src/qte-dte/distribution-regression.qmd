@@ -51,7 +51,7 @@ The approach is associated with @Foresi1995ConditionalDistributionExcess and dev
 
 ### A Flexible CDF Is Not Directly Estimable
 
-The identity in @eq-dr-cdf-moment does not by itself provide an estimable model when $Z$ contains continuously distributed variables. In principle, one could maximize the Bernoulli likelihood while allowing $F_{Y|Z}(y|\cdot)$ to range over all functions. With a finite sample, however, the likelihood only restricts the function at the observed covariate values. Infinitely many functions can therefore have the same likelihood. As in quantile regression, we need a finite-dimensional or otherwise regularized approximation.
+The identity in @eq-dr-cdf-moment does not by itself provide an estimable model when $Z_i$ contains continuously distributed variables. In principle, one could maximize the Bernoulli likelihood while allowing $F_{Y|Z}(y|\cdot)$ to range over all functions. With a finite sample, however, the likelihood only restricts the function at the observed covariate values. Infinitely many functions can therefore have the same likelihood. As in quantile regression, we need a finite-dimensional or otherwise regularized approximation.
 
 ### Generalized Linear Specification
 

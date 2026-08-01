@@ -12,31 +12,28 @@ open-graph:
 
 ## Summary and Learning Outcomes
 
-This section connects the QTE and DTE identification results from previous sections with quantile and distribution regression.
+This section discusses estimating QTEs and DTEs under unconfoundedness using quantile and distribution regression.
 
 By the end of this section, you should be able to:
 
 
 - Estimate marginal and conditional potential outcome distributions under unconditional unconfoundedness.
-- Implement Regression G-Computation via distribution regression to recover unconditional CDFs.
-- Implement Inverse Probability Weighted (IPW) quantile regression to estimate unconditional quantiles under selection on observables.
+- Implement regression G-computation via distribution regression to recover unconditional CDFs.
+- Implement inverse probability weighted quantile regression to estimate unconditional quantiles.
 
 :::
 
 
 ## Treatment Support and Estimation Strategy
 
-Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. The nature of the treatment variable dictates our functional form assumptions and determines whether we can avoid parametric restrictions.
+Before translating identifying equations into sample estimators, we must consider the support of the treatment $X_i$. That affects how we implement the regression specifications and whether we can avoid parametric assumptions.
 
 - If $X_i$ is continuously distributed, we treat $X_i$ as a covariate in our regression specifications (e.g., as part of the index $\psi(X_i, W_i)$). The causal parameters at specific values of interest, $x_1$ and $x_2$, are recovered from the estimated regression functions.
-- If $X_i$ has finite support, we have more flexibility. Rather than assuming a common functional relationship across treatment arms, we can choose between:
-  1. Subsample Estimation: split the sample and estimate separate models within each treatment subsample $\{i : X_i = x\}$. This approach is fully nonparametric with respect to how the treatment interacts with other covariates.
-  2. Pooled Estimation with Interactions: We pool the data but include treatment indicators fully interacted with the covariate vector $\psi(W_i)$. Under (generalized) linear models, this is algebraically equivalent to subsample estimation. However, it is convenient for pooled inference or imposing common-slope restrictions.
-
+- If $X_i$ has finite support, we have more flexibility regarding how treatments interact with other covariates. Typically, one either splits the sample and estimates separate models within each treatment subsample $\{i : X_i = x\}$ or includes treatment dummies in the regression specifications.
 
 ## Estimation under Unconditional Unconfoundedness
 
-Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. We do not need to control for selection bias or covariate differences; causal parameters are identified by the observed outcome distributions within each treatment group.
+Under unconditional unconfoundedness (as in a randomized controlled trial), potential outcomes are independent of treatment assignment. Recall that causal parameters are identified by the observed outcome distributions within each treatment group (section [-@sec-qte-id-rct]). Estimation is therefore straightforward.
 
 ### Discrete Treatment
 
@@ -68,11 +65,11 @@ If the treatment $X_i$ is continuous, we cannot construct subsamples for specifi
 
 ## Estimation under Conditional Unconfoundedness
 
-In observational data, treatments are rarely assigned purely at random. When unconfoundedness only holds conditionally on a vector of control variables $W_i$ (selection on observables), we must adjust for covariate differences across treatment arms to eliminate selection bias. Throughout this section, we assume the treatment $X_i$ is discrete.
+In case unconfoundedness only holds conditional on covariates $W_i$, we must adjust for these covariates in our regression specifications. The estimation strategy depends on whether we are interested in conditional or unconditional causal parameters and is somewhat more involved. For simplicity, we assume the treatment $X_i$ is discrete for the remainder of this section.
 
 ### Conditional Parameters
 
-If our causal questions are conditional on covariates, $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$, adjustment is straightforward. We apply distribution or quantile regression of $Y_i$ on $\psi(W_i)$ within the subsample $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters:
+If we are interested in the conditional parameters $F_{Y^x|W}(y|w)$ and $Q_{Y^x|W}(\tau|w)$, adjustment is straightforward. We apply distribution or quantile regression of $Y_i$ on $\psi(W_i)$ within the subsample $\{i : X_i = x\}$. Since conditioning on $W_i$ is sufficient to restore unconfoundedness, the regression specifications estimated within this subsample identify the causal parameters:
 $$
 \begin{aligned}
 \hat{F}_{Y^x|W}(y|w) & = \Lambda\left(\psi(w)'\hat{\beta}(y)\right), \\
@@ -100,7 +97,7 @@ By averaging over the entire sample's covariates, we reconstruct the counterfact
 
 ### Unconditional Quantiles via Inverse Probability Weighting
 
-Estimating unconditional quantiles $Q_{Y^x}(\tau)$ introduces a hurdle: because the quantile operator is non-linear, we cannot average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile.
+Estimating unconditional quantiles $Q_{Y^x}(\tau)$ requires a different approach: because the quantile operator is non-linear, we cannot average the conditional quantiles $\hat{Q}_{Y^x|W}(\tau|W_i)$ to obtain the unconditional quantile.
 
 To overcome this, we exploit the propensity-score weighted moment condition ([-@eq-qte-uncond-mom]):
 $$
