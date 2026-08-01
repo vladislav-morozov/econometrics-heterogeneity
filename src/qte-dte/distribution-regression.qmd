@@ -1,0 +1,157 @@
+--- 
+description: "Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)"
+
+open-graph:
+    description: "Learn distribution regression as a tool for estimating conditional distributions: from binary representation to asymptotics (Lecture Notes)"
+---
+
+
+# Distribution Regression {#sec-distribution-regression}
+
+::: {.callout-note appearance="simple" icon=false}
+
+## Summary and Learning Outcomes
+
+This section introduces distribution regression as a tool for estimating conditional distributions.
+
+By the end of this section, you should be able to:
+
+- Understand distribution regression as a sequence of binary response models indexed by an outcome threshold.
+- Estimate conditional CDFs using a generalized linear specification.
+- Characterize the asymptotic properties of the estimated distribution regression process.
+
+:::
+
+
+## From Conditional CDFs to Binary Regressions
+
+The object needed for a DTE is a conditional distribution function. We can use quantile regression to approach this problem indirectly by estimating conditional quantiles and inverting them. 
+
+Distribution regression takes the opposite route: it models the conditional CDF $F_{Y|Z}(y|z)$ directly, where, as before, $Y_i$ is some outcome and $Z_i$ denotes the conditioning variables, which may include the treatment $X_i$ and other controls $W_i$.
+
+To get the key idea, fix an outcome threshold $y$. For each observation, consider the binary question of whether the outcome falls below that threshold:
+$$
+B_i(y) = \I\curl{Y_i \leq y}.
+$$ {#eq-dr-binary-cdf}
+
+The conditional mean of this binary variable is exactly the conditional CDF:
+$$
+\E[B_i(y)|Z_i=z] = P(Y_i\leq y|Z_i=z) = F_{Y|Z}(y|z).
+$$ {#eq-dr-cdf-moment}
+
+Thus, conditional on $Z_i=z$, $B_i(y)$ is Bernoulli with success probability $F_{Y|Z}(y|z)$. 
+
+Distribution regression exploits this simple identity: it fits a binary response model separately for each threshold $y$, and then regards the fitted success probability as an estimate of the conditional CDF at that threshold. Repeating the procedure over a grid of thresholds traces out an estimated conditional distribution. 
+
+The approach is associated with @Foresi1995ConditionalDistributionExcess and developed systematically by @Chernozhukov2013b.
+
+
+
+## Modeling and Estimating the CDF
+
+### A Flexible CDF Is Not Directly Estimable
+
+The identity in @eq-dr-cdf-moment does not by itself provide an estimable model when $Z$ contains continuously distributed variables. In principle, one could maximize the Bernoulli likelihood while allowing $F_{Y|Z}(y|\cdot)$ to range over all functions. With a finite sample, however, the likelihood only restricts the function at the observed covariate values. Infinitely many functions can therefore have the same likelihood. As in quantile regression, we need a finite-dimensional or otherwise regularized approximation.
+
+### Generalized Linear Specification
+
+The standard choice is a generalized linear specification:
+$$
+F_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\beta(y)\right),
+$$ {#eq-dr-specification}
+where $\psi(z)$ is a known transformation of the covariates, $\beta(y)$ is allowed to vary with the threshold, and $\Lambda$ is a known link function. Logistic and probit links are common choices. The link maps the index into $[0,1]$, as required for a probability. Importantly, the coefficients are indexed by $y$: the relationship between the covariates and the probability of being below the threshold may differ across the outcome distribution.
+
+This specification is parametric when $\psi(z)$ is fixed and finite-dimensional. It can also be used nonparametrically by allowing the dimension or flexibility of $\psi(z)$ to grow with the sample size. In either case, the link function is a device for modeling a binary conditional probability; it does not assert that the outcome itself is logistic or probit.
+
+The modeling choices are therefore separated into three components:
+
+- The transformation $\psi(z)$ determines how flexibly the CDF may vary with the covariates.
+- The link function $\Lambda$ maps the index into a valid probability.
+- The threshold-specific coefficient $\beta(y)$ allows the covariate relationship to vary across the outcome distribution.
+
+### Estimator
+
+For a given threshold $y$, the model turns the original outcome data into a binary regression problem. The parameters $\beta(y)$ can be estimated by standard binary maximum likelihood:
+$$
+\begin{aligned}
+\hat{\beta}(y)  & \in \argmax_b \sum_{i=1}^N \Big[
+\I\curl{Y_i\leq y}\log\Lambda\left(\psi(Z_i)'b\right)
+ \\
+ & \hspace{4cm} +
+\I\curl{Y_i>y}\log\left\{1-\Lambda\left(\psi(Z_i)'b\right)\right\}
+\Big].
+\end{aligned}
+$$ {#eq-dr-estimator}
+
+The fitted conditional probability is then interpreted as the estimated conditional CDF:
+$$
+\hat{F}_{Y|Z}(y|z) = \Lambda\left(\psi(z)'\hat{\beta}(y)\right).
+$$ {#eq-dr-cdf-estimator}
+
+Distribution regression is best understood as a continuum of binary regressions, one for each value of $y$. 
+
+Operationally, the procedure is:
+
+1. Choose a grid of outcome thresholds $y$.
+2. For each threshold, regress $\I\curl{Y_i\leq y}$ on the covariates using the same link and transformation.
+3. Collect the fitted probabilities across thresholds to form $\hat{F}_{Y|Z}(y|z)$.
+4. Use the estimated CDF directly, or invert it to obtain quantiles.
+
+
+### Asymptotic Properties
+
+At any single threshold $y$, the estimator $\hat{\beta}(y)$ is a standard maximum likelihood estimator. Under standard regularity conditions, it is $\sqrt{N}$-consistent and asymptotically normal. To perform joint inference across multiple thresholds, we must analyze the entire distribution regression process $\hat{\beta}(\cdot)$ indexed by $y \in \mathcal{Y}$.
+
+@Chernozhukov2013b establish that the distribution regression process converges weakly to a Gaussian process:
+$$
+\sqrt{N} (\hat{\beta}(\cdot) - \beta(\cdot)) \Rightarrow \mathbb{G}(\cdot) \quad \text{in } \ell^\infty(\mathcal{Y})^d,
+$$ {#eq-dr-fclt}
+where $\mathbb{G}(\cdot)$ is a zero-mean Gaussian process with covariance function:
+$$
+\Sigma(y_1, y_2) = H(y_1)^{-1} \Omega(y_1, y_2) H(y_2)^{-1}.
+$$ {#eq-dr-covariance}
+
+Here, $H(y)$ is the Hessian of the binary likelihood at threshold $y$ and the matrix $\Omega(y_1, y_2) = \E[S_i(y_1)S_i(y_2)']$ is the covariance of the scores across two thresholds. The score contribution for unit $i$ at threshold $y$ is:
+$$
+\hspace{-1cm}
+S_i(y) = \frac{\left( \mathbb{I}\{Y_i \leq y\} - \Lambda(\psi(Z_i)'\beta(y)) \right) \lambda(\psi(Z_i)'\beta(y)) \psi(Z_i) }{\Lambda(\psi(Z_i)'\beta(y))(1 - \Lambda(\psi(Z_i)'\beta(y)))},
+$$ {#eq-dr-score}
+where $\lambda$ is the derivative of the link function $\Lambda$. 
+
+::: {.callout-note appearance="simple" icon=false}
+
+
+
+Having a functional central limit theorem (FCLT) like @eq-dr-fclt is powerful and useful for working with parameters that transform the entire CDF (e.g. Gini coefficients) and constructing uniform bands. Similar uniform results are available for quantile regression, but they are more difficult to establish both because the check loss is non-smooth and because extreme (tail) quantiles have different asymptotic properties.
+
+:::
+
+
+## Monotonicity and Inversion
+
+A final complication follows from estimating each binary regression separately. A CDF must be non-decreasing in $y$, but the function $y\mapsto\hat{F}_{Y|Z}(y|z)$ can decrease over some intervals because $\hat{\beta}(y)$ is estimated independently at each threshold. This can occur in finite samples even when the model is correctly specified. The resulting function is not a valid CDF and cannot be directly inverted to obtain quantiles.
+
+As with quantiles, rearrangement provides a way to impose the required monotonicity [@Chernozhukov2010QuantileProbabilityCurves; @Chernozhukov2013b]. 
+
+
+## Distribution and Quantile Regression Compared
+
+Distribution and quantile regression are alternative ways of approximating the same underlying conditional distribution. With sufficiently rich transformations $\psi(z)$, both methods can approximate that distribution arbitrarily well. Since conditional CDFs and quantile functions determine one another, the two approaches coincide in an appropriate large-sample, well-specified limit. In finite samples, however, they generally produce different estimates because they impose different approximations and optimize different criteria.
+
+The main practical differences are summarized below:
+
+| Feature | Distribution regression | Quantile regression |
+|:--|:--|:--|
+| Primary object | Conditional CDF $F_{Y|Z}(y|z)$ | Conditional quantile $Q_{Y|Z}(\tau|z)$ |
+| Estimation problem | Binary response regression for each $y$ | Check-loss minimization for each $\tau$ |
+| Most direct causal use | DTEs | QTEs |
+| Outcome support | Naturally accommodates continuous, discrete, and mixed outcomes | Most naturally formulated for continuous conditional distributions |
+
+Either method can recover both CDFs and quantiles, but outside saturated designs their finite-sample estimates need not agree. The choice should therefore reflect both the parameter of interest and the support of the outcome. Distribution regression is especially attractive when DTEs or mixed outcomes are central; quantile regression is especially attractive when QTEs are the primary target.
+
+
+---
+
+#### Next Section {.unnumbered}
+
+In the next section, we use quantile and distribution regression to estimate the distributions, quantiles, QTEs, and DTEs of potential outcomes under unconfoundedness.
