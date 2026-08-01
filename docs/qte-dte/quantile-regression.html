@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta name="description" content="Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)">
 
-<title>5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity</title>
+<title>22&nbsp; Quantile Regression – Econometrics with Unobserved Heterogeneity</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -53,8 +53,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../linear/linear-mean-group.html" rel="next">
-<link href="../linear/linear-dynamic-panel-iv.html" rel="prev">
+<link href="../qte-dte/distribution-regression.html" rel="next">
+<link href="../qte-dte/qte-id-conf.html" rel="prev">
 <link href="../themes/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -292,8 +292,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="5&nbsp; Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators – Econometrics with Unobserved Heterogeneity">
-<meta property="og:description" content="Learn why standard IV estimators do not estimate average coefficients in heterogeneous dynamic panel models: theory and an example. (Lecture notes).">
+<meta property="og:title" content="22&nbsp; Quantile Regression – Econometrics with Unobserved Heterogeneity">
+<meta property="og:description" content="Learn basics of quantile regression, from population check risk minimization to sample-based linear and nonparametric estimation. (Lecture Notes)">
 <meta property="og:site_name" content="Econometrics with Unobserved Heterogeneity">
 </head>
 
@@ -466,7 +466,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/quantile-regression.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -538,7 +538,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../linear/linear-dynamic-panel-heterogeneity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></span></a>
   </div>
 </li>
@@ -662,7 +662,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qte-dte/quantile-regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../qte-dte/quantile-regression.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span></a>
   </div>
 </li>
@@ -696,24 +696,33 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-and-model" id="toc-introduction-and-model" class="nav-link active" data-scroll-target="#introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</a></li>
-  <li><a href="#endogeneity-due-to-heterogeneity" id="toc-endogeneity-due-to-heterogeneity" class="nav-link" data-scroll-target="#endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</a>
+  <li><a href="#towards-estimation" id="toc-towards-estimation" class="nav-link active" data-scroll-target="#towards-estimation"><span class="header-section-number">22.1</span> Towards Estimation</a></li>
+  <li><a href="#introduction-to-quantile-regression" id="toc-introduction-to-quantile-regression" class="nav-link" data-scroll-target="#introduction-to-quantile-regression"><span class="header-section-number">22.2</span> Introduction to Quantile Regression</a>
   <ul class="collapse">
-  <li><a href="#endogeneity-in-differenced-heterogeneous-equation" id="toc-endogeneity-in-differenced-heterogeneous-equation" class="nav-link" data-scroll-target="#endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</a></li>
-  <li><a href="#conditions-for-instruments" id="toc-conditions-for-instruments" class="nav-link" data-scroll-target="#conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</a></li>
-  <li><a href="#endogeneity-of-lagged-outcomes" id="toc-endogeneity-of-lagged-outcomes" class="nav-link" data-scroll-target="#endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</a></li>
-  <li><a href="#aside-regarding-restrictions-on-coefficients" id="toc-aside-regarding-restrictions-on-coefficients" class="nav-link" data-scroll-target="#aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link" data-scroll-target="#setting"><span class="header-section-number">22.2.1</span> Setting</a></li>
+  <li><a href="#population-quantile-regression" id="toc-population-quantile-regression" class="nav-link" data-scroll-target="#population-quantile-regression"><span class="header-section-number">22.2.2</span> Population Quantile Regression</a></li>
+  <li><a href="#sample-objective-function" id="toc-sample-objective-function" class="nav-link" data-scroll-target="#sample-objective-function"><span class="header-section-number">22.2.3</span> Sample Objective Function</a></li>
+  <li><a href="#linear-specification" id="toc-linear-specification" class="nav-link" data-scroll-target="#linear-specification"><span class="header-section-number">22.2.4</span> Linear Specification</a></li>
+  <li><a href="#quantile-regression" id="toc-quantile-regression" class="nav-link" data-scroll-target="#quantile-regression"><span class="header-section-number">22.2.5</span> Quantile Regression</a></li>
+  <li><a href="#moment-representation" id="toc-moment-representation" class="nav-link" data-scroll-target="#moment-representation"><span class="header-section-number">22.2.6</span> Moment Representation</a></li>
+  <li><a href="#asymptotic-properties" id="toc-asymptotic-properties" class="nav-link" data-scroll-target="#asymptotic-properties"><span class="header-section-number">22.2.7</span> Asymptotic Properties</a></li>
   </ul></li>
+  <li><a href="#estimation-and-identification-perspectives" id="toc-estimation-and-identification-perspectives" class="nav-link" data-scroll-target="#estimation-and-identification-perspectives"><span class="header-section-number">22.3</span> Estimation and Identification Perspectives</a>
+  <ul class="collapse">
+  <li><a href="#parametric-specification" id="toc-parametric-specification" class="nav-link" data-scroll-target="#parametric-specification"><span class="header-section-number">22.3.1</span> Parametric Specification</a></li>
+  <li><a href="#nonparametric-specification" id="toc-nonparametric-specification" class="nav-link" data-scroll-target="#nonparametric-specification"><span class="header-section-number">22.3.2</span> Nonparametric Specification</a></li>
+  </ul></li>
+  <li><a href="#operational-challenge-quantile-crossing" id="toc-operational-challenge-quantile-crossing" class="nav-link" data-scroll-target="#operational-challenge-quantile-crossing"><span class="header-section-number">22.4</span> Operational Challenge: Quantile Crossing</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/quantile-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../linear/linear-introduction.html">Linear Models</a></li><li class="breadcrumb-item"><a href="../linear/linear-dynamic-panel-heterogeneity.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qte-dte/qte-dte-intro.html">Quantile and Distributional Treatment Effects</a></li><li class="breadcrumb-item"><a href="../qte-dte/quantile-regression.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Heterogeneous Coefficient Dynamic Panels and Instrumental Variable Estimators</span></h1>
+<h1 class="title"><span id="sec-quantile-regression" class="quarto-section-identifier"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Quantile Regression</span></span></h1>
 </div>
 
 
@@ -740,98 +749,146 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This section shows that IV estimators (Anderson-Hsiao, Arellano-Bond, etc.) do not estimate average coefficients in heterogeneous dynamic panel models.</p>
+<p>This section introduces quantile regression as a tool for estimating conditional quantiles.</p>
 <p>By the end of this section, you should be able to:</p>
 <ul>
-<li>Understand why lagged outcomes are not valid instruments if the coefficients are heterogeneous.</li>
-<li>Describe the overall challenge of finding valid instruments under</li>
-<li>Explain why dynamic models with heterogeneous coefficients introduce more challenges than static models.</li>
+<li>Define quantile regression through check risk minimization and its associated moment conditions.</li>
+<li>Have a general perspective on the parametric and nonparametric approaches to quantile regression.</li>
 </ul>
 </div>
 </div>
-<section id="introduction-and-model" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introduction-and-model"><span class="header-section-number">5.1</span> Introduction and Model</h2>
-<p>As in the static case, it is not clear why slopes should be homogenous in dynamic models. If the coefficients are the same between units, all units have the same dynamics. Such an assumption seems rather unrealistic in most scenarios.</p>
-<p>As a consequence, we now consider heterogeneous dynamic models. In this section we again focus on a simple AR(1) model with no exogenous regressors. Specifically, we look at the following heterogeneous version of model (<a href="linear-dynamic-panel-iv.html#eq-dynamic-interlude-dynamic-simple" class="quarto-xref"><span>4.6</span></a>): <span id="eq-dynamic-heterogeneity-model"><span class="math display">\[
-\begin{aligned}
-    Y_{it}   &amp; = A_i +  \lambda_i Y_{it-1} + Y_{it}, \\
-0 &amp; = \E[Y_{it}| \curl{Y_{is}}_{s\leq t}] .
-\end{aligned}
-\tag{5.1}\]</span></span> This model allows for unit-specific dynamics, as the coefficients <span class="math inline">\(\lambda_i\)</span> can vary across <span class="math inline">\(i\)</span>. The above model is also another instance of the general model (<a href="linear-introduction.html#eq-lecture_model" class="quarto-xref"><span>2.7</span></a>).</p>
-<p>As before, we are interested in the average coefficient <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
-</section>
-<section id="endogeneity-due-to-heterogeneity" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="endogeneity-due-to-heterogeneity"><span class="header-section-number">5.2</span> Endogeneity due to Heterogeneity</h2>
-<p>Can the IV estimators of the previous section estimate <span class="math inline">\(\E[\lambda_i]\)</span> under model (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>)? Under what conditions? To answer these questions, recall that the IV estimators of the previous section are based on taking first differences in the model and then using lagged values of <span class="math inline">\(Y_{it}\)</span> as instruments.</p>
-<section id="endogeneity-in-differenced-heterogeneous-equation" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="endogeneity-in-differenced-heterogeneous-equation"><span class="header-section-number">5.2.1</span> Endogeneity in Differenced Heterogeneous Equation</h3>
-<p>To replicate the procedure, we take differences in <a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and write the differenced model as <span id="eq-dynamic-heterogeneity-differenced"><span class="math display">\[
-\begin{aligned}
-    \Delta Y_{it} &amp; = \lambda \Delta Y_{it-1} +  V_{it}, \\
-    V_{it} &amp; = \eta_i\Delta Y_{it-1} + \Delta U_{it} =0,
-\end{aligned}
-\tag{5.2}\]</span></span> where we label <span class="math display">\[
-\begin{aligned}
-\lambda &amp; = \E[\lambda_i], \\
-\eta_i &amp; = \lambda_i - \lambda.
-\end{aligned}
-\]</span></p>
-<p>It is easy to check that <span class="math inline">\(\Delta Y_{it-1}\)</span> is still endogenous because it contains <span class="math inline">\(U_{it-1}\)</span>, which is correlated with the residual term. The same problematic term <span class="math inline">\(\lambda \E[U_{it-1}^2]\)</span> is present in <span class="math inline">\(\E[V_{it}\Delta Y_{it-1}]\)</span>.</p>
-</section>
-<section id="conditions-for-instruments" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="conditions-for-instruments"><span class="header-section-number">5.2.2</span> Conditions for Instruments</h3>
-<p>Can we find a suitable instrument for <span class="math inline">\(\Delta Y_{it-1}\)</span>? Any valid instrument must satisfy relevance and exogeneity, which now take the following form: <span class="math display">\[
-\begin{aligned}
-    \E[Z_{it}\Delta Y_{it-1}] &amp;  \neq 0 ,\\
-    \E[Z_{it} V_{it}] &amp; = \E[ \eta_i Z_{it}\Delta Y_{it-1} ] + \E[Z_{it}U_{it}].
-\end{aligned}
-\]</span> Note that a new <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\)</span> term now appears in the exogeneity condition.</p>
-</section>
-<section id="endogeneity-of-lagged-outcomes" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="endogeneity-of-lagged-outcomes"><span class="header-section-number">5.2.3</span> Endogeneity of Lagged Outcomes</h3>
-<p>Unlike in the homogeneous case, <span class="math inline">\(Y_{it-2}\)</span> is not a valid instrument anymore. We show that <span class="math inline">\(Y_{it-2}\)</span> is not exogenous in a simple case with the following assumptions:</p>
+<section id="towards-estimation" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="towards-estimation"><span class="header-section-number">22.1</span> Towards Estimation</h2>
+<p>A common theme in the identification results of the previous sections is that we express the parameters of interest in terms of the conditional distributions or quantiles of the observed outcome <span class="math inline">\(Y_i\)</span>. Thus, to estimate these objects, it is sufficient to estimate these conditional quantities.</p>
+<p>When all conditioning variables are discrete, estimation is straightforward: we can simply split the sample and use sample quantiles or empirical distribution functions within each subsample. However, when continuously-distributed variables are present, splitting the sample is not feasible. Instead, we must approximate the quantiles or the distribution function.</p>
+<p>Quantile and distribution regression are two primary methods for this purpose:</p>
 <ul>
-<li><span class="math inline">\(\abs{\lambda_i}&lt;1\)</span>.</li>
-<li><a href="#eq-dynamic-heterogeneity-model" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> can be extended infinitely far into the past by recursive substitution, so that <span class="math display">\[
-Y_{it} = \dfrac{A_i}{1-\lambda_i} + \sum_{k=0}^{\infty} \lambda_i^k U_{it-k}.
-\]</span></li>
-<li><span class="math inline">\(\curl{U_{it}}_t\)</span> is an IID sequence with finite second moments, and <span class="math inline">\(U_{it}\)</span> is independent of <span class="math inline">\((A_i, \lambda_i)\)</span>.</li>
+<li><strong>Quantile regression</strong> directly models conditional quantiles of the type <span class="math inline">\(Q_{Y|X, W}(\tau|x, w)\)</span>.</li>
+<li><strong>Distribution regression</strong> instead models the conditional distribution function <span class="math inline">\(F_{Y|X, W}(y|x, w)\)</span>.</li>
 </ul>
-<p>Under the above assumptions the first expectation in <span class="math inline">\(\E[Y_{it-2} V_{it}]\)</span> can be evaluated as follows: <span class="math display">\[
-\begin{aligned}
-&amp; \E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]
-\\
-% &amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-1}\right)\left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right) - \left(\sum_{k=0}^{\infty} \lambda_i^k u_{i,t-k-2}\right)^2 \right) \right] \\
-&amp; = \E\left[ \eta_i\left( \left(\sum_{k=0}^{\infty} \lambda_i^{1+2k} U_{i,t-k-2}^2 \right)  -  \left(\sum_{k=0}^{\infty} \lambda_i^{2k} U^2_{i,t-k-2}\right)  \right)\right] \\
-&amp; = \E[U_{it}^2] \E\left[\eta_i (1-\lambda_i) \sum_{k=0}^{\infty} \lambda_i^{2k}   \right].
-\end{aligned}
-\]</span> In general, there is no reason to expect the above expectation to be zero if <span class="math inline">\(\eta_i\)</span> is not zero. The second term involves a sum of even-order moments of <span class="math inline">\(\eta_i\)</span> (equivalently, <span class="math inline">\(\lambda_i)\)</span>; such a sum would in general be non-zero.</p>
-<p>We conclude that <span class="math display">\[
-\E[ \eta_i Y_{it-2}\Delta Y_{it-1} ]\neq 0,
-\]</span> and so in general that <span class="math display">\[
-\E[Y_{it-2} V_{it}]\neq 0.
-\]</span> In other words, <span class="math inline">\(Y_{it-2}\)</span> <em>is not a valid instrument under the heterogeneous mode</em>l (<a href="#eq-dynamic-heterogeneity-model" class="quarto-xref"><span>5.1</span></a>). The same logic applies under more general assumptions and to higher-order lags of <span class="math inline">\(Y_{it}\)</span>.</p>
-<p>More broadly, the problem of finding a valid instrument <span class="math inline">\(Z_{it}\)</span> for <a href="#eq-dynamic-heterogeneity-differenced" class="quarto-xref">Equation&nbsp;<span>5.2</span></a> appears intractable. The relevance condition requires that <span class="math inline">\(Z_{it}\)</span> be correlated with <span class="math inline">\(\Delta Y_{it-1}\)</span>. As a consequence, it is likely that <span class="math inline">\(Z_{it}\)</span> is also correlated with <span class="math inline">\(\eta_i \Delta Y_{it-1}\)</span> (particularly since <span class="math inline">\(\eta_i\)</span> appears inside <span class="math inline">\(\Delta Y_{it-1}\)</span>). However, it would then be the case that <span class="math inline">\(\E[ \eta_i Z_{it}\Delta Y_{it-1} ]\neq 0\)</span>, and exogeneity would fail.</p>
-<p>We conclude that the IV estimators of the previous section do not consistently estimate <span class="math inline">\(\E[\lambda_i]\)</span>, no matter how we choose the instruments, regardless the magnitude of <span class="math inline">\(T\)</span>. Moreover, the results of <span class="citation" data-cites="Pesaran1995">Pesaran and Smith (<a href="../references/references.html#ref-Pesaran1995" role="doc-biblioref">1995</a>)</span> imply that the estimators may converge to any value (not exceeding 1), regardless of the underlying true values of <span class="math inline">\(\E[\lambda_i]\)</span>.</p>
+<p>In this section, we provide an essential introduction to quantile regression, while distribution regression is covered in the next section. Finally, in section TBA, we discuss how to use these methods to estimate QTEs and DTEs.</p>
 </section>
-<section id="aside-regarding-restrictions-on-coefficients" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="aside-regarding-restrictions-on-coefficients"><span class="header-section-number">5.2.4</span> Aside: Regarding Restrictions on Coefficients</h3>
-<p>There is a further point of contrast with the static case. In section <a href="linear-within-estimator.html" class="quarto-xref"><span>3</span></a> we noted that OLS can consistently estimate the average coefficients in a static model if the coefficients <span class="math inline">\(\bbeta_i\)</span> are (mean) independent of the regressors. We also derived a weaker condition for the consistency of the within estimator.</p>
-<p>However, no such independence assumptions are possible in a dynamic model. By construction, the coefficients <span class="math inline">\((A_i, \lambda_i)\)</span> are directly embedded in the process for the regressor <span class="math inline">\(Y_{it-1}\)</span> through <span class="math display">\[
-Y_{it-1} = A_i + \lambda_i Y_{it-2} + U_{it-2}.
-\]</span> As a result, <span class="math inline">\(Y_{it-1}\)</span> and <span class="math inline">\((A_i, \lambda_i)\)</span> cannot be (mean) independent by construction.</p>
+<section id="introduction-to-quantile-regression" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="introduction-to-quantile-regression"><span class="header-section-number">22.2</span> Introduction to Quantile Regression</h2>
+<section id="setting" class="level3" data-number="22.2.1">
+<h3 data-number="22.2.1" class="anchored" data-anchor-id="setting"><span class="header-section-number">22.2.1</span> Setting</h3>
+<p>We now give a brief introduction to quantile regression, temporarily disregarding the causal framework. For a more detailed treatment, see the monograph by <span class="citation" data-cites="Koenker2005">Koenker (<a href="../references/references.html#ref-Koenker2005" role="doc-biblioref">2005</a>)</span> and the <em>Handbook of Quantile Regression</em> <span class="citation" data-cites="Koenker2017HandbookQuantileRegression">(<a href="../references/references.html#ref-Koenker2017HandbookQuantileRegression" role="doc-biblioref">Koenker et al. 2017</a>)</span>.</p>
+<p>As always, let <span class="math inline">\(Y_i\)</span> be some outcome variable and <span class="math inline">\(Z_i\)</span> be a vector of covariates (which may include both the treatment <span class="math inline">\(X_i\)</span> and other controls <span class="math inline">\(W_i\)</span>). We assume the conditional CDF <span class="math inline">\(F_{Y|Z}(\cdot|z)\)</span> is continuous and strictly increasing for all <span class="math inline">\(z\)</span>.</p>
+<p>Our goal is to estimate the <span class="math inline">\(\tau\)</span>th conditional quantile <span class="math inline">\(Q_{Y|Z}(\tau|z)\)</span> of <span class="math inline">\(Y_i\)</span> given <span class="math inline">\(Z_i=z\)</span> given a sample of <span class="math inline">\(N\)</span> i.i.d. observations <span class="math inline">\(\{(Y_i, Z_i)\}_{i=1}^N\)</span>.</p>
+</section>
+<section id="population-quantile-regression" class="level3" data-number="22.2.2">
+<h3 data-number="22.2.2" class="anchored" data-anchor-id="population-quantile-regression"><span class="header-section-number">22.2.2</span> Population Quantile Regression</h3>
+<p>The starting point for quantile regression is the characterization of quantiles as minimizers of a specific loss function. Under our assumptions on the CDF of <span class="math inline">\(Y_i\)</span>, the conditional quantile uniquely minimizes the <strong>check risk</strong>: <span id="eq-qr-pop-min"><span class="math display">\[
+    Q_{Y|Z}(\tau|Z)  =  \argmin_{q(Z)}  \E[\rho_{\tau}(Y-q(Z))],
+\tag{22.1}\]</span></span> where the minimum is taken over the class of all measurable functions and <span class="math inline">\(\rho_{\tau}(u)\)</span> is the <strong>check loss</strong> function: <span id="eq-check-loss"><span class="math display">\[
+\rho_{\tau}(u) = \begin{cases}
+    \tau u, &amp; u \geq 0, \\
+    (\tau-1)u, &amp; u&lt;0.
+\end{cases}
+\tag{22.2}\]</span></span></p>
+</section>
+<section id="sample-objective-function" class="level3" data-number="22.2.3">
+<h3 data-number="22.2.3" class="anchored" data-anchor-id="sample-objective-function"><span class="header-section-number">22.2.3</span> Sample Objective Function</h3>
+<p>The population characterization in <a href="#eq-qr-pop-min" class="quarto-xref">Equation&nbsp;<span>22.1</span></a> cannot be used directly in practice for two reasons:</p>
+<ol type="1">
+<li>We only have access to a finite sample;</li>
+<li>The class of all measurable functions is too large to search through.</li>
+</ol>
+<p>The first problem is straightforward to address by replacing the population expectation with its sample counterpart to obtain the <strong>sample objective function</strong>: <span id="eq-qr-sample-obj"><span class="math display">\[
+     \E_n[\rho_{\tau}(Y-q(Z))] \equiv \dfrac{1}{N} \sum_{i=1}^N \rho_{\tau} (Y_i - q(Z_i)).
+\tag{22.3}\]</span></span></p>
+</section>
+<section id="linear-specification" class="level3" data-number="22.2.4">
+<h3 data-number="22.2.4" class="anchored" data-anchor-id="linear-specification"><span class="header-section-number">22.2.4</span> Linear Specification</h3>
+<p>To address the second problem, we restrict the quantile function <span class="math inline">\(q(\cdot)\)</span> to a simpler, typically finite-dimensional space. The most popular approach restricts the quantile function to be linear in parameters: <span id="eq-qr-linear-spec"><span class="math display">\[
+    q(z, \beta(\tau)) = \psi(z)'\beta(\tau),
+\tag{22.4}\]</span></span> where <span class="math inline">\(\psi(z)\)</span> is some known transformation of covariates (e.g., polynomials, interactions, or basis functions).</p>
+</section>
+<section id="quantile-regression" class="level3" data-number="22.2.5">
+<h3 data-number="22.2.5" class="anchored" data-anchor-id="quantile-regression"><span class="header-section-number">22.2.5</span> Quantile Regression</h3>
+<p>After specifying the functional form, the parameters <span class="math inline">\(\beta(\tau)\)</span> are estimated by minimizing the sample objective function for each <span class="math inline">\(\tau\)</span> of interest. In the linear case, this yields the canonical quantile regression estimator of <span class="citation" data-cites="Koenker1978RegressionQuantiles">Koenker and Bassett (<a href="../references/references.html#ref-Koenker1978RegressionQuantiles" role="doc-biblioref">1978</a>)</span>: <span id="eq-qr-fit"><span class="math display">\[
+    \hat{\beta}(\tau)= \argmin_{b} \dfrac{1}{N}\sum_{i=1}^N \rho_{\tau}(Y_i-\psi(Z_i)'b).
+\tag{22.5}\]</span></span> This problem can be represented as a linear program and solved efficiently even for large <span class="math inline">\(N\)</span> <span class="citation" data-cites="Koenker2017ComputationalMethodsQuantile">(<a href="../references/references.html#ref-Koenker2017ComputationalMethodsQuantile" role="doc-biblioref">Koenker 2017</a>)</span>. The resulting estimator for the conditional quantile is: <span class="math display">\[
+     \hat{Q}_{Y|Z}(\tau|z) = \psi(z)'\hat{\beta}(\tau).
+\]</span></p>
+</section>
+<section id="moment-representation" class="level3" data-number="22.2.6">
+<h3 data-number="22.2.6" class="anchored" data-anchor-id="moment-representation"><span class="header-section-number">22.2.6</span> Moment Representation</h3>
+<p>While the check loss is non-smooth, the population minimizer <span class="math inline">\(q(Z, \beta(\tau)) = \psi(Z)'\beta(\tau)\)</span> satisfies the following system of moment conditions: <span id="eq-qr-moments"><span class="math display">\[
+\E\left[ \left( \tau - \mathbb{I}\{Y_i \leq \psi(Z_i)'\beta(\tau)\} \right) \psi(Z_i) \right] = 0.
+\tag{22.6}\]</span></span></p>
+</section>
+<section id="asymptotic-properties" class="level3" data-number="22.2.7">
+<h3 data-number="22.2.7" class="anchored" data-anchor-id="asymptotic-properties"><span class="header-section-number">22.2.7</span> Asymptotic Properties</h3>
+<p>Under standard regularity conditions, the estimator <span class="math inline">\(\hat{\beta}(\tau)\)</span> is <span class="math inline">\(\sqrt{N}\)</span>-consistent and asymptotically normal. Specifically, it holds that <span id="eq-qr-asymptotics"><span class="math display">\[
+\sqrt{N} (\hat{\beta}(\tau) - \beta(\tau)) \Rightarrow \mathcal{N}(0, H^{-1} J H^{-1}),
+\tag{22.7}\]</span></span> where <span class="math display">\[
+\begin{aligned}
+J &amp;= \tau(1-\tau) \E[\psi(Z_i)\psi(Z_i)'], \\
+H &amp;= \E[f_{Y|Z}(\psi(Z_i)'\beta(\tau)|Z_i) \psi(Z_i)\psi(Z_i)'].
+\end{aligned}
+\]</span> See chapter 4 of <span class="citation" data-cites="Koenker2005">Koenker (<a href="../references/references.html#ref-Koenker2005" role="doc-biblioref">2005</a>)</span> for a detailed discussion of the regularity conditions and proofs.</p>
+<p>The asymptotic variance depends on the conditional density of <span class="math inline">\(Y\)</span> at the <span class="math inline">\(\tau\)</span>th quantile, <span class="math inline">\(f_{Y|Z}(Q_{Y|Z}(\tau|z)|z)\)</span>. This “sparsity” term in <span class="math inline">\(H\)</span> implies that estimation is typically less precise in the tails of the distribution where data is sparse (<span class="math inline">\(f_{Y|Z}\)</span> is small), which leads to a “flatter” sample objective function.</p>
+<p>One can also establish the joint distribution of <span class="math inline">\(\hat{\beta}(\tau)\)</span> across different values of <span class="math inline">\(\tau\)</span> or a continuum of <span class="math inline">\(\tau\)</span> values, which is useful for inference on the entire conditional quantile function. See <span class="citation" data-cites="Koenker2005">Koenker (<a href="../references/references.html#ref-Koenker2005" role="doc-biblioref">2005</a>)</span> and <span class="citation" data-cites="Koenker2017HandbookQuantileRegression">Koenker et al. (<a href="../references/references.html#ref-Koenker2017HandbookQuantileRegression" role="doc-biblioref">2017</a>)</span> for details.</p>
+</section>
+</section>
+<section id="estimation-and-identification-perspectives" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="estimation-and-identification-perspectives"><span class="header-section-number">22.3</span> Estimation and Identification Perspectives</h2>
+<p>As with mean regression, the choice between parametric and nonparametric specifications involves a trade-off between bias and variance, as well as different identification targets under misspecification.</p>
+<section id="parametric-specification" class="level3" data-number="22.3.1">
+<h3 data-number="22.3.1" class="anchored" data-anchor-id="parametric-specification"><span class="header-section-number">22.3.1</span> Parametric Specification</h3>
+<p>In a parametric setting, we typically assume that <span class="math inline">\(Q_{Y|Z}(\tau|z) = \psi(z)'\beta(\tau)\)</span> for a fixed-dimensional <span class="math inline">\(\psi(z)\)</span>.</p>
+<ul>
+<li>If the linear model holds, <span class="math inline">\(\hat{\beta}(\tau)\)</span> consistently estimates the true coefficients.</li>
+<li>If the linear model is misspecified, <span class="citation" data-cites="Angrist2006QuantileRegressionMisspecification">Angrist et al. (<a href="../references/references.html#ref-Angrist2006QuantileRegressionMisspecification" role="doc-biblioref">2006</a>)</span> show that QR identifies a “best” linear approximation to the true conditional quantile function. Specifically, <span class="math inline">\(\beta(\tau)\)</span> minimizes a weighted mean squared error between the true quantile function and the linear index, where the weights are determined by the conditional density of the outcome.</li>
+</ul>
+</section>
+<section id="nonparametric-specification" class="level3" data-number="22.3.2">
+<h3 data-number="22.3.2" class="anchored" data-anchor-id="nonparametric-specification"><span class="header-section-number">22.3.2</span> Nonparametric Specification</h3>
+<p>In a nonparametric approach, we allow the complexity of the model to grow with the sample size <span class="math inline">\(N\)</span> to ensure consistency without functional form assumptions. Common strategies include:</p>
+<ul>
+<li>Series estimation: The number of basis functions in <span class="math inline">\(\psi(Z_i)\)</span> (e.g., polynomials, B-splines) increases with <span class="math inline">\(N\)</span> at an appropriate rate.</li>
+<li>Local methods: Approaches such as quantile smoothing splines <span class="citation" data-cites="Koenker1994QuantileSmoothingSplines">(<a href="../references/references.html#ref-Koenker1994QuantileSmoothingSplines" role="doc-biblioref">Koenker et al. 1994</a>)</span> or local polynomial quantile regression approximate the quantile function locally around each <span class="math inline">\(z\)</span>.</li>
+<li>Quantile random forests <span class="citation" data-cites="Meinshausen2006QuantileRegressionForests">(<a href="../references/references.html#ref-Meinshausen2006QuantileRegressionForests" role="doc-biblioref">Meinshausen 2006</a>)</span> provide a flexible, data-driven way to partition the covariate space and estimate conditional quantiles within the resulting leaves.</li>
+</ul>
+</section>
+</section>
+<section id="operational-challenge-quantile-crossing" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="operational-challenge-quantile-crossing"><span class="header-section-number">22.4</span> Operational Challenge: Quantile Crossing</h2>
+<p>A known issue in both parametric and nonparametric quantile regression is <strong>quantile crossing</strong>. Since <span class="math inline">\(\hat{\beta}(\tau)\)</span> is estimated separately for each <span class="math inline">\(\tau\)</span>, the resulting surfaces <span class="math inline">\(\psi(z)'\hat{\beta}(\tau)\)</span> and <span class="math inline">\(\psi(z)'\hat{\beta}(\tau')\)</span> may cross for <span class="math inline">\(\tau \neq \tau'\)</span> in finite samples (or under misspecification).</p>
+<p>This violates the monotonicity of the quantile function and renders the resulting “distribution” invalid (e.g., non-monotonic CDFs). For operationalizing QTEs and DTEs, this is often addressed using <strong>rearrangement</strong> methods <span class="citation" data-cites="Chernozhukov2010QuantileProbabilityCurves">(<a href="../references/references.html#ref-Chernozhukov2010QuantileProbabilityCurves" role="doc-biblioref">Chernozhukov et al. 2010</a>)</span>, which monotonically transform the estimated curves to ensure they satisfy the basic properties of a quantile function.</p>
 <hr>
 <section id="next-section" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="next-section">Next Section</h4>
-<p>In the next section, we study a simple estimator for <span class="math inline">\(\E[\bbeta_i]\)</span> that is robust both to coefficient heterogeneity and dynamics.</p>
+<p>In the next section, we introduce distribution regression as an alternative tool for estimating the distribution of potential outcomes.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Pesaran1995" class="csl-entry" role="listitem">
-Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estimating long-run relationships from dynamic heterogeneous panels</span>.”</span> <em>Journal of Econometrics</em> 6061: 473–77.
+<div id="ref-Angrist2006QuantileRegressionMisspecification" class="csl-entry" role="listitem">
+Angrist, Joshua, Victor Chernozhukov, and Iván Fernández-Val. 2006. <span>“Quantile <span>Regression</span> Under <span>Misspecification</span>, with an <span>Application</span> to the <span>U</span>.<span>S</span>. <span>Wage Structure</span>.”</span> <em>Econometrica</em> 74 (2): 539–63. <a href="https://doi.org/10.1111/j.1468-0262.2006.00671.x">https://doi.org/10.1111/j.1468-0262.2006.00671.x</a>.
+</div>
+<div id="ref-Chernozhukov2010QuantileProbabilityCurves" class="csl-entry" role="listitem">
+Chernozhukov, Victor, Iván Fernández-Val, and Alfred Galichon. 2010. <span>“Quantile and <span>Probability Curves Without Crossing</span>.”</span> <em>Econometrica</em> 78 (3): 1093–125. <a href="https://doi.org/10.3982/ECTA7880">https://doi.org/10.3982/ECTA7880</a>.
+</div>
+<div id="ref-Koenker2005" class="csl-entry" role="listitem">
+Koenker, Roger. 2005. <em><span>Quantile Regression</span></em>. Cambridge University Press. <a href="https://doi.org/10.1017/CBO9780511754098">https://doi.org/10.1017/CBO9780511754098</a>.
+</div>
+<div id="ref-Koenker2017ComputationalMethodsQuantile" class="csl-entry" role="listitem">
+Koenker, Roger. 2017. <span>“Computational <span>Methods</span> for <span>Quantile Regression</span>.”</span> In <em>Handbook of <span>Quantile Regression</span></em>, 1st ed., edited by Roger Koenker, Victor Chernozhukov, Xuming He, and Limin Peng. <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781315120256-5">https://doi.org/10.1201/9781315120256-5</a>.
+</div>
+<div id="ref-Koenker1978RegressionQuantiles" class="csl-entry" role="listitem">
+Koenker, Roger, and Gilbert Bassett. 1978. <span>“Regression <span>Quantiles</span>.”</span> <em>Econometrica</em> 46 (1): 33–50. <a href="https://doi.org/10.2307/1913643">https://doi.org/10.2307/1913643</a>.
+</div>
+<div id="ref-Koenker2017HandbookQuantileRegression" class="csl-entry" role="listitem">
+Koenker, Roger, Victor Chernozhukov, Xuming He, and Limin Peng, eds. 2017. <em>Handbook of <span>Quantile Regression</span></em>. 1st ed. <span>Chapman and Hall/CRC</span>. <a href="https://doi.org/10.1201/9781315120256">https://doi.org/10.1201/9781315120256</a>.
+</div>
+<div id="ref-Koenker1994QuantileSmoothingSplines" class="csl-entry" role="listitem">
+Koenker, Roger, Pin Ng, and Stephen Portnoy. 1994. <span>“Quantile <span>Smoothing Splines</span>.”</span> <em>Biometrika</em> 81 (4): 673–80. <a href="https://doi.org/10.1093/biomet/81.4.673">https://doi.org/10.1093/biomet/81.4.673</a>.
+</div>
+<div id="ref-Meinshausen2006QuantileRegressionForests" class="csl-entry" role="listitem">
+Meinshausen, Nicolai. 2006. <span>“Quantile <span>Regression Forests</span>.”</span> <em>Journal of Machine Learning Research</em> 7 (35): 983–99.
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -1251,13 +1308,13 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../linear/linear-dynamic-panel-iv.html" class="pagination-link" aria-label="Interlude: Standard Dynamic Panel Estimators">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interlude: Standard Dynamic Panel Estimators</span></span>
+      <a href="../qte-dte/qte-id-conf.html" class="pagination-link" aria-label="Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Nonparametric Identification of Quantile Treatment Effects under Unconfoundedness</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../linear/linear-mean-group.html" class="pagination-link" aria-label="Mean Group: Robust Estimator for Average Coefficients">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Mean Group: Robust Estimator for Average Coefficients</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../qte-dte/distribution-regression.html" class="pagination-link" aria-label="Distribution Regression">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Distribution Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1266,4 +1323,4 @@ Pesaran, M. Hashem, and Ron P. Smith. 1995. <span>“<span class="nocase">Estima
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/linear/linear-dynamic-panel-heterogeneity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/edit/main/src/qte-dte/quantile-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/vladislav-morozov/econometrics-heterogeneity/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

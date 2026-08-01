@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/index.html</loc>
-    <lastmod>2026-07-24T18:18:57.072Z</lastmod>
+    <lastmod>2026-08-01T15:45:11.768Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/intro.html</loc>
@@ -82,11 +82,23 @@
   </url>
   <url>
     <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/qte-dte/dte-id-conf.html</loc>
-    <lastmod>2026-07-29T18:45:48.734Z</lastmod>
+    <lastmod>2026-07-29T19:03:46.011Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/qte-dte/qte-id-conf.html</loc>
-    <lastmod>2026-07-29T18:56:18.883Z</lastmod>
+    <lastmod>2026-08-01T15:43:57.613Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/qte-dte/quantile-regression.html</loc>
+    <lastmod>2026-07-30T20:41:37.243Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/qte-dte/distribution-regression.html</loc>
+    <lastmod>2026-08-01T12:28:59.920Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/qte-dte/qte-dte-estimation.html</loc>
+    <lastmod>2026-08-01T15:43:57.613Z</lastmod>
   </url>
   <url>
     <loc>https://vladislav-morozov.eu/econometrics-heterogeneity/references/references.html</loc>
